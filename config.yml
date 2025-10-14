@@ -1,0 +1,6 @@
+npmName: revengai
+licenseName: MIT
+gitUserId: RevEngAI
+gitRepoId: sdk-typescript
+additionalProperties:
+  apiDocPath: docs/

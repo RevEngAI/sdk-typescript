@@ -1,0 +1,56 @@
+# RevEng.AI TypeScript SDK
+
+This is the TypeScript SDK for the RevEng.AI API.
+
+To use the SDK you will first need to obtain an API key from [https://reveng.ai](https://reveng.ai/register).
+
+## Installation
+
+Once you have the API key you can install the SDK via npm:
+
+```bash
+npm install {{npmName}}
+```
+
+## Usage
+
+The following is an example of how to use the SDK to get the logs of an analysis:
+
+```typescript
+import * as revengai from 'revengai'
+
+const authConfig: revengai.AuthMethodsConfiguration = {
+    APIKey: process.env.REVENGAI_API_KEY
+}
+
+const config = revengai.createConfiguration({
+    authMethods: authConfig,
+});
+
+const api = new revengai.AnalysesCoreApi(config);
+
+async function fetchLogs() {
+    try {
+        const logs = await api.getAnalysisLogs(715522);
+        console.log(logs);
+    } catch (error) {
+        console.error('Error fetching logs:', error);
+    }
+}
+
+fetchLogs();
+```
+
+## Documentation for API Endpoints
+
+All URIs are relative to *{{basePath}}*
+
+Class | Method | HTTP request | Description
+------------ | ------------- | ------------- | -------------
+{{#apiInfo}}{{#apis}}{{#operations}}{{#operation}}*{{classname}}* | [**{{operationId}}**]({{apiDocPath}}{{classname}}.md#{{operationId}}) | **{{httpMethod}}** {{commonPath}}{{path}} | {{summary}}
+{{/operation}}{{/operations}}{{/apis}}{{/apiInfo}}
+
+## Documentation for Models
+
+{{#models}}{{#model}} - [{{classname}}]({{modelDocPath}}{{classname}}.md)
+{{/model}}{{/models}}

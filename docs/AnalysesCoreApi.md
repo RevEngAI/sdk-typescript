@@ -1,0 +1,963 @@
+# .AnalysesCoreApi
+
+All URIs are relative to *https://api.reveng.ai*
+
+Method | HTTP request | Description
+------------- | ------------- | -------------
+[**createAnalysis**](AnalysesCoreApi.md#createAnalysis) | **POST** /v2/analyses | Create Analysis
+[**deleteAnalysis**](AnalysesCoreApi.md#deleteAnalysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
+[**findSimilarFunctionsBatch**](AnalysesCoreApi.md#findSimilarFunctionsBatch) | **POST** /v2/analyses/{analysis_id}/similarity/functions | Batch Symbol ANN using Analysis ID
+[**getAnalysisBasicInfo**](AnalysesCoreApi.md#getAnalysisBasicInfo) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
+[**getAnalysisFunctionMap**](AnalysesCoreApi.md#getAnalysisFunctionMap) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
+[**getAnalysisLogs**](AnalysesCoreApi.md#getAnalysisLogs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
+[**getAnalysisParams**](AnalysesCoreApi.md#getAnalysisParams) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
+[**getAnalysisStatus**](AnalysesCoreApi.md#getAnalysisStatus) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
+[**getBinaryAnn**](AnalysesCoreApi.md#getBinaryAnn) | **POST** /v2/binary_ann/{analysis_id} | Binary Ann
+[**listAnalyses**](AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
+[**lookupBinaryId**](AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
+[**requeueAnalysis**](AnalysesCoreApi.md#requeueAnalysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
+[**updateAnalysis**](AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
+[**updateAnalysisTags**](AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
+[**uploadFile**](AnalysesCoreApi.md#uploadFile) | **POST** /v2/upload | Upload File
+
+
+# **createAnalysis**
+> BaseResponseAnalysisCreateResponse createAnalysis(analysisCreateRequest)
+
+Begins an analysis
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiCreateAnalysisRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiCreateAnalysisRequest = {
+  
+  analysisCreateRequest: {
+    filename: "filename_example",
+    sha256Hash: "sha256Hash_example",
+    tags: [
+      {
+        name: "name_example",
+      },
+    ],
+    analysisScope: "PRIVATE",
+    symbols: {
+      baseAddress: 1,
+      functionBoundaries: [
+        {
+          mangledName: "mangledName_example",
+          startAddress: 1,
+          endAddress: 1,
+        },
+      ],
+    },
+    debugHash: "debugHash_example",
+    analysisConfig: {
+      scrapeThirdPartyConfig: {
+        enabled: false,
+      },
+      generateCves: false,
+      generateSbom: false,
+      generateCapabilities: false,
+      noCache: false,
+      advancedAnalysis: false,
+      sandboxConfig: {
+        enabled: false,
+        commandLineArgs: "",
+      },
+    },
+    binaryConfig: {
+      isa: "x86",
+      platform: "linux",
+      fileFormat: "pe",
+    },
+  },
+};
+
+const data = await apiInstance.createAnalysis(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisCreateRequest** | **AnalysisCreateRequest**|  |
+
+
+### Return type
+
+**BaseResponseAnalysisCreateResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+**404** | Not Found |  -  |
+**400** | Bad Request |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **deleteAnalysis**
+> BaseResponseDict deleteAnalysis()
+
+Deletes an analysis based on the provided analysis ID.
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiDeleteAnalysisRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiDeleteAnalysisRequest = {
+  
+  analysisId: 1,
+};
+
+const data = await apiInstance.deleteAnalysis(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseDict**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+**404** | Not Found |  -  |
+**403** | Forbidden |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **findSimilarFunctionsBatch**
+> BaseResponseNearestNeighborAnalysis findSimilarFunctionsBatch(aNNFunction)
+
+Takes a analysis ID and returns the nearest functions within the database that match those functions
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiFindSimilarFunctionsBatchRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiFindSimilarFunctionsBatchRequest = {
+  
+  analysisId: 1,
+  
+  aNNFunction: 
+    key: null,
+  ,
+};
+
+const data = await apiInstance.findSimilarFunctionsBatch(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **aNNFunction** | **ANNFunction**|  |
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseNearestNeighborAnalysis**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getAnalysisBasicInfo**
+> BaseResponseBasic getAnalysisBasicInfo()
+
+Returns basic analysis information for an analysis
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiGetAnalysisBasicInfoRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiGetAnalysisBasicInfoRequest = {
+  
+  analysisId: 1,
+};
+
+const data = await apiInstance.getAnalysisBasicInfo(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseBasic**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getAnalysisFunctionMap**
+> BaseResponseAnalysisFunctionMapping getAnalysisFunctionMap()
+
+Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiGetAnalysisFunctionMapRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiGetAnalysisFunctionMapRequest = {
+  
+  analysisId: 1,
+};
+
+const data = await apiInstance.getAnalysisFunctionMap(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseAnalysisFunctionMapping**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getAnalysisLogs**
+> BaseResponseLogs getAnalysisLogs()
+
+Given an analysis ID gets the current logs of an analysis
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiGetAnalysisLogsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiGetAnalysisLogsRequest = {
+  
+  analysisId: 1,
+};
+
+const data = await apiInstance.getAnalysisLogs(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseLogs**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getAnalysisParams**
+> BaseResponseParams getAnalysisParams()
+
+Gets the params that the analysis was run with
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiGetAnalysisParamsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiGetAnalysisParamsRequest = {
+  
+  analysisId: 1,
+};
+
+const data = await apiInstance.getAnalysisParams(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseParams**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getAnalysisStatus**
+> BaseResponseStatus getAnalysisStatus()
+
+Given an analysis ID gets the current status of the analysis
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiGetAnalysisStatusRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiGetAnalysisStatusRequest = {
+  
+  analysisId: 1,
+};
+
+const data = await apiInstance.getAnalysisStatus(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseStatus**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getBinaryAnn**
+> BaseResponseBinaryAnnListResponse getBinaryAnn(binaryAnnForm)
+
+Binary Ann
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiGetBinaryAnnRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiGetBinaryAnnRequest = {
+  
+  analysisId: 1,
+  
+  binaryAnnForm: {
+    confidence: 0.0,
+    nns: 1,
+    collectionIds: [
+      1,
+    ],
+    binaryIds: [
+      1,
+    ],
+  },
+};
+
+const data = await apiInstance.getBinaryAnn(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **binaryAnnForm** | **BinaryAnnForm**|  |
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseBinaryAnnListResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listAnalyses**
+> BaseResponseRecent listAnalyses()
+
+Gets the most recent analyses provided a scope, this is then paginated, if pages and limit doesnt fit, it increases the limit
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiListAnalysesRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiListAnalysesRequest = {
+  
+  searchTerm: "",
+    // The workspace to be viewed (optional)
+  workspace: [
+    "["personal"]",
+  ],
+    // The status of the analysis (optional)
+  status: [
+    "["All"]",
+  ],
+    // Show analysis belonging to the model (optional)
+  modelName: [
+    "binnet-0.5-x86-windows",
+  ],
+    // Show analysis that have a dynamic execution with the given status (optional)
+  dynamicExecutionStatus: "PENDING",
+    // Show analysis belonging to the user (optional)
+  usernames: [],
+  
+  sha256Hash: "sha256_hash_example",
+  
+  limit: 20,
+  
+  offset: 0,
+  
+  orderBy: "created",
+  
+  order: "ASC",
+};
+
+const data = await apiInstance.listAnalyses(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchTerm** | [**string**] |  | (optional) defaults to ''
+ **workspace** | **Array&lt;Workspace&gt;** | The workspace to be viewed | (optional) defaults to undefined
+ **status** | **Array&lt;StatusInput&gt;** | The status of the analysis | (optional) defaults to undefined
+ **modelName** | **Array&lt;ModelName&gt;** | Show analysis belonging to the model | (optional) defaults to undefined
+ **dynamicExecutionStatus** | **DynamicExecutionStatusInput** | Show analysis that have a dynamic execution with the given status | (optional) defaults to undefined
+ **usernames** | **Array&lt;string&gt;** | Show analysis belonging to the user | (optional) defaults to undefined
+ **sha256Hash** | [**string**] |  | (optional) defaults to undefined
+ **limit** | [**number**] |  | (optional) defaults to 20
+ **offset** | [**number**] |  | (optional) defaults to 0
+ **orderBy** | **AppApiRestV2AnalysesEnumsOrderBy** |  | (optional) defaults to undefined
+ **order** | **Order** |  | (optional) defaults to undefined
+
+
+### Return type
+
+**BaseResponseRecent**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **lookupBinaryId**
+> any lookupBinaryId()
+
+Given an binary ID gets the ID of an analysis
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiLookupBinaryIdRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiLookupBinaryIdRequest = {
+  
+  binaryId: 1,
+};
+
+const data = await apiInstance.lookupBinaryId(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **binaryId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**any**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **requeueAnalysis**
+> BaseResponseCreated requeueAnalysis(reAnalysisForm)
+
+Re-queues an already uploaded analysis
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiRequeueAnalysisRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiRequeueAnalysisRequest = {
+  
+  analysisId: 1,
+  
+  reAnalysisForm: {
+    tags: [],
+    commandLineArgs: "",
+    priority: 0,
+    essential: true,
+    modelName: "modelName_example",
+    noCache: false,
+  },
+};
+
+const data = await apiInstance.requeueAnalysis(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **reAnalysisForm** | **ReAnalysisForm**|  |
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseCreated**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+**404** | Not Found |  -  |
+**400** | Bad Request |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateAnalysis**
+> BaseResponseAnalysisDetailResponse updateAnalysis(analysisUpdateRequest)
+
+Updates analysis attributes (binary_name, analysis_scope). User must be the owner.
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiUpdateAnalysisRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiUpdateAnalysisRequest = {
+  
+  analysisId: 1,
+  
+  analysisUpdateRequest: {
+    binaryName: "binaryName_example",
+    analysisScope: "PUBLIC",
+  },
+};
+
+const data = await apiInstance.updateAnalysis(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisUpdateRequest** | **AnalysisUpdateRequest**|  |
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseAnalysisDetailResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateAnalysisTags**
+> BaseResponseAnalysisUpdateTagsResponse updateAnalysisTags(analysisUpdateTagsRequest)
+
+Updates analysis tags. User must be the owner.
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiUpdateAnalysisTagsRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiUpdateAnalysisTagsRequest = {
+  
+  analysisId: 1,
+  
+  analysisUpdateTagsRequest: {
+    tags: [
+      "tags_example",
+    ],
+  },
+};
+
+const data = await apiInstance.updateAnalysisTags(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisUpdateTagsRequest** | **AnalysisUpdateTagsRequest**|  |
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseAnalysisUpdateTagsResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **uploadFile**
+> BaseResponseUploadResponse uploadFile()
+
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '';
+import type { AnalysesCoreApiUploadFileRequest } from '';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiUploadFileRequest = {
+  
+  uploadFileType: "BINARY",
+  
+  file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
+  
+  packedPassword: "packed_password_example",
+  
+  forceOverwrite: false,
+};
+
+const data = await apiInstance.uploadFile(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **uploadFileType** | **UploadFileType** |  | defaults to undefined
+ **file** | [**HttpFile**] |  | defaults to undefined
+ **packedPassword** | [**string**] |  | (optional) defaults to undefined
+ **forceOverwrite** | [**boolean**] |  | (optional) defaults to false
+
+
+### Return type
+
+**BaseResponseUploadResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: multipart/form-data
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+
