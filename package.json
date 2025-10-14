@@ -1,7 +1,7 @@
 {
   "name": "@revengai/sdk",
   "version": "v2.5.0",
-  "description": "OpenAPI client for revengai",
+  "description": "TypeScript SDK for the RevEng.AI API",
   "author": "RevEng.AI",
   "repository": {
     "type": "git",
