@@ -28,8 +28,8 @@ Takes in the analysis ID, uses the functions ID\'s from it and settings to find 
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiAiUnstripRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiAiUnstripRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -87,8 +87,8 @@ Takes in an analysis id and settings and matches the nearest functions to the on
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiAnalysisFunctionMatchingRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiAnalysisFunctionMatchingRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -155,8 +155,8 @@ Takes in the analysis ID, uses the functions ID\'s from it and settings to find 
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiAutoUnstripRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiAutoUnstripRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -217,8 +217,8 @@ Takes in an input of functions ID\'s and settings and finds the nearest function
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiBatchFunctionMatchingRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiBatchFunctionMatchingRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -286,8 +286,8 @@ Takes in the analysis ID and cancels a running ai-unstrip operation
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiCancelAiUnstripRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiCancelAiUnstripRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -340,8 +340,8 @@ Takes in the analysis ID and cancels a running auto-unstrip operation
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiCancelAutoUnstripRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiCancelAutoUnstripRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -394,8 +394,8 @@ Get string information found in the analysis
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiGetAnalysisStringsRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetAnalysisStringsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -460,8 +460,8 @@ Get disassembly blocks related to the function
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiGetFunctionBlocksRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionBlocksRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -514,8 +514,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiGetFunctionCalleesCallersRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionCalleesCallersRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -567,8 +567,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiGetFunctionCapabilitiesRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionCapabilitiesRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -621,8 +621,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiGetFunctionDetailsRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionDetailsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -675,8 +675,8 @@ Get string information found in the function
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiGetFunctionStringsRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionStringsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
@@ -737,8 +737,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsCoreApi } from '';
-import type { FunctionsCoreApiGetSimilarFunctionsRequest } from '';
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetSimilarFunctionsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);

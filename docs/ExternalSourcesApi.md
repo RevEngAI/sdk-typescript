@@ -20,8 +20,8 @@ Method | HTTP request | Description
 
 
 ```typescript
-import { createConfiguration, ExternalSourcesApi } from '';
-import type { ExternalSourcesApiCreateExternalTaskMbRequest } from '';
+import { createConfiguration, ExternalSourcesApi } from '@revengai/sdk';
+import type { ExternalSourcesApiCreateExternalTaskMbRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ExternalSourcesApi(configuration);
@@ -74,8 +74,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, ExternalSourcesApi } from '';
-import type { ExternalSourcesApiCreateExternalTaskVtRequest } from '';
+import { createConfiguration, ExternalSourcesApi } from '@revengai/sdk';
+import type { ExternalSourcesApiCreateExternalTaskVtRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ExternalSourcesApi(configuration);
@@ -128,8 +128,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, ExternalSourcesApi } from '';
-import type { ExternalSourcesApiGetMbDataRequest } from '';
+import { createConfiguration, ExternalSourcesApi } from '@revengai/sdk';
+import type { ExternalSourcesApiGetMbDataRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ExternalSourcesApi(configuration);
@@ -182,8 +182,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, ExternalSourcesApi } from '';
-import type { ExternalSourcesApiGetMbTaskStatusRequest } from '';
+import { createConfiguration, ExternalSourcesApi } from '@revengai/sdk';
+import type { ExternalSourcesApiGetMbTaskStatusRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ExternalSourcesApi(configuration);
@@ -235,8 +235,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, ExternalSourcesApi } from '';
-import type { ExternalSourcesApiGetVtDataRequest } from '';
+import { createConfiguration, ExternalSourcesApi } from '@revengai/sdk';
+import type { ExternalSourcesApiGetVtDataRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ExternalSourcesApi(configuration);
@@ -289,8 +289,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, ExternalSourcesApi } from '';
-import type { ExternalSourcesApiGetVtTaskStatusRequest } from '';
+import { createConfiguration, ExternalSourcesApi } from '@revengai/sdk';
+import type { ExternalSourcesApiGetVtTaskStatusRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ExternalSourcesApi(configuration);

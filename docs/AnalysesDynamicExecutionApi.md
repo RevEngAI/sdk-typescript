@@ -21,8 +21,8 @@ Method | HTTP request | Description
 
 
 ```typescript
-import { createConfiguration, AnalysesDynamicExecutionApi } from '';
-import type { AnalysesDynamicExecutionApiGetDynamicExecutionStatusRequest } from '';
+import { createConfiguration, AnalysesDynamicExecutionApi } from '@revengai/sdk';
+import type { AnalysesDynamicExecutionApiGetDynamicExecutionStatusRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesDynamicExecutionApi(configuration);
@@ -74,8 +74,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesDynamicExecutionApi } from '';
-import type { AnalysesDynamicExecutionApiGetNetworkOverviewRequest } from '';
+import { createConfiguration, AnalysesDynamicExecutionApi } from '@revengai/sdk';
+import type { AnalysesDynamicExecutionApiGetNetworkOverviewRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesDynamicExecutionApi(configuration);
@@ -127,8 +127,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesDynamicExecutionApi } from '';
-import type { AnalysesDynamicExecutionApiGetProcessDumpRequest } from '';
+import { createConfiguration, AnalysesDynamicExecutionApi } from '@revengai/sdk';
+import type { AnalysesDynamicExecutionApiGetProcessDumpRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesDynamicExecutionApi(configuration);
@@ -183,8 +183,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesDynamicExecutionApi } from '';
-import type { AnalysesDynamicExecutionApiGetProcessDumpsRequest } from '';
+import { createConfiguration, AnalysesDynamicExecutionApi } from '@revengai/sdk';
+import type { AnalysesDynamicExecutionApiGetProcessDumpsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesDynamicExecutionApi(configuration);
@@ -236,8 +236,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesDynamicExecutionApi } from '';
-import type { AnalysesDynamicExecutionApiGetProcessRegistryRequest } from '';
+import { createConfiguration, AnalysesDynamicExecutionApi } from '@revengai/sdk';
+import type { AnalysesDynamicExecutionApiGetProcessRegistryRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesDynamicExecutionApi(configuration);
@@ -289,8 +289,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesDynamicExecutionApi } from '';
-import type { AnalysesDynamicExecutionApiGetProcessTreeRequest } from '';
+import { createConfiguration, AnalysesDynamicExecutionApi } from '@revengai/sdk';
+import type { AnalysesDynamicExecutionApiGetProcessTreeRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesDynamicExecutionApi(configuration);
@@ -342,8 +342,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesDynamicExecutionApi } from '';
-import type { AnalysesDynamicExecutionApiGetTtpsRequest } from '';
+import { createConfiguration, AnalysesDynamicExecutionApi } from '@revengai/sdk';
+import type { AnalysesDynamicExecutionApiGetTtpsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesDynamicExecutionApi(configuration);

@@ -20,8 +20,8 @@ Method | HTTP request | Description
 
 
 ```typescript
-import { createConfiguration, BinariesApi } from '';
-import type { BinariesApiDownloadZippedBinaryRequest } from '';
+import { createConfiguration, BinariesApi } from '@revengai/sdk';
+import type { BinariesApiDownloadZippedBinaryRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new BinariesApi(configuration);
@@ -73,8 +73,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, BinariesApi } from '';
-import type { BinariesApiGetBinaryAdditionalDetailsRequest } from '';
+import { createConfiguration, BinariesApi } from '@revengai/sdk';
+import type { BinariesApiGetBinaryAdditionalDetailsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new BinariesApi(configuration);
@@ -126,8 +126,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, BinariesApi } from '';
-import type { BinariesApiGetBinaryDetailsRequest } from '';
+import { createConfiguration, BinariesApi } from '@revengai/sdk';
+import type { BinariesApiGetBinaryDetailsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new BinariesApi(configuration);
@@ -179,8 +179,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, BinariesApi } from '';
-import type { BinariesApiGetBinaryDieInfoRequest } from '';
+import { createConfiguration, BinariesApi } from '@revengai/sdk';
+import type { BinariesApiGetBinaryDieInfoRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new BinariesApi(configuration);
@@ -232,8 +232,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, BinariesApi } from '';
-import type { BinariesApiGetBinaryExternalsRequest } from '';
+import { createConfiguration, BinariesApi } from '@revengai/sdk';
+import type { BinariesApiGetBinaryExternalsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new BinariesApi(configuration);
@@ -285,8 +285,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, BinariesApi } from '';
-import type { BinariesApiGetRelatedBinariesRequest } from '';
+import { createConfiguration, BinariesApi } from '@revengai/sdk';
+import type { BinariesApiGetRelatedBinariesRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new BinariesApi(configuration);

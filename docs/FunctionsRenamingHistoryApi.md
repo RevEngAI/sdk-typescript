@@ -19,8 +19,8 @@ Renames a list of functions using the function IDs   Will record name changes in
 
 
 ```typescript
-import { createConfiguration, FunctionsRenamingHistoryApi } from '';
-import type { FunctionsRenamingHistoryApiBatchRenameFunctionRequest } from '';
+import { createConfiguration, FunctionsRenamingHistoryApi } from '@revengai/sdk';
+import type { FunctionsRenamingHistoryApiBatchRenameFunctionRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsRenamingHistoryApi(configuration);
@@ -81,8 +81,8 @@ Gets the name history of a function using the function ID
 
 
 ```typescript
-import { createConfiguration, FunctionsRenamingHistoryApi } from '';
-import type { FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest } from '';
+import { createConfiguration, FunctionsRenamingHistoryApi } from '@revengai/sdk';
+import type { FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsRenamingHistoryApi(configuration);
@@ -135,8 +135,8 @@ Renames a function using the function ID   Will record name change history
 
 
 ```typescript
-import { createConfiguration, FunctionsRenamingHistoryApi } from '';
-import type { FunctionsRenamingHistoryApiRenameFunctionIdRequest } from '';
+import { createConfiguration, FunctionsRenamingHistoryApi } from '@revengai/sdk';
+import type { FunctionsRenamingHistoryApiRenameFunctionIdRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsRenamingHistoryApi(configuration);
@@ -195,8 +195,8 @@ Reverts the function name to a previous name using the function ID and history I
 
 
 ```typescript
-import { createConfiguration, FunctionsRenamingHistoryApi } from '';
-import type { FunctionsRenamingHistoryApiRevertFunctionNameRequest } from '';
+import { createConfiguration, FunctionsRenamingHistoryApi } from '@revengai/sdk';
+import type { FunctionsRenamingHistoryApiRevertFunctionNameRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsRenamingHistoryApi(configuration);

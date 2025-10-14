@@ -24,8 +24,8 @@ Creates a comment associated with a specified function).
 
 
 ```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '';
-import type { FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest } from '';
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
@@ -88,8 +88,8 @@ Begins the AI Decompilation Process
 
 
 ```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '';
-import type { FunctionsAIDecompilationApiCreateAiDecompilationTaskRequest } from '';
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiCreateAiDecompilationTaskRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
@@ -146,8 +146,8 @@ Deletes an existing comment. Users can only delete their own comments.
 
 
 ```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '';
-import type { FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest } from '';
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
@@ -205,8 +205,8 @@ Retrieves all comments created for a specific function. Only returns comments fo
 
 
 ```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '';
-import type { FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest } from '';
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
@@ -258,8 +258,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '';
-import type { FunctionsAIDecompilationApiGetAiDecompilationRatingRequest } from '';
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationRatingRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
@@ -312,8 +312,8 @@ Polls the AI Decompilation Process
 
 
 ```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '';
-import type { FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest } from '';
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
@@ -372,8 +372,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '';
-import type { FunctionsAIDecompilationApiGetAiDecompilationTaskStatusRequest } from '';
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationTaskStatusRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
@@ -426,8 +426,8 @@ Updates the content of an existing comment. Users can only update their own comm
 
 
 ```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '';
-import type { FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest } from '';
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
@@ -489,8 +489,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '';
-import type { FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest } from '';
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);

@@ -17,8 +17,8 @@ Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a resul
 
 
 ```typescript
-import { createConfiguration, FirmwareApi } from '';
-import type { FirmwareApiGetBinariesForFirmwareTaskRequest } from '';
+import { createConfiguration, FirmwareApi } from '@revengai/sdk';
+import type { FirmwareApiGetBinariesForFirmwareTaskRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FirmwareApi(configuration);
@@ -71,8 +71,8 @@ Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a resul
 
 
 ```typescript
-import { createConfiguration, FirmwareApi } from '';
-import type { FirmwareApiUploadFirmwareRequest } from '';
+import { createConfiguration, FirmwareApi } from '@revengai/sdk';
+import type { FirmwareApiUploadFirmwareRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FirmwareApi(configuration);

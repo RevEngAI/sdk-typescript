@@ -19,8 +19,8 @@ Searches for a specific binary
 
 
 ```typescript
-import { createConfiguration, SearchApi } from '';
-import type { SearchApiSearchBinariesRequest } from '';
+import { createConfiguration, SearchApi } from '@revengai/sdk';
+import type { SearchApiSearchBinariesRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new SearchApi(configuration);
@@ -93,8 +93,8 @@ Searches for a specific collection
 
 
 ```typescript
-import { createConfiguration, SearchApi } from '';
-import type { SearchApiSearchCollectionsRequest } from '';
+import { createConfiguration, SearchApi } from '@revengai/sdk';
+import type { SearchApiSearchCollectionsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new SearchApi(configuration);
@@ -179,8 +179,8 @@ Searches for a specific function
 
 
 ```typescript
-import { createConfiguration, SearchApi } from '';
-import type { SearchApiSearchFunctionsRequest } from '';
+import { createConfiguration, SearchApi } from '@revengai/sdk';
+import type { SearchApiSearchFunctionsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new SearchApi(configuration);
@@ -242,8 +242,8 @@ Searches for tags by there name
 
 
 ```typescript
-import { createConfiguration, SearchApi } from '';
-import type { SearchApiSearchTagsRequest } from '';
+import { createConfiguration, SearchApi } from '@revengai/sdk';
+import type { SearchApiSearchTagsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new SearchApi(configuration);

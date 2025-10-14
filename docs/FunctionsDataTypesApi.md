@@ -21,8 +21,8 @@ Submits a request to generate the function data types
 
 
 ```typescript
-import { createConfiguration, FunctionsDataTypesApi } from '';
-import type { FunctionsDataTypesApiGenerateFunctionDataTypesForAnalysisRequest } from '';
+import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
+import type { FunctionsDataTypesApiGenerateFunctionDataTypesForAnalysisRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDataTypesApi(configuration);
@@ -82,8 +82,8 @@ Submits a request to generate the function data types
 
 
 ```typescript
-import { createConfiguration, FunctionsDataTypesApi } from '';
-import type { FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsRequest } from '';
+import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
+import type { FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDataTypesApi(configuration);
@@ -140,8 +140,8 @@ Polling endpoint which returns the current status of function generation and onc
 
 
 ```typescript
-import { createConfiguration, FunctionsDataTypesApi } from '';
-import type { FunctionsDataTypesApiGetFunctionDataTypesRequest } from '';
+import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
+import type { FunctionsDataTypesApiGetFunctionDataTypesRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDataTypesApi(configuration);
@@ -197,8 +197,8 @@ Returns data types for multiple functions with optional function ID filtering
 
 
 ```typescript
-import { createConfiguration, FunctionsDataTypesApi } from '';
-import type { FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest } from '';
+import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
+import type { FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDataTypesApi(configuration);
@@ -256,8 +256,8 @@ Returns data types for multiple function IDs
 
 
 ```typescript
-import { createConfiguration, FunctionsDataTypesApi } from '';
-import type { FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest } from '';
+import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
+import type { FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDataTypesApi(configuration);
@@ -312,8 +312,8 @@ Updates the function data types for a given function
 
 
 ```typescript
-import { createConfiguration, FunctionsDataTypesApi } from '';
-import type { FunctionsDataTypesApiUpdateFunctionDataTypesRequest } from '';
+import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
+import type { FunctionsDataTypesApiUpdateFunctionDataTypesRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDataTypesApi(configuration);

@@ -17,8 +17,8 @@ Method | HTTP request | Description
 
 
 ```typescript
-import { createConfiguration, FunctionsBlockCommentsApi } from '';
-import type { FunctionsBlockCommentsApiGenerateBlockCommentsForBlockInFunctionRequest } from '';
+import { createConfiguration, FunctionsBlockCommentsApi } from '@revengai/sdk';
+import type { FunctionsBlockCommentsApiGenerateBlockCommentsForBlockInFunctionRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsBlockCommentsApi(configuration);
@@ -75,8 +75,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsBlockCommentsApi } from '';
-import type { FunctionsBlockCommentsApiGenerateBlockCommentsForFunctionRequest } from '';
+import { createConfiguration, FunctionsBlockCommentsApi } from '@revengai/sdk';
+import type { FunctionsBlockCommentsApiGenerateBlockCommentsForFunctionRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsBlockCommentsApi(configuration);
@@ -128,8 +128,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsBlockCommentsApi } from '';
-import type { FunctionsBlockCommentsApiGenerateOverviewCommentForFunctionRequest } from '';
+import { createConfiguration, FunctionsBlockCommentsApi } from '@revengai/sdk';
+import type { FunctionsBlockCommentsApiGenerateOverviewCommentForFunctionRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsBlockCommentsApi(configuration);

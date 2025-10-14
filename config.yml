@@ -2,5 +2,6 @@ npmName: revengai
 licenseName: MIT
 gitUserId: RevEngAI
 gitRepoId: sdk-typescript
+projectName: "@revengai/sdk"
 additionalProperties:
   apiDocPath: docs/

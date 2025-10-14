@@ -9,7 +9,7 @@ To use the SDK you will first need to obtain an API key from [https://reveng.ai]
 Once you have the API key you can install the SDK via npm:
 
 ```bash
-npm install @{{npmName}}/sdk
+npm install {{projectName}}
 ```
 
 ## Usage
@@ -17,17 +17,17 @@ npm install @{{npmName}}/sdk
 The following is an example of how to use the SDK to get the logs of an analysis:
 
 ```typescript
-import * as revengai from 'revengai'
+import * as {{npmName}} from '{{projectName}}'
 
-const authConfig: revengai.AuthMethodsConfiguration = {
+const authConfig: {{npmName}}.AuthMethodsConfiguration = {
     APIKey: process.env.REVENGAI_API_KEY
 }
 
-const config = revengai.createConfiguration({
+const config = {{npmName}}.createConfiguration({
     authMethods: authConfig,
 });
 
-const api = new revengai.AnalysesCoreApi(config);
+const api = new {{npmName}}.AnalysesCoreApi(config);
 
 async function fetchLogs() {
     try {

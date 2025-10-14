@@ -21,8 +21,8 @@ Method | HTTP request | Description
 
 
 ```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '';
-import type { AnalysesResultsMetadataApiGetCapabilitiesRequest } from '';
+import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
+import type { AnalysesResultsMetadataApiGetCapabilitiesRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesResultsMetadataApi(configuration);
@@ -74,8 +74,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '';
-import type { AnalysesResultsMetadataApiGetCommunitiesRequest } from '';
+import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
+import type { AnalysesResultsMetadataApiGetCommunitiesRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesResultsMetadataApi(configuration);
@@ -131,8 +131,8 @@ Gets the functions identified during analysis
 
 
 ```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '';
-import type { AnalysesResultsMetadataApiGetFunctionsListRequest } from '';
+import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
+import type { AnalysesResultsMetadataApiGetFunctionsListRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesResultsMetadataApi(configuration);
@@ -193,8 +193,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '';
-import type { AnalysesResultsMetadataApiGetPdfRequest } from '';
+import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
+import type { AnalysesResultsMetadataApiGetPdfRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesResultsMetadataApi(configuration);
@@ -246,8 +246,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '';
-import type { AnalysesResultsMetadataApiGetSbomRequest } from '';
+import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
+import type { AnalysesResultsMetadataApiGetSbomRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesResultsMetadataApi(configuration);
@@ -299,8 +299,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '';
-import type { AnalysesResultsMetadataApiGetTagsRequest } from '';
+import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
+import type { AnalysesResultsMetadataApiGetTagsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesResultsMetadataApi(configuration);
@@ -352,8 +352,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '';
-import type { AnalysesResultsMetadataApiGetVulnerabilitiesRequest } from '';
+import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
+import type { AnalysesResultsMetadataApiGetVulnerabilitiesRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesResultsMetadataApi(configuration);

@@ -17,7 +17,7 @@ npm install @revengai/sdk
 The following is an example of how to use the SDK to get the logs of an analysis:
 
 ```typescript
-import * as revengai from 'revengai'
+import * as revengai from '@revengai/sdk'
 
 const authConfig: revengai.AuthMethodsConfiguration = {
     APIKey: process.env.REVENGAI_API_KEY

@@ -16,7 +16,7 @@ Gets active models available for analysis.
 
 
 ```typescript
-import { createConfiguration, ModelsApi } from '';
+import { createConfiguration, ModelsApi } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ModelsApi(configuration);

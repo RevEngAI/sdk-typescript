@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 
 ```typescript
-import { createConfiguration, AuthenticationUsersApi } from '';
+import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AuthenticationUsersApi(configuration);
@@ -65,8 +65,8 @@ This endpoint does not need any parameter.
 
 
 ```typescript
-import { createConfiguration, AuthenticationUsersApi } from '';
-import type { AuthenticationUsersApiGetUserRequest } from '';
+import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
+import type { AuthenticationUsersApiGetUserRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AuthenticationUsersApi(configuration);
@@ -118,7 +118,7 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AuthenticationUsersApi } from '';
+import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AuthenticationUsersApi(configuration);
@@ -165,7 +165,7 @@ Retrieves all comments created by a specific user. Only returns comments for res
 
 
 ```typescript
-import { createConfiguration, AuthenticationUsersApi } from '';
+import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AuthenticationUsersApi(configuration);
@@ -212,8 +212,8 @@ Authenticates a user and returns a token.
 
 
 ```typescript
-import { createConfiguration, AuthenticationUsersApi } from '';
-import type { AuthenticationUsersApiLoginUserRequest } from '';
+import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
+import type { AuthenticationUsersApiLoginUserRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AuthenticationUsersApi(configuration);

@@ -19,8 +19,8 @@ Accepts a analysis ID and a list of tags, returns the confidence score for each 
 
 
 ```typescript
-import { createConfiguration, ConfidenceApi } from '';
-import type { ConfidenceApiGetAnalysisTagScoreRequest } from '';
+import { createConfiguration, ConfidenceApi } from '@revengai/sdk';
+import type { ConfidenceApiGetAnalysisTagScoreRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ConfidenceApi(configuration);
@@ -83,8 +83,8 @@ Accepts a binary ID and returns the threat score for that binary
 
 
 ```typescript
-import { createConfiguration, ConfidenceApi } from '';
-import type { ConfidenceApiGetAnalysisThreatScoreRequest } from '';
+import { createConfiguration, ConfidenceApi } from '@revengai/sdk';
+import type { ConfidenceApiGetAnalysisThreatScoreRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ConfidenceApi(configuration);
@@ -137,8 +137,8 @@ Accepts a list of function ids mapped to a function name, for each function we r
 
 
 ```typescript
-import { createConfiguration, ConfidenceApi } from '';
-import type { ConfidenceApiGetFunctionsNameScoreRequest } from '';
+import { createConfiguration, ConfidenceApi } from '@revengai/sdk';
+import type { ConfidenceApiGetFunctionsNameScoreRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ConfidenceApi(configuration);
@@ -199,8 +199,8 @@ Accepts a list of function ids and returns the threat score for each function. E
 
 
 ```typescript
-import { createConfiguration, ConfidenceApi } from '';
-import type { ConfidenceApiGetFunctionsThreatScoreRequest } from '';
+import { createConfiguration, ConfidenceApi } from '@revengai/sdk';
+import type { ConfidenceApiGetFunctionsThreatScoreRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ConfidenceApi(configuration);

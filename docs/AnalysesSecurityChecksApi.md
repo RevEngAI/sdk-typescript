@@ -17,8 +17,8 @@ Method | HTTP request | Description
 
 
 ```typescript
-import { createConfiguration, AnalysesSecurityChecksApi } from '';
-import type { AnalysesSecurityChecksApiCreateScurityChecksTaskRequest } from '';
+import { createConfiguration, AnalysesSecurityChecksApi } from '@revengai/sdk';
+import type { AnalysesSecurityChecksApiCreateScurityChecksTaskRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesSecurityChecksApi(configuration);
@@ -72,8 +72,8 @@ Retrieve security checks results with pagination.
 
 
 ```typescript
-import { createConfiguration, AnalysesSecurityChecksApi } from '';
-import type { AnalysesSecurityChecksApiGetSecurityChecksRequest } from '';
+import { createConfiguration, AnalysesSecurityChecksApi } from '@revengai/sdk';
+import type { AnalysesSecurityChecksApiGetSecurityChecksRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesSecurityChecksApi(configuration);
@@ -131,8 +131,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesSecurityChecksApi } from '';
-import type { AnalysesSecurityChecksApiGetSecurityChecksTaskStatusRequest } from '';
+import { createConfiguration, AnalysesSecurityChecksApi } from '@revengai/sdk';
+import type { AnalysesSecurityChecksApiGetSecurityChecksTaskStatusRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesSecurityChecksApi(configuration);

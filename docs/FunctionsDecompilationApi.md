@@ -21,8 +21,8 @@ Method | HTTP request | Description
 
 
 ```typescript
-import { createConfiguration, FunctionsDecompilationApi } from '';
-import type { FunctionsDecompilationApiCheckFunctionDecompilationTaskRequest } from '';
+import { createConfiguration, FunctionsDecompilationApi } from '@revengai/sdk';
+import type { FunctionsDecompilationApiCheckFunctionDecompilationTaskRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDecompilationApi(configuration);
@@ -75,8 +75,8 @@ Creates a comment associated with a specified function).
 
 
 ```typescript
-import { createConfiguration, FunctionsDecompilationApi } from '';
-import type { FunctionsDecompilationApiCreateDecompilationCommentRequest } from '';
+import { createConfiguration, FunctionsDecompilationApi } from '@revengai/sdk';
+import type { FunctionsDecompilationApiCreateDecompilationCommentRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDecompilationApi(configuration);
@@ -138,8 +138,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsDecompilationApi } from '';
-import type { FunctionsDecompilationApiCreateFunctionDecompilationTaskRequest } from '';
+import { createConfiguration, FunctionsDecompilationApi } from '@revengai/sdk';
+import type { FunctionsDecompilationApiCreateFunctionDecompilationTaskRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDecompilationApi(configuration);
@@ -193,8 +193,8 @@ Deletes an existing comment. Users can only delete their own comments.
 
 
 ```typescript
-import { createConfiguration, FunctionsDecompilationApi } from '';
-import type { FunctionsDecompilationApiDeleteDecompilationCommentRequest } from '';
+import { createConfiguration, FunctionsDecompilationApi } from '@revengai/sdk';
+import type { FunctionsDecompilationApiDeleteDecompilationCommentRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDecompilationApi(configuration);
@@ -252,8 +252,8 @@ Retrieves all comments created for a specific function. Only returns comments fo
 
 
 ```typescript
-import { createConfiguration, FunctionsDecompilationApi } from '';
-import type { FunctionsDecompilationApiGetDecompilationCommentsRequest } from '';
+import { createConfiguration, FunctionsDecompilationApi } from '@revengai/sdk';
+import type { FunctionsDecompilationApiGetDecompilationCommentsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDecompilationApi(configuration);
@@ -305,8 +305,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, FunctionsDecompilationApi } from '';
-import type { FunctionsDecompilationApiGetFunctionDecompilationRequest } from '';
+import { createConfiguration, FunctionsDecompilationApi } from '@revengai/sdk';
+import type { FunctionsDecompilationApiGetFunctionDecompilationRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDecompilationApi(configuration);
@@ -360,8 +360,8 @@ Updates the content of an existing comment. Users can only update their own comm
 
 
 ```typescript
-import { createConfiguration, FunctionsDecompilationApi } from '';
-import type { FunctionsDecompilationApiUpdateDecompilationCommentRequest } from '';
+import { createConfiguration, FunctionsDecompilationApi } from '@revengai/sdk';
+import type { FunctionsDecompilationApiUpdateDecompilationCommentRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new FunctionsDecompilationApi(configuration);

@@ -30,8 +30,8 @@ Begins an analysis
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiCreateAnalysisRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiCreateAnalysisRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -125,8 +125,8 @@ Deletes an analysis based on the provided analysis ID.
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiDeleteAnalysisRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiDeleteAnalysisRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -181,8 +181,8 @@ Takes a analysis ID and returns the nearest functions within the database that m
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiFindSimilarFunctionsBatchRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiFindSimilarFunctionsBatchRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -240,8 +240,8 @@ Returns basic analysis information for an analysis
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiGetAnalysisBasicInfoRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiGetAnalysisBasicInfoRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -294,8 +294,8 @@ Returns three maps: a map of function ids to function addresses, it\'s inverse a
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiGetAnalysisFunctionMapRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiGetAnalysisFunctionMapRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -348,8 +348,8 @@ Given an analysis ID gets the current logs of an analysis
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiGetAnalysisLogsRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiGetAnalysisLogsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -402,8 +402,8 @@ Gets the params that the analysis was run with
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiGetAnalysisParamsRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiGetAnalysisParamsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -456,8 +456,8 @@ Given an analysis ID gets the current status of the analysis
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiGetAnalysisStatusRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiGetAnalysisStatusRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -510,8 +510,8 @@ Binary Ann
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiGetBinaryAnnRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiGetBinaryAnnRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -576,8 +576,8 @@ Gets the most recent analyses provided a scope, this is then paginated, if pages
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiListAnalysesRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiListAnalysesRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -666,8 +666,8 @@ Given an binary ID gets the ID of an analysis
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiLookupBinaryIdRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiLookupBinaryIdRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -720,8 +720,8 @@ Re-queues an already uploaded analysis
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiRequeueAnalysisRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiRequeueAnalysisRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -786,8 +786,8 @@ Updates analysis attributes (binary_name, analysis_scope). User must be the owne
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiUpdateAnalysisRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiUpdateAnalysisRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -846,8 +846,8 @@ Updates analysis tags. User must be the owner.
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiUpdateAnalysisTagsRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiUpdateAnalysisTagsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
@@ -906,8 +906,8 @@ Name | Type | Description  | Notes
 
 
 ```typescript
-import { createConfiguration, AnalysesCoreApi } from '';
-import type { AnalysesCoreApiUploadFileRequest } from '';
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiUploadFileRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);

@@ -19,8 +19,8 @@ Creates a comment associated with a specified analysis).
 
 
 ```typescript
-import { createConfiguration, AnalysesCommentsApi } from '';
-import type { AnalysesCommentsApiCreateAnalysisCommentRequest } from '';
+import { createConfiguration, AnalysesCommentsApi } from '@revengai/sdk';
+import type { AnalysesCommentsApiCreateAnalysisCommentRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCommentsApi(configuration);
@@ -79,8 +79,8 @@ Deletes an existing comment. Users can only delete their own comments.
 
 
 ```typescript
-import { createConfiguration, AnalysesCommentsApi } from '';
-import type { AnalysesCommentsApiDeleteAnalysisCommentRequest } from '';
+import { createConfiguration, AnalysesCommentsApi } from '@revengai/sdk';
+import type { AnalysesCommentsApiDeleteAnalysisCommentRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCommentsApi(configuration);
@@ -138,8 +138,8 @@ Retrieves all comments created for a specific analysis. Only returns comments fo
 
 
 ```typescript
-import { createConfiguration, AnalysesCommentsApi } from '';
-import type { AnalysesCommentsApiGetAnalysisCommentsRequest } from '';
+import { createConfiguration, AnalysesCommentsApi } from '@revengai/sdk';
+import type { AnalysesCommentsApiGetAnalysisCommentsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCommentsApi(configuration);
@@ -192,8 +192,8 @@ Updates the content of an existing comment. Users can only update their own comm
 
 
 ```typescript
-import { createConfiguration, AnalysesCommentsApi } from '';
-import type { AnalysesCommentsApiUpdateAnalysisCommentRequest } from '';
+import { createConfiguration, AnalysesCommentsApi } from '@revengai/sdk';
+import type { AnalysesCommentsApiUpdateAnalysisCommentRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCommentsApi(configuration);

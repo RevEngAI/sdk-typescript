@@ -22,8 +22,8 @@ A collection is a group of binaries that are related in some way. This endpoint 
 
 
 ```typescript
-import { createConfiguration, CollectionsApi } from '';
-import type { CollectionsApiCreateCollectionRequest } from '';
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiCreateCollectionRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new CollectionsApi(configuration);
@@ -87,8 +87,8 @@ Deletes a collection
 
 
 ```typescript
-import { createConfiguration, CollectionsApi } from '';
-import type { CollectionsApiDeleteCollectionRequest } from '';
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiDeleteCollectionRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new CollectionsApi(configuration);
@@ -141,8 +141,8 @@ Gets a single collection. The collection can include binaries and tags if reques
 
 
 ```typescript
-import { createConfiguration, CollectionsApi } from '';
-import type { CollectionsApiGetCollectionRequest } from '';
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiGetCollectionRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new CollectionsApi(configuration);
@@ -201,8 +201,8 @@ Returns a list of collections
 
 
 ```typescript
-import { createConfiguration, CollectionsApi } from '';
-import type { CollectionsApiListCollectionsRequest } from '';
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiListCollectionsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new CollectionsApi(configuration);
@@ -272,8 +272,8 @@ Updates a collection, you can update the collection name, description, and scope
 
 
 ```typescript
-import { createConfiguration, CollectionsApi } from '';
-import type { CollectionsApiUpdateCollectionRequest } from '';
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiUpdateCollectionRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new CollectionsApi(configuration);
@@ -333,8 +333,8 @@ Updates/changes a collection binaries to whatever is provided in the request. Af
 
 
 ```typescript
-import { createConfiguration, CollectionsApi } from '';
-import type { CollectionsApiUpdateCollectionBinariesRequest } from '';
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiUpdateCollectionBinariesRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new CollectionsApi(configuration);
@@ -394,8 +394,8 @@ Updates/changes a collection tags to whatever is provided in the request. After 
 
 
 ```typescript
-import { createConfiguration, CollectionsApi } from '';
-import type { CollectionsApiUpdateCollectionTagsRequest } from '';
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiUpdateCollectionTagsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new CollectionsApi(configuration);
