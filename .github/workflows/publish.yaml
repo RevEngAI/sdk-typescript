@@ -11,7 +11,7 @@ jobs:
 
     permissions:
       contents: write  # Required for creating tags and releases
-      id-token: write  # Required for trusted publishing to Maven Central
+      id-token: write  # Required for trusted publishing to NPM
 
     steps:
     - name: Checkout repository
@@ -90,10 +90,8 @@ jobs:
 
     - run: npm ci
 
-    - run: npm publish --provenance --access public
+    - run: npm publish --access public
       if: steps.check-tag.outputs.tag_exists == 'false'
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
     - name: Notify the releases channel about the release
       if: steps.check-tag.outputs.tag_exists == 'false'
