@@ -8,7 +8,6 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
-import { ANNFunction } from '../models/ANNFunction';
 import { AnalysisCreateRequest } from '../models/AnalysisCreateRequest';
 import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
@@ -23,7 +22,6 @@ import { BaseResponseBinaryAnnListResponse } from '../models/BaseResponseBinaryA
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
-import { BaseResponseNearestNeighborAnalysis } from '../models/BaseResponseNearestNeighborAnalysis';
 import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
@@ -112,62 +110,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Takes a analysis ID and returns the nearest functions within the database that match those functions
-     * Batch Symbol ANN using Analysis ID
-     * @param analysisId 
-     * @param aNNFunction 
-     */
-    public async findSimilarFunctionsBatch(analysisId: number, aNNFunction: ANNFunction, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "findSimilarFunctionsBatch", "analysisId");
-        }
-
-
-        // verify required parameter 'aNNFunction' is not null or undefined
-        if (aNNFunction === null || aNNFunction === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "findSimilarFunctionsBatch", "aNNFunction");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/analyses/{analysis_id}/similarity/functions'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(aNNFunction, "ANNFunction", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -940,42 +882,6 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseDict", ""
             ) as BaseResponseDict;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to findSimilarFunctionsBatch
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async findSimilarFunctionsBatchWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseNearestNeighborAnalysis >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseNearestNeighborAnalysis = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseNearestNeighborAnalysis", ""
-            ) as BaseResponseNearestNeighborAnalysis;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseNearestNeighborAnalysis = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseNearestNeighborAnalysis", ""
-            ) as BaseResponseNearestNeighborAnalysis;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

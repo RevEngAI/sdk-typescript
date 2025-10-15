@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createAnalysis**](AnalysesCoreApi.md#createAnalysis) | **POST** /v2/analyses | Create Analysis
 [**deleteAnalysis**](AnalysesCoreApi.md#deleteAnalysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
-[**findSimilarFunctionsBatch**](AnalysesCoreApi.md#findSimilarFunctionsBatch) | **POST** /v2/analyses/{analysis_id}/similarity/functions | Batch Symbol ANN using Analysis ID
 [**getAnalysisBasicInfo**](AnalysesCoreApi.md#getAnalysisBasicInfo) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
 [**getAnalysisFunctionMap**](AnalysesCoreApi.md#getAnalysisFunctionMap) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
 [**getAnalysisLogs**](AnalysesCoreApi.md#getAnalysisLogs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
@@ -169,65 +168,6 @@ Name | Type | Description  | Notes
 **422** | Invalid request parameters |  -  |
 **404** | Not Found |  -  |
 **403** | Forbidden |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **findSimilarFunctionsBatch**
-> BaseResponseNearestNeighborAnalysis findSimilarFunctionsBatch(aNNFunction)
-
-Takes a analysis ID and returns the nearest functions within the database that match those functions
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiFindSimilarFunctionsBatchRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiFindSimilarFunctionsBatchRequest = {
-  
-  analysisId: 1,
-  
-  aNNFunction: 
-    key: null,
-  ,
-};
-
-const data = await apiInstance.findSimilarFunctionsBatch(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **aNNFunction** | **ANNFunction**|  |
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseNearestNeighborAnalysis**
-
-### Authorization
-
-[APIKey](README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
