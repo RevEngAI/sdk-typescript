@@ -1,4 +1,3 @@
-export * from '../models/ANNFunction';
 export * from '../models/Addr';
 export * from '../models/AiDecompilationRating';
 export * from '../models/AiUnstripRequest';
@@ -45,7 +44,6 @@ export * from '../models/BaseResponseBinarySearchResponse';
 export * from '../models/BaseResponseBlockCommentsGenerationForFunctionResponse';
 export * from '../models/BaseResponseBlockCommentsOverviewGenerationResponse';
 export * from '../models/BaseResponseBool';
-export * from '../models/BaseResponseBoxPlotConfidence';
 export * from '../models/BaseResponseCalleesCallerFunctionsResponse';
 export * from '../models/BaseResponseCapabilities';
 export * from '../models/BaseResponseCheckSecurityChecksTaskResponse';
@@ -78,16 +76,12 @@ export * from '../models/BaseResponseGetUserResponse';
 export * from '../models/BaseResponseListCollectionResults';
 export * from '../models/BaseResponseListCommentResponse';
 export * from '../models/BaseResponseListDieMatch';
-export * from '../models/BaseResponseListFunctionBoxPlotConfidence';
 export * from '../models/BaseResponseListFunctionNameHistory';
 export * from '../models/BaseResponseListSBOM';
-export * from '../models/BaseResponseListSimilarFunctionsResponse';
-export * from '../models/BaseResponseListTagOriginBoxPlotConfidence';
 export * from '../models/BaseResponseListUserActivityResponse';
 export * from '../models/BaseResponseLoginResponse';
 export * from '../models/BaseResponseLogs';
 export * from '../models/BaseResponseModelsResponse';
-export * from '../models/BaseResponseNearestNeighborAnalysis';
 export * from '../models/BaseResponseNetworkOverviewResponse';
 export * from '../models/BaseResponseParams';
 export * from '../models/BaseResponseProcessDumps';
@@ -116,7 +110,6 @@ export * from '../models/BinarySearchResult';
 export * from '../models/BinaryTaskStatus';
 export * from '../models/Block';
 export * from '../models/BlockCommentsGenerationForFunctionResponse';
-export * from '../models/BoxPlotConfidence';
 export * from '../models/CalleeFunctionInfo';
 export * from '../models/CalleesCallerFunctionsResponse';
 export * from '../models/CallerFunctionInfo';
@@ -172,7 +165,6 @@ export * from '../models/FunctionBlockDestinationResponse';
 export * from '../models/FunctionBlockResponse';
 export * from '../models/FunctionBlocksResponse';
 export * from '../models/FunctionBoundary';
-export * from '../models/FunctionBoxPlotConfidence';
 export * from '../models/FunctionCapabilityResponse';
 export * from '../models/FunctionCommentCreateRequest';
 export * from '../models/FunctionDataTypes';
@@ -191,9 +183,7 @@ export * from '../models/FunctionMatchingBatchResponse';
 export * from '../models/FunctionMatchingFilters';
 export * from '../models/FunctionMatchingRequest';
 export * from '../models/FunctionMatchingResultWithBestMatch';
-export * from '../models/FunctionNameConfidenceBody';
 export * from '../models/FunctionNameHistory';
-export * from '../models/FunctionNameInput';
 export * from '../models/FunctionParamResponse';
 export * from '../models/FunctionRename';
 export * from '../models/FunctionRenameMap';
@@ -230,13 +220,11 @@ export * from '../models/MetaModel';
 export * from '../models/ModelName';
 export * from '../models/ModelsResponse';
 export * from '../models/NameConfidence';
-export * from '../models/NearestNeighbor';
 export * from '../models/NetworkOverviewDns';
 export * from '../models/NetworkOverviewDnsAnswer';
 export * from '../models/NetworkOverviewMetadata';
 export * from '../models/NetworkOverviewResponse';
 export * from '../models/Order';
-export * from '../models/Origin';
 export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
 export * from '../models/PaginationModel';
@@ -258,14 +246,11 @@ export * from '../models/SBOM';
 export * from '../models/SBOMPackage';
 export * from '../models/SandboxOptions';
 export * from '../models/ScrapeThirdPartyConfig';
-export * from '../models/SearchBinaryIds';
-export * from '../models/SearchFunctionIds';
 export * from '../models/SectionModel';
 export * from '../models/SecurityChecksResponse';
 export * from '../models/SecurityChecksResult';
 export * from '../models/SecurityModel';
 export * from '../models/SeverityType';
-export * from '../models/SimilarFunctionsResponse';
 export * from '../models/SingleCodeCertificateModel';
 export * from '../models/SingleCodeSignatureModel';
 export * from '../models/SinglePDBEntryModel';
@@ -283,15 +268,11 @@ export * from '../models/TTPSData';
 export * from '../models/TTPSElement';
 export * from '../models/TTPSOccurance';
 export * from '../models/Tag';
-export * from '../models/TagConfidenceBody';
-export * from '../models/TagOriginBoxPlotConfidence';
 export * from '../models/TagResponse';
 export * from '../models/TagSearchResponse';
 export * from '../models/TagSearchResult';
-export * from '../models/Tags';
 export * from '../models/TaskResponse';
 export * from '../models/TaskStatus';
-export * from '../models/ThreatScoreFunctionBody';
 export * from '../models/TimestampModel';
 export * from '../models/TypeDefinition';
 export * from '../models/UpdateFunctionDataTypes';
@@ -304,7 +285,6 @@ export * from '../models/Vulnerability';
 export * from '../models/VulnerabilityType';
 export * from '../models/Workspace';
 
-import { ANNFunction } from '../models/ANNFunction';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
@@ -351,7 +331,6 @@ import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySe
 import { BaseResponseBlockCommentsGenerationForFunctionResponse } from '../models/BaseResponseBlockCommentsGenerationForFunctionResponse';
 import { BaseResponseBlockCommentsOverviewGenerationResponse } from '../models/BaseResponseBlockCommentsOverviewGenerationResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
-import { BaseResponseBoxPlotConfidence } from '../models/BaseResponseBoxPlotConfidence';
 import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
 import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
 import { BaseResponseCheckSecurityChecksTaskResponse } from '../models/BaseResponseCheckSecurityChecksTaskResponse';
@@ -384,16 +363,12 @@ import { BaseResponseGetUserResponse } from '../models/BaseResponseGetUserRespon
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
-import { BaseResponseListFunctionBoxPlotConfidence } from '../models/BaseResponseListFunctionBoxPlotConfidence';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
 import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
-import { BaseResponseListSimilarFunctionsResponse } from '../models/BaseResponseListSimilarFunctionsResponse';
-import { BaseResponseListTagOriginBoxPlotConfidence } from '../models/BaseResponseListTagOriginBoxPlotConfidence';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
-import { BaseResponseNearestNeighborAnalysis } from '../models/BaseResponseNearestNeighborAnalysis';
 import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
 import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
@@ -422,7 +397,6 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
-import { BoxPlotConfidence } from '../models/BoxPlotConfidence';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -478,7 +452,6 @@ import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestina
 import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
 import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
 import { FunctionBoundary } from '../models/FunctionBoundary';
-import { FunctionBoxPlotConfidence } from '../models/FunctionBoxPlotConfidence';
 import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
 import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateRequest';
 import { FunctionDataTypes } from '../models/FunctionDataTypes';
@@ -497,9 +470,7 @@ import { FunctionMatchingBatchResponse } from '../models/FunctionMatchingBatchRe
 import { FunctionMatchingFilters   , FunctionMatchingFiltersDebugTypesEnum   } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
 import { FunctionMatchingResultWithBestMatch } from '../models/FunctionMatchingResultWithBestMatch';
-import { FunctionNameConfidenceBody } from '../models/FunctionNameConfidenceBody';
 import { FunctionNameHistory } from '../models/FunctionNameHistory';
-import { FunctionNameInput } from '../models/FunctionNameInput';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
 import { FunctionRenameMap } from '../models/FunctionRenameMap';
@@ -536,13 +507,11 @@ import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
-import { NearestNeighbor } from '../models/NearestNeighbor';
 import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
 import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata   , NetworkOverviewMetadataTypeEnum   } from '../models/NetworkOverviewMetadata';
 import { NetworkOverviewResponse } from '../models/NetworkOverviewResponse';
 import { Order } from '../models/Order';
-import { Origin } from '../models/Origin';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
@@ -564,14 +533,11 @@ import { SBOM } from '../models/SBOM';
 import { SBOMPackage } from '../models/SBOMPackage';
 import { SandboxOptions } from '../models/SandboxOptions';
 import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
-import { SearchBinaryIds } from '../models/SearchBinaryIds';
-import { SearchFunctionIds } from '../models/SearchFunctionIds';
 import { SectionModel } from '../models/SectionModel';
 import { SecurityChecksResponse } from '../models/SecurityChecksResponse';
 import { SecurityChecksResult         } from '../models/SecurityChecksResult';
 import { SecurityModel } from '../models/SecurityModel';
 import { SeverityType } from '../models/SeverityType';
-import { SimilarFunctionsResponse } from '../models/SimilarFunctionsResponse';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -589,15 +555,11 @@ import { TTPSData } from '../models/TTPSData';
 import { TTPSElement } from '../models/TTPSElement';
 import { TTPSOccurance } from '../models/TTPSOccurance';
 import { Tag } from '../models/Tag';
-import { TagConfidenceBody } from '../models/TagConfidenceBody';
-import { TagOriginBoxPlotConfidence } from '../models/TagOriginBoxPlotConfidence';
 import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
-import { Tags   } from '../models/Tags';
 import { TaskResponse   } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
-import { ThreatScoreFunctionBody } from '../models/ThreatScoreFunctionBody';
 import { TimestampModel } from '../models/TimestampModel';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
@@ -641,7 +603,6 @@ let enumsMap: Set<string> = new Set<string>([
     "ModelName",
     "NetworkOverviewMetadataTypeEnum",
     "Order",
-    "Origin",
     "Platform",
     "SeverityType",
     "StatusInput",
@@ -653,7 +614,6 @@ let enumsMap: Set<string> = new Set<string>([
 ]);
 
 let typeMap: {[index: string]: any} = {
-    "ANNFunction": ANNFunction,
     "Addr": Addr,
     "AiUnstripRequest": AiUnstripRequest,
     "AnalysisAccessInfo": AnalysisAccessInfo,
@@ -695,7 +655,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseBlockCommentsGenerationForFunctionResponse": BaseResponseBlockCommentsGenerationForFunctionResponse,
     "BaseResponseBlockCommentsOverviewGenerationResponse": BaseResponseBlockCommentsOverviewGenerationResponse,
     "BaseResponseBool": BaseResponseBool,
-    "BaseResponseBoxPlotConfidence": BaseResponseBoxPlotConfidence,
     "BaseResponseCalleesCallerFunctionsResponse": BaseResponseCalleesCallerFunctionsResponse,
     "BaseResponseCapabilities": BaseResponseCapabilities,
     "BaseResponseCheckSecurityChecksTaskResponse": BaseResponseCheckSecurityChecksTaskResponse,
@@ -728,16 +687,12 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseListCollectionResults": BaseResponseListCollectionResults,
     "BaseResponseListCommentResponse": BaseResponseListCommentResponse,
     "BaseResponseListDieMatch": BaseResponseListDieMatch,
-    "BaseResponseListFunctionBoxPlotConfidence": BaseResponseListFunctionBoxPlotConfidence,
     "BaseResponseListFunctionNameHistory": BaseResponseListFunctionNameHistory,
     "BaseResponseListSBOM": BaseResponseListSBOM,
-    "BaseResponseListSimilarFunctionsResponse": BaseResponseListSimilarFunctionsResponse,
-    "BaseResponseListTagOriginBoxPlotConfidence": BaseResponseListTagOriginBoxPlotConfidence,
     "BaseResponseListUserActivityResponse": BaseResponseListUserActivityResponse,
     "BaseResponseLoginResponse": BaseResponseLoginResponse,
     "BaseResponseLogs": BaseResponseLogs,
     "BaseResponseModelsResponse": BaseResponseModelsResponse,
-    "BaseResponseNearestNeighborAnalysis": BaseResponseNearestNeighborAnalysis,
     "BaseResponseNetworkOverviewResponse": BaseResponseNetworkOverviewResponse,
     "BaseResponseParams": BaseResponseParams,
     "BaseResponseProcessDumps": BaseResponseProcessDumps,
@@ -765,7 +720,6 @@ let typeMap: {[index: string]: any} = {
     "BinarySearchResult": BinarySearchResult,
     "Block": Block,
     "BlockCommentsGenerationForFunctionResponse": BlockCommentsGenerationForFunctionResponse,
-    "BoxPlotConfidence": BoxPlotConfidence,
     "CalleeFunctionInfo": CalleeFunctionInfo,
     "CalleesCallerFunctionsResponse": CalleesCallerFunctionsResponse,
     "CallerFunctionInfo": CallerFunctionInfo,
@@ -816,7 +770,6 @@ let typeMap: {[index: string]: any} = {
     "FunctionBlockResponse": FunctionBlockResponse,
     "FunctionBlocksResponse": FunctionBlocksResponse,
     "FunctionBoundary": FunctionBoundary,
-    "FunctionBoxPlotConfidence": FunctionBoxPlotConfidence,
     "FunctionCapabilityResponse": FunctionCapabilityResponse,
     "FunctionCommentCreateRequest": FunctionCommentCreateRequest,
     "FunctionDataTypes": FunctionDataTypes,
@@ -835,9 +788,7 @@ let typeMap: {[index: string]: any} = {
     "FunctionMatchingFilters": FunctionMatchingFilters,
     "FunctionMatchingRequest": FunctionMatchingRequest,
     "FunctionMatchingResultWithBestMatch": FunctionMatchingResultWithBestMatch,
-    "FunctionNameConfidenceBody": FunctionNameConfidenceBody,
     "FunctionNameHistory": FunctionNameHistory,
-    "FunctionNameInput": FunctionNameInput,
     "FunctionParamResponse": FunctionParamResponse,
     "FunctionRename": FunctionRename,
     "FunctionRenameMap": FunctionRenameMap,
@@ -871,7 +822,6 @@ let typeMap: {[index: string]: any} = {
     "MetaModel": MetaModel,
     "ModelsResponse": ModelsResponse,
     "NameConfidence": NameConfidence,
-    "NearestNeighbor": NearestNeighbor,
     "NetworkOverviewDns": NetworkOverviewDns,
     "NetworkOverviewDnsAnswer": NetworkOverviewDnsAnswer,
     "NetworkOverviewMetadata": NetworkOverviewMetadata,
@@ -896,13 +846,10 @@ let typeMap: {[index: string]: any} = {
     "SBOMPackage": SBOMPackage,
     "SandboxOptions": SandboxOptions,
     "ScrapeThirdPartyConfig": ScrapeThirdPartyConfig,
-    "SearchBinaryIds": SearchBinaryIds,
-    "SearchFunctionIds": SearchFunctionIds,
     "SectionModel": SectionModel,
     "SecurityChecksResponse": SecurityChecksResponse,
     "SecurityChecksResult": SecurityChecksResult,
     "SecurityModel": SecurityModel,
-    "SimilarFunctionsResponse": SimilarFunctionsResponse,
     "SingleCodeCertificateModel": SingleCodeCertificateModel,
     "SingleCodeSignatureModel": SingleCodeSignatureModel,
     "SinglePDBEntryModel": SinglePDBEntryModel,
@@ -919,14 +866,10 @@ let typeMap: {[index: string]: any} = {
     "TTPSElement": TTPSElement,
     "TTPSOccurance": TTPSOccurance,
     "Tag": Tag,
-    "TagConfidenceBody": TagConfidenceBody,
-    "TagOriginBoxPlotConfidence": TagOriginBoxPlotConfidence,
     "TagResponse": TagResponse,
     "TagSearchResponse": TagSearchResponse,
     "TagSearchResult": TagSearchResult,
-    "Tags": Tags,
     "TaskResponse": TaskResponse,
-    "ThreatScoreFunctionBody": ThreatScoreFunctionBody,
     "TimestampModel": TimestampModel,
     "TypeDefinition": TypeDefinition,
     "UpdateFunctionDataTypes": UpdateFunctionDataTypes,

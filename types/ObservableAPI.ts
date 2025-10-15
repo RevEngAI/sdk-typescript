@@ -3,7 +3,6 @@ import { Configuration, ConfigurationOptions, mergeConfiguration } from '../conf
 import type { Middleware } from '../middleware';
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
-import { ANNFunction } from '../models/ANNFunction';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
@@ -50,7 +49,6 @@ import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySe
 import { BaseResponseBlockCommentsGenerationForFunctionResponse } from '../models/BaseResponseBlockCommentsGenerationForFunctionResponse';
 import { BaseResponseBlockCommentsOverviewGenerationResponse } from '../models/BaseResponseBlockCommentsOverviewGenerationResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
-import { BaseResponseBoxPlotConfidence } from '../models/BaseResponseBoxPlotConfidence';
 import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
 import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
 import { BaseResponseCheckSecurityChecksTaskResponse } from '../models/BaseResponseCheckSecurityChecksTaskResponse';
@@ -83,16 +81,12 @@ import { BaseResponseGetUserResponse } from '../models/BaseResponseGetUserRespon
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
-import { BaseResponseListFunctionBoxPlotConfidence } from '../models/BaseResponseListFunctionBoxPlotConfidence';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
 import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
-import { BaseResponseListSimilarFunctionsResponse } from '../models/BaseResponseListSimilarFunctionsResponse';
-import { BaseResponseListTagOriginBoxPlotConfidence } from '../models/BaseResponseListTagOriginBoxPlotConfidence';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
-import { BaseResponseNearestNeighborAnalysis } from '../models/BaseResponseNearestNeighborAnalysis';
 import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
 import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
@@ -121,7 +115,6 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
-import { BoxPlotConfidence } from '../models/BoxPlotConfidence';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -177,7 +170,6 @@ import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestina
 import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
 import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
 import { FunctionBoundary } from '../models/FunctionBoundary';
-import { FunctionBoxPlotConfidence } from '../models/FunctionBoxPlotConfidence';
 import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
 import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateRequest';
 import { FunctionDataTypes } from '../models/FunctionDataTypes';
@@ -196,9 +188,7 @@ import { FunctionMatchingBatchResponse } from '../models/FunctionMatchingBatchRe
 import { FunctionMatchingFilters } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
 import { FunctionMatchingResultWithBestMatch } from '../models/FunctionMatchingResultWithBestMatch';
-import { FunctionNameConfidenceBody } from '../models/FunctionNameConfidenceBody';
 import { FunctionNameHistory } from '../models/FunctionNameHistory';
-import { FunctionNameInput } from '../models/FunctionNameInput';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
 import { FunctionRenameMap } from '../models/FunctionRenameMap';
@@ -235,13 +225,11 @@ import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
-import { NearestNeighbor } from '../models/NearestNeighbor';
 import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
 import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata } from '../models/NetworkOverviewMetadata';
 import { NetworkOverviewResponse } from '../models/NetworkOverviewResponse';
 import { Order } from '../models/Order';
-import { Origin } from '../models/Origin';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
@@ -263,14 +251,11 @@ import { SBOM } from '../models/SBOM';
 import { SBOMPackage } from '../models/SBOMPackage';
 import { SandboxOptions } from '../models/SandboxOptions';
 import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
-import { SearchBinaryIds } from '../models/SearchBinaryIds';
-import { SearchFunctionIds } from '../models/SearchFunctionIds';
 import { SectionModel } from '../models/SectionModel';
 import { SecurityChecksResponse } from '../models/SecurityChecksResponse';
 import { SecurityChecksResult } from '../models/SecurityChecksResult';
 import { SecurityModel } from '../models/SecurityModel';
 import { SeverityType } from '../models/SeverityType';
-import { SimilarFunctionsResponse } from '../models/SimilarFunctionsResponse';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -288,15 +273,11 @@ import { TTPSData } from '../models/TTPSData';
 import { TTPSElement } from '../models/TTPSElement';
 import { TTPSOccurance } from '../models/TTPSOccurance';
 import { Tag } from '../models/Tag';
-import { TagConfidenceBody } from '../models/TagConfidenceBody';
-import { TagOriginBoxPlotConfidence } from '../models/TagOriginBoxPlotConfidence';
 import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
-import { Tags } from '../models/Tags';
 import { TaskResponse } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
-import { ThreatScoreFunctionBody } from '../models/ThreatScoreFunctionBody';
 import { TimestampModel } from '../models/TimestampModel';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
@@ -553,42 +534,6 @@ export class ObservableAnalysesCoreApi {
      */
     public deleteAnalysis(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseDict> {
         return this.deleteAnalysisWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDict>) => apiResponse.data));
-    }
-
-    /**
-     * Takes a analysis ID and returns the nearest functions within the database that match those functions
-     * Batch Symbol ANN using Analysis ID
-     * @param analysisId
-     * @param aNNFunction
-     */
-    public findSimilarFunctionsBatchWithHttpInfo(analysisId: number, aNNFunction: ANNFunction, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseNearestNeighborAnalysis>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.findSimilarFunctionsBatch(analysisId, aNNFunction, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.findSimilarFunctionsBatchWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Takes a analysis ID and returns the nearest functions within the database that match those functions
-     * Batch Symbol ANN using Analysis ID
-     * @param analysisId
-     * @param aNNFunction
-     */
-    public findSimilarFunctionsBatch(analysisId: number, aNNFunction: ANNFunction, _options?: ConfigurationOptions): Observable<BaseResponseNearestNeighborAnalysis> {
-        return this.findSimilarFunctionsBatchWithHttpInfo(analysisId, aNNFunction, _options).pipe(map((apiResponse: HttpInfo<BaseResponseNearestNeighborAnalysis>) => apiResponse.data));
     }
 
     /**
@@ -2311,162 +2256,6 @@ export class ObservableCollectionsApi {
 
 }
 
-import { ConfidenceApiRequestFactory, ConfidenceApiResponseProcessor} from "../apis/ConfidenceApi";
-export class ObservableConfidenceApi {
-    private requestFactory: ConfidenceApiRequestFactory;
-    private responseProcessor: ConfidenceApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: ConfidenceApiRequestFactory,
-        responseProcessor?: ConfidenceApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new ConfidenceApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new ConfidenceApiResponseProcessor();
-    }
-
-    /**
-     * Accepts a analysis ID and a list of tags, returns the confidence score for each tag in the list
-     * Calculate Tag Confidence Score for an Analysis
-     * @param analysisId The analysis to calculate the tag scores for
-     * @param tagConfidenceBody
-     */
-    public getAnalysisTagScoreWithHttpInfo(analysisId: number, tagConfidenceBody: TagConfidenceBody, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListTagOriginBoxPlotConfidence>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisTagScore(analysisId, tagConfidenceBody, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisTagScoreWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Accepts a analysis ID and a list of tags, returns the confidence score for each tag in the list
-     * Calculate Tag Confidence Score for an Analysis
-     * @param analysisId The analysis to calculate the tag scores for
-     * @param tagConfidenceBody
-     */
-    public getAnalysisTagScore(analysisId: number, tagConfidenceBody: TagConfidenceBody, _options?: ConfigurationOptions): Observable<BaseResponseListTagOriginBoxPlotConfidence> {
-        return this.getAnalysisTagScoreWithHttpInfo(analysisId, tagConfidenceBody, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListTagOriginBoxPlotConfidence>) => apiResponse.data));
-    }
-
-    /**
-     * Accepts a binary ID and returns the threat score for that binary
-     * Calculate Threat Score for Binary
-     * @param analysisId The analysis to calculate the threat score for
-     */
-    public getAnalysisThreatScoreWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBoxPlotConfidence>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisThreatScore(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisThreatScoreWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Accepts a binary ID and returns the threat score for that binary
-     * Calculate Threat Score for Binary
-     * @param analysisId The analysis to calculate the threat score for
-     */
-    public getAnalysisThreatScore(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseBoxPlotConfidence> {
-        return this.getAnalysisThreatScoreWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBoxPlotConfidence>) => apiResponse.data));
-    }
-
-    /**
-     * Accepts a list of function ids mapped to a function name, for each function we return a confidence score in that being the correct name for each function. Each function must be from the same model, or you may find some functions missing in the return.
-     * Calculate function name confidence for a set of Functions
-     * @param functionNameConfidenceBody
-     */
-    public getFunctionsNameScoreWithHttpInfo(functionNameConfidenceBody: FunctionNameConfidenceBody, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListFunctionBoxPlotConfidence>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionsNameScore(functionNameConfidenceBody, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionsNameScoreWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Accepts a list of function ids mapped to a function name, for each function we return a confidence score in that being the correct name for each function. Each function must be from the same model, or you may find some functions missing in the return.
-     * Calculate function name confidence for a set of Functions
-     * @param functionNameConfidenceBody
-     */
-    public getFunctionsNameScore(functionNameConfidenceBody: FunctionNameConfidenceBody, _options?: ConfigurationOptions): Observable<BaseResponseListFunctionBoxPlotConfidence> {
-        return this.getFunctionsNameScoreWithHttpInfo(functionNameConfidenceBody, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListFunctionBoxPlotConfidence>) => apiResponse.data));
-    }
-
-    /**
-     * Accepts a list of function ids and returns the threat score for each function. Each function must be from the same model, or you may find some functions missing in the return.
-     * Calculate Threat Score for a set of Functions
-     * @param threatScoreFunctionBody
-     */
-    public getFunctionsThreatScoreWithHttpInfo(threatScoreFunctionBody: ThreatScoreFunctionBody, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListFunctionBoxPlotConfidence>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionsThreatScore(threatScoreFunctionBody, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionsThreatScoreWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Accepts a list of function ids and returns the threat score for each function. Each function must be from the same model, or you may find some functions missing in the return.
-     * Calculate Threat Score for a set of Functions
-     * @param threatScoreFunctionBody
-     */
-    public getFunctionsThreatScore(threatScoreFunctionBody: ThreatScoreFunctionBody, _options?: ConfigurationOptions): Observable<BaseResponseListFunctionBoxPlotConfidence> {
-        return this.getFunctionsThreatScoreWithHttpInfo(threatScoreFunctionBody, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListFunctionBoxPlotConfidence>) => apiResponse.data));
-    }
-
-}
-
 import { ExternalSourcesApiRequestFactory, ExternalSourcesApiResponseProcessor} from "../apis/ExternalSourcesApi";
 export class ObservableExternalSourcesApi {
     private requestFactory: ExternalSourcesApiRequestFactory;
@@ -3649,50 +3438,6 @@ export class ObservableFunctionsCoreApi {
      */
     public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionStringsResponse> {
         return this.getFunctionStringsWithHttpInfo(functionId, page, pageSize, search, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionStringsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Get list of similar functions
-     * @param functionId
-     * @param [limit] Number of similar functions to return
-     * @param [distance] Maximum cosine distance
-     * @param [collectionIds] Collection filtering by IDs
-     * @param [debug] Only return matching debug functions
-     * @param [debugTypes] If limiting results to functions with debug names, which type of debug names to include?
-     * @param [binaryIds] Limit similar functions to specific binaries
-     */
-    public getSimilarFunctionsWithHttpInfo(functionId: number, limit?: number, distance?: number, collectionIds?: Array<number>, debug?: boolean, debugTypes?: Array<'USER' | 'SYSTEM' | 'EXTERNAL'>, binaryIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListSimilarFunctionsResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getSimilarFunctions(functionId, limit, distance, collectionIds, debug, debugTypes, binaryIds, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getSimilarFunctionsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get list of similar functions
-     * @param functionId
-     * @param [limit] Number of similar functions to return
-     * @param [distance] Maximum cosine distance
-     * @param [collectionIds] Collection filtering by IDs
-     * @param [debug] Only return matching debug functions
-     * @param [debugTypes] If limiting results to functions with debug names, which type of debug names to include?
-     * @param [binaryIds] Limit similar functions to specific binaries
-     */
-    public getSimilarFunctions(functionId: number, limit?: number, distance?: number, collectionIds?: Array<number>, debug?: boolean, debugTypes?: Array<'USER' | 'SYSTEM' | 'EXTERNAL'>, binaryIds?: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseListSimilarFunctionsResponse> {
-        return this.getSimilarFunctionsWithHttpInfo(functionId, limit, distance, collectionIds, debug, debugTypes, binaryIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListSimilarFunctionsResponse>) => apiResponse.data));
     }
 
 }

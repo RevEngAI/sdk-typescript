@@ -16,7 +16,6 @@ Method | HTTP request | Description
 [**getFunctionCapabilities**](FunctionsCoreApi.md#getFunctionCapabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
 [**getFunctionDetails**](FunctionsCoreApi.md#getFunctionDetails) | **GET** /v2/functions/{function_id} | Get function details
 [**getFunctionStrings**](FunctionsCoreApi.md#getFunctionStrings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
-[**getSimilarFunctions**](FunctionsCoreApi.md#getSimilarFunctions) | **GET** /v2/functions/{function_id}/similar-functions | Get list of similar functions
 
 
 # **aiUnstrip**
@@ -710,77 +709,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BaseResponseFunctionStringsResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getSimilarFunctions**
-> BaseResponseListSimilarFunctionsResponse getSimilarFunctions()
-
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
-import type { FunctionsCoreApiGetSimilarFunctionsRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsCoreApi(configuration);
-
-const request: FunctionsCoreApiGetSimilarFunctionsRequest = {
-  
-  functionId: 1,
-    // Number of similar functions to return (optional)
-  limit: 20,
-    // Maximum cosine distance (optional)
-  distance: 1.0,
-    // Collection filtering by IDs (optional)
-  collectionIds: [],
-    // Only return matching debug functions (optional)
-  debug: false,
-    // If limiting results to functions with debug names, which type of debug names to include? (optional)
-  debugTypes: ["SYSTEM"],
-    // Limit similar functions to specific binaries (optional)
-  binaryIds: [],
-};
-
-const data = await apiInstance.getSimilarFunctions(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **functionId** | [**number**] |  | defaults to undefined
- **limit** | [**number**] | Number of similar functions to return | (optional) defaults to 20
- **distance** | [**number**] | Maximum cosine distance | (optional) defaults to 1.0
- **collectionIds** | **Array&lt;number&gt;** | Collection filtering by IDs | (optional) defaults to undefined
- **debug** | [**boolean**] | Only return matching debug functions | (optional) defaults to false
- **debugTypes** | **Array<&#39;USER&#39; &#124; &#39;SYSTEM&#39; &#124; &#39;EXTERNAL&#39;>** | If limiting results to functions with debug names, which type of debug names to include? | (optional) defaults to undefined
- **binaryIds** | **Array&lt;number&gt;** | Limit similar functions to specific binaries | (optional) defaults to undefined
-
-
-### Return type
-
-**BaseResponseListSimilarFunctionsResponse**
 
 ### Authorization
 

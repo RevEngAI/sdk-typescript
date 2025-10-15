@@ -53,7 +53,6 @@ Class | Method | HTTP request | Description
 *AnalysesCommentsApi* | [**updateAnalysisComment**](docs/AnalysesCommentsApi.md#updateAnalysisComment) | **PATCH** /v2/analyses/{analysis_id}/comments/{comment_id} | Update a comment
 *AnalysesCoreApi* | [**createAnalysis**](docs/AnalysesCoreApi.md#createAnalysis) | **POST** /v2/analyses | Create Analysis
 *AnalysesCoreApi* | [**deleteAnalysis**](docs/AnalysesCoreApi.md#deleteAnalysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
-*AnalysesCoreApi* | [**findSimilarFunctionsBatch**](docs/AnalysesCoreApi.md#findSimilarFunctionsBatch) | **POST** /v2/analyses/{analysis_id}/similarity/functions | Batch Symbol ANN using Analysis ID
 *AnalysesCoreApi* | [**getAnalysisBasicInfo**](docs/AnalysesCoreApi.md#getAnalysisBasicInfo) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
 *AnalysesCoreApi* | [**getAnalysisFunctionMap**](docs/AnalysesCoreApi.md#getAnalysisFunctionMap) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
 *AnalysesCoreApi* | [**getAnalysisLogs**](docs/AnalysesCoreApi.md#getAnalysisLogs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
@@ -101,10 +100,6 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**updateCollection**](docs/CollectionsApi.md#updateCollection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 *CollectionsApi* | [**updateCollectionBinaries**](docs/CollectionsApi.md#updateCollectionBinaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**updateCollectionTags**](docs/CollectionsApi.md#updateCollectionTags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
-*ConfidenceApi* | [**getAnalysisTagScore**](docs/ConfidenceApi.md#getAnalysisTagScore) | **POST** /v2/confidence/analysis/{analysis_id}/tag_score | Calculate Tag Confidence Score for an Analysis
-*ConfidenceApi* | [**getAnalysisThreatScore**](docs/ConfidenceApi.md#getAnalysisThreatScore) | **GET** /v2/confidence/analysis/{analysis_id}/threat_score | Calculate Threat Score for Binary
-*ConfidenceApi* | [**getFunctionsNameScore**](docs/ConfidenceApi.md#getFunctionsNameScore) | **POST** /v2/confidence/functions/name_score | Calculate function name confidence for a set of Functions
-*ConfidenceApi* | [**getFunctionsThreatScore**](docs/ConfidenceApi.md#getFunctionsThreatScore) | **POST** /v2/confidence/functions/threat_score | Calculate Threat Score for a set of Functions
 *ExternalSourcesApi* | [**createExternalTaskMb**](docs/ExternalSourcesApi.md#createExternalTaskMb) | **POST** /v2/analysis/{analysis_id}/external/mb | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**createExternalTaskVt**](docs/ExternalSourcesApi.md#createExternalTaskVt) | **POST** /v2/analysis/{analysis_id}/external/vt | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**getMbData**](docs/ExternalSourcesApi.md#getMbData) | **GET** /v2/analysis/{analysis_id}/external/mb | Get MalwareBazaar data
@@ -137,7 +132,6 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**getFunctionCapabilities**](docs/FunctionsCoreApi.md#getFunctionCapabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
 *FunctionsCoreApi* | [**getFunctionDetails**](docs/FunctionsCoreApi.md#getFunctionDetails) | **GET** /v2/functions/{function_id} | Get function details
 *FunctionsCoreApi* | [**getFunctionStrings**](docs/FunctionsCoreApi.md#getFunctionStrings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
-*FunctionsCoreApi* | [**getSimilarFunctions**](docs/FunctionsCoreApi.md#getSimilarFunctions) | **GET** /v2/functions/{function_id}/similar-functions | Get list of similar functions
 *FunctionsDataTypesApi* | [**generateFunctionDataTypesForAnalysis**](docs/FunctionsDataTypesApi.md#generateFunctionDataTypesForAnalysis) | **POST** /v2/analyses/{analysis_id}/functions/data_types | Generate Function Data Types
 *FunctionsDataTypesApi* | [**generateFunctionDataTypesForFunctions**](docs/FunctionsDataTypesApi.md#generateFunctionDataTypesForFunctions) | **POST** /v2/functions/data_types | Generate Function Data Types for an arbitrary list of functions
 *FunctionsDataTypesApi* | [**getFunctionDataTypes**](docs/FunctionsDataTypesApi.md#getFunctionDataTypes) | **GET** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Get Function Data Types
@@ -164,7 +158,6 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
- - [ANNFunction](ANNFunction.md)
  - [Addr](Addr.md)
  - [AiDecompilationRating](AiDecompilationRating.md)
  - [AiUnstripRequest](AiUnstripRequest.md)
@@ -211,7 +204,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseBlockCommentsGenerationForFunctionResponse](BaseResponseBlockCommentsGenerationForFunctionResponse.md)
  - [BaseResponseBlockCommentsOverviewGenerationResponse](BaseResponseBlockCommentsOverviewGenerationResponse.md)
  - [BaseResponseBool](BaseResponseBool.md)
- - [BaseResponseBoxPlotConfidence](BaseResponseBoxPlotConfidence.md)
  - [BaseResponseCalleesCallerFunctionsResponse](BaseResponseCalleesCallerFunctionsResponse.md)
  - [BaseResponseCapabilities](BaseResponseCapabilities.md)
  - [BaseResponseCheckSecurityChecksTaskResponse](BaseResponseCheckSecurityChecksTaskResponse.md)
@@ -244,16 +236,12 @@ Class | Method | HTTP request | Description
  - [BaseResponseListCollectionResults](BaseResponseListCollectionResults.md)
  - [BaseResponseListCommentResponse](BaseResponseListCommentResponse.md)
  - [BaseResponseListDieMatch](BaseResponseListDieMatch.md)
- - [BaseResponseListFunctionBoxPlotConfidence](BaseResponseListFunctionBoxPlotConfidence.md)
  - [BaseResponseListFunctionNameHistory](BaseResponseListFunctionNameHistory.md)
  - [BaseResponseListSBOM](BaseResponseListSBOM.md)
- - [BaseResponseListSimilarFunctionsResponse](BaseResponseListSimilarFunctionsResponse.md)
- - [BaseResponseListTagOriginBoxPlotConfidence](BaseResponseListTagOriginBoxPlotConfidence.md)
  - [BaseResponseListUserActivityResponse](BaseResponseListUserActivityResponse.md)
  - [BaseResponseLoginResponse](BaseResponseLoginResponse.md)
  - [BaseResponseLogs](BaseResponseLogs.md)
  - [BaseResponseModelsResponse](BaseResponseModelsResponse.md)
- - [BaseResponseNearestNeighborAnalysis](BaseResponseNearestNeighborAnalysis.md)
  - [BaseResponseNetworkOverviewResponse](BaseResponseNetworkOverviewResponse.md)
  - [BaseResponseParams](BaseResponseParams.md)
  - [BaseResponseProcessDumps](BaseResponseProcessDumps.md)
@@ -282,7 +270,6 @@ Class | Method | HTTP request | Description
  - [BinaryTaskStatus](BinaryTaskStatus.md)
  - [Block](Block.md)
  - [BlockCommentsGenerationForFunctionResponse](BlockCommentsGenerationForFunctionResponse.md)
- - [BoxPlotConfidence](BoxPlotConfidence.md)
  - [CalleeFunctionInfo](CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](CallerFunctionInfo.md)
@@ -338,7 +325,6 @@ Class | Method | HTTP request | Description
  - [FunctionBlockResponse](FunctionBlockResponse.md)
  - [FunctionBlocksResponse](FunctionBlocksResponse.md)
  - [FunctionBoundary](FunctionBoundary.md)
- - [FunctionBoxPlotConfidence](FunctionBoxPlotConfidence.md)
  - [FunctionCapabilityResponse](FunctionCapabilityResponse.md)
  - [FunctionCommentCreateRequest](FunctionCommentCreateRequest.md)
  - [FunctionDataTypes](FunctionDataTypes.md)
@@ -357,9 +343,7 @@ Class | Method | HTTP request | Description
  - [FunctionMatchingFilters](FunctionMatchingFilters.md)
  - [FunctionMatchingRequest](FunctionMatchingRequest.md)
  - [FunctionMatchingResultWithBestMatch](FunctionMatchingResultWithBestMatch.md)
- - [FunctionNameConfidenceBody](FunctionNameConfidenceBody.md)
  - [FunctionNameHistory](FunctionNameHistory.md)
- - [FunctionNameInput](FunctionNameInput.md)
  - [FunctionParamResponse](FunctionParamResponse.md)
  - [FunctionRename](FunctionRename.md)
  - [FunctionRenameMap](FunctionRenameMap.md)
@@ -396,13 +380,11 @@ Class | Method | HTTP request | Description
  - [ModelName](ModelName.md)
  - [ModelsResponse](ModelsResponse.md)
  - [NameConfidence](NameConfidence.md)
- - [NearestNeighbor](NearestNeighbor.md)
  - [NetworkOverviewDns](NetworkOverviewDns.md)
  - [NetworkOverviewDnsAnswer](NetworkOverviewDnsAnswer.md)
  - [NetworkOverviewMetadata](NetworkOverviewMetadata.md)
  - [NetworkOverviewResponse](NetworkOverviewResponse.md)
  - [Order](Order.md)
- - [Origin](Origin.md)
  - [PDBDebugModel](PDBDebugModel.md)
  - [PEModel](PEModel.md)
  - [PaginationModel](PaginationModel.md)
@@ -424,14 +406,11 @@ Class | Method | HTTP request | Description
  - [SBOMPackage](SBOMPackage.md)
  - [SandboxOptions](SandboxOptions.md)
  - [ScrapeThirdPartyConfig](ScrapeThirdPartyConfig.md)
- - [SearchBinaryIds](SearchBinaryIds.md)
- - [SearchFunctionIds](SearchFunctionIds.md)
  - [SectionModel](SectionModel.md)
  - [SecurityChecksResponse](SecurityChecksResponse.md)
  - [SecurityChecksResult](SecurityChecksResult.md)
  - [SecurityModel](SecurityModel.md)
  - [SeverityType](SeverityType.md)
- - [SimilarFunctionsResponse](SimilarFunctionsResponse.md)
  - [SingleCodeCertificateModel](SingleCodeCertificateModel.md)
  - [SingleCodeSignatureModel](SingleCodeSignatureModel.md)
  - [SinglePDBEntryModel](SinglePDBEntryModel.md)
@@ -449,15 +428,11 @@ Class | Method | HTTP request | Description
  - [TTPSElement](TTPSElement.md)
  - [TTPSOccurance](TTPSOccurance.md)
  - [Tag](Tag.md)
- - [TagConfidenceBody](TagConfidenceBody.md)
- - [TagOriginBoxPlotConfidence](TagOriginBoxPlotConfidence.md)
  - [TagResponse](TagResponse.md)
  - [TagSearchResponse](TagSearchResponse.md)
  - [TagSearchResult](TagSearchResult.md)
- - [Tags](Tags.md)
  - [TaskResponse](TaskResponse.md)
  - [TaskStatus](TaskStatus.md)
- - [ThreatScoreFunctionBody](ThreatScoreFunctionBody.md)
  - [TimestampModel](TimestampModel.md)
  - [TypeDefinition](TypeDefinition.md)
  - [UpdateFunctionDataTypes](UpdateFunctionDataTypes.md)
