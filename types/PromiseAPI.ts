@@ -2,7 +2,6 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration, PromiseConfigurationOptions, wrapOptions } from '../configuration'
 import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../middleware';
 
-import { ANNFunction } from '../models/ANNFunction';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
@@ -49,7 +48,6 @@ import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySe
 import { BaseResponseBlockCommentsGenerationForFunctionResponse } from '../models/BaseResponseBlockCommentsGenerationForFunctionResponse';
 import { BaseResponseBlockCommentsOverviewGenerationResponse } from '../models/BaseResponseBlockCommentsOverviewGenerationResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
-import { BaseResponseBoxPlotConfidence } from '../models/BaseResponseBoxPlotConfidence';
 import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
 import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
 import { BaseResponseCheckSecurityChecksTaskResponse } from '../models/BaseResponseCheckSecurityChecksTaskResponse';
@@ -82,16 +80,12 @@ import { BaseResponseGetUserResponse } from '../models/BaseResponseGetUserRespon
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
-import { BaseResponseListFunctionBoxPlotConfidence } from '../models/BaseResponseListFunctionBoxPlotConfidence';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
 import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
-import { BaseResponseListSimilarFunctionsResponse } from '../models/BaseResponseListSimilarFunctionsResponse';
-import { BaseResponseListTagOriginBoxPlotConfidence } from '../models/BaseResponseListTagOriginBoxPlotConfidence';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
-import { BaseResponseNearestNeighborAnalysis } from '../models/BaseResponseNearestNeighborAnalysis';
 import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
 import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
@@ -120,7 +114,6 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
-import { BoxPlotConfidence } from '../models/BoxPlotConfidence';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -176,7 +169,6 @@ import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestina
 import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
 import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
 import { FunctionBoundary } from '../models/FunctionBoundary';
-import { FunctionBoxPlotConfidence } from '../models/FunctionBoxPlotConfidence';
 import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
 import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateRequest';
 import { FunctionDataTypes } from '../models/FunctionDataTypes';
@@ -195,9 +187,7 @@ import { FunctionMatchingBatchResponse } from '../models/FunctionMatchingBatchRe
 import { FunctionMatchingFilters } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
 import { FunctionMatchingResultWithBestMatch } from '../models/FunctionMatchingResultWithBestMatch';
-import { FunctionNameConfidenceBody } from '../models/FunctionNameConfidenceBody';
 import { FunctionNameHistory } from '../models/FunctionNameHistory';
-import { FunctionNameInput } from '../models/FunctionNameInput';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
 import { FunctionRenameMap } from '../models/FunctionRenameMap';
@@ -234,13 +224,11 @@ import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
-import { NearestNeighbor } from '../models/NearestNeighbor';
 import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
 import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata } from '../models/NetworkOverviewMetadata';
 import { NetworkOverviewResponse } from '../models/NetworkOverviewResponse';
 import { Order } from '../models/Order';
-import { Origin } from '../models/Origin';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
@@ -262,14 +250,11 @@ import { SBOM } from '../models/SBOM';
 import { SBOMPackage } from '../models/SBOMPackage';
 import { SandboxOptions } from '../models/SandboxOptions';
 import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
-import { SearchBinaryIds } from '../models/SearchBinaryIds';
-import { SearchFunctionIds } from '../models/SearchFunctionIds';
 import { SectionModel } from '../models/SectionModel';
 import { SecurityChecksResponse } from '../models/SecurityChecksResponse';
 import { SecurityChecksResult } from '../models/SecurityChecksResult';
 import { SecurityModel } from '../models/SecurityModel';
 import { SeverityType } from '../models/SeverityType';
-import { SimilarFunctionsResponse } from '../models/SimilarFunctionsResponse';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -287,15 +272,11 @@ import { TTPSData } from '../models/TTPSData';
 import { TTPSElement } from '../models/TTPSElement';
 import { TTPSOccurance } from '../models/TTPSOccurance';
 import { Tag } from '../models/Tag';
-import { TagConfidenceBody } from '../models/TagConfidenceBody';
-import { TagOriginBoxPlotConfidence } from '../models/TagOriginBoxPlotConfidence';
 import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
-import { Tags } from '../models/Tags';
 import { TaskResponse } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
-import { ThreatScoreFunctionBody } from '../models/ThreatScoreFunctionBody';
 import { TimestampModel } from '../models/TimestampModel';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
@@ -477,30 +458,6 @@ export class PromiseAnalysesCoreApi {
     public deleteAnalysis(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseDict> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.deleteAnalysis(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Takes a analysis ID and returns the nearest functions within the database that match those functions
-     * Batch Symbol ANN using Analysis ID
-     * @param analysisId
-     * @param aNNFunction
-     */
-    public findSimilarFunctionsBatchWithHttpInfo(analysisId: number, aNNFunction: ANNFunction, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseNearestNeighborAnalysis>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.findSimilarFunctionsBatchWithHttpInfo(analysisId, aNNFunction, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Takes a analysis ID and returns the nearest functions within the database that match those functions
-     * Batch Symbol ANN using Analysis ID
-     * @param analysisId
-     * @param aNNFunction
-     */
-    public findSimilarFunctionsBatch(analysisId: number, aNNFunction: ANNFunction, _options?: PromiseConfigurationOptions): Promise<BaseResponseNearestNeighborAnalysis> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.findSimilarFunctionsBatch(analysisId, aNNFunction, observableOptions);
         return result.toPromise();
     }
 
@@ -1669,115 +1626,6 @@ export class PromiseCollectionsApi {
 
 
 
-import { ObservableConfidenceApi } from './ObservableAPI';
-
-import { ConfidenceApiRequestFactory, ConfidenceApiResponseProcessor} from "../apis/ConfidenceApi";
-export class PromiseConfidenceApi {
-    private api: ObservableConfidenceApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: ConfidenceApiRequestFactory,
-        responseProcessor?: ConfidenceApiResponseProcessor
-    ) {
-        this.api = new ObservableConfidenceApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Accepts a analysis ID and a list of tags, returns the confidence score for each tag in the list
-     * Calculate Tag Confidence Score for an Analysis
-     * @param analysisId The analysis to calculate the tag scores for
-     * @param tagConfidenceBody
-     */
-    public getAnalysisTagScoreWithHttpInfo(analysisId: number, tagConfidenceBody: TagConfidenceBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListTagOriginBoxPlotConfidence>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisTagScoreWithHttpInfo(analysisId, tagConfidenceBody, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Accepts a analysis ID and a list of tags, returns the confidence score for each tag in the list
-     * Calculate Tag Confidence Score for an Analysis
-     * @param analysisId The analysis to calculate the tag scores for
-     * @param tagConfidenceBody
-     */
-    public getAnalysisTagScore(analysisId: number, tagConfidenceBody: TagConfidenceBody, _options?: PromiseConfigurationOptions): Promise<BaseResponseListTagOriginBoxPlotConfidence> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisTagScore(analysisId, tagConfidenceBody, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Accepts a binary ID and returns the threat score for that binary
-     * Calculate Threat Score for Binary
-     * @param analysisId The analysis to calculate the threat score for
-     */
-    public getAnalysisThreatScoreWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBoxPlotConfidence>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisThreatScoreWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Accepts a binary ID and returns the threat score for that binary
-     * Calculate Threat Score for Binary
-     * @param analysisId The analysis to calculate the threat score for
-     */
-    public getAnalysisThreatScore(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBoxPlotConfidence> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisThreatScore(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Accepts a list of function ids mapped to a function name, for each function we return a confidence score in that being the correct name for each function. Each function must be from the same model, or you may find some functions missing in the return.
-     * Calculate function name confidence for a set of Functions
-     * @param functionNameConfidenceBody
-     */
-    public getFunctionsNameScoreWithHttpInfo(functionNameConfidenceBody: FunctionNameConfidenceBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListFunctionBoxPlotConfidence>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionsNameScoreWithHttpInfo(functionNameConfidenceBody, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Accepts a list of function ids mapped to a function name, for each function we return a confidence score in that being the correct name for each function. Each function must be from the same model, or you may find some functions missing in the return.
-     * Calculate function name confidence for a set of Functions
-     * @param functionNameConfidenceBody
-     */
-    public getFunctionsNameScore(functionNameConfidenceBody: FunctionNameConfidenceBody, _options?: PromiseConfigurationOptions): Promise<BaseResponseListFunctionBoxPlotConfidence> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionsNameScore(functionNameConfidenceBody, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Accepts a list of function ids and returns the threat score for each function. Each function must be from the same model, or you may find some functions missing in the return.
-     * Calculate Threat Score for a set of Functions
-     * @param threatScoreFunctionBody
-     */
-    public getFunctionsThreatScoreWithHttpInfo(threatScoreFunctionBody: ThreatScoreFunctionBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListFunctionBoxPlotConfidence>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionsThreatScoreWithHttpInfo(threatScoreFunctionBody, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Accepts a list of function ids and returns the threat score for each function. Each function must be from the same model, or you may find some functions missing in the return.
-     * Calculate Threat Score for a set of Functions
-     * @param threatScoreFunctionBody
-     */
-    public getFunctionsThreatScore(threatScoreFunctionBody: ThreatScoreFunctionBody, _options?: PromiseConfigurationOptions): Promise<BaseResponseListFunctionBoxPlotConfidence> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionsThreatScore(threatScoreFunctionBody, observableOptions);
-        return result.toPromise();
-    }
-
-
-}
-
-
-
 import { ObservableExternalSourcesApi } from './ObservableAPI';
 
 import { ExternalSourcesApiRequestFactory, ExternalSourcesApiResponseProcessor} from "../apis/ExternalSourcesApi";
@@ -2577,38 +2425,6 @@ export class PromiseFunctionsCoreApi {
     public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionStringsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getFunctionStrings(functionId, page, pageSize, search, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get list of similar functions
-     * @param functionId
-     * @param [limit] Number of similar functions to return
-     * @param [distance] Maximum cosine distance
-     * @param [collectionIds] Collection filtering by IDs
-     * @param [debug] Only return matching debug functions
-     * @param [debugTypes] If limiting results to functions with debug names, which type of debug names to include?
-     * @param [binaryIds] Limit similar functions to specific binaries
-     */
-    public getSimilarFunctionsWithHttpInfo(functionId: number, limit?: number, distance?: number, collectionIds?: Array<number>, debug?: boolean, debugTypes?: Array<'USER' | 'SYSTEM' | 'EXTERNAL'>, binaryIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListSimilarFunctionsResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getSimilarFunctionsWithHttpInfo(functionId, limit, distance, collectionIds, debug, debugTypes, binaryIds, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get list of similar functions
-     * @param functionId
-     * @param [limit] Number of similar functions to return
-     * @param [distance] Maximum cosine distance
-     * @param [collectionIds] Collection filtering by IDs
-     * @param [debug] Only return matching debug functions
-     * @param [debugTypes] If limiting results to functions with debug names, which type of debug names to include?
-     * @param [binaryIds] Limit similar functions to specific binaries
-     */
-    public getSimilarFunctions(functionId: number, limit?: number, distance?: number, collectionIds?: Array<number>, debug?: boolean, debugTypes?: Array<'USER' | 'SYSTEM' | 'EXTERNAL'>, binaryIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<BaseResponseListSimilarFunctionsResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getSimilarFunctions(functionId, limit, distance, collectionIds, debug, debugTypes, binaryIds, observableOptions);
         return result.toPromise();
     }
 

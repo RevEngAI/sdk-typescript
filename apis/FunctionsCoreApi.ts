@@ -19,7 +19,6 @@ import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFuncti
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
 import { BaseResponseFunctionStringsResponse } from '../models/BaseResponseFunctionStringsResponse';
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
-import { BaseResponseListSimilarFunctionsResponse } from '../models/BaseResponseListSimilarFunctionsResponse';
 import { FunctionMatchingBatchResponse } from '../models/FunctionMatchingBatchResponse';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
 
@@ -594,94 +593,6 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
         return requestContext;
     }
 
-    /**
-     * Get list of similar functions
-     * @param functionId 
-     * @param limit Number of similar functions to return
-     * @param distance Maximum cosine distance
-     * @param collectionIds Collection filtering by IDs
-     * @param debug Only return matching debug functions
-     * @param debugTypes If limiting results to functions with debug names, which type of debug names to include?
-     * @param binaryIds Limit similar functions to specific binaries
-     */
-    public async getSimilarFunctions(functionId: number, limit?: number, distance?: number, collectionIds?: Array<number>, debug?: boolean, debugTypes?: Array<'USER' | 'SYSTEM' | 'EXTERNAL'>, binaryIds?: Array<number>, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'functionId' is not null or undefined
-        if (functionId === null || functionId === undefined) {
-            throw new RequiredError("FunctionsCoreApi", "getSimilarFunctions", "functionId");
-        }
-
-
-
-
-
-
-
-
-        // Path Params
-        const localVarPath = '/v2/functions/{function_id}/similar-functions'
-            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (limit !== undefined) {
-            requestContext.setQueryParam("limit", ObjectSerializer.serialize(limit, "number", ""));
-        }
-
-        // Query Params
-        if (distance !== undefined) {
-            requestContext.setQueryParam("distance", ObjectSerializer.serialize(distance, "number", ""));
-        }
-
-        // Query Params
-        if (collectionIds !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(collectionIds, "Array<number>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("collection_ids", serializedParam);
-            }
-        }
-
-        // Query Params
-        if (debug !== undefined) {
-            requestContext.setQueryParam("debug", ObjectSerializer.serialize(debug, "boolean", ""));
-        }
-
-        // Query Params
-        if (debugTypes !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(debugTypes, "Array<'USER' | 'SYSTEM' | 'EXTERNAL'>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("debug_types", serializedParam);
-            }
-        }
-
-        // Query Params
-        if (binaryIds !== undefined) {
-            const serializedParams = ObjectSerializer.serialize(binaryIds, "Array<number>", "");
-            for (const serializedParam of serializedParams) {
-                requestContext.appendQueryParam("binary_ids", serializedParam);
-            }
-        }
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
 }
 
 export class FunctionsCoreApiResponseProcessor {
@@ -1126,42 +1037,6 @@ export class FunctionsCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseFunctionStringsResponse", ""
             ) as BaseResponseFunctionStringsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getSimilarFunctions
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getSimilarFunctionsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseListSimilarFunctionsResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseListSimilarFunctionsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseListSimilarFunctionsResponse", ""
-            ) as BaseResponseListSimilarFunctionsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseListSimilarFunctionsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseListSimilarFunctionsResponse", ""
-            ) as BaseResponseListSimilarFunctionsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
