@@ -119,8 +119,7 @@ jobs:
         # Move generated files to the correct locations and clean up
         rm -Rf apis && mv typescript-client/apis .
         rm -Rf auth && mv typescript-client/auth .
-        # This won't be necessary once https://github.com/OpenAPITools/openapi-generator/pull/22124 gets released
-        rm -Rf docs && mkdir docs && mv typescript-client/*Api.md docs/
+        rm -Rf docs && mv typescript-client/docs .
         rm -Rf http && mv typescript-client/http .
         rm -Rf models && mv typescript-client/models .
         rm -Rf types && mv typescript-client/types .
