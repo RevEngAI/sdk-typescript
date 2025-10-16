@@ -12,6 +12,9 @@
 import { HttpFile } from '../http/http';
 
 export class FunctionsDetailResponse {
+    /**
+    * Function id
+    */
     'functionId': number;
     'functionName': string;
     'functionVaddr': number;
@@ -34,7 +37,7 @@ export class FunctionsDetailResponse {
             "name": "functionId",
             "baseName": "function_id",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
             "name": "functionName",

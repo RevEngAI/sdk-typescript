@@ -14,6 +14,9 @@ import { NameConfidence } from '../models/NameConfidence';
 import { HttpFile } from '../http/http';
 
 export class FunctionMatchingResultWithBestMatch {
+    /**
+    * Unique identifier of the function
+    */
     'functionId': number;
     'matchedFunctions': Array<MatchedFunction>;
     'confidences'?: Array<NameConfidence> | null;
@@ -27,7 +30,7 @@ export class FunctionMatchingResultWithBestMatch {
             "name": "functionId",
             "baseName": "function_id",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
             "name": "matchedFunctions",

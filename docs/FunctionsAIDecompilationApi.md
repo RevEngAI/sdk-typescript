@@ -95,7 +95,7 @@ const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
 
 const request: FunctionsAIDecompilationApiCreateAiDecompilationTaskRequest = {
-  
+    // The ID of the function for which we are creating the decompilation task
   functionId: 1,
 };
 
@@ -108,7 +108,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **functionId** | [**number**] |  | defaults to undefined
+ **functionId** | [**number**] | The ID of the function for which we are creating the decompilation task | defaults to undefined
 
 
 ### Return type
@@ -265,7 +265,7 @@ const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
 
 const request: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest = {
-  
+    // The ID of the function for which to get the rating
   functionId: 1,
 };
 
@@ -278,7 +278,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **functionId** | [**number**] |  | defaults to undefined
+ **functionId** | [**number**] | The ID of the function for which to get the rating | defaults to undefined
 
 
 ### Return type
@@ -319,7 +319,7 @@ const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
 
 const request: FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest = {
-  
+    // The ID of the function being decompiled
   functionId: 1,
     // Generate a summary for the decompilation (optional)
   summarise: true,
@@ -336,7 +336,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **functionId** | [**number**] |  | defaults to undefined
+ **functionId** | [**number**] | The ID of the function being decompiled | defaults to undefined
  **summarise** | [**boolean**] | Generate a summary for the decompilation | (optional) defaults to true
  **generateInlineComments** | [**boolean**] | Generate inline comments for the decompilation (only works if summarise is enabled) | (optional) defaults to true
 
@@ -379,7 +379,7 @@ const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
 
 const request: FunctionsAIDecompilationApiGetAiDecompilationTaskStatusRequest = {
-  
+    // The ID of the function being checked
   functionId: 1,
 };
 
@@ -392,7 +392,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **functionId** | [**number**] |  | defaults to undefined
+ **functionId** | [**number**] | The ID of the function being checked | defaults to undefined
 
 
 ### Return type
@@ -496,7 +496,7 @@ const configuration = createConfiguration();
 const apiInstance = new FunctionsAIDecompilationApi(configuration);
 
 const request: FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest = {
-  
+    // The ID of the function being rated
   functionId: 1,
   
   upsertAiDecomplationRatingRequest: {
@@ -515,7 +515,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **upsertAiDecomplationRatingRequest** | **UpsertAiDecomplationRatingRequest**|  |
- **functionId** | [**number**] |  | defaults to undefined
+ **functionId** | [**number**] | The ID of the function being rated | defaults to undefined
 
 
 ### Return type

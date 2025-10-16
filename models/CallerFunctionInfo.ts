@@ -12,6 +12,9 @@
 import { HttpFile } from '../http/http';
 
 export class CallerFunctionInfo {
+    /**
+    * Unique identifier of the function
+    */
     'functionId': number;
     'matchedFunctionId': number | null;
     'dashboardUrl': string | null;
@@ -37,7 +40,7 @@ export class CallerFunctionInfo {
             "name": "functionId",
             "baseName": "function_id",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
             "name": "matchedFunctionId",

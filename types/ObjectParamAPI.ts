@@ -2325,7 +2325,7 @@ export interface FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest 
 
 export interface FunctionsAIDecompilationApiCreateAiDecompilationTaskRequest {
     /**
-     * 
+     * The ID of the function for which we are creating the decompilation task
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsAIDecompilationApicreateAiDecompilationTask
@@ -2363,7 +2363,7 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest {
 
 export interface FunctionsAIDecompilationApiGetAiDecompilationRatingRequest {
     /**
-     * 
+     * The ID of the function for which to get the rating
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsAIDecompilationApigetAiDecompilationRating
@@ -2373,7 +2373,7 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationRatingRequest {
 
 export interface FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest {
     /**
-     * 
+     * The ID of the function being decompiled
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsAIDecompilationApigetAiDecompilationTaskResult
@@ -2397,7 +2397,7 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest 
 
 export interface FunctionsAIDecompilationApiGetAiDecompilationTaskStatusRequest {
     /**
-     * 
+     * The ID of the function being checked
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsAIDecompilationApigetAiDecompilationTaskStatus
@@ -2431,7 +2431,7 @@ export interface FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest 
 
 export interface FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest {
     /**
-     * 
+     * The ID of the function being rated
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsAIDecompilationApiupsertAiDecompilationRating

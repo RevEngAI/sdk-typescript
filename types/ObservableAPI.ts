@@ -2609,7 +2609,7 @@ export class ObservableFunctionsAIDecompilationApi {
     /**
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
-     * @param functionId
+     * @param functionId The ID of the function for which we are creating the decompilation task
      */
     public createAiDecompilationTaskWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
@@ -2634,7 +2634,7 @@ export class ObservableFunctionsAIDecompilationApi {
     /**
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
-     * @param functionId
+     * @param functionId The ID of the function for which we are creating the decompilation task
      */
     public createAiDecompilationTask(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponse> {
         return this.createAiDecompilationTaskWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
@@ -2712,7 +2712,7 @@ export class ObservableFunctionsAIDecompilationApi {
 
     /**
      * Get rating for AI decompilation
-     * @param functionId
+     * @param functionId The ID of the function for which to get the rating
      */
     public getAiDecompilationRatingWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetAiDecompilationRatingResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
@@ -2736,7 +2736,7 @@ export class ObservableFunctionsAIDecompilationApi {
 
     /**
      * Get rating for AI decompilation
-     * @param functionId
+     * @param functionId The ID of the function for which to get the rating
      */
     public getAiDecompilationRating(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseGetAiDecompilationRatingResponse> {
         return this.getAiDecompilationRatingWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetAiDecompilationRatingResponse>) => apiResponse.data));
@@ -2745,7 +2745,7 @@ export class ObservableFunctionsAIDecompilationApi {
     /**
      * Polls the AI Decompilation Process
      * Polls AI Decompilation Process
-     * @param functionId
+     * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
      * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
      */
@@ -2772,7 +2772,7 @@ export class ObservableFunctionsAIDecompilationApi {
     /**
      * Polls the AI Decompilation Process
      * Polls AI Decompilation Process
-     * @param functionId
+     * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
      * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
      */
@@ -2782,7 +2782,7 @@ export class ObservableFunctionsAIDecompilationApi {
 
     /**
      * Check the status of a function ai decompilation
-     * @param functionId
+     * @param functionId The ID of the function being checked
      */
     public getAiDecompilationTaskStatusWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionTaskResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
@@ -2806,7 +2806,7 @@ export class ObservableFunctionsAIDecompilationApi {
 
     /**
      * Check the status of a function ai decompilation
-     * @param functionId
+     * @param functionId The ID of the function being checked
      */
     public getAiDecompilationTaskStatus(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionTaskResponse> {
         return this.getAiDecompilationTaskStatusWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionTaskResponse>) => apiResponse.data));
@@ -2852,7 +2852,7 @@ export class ObservableFunctionsAIDecompilationApi {
 
     /**
      * Upsert rating for AI decompilation
-     * @param functionId
+     * @param functionId The ID of the function being rated
      * @param upsertAiDecomplationRatingRequest
      */
     public upsertAiDecompilationRatingWithHttpInfo(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
@@ -2877,7 +2877,7 @@ export class ObservableFunctionsAIDecompilationApi {
 
     /**
      * Upsert rating for AI decompilation
-     * @param functionId
+     * @param functionId The ID of the function being rated
      * @param upsertAiDecomplationRatingRequest
      */
     public upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: ConfigurationOptions): Observable<BaseResponse> {

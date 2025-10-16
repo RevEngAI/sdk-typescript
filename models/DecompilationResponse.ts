@@ -12,6 +12,9 @@
 import { HttpFile } from '../http/http';
 
 export class DecompilationResponse {
+    /**
+    * The ID of the function
+    */
     'functionId': number;
     'decompilation': string;
     'callingConvention': string;
@@ -25,7 +28,7 @@ export class DecompilationResponse {
             "name": "functionId",
             "baseName": "function_id",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
             "name": "decompilation",

@@ -35,7 +35,7 @@ export class MatchedFunctionSuggestion {
             "name": "functionId",
             "baseName": "function_id",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
             "name": "functionVaddr",
