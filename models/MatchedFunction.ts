@@ -12,6 +12,9 @@
 import { HttpFile } from '../http/http';
 
 export class MatchedFunction {
+    /**
+    * Unique identifier of the matched function
+    */
     'functionId': number;
     'binaryId': number;
     'functionName': string;
@@ -33,7 +36,7 @@ export class MatchedFunction {
             "name": "functionId",
             "baseName": "function_id",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
             "name": "binaryId",

@@ -1871,7 +1871,7 @@ export class PromiseFunctionsAIDecompilationApi {
     /**
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
-     * @param functionId
+     * @param functionId The ID of the function for which we are creating the decompilation task
      */
     public createAiDecompilationTaskWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
         const observableOptions = wrapOptions(_options);
@@ -1882,7 +1882,7 @@ export class PromiseFunctionsAIDecompilationApi {
     /**
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
-     * @param functionId
+     * @param functionId The ID of the function for which we are creating the decompilation task
      */
     public createAiDecompilationTask(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
         const observableOptions = wrapOptions(_options);
@@ -1938,7 +1938,7 @@ export class PromiseFunctionsAIDecompilationApi {
 
     /**
      * Get rating for AI decompilation
-     * @param functionId
+     * @param functionId The ID of the function for which to get the rating
      */
     public getAiDecompilationRatingWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationRatingResponse>> {
         const observableOptions = wrapOptions(_options);
@@ -1948,7 +1948,7 @@ export class PromiseFunctionsAIDecompilationApi {
 
     /**
      * Get rating for AI decompilation
-     * @param functionId
+     * @param functionId The ID of the function for which to get the rating
      */
     public getAiDecompilationRating(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetAiDecompilationRatingResponse> {
         const observableOptions = wrapOptions(_options);
@@ -1959,7 +1959,7 @@ export class PromiseFunctionsAIDecompilationApi {
     /**
      * Polls the AI Decompilation Process
      * Polls AI Decompilation Process
-     * @param functionId
+     * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
      * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
      */
@@ -1972,7 +1972,7 @@ export class PromiseFunctionsAIDecompilationApi {
     /**
      * Polls the AI Decompilation Process
      * Polls AI Decompilation Process
-     * @param functionId
+     * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
      * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
      */
@@ -1984,7 +1984,7 @@ export class PromiseFunctionsAIDecompilationApi {
 
     /**
      * Check the status of a function ai decompilation
-     * @param functionId
+     * @param functionId The ID of the function being checked
      */
     public getAiDecompilationTaskStatusWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionTaskResponse>> {
         const observableOptions = wrapOptions(_options);
@@ -1994,7 +1994,7 @@ export class PromiseFunctionsAIDecompilationApi {
 
     /**
      * Check the status of a function ai decompilation
-     * @param functionId
+     * @param functionId The ID of the function being checked
      */
     public getAiDecompilationTaskStatus(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionTaskResponse> {
         const observableOptions = wrapOptions(_options);
@@ -2030,7 +2030,7 @@ export class PromiseFunctionsAIDecompilationApi {
 
     /**
      * Upsert rating for AI decompilation
-     * @param functionId
+     * @param functionId The ID of the function being rated
      * @param upsertAiDecomplationRatingRequest
      */
     public upsertAiDecompilationRatingWithHttpInfo(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
@@ -2041,7 +2041,7 @@ export class PromiseFunctionsAIDecompilationApi {
 
     /**
      * Upsert rating for AI decompilation
-     * @param functionId
+     * @param functionId The ID of the function being rated
      * @param upsertAiDecomplationRatingRequest
      */
     public upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {

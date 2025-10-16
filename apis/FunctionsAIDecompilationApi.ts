@@ -83,7 +83,7 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
     /**
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
-     * @param functionId 
+     * @param functionId The ID of the function for which we are creating the decompilation task
      */
     public async createAiDecompilationTask(functionId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -204,7 +204,7 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
 
     /**
      * Get rating for AI decompilation
-     * @param functionId 
+     * @param functionId The ID of the function for which to get the rating
      */
     public async getAiDecompilationRating(functionId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -242,7 +242,7 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
     /**
      * Polls the AI Decompilation Process
      * Polls AI Decompilation Process
-     * @param functionId 
+     * @param functionId The ID of the function being decompiled
      * @param summarise Generate a summary for the decompilation
      * @param generateInlineComments Generate inline comments for the decompilation (only works if summarise is enabled)
      */
@@ -293,7 +293,7 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
 
     /**
      * Check the status of a function ai decompilation
-     * @param functionId 
+     * @param functionId The ID of the function being checked
      */
     public async getAiDecompilationTaskStatus(functionId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -394,7 +394,7 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
 
     /**
      * Upsert rating for AI decompilation
-     * @param functionId 
+     * @param functionId The ID of the function being rated
      * @param upsertAiDecomplationRatingRequest 
      */
     public async upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: Configuration): Promise<RequestContext> {

@@ -50,7 +50,7 @@ export class FunctionSearchResult {
             "name": "functionId",
             "baseName": "function_id",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
             "name": "functionName",
