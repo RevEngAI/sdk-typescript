@@ -31,7 +31,7 @@ const request: FunctionsRenamingHistoryApiBatchRenameFunctionRequest = {
     functions: [
       {
         functionId: 1,
-        newName: "",
+        newName: "newName_example",
         newMangledName: "newMangledName_example",
       },
     ],
@@ -146,7 +146,7 @@ const request: FunctionsRenamingHistoryApiRenameFunctionIdRequest = {
   functionId: 1,
   
   functionRename: {
-    newName: "",
+    newName: "newName_example",
     newMangledName: "newMangledName_example",
   },
 };

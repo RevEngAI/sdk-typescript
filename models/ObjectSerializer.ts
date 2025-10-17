@@ -78,6 +78,7 @@ export * from '../models/BaseResponseListCommentResponse';
 export * from '../models/BaseResponseListDieMatch';
 export * from '../models/BaseResponseListFunctionNameHistory';
 export * from '../models/BaseResponseListSBOM';
+export * from '../models/BaseResponseListTagOriginBoxPlotConfidence';
 export * from '../models/BaseResponseListUserActivityResponse';
 export * from '../models/BaseResponseLoginResponse';
 export * from '../models/BaseResponseLogs';
@@ -110,6 +111,7 @@ export * from '../models/BinarySearchResult';
 export * from '../models/BinaryTaskStatus';
 export * from '../models/Block';
 export * from '../models/BlockCommentsGenerationForFunctionResponse';
+export * from '../models/BoxPlotConfidence';
 export * from '../models/CalleeFunctionInfo';
 export * from '../models/CalleesCallerFunctionsResponse';
 export * from '../models/CallerFunctionInfo';
@@ -225,6 +227,7 @@ export * from '../models/NetworkOverviewDnsAnswer';
 export * from '../models/NetworkOverviewMetadata';
 export * from '../models/NetworkOverviewResponse';
 export * from '../models/Order';
+export * from '../models/Origin';
 export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
 export * from '../models/PaginationModel';
@@ -268,9 +271,12 @@ export * from '../models/TTPSData';
 export * from '../models/TTPSElement';
 export * from '../models/TTPSOccurance';
 export * from '../models/Tag';
+export * from '../models/TagConfidenceBody';
+export * from '../models/TagOriginBoxPlotConfidence';
 export * from '../models/TagResponse';
 export * from '../models/TagSearchResponse';
 export * from '../models/TagSearchResult';
+export * from '../models/Tags';
 export * from '../models/TaskResponse';
 export * from '../models/TaskStatus';
 export * from '../models/TimestampModel';
@@ -365,6 +371,7 @@ import { BaseResponseListCommentResponse } from '../models/BaseResponseListComme
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
 import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
+import { BaseResponseListTagOriginBoxPlotConfidence } from '../models/BaseResponseListTagOriginBoxPlotConfidence';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
@@ -397,6 +404,7 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
+import { BoxPlotConfidence } from '../models/BoxPlotConfidence';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -512,6 +520,7 @@ import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata   , NetworkOverviewMetadataTypeEnum   } from '../models/NetworkOverviewMetadata';
 import { NetworkOverviewResponse } from '../models/NetworkOverviewResponse';
 import { Order } from '../models/Order';
+import { Origin } from '../models/Origin';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
@@ -555,9 +564,12 @@ import { TTPSData } from '../models/TTPSData';
 import { TTPSElement } from '../models/TTPSElement';
 import { TTPSOccurance } from '../models/TTPSOccurance';
 import { Tag } from '../models/Tag';
+import { TagConfidenceBody } from '../models/TagConfidenceBody';
+import { TagOriginBoxPlotConfidence } from '../models/TagOriginBoxPlotConfidence';
 import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
+import { Tags   } from '../models/Tags';
 import { TaskResponse   } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TimestampModel } from '../models/TimestampModel';
@@ -603,6 +615,7 @@ let enumsMap: Set<string> = new Set<string>([
     "ModelName",
     "NetworkOverviewMetadataTypeEnum",
     "Order",
+    "Origin",
     "Platform",
     "SeverityType",
     "StatusInput",
@@ -689,6 +702,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseListDieMatch": BaseResponseListDieMatch,
     "BaseResponseListFunctionNameHistory": BaseResponseListFunctionNameHistory,
     "BaseResponseListSBOM": BaseResponseListSBOM,
+    "BaseResponseListTagOriginBoxPlotConfidence": BaseResponseListTagOriginBoxPlotConfidence,
     "BaseResponseListUserActivityResponse": BaseResponseListUserActivityResponse,
     "BaseResponseLoginResponse": BaseResponseLoginResponse,
     "BaseResponseLogs": BaseResponseLogs,
@@ -720,6 +734,7 @@ let typeMap: {[index: string]: any} = {
     "BinarySearchResult": BinarySearchResult,
     "Block": Block,
     "BlockCommentsGenerationForFunctionResponse": BlockCommentsGenerationForFunctionResponse,
+    "BoxPlotConfidence": BoxPlotConfidence,
     "CalleeFunctionInfo": CalleeFunctionInfo,
     "CalleesCallerFunctionsResponse": CalleesCallerFunctionsResponse,
     "CallerFunctionInfo": CallerFunctionInfo,
@@ -866,9 +881,12 @@ let typeMap: {[index: string]: any} = {
     "TTPSElement": TTPSElement,
     "TTPSOccurance": TTPSOccurance,
     "Tag": Tag,
+    "TagConfidenceBody": TagConfidenceBody,
+    "TagOriginBoxPlotConfidence": TagOriginBoxPlotConfidence,
     "TagResponse": TagResponse,
     "TagSearchResponse": TagSearchResponse,
     "TagSearchResult": TagSearchResult,
+    "Tags": Tags,
     "TaskResponse": TaskResponse,
     "TimestampModel": TimestampModel,
     "TypeDefinition": TypeDefinition,

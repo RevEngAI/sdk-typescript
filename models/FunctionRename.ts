@@ -15,8 +15,11 @@ export class FunctionRename {
     /**
     * The new name for the function
     */
-    'newName'?: string;
-    'newMangledName'?: string | null;
+    'newName': string;
+    /**
+    * The new mangled name for the function
+    */
+    'newMangledName': string;
 
     static readonly discriminator: string | undefined = undefined;
 

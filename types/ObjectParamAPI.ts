@@ -82,6 +82,7 @@ import { BaseResponseListCommentResponse } from '../models/BaseResponseListComme
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
 import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
+import { BaseResponseListTagOriginBoxPlotConfidence } from '../models/BaseResponseListTagOriginBoxPlotConfidence';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
@@ -114,6 +115,7 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
+import { BoxPlotConfidence } from '../models/BoxPlotConfidence';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -229,6 +231,7 @@ import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata } from '../models/NetworkOverviewMetadata';
 import { NetworkOverviewResponse } from '../models/NetworkOverviewResponse';
 import { Order } from '../models/Order';
+import { Origin } from '../models/Origin';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
@@ -272,9 +275,12 @@ import { TTPSData } from '../models/TTPSData';
 import { TTPSElement } from '../models/TTPSElement';
 import { TTPSOccurance } from '../models/TTPSOccurance';
 import { Tag } from '../models/Tag';
+import { TagConfidenceBody } from '../models/TagConfidenceBody';
+import { TagOriginBoxPlotConfidence } from '../models/TagOriginBoxPlotConfidence';
 import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
+import { Tags } from '../models/Tags';
 import { TaskResponse } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TimestampModel } from '../models/TimestampModel';
@@ -2057,6 +2063,52 @@ export class ObjectCollectionsApi {
      */
     public updateCollectionTags(param: CollectionsApiUpdateCollectionTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionTagsUpdateResponse> {
         return this.api.updateCollectionTags(param.collectionId, param.collectionTagsUpdateRequest,  options).toPromise();
+    }
+
+}
+
+import { ObservableConfidenceApi } from "./ObservableAPI";
+import { ConfidenceApiRequestFactory, ConfidenceApiResponseProcessor} from "../apis/ConfidenceApi";
+
+export interface ConfidenceApiGetAnalysisTagScoreRequest {
+    /**
+     * The analysis to calculate the tag scores for
+     * Defaults to: undefined
+     * @type number
+     * @memberof ConfidenceApigetAnalysisTagScore
+     */
+    analysisId: number
+    /**
+     * 
+     * @type TagConfidenceBody
+     * @memberof ConfidenceApigetAnalysisTagScore
+     */
+    tagConfidenceBody: TagConfidenceBody
+}
+
+export class ObjectConfidenceApi {
+    private api: ObservableConfidenceApi
+
+    public constructor(configuration: Configuration, requestFactory?: ConfidenceApiRequestFactory, responseProcessor?: ConfidenceApiResponseProcessor) {
+        this.api = new ObservableConfidenceApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Accepts a analysis ID and a list of tags, returns the confidence score for each tag in the list
+     * Calculate Tag Confidence Score for an Analysis
+     * @param param the request object
+     */
+    public getAnalysisTagScoreWithHttpInfo(param: ConfidenceApiGetAnalysisTagScoreRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListTagOriginBoxPlotConfidence>> {
+        return this.api.getAnalysisTagScoreWithHttpInfo(param.analysisId, param.tagConfidenceBody,  options).toPromise();
+    }
+
+    /**
+     * Accepts a analysis ID and a list of tags, returns the confidence score for each tag in the list
+     * Calculate Tag Confidence Score for an Analysis
+     * @param param the request object
+     */
+    public getAnalysisTagScore(param: ConfidenceApiGetAnalysisTagScoreRequest, options?: ConfigurationOptions): Promise<BaseResponseListTagOriginBoxPlotConfidence> {
+        return this.api.getAnalysisTagScore(param.analysisId, param.tagConfidenceBody,  options).toPromise();
     }
 
 }

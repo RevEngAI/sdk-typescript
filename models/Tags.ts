@@ -9,21 +9,18 @@
  * Do not edit the class manually.
  */
 
+import { Origin } from '../models/Origin';
 import { HttpFile } from '../http/http';
 
-export class FunctionRenameMap {
+export class Tags {
     /**
-    * The ID of the function to rename
+    * The tag name
     */
-    'functionId': number;
+    'tag': string;
     /**
-    * The new name for the function
+    * The origin of the tag
     */
-    'newName': string;
-    /**
-    * The new mangled name for the function
-    */
-    'newMangledName': string;
+    'origin': Origin;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,28 +28,24 @@ export class FunctionRenameMap {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "functionId",
-            "baseName": "function_id",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "newName",
-            "baseName": "new_name",
+            "name": "tag",
+            "baseName": "tag",
             "type": "string",
             "format": ""
         },
         {
-            "name": "newMangledName",
-            "baseName": "new_mangled_name",
-            "type": "string",
+            "name": "origin",
+            "baseName": "origin",
+            "type": "Origin",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionRenameMap.attributeTypeMap;
+        return Tags.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+

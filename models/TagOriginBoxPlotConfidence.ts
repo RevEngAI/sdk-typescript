@@ -9,21 +9,13 @@
  * Do not edit the class manually.
  */
 
+import { BoxPlotConfidence } from '../models/BoxPlotConfidence';
+import { Tags } from '../models/Tags';
 import { HttpFile } from '../http/http';
 
-export class FunctionRenameMap {
-    /**
-    * The ID of the function to rename
-    */
-    'functionId': number;
-    /**
-    * The new name for the function
-    */
-    'newName': string;
-    /**
-    * The new mangled name for the function
-    */
-    'newMangledName': string;
+export class TagOriginBoxPlotConfidence {
+    'tag': Tags;
+    'boxPlot': BoxPlotConfidence;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,26 +23,20 @@ export class FunctionRenameMap {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "functionId",
-            "baseName": "function_id",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "newName",
-            "baseName": "new_name",
-            "type": "string",
+            "name": "tag",
+            "baseName": "tag",
+            "type": "Tags",
             "format": ""
         },
         {
-            "name": "newMangledName",
-            "baseName": "new_mangled_name",
-            "type": "string",
+            "name": "boxPlot",
+            "baseName": "box_plot",
+            "type": "BoxPlotConfidence",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionRenameMap.attributeTypeMap;
+        return TagOriginBoxPlotConfidence.attributeTypeMap;
     }
 
     public constructor() {
