@@ -9,13 +9,11 @@
  * Do not edit the class manually.
  */
 
+import { Tags } from '../models/Tags';
 import { HttpFile } from '../http/http';
 
-export class FunctionDataTypesParams {
-    /**
-    * The function ID\'s to generate/get data types for
-    */
-    'functionIds': Array<number>;
+export class TagConfidenceBody {
+    'tags': Array<Tags>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,14 +21,14 @@ export class FunctionDataTypesParams {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "functionIds",
-            "baseName": "function_ids",
-            "type": "Array<number>",
-            "format": "int64"
+            "name": "tags",
+            "baseName": "tags",
+            "type": "Array<Tags>",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionDataTypesParams.attributeTypeMap;
+        return TagConfidenceBody.attributeTypeMap;
     }
 
     public constructor() {

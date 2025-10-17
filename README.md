@@ -100,6 +100,7 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**updateCollection**](docs/CollectionsApi.md#updateCollection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 *CollectionsApi* | [**updateCollectionBinaries**](docs/CollectionsApi.md#updateCollectionBinaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**updateCollectionTags**](docs/CollectionsApi.md#updateCollectionTags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
+*ConfidenceApi* | [**getAnalysisTagScore**](docs/ConfidenceApi.md#getAnalysisTagScore) | **POST** /v2/confidence/analysis/{analysis_id}/tag_score | Calculate Tag Confidence Score for an Analysis
 *ExternalSourcesApi* | [**createExternalTaskMb**](docs/ExternalSourcesApi.md#createExternalTaskMb) | **POST** /v2/analysis/{analysis_id}/external/mb | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**createExternalTaskVt**](docs/ExternalSourcesApi.md#createExternalTaskVt) | **POST** /v2/analysis/{analysis_id}/external/vt | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**getMbData**](docs/ExternalSourcesApi.md#getMbData) | **GET** /v2/analysis/{analysis_id}/external/mb | Get MalwareBazaar data
@@ -238,6 +239,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseListDieMatch](BaseResponseListDieMatch.md)
  - [BaseResponseListFunctionNameHistory](BaseResponseListFunctionNameHistory.md)
  - [BaseResponseListSBOM](BaseResponseListSBOM.md)
+ - [BaseResponseListTagOriginBoxPlotConfidence](BaseResponseListTagOriginBoxPlotConfidence.md)
  - [BaseResponseListUserActivityResponse](BaseResponseListUserActivityResponse.md)
  - [BaseResponseLoginResponse](BaseResponseLoginResponse.md)
  - [BaseResponseLogs](BaseResponseLogs.md)
@@ -270,6 +272,7 @@ Class | Method | HTTP request | Description
  - [BinaryTaskStatus](BinaryTaskStatus.md)
  - [Block](Block.md)
  - [BlockCommentsGenerationForFunctionResponse](BlockCommentsGenerationForFunctionResponse.md)
+ - [BoxPlotConfidence](BoxPlotConfidence.md)
  - [CalleeFunctionInfo](CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](CallerFunctionInfo.md)
@@ -385,6 +388,7 @@ Class | Method | HTTP request | Description
  - [NetworkOverviewMetadata](NetworkOverviewMetadata.md)
  - [NetworkOverviewResponse](NetworkOverviewResponse.md)
  - [Order](Order.md)
+ - [Origin](Origin.md)
  - [PDBDebugModel](PDBDebugModel.md)
  - [PEModel](PEModel.md)
  - [PaginationModel](PaginationModel.md)
@@ -428,9 +432,12 @@ Class | Method | HTTP request | Description
  - [TTPSElement](TTPSElement.md)
  - [TTPSOccurance](TTPSOccurance.md)
  - [Tag](Tag.md)
+ - [TagConfidenceBody](TagConfidenceBody.md)
+ - [TagOriginBoxPlotConfidence](TagOriginBoxPlotConfidence.md)
  - [TagResponse](TagResponse.md)
  - [TagSearchResponse](TagSearchResponse.md)
  - [TagSearchResult](TagSearchResult.md)
+ - [Tags](Tags.md)
  - [TaskResponse](TaskResponse.md)
  - [TaskStatus](TaskStatus.md)
  - [TimestampModel](TimestampModel.md)

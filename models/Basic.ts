@@ -33,6 +33,10 @@ export class Basic {
     */
     'modelName': string;
     /**
+    * The model ID used for analysis
+    */
+    'modelId': number;
+    /**
     * The name of the owner of the binary
     */
     'ownerUsername': string;
@@ -91,6 +95,12 @@ export class Basic {
             "name": "modelName",
             "baseName": "model_name",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "modelId",
+            "baseName": "model_id",
+            "type": "number",
             "format": ""
         },
         {

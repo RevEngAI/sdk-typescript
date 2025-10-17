@@ -50,7 +50,7 @@ export class FunctionMatchingFilters {
             "name": "functionIds",
             "baseName": "function_ids",
             "type": "Array<number>",
-            "format": ""
+            "format": "int64"
         },
         {
             "name": "debugTypes",
