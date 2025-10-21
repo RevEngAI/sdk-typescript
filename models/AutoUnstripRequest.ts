@@ -28,6 +28,10 @@ export class AutoUnstripRequest {
     * Minimum number of matching functions required to consider for a match, default is 10
     */
     'minGroupSize'?: number;
+    /**
+    * If set to true, forces the system to bypass any cached results and perform a fresh computation
+    */
+    'noCache'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -56,6 +60,12 @@ export class AutoUnstripRequest {
             "name": "minGroupSize",
             "baseName": "min_group_size",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "noCache",
+            "baseName": "no_cache",
+            "type": "boolean",
             "format": ""
         }    ];
 
