@@ -107,6 +107,7 @@ const request: FunctionsCoreApiAnalysisFunctionMatchingRequest = {
     resultsPerFunction: 1,
     page: 1,
     pageSize: 0,
+    noCache: false,
   },
 };
 
@@ -169,6 +170,7 @@ const request: FunctionsCoreApiAutoUnstripRequest = {
     apply: false,
     confidenceThreshold: 90.0,
     minGroupSize: 10,
+    noCache: false,
   },
 };
 
@@ -239,6 +241,7 @@ const request: FunctionsCoreApiBatchFunctionMatchingRequest = {
     resultsPerFunction: 1,
     page: 1,
     pageSize: 0,
+    noCache: false,
   },
 };
 

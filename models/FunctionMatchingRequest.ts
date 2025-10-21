@@ -38,6 +38,10 @@ export class FunctionMatchingRequest {
     * Number of functions to return per page, default is 0 (all functions), max is 1000
     */
     'pageSize'?: number;
+    /**
+    * If set to true, forces the system to bypass any cached results and perform a fresh computation
+    */
+    'noCache'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -84,6 +88,12 @@ export class FunctionMatchingRequest {
             "name": "pageSize",
             "baseName": "page_size",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "noCache",
+            "baseName": "no_cache",
+            "type": "boolean",
             "format": ""
         }    ];
 
