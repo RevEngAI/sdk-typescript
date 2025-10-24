@@ -196,6 +196,7 @@ import { FunctionRename } from '../models/FunctionRename';
 import { FunctionRenameMap } from '../models/FunctionRenameMap';
 import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
 import { FunctionSearchResult } from '../models/FunctionSearchResult';
+import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionString } from '../models/FunctionString';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionTaskResponse } from '../models/FunctionTaskResponse';

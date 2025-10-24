@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+import { FunctionSourceType } from '../models/FunctionSourceType';
 import { HttpFile } from '../http/http';
 
 export class FunctionNameHistory {
@@ -25,13 +26,17 @@ export class FunctionNameHistory {
     */
     'functionName': string;
     /**
+    * The mangled name of the function
+    */
+    'mangledName': string;
+    /**
     * Whether the function is debugged
     */
     'isDebug': boolean;
     /**
     * The source type of the function
     */
-    'sourceType': string;
+    'sourceType': FunctionSourceType;
     /**
     * The timestamp when the function name was created
     */
@@ -61,6 +66,12 @@ export class FunctionNameHistory {
             "format": ""
         },
         {
+            "name": "mangledName",
+            "baseName": "mangled_name",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "isDebug",
             "baseName": "is_debug",
             "type": "boolean",
@@ -69,7 +80,7 @@ export class FunctionNameHistory {
         {
             "name": "sourceType",
             "baseName": "source_type",
-            "type": "string",
+            "type": "FunctionSourceType",
             "format": ""
         },
         {
@@ -86,3 +97,5 @@ export class FunctionNameHistory {
     public constructor() {
     }
 }
+
+
