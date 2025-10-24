@@ -191,6 +191,7 @@ export * from '../models/FunctionRename';
 export * from '../models/FunctionRenameMap';
 export * from '../models/FunctionSearchResponse';
 export * from '../models/FunctionSearchResult';
+export * from '../models/FunctionSourceType';
 export * from '../models/FunctionString';
 export * from '../models/FunctionStringsResponse';
 export * from '../models/FunctionTaskResponse';
@@ -478,12 +479,13 @@ import { FunctionMatchingBatchResponse } from '../models/FunctionMatchingBatchRe
 import { FunctionMatchingFilters   , FunctionMatchingFiltersDebugTypesEnum   } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
 import { FunctionMatchingResultWithBestMatch } from '../models/FunctionMatchingResultWithBestMatch';
-import { FunctionNameHistory } from '../models/FunctionNameHistory';
+import { FunctionNameHistory        } from '../models/FunctionNameHistory';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
 import { FunctionRenameMap } from '../models/FunctionRenameMap';
 import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
 import { FunctionSearchResult } from '../models/FunctionSearchResult';
+import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionString } from '../models/FunctionString';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionTaskResponse   } from '../models/FunctionTaskResponse';
@@ -610,6 +612,7 @@ let enumsMap: Set<string> = new Set<string>([
     "FileFormat",
     "Filters",
     "FunctionMatchingFiltersDebugTypesEnum",
+    "FunctionSourceType",
     "FunctionTaskStatus",
     "ISA",
     "ModelName",

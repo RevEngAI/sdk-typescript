@@ -352,6 +352,7 @@ Class | Method | HTTP request | Description
  - [FunctionRenameMap](FunctionRenameMap.md)
  - [FunctionSearchResponse](FunctionSearchResponse.md)
  - [FunctionSearchResult](FunctionSearchResult.md)
+ - [FunctionSourceType](FunctionSourceType.md)
  - [FunctionString](FunctionString.md)
  - [FunctionStringsResponse](FunctionStringsResponse.md)
  - [FunctionTaskResponse](FunctionTaskResponse.md)
