@@ -29,6 +29,10 @@ export class AutoUnstripRequest {
     */
     'minGroupSize'?: number;
     /**
+    * If set to true, only returns the status of the auto-unstrip operation without the actual results
+    */
+    'statusOnly'?: boolean;
+    /**
     * If set to true, forces the system to bypass any cached results and perform a fresh computation
     */
     'noCache'?: boolean;
@@ -60,6 +64,12 @@ export class AutoUnstripRequest {
             "name": "minGroupSize",
             "baseName": "min_group_size",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "statusOnly",
+            "baseName": "status_only",
+            "type": "boolean",
             "format": ""
         },
         {

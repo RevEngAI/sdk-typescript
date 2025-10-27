@@ -22,7 +22,7 @@ export class FunctionMatchingBatchResponse {
     'errorMessage'?: string | null;
     'currentPage'?: number | null;
     'totalPages'?: number | null;
-    'matches': Array<FunctionMatchingResultWithBestMatch>;
+    'matches'?: Array<FunctionMatchingResultWithBestMatch> | null;
 
     static readonly discriminator: string | undefined = undefined;
 

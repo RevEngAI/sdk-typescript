@@ -39,6 +39,10 @@ export class FunctionMatchingRequest {
     */
     'pageSize'?: number;
     /**
+    * If set to true, only returns the status of the matching operation without the actual results
+    */
+    'statusOnly'?: boolean;
+    /**
     * If set to true, forces the system to bypass any cached results and perform a fresh computation
     */
     'noCache'?: boolean;
@@ -88,6 +92,12 @@ export class FunctionMatchingRequest {
             "name": "pageSize",
             "baseName": "page_size",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "statusOnly",
+            "baseName": "status_only",
+            "type": "boolean",
             "format": ""
         },
         {
