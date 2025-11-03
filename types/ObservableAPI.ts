@@ -60,7 +60,6 @@ import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponse
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
 import { BaseResponseCommunities } from '../models/BaseResponseCommunities';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
-import { BaseResponseDecompilationResponse } from '../models/BaseResponseDecompilationResponse';
 import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseDynamicExecutionStatus } from '../models/BaseResponseDynamicExecutionStatus';
 import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
@@ -147,7 +146,6 @@ import { ConfidenceType } from '../models/ConfidenceType';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
-import { DecompilationResponse } from '../models/DecompilationResponse';
 import { DieMatch } from '../models/DieMatch';
 import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInput';
 import { ELFImportModel } from '../models/ELFImportModel';
@@ -3752,38 +3750,6 @@ export class ObservableFunctionsDecompilationApi {
     }
 
     /**
-     * Check the status of a function decompilation
-     * @param functionId
-     */
-    public checkFunctionDecompilationTaskWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionTaskResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.checkFunctionDecompilationTask(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.checkFunctionDecompilationTaskWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Check the status of a function decompilation
-     * @param functionId
-     */
-    public checkFunctionDecompilationTask(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionTaskResponse> {
-        return this.checkFunctionDecompilationTaskWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionTaskResponse>) => apiResponse.data));
-    }
-
-    /**
      * Creates a comment associated with a specified function).
      * Create a comment for this function
      * @param functionId
@@ -3817,38 +3783,6 @@ export class ObservableFunctionsDecompilationApi {
      */
     public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
         return this.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Queues a function decompilation
-     * @param functionId
-     */
-    public createFunctionDecompilationTaskWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStr>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createFunctionDecompilationTask(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createFunctionDecompilationTaskWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Queues a function decompilation
-     * @param functionId
-     */
-    public createFunctionDecompilationTask(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseStr> {
-        return this.createFunctionDecompilationTaskWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStr>) => apiResponse.data));
     }
 
     /**
@@ -3919,38 +3853,6 @@ export class ObservableFunctionsDecompilationApi {
      */
     public getDecompilationComments(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
         return this.getDecompilationCommentsWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Get decompilation result
-     * @param functionId
-     */
-    public getFunctionDecompilationWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDecompilationResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionDecompilation(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionDecompilationWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get decompilation result
-     * @param functionId
-     */
-    public getFunctionDecompilation(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseDecompilationResponse> {
-        return this.getFunctionDecompilationWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDecompilationResponse>) => apiResponse.data));
     }
 
     /**

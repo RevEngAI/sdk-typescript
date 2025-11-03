@@ -59,7 +59,6 @@ import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponse
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
 import { BaseResponseCommunities } from '../models/BaseResponseCommunities';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
-import { BaseResponseDecompilationResponse } from '../models/BaseResponseDecompilationResponse';
 import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseDynamicExecutionStatus } from '../models/BaseResponseDynamicExecutionStatus';
 import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
@@ -146,7 +145,6 @@ import { ConfidenceType } from '../models/ConfidenceType';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
-import { DecompilationResponse } from '../models/DecompilationResponse';
 import { DieMatch } from '../models/DieMatch';
 import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInput';
 import { ELFImportModel } from '../models/ELFImportModel';
@@ -3388,16 +3386,6 @@ export class ObjectFunctionsDataTypesApi {
 import { ObservableFunctionsDecompilationApi } from "./ObservableAPI";
 import { FunctionsDecompilationApiRequestFactory, FunctionsDecompilationApiResponseProcessor} from "../apis/FunctionsDecompilationApi";
 
-export interface FunctionsDecompilationApiCheckFunctionDecompilationTaskRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApicheckFunctionDecompilationTask
-     */
-    functionId: number
-}
-
 export interface FunctionsDecompilationApiCreateDecompilationCommentRequest {
     /**
      * 
@@ -3412,16 +3400,6 @@ export interface FunctionsDecompilationApiCreateDecompilationCommentRequest {
      * @memberof FunctionsDecompilationApicreateDecompilationComment
      */
     functionCommentCreateRequest: FunctionCommentCreateRequest
-}
-
-export interface FunctionsDecompilationApiCreateFunctionDecompilationTaskRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApicreateFunctionDecompilationTask
-     */
-    functionId: number
 }
 
 export interface FunctionsDecompilationApiDeleteDecompilationCommentRequest {
@@ -3448,16 +3426,6 @@ export interface FunctionsDecompilationApiGetDecompilationCommentsRequest {
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsDecompilationApigetDecompilationComments
-     */
-    functionId: number
-}
-
-export interface FunctionsDecompilationApiGetFunctionDecompilationRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApigetFunctionDecompilation
      */
     functionId: number
 }
@@ -3494,22 +3462,6 @@ export class ObjectFunctionsDecompilationApi {
     }
 
     /**
-     * Check the status of a function decompilation
-     * @param param the request object
-     */
-    public checkFunctionDecompilationTaskWithHttpInfo(param: FunctionsDecompilationApiCheckFunctionDecompilationTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionTaskResponse>> {
-        return this.api.checkFunctionDecompilationTaskWithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of a function decompilation
-     * @param param the request object
-     */
-    public checkFunctionDecompilationTask(param: FunctionsDecompilationApiCheckFunctionDecompilationTaskRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionTaskResponse> {
-        return this.api.checkFunctionDecompilationTask(param.functionId,  options).toPromise();
-    }
-
-    /**
      * Creates a comment associated with a specified function).
      * Create a comment for this function
      * @param param the request object
@@ -3525,22 +3477,6 @@ export class ObjectFunctionsDecompilationApi {
      */
     public createDecompilationComment(param: FunctionsDecompilationApiCreateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
         return this.api.createDecompilationComment(param.functionId, param.functionCommentCreateRequest,  options).toPromise();
-    }
-
-    /**
-     * Queues a function decompilation
-     * @param param the request object
-     */
-    public createFunctionDecompilationTaskWithHttpInfo(param: FunctionsDecompilationApiCreateFunctionDecompilationTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
-        return this.api.createFunctionDecompilationTaskWithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Queues a function decompilation
-     * @param param the request object
-     */
-    public createFunctionDecompilationTask(param: FunctionsDecompilationApiCreateFunctionDecompilationTaskRequest, options?: ConfigurationOptions): Promise<BaseResponseStr> {
-        return this.api.createFunctionDecompilationTask(param.functionId,  options).toPromise();
     }
 
     /**
@@ -3577,22 +3513,6 @@ export class ObjectFunctionsDecompilationApi {
      */
     public getDecompilationComments(param: FunctionsDecompilationApiGetDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         return this.api.getDecompilationComments(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Get decompilation result
-     * @param param the request object
-     */
-    public getFunctionDecompilationWithHttpInfo(param: FunctionsDecompilationApiGetFunctionDecompilationRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseDecompilationResponse>> {
-        return this.api.getFunctionDecompilationWithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Get decompilation result
-     * @param param the request object
-     */
-    public getFunctionDecompilation(param: FunctionsDecompilationApiGetFunctionDecompilationRequest, options?: ConfigurationOptions): Promise<BaseResponseDecompilationResponse> {
-        return this.api.getFunctionDecompilation(param.functionId,  options).toPromise();
     }
 
     /**

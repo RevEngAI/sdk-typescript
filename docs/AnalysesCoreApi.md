@@ -535,7 +535,7 @@ const request: AnalysesCoreApiListAnalysesRequest = {
   ],
     // Show analysis belonging to the model (optional)
   modelName: [
-    "binnet-0.5-x86-windows",
+    "binnet-0.7-x86-64-windows",
   ],
     // Show analysis that have a dynamic execution with the given status (optional)
   dynamicExecutionStatus: "PENDING",

@@ -11,10 +11,7 @@ import {SecurityAuthentication} from '../auth/auth';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
-import { BaseResponseDecompilationResponse } from '../models/BaseResponseDecompilationResponse';
-import { BaseResponseFunctionTaskResponse } from '../models/BaseResponseFunctionTaskResponse';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
-import { BaseResponseStr } from '../models/BaseResponseStr';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateRequest';
 
@@ -22,43 +19,6 @@ import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateReq
  * no description
  */
 export class FunctionsDecompilationApiRequestFactory extends BaseAPIRequestFactory {
-
-    /**
-     * Check the status of a function decompilation
-     * @param functionId 
-     */
-    public async checkFunctionDecompilationTask(functionId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'functionId' is not null or undefined
-        if (functionId === null || functionId === undefined) {
-            throw new RequiredError("FunctionsDecompilationApi", "checkFunctionDecompilationTask", "functionId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/functions/{function_id}/decompilation/status'
-            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
 
     /**
      * Creates a comment associated with a specified function).
@@ -100,43 +60,6 @@ export class FunctionsDecompilationApiRequestFactory extends BaseAPIRequestFacto
             contentType
         );
         requestContext.setBody(serializedBody);
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Queues a function decompilation
-     * @param functionId 
-     */
-    public async createFunctionDecompilationTask(functionId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'functionId' is not null or undefined
-        if (functionId === null || functionId === undefined) {
-            throw new RequiredError("FunctionsDecompilationApi", "createFunctionDecompilationTask", "functionId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/functions/{function_id}/decompilation'
-            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -238,43 +161,6 @@ export class FunctionsDecompilationApiRequestFactory extends BaseAPIRequestFacto
     }
 
     /**
-     * Get decompilation result
-     * @param functionId 
-     */
-    public async getFunctionDecompilation(functionId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'functionId' is not null or undefined
-        if (functionId === null || functionId === undefined) {
-            throw new RequiredError("FunctionsDecompilationApi", "getFunctionDecompilation", "functionId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/functions/{function_id}/decompilation'
-            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Updates the content of an existing comment. Users can only update their own comments.
      * Update a comment
      * @param commentId 
@@ -346,42 +232,6 @@ export class FunctionsDecompilationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to checkFunctionDecompilationTask
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async checkFunctionDecompilationTaskWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseFunctionTaskResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseFunctionTaskResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseFunctionTaskResponse", ""
-            ) as BaseResponseFunctionTaskResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseFunctionTaskResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseFunctionTaskResponse", ""
-            ) as BaseResponseFunctionTaskResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
      * @params response Response returned by the server for a request to createDecompilationComment
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -415,49 +265,6 @@ export class FunctionsDecompilationApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseCommentResponse", ""
             ) as BaseResponseCommentResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to createFunctionDecompilationTask
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async createFunctionDecompilationTaskWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseStr >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("202", response.httpStatusCode)) {
-            const body: BaseResponseStr = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseStr", ""
-            ) as BaseResponseStr;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-        if (isCodeInRange("409", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Security checks already extracted or queued", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseStr = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseStr", ""
-            ) as BaseResponseStr;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -544,49 +351,6 @@ export class FunctionsDecompilationApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseListCommentResponse", ""
             ) as BaseResponseListCommentResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getFunctionDecompilation
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getFunctionDecompilationWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseDecompilationResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseDecompilationResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseDecompilationResponse", ""
-            ) as BaseResponseDecompilationResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Unable to find a decompilation for the function_id given", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseDecompilationResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseDecompilationResponse", ""
-            ) as BaseResponseDecompilationResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

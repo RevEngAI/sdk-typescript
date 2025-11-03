@@ -59,7 +59,6 @@ import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponse
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
 import { BaseResponseCommunities } from '../models/BaseResponseCommunities';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
-import { BaseResponseDecompilationResponse } from '../models/BaseResponseDecompilationResponse';
 import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseDynamicExecutionStatus } from '../models/BaseResponseDynamicExecutionStatus';
 import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
@@ -146,7 +145,6 @@ import { ConfidenceType } from '../models/ConfidenceType';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
-import { DecompilationResponse } from '../models/DecompilationResponse';
 import { DieMatch } from '../models/DieMatch';
 import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInput';
 import { ELFImportModel } from '../models/ELFImportModel';
@@ -2659,26 +2657,6 @@ export class PromiseFunctionsDecompilationApi {
     }
 
     /**
-     * Check the status of a function decompilation
-     * @param functionId
-     */
-    public checkFunctionDecompilationTaskWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionTaskResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.checkFunctionDecompilationTaskWithHttpInfo(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Check the status of a function decompilation
-     * @param functionId
-     */
-    public checkFunctionDecompilationTask(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionTaskResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.checkFunctionDecompilationTask(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Creates a comment associated with a specified function).
      * Create a comment for this function
      * @param functionId
@@ -2699,26 +2677,6 @@ export class PromiseFunctionsDecompilationApi {
     public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createDecompilationComment(functionId, functionCommentCreateRequest, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Queues a function decompilation
-     * @param functionId
-     */
-    public createFunctionDecompilationTaskWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createFunctionDecompilationTaskWithHttpInfo(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Queues a function decompilation
-     * @param functionId
-     */
-    public createFunctionDecompilationTask(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseStr> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createFunctionDecompilationTask(functionId, observableOptions);
         return result.toPromise();
     }
 
@@ -2765,26 +2723,6 @@ export class PromiseFunctionsDecompilationApi {
     public getDecompilationComments(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getDecompilationComments(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get decompilation result
-     * @param functionId
-     */
-    public getFunctionDecompilationWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDecompilationResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionDecompilationWithHttpInfo(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get decompilation result
-     * @param functionId
-     */
-    public getFunctionDecompilation(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseDecompilationResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionDecompilation(functionId, observableOptions);
         return result.toPromise();
     }
 

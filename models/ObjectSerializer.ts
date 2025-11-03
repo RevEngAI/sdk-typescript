@@ -55,7 +55,6 @@ export * from '../models/BaseResponseCollectionTagsUpdateResponse';
 export * from '../models/BaseResponseCommentResponse';
 export * from '../models/BaseResponseCommunities';
 export * from '../models/BaseResponseCreated';
-export * from '../models/BaseResponseDecompilationResponse';
 export * from '../models/BaseResponseDict';
 export * from '../models/BaseResponseDynamicExecutionStatus';
 export * from '../models/BaseResponseExternalResponse';
@@ -142,7 +141,6 @@ export * from '../models/ConfidenceType';
 export * from '../models/Context';
 export * from '../models/Created';
 export * from '../models/DecompilationCommentContext';
-export * from '../models/DecompilationResponse';
 export * from '../models/DieMatch';
 export * from '../models/DynamicExecutionStatusInput';
 export * from '../models/ELFImportModel';
@@ -349,7 +347,6 @@ import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponse
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
 import { BaseResponseCommunities } from '../models/BaseResponseCommunities';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
-import { BaseResponseDecompilationResponse } from '../models/BaseResponseDecompilationResponse';
 import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseDynamicExecutionStatus } from '../models/BaseResponseDynamicExecutionStatus';
 import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
@@ -436,7 +433,6 @@ import { ConfidenceType } from '../models/ConfidenceType';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
-import { DecompilationResponse } from '../models/DecompilationResponse';
 import { DieMatch } from '../models/DieMatch';
 import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInput';
 import { ELFImportModel } from '../models/ELFImportModel';
@@ -682,7 +678,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseCommentResponse": BaseResponseCommentResponse,
     "BaseResponseCommunities": BaseResponseCommunities,
     "BaseResponseCreated": BaseResponseCreated,
-    "BaseResponseDecompilationResponse": BaseResponseDecompilationResponse,
     "BaseResponseDict": BaseResponseDict,
     "BaseResponseDynamicExecutionStatus": BaseResponseDynamicExecutionStatus,
     "BaseResponseExternalResponse": BaseResponseExternalResponse,
@@ -766,7 +761,6 @@ let typeMap: {[index: string]: any} = {
     "Context": Context,
     "Created": Created,
     "DecompilationCommentContext": DecompilationCommentContext,
-    "DecompilationResponse": DecompilationResponse,
     "DieMatch": DieMatch,
     "ELFImportModel": ELFImportModel,
     "ELFModel": ELFModel,

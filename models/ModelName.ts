@@ -15,12 +15,10 @@ import { HttpFile } from '../http/http';
 * Custom enum for the model name
 */
 export enum ModelName {
-    Binnet05X86Windows = 'binnet-0.5-x86-windows',
-    Binnet05X86Linux = 'binnet-0.5-x86-linux',
-    Binnet05X86Macos = 'binnet-0.5-x86-macos',
-    Binnet05X86Android = 'binnet-0.5-x86-android',
-    Binnet05X8632Windows = 'binnet-0.5-x86-32-windows',
-    Binnet05X8632Linux = 'binnet-0.5-x86-32-linux',
-    Binnet05Arm64Windows = 'binnet-0.5-arm-64-windows',
-    Binnet05Arm64Linux = 'binnet-0.5-arm-64-linux'
+    Binnet07X8664Windows = 'binnet-0.7-x86-64-windows',
+    Binnet07X8664Linux = 'binnet-0.7-x86-64-linux',
+    Binnet07X8632Windows = 'binnet-0.7-x86-32-windows',
+    Binnet07X8632Linux = 'binnet-0.7-x86-32-linux',
+    Binnet07Arm64Windows = 'binnet-0.7-arm-64-windows',
+    Binnet07Arm64Linux = 'binnet-0.7-arm-64-linux'
 }
