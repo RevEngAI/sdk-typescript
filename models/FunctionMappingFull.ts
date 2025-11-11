@@ -18,14 +18,20 @@ export class FunctionMappingFull {
     'inverseStringMap': { [key: string]: InverseStringMapItem; };
     'inverseFunctionMap': { [key: string]: InverseFunctionMapItem; };
     'unmatchedFunctions': { [key: string]: InverseValue; };
-    'unmatchedExternalVars': { [key: string]: InverseValue; };
     'unmatchedCustomTypes': { [key: string]: InverseValue; };
     'unmatchedStrings': { [key: string]: InverseValue; };
     'unmatchedVars': { [key: string]: InverseValue; };
     'unmatchedGoToLabels': { [key: string]: InverseValue; };
     'unmatchedCustomFunctionPointers': { [key: string]: InverseValue; };
     'unmatchedVariadicLists': { [key: string]: InverseValue; };
+    'unmatchedEnums': { [key: string]: InverseValue; };
+    'unmatchedGlobalVars': { [key: string]: InverseValue; };
     'fields': { [key: string]: { [key: string]: InverseValue; }; };
+    /**
+    * No longer provided.
+    * @deprecated
+    */
+    'unmatchedExternalVars'?: { [key: string]: InverseValue; };
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -47,12 +53,6 @@ export class FunctionMappingFull {
         {
             "name": "unmatchedFunctions",
             "baseName": "unmatched_functions",
-            "type": "{ [key: string]: InverseValue; }",
-            "format": ""
-        },
-        {
-            "name": "unmatchedExternalVars",
-            "baseName": "unmatched_external_vars",
             "type": "{ [key: string]: InverseValue; }",
             "format": ""
         },
@@ -93,9 +93,27 @@ export class FunctionMappingFull {
             "format": ""
         },
         {
+            "name": "unmatchedEnums",
+            "baseName": "unmatched_enums",
+            "type": "{ [key: string]: InverseValue; }",
+            "format": ""
+        },
+        {
+            "name": "unmatchedGlobalVars",
+            "baseName": "unmatched_global_vars",
+            "type": "{ [key: string]: InverseValue; }",
+            "format": ""
+        },
+        {
             "name": "fields",
             "baseName": "fields",
             "type": "{ [key: string]: { [key: string]: InverseValue; }; }",
+            "format": ""
+        },
+        {
+            "name": "unmatchedExternalVars",
+            "baseName": "unmatched_external_vars",
+            "type": "{ [key: string]: InverseValue; }",
             "format": ""
         }    ];
 
