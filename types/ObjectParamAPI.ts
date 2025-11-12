@@ -22,11 +22,9 @@ import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { AppApiRestV2AnalysesEnumsDynamicExecutionStatus } from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
-import { AppApiRestV2AnalysesResponsesTagItem } from '../models/AppApiRestV2AnalysesResponsesTagItem';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
-import { AppServicesBinaryAnnSchemaTagItem } from '../models/AppServicesBinaryAnnSchemaTagItem';
 import { AppServicesDynamicExecutionSchemasDynamicExecutionStatus } from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 import { Argument } from '../models/Argument';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
@@ -41,7 +39,6 @@ import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
 import { BaseResponseBasic } from '../models/BaseResponseBasic';
 import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBinaryAdditionalResponse';
-import { BaseResponseBinaryAnnListResponse } from '../models/BaseResponseBinaryAnnListResponse';
 import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
 import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
 import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySearchResponse';
@@ -81,7 +78,6 @@ import { BaseResponseListCommentResponse } from '../models/BaseResponseListComme
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
 import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
-import { BaseResponseListTagOriginBoxPlotConfidence } from '../models/BaseResponseListTagOriginBoxPlotConfidence';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
@@ -104,8 +100,6 @@ import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabiliti
 import { Basic } from '../models/Basic';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
-import { BinaryAnnForm } from '../models/BinaryAnnForm';
-import { BinaryAnnListResponse } from '../models/BinaryAnnListResponse';
 import { BinaryConfig } from '../models/BinaryConfig';
 import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
 import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
@@ -114,7 +108,6 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
-import { BoxPlotConfidence } from '../models/BoxPlotConfidence';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -159,7 +152,6 @@ import { EntrypointModel } from '../models/EntrypointModel';
 import { Enumeration } from '../models/Enumeration';
 import { ErrorModel } from '../models/ErrorModel';
 import { ExportModel } from '../models/ExportModel';
-import { ExportedBinaryAnnResult } from '../models/ExportedBinaryAnnResult';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { FileFormat } from '../models/FileFormat';
 import { FileHashes } from '../models/FileHashes';
@@ -230,7 +222,6 @@ import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata } from '../models/NetworkOverviewMetadata';
 import { NetworkOverviewResponse } from '../models/NetworkOverviewResponse';
 import { Order } from '../models/Order';
-import { Origin } from '../models/Origin';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
@@ -274,12 +265,10 @@ import { TTPSData } from '../models/TTPSData';
 import { TTPSElement } from '../models/TTPSElement';
 import { TTPSOccurance } from '../models/TTPSOccurance';
 import { Tag } from '../models/Tag';
-import { TagConfidenceBody } from '../models/TagConfidenceBody';
-import { TagOriginBoxPlotConfidence } from '../models/TagOriginBoxPlotConfidence';
+import { TagItem } from '../models/TagItem';
 import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
-import { Tags } from '../models/Tags';
 import { TaskResponse } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TimestampModel } from '../models/TimestampModel';
@@ -516,22 +505,6 @@ export interface AnalysesCoreApiGetAnalysisStatusRequest {
      * @memberof AnalysesCoreApigetAnalysisStatus
      */
     analysisId: number
-}
-
-export interface AnalysesCoreApiGetBinaryAnnRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetBinaryAnn
-     */
-    analysisId: number
-    /**
-     * 
-     * @type BinaryAnnForm
-     * @memberof AnalysesCoreApigetBinaryAnn
-     */
-    binaryAnnForm: BinaryAnnForm
 }
 
 export interface AnalysesCoreApiListAnalysesRequest {
@@ -836,24 +809,6 @@ export class ObjectAnalysesCoreApi {
      */
     public getAnalysisStatus(param: AnalysesCoreApiGetAnalysisStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseStatus> {
         return this.api.getAnalysisStatus(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Binary Ann
-     * Binary Ann
-     * @param param the request object
-     */
-    public getBinaryAnnWithHttpInfo(param: AnalysesCoreApiGetBinaryAnnRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryAnnListResponse>> {
-        return this.api.getBinaryAnnWithHttpInfo(param.analysisId, param.binaryAnnForm,  options).toPromise();
-    }
-
-    /**
-     * Binary Ann
-     * Binary Ann
-     * @param param the request object
-     */
-    public getBinaryAnn(param: AnalysesCoreApiGetBinaryAnnRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryAnnListResponse> {
-        return this.api.getBinaryAnn(param.analysisId, param.binaryAnnForm,  options).toPromise();
     }
 
     /**
@@ -2062,52 +2017,6 @@ export class ObjectCollectionsApi {
      */
     public updateCollectionTags(param: CollectionsApiUpdateCollectionTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionTagsUpdateResponse> {
         return this.api.updateCollectionTags(param.collectionId, param.collectionTagsUpdateRequest,  options).toPromise();
-    }
-
-}
-
-import { ObservableConfidenceApi } from "./ObservableAPI";
-import { ConfidenceApiRequestFactory, ConfidenceApiResponseProcessor} from "../apis/ConfidenceApi";
-
-export interface ConfidenceApiGetAnalysisTagScoreRequest {
-    /**
-     * The analysis to calculate the tag scores for
-     * Defaults to: undefined
-     * @type number
-     * @memberof ConfidenceApigetAnalysisTagScore
-     */
-    analysisId: number
-    /**
-     * 
-     * @type TagConfidenceBody
-     * @memberof ConfidenceApigetAnalysisTagScore
-     */
-    tagConfidenceBody: TagConfidenceBody
-}
-
-export class ObjectConfidenceApi {
-    private api: ObservableConfidenceApi
-
-    public constructor(configuration: Configuration, requestFactory?: ConfidenceApiRequestFactory, responseProcessor?: ConfidenceApiResponseProcessor) {
-        this.api = new ObservableConfidenceApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Accepts a analysis ID and a list of tags, returns the confidence score for each tag in the list
-     * Calculate Tag Confidence Score for an Analysis
-     * @param param the request object
-     */
-    public getAnalysisTagScoreWithHttpInfo(param: ConfidenceApiGetAnalysisTagScoreRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListTagOriginBoxPlotConfidence>> {
-        return this.api.getAnalysisTagScoreWithHttpInfo(param.analysisId, param.tagConfidenceBody,  options).toPromise();
-    }
-
-    /**
-     * Accepts a analysis ID and a list of tags, returns the confidence score for each tag in the list
-     * Calculate Tag Confidence Score for an Analysis
-     * @param param the request object
-     */
-    public getAnalysisTagScore(param: ConfidenceApiGetAnalysisTagScoreRequest, options?: ConfigurationOptions): Promise<BaseResponseListTagOriginBoxPlotConfidence> {
-        return this.api.getAnalysisTagScore(param.analysisId, param.tagConfidenceBody,  options).toPromise();
     }
 
 }

@@ -9,11 +9,12 @@
  * Do not edit the class manually.
  */
 
-import { Tags } from '../models/Tags';
 import { HttpFile } from '../http/http';
 
-export class TagConfidenceBody {
-    'tags': Array<Tags>;
+export class TagItem {
+    'name': string;
+    'origin': string;
+    'collectionId'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,14 +22,26 @@ export class TagConfidenceBody {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "tags",
-            "baseName": "tags",
-            "type": "Array<Tags>",
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "origin",
+            "baseName": "origin",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "collectionId",
+            "baseName": "collection_id",
+            "type": "number",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return TagConfidenceBody.attributeTypeMap;
+        return TagItem.attributeTypeMap;
     }
 
     public constructor() {

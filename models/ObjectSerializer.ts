@@ -18,11 +18,9 @@ export * from '../models/AnalysisUpdateTagsRequest';
 export * from '../models/AnalysisUpdateTagsResponse';
 export * from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
 export * from '../models/AppApiRestV2AnalysesEnumsOrderBy';
-export * from '../models/AppApiRestV2AnalysesResponsesTagItem';
 export * from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 export * from '../models/AppApiRestV2FunctionsResponsesFunction';
 export * from '../models/AppApiRestV2FunctionsTypesFunction';
-export * from '../models/AppServicesBinaryAnnSchemaTagItem';
 export * from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 export * from '../models/Argument';
 export * from '../models/AutoUnstripRequest';
@@ -37,7 +35,6 @@ export * from '../models/BaseResponseAnalysisTags';
 export * from '../models/BaseResponseAnalysisUpdateTagsResponse';
 export * from '../models/BaseResponseBasic';
 export * from '../models/BaseResponseBinaryAdditionalResponse';
-export * from '../models/BaseResponseBinaryAnnListResponse';
 export * from '../models/BaseResponseBinaryDetailsResponse';
 export * from '../models/BaseResponseBinaryExternalsResponse';
 export * from '../models/BaseResponseBinarySearchResponse';
@@ -77,7 +74,6 @@ export * from '../models/BaseResponseListCommentResponse';
 export * from '../models/BaseResponseListDieMatch';
 export * from '../models/BaseResponseListFunctionNameHistory';
 export * from '../models/BaseResponseListSBOM';
-export * from '../models/BaseResponseListTagOriginBoxPlotConfidence';
 export * from '../models/BaseResponseListUserActivityResponse';
 export * from '../models/BaseResponseLoginResponse';
 export * from '../models/BaseResponseLogs';
@@ -100,8 +96,6 @@ export * from '../models/BaseResponseVulnerabilities';
 export * from '../models/Basic';
 export * from '../models/BinaryAdditionalDetailsDataResponse';
 export * from '../models/BinaryAdditionalResponse';
-export * from '../models/BinaryAnnForm';
-export * from '../models/BinaryAnnListResponse';
 export * from '../models/BinaryConfig';
 export * from '../models/BinaryDetailsResponse';
 export * from '../models/BinaryExternalsResponse';
@@ -110,7 +104,6 @@ export * from '../models/BinarySearchResult';
 export * from '../models/BinaryTaskStatus';
 export * from '../models/Block';
 export * from '../models/BlockCommentsGenerationForFunctionResponse';
-export * from '../models/BoxPlotConfidence';
 export * from '../models/CalleeFunctionInfo';
 export * from '../models/CalleesCallerFunctionsResponse';
 export * from '../models/CallerFunctionInfo';
@@ -155,7 +148,6 @@ export * from '../models/EntrypointModel';
 export * from '../models/Enumeration';
 export * from '../models/ErrorModel';
 export * from '../models/ExportModel';
-export * from '../models/ExportedBinaryAnnResult';
 export * from '../models/ExternalResponse';
 export * from '../models/FileFormat';
 export * from '../models/FileHashes';
@@ -226,7 +218,6 @@ export * from '../models/NetworkOverviewDnsAnswer';
 export * from '../models/NetworkOverviewMetadata';
 export * from '../models/NetworkOverviewResponse';
 export * from '../models/Order';
-export * from '../models/Origin';
 export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
 export * from '../models/PaginationModel';
@@ -270,12 +261,10 @@ export * from '../models/TTPSData';
 export * from '../models/TTPSElement';
 export * from '../models/TTPSOccurance';
 export * from '../models/Tag';
-export * from '../models/TagConfidenceBody';
-export * from '../models/TagOriginBoxPlotConfidence';
+export * from '../models/TagItem';
 export * from '../models/TagResponse';
 export * from '../models/TagSearchResponse';
 export * from '../models/TagSearchResult';
-export * from '../models/Tags';
 export * from '../models/TaskResponse';
 export * from '../models/TaskStatus';
 export * from '../models/TimestampModel';
@@ -310,11 +299,9 @@ import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { AppApiRestV2AnalysesEnumsDynamicExecutionStatus } from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
-import { AppApiRestV2AnalysesResponsesTagItem } from '../models/AppApiRestV2AnalysesResponsesTagItem';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
-import { AppServicesBinaryAnnSchemaTagItem } from '../models/AppServicesBinaryAnnSchemaTagItem';
 import { AppServicesDynamicExecutionSchemasDynamicExecutionStatus } from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 import { Argument } from '../models/Argument';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
@@ -329,7 +316,6 @@ import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
 import { BaseResponseBasic } from '../models/BaseResponseBasic';
 import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBinaryAdditionalResponse';
-import { BaseResponseBinaryAnnListResponse } from '../models/BaseResponseBinaryAnnListResponse';
 import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
 import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
 import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySearchResponse';
@@ -369,7 +355,6 @@ import { BaseResponseListCommentResponse } from '../models/BaseResponseListComme
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
 import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
-import { BaseResponseListTagOriginBoxPlotConfidence } from '../models/BaseResponseListTagOriginBoxPlotConfidence';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
@@ -392,8 +377,6 @@ import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabiliti
 import { Basic } from '../models/Basic';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
-import { BinaryAnnForm } from '../models/BinaryAnnForm';
-import { BinaryAnnListResponse } from '../models/BinaryAnnListResponse';
 import { BinaryConfig    } from '../models/BinaryConfig';
 import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
 import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
@@ -402,7 +385,6 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
-import { BoxPlotConfidence } from '../models/BoxPlotConfidence';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -447,7 +429,6 @@ import { EntrypointModel } from '../models/EntrypointModel';
 import { Enumeration } from '../models/Enumeration';
 import { ErrorModel } from '../models/ErrorModel';
 import { ExportModel } from '../models/ExportModel';
-import { ExportedBinaryAnnResult } from '../models/ExportedBinaryAnnResult';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { FileFormat } from '../models/FileFormat';
 import { FileHashes } from '../models/FileHashes';
@@ -518,7 +499,6 @@ import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata   , NetworkOverviewMetadataTypeEnum   } from '../models/NetworkOverviewMetadata';
 import { NetworkOverviewResponse } from '../models/NetworkOverviewResponse';
 import { Order } from '../models/Order';
-import { Origin } from '../models/Origin';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
@@ -562,12 +542,10 @@ import { TTPSData } from '../models/TTPSData';
 import { TTPSElement } from '../models/TTPSElement';
 import { TTPSOccurance } from '../models/TTPSOccurance';
 import { Tag } from '../models/Tag';
-import { TagConfidenceBody } from '../models/TagConfidenceBody';
-import { TagOriginBoxPlotConfidence } from '../models/TagOriginBoxPlotConfidence';
+import { TagItem } from '../models/TagItem';
 import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
-import { Tags   } from '../models/Tags';
 import { TaskResponse   } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TimestampModel } from '../models/TimestampModel';
@@ -614,7 +592,6 @@ let enumsMap: Set<string> = new Set<string>([
     "ModelName",
     "NetworkOverviewMetadataTypeEnum",
     "Order",
-    "Origin",
     "Platform",
     "SeverityType",
     "StatusInput",
@@ -642,10 +619,8 @@ let typeMap: {[index: string]: any} = {
     "AnalysisUpdateRequest": AnalysisUpdateRequest,
     "AnalysisUpdateTagsRequest": AnalysisUpdateTagsRequest,
     "AnalysisUpdateTagsResponse": AnalysisUpdateTagsResponse,
-    "AppApiRestV2AnalysesResponsesTagItem": AppApiRestV2AnalysesResponsesTagItem,
     "AppApiRestV2FunctionsResponsesFunction": AppApiRestV2FunctionsResponsesFunction,
     "AppApiRestV2FunctionsTypesFunction": AppApiRestV2FunctionsTypesFunction,
-    "AppServicesBinaryAnnSchemaTagItem": AppServicesBinaryAnnSchemaTagItem,
     "AppServicesDynamicExecutionSchemasDynamicExecutionStatus": AppServicesDynamicExecutionSchemasDynamicExecutionStatus,
     "Argument": Argument,
     "AutoUnstripRequest": AutoUnstripRequest,
@@ -660,7 +635,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseAnalysisUpdateTagsResponse": BaseResponseAnalysisUpdateTagsResponse,
     "BaseResponseBasic": BaseResponseBasic,
     "BaseResponseBinaryAdditionalResponse": BaseResponseBinaryAdditionalResponse,
-    "BaseResponseBinaryAnnListResponse": BaseResponseBinaryAnnListResponse,
     "BaseResponseBinaryDetailsResponse": BaseResponseBinaryDetailsResponse,
     "BaseResponseBinaryExternalsResponse": BaseResponseBinaryExternalsResponse,
     "BaseResponseBinarySearchResponse": BaseResponseBinarySearchResponse,
@@ -700,7 +674,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseListDieMatch": BaseResponseListDieMatch,
     "BaseResponseListFunctionNameHistory": BaseResponseListFunctionNameHistory,
     "BaseResponseListSBOM": BaseResponseListSBOM,
-    "BaseResponseListTagOriginBoxPlotConfidence": BaseResponseListTagOriginBoxPlotConfidence,
     "BaseResponseListUserActivityResponse": BaseResponseListUserActivityResponse,
     "BaseResponseLoginResponse": BaseResponseLoginResponse,
     "BaseResponseLogs": BaseResponseLogs,
@@ -723,8 +696,6 @@ let typeMap: {[index: string]: any} = {
     "Basic": Basic,
     "BinaryAdditionalDetailsDataResponse": BinaryAdditionalDetailsDataResponse,
     "BinaryAdditionalResponse": BinaryAdditionalResponse,
-    "BinaryAnnForm": BinaryAnnForm,
-    "BinaryAnnListResponse": BinaryAnnListResponse,
     "BinaryConfig": BinaryConfig,
     "BinaryDetailsResponse": BinaryDetailsResponse,
     "BinaryExternalsResponse": BinaryExternalsResponse,
@@ -732,7 +703,6 @@ let typeMap: {[index: string]: any} = {
     "BinarySearchResult": BinarySearchResult,
     "Block": Block,
     "BlockCommentsGenerationForFunctionResponse": BlockCommentsGenerationForFunctionResponse,
-    "BoxPlotConfidence": BoxPlotConfidence,
     "CalleeFunctionInfo": CalleeFunctionInfo,
     "CalleesCallerFunctionsResponse": CalleesCallerFunctionsResponse,
     "CallerFunctionInfo": CallerFunctionInfo,
@@ -774,7 +744,6 @@ let typeMap: {[index: string]: any} = {
     "Enumeration": Enumeration,
     "ErrorModel": ErrorModel,
     "ExportModel": ExportModel,
-    "ExportedBinaryAnnResult": ExportedBinaryAnnResult,
     "ExternalResponse": ExternalResponse,
     "FileHashes": FileHashes,
     "FileMetadata": FileMetadata,
@@ -878,12 +847,10 @@ let typeMap: {[index: string]: any} = {
     "TTPSElement": TTPSElement,
     "TTPSOccurance": TTPSOccurance,
     "Tag": Tag,
-    "TagConfidenceBody": TagConfidenceBody,
-    "TagOriginBoxPlotConfidence": TagOriginBoxPlotConfidence,
+    "TagItem": TagItem,
     "TagResponse": TagResponse,
     "TagSearchResponse": TagSearchResponse,
     "TagSearchResult": TagSearchResult,
-    "Tags": Tags,
     "TaskResponse": TaskResponse,
     "TimestampModel": TimestampModel,
     "TypeDefinition": TypeDefinition,

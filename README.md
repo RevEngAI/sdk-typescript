@@ -58,7 +58,6 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**getAnalysisLogs**](docs/AnalysesCoreApi.md#getAnalysisLogs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
 *AnalysesCoreApi* | [**getAnalysisParams**](docs/AnalysesCoreApi.md#getAnalysisParams) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 *AnalysesCoreApi* | [**getAnalysisStatus**](docs/AnalysesCoreApi.md#getAnalysisStatus) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
-*AnalysesCoreApi* | [**getBinaryAnn**](docs/AnalysesCoreApi.md#getBinaryAnn) | **POST** /v2/binary_ann/{analysis_id} | Binary Ann
 *AnalysesCoreApi* | [**listAnalyses**](docs/AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 *AnalysesCoreApi* | [**lookupBinaryId**](docs/AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
 *AnalysesCoreApi* | [**requeueAnalysis**](docs/AnalysesCoreApi.md#requeueAnalysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
@@ -100,7 +99,6 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**updateCollection**](docs/CollectionsApi.md#updateCollection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 *CollectionsApi* | [**updateCollectionBinaries**](docs/CollectionsApi.md#updateCollectionBinaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**updateCollectionTags**](docs/CollectionsApi.md#updateCollectionTags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
-*ConfidenceApi* | [**getAnalysisTagScore**](docs/ConfidenceApi.md#getAnalysisTagScore) | **POST** /v2/confidence/analysis/{analysis_id}/tag_score | Calculate Tag Confidence Score for an Analysis
 *ExternalSourcesApi* | [**createExternalTaskMb**](docs/ExternalSourcesApi.md#createExternalTaskMb) | **POST** /v2/analysis/{analysis_id}/external/mb | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**createExternalTaskVt**](docs/ExternalSourcesApi.md#createExternalTaskVt) | **POST** /v2/analysis/{analysis_id}/external/vt | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**getMbData**](docs/ExternalSourcesApi.md#getMbData) | **GET** /v2/analysis/{analysis_id}/external/mb | Get MalwareBazaar data
@@ -176,11 +174,9 @@ Class | Method | HTTP request | Description
  - [AnalysisUpdateTagsResponse](AnalysisUpdateTagsResponse.md)
  - [AppApiRestV2AnalysesEnumsDynamicExecutionStatus](AppApiRestV2AnalysesEnumsDynamicExecutionStatus.md)
  - [AppApiRestV2AnalysesEnumsOrderBy](AppApiRestV2AnalysesEnumsOrderBy.md)
- - [AppApiRestV2AnalysesResponsesTagItem](AppApiRestV2AnalysesResponsesTagItem.md)
  - [AppApiRestV2CollectionsEnumsOrderBy](AppApiRestV2CollectionsEnumsOrderBy.md)
  - [AppApiRestV2FunctionsResponsesFunction](AppApiRestV2FunctionsResponsesFunction.md)
  - [AppApiRestV2FunctionsTypesFunction](AppApiRestV2FunctionsTypesFunction.md)
- - [AppServicesBinaryAnnSchemaTagItem](AppServicesBinaryAnnSchemaTagItem.md)
  - [AppServicesDynamicExecutionSchemasDynamicExecutionStatus](AppServicesDynamicExecutionSchemasDynamicExecutionStatus.md)
  - [Argument](Argument.md)
  - [AutoUnstripRequest](AutoUnstripRequest.md)
@@ -195,7 +191,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseAnalysisUpdateTagsResponse](BaseResponseAnalysisUpdateTagsResponse.md)
  - [BaseResponseBasic](BaseResponseBasic.md)
  - [BaseResponseBinaryAdditionalResponse](BaseResponseBinaryAdditionalResponse.md)
- - [BaseResponseBinaryAnnListResponse](BaseResponseBinaryAnnListResponse.md)
  - [BaseResponseBinaryDetailsResponse](BaseResponseBinaryDetailsResponse.md)
  - [BaseResponseBinaryExternalsResponse](BaseResponseBinaryExternalsResponse.md)
  - [BaseResponseBinarySearchResponse](BaseResponseBinarySearchResponse.md)
@@ -235,7 +230,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseListDieMatch](BaseResponseListDieMatch.md)
  - [BaseResponseListFunctionNameHistory](BaseResponseListFunctionNameHistory.md)
  - [BaseResponseListSBOM](BaseResponseListSBOM.md)
- - [BaseResponseListTagOriginBoxPlotConfidence](BaseResponseListTagOriginBoxPlotConfidence.md)
  - [BaseResponseListUserActivityResponse](BaseResponseListUserActivityResponse.md)
  - [BaseResponseLoginResponse](BaseResponseLoginResponse.md)
  - [BaseResponseLogs](BaseResponseLogs.md)
@@ -258,8 +252,6 @@ Class | Method | HTTP request | Description
  - [Basic](Basic.md)
  - [BinaryAdditionalDetailsDataResponse](BinaryAdditionalDetailsDataResponse.md)
  - [BinaryAdditionalResponse](BinaryAdditionalResponse.md)
- - [BinaryAnnForm](BinaryAnnForm.md)
- - [BinaryAnnListResponse](BinaryAnnListResponse.md)
  - [BinaryConfig](BinaryConfig.md)
  - [BinaryDetailsResponse](BinaryDetailsResponse.md)
  - [BinaryExternalsResponse](BinaryExternalsResponse.md)
@@ -268,7 +260,6 @@ Class | Method | HTTP request | Description
  - [BinaryTaskStatus](BinaryTaskStatus.md)
  - [Block](Block.md)
  - [BlockCommentsGenerationForFunctionResponse](BlockCommentsGenerationForFunctionResponse.md)
- - [BoxPlotConfidence](BoxPlotConfidence.md)
  - [CalleeFunctionInfo](CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](CallerFunctionInfo.md)
@@ -313,7 +304,6 @@ Class | Method | HTTP request | Description
  - [Enumeration](Enumeration.md)
  - [ErrorModel](ErrorModel.md)
  - [ExportModel](ExportModel.md)
- - [ExportedBinaryAnnResult](ExportedBinaryAnnResult.md)
  - [ExternalResponse](ExternalResponse.md)
  - [FileFormat](FileFormat.md)
  - [FileHashes](FileHashes.md)
@@ -384,7 +374,6 @@ Class | Method | HTTP request | Description
  - [NetworkOverviewMetadata](NetworkOverviewMetadata.md)
  - [NetworkOverviewResponse](NetworkOverviewResponse.md)
  - [Order](Order.md)
- - [Origin](Origin.md)
  - [PDBDebugModel](PDBDebugModel.md)
  - [PEModel](PEModel.md)
  - [PaginationModel](PaginationModel.md)
@@ -428,12 +417,10 @@ Class | Method | HTTP request | Description
  - [TTPSElement](TTPSElement.md)
  - [TTPSOccurance](TTPSOccurance.md)
  - [Tag](Tag.md)
- - [TagConfidenceBody](TagConfidenceBody.md)
- - [TagOriginBoxPlotConfidence](TagOriginBoxPlotConfidence.md)
+ - [TagItem](TagItem.md)
  - [TagResponse](TagResponse.md)
  - [TagSearchResponse](TagSearchResponse.md)
  - [TagSearchResult](TagSearchResult.md)
- - [Tags](Tags.md)
  - [TaskResponse](TaskResponse.md)
  - [TaskStatus](TaskStatus.md)
  - [TimestampModel](TimestampModel.md)

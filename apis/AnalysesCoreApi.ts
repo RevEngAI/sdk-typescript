@@ -18,7 +18,6 @@ import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalys
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
 import { BaseResponseBasic } from '../models/BaseResponseBasic';
-import { BaseResponseBinaryAnnListResponse } from '../models/BaseResponseBinaryAnnListResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
@@ -26,7 +25,6 @@ import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
-import { BinaryAnnForm } from '../models/BinaryAnnForm';
 import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInput';
 import { ModelName } from '../models/ModelName';
 import { Order } from '../models/Order';
@@ -300,62 +298,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Binary Ann
-     * Binary Ann
-     * @param analysisId 
-     * @param binaryAnnForm 
-     */
-    public async getBinaryAnn(analysisId: number, binaryAnnForm: BinaryAnnForm, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "getBinaryAnn", "analysisId");
-        }
-
-
-        // verify required parameter 'binaryAnnForm' is not null or undefined
-        if (binaryAnnForm === null || binaryAnnForm === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "getBinaryAnn", "binaryAnnForm");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/binary_ann/{analysis_id}'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(binaryAnnForm, "BinaryAnnForm", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -1062,42 +1004,6 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseStatus", ""
             ) as BaseResponseStatus;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getBinaryAnn
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getBinaryAnnWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseBinaryAnnListResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseBinaryAnnListResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseBinaryAnnListResponse", ""
-            ) as BaseResponseBinaryAnnListResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseBinaryAnnListResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseBinaryAnnListResponse", ""
-            ) as BaseResponseBinaryAnnListResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
