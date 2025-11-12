@@ -11,7 +11,6 @@ Method | HTTP request | Description
 [**getAnalysisLogs**](AnalysesCoreApi.md#getAnalysisLogs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
 [**getAnalysisParams**](AnalysesCoreApi.md#getAnalysisParams) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 [**getAnalysisStatus**](AnalysesCoreApi.md#getAnalysisStatus) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
-[**getBinaryAnn**](AnalysesCoreApi.md#getBinaryAnn) | **POST** /v2/binary_ann/{analysis_id} | Binary Ann
 [**listAnalyses**](AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 [**lookupBinaryId**](AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
 [**requeueAnalysis**](AnalysesCoreApi.md#requeueAnalysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
@@ -430,72 +429,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getBinaryAnn**
-> BaseResponseBinaryAnnListResponse getBinaryAnn(binaryAnnForm)
-
-Binary Ann
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiGetBinaryAnnRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiGetBinaryAnnRequest = {
-  
-  analysisId: 1,
-  
-  binaryAnnForm: {
-    confidence: 0.0,
-    nns: 1,
-    collectionIds: [
-      1,
-    ],
-    binaryIds: [
-      1,
-    ],
-  },
-};
-
-const data = await apiInstance.getBinaryAnn(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **binaryAnnForm** | **BinaryAnnForm**|  |
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseBinaryAnnListResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 

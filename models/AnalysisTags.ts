@@ -9,12 +9,11 @@
  * Do not edit the class manually.
  */
 
-import { AppApiRestV2AnalysesResponsesTagItem } from '../models/AppApiRestV2AnalysesResponsesTagItem';
+import { TagItem } from '../models/TagItem';
 import { HttpFile } from '../http/http';
 
 export class AnalysisTags {
-    'analysisTags': Array<AppApiRestV2AnalysesResponsesTagItem>;
-    'suggestedTags': Array<AppApiRestV2AnalysesResponsesTagItem>;
+    'analysisTags': Array<TagItem>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,13 +23,7 @@ export class AnalysisTags {
         {
             "name": "analysisTags",
             "baseName": "analysis_tags",
-            "type": "Array<AppApiRestV2AnalysesResponsesTagItem>",
-            "format": ""
-        },
-        {
-            "name": "suggestedTags",
-            "baseName": "suggested_tags",
-            "type": "Array<AppApiRestV2AnalysesResponsesTagItem>",
+            "type": "Array<TagItem>",
             "format": ""
         }    ];
 
