@@ -31,7 +31,7 @@ export class Symbols {
             "name": "baseAddress",
             "baseName": "base_address",
             "type": "number",
-            "format": "int64"
+            "format": "bigint"
         },
         {
             "name": "functionBoundaries",

@@ -171,7 +171,7 @@ export class AnalysisRecord {
             "name": "baseAddress",
             "baseName": "base_address",
             "type": "number",
-            "format": "int64"
+            "format": "bigint"
         }    ];
 
     static getAttributeTypeMap() {
