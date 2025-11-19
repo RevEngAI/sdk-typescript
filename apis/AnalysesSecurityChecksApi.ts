@@ -22,14 +22,16 @@ export class AnalysesSecurityChecksApiRequestFactory extends BaseAPIRequestFacto
     /**
      * Queues a security check process
      * @param analysisId 
+     * @param apiKey 
      */
-    public async createScurityChecksTask(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async createScurityChecksTask(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesSecurityChecksApi", "createScurityChecksTask", "analysisId");
         }
+
 
 
         // Path Params
@@ -62,8 +64,9 @@ export class AnalysesSecurityChecksApiRequestFactory extends BaseAPIRequestFacto
      * @param analysisId 
      * @param page The page number to retrieve.
      * @param pageSize Number of items per page.
+     * @param apiKey 
      */
-    public async getSecurityChecks(analysisId: number, page: number, pageSize: number, _options?: Configuration): Promise<RequestContext> {
+    public async getSecurityChecks(analysisId: number, page: number, pageSize: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -82,6 +85,7 @@ export class AnalysesSecurityChecksApiRequestFactory extends BaseAPIRequestFacto
         if (pageSize === null || pageSize === undefined) {
             throw new RequiredError("AnalysesSecurityChecksApi", "getSecurityChecks", "pageSize");
         }
+
 
 
         // Path Params
@@ -121,14 +125,16 @@ export class AnalysesSecurityChecksApiRequestFactory extends BaseAPIRequestFacto
     /**
      * Check the status of a security check process
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getSecurityChecksTaskStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getSecurityChecksTaskStatus(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesSecurityChecksApi", "getSecurityChecksTaskStatus", "analysisId");
         }
+
 
 
         // Path Params

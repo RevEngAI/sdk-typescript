@@ -32,8 +32,9 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId 
      * @param aiUnstripRequest 
+     * @param apiKey 
      */
-    public async aiUnstrip(analysisId: number, aiUnstripRequest: AiUnstripRequest, _options?: Configuration): Promise<RequestContext> {
+    public async aiUnstrip(analysisId: number, aiUnstripRequest: AiUnstripRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -46,6 +47,7 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
         if (aiUnstripRequest === null || aiUnstripRequest === undefined) {
             throw new RequiredError("FunctionsCoreApi", "aiUnstrip", "aiUnstripRequest");
         }
+
 
 
         // Path Params
@@ -88,8 +90,9 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Perform matching for the functions of an analysis
      * @param analysisId 
      * @param analysisFunctionMatchingRequest 
+     * @param apiKey 
      */
-    public async analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: Configuration): Promise<RequestContext> {
+    public async analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -102,6 +105,7 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
         if (analysisFunctionMatchingRequest === null || analysisFunctionMatchingRequest === undefined) {
             throw new RequiredError("FunctionsCoreApi", "analysisFunctionMatching", "analysisFunctionMatchingRequest");
         }
+
 
 
         // Path Params
@@ -144,8 +148,9 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId 
      * @param autoUnstripRequest 
+     * @param apiKey 
      */
-    public async autoUnstrip(analysisId: number, autoUnstripRequest: AutoUnstripRequest, _options?: Configuration): Promise<RequestContext> {
+    public async autoUnstrip(analysisId: number, autoUnstripRequest: AutoUnstripRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -158,6 +163,7 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
         if (autoUnstripRequest === null || autoUnstripRequest === undefined) {
             throw new RequiredError("FunctionsCoreApi", "autoUnstrip", "autoUnstripRequest");
         }
+
 
 
         // Path Params
@@ -199,14 +205,16 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Takes in an input of functions ID\'s and settings and finds the nearest functions for each function that\'s within the system
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param functionMatchingRequest 
+     * @param apiKey 
      */
-    public async batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, _options?: Configuration): Promise<RequestContext> {
+    public async batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionMatchingRequest' is not null or undefined
         if (functionMatchingRequest === null || functionMatchingRequest === undefined) {
             throw new RequiredError("FunctionsCoreApi", "batchFunctionMatching", "functionMatchingRequest");
         }
+
 
 
         // Path Params
@@ -247,14 +255,16 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Takes in the analysis ID and cancels a running ai-unstrip operation
      * Cancels a running ai-unstrip
      * @param analysisId 
+     * @param apiKey 
      */
-    public async cancelAiUnstrip(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async cancelAiUnstrip(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("FunctionsCoreApi", "cancelAiUnstrip", "analysisId");
         }
+
 
 
         // Path Params
@@ -285,14 +295,16 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Takes in the analysis ID and cancels a running auto-unstrip operation
      * Cancels a running auto-unstrip
      * @param analysisId 
+     * @param apiKey 
      */
-    public async cancelAutoUnstrip(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async cancelAutoUnstrip(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("FunctionsCoreApi", "cancelAutoUnstrip", "analysisId");
         }
+
 
 
         // Path Params
@@ -327,14 +339,16 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Number of items per page.
      * @param search Search is applied to string value
      * @param functionSearch Search is applied to function names
+     * @param apiKey 
      */
-    public async getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("FunctionsCoreApi", "getAnalysisStrings", "analysisId");
         }
+
 
 
 
@@ -389,14 +403,16 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Get disassembly blocks related to the function
      * Get disassembly blocks related to the function
      * @param functionId 
+     * @param apiKey 
      */
-    public async getFunctionBlocks(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getFunctionBlocks(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsCoreApi", "getFunctionBlocks", "functionId");
         }
+
 
 
         // Path Params
@@ -426,14 +442,16 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Get list of functions that call or are called by the specified function
      * @param functionId 
+     * @param apiKey 
      */
-    public async getFunctionCalleesCallers(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getFunctionCalleesCallers(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsCoreApi", "getFunctionCalleesCallers", "functionId");
         }
+
 
 
         // Path Params
@@ -463,14 +481,16 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Retrieve a functions capabilities
      * @param functionId 
+     * @param apiKey 
      */
-    public async getFunctionCapabilities(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getFunctionCapabilities(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsCoreApi", "getFunctionCapabilities", "functionId");
         }
+
 
 
         // Path Params
@@ -500,14 +520,16 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Get function details
      * @param functionId 
+     * @param apiKey 
      */
-    public async getFunctionDetails(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getFunctionDetails(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsCoreApi", "getFunctionDetails", "functionId");
         }
+
 
 
         // Path Params
@@ -541,14 +563,16 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param page The page number to retrieve.
      * @param pageSize Number of items per page.
      * @param search Search is applied to string value
+     * @param apiKey 
      */
-    public async getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: Configuration): Promise<RequestContext> {
+    public async getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsCoreApi", "getFunctionStrings", "functionId");
         }
+
 
 
 

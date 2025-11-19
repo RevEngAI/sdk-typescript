@@ -24,14 +24,16 @@ export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFact
     /**
      * Gets the capabilities from the analysis
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getCapabilities(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getCapabilities(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesResultsMetadataApi", "getCapabilities", "analysisId");
         }
+
 
 
         // Path Params
@@ -62,14 +64,16 @@ export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFact
      * Gets the communities found in the analysis
      * @param analysisId 
      * @param userName The user name to limit communities to
+     * @param apiKey 
      */
-    public async getCommunities(analysisId: number, userName?: string, _options?: Configuration): Promise<RequestContext> {
+    public async getCommunities(analysisId: number, userName?: string, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesResultsMetadataApi", "getCommunities", "analysisId");
         }
+
 
 
 
@@ -109,14 +113,16 @@ export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFact
      * @param searchTerm 
      * @param minVAddr 
      * @param maxVAddr 
+     * @param apiKey 
      */
-    public async getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesResultsMetadataApi", "getFunctionsList", "analysisId");
         }
+
 
 
 
@@ -164,14 +170,16 @@ export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFact
     /**
      * Gets the PDF found in the analysis
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getPdf(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getPdf(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesResultsMetadataApi", "getPdf", "analysisId");
         }
+
 
 
         // Path Params
@@ -201,14 +209,16 @@ export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFact
     /**
      * Gets the software-bill-of-materials (SBOM) found in the analysis
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getSbom(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getSbom(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesResultsMetadataApi", "getSbom", "analysisId");
         }
+
 
 
         // Path Params
@@ -238,14 +248,16 @@ export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFact
     /**
      * Get function tags with maliciousness score
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getTags(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getTags(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesResultsMetadataApi", "getTags", "analysisId");
         }
+
 
 
         // Path Params
@@ -275,14 +287,16 @@ export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFact
     /**
      * Gets the vulnerabilities found in the analysis
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getVulnerabilities(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getVulnerabilities(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesResultsMetadataApi", "getVulnerabilities", "analysisId");
         }
+
 
 
         // Path Params

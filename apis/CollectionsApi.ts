@@ -31,14 +31,16 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
      * A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
      * Creates new collection information
      * @param collectionCreateRequest 
+     * @param apiKey 
      */
-    public async createCollection(collectionCreateRequest: CollectionCreateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createCollection(collectionCreateRequest: CollectionCreateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'collectionCreateRequest' is not null or undefined
         if (collectionCreateRequest === null || collectionCreateRequest === undefined) {
             throw new RequiredError("CollectionsApi", "createCollection", "collectionCreateRequest");
         }
+
 
 
         // Path Params
@@ -79,14 +81,16 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
      * Deletes a collection
      * Deletes a collection
      * @param collectionId 
+     * @param apiKey 
      */
-    public async deleteCollection(collectionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async deleteCollection(collectionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'collectionId' is not null or undefined
         if (collectionId === null || collectionId === undefined) {
             throw new RequiredError("CollectionsApi", "deleteCollection", "collectionId");
         }
+
 
 
         // Path Params
@@ -119,14 +123,16 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
      * @param collectionId 
      * @param includeTags 
      * @param includeBinaries 
+     * @param apiKey 
      */
-    public async getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'collectionId' is not null or undefined
         if (collectionId === null || collectionId === undefined) {
             throw new RequiredError("CollectionsApi", "getCollection", "collectionId");
         }
+
 
 
 
@@ -174,9 +180,11 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
      * @param offset 
      * @param orderBy 
      * @param order 
+     * @param apiKey 
      */
-    public async listCollections(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, _options?: Configuration): Promise<RequestContext> {
+    public async listCollections(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
 
@@ -245,8 +253,9 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
      * Updates a collection
      * @param collectionId 
      * @param collectionUpdateRequest 
+     * @param apiKey 
      */
-    public async updateCollection(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateCollection(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'collectionId' is not null or undefined
@@ -259,6 +268,7 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
         if (collectionUpdateRequest === null || collectionUpdateRequest === undefined) {
             throw new RequiredError("CollectionsApi", "updateCollection", "collectionUpdateRequest");
         }
+
 
 
         // Path Params
@@ -301,8 +311,9 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
      * Updates a collection binaries
      * @param collectionId 
      * @param collectionBinariesUpdateRequest 
+     * @param apiKey 
      */
-    public async updateCollectionBinaries(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateCollectionBinaries(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'collectionId' is not null or undefined
@@ -315,6 +326,7 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
         if (collectionBinariesUpdateRequest === null || collectionBinariesUpdateRequest === undefined) {
             throw new RequiredError("CollectionsApi", "updateCollectionBinaries", "collectionBinariesUpdateRequest");
         }
+
 
 
         // Path Params
@@ -357,8 +369,9 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
      * Updates a collection tags
      * @param collectionId 
      * @param collectionTagsUpdateRequest 
+     * @param apiKey 
      */
-    public async updateCollectionTags(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateCollectionTags(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'collectionId' is not null or undefined
@@ -371,6 +384,7 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
         if (collectionTagsUpdateRequest === null || collectionTagsUpdateRequest === undefined) {
             throw new RequiredError("CollectionsApi", "updateCollectionTags", "collectionTagsUpdateRequest");
         }
+
 
 
         // Path Params

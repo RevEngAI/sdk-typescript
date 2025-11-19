@@ -29,6 +29,8 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiDownloadZippedBinaryRequest = {
   
   binaryId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.downloadZippedBinary(request);
@@ -41,6 +43,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -82,6 +85,8 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetBinaryAdditionalDetailsRequest = {
   
   binaryId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getBinaryAdditionalDetails(request);
@@ -94,6 +99,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -135,6 +141,8 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetBinaryDetailsRequest = {
   
   binaryId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getBinaryDetails(request);
@@ -147,6 +155,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -188,6 +197,8 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetBinaryDieInfoRequest = {
   
   binaryId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getBinaryDieInfo(request);
@@ -200,6 +211,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -241,6 +253,8 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetBinaryExternalsRequest = {
   
   binaryId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getBinaryExternals(request);
@@ -253,6 +267,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -294,6 +309,8 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetRelatedBinariesRequest = {
   
   binaryId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getRelatedBinaries(request);
@@ -306,6 +323,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

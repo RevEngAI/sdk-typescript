@@ -25,8 +25,9 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
      * Create a comment for this analysis
      * @param analysisId 
      * @param commentBase 
+     * @param apiKey 
      */
-    public async createAnalysisComment(analysisId: number, commentBase: CommentBase, _options?: Configuration): Promise<RequestContext> {
+    public async createAnalysisComment(analysisId: number, commentBase: CommentBase, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -39,6 +40,7 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
         if (commentBase === null || commentBase === undefined) {
             throw new RequiredError("AnalysesCommentsApi", "createAnalysisComment", "commentBase");
         }
+
 
 
         // Path Params
@@ -81,8 +83,9 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
      * Delete a comment
      * @param commentId 
      * @param analysisId 
+     * @param apiKey 
      */
-    public async deleteAnalysisComment(commentId: number, analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async deleteAnalysisComment(commentId: number, analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commentId' is not null or undefined
@@ -95,6 +98,7 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCommentsApi", "deleteAnalysisComment", "analysisId");
         }
+
 
 
         // Path Params
@@ -126,14 +130,16 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getAnalysisComments(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisComments(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCommentsApi", "getAnalysisComments", "analysisId");
         }
+
 
 
         // Path Params
@@ -166,8 +172,9 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
      * @param commentId 
      * @param analysisId 
      * @param commentUpdateRequest 
+     * @param apiKey 
      */
-    public async updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commentId' is not null or undefined
@@ -186,6 +193,7 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
         if (commentUpdateRequest === null || commentUpdateRequest === undefined) {
             throw new RequiredError("AnalysesCommentsApi", "updateAnalysisComment", "commentUpdateRequest");
         }
+
 
 
         // Path Params

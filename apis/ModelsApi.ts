@@ -19,9 +19,11 @@ export class ModelsApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets active models available for analysis.
      * Gets models
+     * @param apiKey 
      */
-    public async getModels(_options?: Configuration): Promise<RequestContext> {
+    public async getModels(apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
         // Path Params
         const localVarPath = '/v2/models';

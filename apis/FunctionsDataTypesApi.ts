@@ -26,8 +26,9 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
      * Generate Function Data Types
      * @param analysisId 
      * @param functionDataTypesParams 
+     * @param apiKey 
      */
-    public async generateFunctionDataTypesForAnalysis(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, _options?: Configuration): Promise<RequestContext> {
+    public async generateFunctionDataTypesForAnalysis(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -40,6 +41,7 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
         if (functionDataTypesParams === null || functionDataTypesParams === undefined) {
             throw new RequiredError("FunctionsDataTypesApi", "generateFunctionDataTypesForAnalysis", "functionDataTypesParams");
         }
+
 
 
         // Path Params
@@ -81,14 +83,16 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
      * Submits a request to generate the function data types
      * Generate Function Data Types for an arbitrary list of functions
      * @param functionDataTypesParams 
+     * @param apiKey 
      */
-    public async generateFunctionDataTypesForFunctions(functionDataTypesParams: FunctionDataTypesParams, _options?: Configuration): Promise<RequestContext> {
+    public async generateFunctionDataTypesForFunctions(functionDataTypesParams: FunctionDataTypesParams, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionDataTypesParams' is not null or undefined
         if (functionDataTypesParams === null || functionDataTypesParams === undefined) {
             throw new RequiredError("FunctionsDataTypesApi", "generateFunctionDataTypesForFunctions", "functionDataTypesParams");
         }
+
 
 
         // Path Params
@@ -130,8 +134,9 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
      * Get Function Data Types
      * @param analysisId 
      * @param functionId 
+     * @param apiKey 
      */
-    public async getFunctionDataTypes(analysisId: number, functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getFunctionDataTypes(analysisId: number, functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -144,6 +149,7 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsDataTypesApi", "getFunctionDataTypes", "functionId");
         }
+
 
 
         // Path Params
@@ -176,14 +182,16 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
      * List Function Data Types
      * @param analysisId 
      * @param functionIds 
+     * @param apiKey 
      */
-    public async listFunctionDataTypesForAnalysis(analysisId: number, functionIds?: Array<number>, _options?: Configuration): Promise<RequestContext> {
+    public async listFunctionDataTypesForAnalysis(analysisId: number, functionIds?: Array<number>, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("FunctionsDataTypesApi", "listFunctionDataTypesForAnalysis", "analysisId");
         }
+
 
 
 
@@ -223,9 +231,11 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
      * Returns data types for multiple function IDs
      * List Function Data Types
      * @param functionIds 
+     * @param apiKey 
      */
-    public async listFunctionDataTypesForFunctions(functionIds?: Array<number>, _options?: Configuration): Promise<RequestContext> {
+    public async listFunctionDataTypesForFunctions(functionIds?: Array<number>, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
         // Path Params
@@ -265,8 +275,9 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
      * @param analysisId 
      * @param functionId 
      * @param updateFunctionDataTypes 
+     * @param apiKey 
      */
-    public async updateFunctionDataTypes(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, _options?: Configuration): Promise<RequestContext> {
+    public async updateFunctionDataTypes(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -285,6 +296,7 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
         if (updateFunctionDataTypes === null || updateFunctionDataTypes === undefined) {
             throw new RequiredError("FunctionsDataTypesApi", "updateFunctionDataTypes", "updateFunctionDataTypes");
         }
+
 
 
         // Path Params

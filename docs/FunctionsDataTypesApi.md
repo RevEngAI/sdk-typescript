@@ -36,6 +36,8 @@ const request: FunctionsDataTypesApiGenerateFunctionDataTypesForAnalysisRequest 
       1,
     ],
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.generateFunctionDataTypesForAnalysis(request);
@@ -49,6 +51,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionDataTypesParams** | **FunctionDataTypesParams**|  |
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -95,6 +98,8 @@ const request: FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsRequest
       1,
     ],
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.generateFunctionDataTypesForFunctions(request);
@@ -107,6 +112,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionDataTypesParams** | **FunctionDataTypesParams**|  |
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -151,6 +157,8 @@ const request: FunctionsDataTypesApiGetFunctionDataTypesRequest = {
   analysisId: 1,
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getFunctionDataTypes(request);
@@ -164,6 +172,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -210,6 +219,8 @@ const request: FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest = {
   functionIds: [
     1,
   ],
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.listFunctionDataTypesForAnalysis(request);
@@ -223,6 +234,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
  **functionIds** | **Array&lt;number&gt;** |  | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -267,6 +279,8 @@ const request: FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest = {
   functionIds: [
     1,
   ],
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.listFunctionDataTypesForFunctions(request);
@@ -279,6 +293,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionIds** | **Array&lt;number&gt;** |  | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -365,6 +380,8 @@ const request: FunctionsDataTypesApiUpdateFunctionDataTypesRequest = {
       ],
     },
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.updateFunctionDataTypes(request);
@@ -379,6 +396,7 @@ Name | Type | Description  | Notes
  **updateFunctionDataTypes** | **UpdateFunctionDataTypes**|  |
  **analysisId** | [**number**] |  | defaults to undefined
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

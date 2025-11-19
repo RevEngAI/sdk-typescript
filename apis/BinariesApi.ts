@@ -23,14 +23,16 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Downloads a zipped binary with password protection
      * @param binaryId 
+     * @param apiKey 
      */
-    public async downloadZippedBinary(binaryId: number, _options?: Configuration): Promise<RequestContext> {
+    public async downloadZippedBinary(binaryId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "downloadZippedBinary", "binaryId");
         }
+
 
 
         // Path Params
@@ -60,14 +62,16 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the additional details of a binary
      * @param binaryId 
+     * @param apiKey 
      */
-    public async getBinaryAdditionalDetails(binaryId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryAdditionalDetails(binaryId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryAdditionalDetails", "binaryId");
         }
+
 
 
         // Path Params
@@ -97,14 +101,16 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the details of a binary
      * @param binaryId 
+     * @param apiKey 
      */
-    public async getBinaryDetails(binaryId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryDetails(binaryId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryDetails", "binaryId");
         }
+
 
 
         // Path Params
@@ -134,14 +140,16 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the die info of a binary
      * @param binaryId 
+     * @param apiKey 
      */
-    public async getBinaryDieInfo(binaryId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryDieInfo(binaryId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryDieInfo", "binaryId");
         }
+
 
 
         // Path Params
@@ -171,14 +179,16 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the external details of a binary
      * @param binaryId 
+     * @param apiKey 
      */
-    public async getBinaryExternals(binaryId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryExternals(binaryId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryExternals", "binaryId");
         }
+
 
 
         // Path Params
@@ -208,14 +218,16 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the related binaries of a binary.
      * @param binaryId 
+     * @param apiKey 
      */
-    public async getRelatedBinaries(binaryId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getRelatedBinaries(binaryId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getRelatedBinaries", "binaryId");
         }
+
 
 
         // Path Params

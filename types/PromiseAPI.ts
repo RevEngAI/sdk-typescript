@@ -301,10 +301,11 @@ export class PromiseAnalysesCommentsApi {
      * Create a comment for this analysis
      * @param analysisId
      * @param commentBase
+     * @param [apiKey]
      */
-    public createAnalysisCommentWithHttpInfo(analysisId: number, commentBase: CommentBase, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public createAnalysisCommentWithHttpInfo(analysisId: number, commentBase: CommentBase, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAnalysisCommentWithHttpInfo(analysisId, commentBase, observableOptions);
+        const result = this.api.createAnalysisCommentWithHttpInfo(analysisId, commentBase, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -313,10 +314,11 @@ export class PromiseAnalysesCommentsApi {
      * Create a comment for this analysis
      * @param analysisId
      * @param commentBase
+     * @param [apiKey]
      */
-    public createAnalysisComment(analysisId: number, commentBase: CommentBase, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public createAnalysisComment(analysisId: number, commentBase: CommentBase, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAnalysisComment(analysisId, commentBase, observableOptions);
+        const result = this.api.createAnalysisComment(analysisId, commentBase, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -325,10 +327,11 @@ export class PromiseAnalysesCommentsApi {
      * Delete a comment
      * @param commentId
      * @param analysisId
+     * @param [apiKey]
      */
-    public deleteAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
+    public deleteAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAnalysisCommentWithHttpInfo(commentId, analysisId, observableOptions);
+        const result = this.api.deleteAnalysisCommentWithHttpInfo(commentId, analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -337,10 +340,11 @@ export class PromiseAnalysesCommentsApi {
      * Delete a comment
      * @param commentId
      * @param analysisId
+     * @param [apiKey]
      */
-    public deleteAnalysisComment(commentId: number, analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
+    public deleteAnalysisComment(commentId: number, analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAnalysisComment(commentId, analysisId, observableOptions);
+        const result = this.api.deleteAnalysisComment(commentId, analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -348,10 +352,11 @@ export class PromiseAnalysesCommentsApi {
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisCommentsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
+    public getAnalysisCommentsWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisCommentsWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisCommentsWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -359,10 +364,11 @@ export class PromiseAnalysesCommentsApi {
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisComments(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
+    public getAnalysisComments(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisComments(analysisId, observableOptions);
+        const result = this.api.getAnalysisComments(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -372,10 +378,11 @@ export class PromiseAnalysesCommentsApi {
      * @param commentId
      * @param analysisId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public updateAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysisCommentWithHttpInfo(commentId, analysisId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateAnalysisCommentWithHttpInfo(commentId, analysisId, commentUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -385,10 +392,11 @@ export class PromiseAnalysesCommentsApi {
      * @param commentId
      * @param analysisId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysisComment(commentId, analysisId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateAnalysisComment(commentId, analysisId, commentUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -415,10 +423,11 @@ export class PromiseAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [apiKey]
      */
-    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisCreateResponse>> {
+    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisCreateResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAnalysisWithHttpInfo(analysisCreateRequest, observableOptions);
+        const result = this.api.createAnalysisWithHttpInfo(analysisCreateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -426,10 +435,11 @@ export class PromiseAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [apiKey]
      */
-    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisCreateResponse> {
+    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisCreateResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAnalysis(analysisCreateRequest, observableOptions);
+        const result = this.api.createAnalysis(analysisCreateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -437,10 +447,11 @@ export class PromiseAnalysesCoreApi {
      * Deletes an analysis based on the provided analysis ID.
      * Delete Analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public deleteAnalysisWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
+    public deleteAnalysisWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAnalysisWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.deleteAnalysisWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -448,10 +459,11 @@ export class PromiseAnalysesCoreApi {
      * Deletes an analysis based on the provided analysis ID.
      * Delete Analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public deleteAnalysis(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseDict> {
+    public deleteAnalysis(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseDict> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAnalysis(analysisId, observableOptions);
+        const result = this.api.deleteAnalysis(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -459,10 +471,11 @@ export class PromiseAnalysesCoreApi {
      * Returns basic analysis information for an analysis
      * Gets basic analysis information
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisBasicInfoWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBasic>> {
+    public getAnalysisBasicInfoWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBasic>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisBasicInfoWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisBasicInfoWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -470,10 +483,11 @@ export class PromiseAnalysesCoreApi {
      * Returns basic analysis information for an analysis
      * Gets basic analysis information
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisBasicInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBasic> {
+    public getAnalysisBasicInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBasic> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisBasicInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisBasicInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -481,10 +495,11 @@ export class PromiseAnalysesCoreApi {
      * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
      * Get Analysis Function Map
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisFunctionMapWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
+    public getAnalysisFunctionMapWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisFunctionMapWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisFunctionMapWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -492,10 +507,11 @@ export class PromiseAnalysesCoreApi {
      * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
      * Get Analysis Function Map
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisFunctionMap(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisFunctionMapping> {
+    public getAnalysisFunctionMap(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisFunctionMapping> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisFunctionMap(analysisId, observableOptions);
+        const result = this.api.getAnalysisFunctionMap(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -503,10 +519,11 @@ export class PromiseAnalysesCoreApi {
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisLogsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseLogs>> {
+    public getAnalysisLogsWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseLogs>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisLogsWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisLogsWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -514,10 +531,11 @@ export class PromiseAnalysesCoreApi {
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisLogs(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseLogs> {
+    public getAnalysisLogs(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseLogs> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisLogs(analysisId, observableOptions);
+        const result = this.api.getAnalysisLogs(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -525,10 +543,11 @@ export class PromiseAnalysesCoreApi {
      * Gets the params that the analysis was run with
      * Gets analysis param information
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisParamsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseParams>> {
+    public getAnalysisParamsWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseParams>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisParamsWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisParamsWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -536,10 +555,11 @@ export class PromiseAnalysesCoreApi {
      * Gets the params that the analysis was run with
      * Gets analysis param information
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisParams(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseParams> {
+    public getAnalysisParams(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseParams> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisParams(analysisId, observableOptions);
+        const result = this.api.getAnalysisParams(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -547,10 +567,11 @@ export class PromiseAnalysesCoreApi {
      * Given an analysis ID gets the current status of the analysis
      * Gets the status of an analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseStatus>> {
+    public getAnalysisStatusWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseStatus>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStatusWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisStatusWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -558,10 +579,11 @@ export class PromiseAnalysesCoreApi {
      * Given an analysis ID gets the current status of the analysis
      * Gets the status of an analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseStatus> {
+    public getAnalysisStatus(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseStatus> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStatus(analysisId, observableOptions);
+        const result = this.api.getAnalysisStatus(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -579,10 +601,11 @@ export class PromiseAnalysesCoreApi {
      * @param [offset]
      * @param [orderBy]
      * @param [order]
+     * @param [apiKey]
      */
-    public listAnalysesWithHttpInfo(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseRecent>> {
+    public listAnalysesWithHttpInfo(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseRecent>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.listAnalysesWithHttpInfo(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, observableOptions);
+        const result = this.api.listAnalysesWithHttpInfo(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -600,10 +623,11 @@ export class PromiseAnalysesCoreApi {
      * @param [offset]
      * @param [orderBy]
      * @param [order]
+     * @param [apiKey]
      */
-    public listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: PromiseConfigurationOptions): Promise<BaseResponseRecent> {
+    public listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseRecent> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.listAnalyses(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, observableOptions);
+        const result = this.api.listAnalyses(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -611,10 +635,11 @@ export class PromiseAnalysesCoreApi {
      * Given an binary ID gets the ID of an analysis
      * Gets the analysis ID from binary ID
      * @param binaryId
+     * @param [apiKey]
      */
-    public lookupBinaryIdWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public lookupBinaryIdWithHttpInfo(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.lookupBinaryIdWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.lookupBinaryIdWithHttpInfo(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -622,10 +647,11 @@ export class PromiseAnalysesCoreApi {
      * Given an binary ID gets the ID of an analysis
      * Gets the analysis ID from binary ID
      * @param binaryId
+     * @param [apiKey]
      */
-    public lookupBinaryId(binaryId: number, _options?: PromiseConfigurationOptions): Promise<any> {
+    public lookupBinaryId(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.lookupBinaryId(binaryId, observableOptions);
+        const result = this.api.lookupBinaryId(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -634,10 +660,11 @@ export class PromiseAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [apiKey]
      */
-    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCreated>> {
+    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCreated>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, observableOptions);
+        const result = this.api.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -646,10 +673,11 @@ export class PromiseAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [apiKey]
      */
-    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, _options?: PromiseConfigurationOptions): Promise<BaseResponseCreated> {
+    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCreated> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.requeueAnalysis(analysisId, reAnalysisForm, observableOptions);
+        const result = this.api.requeueAnalysis(analysisId, reAnalysisForm, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -658,10 +686,11 @@ export class PromiseAnalysesCoreApi {
      * Update Analysis
      * @param analysisId
      * @param analysisUpdateRequest
+     * @param [apiKey]
      */
-    public updateAnalysisWithHttpInfo(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisDetailResponse>> {
+    public updateAnalysisWithHttpInfo(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisDetailResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysisWithHttpInfo(analysisId, analysisUpdateRequest, observableOptions);
+        const result = this.api.updateAnalysisWithHttpInfo(analysisId, analysisUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -670,10 +699,11 @@ export class PromiseAnalysesCoreApi {
      * Update Analysis
      * @param analysisId
      * @param analysisUpdateRequest
+     * @param [apiKey]
      */
-    public updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisDetailResponse> {
+    public updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisDetailResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysis(analysisId, analysisUpdateRequest, observableOptions);
+        const result = this.api.updateAnalysis(analysisId, analysisUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -682,10 +712,11 @@ export class PromiseAnalysesCoreApi {
      * Update Analysis Tags
      * @param analysisId
      * @param analysisUpdateTagsRequest
+     * @param [apiKey]
      */
-    public updateAnalysisTagsWithHttpInfo(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
+    public updateAnalysisTagsWithHttpInfo(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysisTagsWithHttpInfo(analysisId, analysisUpdateTagsRequest, observableOptions);
+        const result = this.api.updateAnalysisTagsWithHttpInfo(analysisId, analysisUpdateTagsRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -694,10 +725,11 @@ export class PromiseAnalysesCoreApi {
      * Update Analysis Tags
      * @param analysisId
      * @param analysisUpdateTagsRequest
+     * @param [apiKey]
      */
-    public updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisUpdateTagsResponse> {
+    public updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisUpdateTagsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysisTags(analysisId, analysisUpdateTagsRequest, observableOptions);
+        const result = this.api.updateAnalysisTags(analysisId, analysisUpdateTagsRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -706,11 +738,12 @@ export class PromiseAnalysesCoreApi {
      * @param uploadFileType
      * @param file
      * @param [packedPassword]
+     * @param [apiKey]
      * @param [forceOverwrite]
      */
-    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
+    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, apiKey?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, forceOverwrite, observableOptions);
+        const result = this.api.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, apiKey, forceOverwrite, observableOptions);
         return result.toPromise();
     }
 
@@ -719,11 +752,12 @@ export class PromiseAnalysesCoreApi {
      * @param uploadFileType
      * @param file
      * @param [packedPassword]
+     * @param [apiKey]
      * @param [forceOverwrite]
      */
-    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
+    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, apiKey?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFile(uploadFileType, file, packedPassword, forceOverwrite, observableOptions);
+        const result = this.api.uploadFile(uploadFileType, file, packedPassword, apiKey, forceOverwrite, observableOptions);
         return result.toPromise();
     }
 
@@ -749,40 +783,44 @@ export class PromiseAnalysesDynamicExecutionApi {
     /**
      * Get the status of a dynamic execution task
      * @param analysisId
+     * @param [apiKey]
      */
-    public getDynamicExecutionStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDynamicExecutionStatus>> {
+    public getDynamicExecutionStatusWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDynamicExecutionStatus>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getDynamicExecutionStatusWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getDynamicExecutionStatusWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the status of a dynamic execution task
      * @param analysisId
+     * @param [apiKey]
      */
-    public getDynamicExecutionStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseDynamicExecutionStatus> {
+    public getDynamicExecutionStatus(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseDynamicExecutionStatus> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getDynamicExecutionStatus(analysisId, observableOptions);
+        const result = this.api.getDynamicExecutionStatus(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the dynamic execution results for network overview
      * @param analysisId
+     * @param [apiKey]
      */
-    public getNetworkOverviewWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseNetworkOverviewResponse>> {
+    public getNetworkOverviewWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseNetworkOverviewResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getNetworkOverviewWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getNetworkOverviewWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the dynamic execution results for network overview
      * @param analysisId
+     * @param [apiKey]
      */
-    public getNetworkOverview(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseNetworkOverviewResponse> {
+    public getNetworkOverview(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseNetworkOverviewResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getNetworkOverview(analysisId, observableOptions);
+        const result = this.api.getNetworkOverview(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -790,10 +828,11 @@ export class PromiseAnalysesDynamicExecutionApi {
      * Get the dynamic execution results for a specific process dump
      * @param analysisId
      * @param dumpName
+     * @param [apiKey]
      */
-    public getProcessDumpWithHttpInfo(analysisId: number, dumpName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public getProcessDumpWithHttpInfo(analysisId: number, dumpName: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessDumpWithHttpInfo(analysisId, dumpName, observableOptions);
+        const result = this.api.getProcessDumpWithHttpInfo(analysisId, dumpName, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -801,90 +840,99 @@ export class PromiseAnalysesDynamicExecutionApi {
      * Get the dynamic execution results for a specific process dump
      * @param analysisId
      * @param dumpName
+     * @param [apiKey]
      */
-    public getProcessDump(analysisId: number, dumpName: string, _options?: PromiseConfigurationOptions): Promise<any> {
+    public getProcessDump(analysisId: number, dumpName: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessDump(analysisId, dumpName, observableOptions);
+        const result = this.api.getProcessDump(analysisId, dumpName, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the dynamic execution results for process dumps
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessDumpsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseProcessDumps>> {
+    public getProcessDumpsWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseProcessDumps>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessDumpsWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getProcessDumpsWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the dynamic execution results for process dumps
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessDumps(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseProcessDumps> {
+    public getProcessDumps(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseProcessDumps> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessDumps(analysisId, observableOptions);
+        const result = this.api.getProcessDumps(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the dynamic execution results for process registry
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessRegistryWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseProcessRegistry>> {
+    public getProcessRegistryWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseProcessRegistry>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessRegistryWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getProcessRegistryWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the dynamic execution results for process registry
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessRegistry(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseProcessRegistry> {
+    public getProcessRegistry(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseProcessRegistry> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessRegistry(analysisId, observableOptions);
+        const result = this.api.getProcessRegistry(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the dynamic execution results for process tree
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessTreeWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseProcessTree>> {
+    public getProcessTreeWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseProcessTree>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessTreeWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getProcessTreeWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the dynamic execution results for process tree
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessTree(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseProcessTree> {
+    public getProcessTree(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseProcessTree> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessTree(analysisId, observableOptions);
+        const result = this.api.getProcessTree(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the dynamic execution results for ttps
      * @param analysisId
+     * @param [apiKey]
      */
-    public getTtpsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseTTPS>> {
+    public getTtpsWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseTTPS>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getTtpsWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getTtpsWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the dynamic execution results for ttps
      * @param analysisId
+     * @param [apiKey]
      */
-    public getTtps(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseTTPS> {
+    public getTtps(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseTTPS> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getTtps(analysisId, observableOptions);
+        const result = this.api.getTtps(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -910,20 +958,22 @@ export class PromiseAnalysesResultsMetadataApi {
     /**
      * Gets the capabilities from the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getCapabilitiesWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCapabilities>> {
+    public getCapabilitiesWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCapabilities>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getCapabilitiesWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getCapabilitiesWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the capabilities from the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getCapabilities(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCapabilities> {
+    public getCapabilities(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCapabilities> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getCapabilities(analysisId, observableOptions);
+        const result = this.api.getCapabilities(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -931,10 +981,11 @@ export class PromiseAnalysesResultsMetadataApi {
      * Gets the communities found in the analysis
      * @param analysisId
      * @param [userName] The user name to limit communities to
+     * @param [apiKey]
      */
-    public getCommunitiesWithHttpInfo(analysisId: number, userName?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommunities>> {
+    public getCommunitiesWithHttpInfo(analysisId: number, userName?: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommunities>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getCommunitiesWithHttpInfo(analysisId, userName, observableOptions);
+        const result = this.api.getCommunitiesWithHttpInfo(analysisId, userName, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -942,10 +993,11 @@ export class PromiseAnalysesResultsMetadataApi {
      * Gets the communities found in the analysis
      * @param analysisId
      * @param [userName] The user name to limit communities to
+     * @param [apiKey]
      */
-    public getCommunities(analysisId: number, userName?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommunities> {
+    public getCommunities(analysisId: number, userName?: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommunities> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getCommunities(analysisId, userName, observableOptions);
+        const result = this.api.getCommunities(analysisId, userName, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -956,10 +1008,11 @@ export class PromiseAnalysesResultsMetadataApi {
      * @param [searchTerm]
      * @param [minVAddr]
      * @param [maxVAddr]
+     * @param [apiKey]
      */
-    public getFunctionsListWithHttpInfo(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctions>> {
+    public getFunctionsListWithHttpInfo(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctions>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionsListWithHttpInfo(analysisId, searchTerm, minVAddr, maxVAddr, observableOptions);
+        const result = this.api.getFunctionsListWithHttpInfo(analysisId, searchTerm, minVAddr, maxVAddr, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -970,90 +1023,99 @@ export class PromiseAnalysesResultsMetadataApi {
      * @param [searchTerm]
      * @param [minVAddr]
      * @param [maxVAddr]
+     * @param [apiKey]
      */
-    public getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisFunctions> {
+    public getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisFunctions> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionsList(analysisId, searchTerm, minVAddr, maxVAddr, observableOptions);
+        const result = this.api.getFunctionsList(analysisId, searchTerm, minVAddr, maxVAddr, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the PDF found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getPdfWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public getPdfWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getPdfWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getPdfWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the PDF found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getPdf(analysisId: number, _options?: PromiseConfigurationOptions): Promise<any> {
+    public getPdf(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getPdf(analysisId, observableOptions);
+        const result = this.api.getPdf(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the software-bill-of-materials (SBOM) found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getSbomWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListSBOM>> {
+    public getSbomWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListSBOM>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getSbomWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getSbomWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the software-bill-of-materials (SBOM) found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getSbom(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListSBOM> {
+    public getSbom(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseListSBOM> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getSbom(analysisId, observableOptions);
+        const result = this.api.getSbom(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get function tags with maliciousness score
      * @param analysisId
+     * @param [apiKey]
      */
-    public getTagsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisTags>> {
+    public getTagsWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisTags>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getTagsWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getTagsWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get function tags with maliciousness score
      * @param analysisId
+     * @param [apiKey]
      */
-    public getTags(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisTags> {
+    public getTags(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisTags> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getTags(analysisId, observableOptions);
+        const result = this.api.getTags(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the vulnerabilities found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVulnerabilitiesWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseVulnerabilities>> {
+    public getVulnerabilitiesWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseVulnerabilities>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getVulnerabilitiesWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getVulnerabilitiesWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the vulnerabilities found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVulnerabilities(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseVulnerabilities> {
+    public getVulnerabilities(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseVulnerabilities> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getVulnerabilities(analysisId, observableOptions);
+        const result = this.api.getVulnerabilities(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1079,20 +1141,22 @@ export class PromiseAnalysesSecurityChecksApi {
     /**
      * Queues a security check process
      * @param analysisId
+     * @param [apiKey]
      */
-    public createScurityChecksTaskWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<QueuedSecurityChecksTaskResponse>> {
+    public createScurityChecksTaskWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<QueuedSecurityChecksTaskResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createScurityChecksTaskWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.createScurityChecksTaskWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Queues a security check process
      * @param analysisId
+     * @param [apiKey]
      */
-    public createScurityChecksTask(analysisId: number, _options?: PromiseConfigurationOptions): Promise<QueuedSecurityChecksTaskResponse> {
+    public createScurityChecksTask(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<QueuedSecurityChecksTaskResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createScurityChecksTask(analysisId, observableOptions);
+        const result = this.api.createScurityChecksTask(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1102,10 +1166,11 @@ export class PromiseAnalysesSecurityChecksApi {
      * @param analysisId
      * @param page The page number to retrieve.
      * @param pageSize Number of items per page.
+     * @param [apiKey]
      */
-    public getSecurityChecksWithHttpInfo(analysisId: number, page: number, pageSize: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseSecurityChecksResponse>> {
+    public getSecurityChecksWithHttpInfo(analysisId: number, page: number, pageSize: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseSecurityChecksResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getSecurityChecksWithHttpInfo(analysisId, page, pageSize, observableOptions);
+        const result = this.api.getSecurityChecksWithHttpInfo(analysisId, page, pageSize, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1115,30 +1180,33 @@ export class PromiseAnalysesSecurityChecksApi {
      * @param analysisId
      * @param page The page number to retrieve.
      * @param pageSize Number of items per page.
+     * @param [apiKey]
      */
-    public getSecurityChecks(analysisId: number, page: number, pageSize: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseSecurityChecksResponse> {
+    public getSecurityChecks(analysisId: number, page: number, pageSize: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseSecurityChecksResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getSecurityChecks(analysisId, page, pageSize, observableOptions);
+        const result = this.api.getSecurityChecks(analysisId, page, pageSize, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Check the status of a security check process
      * @param analysisId
+     * @param [apiKey]
      */
-    public getSecurityChecksTaskStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CheckSecurityChecksTaskResponse>> {
+    public getSecurityChecksTaskStatusWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CheckSecurityChecksTaskResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getSecurityChecksTaskStatusWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getSecurityChecksTaskStatusWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Check the status of a security check process
      * @param analysisId
+     * @param [apiKey]
      */
-    public getSecurityChecksTaskStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<CheckSecurityChecksTaskResponse> {
+    public getSecurityChecksTaskStatus(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<CheckSecurityChecksTaskResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getSecurityChecksTaskStatus(analysisId, observableOptions);
+        const result = this.api.getSecurityChecksTaskStatus(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1163,77 +1231,85 @@ export class PromiseAuthenticationUsersApi {
 
     /**
      * Get the requesters user information
+     * @param [apiKey]
      */
-    public getRequesterUserInfoWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetUserResponse>> {
+    public getRequesterUserInfoWithHttpInfo(apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetUserResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getRequesterUserInfoWithHttpInfo(observableOptions);
+        const result = this.api.getRequesterUserInfoWithHttpInfo(apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get the requesters user information
+     * @param [apiKey]
      */
-    public getRequesterUserInfo(_options?: PromiseConfigurationOptions): Promise<BaseResponseGetUserResponse> {
+    public getRequesterUserInfo(apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetUserResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getRequesterUserInfo(observableOptions);
+        const result = this.api.getRequesterUserInfo(apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get a user\'s public information
      * @param userId
+     * @param [apiKey]
      */
-    public getUserWithHttpInfo(userId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetPublicUserResponse>> {
+    public getUserWithHttpInfo(userId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetPublicUserResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getUserWithHttpInfo(userId, observableOptions);
+        const result = this.api.getUserWithHttpInfo(userId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get a user\'s public information
      * @param userId
+     * @param [apiKey]
      */
-    public getUser(userId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetPublicUserResponse> {
+    public getUser(userId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetPublicUserResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getUser(userId, observableOptions);
+        const result = this.api.getUser(userId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get auth user activity
+     * @param [apiKey]
      */
-    public getUserActivityWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListUserActivityResponse>> {
+    public getUserActivityWithHttpInfo(apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListUserActivityResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getUserActivityWithHttpInfo(observableOptions);
+        const result = this.api.getUserActivityWithHttpInfo(apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get auth user activity
+     * @param [apiKey]
      */
-    public getUserActivity(_options?: PromiseConfigurationOptions): Promise<BaseResponseListUserActivityResponse> {
+    public getUserActivity(apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseListUserActivityResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getUserActivity(observableOptions);
+        const result = this.api.getUserActivity(apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
      * Get comments by user
+     * @param [apiKey]
      */
-    public getUserCommentsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
+    public getUserCommentsWithHttpInfo(apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getUserCommentsWithHttpInfo(observableOptions);
+        const result = this.api.getUserCommentsWithHttpInfo(apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
      * Get comments by user
+     * @param [apiKey]
      */
-    public getUserComments(_options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
+    public getUserComments(apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getUserComments(observableOptions);
+        const result = this.api.getUserComments(apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1281,120 +1357,132 @@ export class PromiseBinariesApi {
     /**
      * Downloads a zipped binary with password protection
      * @param binaryId
+     * @param [apiKey]
      */
-    public downloadZippedBinaryWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public downloadZippedBinaryWithHttpInfo(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.downloadZippedBinaryWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.downloadZippedBinaryWithHttpInfo(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Downloads a zipped binary with password protection
      * @param binaryId
+     * @param [apiKey]
      */
-    public downloadZippedBinary(binaryId: number, _options?: PromiseConfigurationOptions): Promise<any> {
+    public downloadZippedBinary(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.downloadZippedBinary(binaryId, observableOptions);
+        const result = this.api.downloadZippedBinary(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the additional details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
+    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryAdditionalDetailsWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryAdditionalDetailsWithHttpInfo(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the additional details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryAdditionalDetails(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryAdditionalResponse> {
+    public getBinaryAdditionalDetails(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryAdditionalResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryAdditionalDetails(binaryId, observableOptions);
+        const result = this.api.getBinaryAdditionalDetails(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryDetailsWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryDetailsResponse>> {
+    public getBinaryDetailsWithHttpInfo(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryDetailsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryDetailsWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryDetailsWithHttpInfo(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryDetails(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryDetailsResponse> {
+    public getBinaryDetails(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryDetailsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryDetails(binaryId, observableOptions);
+        const result = this.api.getBinaryDetails(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the die info of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryDieInfoWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListDieMatch>> {
+    public getBinaryDieInfoWithHttpInfo(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListDieMatch>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryDieInfoWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryDieInfoWithHttpInfo(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the die info of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryDieInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListDieMatch> {
+    public getBinaryDieInfo(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseListDieMatch> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryDieInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryDieInfo(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the external details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryExternalsWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryExternalsResponse>> {
+    public getBinaryExternalsWithHttpInfo(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryExternalsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryExternalsWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryExternalsWithHttpInfo(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the external details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryExternals(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryExternalsResponse> {
+    public getBinaryExternals(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryExternalsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryExternals(binaryId, observableOptions);
+        const result = this.api.getBinaryExternals(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the related binaries of a binary.
      * @param binaryId
+     * @param [apiKey]
      */
-    public getRelatedBinariesWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseChildBinariesResponse>> {
+    public getRelatedBinariesWithHttpInfo(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseChildBinariesResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getRelatedBinariesWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getRelatedBinariesWithHttpInfo(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the related binaries of a binary.
      * @param binaryId
+     * @param [apiKey]
      */
-    public getRelatedBinaries(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseChildBinariesResponse> {
+    public getRelatedBinaries(binaryId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseChildBinariesResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getRelatedBinaries(binaryId, observableOptions);
+        const result = this.api.getRelatedBinaries(binaryId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1421,10 +1509,11 @@ export class PromiseCollectionsApi {
      * A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
      * Creates new collection information
      * @param collectionCreateRequest
+     * @param [apiKey]
      */
-    public createCollectionWithHttpInfo(collectionCreateRequest: CollectionCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
+    public createCollectionWithHttpInfo(collectionCreateRequest: CollectionCreateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createCollectionWithHttpInfo(collectionCreateRequest, observableOptions);
+        const result = this.api.createCollectionWithHttpInfo(collectionCreateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1432,10 +1521,11 @@ export class PromiseCollectionsApi {
      * A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
      * Creates new collection information
      * @param collectionCreateRequest
+     * @param [apiKey]
      */
-    public createCollection(collectionCreateRequest: CollectionCreateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionResponse> {
+    public createCollection(collectionCreateRequest: CollectionCreateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createCollection(collectionCreateRequest, observableOptions);
+        const result = this.api.createCollection(collectionCreateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1443,10 +1533,11 @@ export class PromiseCollectionsApi {
      * Deletes a collection
      * Deletes a collection
      * @param collectionId
+     * @param [apiKey]
      */
-    public deleteCollectionWithHttpInfo(collectionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
+    public deleteCollectionWithHttpInfo(collectionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteCollectionWithHttpInfo(collectionId, observableOptions);
+        const result = this.api.deleteCollectionWithHttpInfo(collectionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1454,23 +1545,11 @@ export class PromiseCollectionsApi {
      * Deletes a collection
      * Deletes a collection
      * @param collectionId
+     * @param [apiKey]
      */
-    public deleteCollection(collectionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
+    public deleteCollection(collectionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteCollection(collectionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Gets a single collection. The collection can include binaries and tags if requested. You can specify whether to include tags and binaries in the response by using the query string parameters defined.
-     * Returns a collection
-     * @param collectionId
-     * @param [includeTags]
-     * @param [includeBinaries]
-     */
-    public getCollectionWithHttpInfo(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getCollectionWithHttpInfo(collectionId, includeTags, includeBinaries, observableOptions);
+        const result = this.api.deleteCollection(collectionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1480,10 +1559,25 @@ export class PromiseCollectionsApi {
      * @param collectionId
      * @param [includeTags]
      * @param [includeBinaries]
+     * @param [apiKey]
      */
-    public getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionResponse> {
+    public getCollectionWithHttpInfo(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getCollection(collectionId, includeTags, includeBinaries, observableOptions);
+        const result = this.api.getCollectionWithHttpInfo(collectionId, includeTags, includeBinaries, apiKey, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets a single collection. The collection can include binaries and tags if requested. You can specify whether to include tags and binaries in the response by using the query string parameters defined.
+     * Returns a collection
+     * @param collectionId
+     * @param [includeTags]
+     * @param [includeBinaries]
+     * @param [apiKey]
+     */
+    public getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCollection(collectionId, includeTags, includeBinaries, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1496,10 +1590,11 @@ export class PromiseCollectionsApi {
      * @param [offset]
      * @param [orderBy]
      * @param [order]
+     * @param [apiKey]
      */
-    public listCollectionsWithHttpInfo(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCollectionResults>> {
+    public listCollectionsWithHttpInfo(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCollectionResults>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.listCollectionsWithHttpInfo(searchTerm, filters, limit, offset, orderBy, order, observableOptions);
+        const result = this.api.listCollectionsWithHttpInfo(searchTerm, filters, limit, offset, orderBy, order, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1512,10 +1607,11 @@ export class PromiseCollectionsApi {
      * @param [offset]
      * @param [orderBy]
      * @param [order]
+     * @param [apiKey]
      */
-    public listCollections(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCollectionResults> {
+    public listCollections(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCollectionResults> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.listCollections(searchTerm, filters, limit, offset, orderBy, order, observableOptions);
+        const result = this.api.listCollections(searchTerm, filters, limit, offset, orderBy, order, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1524,10 +1620,11 @@ export class PromiseCollectionsApi {
      * Updates a collection
      * @param collectionId
      * @param collectionUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollectionWithHttpInfo(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
+    public updateCollectionWithHttpInfo(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateCollectionWithHttpInfo(collectionId, collectionUpdateRequest, observableOptions);
+        const result = this.api.updateCollectionWithHttpInfo(collectionId, collectionUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1536,10 +1633,11 @@ export class PromiseCollectionsApi {
      * Updates a collection
      * @param collectionId
      * @param collectionUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollection(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionResponse> {
+    public updateCollection(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateCollection(collectionId, collectionUpdateRequest, observableOptions);
+        const result = this.api.updateCollection(collectionId, collectionUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1548,10 +1646,11 @@ export class PromiseCollectionsApi {
      * Updates a collection binaries
      * @param collectionId
      * @param collectionBinariesUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollectionBinariesWithHttpInfo(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionBinariesUpdateResponse>> {
+    public updateCollectionBinariesWithHttpInfo(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionBinariesUpdateResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateCollectionBinariesWithHttpInfo(collectionId, collectionBinariesUpdateRequest, observableOptions);
+        const result = this.api.updateCollectionBinariesWithHttpInfo(collectionId, collectionBinariesUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1560,10 +1659,11 @@ export class PromiseCollectionsApi {
      * Updates a collection binaries
      * @param collectionId
      * @param collectionBinariesUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollectionBinaries(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionBinariesUpdateResponse> {
+    public updateCollectionBinaries(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionBinariesUpdateResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateCollectionBinaries(collectionId, collectionBinariesUpdateRequest, observableOptions);
+        const result = this.api.updateCollectionBinaries(collectionId, collectionBinariesUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1572,10 +1672,11 @@ export class PromiseCollectionsApi {
      * Updates a collection tags
      * @param collectionId
      * @param collectionTagsUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollectionTagsWithHttpInfo(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionTagsUpdateResponse>> {
+    public updateCollectionTagsWithHttpInfo(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionTagsUpdateResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateCollectionTagsWithHttpInfo(collectionId, collectionTagsUpdateRequest, observableOptions);
+        const result = this.api.updateCollectionTagsWithHttpInfo(collectionId, collectionTagsUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1584,10 +1685,11 @@ export class PromiseCollectionsApi {
      * Updates a collection tags
      * @param collectionId
      * @param collectionTagsUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollectionTags(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionTagsUpdateResponse> {
+    public updateCollectionTags(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionTagsUpdateResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateCollectionTags(collectionId, collectionTagsUpdateRequest, observableOptions);
+        const result = this.api.updateCollectionTags(collectionId, collectionTagsUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1613,120 +1715,132 @@ export class PromiseExternalSourcesApi {
     /**
      * Pulls data from VirusTotal
      * @param analysisId
+     * @param [apiKey]
      */
-    public createExternalTaskMbWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
+    public createExternalTaskMbWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createExternalTaskMbWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.createExternalTaskMbWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Pulls data from VirusTotal
      * @param analysisId
+     * @param [apiKey]
      */
-    public createExternalTaskMb(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseStr> {
+    public createExternalTaskMb(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseStr> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createExternalTaskMb(analysisId, observableOptions);
+        const result = this.api.createExternalTaskMb(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Pulls data from VirusTotal
      * @param analysisId
+     * @param [apiKey]
      */
-    public createExternalTaskVtWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
+    public createExternalTaskVtWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createExternalTaskVtWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.createExternalTaskVtWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Pulls data from VirusTotal
      * @param analysisId
+     * @param [apiKey]
      */
-    public createExternalTaskVt(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseStr> {
+    public createExternalTaskVt(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseStr> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createExternalTaskVt(analysisId, observableOptions);
+        const result = this.api.createExternalTaskVt(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get MalwareBazaar data
      * @param analysisId
+     * @param [apiKey]
      */
-    public getMbDataWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
+    public getMbDataWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getMbDataWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getMbDataWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get MalwareBazaar data
      * @param analysisId
+     * @param [apiKey]
      */
-    public getMbData(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseExternalResponse> {
+    public getMbData(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseExternalResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getMbData(analysisId, observableOptions);
+        const result = this.api.getMbData(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Check the status of MalwareBazaar data retrieval
      * @param analysisId
+     * @param [apiKey]
      */
-    public getMbTaskStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
+    public getMbTaskStatusWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getMbTaskStatusWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getMbTaskStatusWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Check the status of MalwareBazaar data retrieval
      * @param analysisId
+     * @param [apiKey]
      */
-    public getMbTaskStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseTaskResponse> {
+    public getMbTaskStatus(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseTaskResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getMbTaskStatus(analysisId, observableOptions);
+        const result = this.api.getMbTaskStatus(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get VirusTotal data
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVtDataWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
+    public getVtDataWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getVtDataWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getVtDataWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get VirusTotal data
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVtData(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseExternalResponse> {
+    public getVtData(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseExternalResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getVtData(analysisId, observableOptions);
+        const result = this.api.getVtData(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Check the status of VirusTotal data retrieval
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVtTaskStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
+    public getVtTaskStatusWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getVtTaskStatusWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getVtTaskStatusWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Check the status of VirusTotal data retrieval
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVtTaskStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseTaskResponse> {
+    public getVtTaskStatus(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseTaskResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getVtTaskStatus(analysisId, observableOptions);
+        const result = this.api.getVtTaskStatus(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1753,10 +1867,11 @@ export class PromiseFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param taskId
+     * @param [apiKey]
      */
-    public getBinariesForFirmwareTaskWithHttpInfo(taskId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public getBinariesForFirmwareTaskWithHttpInfo(taskId: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinariesForFirmwareTaskWithHttpInfo(taskId, observableOptions);
+        const result = this.api.getBinariesForFirmwareTaskWithHttpInfo(taskId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1764,10 +1879,11 @@ export class PromiseFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param taskId
+     * @param [apiKey]
      */
-    public getBinariesForFirmwareTask(taskId: string, _options?: PromiseConfigurationOptions): Promise<any> {
+    public getBinariesForFirmwareTask(taskId: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinariesForFirmwareTask(taskId, observableOptions);
+        const result = this.api.getBinariesForFirmwareTask(taskId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1775,11 +1891,12 @@ export class PromiseFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param file
+     * @param [apiKey]
      * @param [password]
      */
-    public uploadFirmwareWithHttpInfo(file: HttpFile, password?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public uploadFirmwareWithHttpInfo(file: HttpFile, apiKey?: string, password?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFirmwareWithHttpInfo(file, password, observableOptions);
+        const result = this.api.uploadFirmwareWithHttpInfo(file, apiKey, password, observableOptions);
         return result.toPromise();
     }
 
@@ -1787,11 +1904,12 @@ export class PromiseFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param file
+     * @param [apiKey]
      * @param [password]
      */
-    public uploadFirmware(file: HttpFile, password?: string, _options?: PromiseConfigurationOptions): Promise<any> {
+    public uploadFirmware(file: HttpFile, apiKey?: string, password?: string, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFirmware(file, password, observableOptions);
+        const result = this.api.uploadFirmware(file, apiKey, password, observableOptions);
         return result.toPromise();
     }
 
@@ -1819,10 +1937,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [apiKey]
      */
-    public createAiDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public createAiDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, observableOptions);
+        const result = this.api.createAiDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1831,10 +1950,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [apiKey]
      */
-    public createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationComment(functionId, functionCommentCreateRequest, observableOptions);
+        const result = this.api.createAiDecompilationComment(functionId, functionCommentCreateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1842,10 +1962,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
      * @param functionId The ID of the function for which we are creating the decompilation task
+     * @param [apiKey]
      */
-    public createAiDecompilationTaskWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+    public createAiDecompilationTaskWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationTaskWithHttpInfo(functionId, observableOptions);
+        const result = this.api.createAiDecompilationTaskWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1853,10 +1974,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
      * @param functionId The ID of the function for which we are creating the decompilation task
+     * @param [apiKey]
      */
-    public createAiDecompilationTask(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
+    public createAiDecompilationTask(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationTask(functionId, observableOptions);
+        const result = this.api.createAiDecompilationTask(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1865,10 +1987,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [apiKey]
      */
-    public deleteAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
+    public deleteAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAiDecompilationCommentWithHttpInfo(commentId, functionId, observableOptions);
+        const result = this.api.deleteAiDecompilationCommentWithHttpInfo(commentId, functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1877,10 +2000,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [apiKey]
      */
-    public deleteAiDecompilationComment(commentId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
+    public deleteAiDecompilationComment(commentId: number, functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAiDecompilationComment(commentId, functionId, observableOptions);
+        const result = this.api.deleteAiDecompilationComment(commentId, functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1888,10 +2012,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [apiKey]
      */
-    public getAiDecompilationCommentsWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
+    public getAiDecompilationCommentsWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationCommentsWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getAiDecompilationCommentsWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1899,30 +2024,33 @@ export class PromiseFunctionsAIDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [apiKey]
      */
-    public getAiDecompilationComments(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
+    public getAiDecompilationComments(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationComments(functionId, observableOptions);
+        const result = this.api.getAiDecompilationComments(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get rating for AI decompilation
      * @param functionId The ID of the function for which to get the rating
+     * @param [apiKey]
      */
-    public getAiDecompilationRatingWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationRatingResponse>> {
+    public getAiDecompilationRatingWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationRatingResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationRatingWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getAiDecompilationRatingWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get rating for AI decompilation
      * @param functionId The ID of the function for which to get the rating
+     * @param [apiKey]
      */
-    public getAiDecompilationRating(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetAiDecompilationRatingResponse> {
+    public getAiDecompilationRating(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetAiDecompilationRatingResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationRating(functionId, observableOptions);
+        const result = this.api.getAiDecompilationRating(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1932,10 +2060,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
      * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
+     * @param [apiKey]
      */
-    public getAiDecompilationTaskResultWithHttpInfo(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationTask>> {
+    public getAiDecompilationTaskResultWithHttpInfo(functionId: number, summarise?: boolean, generateInlineComments?: boolean, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationTask>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTaskResultWithHttpInfo(functionId, summarise, generateInlineComments, observableOptions);
+        const result = this.api.getAiDecompilationTaskResultWithHttpInfo(functionId, summarise, generateInlineComments, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1945,30 +2074,33 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
      * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
+     * @param [apiKey]
      */
-    public getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetAiDecompilationTask> {
+    public getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetAiDecompilationTask> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTaskResult(functionId, summarise, generateInlineComments, observableOptions);
+        const result = this.api.getAiDecompilationTaskResult(functionId, summarise, generateInlineComments, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Check the status of a function ai decompilation
      * @param functionId The ID of the function being checked
+     * @param [apiKey]
      */
-    public getAiDecompilationTaskStatusWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionTaskResponse>> {
+    public getAiDecompilationTaskStatusWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionTaskResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTaskStatusWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getAiDecompilationTaskStatusWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Check the status of a function ai decompilation
      * @param functionId The ID of the function being checked
+     * @param [apiKey]
      */
-    public getAiDecompilationTaskStatus(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionTaskResponse> {
+    public getAiDecompilationTaskStatus(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionTaskResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTaskStatus(functionId, observableOptions);
+        const result = this.api.getAiDecompilationTaskStatus(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1978,10 +2110,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public updateAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAiDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateAiDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -1991,10 +2124,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAiDecompilationComment(commentId, functionId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateAiDecompilationComment(commentId, functionId, commentUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2002,10 +2136,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Upsert rating for AI decompilation
      * @param functionId The ID of the function being rated
      * @param upsertAiDecomplationRatingRequest
+     * @param [apiKey]
      */
-    public upsertAiDecompilationRatingWithHttpInfo(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+    public upsertAiDecompilationRatingWithHttpInfo(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.upsertAiDecompilationRatingWithHttpInfo(functionId, upsertAiDecomplationRatingRequest, observableOptions);
+        const result = this.api.upsertAiDecompilationRatingWithHttpInfo(functionId, upsertAiDecomplationRatingRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2013,10 +2148,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Upsert rating for AI decompilation
      * @param functionId The ID of the function being rated
      * @param upsertAiDecomplationRatingRequest
+     * @param [apiKey]
      */
-    public upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
+    public upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.upsertAiDecompilationRating(functionId, upsertAiDecomplationRatingRequest, observableOptions);
+        const result = this.api.upsertAiDecompilationRating(functionId, upsertAiDecomplationRatingRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2043,10 +2179,11 @@ export class PromiseFunctionsBlockCommentsApi {
      * Generate block comments for a specific block in a function
      * @param functionId
      * @param block
+     * @param [apiKey]
      */
-    public generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId: number, block: Block, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
+    public generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId: number, block: Block, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId, block, observableOptions);
+        const result = this.api.generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId, block, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2054,50 +2191,55 @@ export class PromiseFunctionsBlockCommentsApi {
      * Generate block comments for a specific block in a function
      * @param functionId
      * @param block
+     * @param [apiKey]
      */
-    public generateBlockCommentsForBlockInFunction(functionId: number, block: Block, _options?: PromiseConfigurationOptions): Promise<BaseResponseBlockCommentsGenerationForFunctionResponse> {
+    public generateBlockCommentsForBlockInFunction(functionId: number, block: Block, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBlockCommentsGenerationForFunctionResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateBlockCommentsForBlockInFunction(functionId, block, observableOptions);
+        const result = this.api.generateBlockCommentsForBlockInFunction(functionId, block, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Generate block comments for a function
      * @param functionId
+     * @param [apiKey]
      */
-    public generateBlockCommentsForFunctionWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
+    public generateBlockCommentsForFunctionWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateBlockCommentsForFunctionWithHttpInfo(functionId, observableOptions);
+        const result = this.api.generateBlockCommentsForFunctionWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Generate block comments for a function
      * @param functionId
+     * @param [apiKey]
      */
-    public generateBlockCommentsForFunction(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBlockCommentsGenerationForFunctionResponse> {
+    public generateBlockCommentsForFunction(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBlockCommentsGenerationForFunctionResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateBlockCommentsForFunction(functionId, observableOptions);
+        const result = this.api.generateBlockCommentsForFunction(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Generate overview comment for a function
      * @param functionId
+     * @param [apiKey]
      */
-    public generateOverviewCommentForFunctionWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>> {
+    public generateOverviewCommentForFunctionWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateOverviewCommentForFunctionWithHttpInfo(functionId, observableOptions);
+        const result = this.api.generateOverviewCommentForFunctionWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Generate overview comment for a function
      * @param functionId
+     * @param [apiKey]
      */
-    public generateOverviewCommentForFunction(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBlockCommentsOverviewGenerationResponse> {
+    public generateOverviewCommentForFunction(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBlockCommentsOverviewGenerationResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateOverviewCommentForFunction(functionId, observableOptions);
+        const result = this.api.generateOverviewCommentForFunction(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2125,10 +2267,11 @@ export class PromiseFunctionsCoreApi {
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId
      * @param aiUnstripRequest
+     * @param [apiKey]
      */
-    public aiUnstripWithHttpInfo(analysisId: number, aiUnstripRequest: AiUnstripRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
+    public aiUnstripWithHttpInfo(analysisId: number, aiUnstripRequest: AiUnstripRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.aiUnstripWithHttpInfo(analysisId, aiUnstripRequest, observableOptions);
+        const result = this.api.aiUnstripWithHttpInfo(analysisId, aiUnstripRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2137,10 +2280,11 @@ export class PromiseFunctionsCoreApi {
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId
      * @param aiUnstripRequest
+     * @param [apiKey]
      */
-    public aiUnstrip(analysisId: number, aiUnstripRequest: AiUnstripRequest, _options?: PromiseConfigurationOptions): Promise<AutoUnstripResponse> {
+    public aiUnstrip(analysisId: number, aiUnstripRequest: AiUnstripRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<AutoUnstripResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.aiUnstrip(analysisId, aiUnstripRequest, observableOptions);
+        const result = this.api.aiUnstrip(analysisId, aiUnstripRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2149,10 +2293,11 @@ export class PromiseFunctionsCoreApi {
      * Perform matching for the functions of an analysis
      * @param analysisId
      * @param analysisFunctionMatchingRequest
+     * @param [apiKey]
      */
-    public analysisFunctionMatchingWithHttpInfo(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionMatchingBatchResponse>> {
+    public analysisFunctionMatchingWithHttpInfo(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionMatchingBatchResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.analysisFunctionMatchingWithHttpInfo(analysisId, analysisFunctionMatchingRequest, observableOptions);
+        const result = this.api.analysisFunctionMatchingWithHttpInfo(analysisId, analysisFunctionMatchingRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2161,10 +2306,11 @@ export class PromiseFunctionsCoreApi {
      * Perform matching for the functions of an analysis
      * @param analysisId
      * @param analysisFunctionMatchingRequest
+     * @param [apiKey]
      */
-    public analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<FunctionMatchingBatchResponse> {
+    public analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<FunctionMatchingBatchResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.analysisFunctionMatching(analysisId, analysisFunctionMatchingRequest, observableOptions);
+        const result = this.api.analysisFunctionMatching(analysisId, analysisFunctionMatchingRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2173,10 +2319,11 @@ export class PromiseFunctionsCoreApi {
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId
      * @param autoUnstripRequest
+     * @param [apiKey]
      */
-    public autoUnstripWithHttpInfo(analysisId: number, autoUnstripRequest: AutoUnstripRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
+    public autoUnstripWithHttpInfo(analysisId: number, autoUnstripRequest: AutoUnstripRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.autoUnstripWithHttpInfo(analysisId, autoUnstripRequest, observableOptions);
+        const result = this.api.autoUnstripWithHttpInfo(analysisId, autoUnstripRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2185,10 +2332,11 @@ export class PromiseFunctionsCoreApi {
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId
      * @param autoUnstripRequest
+     * @param [apiKey]
      */
-    public autoUnstrip(analysisId: number, autoUnstripRequest: AutoUnstripRequest, _options?: PromiseConfigurationOptions): Promise<AutoUnstripResponse> {
+    public autoUnstrip(analysisId: number, autoUnstripRequest: AutoUnstripRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<AutoUnstripResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.autoUnstrip(analysisId, autoUnstripRequest, observableOptions);
+        const result = this.api.autoUnstrip(analysisId, autoUnstripRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2196,10 +2344,11 @@ export class PromiseFunctionsCoreApi {
      * Takes in an input of functions ID\'s and settings and finds the nearest functions for each function that\'s within the system
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param functionMatchingRequest
+     * @param [apiKey]
      */
-    public batchFunctionMatchingWithHttpInfo(functionMatchingRequest: FunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionMatchingBatchResponse>> {
+    public batchFunctionMatchingWithHttpInfo(functionMatchingRequest: FunctionMatchingRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionMatchingBatchResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.batchFunctionMatchingWithHttpInfo(functionMatchingRequest, observableOptions);
+        const result = this.api.batchFunctionMatchingWithHttpInfo(functionMatchingRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2207,10 +2356,11 @@ export class PromiseFunctionsCoreApi {
      * Takes in an input of functions ID\'s and settings and finds the nearest functions for each function that\'s within the system
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param functionMatchingRequest
+     * @param [apiKey]
      */
-    public batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<FunctionMatchingBatchResponse> {
+    public batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<FunctionMatchingBatchResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.batchFunctionMatching(functionMatchingRequest, observableOptions);
+        const result = this.api.batchFunctionMatching(functionMatchingRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2218,10 +2368,11 @@ export class PromiseFunctionsCoreApi {
      * Takes in the analysis ID and cancels a running ai-unstrip operation
      * Cancels a running ai-unstrip
      * @param analysisId
+     * @param [apiKey]
      */
-    public cancelAiUnstripWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
+    public cancelAiUnstripWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.cancelAiUnstripWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.cancelAiUnstripWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2229,10 +2380,11 @@ export class PromiseFunctionsCoreApi {
      * Takes in the analysis ID and cancels a running ai-unstrip operation
      * Cancels a running ai-unstrip
      * @param analysisId
+     * @param [apiKey]
      */
-    public cancelAiUnstrip(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AutoUnstripResponse> {
+    public cancelAiUnstrip(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<AutoUnstripResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.cancelAiUnstrip(analysisId, observableOptions);
+        const result = this.api.cancelAiUnstrip(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2240,10 +2392,11 @@ export class PromiseFunctionsCoreApi {
      * Takes in the analysis ID and cancels a running auto-unstrip operation
      * Cancels a running auto-unstrip
      * @param analysisId
+     * @param [apiKey]
      */
-    public cancelAutoUnstripWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
+    public cancelAutoUnstripWithHttpInfo(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.cancelAutoUnstripWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.cancelAutoUnstripWithHttpInfo(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2251,10 +2404,11 @@ export class PromiseFunctionsCoreApi {
      * Takes in the analysis ID and cancels a running auto-unstrip operation
      * Cancels a running auto-unstrip
      * @param analysisId
+     * @param [apiKey]
      */
-    public cancelAutoUnstrip(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AutoUnstripResponse> {
+    public cancelAutoUnstrip(analysisId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<AutoUnstripResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.cancelAutoUnstrip(analysisId, observableOptions);
+        const result = this.api.cancelAutoUnstrip(analysisId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2266,10 +2420,11 @@ export class PromiseFunctionsCoreApi {
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
      * @param [functionSearch] Search is applied to function names
+     * @param [apiKey]
      */
-    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsResponse>> {
+    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, observableOptions);
+        const result = this.api.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2281,10 +2436,11 @@ export class PromiseFunctionsCoreApi {
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
      * @param [functionSearch] Search is applied to function names
+     * @param [apiKey]
      */
-    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisStringsResponse> {
+    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisStringsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, observableOptions);
+        const result = this.api.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2292,10 +2448,11 @@ export class PromiseFunctionsCoreApi {
      * Get disassembly blocks related to the function
      * Get disassembly blocks related to the function
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionBlocksWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionBlocksResponse>> {
+    public getFunctionBlocksWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionBlocksResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionBlocksWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getFunctionBlocksWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2303,70 +2460,77 @@ export class PromiseFunctionsCoreApi {
      * Get disassembly blocks related to the function
      * Get disassembly blocks related to the function
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionBlocks(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionBlocksResponse> {
+    public getFunctionBlocks(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionBlocksResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionBlocks(functionId, observableOptions);
+        const result = this.api.getFunctionBlocks(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get list of functions that call or are called by the specified function
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionCalleesCallersWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCalleesCallerFunctionsResponse>> {
+    public getFunctionCalleesCallersWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCalleesCallerFunctionsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionCalleesCallersWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getFunctionCalleesCallersWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get list of functions that call or are called by the specified function
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionCalleesCallers(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCalleesCallerFunctionsResponse> {
+    public getFunctionCalleesCallers(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCalleesCallerFunctionsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionCalleesCallers(functionId, observableOptions);
+        const result = this.api.getFunctionCalleesCallers(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Retrieve a functions capabilities
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionCapabilitiesWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionCapabilityResponse>> {
+    public getFunctionCapabilitiesWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionCapabilityResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionCapabilitiesWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getFunctionCapabilitiesWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Retrieve a functions capabilities
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionCapabilities(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionCapabilityResponse> {
+    public getFunctionCapabilities(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionCapabilityResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionCapabilities(functionId, observableOptions);
+        const result = this.api.getFunctionCapabilities(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get function details
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionDetailsWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionsDetailResponse>> {
+    public getFunctionDetailsWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionsDetailResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionDetailsWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getFunctionDetailsWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Get function details
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionDetails(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionsDetailResponse> {
+    public getFunctionDetails(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionsDetailResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionDetails(functionId, observableOptions);
+        const result = this.api.getFunctionDetails(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2377,10 +2541,11 @@ export class PromiseFunctionsCoreApi {
      * @param [page] The page number to retrieve.
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
+     * @param [apiKey]
      */
-    public getFunctionStringsWithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionStringsResponse>> {
+    public getFunctionStringsWithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionStringsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionStringsWithHttpInfo(functionId, page, pageSize, search, observableOptions);
+        const result = this.api.getFunctionStringsWithHttpInfo(functionId, page, pageSize, search, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2391,10 +2556,11 @@ export class PromiseFunctionsCoreApi {
      * @param [page] The page number to retrieve.
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
+     * @param [apiKey]
      */
-    public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionStringsResponse> {
+    public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionStringsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionStrings(functionId, page, pageSize, search, observableOptions);
+        const result = this.api.getFunctionStrings(functionId, page, pageSize, search, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2422,10 +2588,11 @@ export class PromiseFunctionsDataTypesApi {
      * Generate Function Data Types
      * @param analysisId
      * @param functionDataTypesParams
+     * @param [apiKey]
      */
-    public generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGenerateFunctionDataTypes>> {
+    public generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGenerateFunctionDataTypes>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionDataTypesParams, observableOptions);
+        const result = this.api.generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionDataTypesParams, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2434,10 +2601,11 @@ export class PromiseFunctionsDataTypesApi {
      * Generate Function Data Types
      * @param analysisId
      * @param functionDataTypesParams
+     * @param [apiKey]
      */
-    public generateFunctionDataTypesForAnalysis(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, _options?: PromiseConfigurationOptions): Promise<BaseResponseGenerateFunctionDataTypes> {
+    public generateFunctionDataTypesForAnalysis(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseGenerateFunctionDataTypes> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateFunctionDataTypesForAnalysis(analysisId, functionDataTypesParams, observableOptions);
+        const result = this.api.generateFunctionDataTypesForAnalysis(analysisId, functionDataTypesParams, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2445,10 +2613,11 @@ export class PromiseFunctionsDataTypesApi {
      * Submits a request to generate the function data types
      * Generate Function Data Types for an arbitrary list of functions
      * @param functionDataTypesParams
+     * @param [apiKey]
      */
-    public generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams: FunctionDataTypesParams, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGenerationStatusList>> {
+    public generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams: FunctionDataTypesParams, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGenerationStatusList>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams, observableOptions);
+        const result = this.api.generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2456,10 +2625,11 @@ export class PromiseFunctionsDataTypesApi {
      * Submits a request to generate the function data types
      * Generate Function Data Types for an arbitrary list of functions
      * @param functionDataTypesParams
+     * @param [apiKey]
      */
-    public generateFunctionDataTypesForFunctions(functionDataTypesParams: FunctionDataTypesParams, _options?: PromiseConfigurationOptions): Promise<BaseResponseGenerationStatusList> {
+    public generateFunctionDataTypesForFunctions(functionDataTypesParams: FunctionDataTypesParams, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseGenerationStatusList> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateFunctionDataTypesForFunctions(functionDataTypesParams, observableOptions);
+        const result = this.api.generateFunctionDataTypesForFunctions(functionDataTypesParams, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2468,10 +2638,11 @@ export class PromiseFunctionsDataTypesApi {
      * Get Function Data Types
      * @param analysisId
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypes>> {
+    public getFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypes>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionDataTypesWithHttpInfo(analysisId, functionId, observableOptions);
+        const result = this.api.getFunctionDataTypesWithHttpInfo(analysisId, functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2480,10 +2651,11 @@ export class PromiseFunctionsDataTypesApi {
      * Get Function Data Types
      * @param analysisId
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionDataTypes(analysisId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypes> {
+    public getFunctionDataTypes(analysisId: number, functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypes> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionDataTypes(analysisId, functionId, observableOptions);
+        const result = this.api.getFunctionDataTypes(analysisId, functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2492,10 +2664,11 @@ export class PromiseFunctionsDataTypesApi {
      * List Function Data Types
      * @param analysisId
      * @param [functionIds]
+     * @param [apiKey]
      */
-    public listFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypesList>> {
+    public listFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionIds?: Array<number>, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypesList>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.listFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionIds, observableOptions);
+        const result = this.api.listFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionIds, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2504,10 +2677,11 @@ export class PromiseFunctionsDataTypesApi {
      * List Function Data Types
      * @param analysisId
      * @param [functionIds]
+     * @param [apiKey]
      */
-    public listFunctionDataTypesForAnalysis(analysisId: number, functionIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
+    public listFunctionDataTypesForAnalysis(analysisId: number, functionIds?: Array<number>, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.listFunctionDataTypesForAnalysis(analysisId, functionIds, observableOptions);
+        const result = this.api.listFunctionDataTypesForAnalysis(analysisId, functionIds, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2515,10 +2689,11 @@ export class PromiseFunctionsDataTypesApi {
      * Returns data types for multiple function IDs
      * List Function Data Types
      * @param [functionIds]
+     * @param [apiKey]
      */
-    public listFunctionDataTypesForFunctionsWithHttpInfo(functionIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypesList>> {
+    public listFunctionDataTypesForFunctionsWithHttpInfo(functionIds?: Array<number>, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypesList>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.listFunctionDataTypesForFunctionsWithHttpInfo(functionIds, observableOptions);
+        const result = this.api.listFunctionDataTypesForFunctionsWithHttpInfo(functionIds, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2526,10 +2701,11 @@ export class PromiseFunctionsDataTypesApi {
      * Returns data types for multiple function IDs
      * List Function Data Types
      * @param [functionIds]
+     * @param [apiKey]
      */
-    public listFunctionDataTypesForFunctions(functionIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
+    public listFunctionDataTypesForFunctions(functionIds?: Array<number>, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.listFunctionDataTypesForFunctions(functionIds, observableOptions);
+        const result = this.api.listFunctionDataTypesForFunctions(functionIds, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2539,10 +2715,11 @@ export class PromiseFunctionsDataTypesApi {
      * @param analysisId
      * @param functionId
      * @param updateFunctionDataTypes
+     * @param [apiKey]
      */
-    public updateFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypes>> {
+    public updateFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypes>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateFunctionDataTypesWithHttpInfo(analysisId, functionId, updateFunctionDataTypes, observableOptions);
+        const result = this.api.updateFunctionDataTypesWithHttpInfo(analysisId, functionId, updateFunctionDataTypes, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2552,10 +2729,11 @@ export class PromiseFunctionsDataTypesApi {
      * @param analysisId
      * @param functionId
      * @param updateFunctionDataTypes
+     * @param [apiKey]
      */
-    public updateFunctionDataTypes(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypes> {
+    public updateFunctionDataTypes(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypes> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateFunctionDataTypes(analysisId, functionId, updateFunctionDataTypes, observableOptions);
+        const result = this.api.updateFunctionDataTypes(analysisId, functionId, updateFunctionDataTypes, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2583,10 +2761,11 @@ export class PromiseFunctionsDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [apiKey]
      */
-    public createDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public createDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, observableOptions);
+        const result = this.api.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2595,10 +2774,11 @@ export class PromiseFunctionsDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [apiKey]
      */
-    public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createDecompilationComment(functionId, functionCommentCreateRequest, observableOptions);
+        const result = this.api.createDecompilationComment(functionId, functionCommentCreateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2607,10 +2787,11 @@ export class PromiseFunctionsDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [apiKey]
      */
-    public deleteDecompilationCommentWithHttpInfo(commentId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
+    public deleteDecompilationCommentWithHttpInfo(commentId: number, functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteDecompilationCommentWithHttpInfo(commentId, functionId, observableOptions);
+        const result = this.api.deleteDecompilationCommentWithHttpInfo(commentId, functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2619,10 +2800,11 @@ export class PromiseFunctionsDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [apiKey]
      */
-    public deleteDecompilationComment(commentId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
+    public deleteDecompilationComment(commentId: number, functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteDecompilationComment(commentId, functionId, observableOptions);
+        const result = this.api.deleteDecompilationComment(commentId, functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2630,10 +2812,11 @@ export class PromiseFunctionsDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [apiKey]
      */
-    public getDecompilationCommentsWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
+    public getDecompilationCommentsWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getDecompilationCommentsWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getDecompilationCommentsWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2641,10 +2824,11 @@ export class PromiseFunctionsDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [apiKey]
      */
-    public getDecompilationComments(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
+    public getDecompilationComments(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getDecompilationComments(functionId, observableOptions);
+        const result = this.api.getDecompilationComments(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2654,10 +2838,11 @@ export class PromiseFunctionsDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public updateDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2667,10 +2852,11 @@ export class PromiseFunctionsDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateDecompilationComment(commentId, functionId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateDecompilationComment(commentId, functionId, commentUpdateRequest, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2697,10 +2883,11 @@ export class PromiseFunctionsRenamingHistoryApi {
      * Renames a list of functions using the function IDs   Will record name changes in history
      * Batch Rename Functions
      * @param functionsListRename
+     * @param [apiKey]
      */
-    public batchRenameFunctionWithHttpInfo(functionsListRename: FunctionsListRename, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+    public batchRenameFunctionWithHttpInfo(functionsListRename: FunctionsListRename, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.batchRenameFunctionWithHttpInfo(functionsListRename, observableOptions);
+        const result = this.api.batchRenameFunctionWithHttpInfo(functionsListRename, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2708,10 +2895,11 @@ export class PromiseFunctionsRenamingHistoryApi {
      * Renames a list of functions using the function IDs   Will record name changes in history
      * Batch Rename Functions
      * @param functionsListRename
+     * @param [apiKey]
      */
-    public batchRenameFunction(functionsListRename: FunctionsListRename, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
+    public batchRenameFunction(functionsListRename: FunctionsListRename, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.batchRenameFunction(functionsListRename, observableOptions);
+        const result = this.api.batchRenameFunction(functionsListRename, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2719,10 +2907,11 @@ export class PromiseFunctionsRenamingHistoryApi {
      * Gets the name history of a function using the function ID
      * Get Function Name History
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionNameHistoryWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListFunctionNameHistory>> {
+    public getFunctionNameHistoryWithHttpInfo(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListFunctionNameHistory>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionNameHistoryWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getFunctionNameHistoryWithHttpInfo(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2730,10 +2919,11 @@ export class PromiseFunctionsRenamingHistoryApi {
      * Gets the name history of a function using the function ID
      * Get Function Name History
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionNameHistory(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListFunctionNameHistory> {
+    public getFunctionNameHistory(functionId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseListFunctionNameHistory> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionNameHistory(functionId, observableOptions);
+        const result = this.api.getFunctionNameHistory(functionId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2742,10 +2932,11 @@ export class PromiseFunctionsRenamingHistoryApi {
      * Rename Function
      * @param functionId
      * @param functionRename
+     * @param [apiKey]
      */
-    public renameFunctionIdWithHttpInfo(functionId: number, functionRename: FunctionRename, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+    public renameFunctionIdWithHttpInfo(functionId: number, functionRename: FunctionRename, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.renameFunctionIdWithHttpInfo(functionId, functionRename, observableOptions);
+        const result = this.api.renameFunctionIdWithHttpInfo(functionId, functionRename, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2754,10 +2945,11 @@ export class PromiseFunctionsRenamingHistoryApi {
      * Rename Function
      * @param functionId
      * @param functionRename
+     * @param [apiKey]
      */
-    public renameFunctionId(functionId: number, functionRename: FunctionRename, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
+    public renameFunctionId(functionId: number, functionRename: FunctionRename, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.renameFunctionId(functionId, functionRename, observableOptions);
+        const result = this.api.renameFunctionId(functionId, functionRename, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2766,10 +2958,11 @@ export class PromiseFunctionsRenamingHistoryApi {
      * Revert the function name
      * @param functionId
      * @param historyId
+     * @param [apiKey]
      */
-    public revertFunctionNameWithHttpInfo(functionId: number, historyId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+    public revertFunctionNameWithHttpInfo(functionId: number, historyId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.revertFunctionNameWithHttpInfo(functionId, historyId, observableOptions);
+        const result = this.api.revertFunctionNameWithHttpInfo(functionId, historyId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2778,10 +2971,11 @@ export class PromiseFunctionsRenamingHistoryApi {
      * Revert the function name
      * @param functionId
      * @param historyId
+     * @param [apiKey]
      */
-    public revertFunctionName(functionId: number, historyId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
+    public revertFunctionName(functionId: number, historyId: number, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.revertFunctionName(functionId, historyId, observableOptions);
+        const result = this.api.revertFunctionName(functionId, historyId, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2807,20 +3001,22 @@ export class PromiseModelsApi {
     /**
      * Gets active models available for analysis.
      * Gets models
+     * @param [apiKey]
      */
-    public getModelsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseModelsResponse>> {
+    public getModelsWithHttpInfo(apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseModelsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getModelsWithHttpInfo(observableOptions);
+        const result = this.api.getModelsWithHttpInfo(apiKey, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets active models available for analysis.
      * Gets models
+     * @param [apiKey]
      */
-    public getModels(_options?: PromiseConfigurationOptions): Promise<BaseResponseModelsResponse> {
+    public getModels(apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseModelsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getModels(observableOptions);
+        const result = this.api.getModels(apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2853,10 +3049,11 @@ export class PromiseSearchApi {
      * @param [tags] The tags to be searched for
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
+     * @param [apiKey]
      */
-    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinarySearchResponse>> {
+    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinarySearchResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, observableOptions);
+        const result = this.api.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2870,10 +3067,11 @@ export class PromiseSearchApi {
      * @param [tags] The tags to be searched for
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
+     * @param [apiKey]
      */
-    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinarySearchResponse> {
+    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinarySearchResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, observableOptions);
+        const result = this.api.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2890,10 +3088,11 @@ export class PromiseSearchApi {
      * @param [filters] The filters to be used for the search
      * @param [orderBy] The field to sort the order by in the results
      * @param [orderByDirection] The order direction in which to return results
+     * @param [apiKey]
      */
-    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionSearchResponse>> {
+    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionSearchResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, modelName, filters, orderBy, orderByDirection, observableOptions);
+        const result = this.api.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, modelName, filters, orderBy, orderByDirection, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2910,10 +3109,11 @@ export class PromiseSearchApi {
      * @param [filters] The filters to be used for the search
      * @param [orderBy] The field to sort the order by in the results
      * @param [orderByDirection] The order direction in which to return results
+     * @param [apiKey]
      */
-    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionSearchResponse> {
+    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionSearchResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, modelName, filters, orderBy, orderByDirection, observableOptions);
+        const result = this.api.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, modelName, filters, orderBy, orderByDirection, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2924,10 +3124,11 @@ export class PromiseSearchApi {
      * @param [pageSize] Number of items per page.
      * @param [partialName] The partial or full name of the function being searched
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
+     * @param [apiKey]
      */
-    public searchFunctionsWithHttpInfo(page?: number, pageSize?: number, partialName?: string, modelName?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionSearchResponse>> {
+    public searchFunctionsWithHttpInfo(page?: number, pageSize?: number, partialName?: string, modelName?: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionSearchResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchFunctionsWithHttpInfo(page, pageSize, partialName, modelName, observableOptions);
+        const result = this.api.searchFunctionsWithHttpInfo(page, pageSize, partialName, modelName, apiKey, observableOptions);
         return result.toPromise();
     }
 
@@ -2938,10 +3139,11 @@ export class PromiseSearchApi {
      * @param [pageSize] Number of items per page.
      * @param [partialName] The partial or full name of the function being searched
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
+     * @param [apiKey]
      */
-    public searchFunctions(page?: number, pageSize?: number, partialName?: string, modelName?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionSearchResponse> {
+    public searchFunctions(page?: number, pageSize?: number, partialName?: string, modelName?: string, apiKey?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionSearchResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchFunctions(page, pageSize, partialName, modelName, observableOptions);
+        const result = this.api.searchFunctions(page, pageSize, partialName, modelName, apiKey, observableOptions);
         return result.toPromise();
     }
 

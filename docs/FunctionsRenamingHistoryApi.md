@@ -36,6 +36,8 @@ const request: FunctionsRenamingHistoryApiBatchRenameFunctionRequest = {
       },
     ],
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.batchRenameFunction(request);
@@ -48,6 +50,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionsListRename** | **FunctionsListRename**|  |
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -90,6 +93,8 @@ const apiInstance = new FunctionsRenamingHistoryApi(configuration);
 const request: FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest = {
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getFunctionNameHistory(request);
@@ -102,6 +107,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -149,6 +155,8 @@ const request: FunctionsRenamingHistoryApiRenameFunctionIdRequest = {
     newName: "newName_example",
     newMangledName: "newMangledName_example",
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.renameFunctionId(request);
@@ -162,6 +170,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionRename** | **FunctionRename**|  |
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -206,6 +215,8 @@ const request: FunctionsRenamingHistoryApiRevertFunctionNameRequest = {
   functionId: 1,
   
   historyId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.revertFunctionName(request);
@@ -219,6 +230,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
  **historyId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

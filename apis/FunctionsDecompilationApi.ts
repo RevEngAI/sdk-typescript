@@ -25,8 +25,9 @@ export class FunctionsDecompilationApiRequestFactory extends BaseAPIRequestFacto
      * Create a comment for this function
      * @param functionId 
      * @param functionCommentCreateRequest 
+     * @param apiKey 
      */
-    public async createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
@@ -39,6 +40,7 @@ export class FunctionsDecompilationApiRequestFactory extends BaseAPIRequestFacto
         if (functionCommentCreateRequest === null || functionCommentCreateRequest === undefined) {
             throw new RequiredError("FunctionsDecompilationApi", "createDecompilationComment", "functionCommentCreateRequest");
         }
+
 
 
         // Path Params
@@ -81,8 +83,9 @@ export class FunctionsDecompilationApiRequestFactory extends BaseAPIRequestFacto
      * Delete a comment
      * @param commentId 
      * @param functionId 
+     * @param apiKey 
      */
-    public async deleteDecompilationComment(commentId: number, functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async deleteDecompilationComment(commentId: number, functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commentId' is not null or undefined
@@ -95,6 +98,7 @@ export class FunctionsDecompilationApiRequestFactory extends BaseAPIRequestFacto
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsDecompilationApi", "deleteDecompilationComment", "functionId");
         }
+
 
 
         // Path Params
@@ -126,14 +130,16 @@ export class FunctionsDecompilationApiRequestFactory extends BaseAPIRequestFacto
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId 
+     * @param apiKey 
      */
-    public async getDecompilationComments(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getDecompilationComments(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsDecompilationApi", "getDecompilationComments", "functionId");
         }
+
 
 
         // Path Params
@@ -166,8 +172,9 @@ export class FunctionsDecompilationApiRequestFactory extends BaseAPIRequestFacto
      * @param commentId 
      * @param functionId 
      * @param commentUpdateRequest 
+     * @param apiKey 
      */
-    public async updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commentId' is not null or undefined
@@ -186,6 +193,7 @@ export class FunctionsDecompilationApiRequestFactory extends BaseAPIRequestFacto
         if (commentUpdateRequest === null || commentUpdateRequest === undefined) {
             throw new RequiredError("FunctionsDecompilationApi", "updateDecompilationComment", "commentUpdateRequest");
         }
+
 
 
         // Path Params

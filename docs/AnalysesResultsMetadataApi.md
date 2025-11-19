@@ -30,6 +30,8 @@ const apiInstance = new AnalysesResultsMetadataApi(configuration);
 const request: AnalysesResultsMetadataApiGetCapabilitiesRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getCapabilities(request);
@@ -42,6 +44,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -85,6 +88,8 @@ const request: AnalysesResultsMetadataApiGetCommunitiesRequest = {
   analysisId: 1,
     // The user name to limit communities to (optional)
   userName: "user_name_example",
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getCommunities(request);
@@ -98,6 +103,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
  **userName** | [**string**] | The user name to limit communities to | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -146,6 +152,8 @@ const request: AnalysesResultsMetadataApiGetFunctionsListRequest = {
   minVAddr: 1,
   
   maxVAddr: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getFunctionsList(request);
@@ -161,6 +169,7 @@ Name | Type | Description  | Notes
  **searchTerm** | [**string**] |  | (optional) defaults to undefined
  **minVAddr** | [**number**] |  | (optional) defaults to undefined
  **maxVAddr** | [**number**] |  | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -202,6 +211,8 @@ const apiInstance = new AnalysesResultsMetadataApi(configuration);
 const request: AnalysesResultsMetadataApiGetPdfRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getPdf(request);
@@ -214,6 +225,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -255,6 +267,8 @@ const apiInstance = new AnalysesResultsMetadataApi(configuration);
 const request: AnalysesResultsMetadataApiGetSbomRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getSbom(request);
@@ -267,6 +281,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -308,6 +323,8 @@ const apiInstance = new AnalysesResultsMetadataApi(configuration);
 const request: AnalysesResultsMetadataApiGetTagsRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getTags(request);
@@ -320,6 +337,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -361,6 +379,8 @@ const apiInstance = new AnalysesResultsMetadataApi(configuration);
 const request: AnalysesResultsMetadataApiGetVulnerabilitiesRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getVulnerabilities(request);
@@ -373,6 +393,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

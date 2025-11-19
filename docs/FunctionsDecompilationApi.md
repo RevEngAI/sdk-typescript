@@ -36,6 +36,8 @@ const request: FunctionsDecompilationApiCreateDecompilationCommentRequest = {
       endLine: 1,
     },
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.createDecompilationComment(request);
@@ -49,6 +51,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionCommentCreateRequest** | **FunctionCommentCreateRequest**|  |
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -94,6 +97,8 @@ const request: FunctionsDecompilationApiDeleteDecompilationCommentRequest = {
   commentId: 1,
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.deleteDecompilationComment(request);
@@ -107,6 +112,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | [**number**] |  | defaults to undefined
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -151,6 +157,8 @@ const apiInstance = new FunctionsDecompilationApi(configuration);
 const request: FunctionsDecompilationApiGetDecompilationCommentsRequest = {
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getDecompilationComments(request);
@@ -163,6 +171,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -211,6 +220,8 @@ const request: FunctionsDecompilationApiUpdateDecompilationCommentRequest = {
   commentUpdateRequest: {
     content: "content_example",
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.updateDecompilationComment(request);
@@ -225,6 +236,7 @@ Name | Type | Description  | Notes
  **commentUpdateRequest** | **CommentUpdateRequest**|  |
  **commentId** | [**number**] |  | defaults to undefined
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

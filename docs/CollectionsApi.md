@@ -42,6 +42,8 @@ const request: CollectionsApiCreateCollectionRequest = {
     ],
     modelId: 1,
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.createCollection(request);
@@ -54,6 +56,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collectionCreateRequest** | **CollectionCreateRequest**|  |
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -96,6 +99,8 @@ const apiInstance = new CollectionsApi(configuration);
 const request: CollectionsApiDeleteCollectionRequest = {
   
   collectionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.deleteCollection(request);
@@ -108,6 +113,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collectionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -154,6 +160,8 @@ const request: CollectionsApiGetCollectionRequest = {
   includeTags: false,
   
   includeBinaries: false,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getCollection(request);
@@ -168,6 +176,7 @@ Name | Type | Description  | Notes
  **collectionId** | [**number**] |  | defaults to undefined
  **includeTags** | [**boolean**] |  | (optional) defaults to false
  **includeBinaries** | [**boolean**] |  | (optional) defaults to false
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -222,6 +231,8 @@ const request: CollectionsApiListCollectionsRequest = {
   orderBy: "created",
   
   order: "ASC",
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.listCollections(request);
@@ -239,6 +250,7 @@ Name | Type | Description  | Notes
  **offset** | [**number**] |  | (optional) defaults to 0
  **orderBy** | **AppApiRestV2CollectionsEnumsOrderBy** |  | (optional) defaults to undefined
  **order** | **Order** |  | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -287,6 +299,8 @@ const request: CollectionsApiUpdateCollectionRequest = {
     description: "description_example",
     collectionScope: "PRIVATE",
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.updateCollection(request);
@@ -300,6 +314,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collectionUpdateRequest** | **CollectionUpdateRequest**|  |
  **collectionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -348,6 +363,8 @@ const request: CollectionsApiUpdateCollectionBinariesRequest = {
       1,
     ],
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.updateCollectionBinaries(request);
@@ -361,6 +378,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collectionBinariesUpdateRequest** | **CollectionBinariesUpdateRequest**|  |
  **collectionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -409,6 +427,8 @@ const request: CollectionsApiUpdateCollectionTagsRequest = {
       "tags_example",
     ],
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.updateCollectionTags(request);
@@ -422,6 +442,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **collectionTagsUpdateRequest** | **CollectionTagsUpdateRequest**|  |
  **collectionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

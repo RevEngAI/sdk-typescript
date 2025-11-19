@@ -42,14 +42,16 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest 
+     * @param apiKey 
      */
-    public async createAnalysis(analysisCreateRequest: AnalysisCreateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createAnalysis(analysisCreateRequest: AnalysisCreateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisCreateRequest' is not null or undefined
         if (analysisCreateRequest === null || analysisCreateRequest === undefined) {
             throw new RequiredError("AnalysesCoreApi", "createAnalysis", "analysisCreateRequest");
         }
+
 
 
         // Path Params
@@ -90,14 +92,16 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Deletes an analysis based on the provided analysis ID.
      * Delete Analysis
      * @param analysisId 
+     * @param apiKey 
      */
-    public async deleteAnalysis(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async deleteAnalysis(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "deleteAnalysis", "analysisId");
         }
+
 
 
         // Path Params
@@ -128,14 +132,16 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Returns basic analysis information for an analysis
      * Gets basic analysis information
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getAnalysisBasicInfo(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisBasicInfo(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "getAnalysisBasicInfo", "analysisId");
         }
+
 
 
         // Path Params
@@ -166,14 +172,16 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
      * Get Analysis Function Map
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getAnalysisFunctionMap(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisFunctionMap(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "getAnalysisFunctionMap", "analysisId");
         }
+
 
 
         // Path Params
@@ -204,14 +212,16 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getAnalysisLogs(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisLogs(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "getAnalysisLogs", "analysisId");
         }
+
 
 
         // Path Params
@@ -242,14 +252,16 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Gets the params that the analysis was run with
      * Gets analysis param information
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getAnalysisParams(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisParams(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "getAnalysisParams", "analysisId");
         }
+
 
 
         // Path Params
@@ -280,14 +292,16 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Given an analysis ID gets the current status of the analysis
      * Gets the status of an analysis
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getAnalysisStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisStatus(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "getAnalysisStatus", "analysisId");
         }
+
 
 
         // Path Params
@@ -328,9 +342,11 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param offset 
      * @param orderBy 
      * @param order 
+     * @param apiKey 
      */
-    public async listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: Configuration): Promise<RequestContext> {
+    public async listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
 
@@ -437,14 +453,16 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Given an binary ID gets the ID of an analysis
      * Gets the analysis ID from binary ID
      * @param binaryId 
+     * @param apiKey 
      */
-    public async lookupBinaryId(binaryId: number, _options?: Configuration): Promise<RequestContext> {
+    public async lookupBinaryId(binaryId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "lookupBinaryId", "binaryId");
         }
+
 
 
         // Path Params
@@ -476,8 +494,9 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Requeue Analysis
      * @param analysisId 
      * @param reAnalysisForm 
+     * @param apiKey 
      */
-    public async requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, _options?: Configuration): Promise<RequestContext> {
+    public async requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -490,6 +509,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         if (reAnalysisForm === null || reAnalysisForm === undefined) {
             throw new RequiredError("AnalysesCoreApi", "requeueAnalysis", "reAnalysisForm");
         }
+
 
 
         // Path Params
@@ -532,8 +552,9 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Update Analysis
      * @param analysisId 
      * @param analysisUpdateRequest 
+     * @param apiKey 
      */
-    public async updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -546,6 +567,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         if (analysisUpdateRequest === null || analysisUpdateRequest === undefined) {
             throw new RequiredError("AnalysesCoreApi", "updateAnalysis", "analysisUpdateRequest");
         }
+
 
 
         // Path Params
@@ -588,8 +610,9 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Update Analysis Tags
      * @param analysisId 
      * @param analysisUpdateTagsRequest 
+     * @param apiKey 
      */
-    public async updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -602,6 +625,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         if (analysisUpdateTagsRequest === null || analysisUpdateTagsRequest === undefined) {
             throw new RequiredError("AnalysesCoreApi", "updateAnalysisTags", "analysisUpdateTagsRequest");
         }
+
 
 
         // Path Params
@@ -644,9 +668,10 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param uploadFileType 
      * @param file 
      * @param packedPassword 
+     * @param apiKey 
      * @param forceOverwrite 
      */
-    public async uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, apiKey?: string, forceOverwrite?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'uploadFileType' is not null or undefined
@@ -659,6 +684,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         if (file === null || file === undefined) {
             throw new RequiredError("AnalysesCoreApi", "uploadFile", "file");
         }
+
 
 
 

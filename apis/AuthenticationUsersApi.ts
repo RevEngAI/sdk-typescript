@@ -23,9 +23,11 @@ export class AuthenticationUsersApiRequestFactory extends BaseAPIRequestFactory 
 
     /**
      * Get the requesters user information
+     * @param apiKey 
      */
-    public async getRequesterUserInfo(_options?: Configuration): Promise<RequestContext> {
+    public async getRequesterUserInfo(apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
         // Path Params
         const localVarPath = '/v2/users/me';
@@ -53,14 +55,16 @@ export class AuthenticationUsersApiRequestFactory extends BaseAPIRequestFactory 
     /**
      * Get a user\'s public information
      * @param userId 
+     * @param apiKey 
      */
-    public async getUser(userId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getUser(userId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'userId' is not null or undefined
         if (userId === null || userId === undefined) {
             throw new RequiredError("AuthenticationUsersApi", "getUser", "userId");
         }
+
 
 
         // Path Params
@@ -89,9 +93,11 @@ export class AuthenticationUsersApiRequestFactory extends BaseAPIRequestFactory 
 
     /**
      * Get auth user activity
+     * @param apiKey 
      */
-    public async getUserActivity(_options?: Configuration): Promise<RequestContext> {
+    public async getUserActivity(apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
         // Path Params
         const localVarPath = '/v2/users/activity';
@@ -119,9 +125,11 @@ export class AuthenticationUsersApiRequestFactory extends BaseAPIRequestFactory 
     /**
      * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
      * Get comments by user
+     * @param apiKey 
      */
-    public async getUserComments(_options?: Configuration): Promise<RequestContext> {
+    public async getUserComments(apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
         // Path Params
         const localVarPath = '/v2/users/me/comments';

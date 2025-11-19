@@ -22,8 +22,9 @@ export class FunctionsBlockCommentsApiRequestFactory extends BaseAPIRequestFacto
      * Generate block comments for a specific block in a function
      * @param functionId 
      * @param block 
+     * @param apiKey 
      */
-    public async generateBlockCommentsForBlockInFunction(functionId: number, block: Block, _options?: Configuration): Promise<RequestContext> {
+    public async generateBlockCommentsForBlockInFunction(functionId: number, block: Block, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
@@ -36,6 +37,7 @@ export class FunctionsBlockCommentsApiRequestFactory extends BaseAPIRequestFacto
         if (block === null || block === undefined) {
             throw new RequiredError("FunctionsBlockCommentsApi", "generateBlockCommentsForBlockInFunction", "block");
         }
+
 
 
         // Path Params
@@ -76,14 +78,16 @@ export class FunctionsBlockCommentsApiRequestFactory extends BaseAPIRequestFacto
     /**
      * Generate block comments for a function
      * @param functionId 
+     * @param apiKey 
      */
-    public async generateBlockCommentsForFunction(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async generateBlockCommentsForFunction(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsBlockCommentsApi", "generateBlockCommentsForFunction", "functionId");
         }
+
 
 
         // Path Params
@@ -113,14 +117,16 @@ export class FunctionsBlockCommentsApiRequestFactory extends BaseAPIRequestFacto
     /**
      * Generate overview comment for a function
      * @param functionId 
+     * @param apiKey 
      */
-    public async generateOverviewCommentForFunction(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async generateOverviewCommentForFunction(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsBlockCommentsApi", "generateOverviewCommentForFunction", "functionId");
         }
+
 
 
         // Path Params

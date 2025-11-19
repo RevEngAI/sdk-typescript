@@ -21,14 +21,16 @@ export class ExternalSourcesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Pulls data from VirusTotal
      * @param analysisId 
+     * @param apiKey 
      */
-    public async createExternalTaskMb(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async createExternalTaskMb(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("ExternalSourcesApi", "createExternalTaskMb", "analysisId");
         }
+
 
 
         // Path Params
@@ -58,14 +60,16 @@ export class ExternalSourcesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Pulls data from VirusTotal
      * @param analysisId 
+     * @param apiKey 
      */
-    public async createExternalTaskVt(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async createExternalTaskVt(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("ExternalSourcesApi", "createExternalTaskVt", "analysisId");
         }
+
 
 
         // Path Params
@@ -95,14 +99,16 @@ export class ExternalSourcesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Get MalwareBazaar data
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getMbData(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getMbData(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("ExternalSourcesApi", "getMbData", "analysisId");
         }
+
 
 
         // Path Params
@@ -132,14 +138,16 @@ export class ExternalSourcesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Check the status of MalwareBazaar data retrieval
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getMbTaskStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getMbTaskStatus(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("ExternalSourcesApi", "getMbTaskStatus", "analysisId");
         }
+
 
 
         // Path Params
@@ -169,14 +177,16 @@ export class ExternalSourcesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Get VirusTotal data
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getVtData(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getVtData(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("ExternalSourcesApi", "getVtData", "analysisId");
         }
+
 
 
         // Path Params
@@ -206,14 +216,16 @@ export class ExternalSourcesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Check the status of VirusTotal data retrieval
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getVtTaskStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getVtTaskStatus(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("ExternalSourcesApi", "getVtTaskStatus", "analysisId");
         }
+
 
 
         // Path Params

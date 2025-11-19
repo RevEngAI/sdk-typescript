@@ -22,14 +22,16 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
      * Renames a list of functions using the function IDs   Will record name changes in history
      * Batch Rename Functions
      * @param functionsListRename 
+     * @param apiKey 
      */
-    public async batchRenameFunction(functionsListRename: FunctionsListRename, _options?: Configuration): Promise<RequestContext> {
+    public async batchRenameFunction(functionsListRename: FunctionsListRename, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionsListRename' is not null or undefined
         if (functionsListRename === null || functionsListRename === undefined) {
             throw new RequiredError("FunctionsRenamingHistoryApi", "batchRenameFunction", "functionsListRename");
         }
+
 
 
         // Path Params
@@ -70,14 +72,16 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
      * Gets the name history of a function using the function ID
      * Get Function Name History
      * @param functionId 
+     * @param apiKey 
      */
-    public async getFunctionNameHistory(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getFunctionNameHistory(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsRenamingHistoryApi", "getFunctionNameHistory", "functionId");
         }
+
 
 
         // Path Params
@@ -109,8 +113,9 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
      * Rename Function
      * @param functionId 
      * @param functionRename 
+     * @param apiKey 
      */
-    public async renameFunctionId(functionId: number, functionRename: FunctionRename, _options?: Configuration): Promise<RequestContext> {
+    public async renameFunctionId(functionId: number, functionRename: FunctionRename, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
@@ -123,6 +128,7 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
         if (functionRename === null || functionRename === undefined) {
             throw new RequiredError("FunctionsRenamingHistoryApi", "renameFunctionId", "functionRename");
         }
+
 
 
         // Path Params
@@ -165,8 +171,9 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
      * Revert the function name
      * @param functionId 
      * @param historyId 
+     * @param apiKey 
      */
-    public async revertFunctionName(functionId: number, historyId: number, _options?: Configuration): Promise<RequestContext> {
+    public async revertFunctionName(functionId: number, historyId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
@@ -179,6 +186,7 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
         if (historyId === null || historyId === undefined) {
             throw new RequiredError("FunctionsRenamingHistoryApi", "revertFunctionName", "historyId");
         }
+
 
 
         // Path Params

@@ -26,6 +26,8 @@ const apiInstance = new FirmwareApi(configuration);
 const request: FirmwareApiGetBinariesForFirmwareTaskRequest = {
   
   taskId: "task_id_example",
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getBinariesForFirmwareTask(request);
@@ -38,6 +40,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **taskId** | [**string**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -81,6 +84,8 @@ const request: FirmwareApiUploadFirmwareRequest = {
   
   file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
   
+  apiKey: "api_key_example",
+  
   password: "password_example",
 };
 
@@ -94,6 +99,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | [**HttpFile**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
  **password** | [**string**] |  | (optional) defaults to undefined
 
 

@@ -17,11 +17,15 @@ Gets active models available for analysis.
 
 ```typescript
 import { createConfiguration, ModelsApi } from '@revengai/sdk';
+import type { ModelsApiGetModelsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new ModelsApi(configuration);
 
-const request = {};
+const request: ModelsApiGetModelsRequest = {
+  
+  apiKey: "api_key_example",
+};
 
 const data = await apiInstance.getModels(request);
 console.log('API called successfully. Returned data:', data);
@@ -29,7 +33,10 @@ console.log('API called successfully. Returned data:', data);
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

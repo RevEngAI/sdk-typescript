@@ -40,6 +40,8 @@ const request: FunctionsCoreApiAiUnstripRequest = {
   aiUnstripRequest: {
     apply: false,
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.aiUnstrip(request);
@@ -53,6 +55,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **aiUnstripRequest** | **AiUnstripRequest**|  |
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -110,6 +113,8 @@ const request: FunctionsCoreApiAnalysisFunctionMatchingRequest = {
     statusOnly: false,
     noCache: false,
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.analysisFunctionMatching(request);
@@ -123,6 +128,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisFunctionMatchingRequest** | **AnalysisFunctionMatchingRequest**|  |
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -174,6 +180,8 @@ const request: FunctionsCoreApiAutoUnstripRequest = {
     statusOnly: false,
     noCache: false,
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.autoUnstrip(request);
@@ -187,6 +195,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **autoUnstripRequest** | **AutoUnstripRequest**|  |
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -246,6 +255,8 @@ const request: FunctionsCoreApiBatchFunctionMatchingRequest = {
     statusOnly: false,
     noCache: false,
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.batchFunctionMatching(request);
@@ -258,6 +269,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionMatchingRequest** | **FunctionMatchingRequest**|  |
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -300,6 +312,8 @@ const apiInstance = new FunctionsCoreApi(configuration);
 const request: FunctionsCoreApiCancelAiUnstripRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.cancelAiUnstrip(request);
@@ -312,6 +326,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -354,6 +369,8 @@ const apiInstance = new FunctionsCoreApi(configuration);
 const request: FunctionsCoreApiCancelAutoUnstripRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.cancelAutoUnstrip(request);
@@ -366,6 +383,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -416,6 +434,8 @@ const request: FunctionsCoreApiGetAnalysisStringsRequest = {
   search: "search_example",
     // Search is applied to function names (optional)
   functionSearch: "function_search_example",
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAnalysisStrings(request);
@@ -432,6 +452,7 @@ Name | Type | Description  | Notes
  **pageSize** | [**number**] | Number of items per page. | (optional) defaults to 100
  **search** | [**string**] | Search is applied to string value | (optional) defaults to undefined
  **functionSearch** | [**string**] | Search is applied to function names | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -474,6 +495,8 @@ const apiInstance = new FunctionsCoreApi(configuration);
 const request: FunctionsCoreApiGetFunctionBlocksRequest = {
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getFunctionBlocks(request);
@@ -486,6 +509,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -528,6 +552,8 @@ const apiInstance = new FunctionsCoreApi(configuration);
 const request: FunctionsCoreApiGetFunctionCalleesCallersRequest = {
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getFunctionCalleesCallers(request);
@@ -540,6 +566,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -581,6 +608,8 @@ const apiInstance = new FunctionsCoreApi(configuration);
 const request: FunctionsCoreApiGetFunctionCapabilitiesRequest = {
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getFunctionCapabilities(request);
@@ -593,6 +622,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -635,6 +665,8 @@ const apiInstance = new FunctionsCoreApi(configuration);
 const request: FunctionsCoreApiGetFunctionDetailsRequest = {
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getFunctionDetails(request);
@@ -647,6 +679,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -695,6 +728,8 @@ const request: FunctionsCoreApiGetFunctionStringsRequest = {
   pageSize: 100,
     // Search is applied to string value (optional)
   search: "search_example",
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getFunctionStrings(request);
@@ -710,6 +745,7 @@ Name | Type | Description  | Notes
  **page** | [**number**] | The page number to retrieve. | (optional) defaults to 1
  **pageSize** | [**number**] | Number of items per page. | (optional) defaults to 100
  **search** | [**string**] | Search is applied to string value | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

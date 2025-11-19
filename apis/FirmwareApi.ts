@@ -19,14 +19,16 @@ export class FirmwareApiRequestFactory extends BaseAPIRequestFactory {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param taskId 
+     * @param apiKey 
      */
-    public async getBinariesForFirmwareTask(taskId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getBinariesForFirmwareTask(taskId: string, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'taskId' is not null or undefined
         if (taskId === null || taskId === undefined) {
             throw new RequiredError("FirmwareApi", "getBinariesForFirmwareTask", "taskId");
         }
+
 
 
         // Path Params
@@ -57,15 +59,17 @@ export class FirmwareApiRequestFactory extends BaseAPIRequestFactory {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param file 
+     * @param apiKey 
      * @param password 
      */
-    public async uploadFirmware(file: HttpFile, password?: string, _options?: Configuration): Promise<RequestContext> {
+    public async uploadFirmware(file: HttpFile, apiKey?: string, password?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'file' is not null or undefined
         if (file === null || file === undefined) {
             throw new RequiredError("FirmwareApi", "uploadFirmware", "file");
         }
+
 
 
 

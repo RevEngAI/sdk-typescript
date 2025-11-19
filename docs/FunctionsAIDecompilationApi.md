@@ -41,6 +41,8 @@ const request: FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest = 
       endLine: 1,
     },
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.createAiDecompilationComment(request);
@@ -54,6 +56,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionCommentCreateRequest** | **FunctionCommentCreateRequest**|  |
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -97,6 +100,8 @@ const apiInstance = new FunctionsAIDecompilationApi(configuration);
 const request: FunctionsAIDecompilationApiCreateAiDecompilationTaskRequest = {
     // The ID of the function for which we are creating the decompilation task
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.createAiDecompilationTask(request);
@@ -109,6 +114,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] | The ID of the function for which we are creating the decompilation task | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -157,6 +163,8 @@ const request: FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest = 
   commentId: 1,
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.deleteAiDecompilationComment(request);
@@ -170,6 +178,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | [**number**] |  | defaults to undefined
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -214,6 +223,8 @@ const apiInstance = new FunctionsAIDecompilationApi(configuration);
 const request: FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest = {
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAiDecompilationComments(request);
@@ -226,6 +237,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -267,6 +279,8 @@ const apiInstance = new FunctionsAIDecompilationApi(configuration);
 const request: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest = {
     // The ID of the function for which to get the rating
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAiDecompilationRating(request);
@@ -279,6 +293,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] | The ID of the function for which to get the rating | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -325,6 +340,8 @@ const request: FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest = 
   summarise: true,
     // Generate inline comments for the decompilation (only works if summarise is enabled) (optional)
   generateInlineComments: true,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAiDecompilationTaskResult(request);
@@ -339,6 +356,7 @@ Name | Type | Description  | Notes
  **functionId** | [**number**] | The ID of the function being decompiled | defaults to undefined
  **summarise** | [**boolean**] | Generate a summary for the decompilation | (optional) defaults to true
  **generateInlineComments** | [**boolean**] | Generate inline comments for the decompilation (only works if summarise is enabled) | (optional) defaults to true
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -381,6 +399,8 @@ const apiInstance = new FunctionsAIDecompilationApi(configuration);
 const request: FunctionsAIDecompilationApiGetAiDecompilationTaskStatusRequest = {
     // The ID of the function being checked
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAiDecompilationTaskStatus(request);
@@ -393,6 +413,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] | The ID of the function being checked | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -441,6 +462,8 @@ const request: FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest = 
   commentUpdateRequest: {
     content: "content_example",
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.updateAiDecompilationComment(request);
@@ -455,6 +478,7 @@ Name | Type | Description  | Notes
  **commentUpdateRequest** | **CommentUpdateRequest**|  |
  **commentId** | [**number**] |  | defaults to undefined
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -503,6 +527,8 @@ const request: FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest = {
     rating: "POSITIVE",
     reason: "reason_example",
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.upsertAiDecompilationRating(request);
@@ -516,6 +542,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **upsertAiDecomplationRatingRequest** | **UpsertAiDecomplationRatingRequest**|  |
  **functionId** | [**number**] | The ID of the function being rated | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

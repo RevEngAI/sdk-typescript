@@ -305,11 +305,12 @@ export class ObservableAnalysesCommentsApi {
      * Create a comment for this analysis
      * @param analysisId
      * @param commentBase
+     * @param [apiKey]
      */
-    public createAnalysisCommentWithHttpInfo(analysisId: number, commentBase: CommentBase, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public createAnalysisCommentWithHttpInfo(analysisId: number, commentBase: CommentBase, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createAnalysisComment(analysisId, commentBase, _config);
+        const requestContextPromise = this.requestFactory.createAnalysisComment(analysisId, commentBase, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -331,9 +332,10 @@ export class ObservableAnalysesCommentsApi {
      * Create a comment for this analysis
      * @param analysisId
      * @param commentBase
+     * @param [apiKey]
      */
-    public createAnalysisComment(analysisId: number, commentBase: CommentBase, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.createAnalysisCommentWithHttpInfo(analysisId, commentBase, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public createAnalysisComment(analysisId: number, commentBase: CommentBase, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.createAnalysisCommentWithHttpInfo(analysisId, commentBase, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -341,11 +343,12 @@ export class ObservableAnalysesCommentsApi {
      * Delete a comment
      * @param commentId
      * @param analysisId
+     * @param [apiKey]
      */
-    public deleteAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
+    public deleteAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteAnalysisComment(commentId, analysisId, _config);
+        const requestContextPromise = this.requestFactory.deleteAnalysisComment(commentId, analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -367,20 +370,22 @@ export class ObservableAnalysesCommentsApi {
      * Delete a comment
      * @param commentId
      * @param analysisId
+     * @param [apiKey]
      */
-    public deleteAnalysisComment(commentId: number, analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
-        return this.deleteAnalysisCommentWithHttpInfo(commentId, analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
+    public deleteAnalysisComment(commentId: number, analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
+        return this.deleteAnalysisCommentWithHttpInfo(commentId, analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
     }
 
     /**
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisCommentsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
+    public getAnalysisCommentsWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisComments(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisComments(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -401,9 +406,10 @@ export class ObservableAnalysesCommentsApi {
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisComments(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getAnalysisCommentsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
+    public getAnalysisComments(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
+        return this.getAnalysisCommentsWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -412,11 +418,12 @@ export class ObservableAnalysesCommentsApi {
      * @param commentId
      * @param analysisId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public updateAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateAnalysisComment(commentId, analysisId, commentUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateAnalysisComment(commentId, analysisId, commentUpdateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -439,9 +446,10 @@ export class ObservableAnalysesCommentsApi {
      * @param commentId
      * @param analysisId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.updateAnalysisCommentWithHttpInfo(commentId, analysisId, commentUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.updateAnalysisCommentWithHttpInfo(commentId, analysisId, commentUpdateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
 }
@@ -466,11 +474,12 @@ export class ObservableAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [apiKey]
      */
-    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisCreateResponse>> {
+    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisCreateResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createAnalysis(analysisCreateRequest, _config);
+        const requestContextPromise = this.requestFactory.createAnalysis(analysisCreateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -491,20 +500,22 @@ export class ObservableAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [apiKey]
      */
-    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisCreateResponse> {
-        return this.createAnalysisWithHttpInfo(analysisCreateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisCreateResponse>) => apiResponse.data));
+    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisCreateResponse> {
+        return this.createAnalysisWithHttpInfo(analysisCreateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisCreateResponse>) => apiResponse.data));
     }
 
     /**
      * Deletes an analysis based on the provided analysis ID.
      * Delete Analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public deleteAnalysisWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDict>> {
+    public deleteAnalysisWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDict>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteAnalysis(analysisId, _config);
+        const requestContextPromise = this.requestFactory.deleteAnalysis(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -525,20 +536,22 @@ export class ObservableAnalysesCoreApi {
      * Deletes an analysis based on the provided analysis ID.
      * Delete Analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public deleteAnalysis(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseDict> {
-        return this.deleteAnalysisWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDict>) => apiResponse.data));
+    public deleteAnalysis(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseDict> {
+        return this.deleteAnalysisWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDict>) => apiResponse.data));
     }
 
     /**
      * Returns basic analysis information for an analysis
      * Gets basic analysis information
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisBasicInfoWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBasic>> {
+    public getAnalysisBasicInfoWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBasic>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisBasicInfo(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisBasicInfo(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -559,20 +572,22 @@ export class ObservableAnalysesCoreApi {
      * Returns basic analysis information for an analysis
      * Gets basic analysis information
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisBasicInfo(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseBasic> {
-        return this.getAnalysisBasicInfoWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBasic>) => apiResponse.data));
+    public getAnalysisBasicInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBasic> {
+        return this.getAnalysisBasicInfoWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBasic>) => apiResponse.data));
     }
 
     /**
      * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
      * Get Analysis Function Map
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisFunctionMapWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
+    public getAnalysisFunctionMapWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisFunctionMap(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisFunctionMap(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -593,20 +608,22 @@ export class ObservableAnalysesCoreApi {
      * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
      * Get Analysis Function Map
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisFunctionMap(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctionMapping> {
-        return this.getAnalysisFunctionMapWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctionMapping>) => apiResponse.data));
+    public getAnalysisFunctionMap(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctionMapping> {
+        return this.getAnalysisFunctionMapWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctionMapping>) => apiResponse.data));
     }
 
     /**
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisLogsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseLogs>> {
+    public getAnalysisLogsWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseLogs>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisLogs(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisLogs(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -627,20 +644,22 @@ export class ObservableAnalysesCoreApi {
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisLogs(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseLogs> {
-        return this.getAnalysisLogsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseLogs>) => apiResponse.data));
+    public getAnalysisLogs(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseLogs> {
+        return this.getAnalysisLogsWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseLogs>) => apiResponse.data));
     }
 
     /**
      * Gets the params that the analysis was run with
      * Gets analysis param information
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisParamsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseParams>> {
+    public getAnalysisParamsWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseParams>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisParams(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisParams(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -661,20 +680,22 @@ export class ObservableAnalysesCoreApi {
      * Gets the params that the analysis was run with
      * Gets analysis param information
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisParams(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseParams> {
-        return this.getAnalysisParamsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseParams>) => apiResponse.data));
+    public getAnalysisParams(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseParams> {
+        return this.getAnalysisParamsWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseParams>) => apiResponse.data));
     }
 
     /**
      * Given an analysis ID gets the current status of the analysis
      * Gets the status of an analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStatus>> {
+    public getAnalysisStatusWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStatus>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisStatus(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisStatus(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -695,9 +716,10 @@ export class ObservableAnalysesCoreApi {
      * Given an analysis ID gets the current status of the analysis
      * Gets the status of an analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getAnalysisStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseStatus> {
-        return this.getAnalysisStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStatus>) => apiResponse.data));
+    public getAnalysisStatus(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseStatus> {
+        return this.getAnalysisStatusWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStatus>) => apiResponse.data));
     }
 
     /**
@@ -714,11 +736,12 @@ export class ObservableAnalysesCoreApi {
      * @param [offset]
      * @param [orderBy]
      * @param [order]
+     * @param [apiKey]
      */
-    public listAnalysesWithHttpInfo(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseRecent>> {
+    public listAnalysesWithHttpInfo(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseRecent>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listAnalyses(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, _config);
+        const requestContextPromise = this.requestFactory.listAnalyses(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -749,20 +772,22 @@ export class ObservableAnalysesCoreApi {
      * @param [offset]
      * @param [orderBy]
      * @param [order]
+     * @param [apiKey]
      */
-    public listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<BaseResponseRecent> {
-        return this.listAnalysesWithHttpInfo(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, _options).pipe(map((apiResponse: HttpInfo<BaseResponseRecent>) => apiResponse.data));
+    public listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseRecent> {
+        return this.listAnalysesWithHttpInfo(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseRecent>) => apiResponse.data));
     }
 
     /**
      * Given an binary ID gets the ID of an analysis
      * Gets the analysis ID from binary ID
      * @param binaryId
+     * @param [apiKey]
      */
-    public lookupBinaryIdWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
+    public lookupBinaryIdWithHttpInfo(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.lookupBinaryId(binaryId, _config);
+        const requestContextPromise = this.requestFactory.lookupBinaryId(binaryId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -783,9 +808,10 @@ export class ObservableAnalysesCoreApi {
      * Given an binary ID gets the ID of an analysis
      * Gets the analysis ID from binary ID
      * @param binaryId
+     * @param [apiKey]
      */
-    public lookupBinaryId(binaryId: number, _options?: ConfigurationOptions): Observable<any> {
-        return this.lookupBinaryIdWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
+    public lookupBinaryId(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<any> {
+        return this.lookupBinaryIdWithHttpInfo(binaryId, apiKey, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
@@ -793,11 +819,12 @@ export class ObservableAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [apiKey]
      */
-    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCreated>> {
+    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCreated>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.requeueAnalysis(analysisId, reAnalysisForm, _config);
+        const requestContextPromise = this.requestFactory.requeueAnalysis(analysisId, reAnalysisForm, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -819,9 +846,10 @@ export class ObservableAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [apiKey]
      */
-    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, _options?: ConfigurationOptions): Observable<BaseResponseCreated> {
-        return this.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCreated>) => apiResponse.data));
+    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCreated> {
+        return this.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCreated>) => apiResponse.data));
     }
 
     /**
@@ -829,11 +857,12 @@ export class ObservableAnalysesCoreApi {
      * Update Analysis
      * @param analysisId
      * @param analysisUpdateRequest
+     * @param [apiKey]
      */
-    public updateAnalysisWithHttpInfo(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisDetailResponse>> {
+    public updateAnalysisWithHttpInfo(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisDetailResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateAnalysis(analysisId, analysisUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateAnalysis(analysisId, analysisUpdateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -855,9 +884,10 @@ export class ObservableAnalysesCoreApi {
      * Update Analysis
      * @param analysisId
      * @param analysisUpdateRequest
+     * @param [apiKey]
      */
-    public updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisDetailResponse> {
-        return this.updateAnalysisWithHttpInfo(analysisId, analysisUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisDetailResponse>) => apiResponse.data));
+    public updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisDetailResponse> {
+        return this.updateAnalysisWithHttpInfo(analysisId, analysisUpdateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisDetailResponse>) => apiResponse.data));
     }
 
     /**
@@ -865,11 +895,12 @@ export class ObservableAnalysesCoreApi {
      * Update Analysis Tags
      * @param analysisId
      * @param analysisUpdateTagsRequest
+     * @param [apiKey]
      */
-    public updateAnalysisTagsWithHttpInfo(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
+    public updateAnalysisTagsWithHttpInfo(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateAnalysisTags(analysisId, analysisUpdateTagsRequest, _config);
+        const requestContextPromise = this.requestFactory.updateAnalysisTags(analysisId, analysisUpdateTagsRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -891,9 +922,10 @@ export class ObservableAnalysesCoreApi {
      * Update Analysis Tags
      * @param analysisId
      * @param analysisUpdateTagsRequest
+     * @param [apiKey]
      */
-    public updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisUpdateTagsResponse> {
-        return this.updateAnalysisTagsWithHttpInfo(analysisId, analysisUpdateTagsRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisUpdateTagsResponse>) => apiResponse.data));
+    public updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisUpdateTagsResponse> {
+        return this.updateAnalysisTagsWithHttpInfo(analysisId, analysisUpdateTagsRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisUpdateTagsResponse>) => apiResponse.data));
     }
 
     /**
@@ -901,12 +933,13 @@ export class ObservableAnalysesCoreApi {
      * @param uploadFileType
      * @param file
      * @param [packedPassword]
+     * @param [apiKey]
      * @param [forceOverwrite]
      */
-    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUploadResponse>> {
+    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, apiKey?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUploadResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.uploadFile(uploadFileType, file, packedPassword, forceOverwrite, _config);
+        const requestContextPromise = this.requestFactory.uploadFile(uploadFileType, file, packedPassword, apiKey, forceOverwrite, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -928,10 +961,11 @@ export class ObservableAnalysesCoreApi {
      * @param uploadFileType
      * @param file
      * @param [packedPassword]
+     * @param [apiKey]
      * @param [forceOverwrite]
      */
-    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
-        return this.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, forceOverwrite, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUploadResponse>) => apiResponse.data));
+    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, apiKey?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
+        return this.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, apiKey, forceOverwrite, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUploadResponse>) => apiResponse.data));
     }
 
 }
@@ -955,11 +989,12 @@ export class ObservableAnalysesDynamicExecutionApi {
     /**
      * Get the status of a dynamic execution task
      * @param analysisId
+     * @param [apiKey]
      */
-    public getDynamicExecutionStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDynamicExecutionStatus>> {
+    public getDynamicExecutionStatusWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDynamicExecutionStatus>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getDynamicExecutionStatus(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getDynamicExecutionStatus(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -979,19 +1014,21 @@ export class ObservableAnalysesDynamicExecutionApi {
     /**
      * Get the status of a dynamic execution task
      * @param analysisId
+     * @param [apiKey]
      */
-    public getDynamicExecutionStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseDynamicExecutionStatus> {
-        return this.getDynamicExecutionStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDynamicExecutionStatus>) => apiResponse.data));
+    public getDynamicExecutionStatus(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseDynamicExecutionStatus> {
+        return this.getDynamicExecutionStatusWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDynamicExecutionStatus>) => apiResponse.data));
     }
 
     /**
      * Get the dynamic execution results for network overview
      * @param analysisId
+     * @param [apiKey]
      */
-    public getNetworkOverviewWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseNetworkOverviewResponse>> {
+    public getNetworkOverviewWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseNetworkOverviewResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getNetworkOverview(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getNetworkOverview(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1011,20 +1048,22 @@ export class ObservableAnalysesDynamicExecutionApi {
     /**
      * Get the dynamic execution results for network overview
      * @param analysisId
+     * @param [apiKey]
      */
-    public getNetworkOverview(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseNetworkOverviewResponse> {
-        return this.getNetworkOverviewWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseNetworkOverviewResponse>) => apiResponse.data));
+    public getNetworkOverview(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseNetworkOverviewResponse> {
+        return this.getNetworkOverviewWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseNetworkOverviewResponse>) => apiResponse.data));
     }
 
     /**
      * Get the dynamic execution results for a specific process dump
      * @param analysisId
      * @param dumpName
+     * @param [apiKey]
      */
-    public getProcessDumpWithHttpInfo(analysisId: number, dumpName: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
+    public getProcessDumpWithHttpInfo(analysisId: number, dumpName: string, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getProcessDump(analysisId, dumpName, _config);
+        const requestContextPromise = this.requestFactory.getProcessDump(analysisId, dumpName, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1045,19 +1084,21 @@ export class ObservableAnalysesDynamicExecutionApi {
      * Get the dynamic execution results for a specific process dump
      * @param analysisId
      * @param dumpName
+     * @param [apiKey]
      */
-    public getProcessDump(analysisId: number, dumpName: string, _options?: ConfigurationOptions): Observable<any> {
-        return this.getProcessDumpWithHttpInfo(analysisId, dumpName, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
+    public getProcessDump(analysisId: number, dumpName: string, apiKey?: string, _options?: ConfigurationOptions): Observable<any> {
+        return this.getProcessDumpWithHttpInfo(analysisId, dumpName, apiKey, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
      * Get the dynamic execution results for process dumps
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessDumpsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseProcessDumps>> {
+    public getProcessDumpsWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseProcessDumps>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getProcessDumps(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getProcessDumps(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1077,19 +1118,21 @@ export class ObservableAnalysesDynamicExecutionApi {
     /**
      * Get the dynamic execution results for process dumps
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessDumps(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseProcessDumps> {
-        return this.getProcessDumpsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseProcessDumps>) => apiResponse.data));
+    public getProcessDumps(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseProcessDumps> {
+        return this.getProcessDumpsWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseProcessDumps>) => apiResponse.data));
     }
 
     /**
      * Get the dynamic execution results for process registry
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessRegistryWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseProcessRegistry>> {
+    public getProcessRegistryWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseProcessRegistry>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getProcessRegistry(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getProcessRegistry(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1109,19 +1152,21 @@ export class ObservableAnalysesDynamicExecutionApi {
     /**
      * Get the dynamic execution results for process registry
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessRegistry(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseProcessRegistry> {
-        return this.getProcessRegistryWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseProcessRegistry>) => apiResponse.data));
+    public getProcessRegistry(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseProcessRegistry> {
+        return this.getProcessRegistryWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseProcessRegistry>) => apiResponse.data));
     }
 
     /**
      * Get the dynamic execution results for process tree
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessTreeWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseProcessTree>> {
+    public getProcessTreeWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseProcessTree>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getProcessTree(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getProcessTree(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1141,19 +1186,21 @@ export class ObservableAnalysesDynamicExecutionApi {
     /**
      * Get the dynamic execution results for process tree
      * @param analysisId
+     * @param [apiKey]
      */
-    public getProcessTree(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseProcessTree> {
-        return this.getProcessTreeWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseProcessTree>) => apiResponse.data));
+    public getProcessTree(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseProcessTree> {
+        return this.getProcessTreeWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseProcessTree>) => apiResponse.data));
     }
 
     /**
      * Get the dynamic execution results for ttps
      * @param analysisId
+     * @param [apiKey]
      */
-    public getTtpsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTTPS>> {
+    public getTtpsWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTTPS>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getTtps(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getTtps(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1173,9 +1220,10 @@ export class ObservableAnalysesDynamicExecutionApi {
     /**
      * Get the dynamic execution results for ttps
      * @param analysisId
+     * @param [apiKey]
      */
-    public getTtps(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseTTPS> {
-        return this.getTtpsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTTPS>) => apiResponse.data));
+    public getTtps(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseTTPS> {
+        return this.getTtpsWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTTPS>) => apiResponse.data));
     }
 
 }
@@ -1199,11 +1247,12 @@ export class ObservableAnalysesResultsMetadataApi {
     /**
      * Gets the capabilities from the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getCapabilitiesWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCapabilities>> {
+    public getCapabilitiesWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCapabilities>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getCapabilities(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getCapabilities(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1223,20 +1272,22 @@ export class ObservableAnalysesResultsMetadataApi {
     /**
      * Gets the capabilities from the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getCapabilities(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseCapabilities> {
-        return this.getCapabilitiesWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCapabilities>) => apiResponse.data));
+    public getCapabilities(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCapabilities> {
+        return this.getCapabilitiesWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCapabilities>) => apiResponse.data));
     }
 
     /**
      * Gets the communities found in the analysis
      * @param analysisId
      * @param [userName] The user name to limit communities to
+     * @param [apiKey]
      */
-    public getCommunitiesWithHttpInfo(analysisId: number, userName?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommunities>> {
+    public getCommunitiesWithHttpInfo(analysisId: number, userName?: string, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommunities>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getCommunities(analysisId, userName, _config);
+        const requestContextPromise = this.requestFactory.getCommunities(analysisId, userName, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1257,9 +1308,10 @@ export class ObservableAnalysesResultsMetadataApi {
      * Gets the communities found in the analysis
      * @param analysisId
      * @param [userName] The user name to limit communities to
+     * @param [apiKey]
      */
-    public getCommunities(analysisId: number, userName?: string, _options?: ConfigurationOptions): Observable<BaseResponseCommunities> {
-        return this.getCommunitiesWithHttpInfo(analysisId, userName, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommunities>) => apiResponse.data));
+    public getCommunities(analysisId: number, userName?: string, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCommunities> {
+        return this.getCommunitiesWithHttpInfo(analysisId, userName, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommunities>) => apiResponse.data));
     }
 
     /**
@@ -1269,11 +1321,12 @@ export class ObservableAnalysesResultsMetadataApi {
      * @param [searchTerm]
      * @param [minVAddr]
      * @param [maxVAddr]
+     * @param [apiKey]
      */
-    public getFunctionsListWithHttpInfo(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctions>> {
+    public getFunctionsListWithHttpInfo(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctions>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionsList(analysisId, searchTerm, minVAddr, maxVAddr, _config);
+        const requestContextPromise = this.requestFactory.getFunctionsList(analysisId, searchTerm, minVAddr, maxVAddr, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1297,19 +1350,21 @@ export class ObservableAnalysesResultsMetadataApi {
      * @param [searchTerm]
      * @param [minVAddr]
      * @param [maxVAddr]
+     * @param [apiKey]
      */
-    public getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctions> {
-        return this.getFunctionsListWithHttpInfo(analysisId, searchTerm, minVAddr, maxVAddr, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctions>) => apiResponse.data));
+    public getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctions> {
+        return this.getFunctionsListWithHttpInfo(analysisId, searchTerm, minVAddr, maxVAddr, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctions>) => apiResponse.data));
     }
 
     /**
      * Gets the PDF found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getPdfWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
+    public getPdfWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getPdf(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getPdf(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1329,19 +1384,21 @@ export class ObservableAnalysesResultsMetadataApi {
     /**
      * Gets the PDF found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getPdf(analysisId: number, _options?: ConfigurationOptions): Observable<any> {
-        return this.getPdfWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
+    public getPdf(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<any> {
+        return this.getPdfWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
      * Gets the software-bill-of-materials (SBOM) found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getSbomWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListSBOM>> {
+    public getSbomWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListSBOM>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getSbom(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getSbom(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1361,19 +1418,21 @@ export class ObservableAnalysesResultsMetadataApi {
     /**
      * Gets the software-bill-of-materials (SBOM) found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getSbom(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseListSBOM> {
-        return this.getSbomWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListSBOM>) => apiResponse.data));
+    public getSbom(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseListSBOM> {
+        return this.getSbomWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListSBOM>) => apiResponse.data));
     }
 
     /**
      * Get function tags with maliciousness score
      * @param analysisId
+     * @param [apiKey]
      */
-    public getTagsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisTags>> {
+    public getTagsWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisTags>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getTags(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getTags(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1393,19 +1452,21 @@ export class ObservableAnalysesResultsMetadataApi {
     /**
      * Get function tags with maliciousness score
      * @param analysisId
+     * @param [apiKey]
      */
-    public getTags(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisTags> {
-        return this.getTagsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisTags>) => apiResponse.data));
+    public getTags(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisTags> {
+        return this.getTagsWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisTags>) => apiResponse.data));
     }
 
     /**
      * Gets the vulnerabilities found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVulnerabilitiesWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseVulnerabilities>> {
+    public getVulnerabilitiesWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseVulnerabilities>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getVulnerabilities(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getVulnerabilities(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1425,9 +1486,10 @@ export class ObservableAnalysesResultsMetadataApi {
     /**
      * Gets the vulnerabilities found in the analysis
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVulnerabilities(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseVulnerabilities> {
-        return this.getVulnerabilitiesWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseVulnerabilities>) => apiResponse.data));
+    public getVulnerabilities(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseVulnerabilities> {
+        return this.getVulnerabilitiesWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseVulnerabilities>) => apiResponse.data));
     }
 
 }
@@ -1451,11 +1513,12 @@ export class ObservableAnalysesSecurityChecksApi {
     /**
      * Queues a security check process
      * @param analysisId
+     * @param [apiKey]
      */
-    public createScurityChecksTaskWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<QueuedSecurityChecksTaskResponse>> {
+    public createScurityChecksTaskWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<QueuedSecurityChecksTaskResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createScurityChecksTask(analysisId, _config);
+        const requestContextPromise = this.requestFactory.createScurityChecksTask(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1475,9 +1538,10 @@ export class ObservableAnalysesSecurityChecksApi {
     /**
      * Queues a security check process
      * @param analysisId
+     * @param [apiKey]
      */
-    public createScurityChecksTask(analysisId: number, _options?: ConfigurationOptions): Observable<QueuedSecurityChecksTaskResponse> {
-        return this.createScurityChecksTaskWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<QueuedSecurityChecksTaskResponse>) => apiResponse.data));
+    public createScurityChecksTask(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<QueuedSecurityChecksTaskResponse> {
+        return this.createScurityChecksTaskWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<QueuedSecurityChecksTaskResponse>) => apiResponse.data));
     }
 
     /**
@@ -1486,11 +1550,12 @@ export class ObservableAnalysesSecurityChecksApi {
      * @param analysisId
      * @param page The page number to retrieve.
      * @param pageSize Number of items per page.
+     * @param [apiKey]
      */
-    public getSecurityChecksWithHttpInfo(analysisId: number, page: number, pageSize: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseSecurityChecksResponse>> {
+    public getSecurityChecksWithHttpInfo(analysisId: number, page: number, pageSize: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseSecurityChecksResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getSecurityChecks(analysisId, page, pageSize, _config);
+        const requestContextPromise = this.requestFactory.getSecurityChecks(analysisId, page, pageSize, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1513,19 +1578,21 @@ export class ObservableAnalysesSecurityChecksApi {
      * @param analysisId
      * @param page The page number to retrieve.
      * @param pageSize Number of items per page.
+     * @param [apiKey]
      */
-    public getSecurityChecks(analysisId: number, page: number, pageSize: number, _options?: ConfigurationOptions): Observable<BaseResponseSecurityChecksResponse> {
-        return this.getSecurityChecksWithHttpInfo(analysisId, page, pageSize, _options).pipe(map((apiResponse: HttpInfo<BaseResponseSecurityChecksResponse>) => apiResponse.data));
+    public getSecurityChecks(analysisId: number, page: number, pageSize: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseSecurityChecksResponse> {
+        return this.getSecurityChecksWithHttpInfo(analysisId, page, pageSize, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseSecurityChecksResponse>) => apiResponse.data));
     }
 
     /**
      * Check the status of a security check process
      * @param analysisId
+     * @param [apiKey]
      */
-    public getSecurityChecksTaskStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<CheckSecurityChecksTaskResponse>> {
+    public getSecurityChecksTaskStatusWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<CheckSecurityChecksTaskResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getSecurityChecksTaskStatus(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getSecurityChecksTaskStatus(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1545,9 +1612,10 @@ export class ObservableAnalysesSecurityChecksApi {
     /**
      * Check the status of a security check process
      * @param analysisId
+     * @param [apiKey]
      */
-    public getSecurityChecksTaskStatus(analysisId: number, _options?: ConfigurationOptions): Observable<CheckSecurityChecksTaskResponse> {
-        return this.getSecurityChecksTaskStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<CheckSecurityChecksTaskResponse>) => apiResponse.data));
+    public getSecurityChecksTaskStatus(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<CheckSecurityChecksTaskResponse> {
+        return this.getSecurityChecksTaskStatusWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<CheckSecurityChecksTaskResponse>) => apiResponse.data));
     }
 
 }
@@ -1570,11 +1638,12 @@ export class ObservableAuthenticationUsersApi {
 
     /**
      * Get the requesters user information
+     * @param [apiKey]
      */
-    public getRequesterUserInfoWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetUserResponse>> {
+    public getRequesterUserInfoWithHttpInfo(apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetUserResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getRequesterUserInfo(_config);
+        const requestContextPromise = this.requestFactory.getRequesterUserInfo(apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1593,19 +1662,21 @@ export class ObservableAuthenticationUsersApi {
 
     /**
      * Get the requesters user information
+     * @param [apiKey]
      */
-    public getRequesterUserInfo(_options?: ConfigurationOptions): Observable<BaseResponseGetUserResponse> {
-        return this.getRequesterUserInfoWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseGetUserResponse>) => apiResponse.data));
+    public getRequesterUserInfo(apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseGetUserResponse> {
+        return this.getRequesterUserInfoWithHttpInfo(apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetUserResponse>) => apiResponse.data));
     }
 
     /**
      * Get a user\'s public information
      * @param userId
+     * @param [apiKey]
      */
-    public getUserWithHttpInfo(userId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetPublicUserResponse>> {
+    public getUserWithHttpInfo(userId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetPublicUserResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getUser(userId, _config);
+        const requestContextPromise = this.requestFactory.getUser(userId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1625,18 +1696,20 @@ export class ObservableAuthenticationUsersApi {
     /**
      * Get a user\'s public information
      * @param userId
+     * @param [apiKey]
      */
-    public getUser(userId: number, _options?: ConfigurationOptions): Observable<BaseResponseGetPublicUserResponse> {
-        return this.getUserWithHttpInfo(userId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetPublicUserResponse>) => apiResponse.data));
+    public getUser(userId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseGetPublicUserResponse> {
+        return this.getUserWithHttpInfo(userId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetPublicUserResponse>) => apiResponse.data));
     }
 
     /**
      * Get auth user activity
+     * @param [apiKey]
      */
-    public getUserActivityWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListUserActivityResponse>> {
+    public getUserActivityWithHttpInfo(apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListUserActivityResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getUserActivity(_config);
+        const requestContextPromise = this.requestFactory.getUserActivity(apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1655,19 +1728,21 @@ export class ObservableAuthenticationUsersApi {
 
     /**
      * Get auth user activity
+     * @param [apiKey]
      */
-    public getUserActivity(_options?: ConfigurationOptions): Observable<BaseResponseListUserActivityResponse> {
-        return this.getUserActivityWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseListUserActivityResponse>) => apiResponse.data));
+    public getUserActivity(apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseListUserActivityResponse> {
+        return this.getUserActivityWithHttpInfo(apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListUserActivityResponse>) => apiResponse.data));
     }
 
     /**
      * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
      * Get comments by user
+     * @param [apiKey]
      */
-    public getUserCommentsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
+    public getUserCommentsWithHttpInfo(apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getUserComments(_config);
+        const requestContextPromise = this.requestFactory.getUserComments(apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1687,9 +1762,10 @@ export class ObservableAuthenticationUsersApi {
     /**
      * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
      * Get comments by user
+     * @param [apiKey]
      */
-    public getUserComments(_options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getUserCommentsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
+    public getUserComments(apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
+        return this.getUserCommentsWithHttpInfo(apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -1747,11 +1823,12 @@ export class ObservableBinariesApi {
     /**
      * Downloads a zipped binary with password protection
      * @param binaryId
+     * @param [apiKey]
      */
-    public downloadZippedBinaryWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
+    public downloadZippedBinaryWithHttpInfo(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.downloadZippedBinary(binaryId, _config);
+        const requestContextPromise = this.requestFactory.downloadZippedBinary(binaryId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1771,19 +1848,21 @@ export class ObservableBinariesApi {
     /**
      * Downloads a zipped binary with password protection
      * @param binaryId
+     * @param [apiKey]
      */
-    public downloadZippedBinary(binaryId: number, _options?: ConfigurationOptions): Observable<any> {
-        return this.downloadZippedBinaryWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
+    public downloadZippedBinary(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<any> {
+        return this.downloadZippedBinaryWithHttpInfo(binaryId, apiKey, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
      * Gets the additional details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
+    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetails(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetails(binaryId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1803,19 +1882,21 @@ export class ObservableBinariesApi {
     /**
      * Gets the additional details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryAdditionalDetails(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryAdditionalResponse> {
-        return this.getBinaryAdditionalDetailsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryAdditionalResponse>) => apiResponse.data));
+    public getBinaryAdditionalDetails(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBinaryAdditionalResponse> {
+        return this.getBinaryAdditionalDetailsWithHttpInfo(binaryId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryAdditionalResponse>) => apiResponse.data));
     }
 
     /**
      * Gets the details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryDetailsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryDetailsResponse>> {
+    public getBinaryDetailsWithHttpInfo(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryDetailsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinaryDetails(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getBinaryDetails(binaryId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1835,19 +1916,21 @@ export class ObservableBinariesApi {
     /**
      * Gets the details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryDetails(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryDetailsResponse> {
-        return this.getBinaryDetailsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryDetailsResponse>) => apiResponse.data));
+    public getBinaryDetails(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBinaryDetailsResponse> {
+        return this.getBinaryDetailsWithHttpInfo(binaryId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryDetailsResponse>) => apiResponse.data));
     }
 
     /**
      * Gets the die info of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryDieInfoWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListDieMatch>> {
+    public getBinaryDieInfoWithHttpInfo(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListDieMatch>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinaryDieInfo(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getBinaryDieInfo(binaryId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1867,19 +1950,21 @@ export class ObservableBinariesApi {
     /**
      * Gets the die info of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryDieInfo(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseListDieMatch> {
-        return this.getBinaryDieInfoWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListDieMatch>) => apiResponse.data));
+    public getBinaryDieInfo(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseListDieMatch> {
+        return this.getBinaryDieInfoWithHttpInfo(binaryId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListDieMatch>) => apiResponse.data));
     }
 
     /**
      * Gets the external details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryExternalsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryExternalsResponse>> {
+    public getBinaryExternalsWithHttpInfo(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryExternalsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinaryExternals(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getBinaryExternals(binaryId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1899,19 +1984,21 @@ export class ObservableBinariesApi {
     /**
      * Gets the external details of a binary
      * @param binaryId
+     * @param [apiKey]
      */
-    public getBinaryExternals(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryExternalsResponse> {
-        return this.getBinaryExternalsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryExternalsResponse>) => apiResponse.data));
+    public getBinaryExternals(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBinaryExternalsResponse> {
+        return this.getBinaryExternalsWithHttpInfo(binaryId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryExternalsResponse>) => apiResponse.data));
     }
 
     /**
      * Gets the related binaries of a binary.
      * @param binaryId
+     * @param [apiKey]
      */
-    public getRelatedBinariesWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseChildBinariesResponse>> {
+    public getRelatedBinariesWithHttpInfo(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseChildBinariesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getRelatedBinaries(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getRelatedBinaries(binaryId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1931,9 +2018,10 @@ export class ObservableBinariesApi {
     /**
      * Gets the related binaries of a binary.
      * @param binaryId
+     * @param [apiKey]
      */
-    public getRelatedBinaries(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseChildBinariesResponse> {
-        return this.getRelatedBinariesWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseChildBinariesResponse>) => apiResponse.data));
+    public getRelatedBinaries(binaryId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseChildBinariesResponse> {
+        return this.getRelatedBinariesWithHttpInfo(binaryId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseChildBinariesResponse>) => apiResponse.data));
     }
 
 }
@@ -1958,11 +2046,12 @@ export class ObservableCollectionsApi {
      * A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
      * Creates new collection information
      * @param collectionCreateRequest
+     * @param [apiKey]
      */
-    public createCollectionWithHttpInfo(collectionCreateRequest: CollectionCreateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
+    public createCollectionWithHttpInfo(collectionCreateRequest: CollectionCreateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createCollection(collectionCreateRequest, _config);
+        const requestContextPromise = this.requestFactory.createCollection(collectionCreateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1983,20 +2072,22 @@ export class ObservableCollectionsApi {
      * A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
      * Creates new collection information
      * @param collectionCreateRequest
+     * @param [apiKey]
      */
-    public createCollection(collectionCreateRequest: CollectionCreateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
-        return this.createCollectionWithHttpInfo(collectionCreateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
+    public createCollection(collectionCreateRequest: CollectionCreateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
+        return this.createCollectionWithHttpInfo(collectionCreateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
     }
 
     /**
      * Deletes a collection
      * Deletes a collection
      * @param collectionId
+     * @param [apiKey]
      */
-    public deleteCollectionWithHttpInfo(collectionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
+    public deleteCollectionWithHttpInfo(collectionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteCollection(collectionId, _config);
+        const requestContextPromise = this.requestFactory.deleteCollection(collectionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2017,9 +2108,10 @@ export class ObservableCollectionsApi {
      * Deletes a collection
      * Deletes a collection
      * @param collectionId
+     * @param [apiKey]
      */
-    public deleteCollection(collectionId: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
-        return this.deleteCollectionWithHttpInfo(collectionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
+    public deleteCollection(collectionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
+        return this.deleteCollectionWithHttpInfo(collectionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
     }
 
     /**
@@ -2028,11 +2120,12 @@ export class ObservableCollectionsApi {
      * @param collectionId
      * @param [includeTags]
      * @param [includeBinaries]
+     * @param [apiKey]
      */
-    public getCollectionWithHttpInfo(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
+    public getCollectionWithHttpInfo(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getCollection(collectionId, includeTags, includeBinaries, _config);
+        const requestContextPromise = this.requestFactory.getCollection(collectionId, includeTags, includeBinaries, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2055,9 +2148,10 @@ export class ObservableCollectionsApi {
      * @param collectionId
      * @param [includeTags]
      * @param [includeBinaries]
+     * @param [apiKey]
      */
-    public getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
-        return this.getCollectionWithHttpInfo(collectionId, includeTags, includeBinaries, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
+    public getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
+        return this.getCollectionWithHttpInfo(collectionId, includeTags, includeBinaries, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
     }
 
     /**
@@ -2069,11 +2163,12 @@ export class ObservableCollectionsApi {
      * @param [offset]
      * @param [orderBy]
      * @param [order]
+     * @param [apiKey]
      */
-    public listCollectionsWithHttpInfo(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCollectionResults>> {
+    public listCollectionsWithHttpInfo(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCollectionResults>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listCollections(searchTerm, filters, limit, offset, orderBy, order, _config);
+        const requestContextPromise = this.requestFactory.listCollections(searchTerm, filters, limit, offset, orderBy, order, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2099,9 +2194,10 @@ export class ObservableCollectionsApi {
      * @param [offset]
      * @param [orderBy]
      * @param [order]
+     * @param [apiKey]
      */
-    public listCollections(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<BaseResponseListCollectionResults> {
-        return this.listCollectionsWithHttpInfo(searchTerm, filters, limit, offset, orderBy, order, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCollectionResults>) => apiResponse.data));
+    public listCollections(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseListCollectionResults> {
+        return this.listCollectionsWithHttpInfo(searchTerm, filters, limit, offset, orderBy, order, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCollectionResults>) => apiResponse.data));
     }
 
     /**
@@ -2109,11 +2205,12 @@ export class ObservableCollectionsApi {
      * Updates a collection
      * @param collectionId
      * @param collectionUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollectionWithHttpInfo(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
+    public updateCollectionWithHttpInfo(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateCollection(collectionId, collectionUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateCollection(collectionId, collectionUpdateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2135,9 +2232,10 @@ export class ObservableCollectionsApi {
      * Updates a collection
      * @param collectionId
      * @param collectionUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollection(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
-        return this.updateCollectionWithHttpInfo(collectionId, collectionUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
+    public updateCollection(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
+        return this.updateCollectionWithHttpInfo(collectionId, collectionUpdateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
     }
 
     /**
@@ -2145,11 +2243,12 @@ export class ObservableCollectionsApi {
      * Updates a collection binaries
      * @param collectionId
      * @param collectionBinariesUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollectionBinariesWithHttpInfo(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionBinariesUpdateResponse>> {
+    public updateCollectionBinariesWithHttpInfo(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionBinariesUpdateResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateCollectionBinaries(collectionId, collectionBinariesUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateCollectionBinaries(collectionId, collectionBinariesUpdateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2171,9 +2270,10 @@ export class ObservableCollectionsApi {
      * Updates a collection binaries
      * @param collectionId
      * @param collectionBinariesUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollectionBinaries(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionBinariesUpdateResponse> {
-        return this.updateCollectionBinariesWithHttpInfo(collectionId, collectionBinariesUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionBinariesUpdateResponse>) => apiResponse.data));
+    public updateCollectionBinaries(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCollectionBinariesUpdateResponse> {
+        return this.updateCollectionBinariesWithHttpInfo(collectionId, collectionBinariesUpdateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionBinariesUpdateResponse>) => apiResponse.data));
     }
 
     /**
@@ -2181,11 +2281,12 @@ export class ObservableCollectionsApi {
      * Updates a collection tags
      * @param collectionId
      * @param collectionTagsUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollectionTagsWithHttpInfo(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionTagsUpdateResponse>> {
+    public updateCollectionTagsWithHttpInfo(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionTagsUpdateResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateCollectionTags(collectionId, collectionTagsUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateCollectionTags(collectionId, collectionTagsUpdateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2207,9 +2308,10 @@ export class ObservableCollectionsApi {
      * Updates a collection tags
      * @param collectionId
      * @param collectionTagsUpdateRequest
+     * @param [apiKey]
      */
-    public updateCollectionTags(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionTagsUpdateResponse> {
-        return this.updateCollectionTagsWithHttpInfo(collectionId, collectionTagsUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionTagsUpdateResponse>) => apiResponse.data));
+    public updateCollectionTags(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCollectionTagsUpdateResponse> {
+        return this.updateCollectionTagsWithHttpInfo(collectionId, collectionTagsUpdateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionTagsUpdateResponse>) => apiResponse.data));
     }
 
 }
@@ -2233,11 +2335,12 @@ export class ObservableExternalSourcesApi {
     /**
      * Pulls data from VirusTotal
      * @param analysisId
+     * @param [apiKey]
      */
-    public createExternalTaskMbWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStr>> {
+    public createExternalTaskMbWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStr>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createExternalTaskMb(analysisId, _config);
+        const requestContextPromise = this.requestFactory.createExternalTaskMb(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2257,19 +2360,21 @@ export class ObservableExternalSourcesApi {
     /**
      * Pulls data from VirusTotal
      * @param analysisId
+     * @param [apiKey]
      */
-    public createExternalTaskMb(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseStr> {
-        return this.createExternalTaskMbWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStr>) => apiResponse.data));
+    public createExternalTaskMb(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseStr> {
+        return this.createExternalTaskMbWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStr>) => apiResponse.data));
     }
 
     /**
      * Pulls data from VirusTotal
      * @param analysisId
+     * @param [apiKey]
      */
-    public createExternalTaskVtWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStr>> {
+    public createExternalTaskVtWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStr>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createExternalTaskVt(analysisId, _config);
+        const requestContextPromise = this.requestFactory.createExternalTaskVt(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2289,19 +2394,21 @@ export class ObservableExternalSourcesApi {
     /**
      * Pulls data from VirusTotal
      * @param analysisId
+     * @param [apiKey]
      */
-    public createExternalTaskVt(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseStr> {
-        return this.createExternalTaskVtWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStr>) => apiResponse.data));
+    public createExternalTaskVt(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseStr> {
+        return this.createExternalTaskVtWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStr>) => apiResponse.data));
     }
 
     /**
      * Get MalwareBazaar data
      * @param analysisId
+     * @param [apiKey]
      */
-    public getMbDataWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseExternalResponse>> {
+    public getMbDataWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseExternalResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getMbData(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getMbData(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2321,19 +2428,21 @@ export class ObservableExternalSourcesApi {
     /**
      * Get MalwareBazaar data
      * @param analysisId
+     * @param [apiKey]
      */
-    public getMbData(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseExternalResponse> {
-        return this.getMbDataWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseExternalResponse>) => apiResponse.data));
+    public getMbData(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseExternalResponse> {
+        return this.getMbDataWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseExternalResponse>) => apiResponse.data));
     }
 
     /**
      * Check the status of MalwareBazaar data retrieval
      * @param analysisId
+     * @param [apiKey]
      */
-    public getMbTaskStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTaskResponse>> {
+    public getMbTaskStatusWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTaskResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getMbTaskStatus(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getMbTaskStatus(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2353,19 +2462,21 @@ export class ObservableExternalSourcesApi {
     /**
      * Check the status of MalwareBazaar data retrieval
      * @param analysisId
+     * @param [apiKey]
      */
-    public getMbTaskStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseTaskResponse> {
-        return this.getMbTaskStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTaskResponse>) => apiResponse.data));
+    public getMbTaskStatus(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseTaskResponse> {
+        return this.getMbTaskStatusWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTaskResponse>) => apiResponse.data));
     }
 
     /**
      * Get VirusTotal data
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVtDataWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseExternalResponse>> {
+    public getVtDataWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseExternalResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getVtData(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getVtData(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2385,19 +2496,21 @@ export class ObservableExternalSourcesApi {
     /**
      * Get VirusTotal data
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVtData(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseExternalResponse> {
-        return this.getVtDataWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseExternalResponse>) => apiResponse.data));
+    public getVtData(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseExternalResponse> {
+        return this.getVtDataWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseExternalResponse>) => apiResponse.data));
     }
 
     /**
      * Check the status of VirusTotal data retrieval
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVtTaskStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTaskResponse>> {
+    public getVtTaskStatusWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTaskResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getVtTaskStatus(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getVtTaskStatus(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2417,9 +2530,10 @@ export class ObservableExternalSourcesApi {
     /**
      * Check the status of VirusTotal data retrieval
      * @param analysisId
+     * @param [apiKey]
      */
-    public getVtTaskStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseTaskResponse> {
-        return this.getVtTaskStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTaskResponse>) => apiResponse.data));
+    public getVtTaskStatus(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseTaskResponse> {
+        return this.getVtTaskStatusWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTaskResponse>) => apiResponse.data));
     }
 
 }
@@ -2444,11 +2558,12 @@ export class ObservableFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param taskId
+     * @param [apiKey]
      */
-    public getBinariesForFirmwareTaskWithHttpInfo(taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
+    public getBinariesForFirmwareTaskWithHttpInfo(taskId: string, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinariesForFirmwareTask(taskId, _config);
+        const requestContextPromise = this.requestFactory.getBinariesForFirmwareTask(taskId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2469,21 +2584,23 @@ export class ObservableFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param taskId
+     * @param [apiKey]
      */
-    public getBinariesForFirmwareTask(taskId: string, _options?: ConfigurationOptions): Observable<any> {
-        return this.getBinariesForFirmwareTaskWithHttpInfo(taskId, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
+    public getBinariesForFirmwareTask(taskId: string, apiKey?: string, _options?: ConfigurationOptions): Observable<any> {
+        return this.getBinariesForFirmwareTaskWithHttpInfo(taskId, apiKey, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param file
+     * @param [apiKey]
      * @param [password]
      */
-    public uploadFirmwareWithHttpInfo(file: HttpFile, password?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
+    public uploadFirmwareWithHttpInfo(file: HttpFile, apiKey?: string, password?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.uploadFirmware(file, password, _config);
+        const requestContextPromise = this.requestFactory.uploadFirmware(file, apiKey, password, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2504,10 +2621,11 @@ export class ObservableFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param file
+     * @param [apiKey]
      * @param [password]
      */
-    public uploadFirmware(file: HttpFile, password?: string, _options?: ConfigurationOptions): Observable<any> {
-        return this.uploadFirmwareWithHttpInfo(file, password, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
+    public uploadFirmware(file: HttpFile, apiKey?: string, password?: string, _options?: ConfigurationOptions): Observable<any> {
+        return this.uploadFirmwareWithHttpInfo(file, apiKey, password, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
 }
@@ -2533,11 +2651,12 @@ export class ObservableFunctionsAIDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [apiKey]
      */
-    public createAiDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public createAiDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createAiDecompilationComment(functionId, functionCommentCreateRequest, _config);
+        const requestContextPromise = this.requestFactory.createAiDecompilationComment(functionId, functionCommentCreateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2559,20 +2678,22 @@ export class ObservableFunctionsAIDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [apiKey]
      */
-    public createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.createAiDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.createAiDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
     /**
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
      * @param functionId The ID of the function for which we are creating the decompilation task
+     * @param [apiKey]
      */
-    public createAiDecompilationTaskWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
+    public createAiDecompilationTaskWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createAiDecompilationTask(functionId, _config);
+        const requestContextPromise = this.requestFactory.createAiDecompilationTask(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2593,9 +2714,10 @@ export class ObservableFunctionsAIDecompilationApi {
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
      * @param functionId The ID of the function for which we are creating the decompilation task
+     * @param [apiKey]
      */
-    public createAiDecompilationTask(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.createAiDecompilationTaskWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
+    public createAiDecompilationTask(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponse> {
+        return this.createAiDecompilationTaskWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
     }
 
     /**
@@ -2603,11 +2725,12 @@ export class ObservableFunctionsAIDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [apiKey]
      */
-    public deleteAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
+    public deleteAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteAiDecompilationComment(commentId, functionId, _config);
+        const requestContextPromise = this.requestFactory.deleteAiDecompilationComment(commentId, functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2629,20 +2752,22 @@ export class ObservableFunctionsAIDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [apiKey]
      */
-    public deleteAiDecompilationComment(commentId: number, functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
-        return this.deleteAiDecompilationCommentWithHttpInfo(commentId, functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
+    public deleteAiDecompilationComment(commentId: number, functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
+        return this.deleteAiDecompilationCommentWithHttpInfo(commentId, functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
     }
 
     /**
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [apiKey]
      */
-    public getAiDecompilationCommentsWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
+    public getAiDecompilationCommentsWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAiDecompilationComments(functionId, _config);
+        const requestContextPromise = this.requestFactory.getAiDecompilationComments(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2663,19 +2788,21 @@ export class ObservableFunctionsAIDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [apiKey]
      */
-    public getAiDecompilationComments(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getAiDecompilationCommentsWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
+    public getAiDecompilationComments(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
+        return this.getAiDecompilationCommentsWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
     }
 
     /**
      * Get rating for AI decompilation
      * @param functionId The ID of the function for which to get the rating
+     * @param [apiKey]
      */
-    public getAiDecompilationRatingWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetAiDecompilationRatingResponse>> {
+    public getAiDecompilationRatingWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetAiDecompilationRatingResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAiDecompilationRating(functionId, _config);
+        const requestContextPromise = this.requestFactory.getAiDecompilationRating(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2695,9 +2822,10 @@ export class ObservableFunctionsAIDecompilationApi {
     /**
      * Get rating for AI decompilation
      * @param functionId The ID of the function for which to get the rating
+     * @param [apiKey]
      */
-    public getAiDecompilationRating(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseGetAiDecompilationRatingResponse> {
-        return this.getAiDecompilationRatingWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetAiDecompilationRatingResponse>) => apiResponse.data));
+    public getAiDecompilationRating(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseGetAiDecompilationRatingResponse> {
+        return this.getAiDecompilationRatingWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetAiDecompilationRatingResponse>) => apiResponse.data));
     }
 
     /**
@@ -2706,11 +2834,12 @@ export class ObservableFunctionsAIDecompilationApi {
      * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
      * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
+     * @param [apiKey]
      */
-    public getAiDecompilationTaskResultWithHttpInfo(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetAiDecompilationTask>> {
+    public getAiDecompilationTaskResultWithHttpInfo(functionId: number, summarise?: boolean, generateInlineComments?: boolean, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetAiDecompilationTask>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAiDecompilationTaskResult(functionId, summarise, generateInlineComments, _config);
+        const requestContextPromise = this.requestFactory.getAiDecompilationTaskResult(functionId, summarise, generateInlineComments, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2733,19 +2862,21 @@ export class ObservableFunctionsAIDecompilationApi {
      * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
      * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
+     * @param [apiKey]
      */
-    public getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseGetAiDecompilationTask> {
-        return this.getAiDecompilationTaskResultWithHttpInfo(functionId, summarise, generateInlineComments, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetAiDecompilationTask>) => apiResponse.data));
+    public getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseGetAiDecompilationTask> {
+        return this.getAiDecompilationTaskResultWithHttpInfo(functionId, summarise, generateInlineComments, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetAiDecompilationTask>) => apiResponse.data));
     }
 
     /**
      * Check the status of a function ai decompilation
      * @param functionId The ID of the function being checked
+     * @param [apiKey]
      */
-    public getAiDecompilationTaskStatusWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionTaskResponse>> {
+    public getAiDecompilationTaskStatusWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionTaskResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAiDecompilationTaskStatus(functionId, _config);
+        const requestContextPromise = this.requestFactory.getAiDecompilationTaskStatus(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2765,9 +2896,10 @@ export class ObservableFunctionsAIDecompilationApi {
     /**
      * Check the status of a function ai decompilation
      * @param functionId The ID of the function being checked
+     * @param [apiKey]
      */
-    public getAiDecompilationTaskStatus(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionTaskResponse> {
-        return this.getAiDecompilationTaskStatusWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionTaskResponse>) => apiResponse.data));
+    public getAiDecompilationTaskStatus(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionTaskResponse> {
+        return this.getAiDecompilationTaskStatusWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionTaskResponse>) => apiResponse.data));
     }
 
     /**
@@ -2776,11 +2908,12 @@ export class ObservableFunctionsAIDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public updateAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateAiDecompilationComment(commentId, functionId, commentUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateAiDecompilationComment(commentId, functionId, commentUpdateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2803,20 +2936,22 @@ export class ObservableFunctionsAIDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.updateAiDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.updateAiDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
     /**
      * Upsert rating for AI decompilation
      * @param functionId The ID of the function being rated
      * @param upsertAiDecomplationRatingRequest
+     * @param [apiKey]
      */
-    public upsertAiDecompilationRatingWithHttpInfo(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
+    public upsertAiDecompilationRatingWithHttpInfo(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.upsertAiDecompilationRating(functionId, upsertAiDecomplationRatingRequest, _config);
+        const requestContextPromise = this.requestFactory.upsertAiDecompilationRating(functionId, upsertAiDecomplationRatingRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2837,9 +2972,10 @@ export class ObservableFunctionsAIDecompilationApi {
      * Upsert rating for AI decompilation
      * @param functionId The ID of the function being rated
      * @param upsertAiDecomplationRatingRequest
+     * @param [apiKey]
      */
-    public upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.upsertAiDecompilationRatingWithHttpInfo(functionId, upsertAiDecomplationRatingRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
+    public upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponse> {
+        return this.upsertAiDecompilationRatingWithHttpInfo(functionId, upsertAiDecomplationRatingRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
     }
 
 }
@@ -2864,11 +3000,12 @@ export class ObservableFunctionsBlockCommentsApi {
      * Generate block comments for a specific block in a function
      * @param functionId
      * @param block
+     * @param [apiKey]
      */
-    public generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId: number, block: Block, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
+    public generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId: number, block: Block, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.generateBlockCommentsForBlockInFunction(functionId, block, _config);
+        const requestContextPromise = this.requestFactory.generateBlockCommentsForBlockInFunction(functionId, block, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2889,19 +3026,21 @@ export class ObservableFunctionsBlockCommentsApi {
      * Generate block comments for a specific block in a function
      * @param functionId
      * @param block
+     * @param [apiKey]
      */
-    public generateBlockCommentsForBlockInFunction(functionId: number, block: Block, _options?: ConfigurationOptions): Observable<BaseResponseBlockCommentsGenerationForFunctionResponse> {
-        return this.generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId, block, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>) => apiResponse.data));
+    public generateBlockCommentsForBlockInFunction(functionId: number, block: Block, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBlockCommentsGenerationForFunctionResponse> {
+        return this.generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId, block, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>) => apiResponse.data));
     }
 
     /**
      * Generate block comments for a function
      * @param functionId
+     * @param [apiKey]
      */
-    public generateBlockCommentsForFunctionWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
+    public generateBlockCommentsForFunctionWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.generateBlockCommentsForFunction(functionId, _config);
+        const requestContextPromise = this.requestFactory.generateBlockCommentsForFunction(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2921,19 +3060,21 @@ export class ObservableFunctionsBlockCommentsApi {
     /**
      * Generate block comments for a function
      * @param functionId
+     * @param [apiKey]
      */
-    public generateBlockCommentsForFunction(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseBlockCommentsGenerationForFunctionResponse> {
-        return this.generateBlockCommentsForFunctionWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>) => apiResponse.data));
+    public generateBlockCommentsForFunction(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBlockCommentsGenerationForFunctionResponse> {
+        return this.generateBlockCommentsForFunctionWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>) => apiResponse.data));
     }
 
     /**
      * Generate overview comment for a function
      * @param functionId
+     * @param [apiKey]
      */
-    public generateOverviewCommentForFunctionWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>> {
+    public generateOverviewCommentForFunctionWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.generateOverviewCommentForFunction(functionId, _config);
+        const requestContextPromise = this.requestFactory.generateOverviewCommentForFunction(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2953,9 +3094,10 @@ export class ObservableFunctionsBlockCommentsApi {
     /**
      * Generate overview comment for a function
      * @param functionId
+     * @param [apiKey]
      */
-    public generateOverviewCommentForFunction(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseBlockCommentsOverviewGenerationResponse> {
-        return this.generateOverviewCommentForFunctionWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>) => apiResponse.data));
+    public generateOverviewCommentForFunction(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBlockCommentsOverviewGenerationResponse> {
+        return this.generateOverviewCommentForFunctionWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>) => apiResponse.data));
     }
 
 }
@@ -2981,11 +3123,12 @@ export class ObservableFunctionsCoreApi {
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId
      * @param aiUnstripRequest
+     * @param [apiKey]
      */
-    public aiUnstripWithHttpInfo(analysisId: number, aiUnstripRequest: AiUnstripRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
+    public aiUnstripWithHttpInfo(analysisId: number, aiUnstripRequest: AiUnstripRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.aiUnstrip(analysisId, aiUnstripRequest, _config);
+        const requestContextPromise = this.requestFactory.aiUnstrip(analysisId, aiUnstripRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3007,9 +3150,10 @@ export class ObservableFunctionsCoreApi {
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId
      * @param aiUnstripRequest
+     * @param [apiKey]
      */
-    public aiUnstrip(analysisId: number, aiUnstripRequest: AiUnstripRequest, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
-        return this.aiUnstripWithHttpInfo(analysisId, aiUnstripRequest, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
+    public aiUnstrip(analysisId: number, aiUnstripRequest: AiUnstripRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
+        return this.aiUnstripWithHttpInfo(analysisId, aiUnstripRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
     }
 
     /**
@@ -3017,11 +3161,12 @@ export class ObservableFunctionsCoreApi {
      * Perform matching for the functions of an analysis
      * @param analysisId
      * @param analysisFunctionMatchingRequest
+     * @param [apiKey]
      */
-    public analysisFunctionMatchingWithHttpInfo(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionMatchingBatchResponse>> {
+    public analysisFunctionMatchingWithHttpInfo(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionMatchingBatchResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.analysisFunctionMatching(analysisId, analysisFunctionMatchingRequest, _config);
+        const requestContextPromise = this.requestFactory.analysisFunctionMatching(analysisId, analysisFunctionMatchingRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3043,9 +3188,10 @@ export class ObservableFunctionsCoreApi {
      * Perform matching for the functions of an analysis
      * @param analysisId
      * @param analysisFunctionMatchingRequest
+     * @param [apiKey]
      */
-    public analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: ConfigurationOptions): Observable<FunctionMatchingBatchResponse> {
-        return this.analysisFunctionMatchingWithHttpInfo(analysisId, analysisFunctionMatchingRequest, _options).pipe(map((apiResponse: HttpInfo<FunctionMatchingBatchResponse>) => apiResponse.data));
+    public analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<FunctionMatchingBatchResponse> {
+        return this.analysisFunctionMatchingWithHttpInfo(analysisId, analysisFunctionMatchingRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<FunctionMatchingBatchResponse>) => apiResponse.data));
     }
 
     /**
@@ -3053,11 +3199,12 @@ export class ObservableFunctionsCoreApi {
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId
      * @param autoUnstripRequest
+     * @param [apiKey]
      */
-    public autoUnstripWithHttpInfo(analysisId: number, autoUnstripRequest: AutoUnstripRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
+    public autoUnstripWithHttpInfo(analysisId: number, autoUnstripRequest: AutoUnstripRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.autoUnstrip(analysisId, autoUnstripRequest, _config);
+        const requestContextPromise = this.requestFactory.autoUnstrip(analysisId, autoUnstripRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3079,20 +3226,22 @@ export class ObservableFunctionsCoreApi {
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId
      * @param autoUnstripRequest
+     * @param [apiKey]
      */
-    public autoUnstrip(analysisId: number, autoUnstripRequest: AutoUnstripRequest, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
-        return this.autoUnstripWithHttpInfo(analysisId, autoUnstripRequest, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
+    public autoUnstrip(analysisId: number, autoUnstripRequest: AutoUnstripRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
+        return this.autoUnstripWithHttpInfo(analysisId, autoUnstripRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
     }
 
     /**
      * Takes in an input of functions ID\'s and settings and finds the nearest functions for each function that\'s within the system
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param functionMatchingRequest
+     * @param [apiKey]
      */
-    public batchFunctionMatchingWithHttpInfo(functionMatchingRequest: FunctionMatchingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionMatchingBatchResponse>> {
+    public batchFunctionMatchingWithHttpInfo(functionMatchingRequest: FunctionMatchingRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionMatchingBatchResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.batchFunctionMatching(functionMatchingRequest, _config);
+        const requestContextPromise = this.requestFactory.batchFunctionMatching(functionMatchingRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3113,20 +3262,22 @@ export class ObservableFunctionsCoreApi {
      * Takes in an input of functions ID\'s and settings and finds the nearest functions for each function that\'s within the system
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param functionMatchingRequest
+     * @param [apiKey]
      */
-    public batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, _options?: ConfigurationOptions): Observable<FunctionMatchingBatchResponse> {
-        return this.batchFunctionMatchingWithHttpInfo(functionMatchingRequest, _options).pipe(map((apiResponse: HttpInfo<FunctionMatchingBatchResponse>) => apiResponse.data));
+    public batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<FunctionMatchingBatchResponse> {
+        return this.batchFunctionMatchingWithHttpInfo(functionMatchingRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<FunctionMatchingBatchResponse>) => apiResponse.data));
     }
 
     /**
      * Takes in the analysis ID and cancels a running ai-unstrip operation
      * Cancels a running ai-unstrip
      * @param analysisId
+     * @param [apiKey]
      */
-    public cancelAiUnstripWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
+    public cancelAiUnstripWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.cancelAiUnstrip(analysisId, _config);
+        const requestContextPromise = this.requestFactory.cancelAiUnstrip(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3147,20 +3298,22 @@ export class ObservableFunctionsCoreApi {
      * Takes in the analysis ID and cancels a running ai-unstrip operation
      * Cancels a running ai-unstrip
      * @param analysisId
+     * @param [apiKey]
      */
-    public cancelAiUnstrip(analysisId: number, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
-        return this.cancelAiUnstripWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
+    public cancelAiUnstrip(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
+        return this.cancelAiUnstripWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
     }
 
     /**
      * Takes in the analysis ID and cancels a running auto-unstrip operation
      * Cancels a running auto-unstrip
      * @param analysisId
+     * @param [apiKey]
      */
-    public cancelAutoUnstripWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
+    public cancelAutoUnstripWithHttpInfo(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.cancelAutoUnstrip(analysisId, _config);
+        const requestContextPromise = this.requestFactory.cancelAutoUnstrip(analysisId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3181,9 +3334,10 @@ export class ObservableFunctionsCoreApi {
      * Takes in the analysis ID and cancels a running auto-unstrip operation
      * Cancels a running auto-unstrip
      * @param analysisId
+     * @param [apiKey]
      */
-    public cancelAutoUnstrip(analysisId: number, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
-        return this.cancelAutoUnstripWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
+    public cancelAutoUnstrip(analysisId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
+        return this.cancelAutoUnstripWithHttpInfo(analysisId, apiKey, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
     }
 
     /**
@@ -3194,11 +3348,12 @@ export class ObservableFunctionsCoreApi {
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
      * @param [functionSearch] Search is applied to function names
+     * @param [apiKey]
      */
-    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisStringsResponse>> {
+    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisStringsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3223,20 +3378,22 @@ export class ObservableFunctionsCoreApi {
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
      * @param [functionSearch] Search is applied to function names
+     * @param [apiKey]
      */
-    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisStringsResponse> {
-        return this.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisStringsResponse>) => apiResponse.data));
+    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisStringsResponse> {
+        return this.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisStringsResponse>) => apiResponse.data));
     }
 
     /**
      * Get disassembly blocks related to the function
      * Get disassembly blocks related to the function
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionBlocksWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionBlocksResponse>> {
+    public getFunctionBlocksWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionBlocksResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionBlocks(functionId, _config);
+        const requestContextPromise = this.requestFactory.getFunctionBlocks(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3257,19 +3414,21 @@ export class ObservableFunctionsCoreApi {
      * Get disassembly blocks related to the function
      * Get disassembly blocks related to the function
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionBlocks(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionBlocksResponse> {
-        return this.getFunctionBlocksWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionBlocksResponse>) => apiResponse.data));
+    public getFunctionBlocks(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionBlocksResponse> {
+        return this.getFunctionBlocksWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionBlocksResponse>) => apiResponse.data));
     }
 
     /**
      * Get list of functions that call or are called by the specified function
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionCalleesCallersWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCalleesCallerFunctionsResponse>> {
+    public getFunctionCalleesCallersWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCalleesCallerFunctionsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionCalleesCallers(functionId, _config);
+        const requestContextPromise = this.requestFactory.getFunctionCalleesCallers(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3289,19 +3448,21 @@ export class ObservableFunctionsCoreApi {
     /**
      * Get list of functions that call or are called by the specified function
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionCalleesCallers(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseCalleesCallerFunctionsResponse> {
-        return this.getFunctionCalleesCallersWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCalleesCallerFunctionsResponse>) => apiResponse.data));
+    public getFunctionCalleesCallers(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCalleesCallerFunctionsResponse> {
+        return this.getFunctionCalleesCallersWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCalleesCallerFunctionsResponse>) => apiResponse.data));
     }
 
     /**
      * Retrieve a functions capabilities
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionCapabilitiesWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionCapabilityResponse>> {
+    public getFunctionCapabilitiesWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionCapabilityResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionCapabilities(functionId, _config);
+        const requestContextPromise = this.requestFactory.getFunctionCapabilities(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3321,19 +3482,21 @@ export class ObservableFunctionsCoreApi {
     /**
      * Retrieve a functions capabilities
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionCapabilities(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionCapabilityResponse> {
-        return this.getFunctionCapabilitiesWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionCapabilityResponse>) => apiResponse.data));
+    public getFunctionCapabilities(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionCapabilityResponse> {
+        return this.getFunctionCapabilitiesWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionCapabilityResponse>) => apiResponse.data));
     }
 
     /**
      * Get function details
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionDetailsWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionsDetailResponse>> {
+    public getFunctionDetailsWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionsDetailResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionDetails(functionId, _config);
+        const requestContextPromise = this.requestFactory.getFunctionDetails(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3353,9 +3516,10 @@ export class ObservableFunctionsCoreApi {
     /**
      * Get function details
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionDetails(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionsDetailResponse> {
-        return this.getFunctionDetailsWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionsDetailResponse>) => apiResponse.data));
+    public getFunctionDetails(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionsDetailResponse> {
+        return this.getFunctionDetailsWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionsDetailResponse>) => apiResponse.data));
     }
 
     /**
@@ -3365,11 +3529,12 @@ export class ObservableFunctionsCoreApi {
      * @param [page] The page number to retrieve.
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
+     * @param [apiKey]
      */
-    public getFunctionStringsWithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionStringsResponse>> {
+    public getFunctionStringsWithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionStringsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionStrings(functionId, page, pageSize, search, _config);
+        const requestContextPromise = this.requestFactory.getFunctionStrings(functionId, page, pageSize, search, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3393,9 +3558,10 @@ export class ObservableFunctionsCoreApi {
      * @param [page] The page number to retrieve.
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
+     * @param [apiKey]
      */
-    public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionStringsResponse> {
-        return this.getFunctionStringsWithHttpInfo(functionId, page, pageSize, search, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionStringsResponse>) => apiResponse.data));
+    public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionStringsResponse> {
+        return this.getFunctionStringsWithHttpInfo(functionId, page, pageSize, search, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionStringsResponse>) => apiResponse.data));
     }
 
 }
@@ -3421,11 +3587,12 @@ export class ObservableFunctionsDataTypesApi {
      * Generate Function Data Types
      * @param analysisId
      * @param functionDataTypesParams
+     * @param [apiKey]
      */
-    public generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGenerateFunctionDataTypes>> {
+    public generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGenerateFunctionDataTypes>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.generateFunctionDataTypesForAnalysis(analysisId, functionDataTypesParams, _config);
+        const requestContextPromise = this.requestFactory.generateFunctionDataTypesForAnalysis(analysisId, functionDataTypesParams, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3447,20 +3614,22 @@ export class ObservableFunctionsDataTypesApi {
      * Generate Function Data Types
      * @param analysisId
      * @param functionDataTypesParams
+     * @param [apiKey]
      */
-    public generateFunctionDataTypesForAnalysis(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, _options?: ConfigurationOptions): Observable<BaseResponseGenerateFunctionDataTypes> {
-        return this.generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionDataTypesParams, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGenerateFunctionDataTypes>) => apiResponse.data));
+    public generateFunctionDataTypesForAnalysis(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseGenerateFunctionDataTypes> {
+        return this.generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionDataTypesParams, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGenerateFunctionDataTypes>) => apiResponse.data));
     }
 
     /**
      * Submits a request to generate the function data types
      * Generate Function Data Types for an arbitrary list of functions
      * @param functionDataTypesParams
+     * @param [apiKey]
      */
-    public generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams: FunctionDataTypesParams, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGenerationStatusList>> {
+    public generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams: FunctionDataTypesParams, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGenerationStatusList>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.generateFunctionDataTypesForFunctions(functionDataTypesParams, _config);
+        const requestContextPromise = this.requestFactory.generateFunctionDataTypesForFunctions(functionDataTypesParams, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3481,9 +3650,10 @@ export class ObservableFunctionsDataTypesApi {
      * Submits a request to generate the function data types
      * Generate Function Data Types for an arbitrary list of functions
      * @param functionDataTypesParams
+     * @param [apiKey]
      */
-    public generateFunctionDataTypesForFunctions(functionDataTypesParams: FunctionDataTypesParams, _options?: ConfigurationOptions): Observable<BaseResponseGenerationStatusList> {
-        return this.generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGenerationStatusList>) => apiResponse.data));
+    public generateFunctionDataTypesForFunctions(functionDataTypesParams: FunctionDataTypesParams, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseGenerationStatusList> {
+        return this.generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGenerationStatusList>) => apiResponse.data));
     }
 
     /**
@@ -3491,11 +3661,12 @@ export class ObservableFunctionsDataTypesApi {
      * Get Function Data Types
      * @param analysisId
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypes>> {
+    public getFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypes>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionDataTypes(analysisId, functionId, _config);
+        const requestContextPromise = this.requestFactory.getFunctionDataTypes(analysisId, functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3517,9 +3688,10 @@ export class ObservableFunctionsDataTypesApi {
      * Get Function Data Types
      * @param analysisId
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionDataTypes(analysisId: number, functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypes> {
-        return this.getFunctionDataTypesWithHttpInfo(analysisId, functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypes>) => apiResponse.data));
+    public getFunctionDataTypes(analysisId: number, functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypes> {
+        return this.getFunctionDataTypesWithHttpInfo(analysisId, functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypes>) => apiResponse.data));
     }
 
     /**
@@ -3527,11 +3699,12 @@ export class ObservableFunctionsDataTypesApi {
      * List Function Data Types
      * @param analysisId
      * @param [functionIds]
+     * @param [apiKey]
      */
-    public listFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypesList>> {
+    public listFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionIds?: Array<number>, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypesList>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listFunctionDataTypesForAnalysis(analysisId, functionIds, _config);
+        const requestContextPromise = this.requestFactory.listFunctionDataTypesForAnalysis(analysisId, functionIds, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3553,20 +3726,22 @@ export class ObservableFunctionsDataTypesApi {
      * List Function Data Types
      * @param analysisId
      * @param [functionIds]
+     * @param [apiKey]
      */
-    public listFunctionDataTypesForAnalysis(analysisId: number, functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypesList> {
-        return this.listFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypesList>) => apiResponse.data));
+    public listFunctionDataTypesForAnalysis(analysisId: number, functionIds?: Array<number>, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypesList> {
+        return this.listFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionIds, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypesList>) => apiResponse.data));
     }
 
     /**
      * Returns data types for multiple function IDs
      * List Function Data Types
      * @param [functionIds]
+     * @param [apiKey]
      */
-    public listFunctionDataTypesForFunctionsWithHttpInfo(functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypesList>> {
+    public listFunctionDataTypesForFunctionsWithHttpInfo(functionIds?: Array<number>, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypesList>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.listFunctionDataTypesForFunctions(functionIds, _config);
+        const requestContextPromise = this.requestFactory.listFunctionDataTypesForFunctions(functionIds, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3587,9 +3762,10 @@ export class ObservableFunctionsDataTypesApi {
      * Returns data types for multiple function IDs
      * List Function Data Types
      * @param [functionIds]
+     * @param [apiKey]
      */
-    public listFunctionDataTypesForFunctions(functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypesList> {
-        return this.listFunctionDataTypesForFunctionsWithHttpInfo(functionIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypesList>) => apiResponse.data));
+    public listFunctionDataTypesForFunctions(functionIds?: Array<number>, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypesList> {
+        return this.listFunctionDataTypesForFunctionsWithHttpInfo(functionIds, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypesList>) => apiResponse.data));
     }
 
     /**
@@ -3598,11 +3774,12 @@ export class ObservableFunctionsDataTypesApi {
      * @param analysisId
      * @param functionId
      * @param updateFunctionDataTypes
+     * @param [apiKey]
      */
-    public updateFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypes>> {
+    public updateFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypes>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateFunctionDataTypes(analysisId, functionId, updateFunctionDataTypes, _config);
+        const requestContextPromise = this.requestFactory.updateFunctionDataTypes(analysisId, functionId, updateFunctionDataTypes, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3625,9 +3802,10 @@ export class ObservableFunctionsDataTypesApi {
      * @param analysisId
      * @param functionId
      * @param updateFunctionDataTypes
+     * @param [apiKey]
      */
-    public updateFunctionDataTypes(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypes> {
-        return this.updateFunctionDataTypesWithHttpInfo(analysisId, functionId, updateFunctionDataTypes, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypes>) => apiResponse.data));
+    public updateFunctionDataTypes(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypes> {
+        return this.updateFunctionDataTypesWithHttpInfo(analysisId, functionId, updateFunctionDataTypes, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypes>) => apiResponse.data));
     }
 
 }
@@ -3653,11 +3831,12 @@ export class ObservableFunctionsDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [apiKey]
      */
-    public createDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public createDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createDecompilationComment(functionId, functionCommentCreateRequest, _config);
+        const requestContextPromise = this.requestFactory.createDecompilationComment(functionId, functionCommentCreateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3679,9 +3858,10 @@ export class ObservableFunctionsDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [apiKey]
      */
-    public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -3689,11 +3869,12 @@ export class ObservableFunctionsDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [apiKey]
      */
-    public deleteDecompilationCommentWithHttpInfo(commentId: number, functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
+    public deleteDecompilationCommentWithHttpInfo(commentId: number, functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteDecompilationComment(commentId, functionId, _config);
+        const requestContextPromise = this.requestFactory.deleteDecompilationComment(commentId, functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3715,20 +3896,22 @@ export class ObservableFunctionsDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [apiKey]
      */
-    public deleteDecompilationComment(commentId: number, functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
-        return this.deleteDecompilationCommentWithHttpInfo(commentId, functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
+    public deleteDecompilationComment(commentId: number, functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
+        return this.deleteDecompilationCommentWithHttpInfo(commentId, functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
     }
 
     /**
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [apiKey]
      */
-    public getDecompilationCommentsWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
+    public getDecompilationCommentsWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getDecompilationComments(functionId, _config);
+        const requestContextPromise = this.requestFactory.getDecompilationComments(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3749,9 +3932,10 @@ export class ObservableFunctionsDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [apiKey]
      */
-    public getDecompilationComments(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getDecompilationCommentsWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
+    public getDecompilationComments(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
+        return this.getDecompilationCommentsWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -3760,11 +3944,12 @@ export class ObservableFunctionsDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public updateDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateDecompilationComment(commentId, functionId, commentUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateDecompilationComment(commentId, functionId, commentUpdateRequest, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3787,9 +3972,10 @@ export class ObservableFunctionsDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [apiKey]
      */
-    public updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.updateDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.updateDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
 }
@@ -3814,11 +4000,12 @@ export class ObservableFunctionsRenamingHistoryApi {
      * Renames a list of functions using the function IDs   Will record name changes in history
      * Batch Rename Functions
      * @param functionsListRename
+     * @param [apiKey]
      */
-    public batchRenameFunctionWithHttpInfo(functionsListRename: FunctionsListRename, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
+    public batchRenameFunctionWithHttpInfo(functionsListRename: FunctionsListRename, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.batchRenameFunction(functionsListRename, _config);
+        const requestContextPromise = this.requestFactory.batchRenameFunction(functionsListRename, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3839,20 +4026,22 @@ export class ObservableFunctionsRenamingHistoryApi {
      * Renames a list of functions using the function IDs   Will record name changes in history
      * Batch Rename Functions
      * @param functionsListRename
+     * @param [apiKey]
      */
-    public batchRenameFunction(functionsListRename: FunctionsListRename, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.batchRenameFunctionWithHttpInfo(functionsListRename, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
+    public batchRenameFunction(functionsListRename: FunctionsListRename, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponse> {
+        return this.batchRenameFunctionWithHttpInfo(functionsListRename, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
     }
 
     /**
      * Gets the name history of a function using the function ID
      * Get Function Name History
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionNameHistoryWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListFunctionNameHistory>> {
+    public getFunctionNameHistoryWithHttpInfo(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListFunctionNameHistory>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionNameHistory(functionId, _config);
+        const requestContextPromise = this.requestFactory.getFunctionNameHistory(functionId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3873,9 +4062,10 @@ export class ObservableFunctionsRenamingHistoryApi {
      * Gets the name history of a function using the function ID
      * Get Function Name History
      * @param functionId
+     * @param [apiKey]
      */
-    public getFunctionNameHistory(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseListFunctionNameHistory> {
-        return this.getFunctionNameHistoryWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListFunctionNameHistory>) => apiResponse.data));
+    public getFunctionNameHistory(functionId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseListFunctionNameHistory> {
+        return this.getFunctionNameHistoryWithHttpInfo(functionId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListFunctionNameHistory>) => apiResponse.data));
     }
 
     /**
@@ -3883,11 +4073,12 @@ export class ObservableFunctionsRenamingHistoryApi {
      * Rename Function
      * @param functionId
      * @param functionRename
+     * @param [apiKey]
      */
-    public renameFunctionIdWithHttpInfo(functionId: number, functionRename: FunctionRename, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
+    public renameFunctionIdWithHttpInfo(functionId: number, functionRename: FunctionRename, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.renameFunctionId(functionId, functionRename, _config);
+        const requestContextPromise = this.requestFactory.renameFunctionId(functionId, functionRename, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3909,9 +4100,10 @@ export class ObservableFunctionsRenamingHistoryApi {
      * Rename Function
      * @param functionId
      * @param functionRename
+     * @param [apiKey]
      */
-    public renameFunctionId(functionId: number, functionRename: FunctionRename, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.renameFunctionIdWithHttpInfo(functionId, functionRename, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
+    public renameFunctionId(functionId: number, functionRename: FunctionRename, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponse> {
+        return this.renameFunctionIdWithHttpInfo(functionId, functionRename, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
     }
 
     /**
@@ -3919,11 +4111,12 @@ export class ObservableFunctionsRenamingHistoryApi {
      * Revert the function name
      * @param functionId
      * @param historyId
+     * @param [apiKey]
      */
-    public revertFunctionNameWithHttpInfo(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
+    public revertFunctionNameWithHttpInfo(functionId: number, historyId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.revertFunctionName(functionId, historyId, _config);
+        const requestContextPromise = this.requestFactory.revertFunctionName(functionId, historyId, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3945,9 +4138,10 @@ export class ObservableFunctionsRenamingHistoryApi {
      * Revert the function name
      * @param functionId
      * @param historyId
+     * @param [apiKey]
      */
-    public revertFunctionName(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.revertFunctionNameWithHttpInfo(functionId, historyId, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
+    public revertFunctionName(functionId: number, historyId: number, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponse> {
+        return this.revertFunctionNameWithHttpInfo(functionId, historyId, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
     }
 
 }
@@ -3971,11 +4165,12 @@ export class ObservableModelsApi {
     /**
      * Gets active models available for analysis.
      * Gets models
+     * @param [apiKey]
      */
-    public getModelsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseModelsResponse>> {
+    public getModelsWithHttpInfo(apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseModelsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getModels(_config);
+        const requestContextPromise = this.requestFactory.getModels(apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3995,9 +4190,10 @@ export class ObservableModelsApi {
     /**
      * Gets active models available for analysis.
      * Gets models
+     * @param [apiKey]
      */
-    public getModels(_options?: ConfigurationOptions): Observable<BaseResponseModelsResponse> {
-        return this.getModelsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseModelsResponse>) => apiResponse.data));
+    public getModels(apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseModelsResponse> {
+        return this.getModelsWithHttpInfo(apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseModelsResponse>) => apiResponse.data));
     }
 
 }
@@ -4028,11 +4224,12 @@ export class ObservableSearchApi {
      * @param [tags] The tags to be searched for
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
+     * @param [apiKey]
      */
-    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinarySearchResponse>> {
+    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinarySearchResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, _config);
+        const requestContextPromise = this.requestFactory.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4059,9 +4256,10 @@ export class ObservableSearchApi {
      * @param [tags] The tags to be searched for
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
+     * @param [apiKey]
      */
-    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseBinarySearchResponse> {
-        return this.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinarySearchResponse>) => apiResponse.data));
+    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseBinarySearchResponse> {
+        return this.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinarySearchResponse>) => apiResponse.data));
     }
 
     /**
@@ -4077,11 +4275,12 @@ export class ObservableSearchApi {
      * @param [filters] The filters to be used for the search
      * @param [orderBy] The field to sort the order by in the results
      * @param [orderByDirection] The order direction in which to return results
+     * @param [apiKey]
      */
-    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionSearchResponse>> {
+    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionSearchResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, modelName, filters, orderBy, orderByDirection, _config);
+        const requestContextPromise = this.requestFactory.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, modelName, filters, orderBy, orderByDirection, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4111,9 +4310,10 @@ export class ObservableSearchApi {
      * @param [filters] The filters to be used for the search
      * @param [orderBy] The field to sort the order by in the results
      * @param [orderByDirection] The order direction in which to return results
+     * @param [apiKey]
      */
-    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: ConfigurationOptions): Observable<BaseResponseCollectionSearchResponse> {
-        return this.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, modelName, filters, orderBy, orderByDirection, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionSearchResponse>) => apiResponse.data));
+    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseCollectionSearchResponse> {
+        return this.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, modelName, filters, orderBy, orderByDirection, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionSearchResponse>) => apiResponse.data));
     }
 
     /**
@@ -4123,11 +4323,12 @@ export class ObservableSearchApi {
      * @param [pageSize] Number of items per page.
      * @param [partialName] The partial or full name of the function being searched
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
+     * @param [apiKey]
      */
-    public searchFunctionsWithHttpInfo(page?: number, pageSize?: number, partialName?: string, modelName?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionSearchResponse>> {
+    public searchFunctionsWithHttpInfo(page?: number, pageSize?: number, partialName?: string, modelName?: string, apiKey?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionSearchResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.searchFunctions(page, pageSize, partialName, modelName, _config);
+        const requestContextPromise = this.requestFactory.searchFunctions(page, pageSize, partialName, modelName, apiKey, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4151,9 +4352,10 @@ export class ObservableSearchApi {
      * @param [pageSize] Number of items per page.
      * @param [partialName] The partial or full name of the function being searched
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
+     * @param [apiKey]
      */
-    public searchFunctions(page?: number, pageSize?: number, partialName?: string, modelName?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionSearchResponse> {
-        return this.searchFunctionsWithHttpInfo(page, pageSize, partialName, modelName, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionSearchResponse>) => apiResponse.data));
+    public searchFunctions(page?: number, pageSize?: number, partialName?: string, modelName?: string, apiKey?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionSearchResponse> {
+        return this.searchFunctionsWithHttpInfo(page, pageSize, partialName, modelName, apiKey, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionSearchResponse>) => apiResponse.data));
     }
 
     /**

@@ -32,9 +32,11 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
      * @param tags The tags to be searched for
      * @param modelName The name of the model used to analyze the binary the function belongs to
      * @param userFilesOnly Whether to only search user\&#39;s uploaded files
+     * @param apiKey 
      */
-    public async searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
 
@@ -117,9 +119,11 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
      * @param filters The filters to be used for the search
      * @param orderBy The field to sort the order by in the results
      * @param orderByDirection The order direction in which to return results
+     * @param apiKey 
      */
-    public async searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: Configuration): Promise<RequestContext> {
+    public async searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
 
@@ -217,9 +221,11 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Number of items per page.
      * @param partialName The partial or full name of the function being searched
      * @param modelName The name of the model used to analyze the binary the function belongs to
+     * @param apiKey 
      */
-    public async searchFunctions(page?: number, pageSize?: number, partialName?: string, modelName?: string, _options?: Configuration): Promise<RequestContext> {
+    public async searchFunctions(page?: number, pageSize?: number, partialName?: string, modelName?: string, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
 

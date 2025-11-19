@@ -300,6 +300,13 @@ export interface AnalysesCommentsApiCreateAnalysisCommentRequest {
      * @memberof AnalysesCommentsApicreateAnalysisComment
      */
     commentBase: CommentBase
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApicreateAnalysisComment
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCommentsApiDeleteAnalysisCommentRequest {
@@ -318,6 +325,13 @@ export interface AnalysesCommentsApiDeleteAnalysisCommentRequest {
      * @memberof AnalysesCommentsApideleteAnalysisComment
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApideleteAnalysisComment
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCommentsApiGetAnalysisCommentsRequest {
@@ -328,6 +342,13 @@ export interface AnalysesCommentsApiGetAnalysisCommentsRequest {
      * @memberof AnalysesCommentsApigetAnalysisComments
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApigetAnalysisComments
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCommentsApiUpdateAnalysisCommentRequest {
@@ -352,6 +373,13 @@ export interface AnalysesCommentsApiUpdateAnalysisCommentRequest {
      * @memberof AnalysesCommentsApiupdateAnalysisComment
      */
     commentUpdateRequest: CommentUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApiupdateAnalysisComment
+     */
+    apiKey?: string
 }
 
 export class ObjectAnalysesCommentsApi {
@@ -367,7 +395,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public createAnalysisCommentWithHttpInfo(param: AnalysesCommentsApiCreateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.createAnalysisCommentWithHttpInfo(param.analysisId, param.commentBase,  options).toPromise();
+        return this.api.createAnalysisCommentWithHttpInfo(param.analysisId, param.commentBase, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -376,7 +404,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public createAnalysisComment(param: AnalysesCommentsApiCreateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.createAnalysisComment(param.analysisId, param.commentBase,  options).toPromise();
+        return this.api.createAnalysisComment(param.analysisId, param.commentBase, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -385,7 +413,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public deleteAnalysisCommentWithHttpInfo(param: AnalysesCommentsApiDeleteAnalysisCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        return this.api.deleteAnalysisCommentWithHttpInfo(param.commentId, param.analysisId,  options).toPromise();
+        return this.api.deleteAnalysisCommentWithHttpInfo(param.commentId, param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -394,7 +422,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public deleteAnalysisComment(param: AnalysesCommentsApiDeleteAnalysisCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
-        return this.api.deleteAnalysisComment(param.commentId, param.analysisId,  options).toPromise();
+        return this.api.deleteAnalysisComment(param.commentId, param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -403,7 +431,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public getAnalysisCommentsWithHttpInfo(param: AnalysesCommentsApiGetAnalysisCommentsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getAnalysisCommentsWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisCommentsWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -412,7 +440,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public getAnalysisComments(param: AnalysesCommentsApiGetAnalysisCommentsRequest, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getAnalysisComments(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisComments(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -421,7 +449,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public updateAnalysisCommentWithHttpInfo(param: AnalysesCommentsApiUpdateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.updateAnalysisCommentWithHttpInfo(param.commentId, param.analysisId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateAnalysisCommentWithHttpInfo(param.commentId, param.analysisId, param.commentUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -430,7 +458,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public updateAnalysisComment(param: AnalysesCommentsApiUpdateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.updateAnalysisComment(param.commentId, param.analysisId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateAnalysisComment(param.commentId, param.analysisId, param.commentUpdateRequest, param.apiKey,  options).toPromise();
     }
 
 }
@@ -445,6 +473,13 @@ export interface AnalysesCoreApiCreateAnalysisRequest {
      * @memberof AnalysesCoreApicreateAnalysis
      */
     analysisCreateRequest: AnalysisCreateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApicreateAnalysis
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiDeleteAnalysisRequest {
@@ -455,6 +490,13 @@ export interface AnalysesCoreApiDeleteAnalysisRequest {
      * @memberof AnalysesCoreApideleteAnalysis
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApideleteAnalysis
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiGetAnalysisBasicInfoRequest {
@@ -465,6 +507,13 @@ export interface AnalysesCoreApiGetAnalysisBasicInfoRequest {
      * @memberof AnalysesCoreApigetAnalysisBasicInfo
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisBasicInfo
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiGetAnalysisFunctionMapRequest {
@@ -475,6 +524,13 @@ export interface AnalysesCoreApiGetAnalysisFunctionMapRequest {
      * @memberof AnalysesCoreApigetAnalysisFunctionMap
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisFunctionMap
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiGetAnalysisLogsRequest {
@@ -485,6 +541,13 @@ export interface AnalysesCoreApiGetAnalysisLogsRequest {
      * @memberof AnalysesCoreApigetAnalysisLogs
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisLogs
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiGetAnalysisParamsRequest {
@@ -495,6 +558,13 @@ export interface AnalysesCoreApiGetAnalysisParamsRequest {
      * @memberof AnalysesCoreApigetAnalysisParams
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisParams
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiGetAnalysisStatusRequest {
@@ -505,6 +575,13 @@ export interface AnalysesCoreApiGetAnalysisStatusRequest {
      * @memberof AnalysesCoreApigetAnalysisStatus
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisStatus
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiListAnalysesRequest {
@@ -587,6 +664,13 @@ export interface AnalysesCoreApiListAnalysesRequest {
      * @memberof AnalysesCoreApilistAnalyses
      */
     order?: Order
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApilistAnalyses
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiLookupBinaryIdRequest {
@@ -597,6 +681,13 @@ export interface AnalysesCoreApiLookupBinaryIdRequest {
      * @memberof AnalysesCoreApilookupBinaryId
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApilookupBinaryId
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiRequeueAnalysisRequest {
@@ -613,6 +704,13 @@ export interface AnalysesCoreApiRequeueAnalysisRequest {
      * @memberof AnalysesCoreApirequeueAnalysis
      */
     reAnalysisForm: ReAnalysisForm
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApirequeueAnalysis
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiUpdateAnalysisRequest {
@@ -629,6 +727,13 @@ export interface AnalysesCoreApiUpdateAnalysisRequest {
      * @memberof AnalysesCoreApiupdateAnalysis
      */
     analysisUpdateRequest: AnalysisUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiupdateAnalysis
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiUpdateAnalysisTagsRequest {
@@ -645,6 +750,13 @@ export interface AnalysesCoreApiUpdateAnalysisTagsRequest {
      * @memberof AnalysesCoreApiupdateAnalysisTags
      */
     analysisUpdateTagsRequest: AnalysisUpdateTagsRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiupdateAnalysisTags
+     */
+    apiKey?: string
 }
 
 export interface AnalysesCoreApiUploadFileRequest {
@@ -671,6 +783,13 @@ export interface AnalysesCoreApiUploadFileRequest {
     packedPassword?: string
     /**
      * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiuploadFile
+     */
+    apiKey?: string
+    /**
+     * 
      * Defaults to: false
      * @type boolean
      * @memberof AnalysesCoreApiuploadFile
@@ -691,7 +810,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public createAnalysisWithHttpInfo(param: AnalysesCoreApiCreateAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisCreateResponse>> {
-        return this.api.createAnalysisWithHttpInfo(param.analysisCreateRequest,  options).toPromise();
+        return this.api.createAnalysisWithHttpInfo(param.analysisCreateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -700,7 +819,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public createAnalysis(param: AnalysesCoreApiCreateAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisCreateResponse> {
-        return this.api.createAnalysis(param.analysisCreateRequest,  options).toPromise();
+        return this.api.createAnalysis(param.analysisCreateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -709,7 +828,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public deleteAnalysisWithHttpInfo(param: AnalysesCoreApiDeleteAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
-        return this.api.deleteAnalysisWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.deleteAnalysisWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -718,7 +837,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public deleteAnalysis(param: AnalysesCoreApiDeleteAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseDict> {
-        return this.api.deleteAnalysis(param.analysisId,  options).toPromise();
+        return this.api.deleteAnalysis(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -727,7 +846,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisBasicInfoWithHttpInfo(param: AnalysesCoreApiGetAnalysisBasicInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBasic>> {
-        return this.api.getAnalysisBasicInfoWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisBasicInfoWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -736,7 +855,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisBasicInfo(param: AnalysesCoreApiGetAnalysisBasicInfoRequest, options?: ConfigurationOptions): Promise<BaseResponseBasic> {
-        return this.api.getAnalysisBasicInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisBasicInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -745,7 +864,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisFunctionMapWithHttpInfo(param: AnalysesCoreApiGetAnalysisFunctionMapRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
-        return this.api.getAnalysisFunctionMapWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisFunctionMapWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -754,7 +873,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisFunctionMap(param: AnalysesCoreApiGetAnalysisFunctionMapRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisFunctionMapping> {
-        return this.api.getAnalysisFunctionMap(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisFunctionMap(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -763,7 +882,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisLogsWithHttpInfo(param: AnalysesCoreApiGetAnalysisLogsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseLogs>> {
-        return this.api.getAnalysisLogsWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisLogsWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -772,7 +891,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisLogs(param: AnalysesCoreApiGetAnalysisLogsRequest, options?: ConfigurationOptions): Promise<BaseResponseLogs> {
-        return this.api.getAnalysisLogs(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisLogs(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -781,7 +900,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisParamsWithHttpInfo(param: AnalysesCoreApiGetAnalysisParamsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseParams>> {
-        return this.api.getAnalysisParamsWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisParamsWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -790,7 +909,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisParams(param: AnalysesCoreApiGetAnalysisParamsRequest, options?: ConfigurationOptions): Promise<BaseResponseParams> {
-        return this.api.getAnalysisParams(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisParams(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -799,7 +918,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisStatusWithHttpInfo(param: AnalysesCoreApiGetAnalysisStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseStatus>> {
-        return this.api.getAnalysisStatusWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisStatusWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -808,7 +927,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisStatus(param: AnalysesCoreApiGetAnalysisStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseStatus> {
-        return this.api.getAnalysisStatus(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisStatus(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -817,7 +936,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public listAnalysesWithHttpInfo(param: AnalysesCoreApiListAnalysesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseRecent>> {
-        return this.api.listAnalysesWithHttpInfo(param.searchTerm, param.workspace, param.status, param.modelName, param.dynamicExecutionStatus, param.usernames, param.sha256Hash, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
+        return this.api.listAnalysesWithHttpInfo(param.searchTerm, param.workspace, param.status, param.modelName, param.dynamicExecutionStatus, param.usernames, param.sha256Hash, param.limit, param.offset, param.orderBy, param.order, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -826,7 +945,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public listAnalyses(param: AnalysesCoreApiListAnalysesRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseRecent> {
-        return this.api.listAnalyses(param.searchTerm, param.workspace, param.status, param.modelName, param.dynamicExecutionStatus, param.usernames, param.sha256Hash, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
+        return this.api.listAnalyses(param.searchTerm, param.workspace, param.status, param.modelName, param.dynamicExecutionStatus, param.usernames, param.sha256Hash, param.limit, param.offset, param.orderBy, param.order, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -835,7 +954,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public lookupBinaryIdWithHttpInfo(param: AnalysesCoreApiLookupBinaryIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.lookupBinaryIdWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.lookupBinaryIdWithHttpInfo(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -844,7 +963,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public lookupBinaryId(param: AnalysesCoreApiLookupBinaryIdRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.lookupBinaryId(param.binaryId,  options).toPromise();
+        return this.api.lookupBinaryId(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -853,7 +972,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public requeueAnalysisWithHttpInfo(param: AnalysesCoreApiRequeueAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCreated>> {
-        return this.api.requeueAnalysisWithHttpInfo(param.analysisId, param.reAnalysisForm,  options).toPromise();
+        return this.api.requeueAnalysisWithHttpInfo(param.analysisId, param.reAnalysisForm, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -862,7 +981,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public requeueAnalysis(param: AnalysesCoreApiRequeueAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseCreated> {
-        return this.api.requeueAnalysis(param.analysisId, param.reAnalysisForm,  options).toPromise();
+        return this.api.requeueAnalysis(param.analysisId, param.reAnalysisForm, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -871,7 +990,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public updateAnalysisWithHttpInfo(param: AnalysesCoreApiUpdateAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisDetailResponse>> {
-        return this.api.updateAnalysisWithHttpInfo(param.analysisId, param.analysisUpdateRequest,  options).toPromise();
+        return this.api.updateAnalysisWithHttpInfo(param.analysisId, param.analysisUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -880,7 +999,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public updateAnalysis(param: AnalysesCoreApiUpdateAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisDetailResponse> {
-        return this.api.updateAnalysis(param.analysisId, param.analysisUpdateRequest,  options).toPromise();
+        return this.api.updateAnalysis(param.analysisId, param.analysisUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -889,7 +1008,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public updateAnalysisTagsWithHttpInfo(param: AnalysesCoreApiUpdateAnalysisTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
-        return this.api.updateAnalysisTagsWithHttpInfo(param.analysisId, param.analysisUpdateTagsRequest,  options).toPromise();
+        return this.api.updateAnalysisTagsWithHttpInfo(param.analysisId, param.analysisUpdateTagsRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -898,7 +1017,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public updateAnalysisTags(param: AnalysesCoreApiUpdateAnalysisTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisUpdateTagsResponse> {
-        return this.api.updateAnalysisTags(param.analysisId, param.analysisUpdateTagsRequest,  options).toPromise();
+        return this.api.updateAnalysisTags(param.analysisId, param.analysisUpdateTagsRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -906,7 +1025,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public uploadFileWithHttpInfo(param: AnalysesCoreApiUploadFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
-        return this.api.uploadFileWithHttpInfo(param.uploadFileType, param.file, param.packedPassword, param.forceOverwrite,  options).toPromise();
+        return this.api.uploadFileWithHttpInfo(param.uploadFileType, param.file, param.packedPassword, param.apiKey, param.forceOverwrite,  options).toPromise();
     }
 
     /**
@@ -914,7 +1033,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public uploadFile(param: AnalysesCoreApiUploadFileRequest, options?: ConfigurationOptions): Promise<BaseResponseUploadResponse> {
-        return this.api.uploadFile(param.uploadFileType, param.file, param.packedPassword, param.forceOverwrite,  options).toPromise();
+        return this.api.uploadFile(param.uploadFileType, param.file, param.packedPassword, param.apiKey, param.forceOverwrite,  options).toPromise();
     }
 
 }
@@ -930,6 +1049,13 @@ export interface AnalysesDynamicExecutionApiGetDynamicExecutionStatusRequest {
      * @memberof AnalysesDynamicExecutionApigetDynamicExecutionStatus
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesDynamicExecutionApigetDynamicExecutionStatus
+     */
+    apiKey?: string
 }
 
 export interface AnalysesDynamicExecutionApiGetNetworkOverviewRequest {
@@ -940,6 +1066,13 @@ export interface AnalysesDynamicExecutionApiGetNetworkOverviewRequest {
      * @memberof AnalysesDynamicExecutionApigetNetworkOverview
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesDynamicExecutionApigetNetworkOverview
+     */
+    apiKey?: string
 }
 
 export interface AnalysesDynamicExecutionApiGetProcessDumpRequest {
@@ -957,6 +1090,13 @@ export interface AnalysesDynamicExecutionApiGetProcessDumpRequest {
      * @memberof AnalysesDynamicExecutionApigetProcessDump
      */
     dumpName: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesDynamicExecutionApigetProcessDump
+     */
+    apiKey?: string
 }
 
 export interface AnalysesDynamicExecutionApiGetProcessDumpsRequest {
@@ -967,6 +1107,13 @@ export interface AnalysesDynamicExecutionApiGetProcessDumpsRequest {
      * @memberof AnalysesDynamicExecutionApigetProcessDumps
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesDynamicExecutionApigetProcessDumps
+     */
+    apiKey?: string
 }
 
 export interface AnalysesDynamicExecutionApiGetProcessRegistryRequest {
@@ -977,6 +1124,13 @@ export interface AnalysesDynamicExecutionApiGetProcessRegistryRequest {
      * @memberof AnalysesDynamicExecutionApigetProcessRegistry
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesDynamicExecutionApigetProcessRegistry
+     */
+    apiKey?: string
 }
 
 export interface AnalysesDynamicExecutionApiGetProcessTreeRequest {
@@ -987,6 +1141,13 @@ export interface AnalysesDynamicExecutionApiGetProcessTreeRequest {
      * @memberof AnalysesDynamicExecutionApigetProcessTree
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesDynamicExecutionApigetProcessTree
+     */
+    apiKey?: string
 }
 
 export interface AnalysesDynamicExecutionApiGetTtpsRequest {
@@ -997,6 +1158,13 @@ export interface AnalysesDynamicExecutionApiGetTtpsRequest {
      * @memberof AnalysesDynamicExecutionApigetTtps
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesDynamicExecutionApigetTtps
+     */
+    apiKey?: string
 }
 
 export class ObjectAnalysesDynamicExecutionApi {
@@ -1011,7 +1179,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getDynamicExecutionStatusWithHttpInfo(param: AnalysesDynamicExecutionApiGetDynamicExecutionStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseDynamicExecutionStatus>> {
-        return this.api.getDynamicExecutionStatusWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getDynamicExecutionStatusWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1019,7 +1187,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getDynamicExecutionStatus(param: AnalysesDynamicExecutionApiGetDynamicExecutionStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseDynamicExecutionStatus> {
-        return this.api.getDynamicExecutionStatus(param.analysisId,  options).toPromise();
+        return this.api.getDynamicExecutionStatus(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1027,7 +1195,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getNetworkOverviewWithHttpInfo(param: AnalysesDynamicExecutionApiGetNetworkOverviewRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseNetworkOverviewResponse>> {
-        return this.api.getNetworkOverviewWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getNetworkOverviewWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1035,7 +1203,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getNetworkOverview(param: AnalysesDynamicExecutionApiGetNetworkOverviewRequest, options?: ConfigurationOptions): Promise<BaseResponseNetworkOverviewResponse> {
-        return this.api.getNetworkOverview(param.analysisId,  options).toPromise();
+        return this.api.getNetworkOverview(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1043,7 +1211,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getProcessDumpWithHttpInfo(param: AnalysesDynamicExecutionApiGetProcessDumpRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.getProcessDumpWithHttpInfo(param.analysisId, param.dumpName,  options).toPromise();
+        return this.api.getProcessDumpWithHttpInfo(param.analysisId, param.dumpName, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1051,7 +1219,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getProcessDump(param: AnalysesDynamicExecutionApiGetProcessDumpRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.getProcessDump(param.analysisId, param.dumpName,  options).toPromise();
+        return this.api.getProcessDump(param.analysisId, param.dumpName, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1059,7 +1227,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getProcessDumpsWithHttpInfo(param: AnalysesDynamicExecutionApiGetProcessDumpsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseProcessDumps>> {
-        return this.api.getProcessDumpsWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getProcessDumpsWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1067,7 +1235,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getProcessDumps(param: AnalysesDynamicExecutionApiGetProcessDumpsRequest, options?: ConfigurationOptions): Promise<BaseResponseProcessDumps> {
-        return this.api.getProcessDumps(param.analysisId,  options).toPromise();
+        return this.api.getProcessDumps(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1075,7 +1243,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getProcessRegistryWithHttpInfo(param: AnalysesDynamicExecutionApiGetProcessRegistryRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseProcessRegistry>> {
-        return this.api.getProcessRegistryWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getProcessRegistryWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1083,7 +1251,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getProcessRegistry(param: AnalysesDynamicExecutionApiGetProcessRegistryRequest, options?: ConfigurationOptions): Promise<BaseResponseProcessRegistry> {
-        return this.api.getProcessRegistry(param.analysisId,  options).toPromise();
+        return this.api.getProcessRegistry(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1091,7 +1259,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getProcessTreeWithHttpInfo(param: AnalysesDynamicExecutionApiGetProcessTreeRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseProcessTree>> {
-        return this.api.getProcessTreeWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getProcessTreeWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1099,7 +1267,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getProcessTree(param: AnalysesDynamicExecutionApiGetProcessTreeRequest, options?: ConfigurationOptions): Promise<BaseResponseProcessTree> {
-        return this.api.getProcessTree(param.analysisId,  options).toPromise();
+        return this.api.getProcessTree(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1107,7 +1275,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getTtpsWithHttpInfo(param: AnalysesDynamicExecutionApiGetTtpsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseTTPS>> {
-        return this.api.getTtpsWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getTtpsWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1115,7 +1283,7 @@ export class ObjectAnalysesDynamicExecutionApi {
      * @param param the request object
      */
     public getTtps(param: AnalysesDynamicExecutionApiGetTtpsRequest, options?: ConfigurationOptions): Promise<BaseResponseTTPS> {
-        return this.api.getTtps(param.analysisId,  options).toPromise();
+        return this.api.getTtps(param.analysisId, param.apiKey,  options).toPromise();
     }
 
 }
@@ -1131,6 +1299,13 @@ export interface AnalysesResultsMetadataApiGetCapabilitiesRequest {
      * @memberof AnalysesResultsMetadataApigetCapabilities
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesResultsMetadataApigetCapabilities
+     */
+    apiKey?: string
 }
 
 export interface AnalysesResultsMetadataApiGetCommunitiesRequest {
@@ -1148,6 +1323,13 @@ export interface AnalysesResultsMetadataApiGetCommunitiesRequest {
      * @memberof AnalysesResultsMetadataApigetCommunities
      */
     userName?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesResultsMetadataApigetCommunities
+     */
+    apiKey?: string
 }
 
 export interface AnalysesResultsMetadataApiGetFunctionsListRequest {
@@ -1179,6 +1361,13 @@ export interface AnalysesResultsMetadataApiGetFunctionsListRequest {
      * @memberof AnalysesResultsMetadataApigetFunctionsList
      */
     maxVAddr?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesResultsMetadataApigetFunctionsList
+     */
+    apiKey?: string
 }
 
 export interface AnalysesResultsMetadataApiGetPdfRequest {
@@ -1189,6 +1378,13 @@ export interface AnalysesResultsMetadataApiGetPdfRequest {
      * @memberof AnalysesResultsMetadataApigetPdf
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesResultsMetadataApigetPdf
+     */
+    apiKey?: string
 }
 
 export interface AnalysesResultsMetadataApiGetSbomRequest {
@@ -1199,6 +1395,13 @@ export interface AnalysesResultsMetadataApiGetSbomRequest {
      * @memberof AnalysesResultsMetadataApigetSbom
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesResultsMetadataApigetSbom
+     */
+    apiKey?: string
 }
 
 export interface AnalysesResultsMetadataApiGetTagsRequest {
@@ -1209,6 +1412,13 @@ export interface AnalysesResultsMetadataApiGetTagsRequest {
      * @memberof AnalysesResultsMetadataApigetTags
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesResultsMetadataApigetTags
+     */
+    apiKey?: string
 }
 
 export interface AnalysesResultsMetadataApiGetVulnerabilitiesRequest {
@@ -1219,6 +1429,13 @@ export interface AnalysesResultsMetadataApiGetVulnerabilitiesRequest {
      * @memberof AnalysesResultsMetadataApigetVulnerabilities
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesResultsMetadataApigetVulnerabilities
+     */
+    apiKey?: string
 }
 
 export class ObjectAnalysesResultsMetadataApi {
@@ -1233,7 +1450,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getCapabilitiesWithHttpInfo(param: AnalysesResultsMetadataApiGetCapabilitiesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCapabilities>> {
-        return this.api.getCapabilitiesWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getCapabilitiesWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1241,7 +1458,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getCapabilities(param: AnalysesResultsMetadataApiGetCapabilitiesRequest, options?: ConfigurationOptions): Promise<BaseResponseCapabilities> {
-        return this.api.getCapabilities(param.analysisId,  options).toPromise();
+        return this.api.getCapabilities(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1249,7 +1466,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getCommunitiesWithHttpInfo(param: AnalysesResultsMetadataApiGetCommunitiesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommunities>> {
-        return this.api.getCommunitiesWithHttpInfo(param.analysisId, param.userName,  options).toPromise();
+        return this.api.getCommunitiesWithHttpInfo(param.analysisId, param.userName, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1257,7 +1474,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getCommunities(param: AnalysesResultsMetadataApiGetCommunitiesRequest, options?: ConfigurationOptions): Promise<BaseResponseCommunities> {
-        return this.api.getCommunities(param.analysisId, param.userName,  options).toPromise();
+        return this.api.getCommunities(param.analysisId, param.userName, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1266,7 +1483,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getFunctionsListWithHttpInfo(param: AnalysesResultsMetadataApiGetFunctionsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctions>> {
-        return this.api.getFunctionsListWithHttpInfo(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr,  options).toPromise();
+        return this.api.getFunctionsListWithHttpInfo(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1275,7 +1492,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getFunctionsList(param: AnalysesResultsMetadataApiGetFunctionsListRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisFunctions> {
-        return this.api.getFunctionsList(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr,  options).toPromise();
+        return this.api.getFunctionsList(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1283,7 +1500,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getPdfWithHttpInfo(param: AnalysesResultsMetadataApiGetPdfRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.getPdfWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getPdfWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1291,7 +1508,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getPdf(param: AnalysesResultsMetadataApiGetPdfRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.getPdf(param.analysisId,  options).toPromise();
+        return this.api.getPdf(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1299,7 +1516,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getSbomWithHttpInfo(param: AnalysesResultsMetadataApiGetSbomRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListSBOM>> {
-        return this.api.getSbomWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getSbomWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1307,7 +1524,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getSbom(param: AnalysesResultsMetadataApiGetSbomRequest, options?: ConfigurationOptions): Promise<BaseResponseListSBOM> {
-        return this.api.getSbom(param.analysisId,  options).toPromise();
+        return this.api.getSbom(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1315,7 +1532,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getTagsWithHttpInfo(param: AnalysesResultsMetadataApiGetTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisTags>> {
-        return this.api.getTagsWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getTagsWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1323,7 +1540,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getTags(param: AnalysesResultsMetadataApiGetTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisTags> {
-        return this.api.getTags(param.analysisId,  options).toPromise();
+        return this.api.getTags(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1331,7 +1548,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getVulnerabilitiesWithHttpInfo(param: AnalysesResultsMetadataApiGetVulnerabilitiesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseVulnerabilities>> {
-        return this.api.getVulnerabilitiesWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getVulnerabilitiesWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1339,7 +1556,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getVulnerabilities(param: AnalysesResultsMetadataApiGetVulnerabilitiesRequest, options?: ConfigurationOptions): Promise<BaseResponseVulnerabilities> {
-        return this.api.getVulnerabilities(param.analysisId,  options).toPromise();
+        return this.api.getVulnerabilities(param.analysisId, param.apiKey,  options).toPromise();
     }
 
 }
@@ -1355,6 +1572,13 @@ export interface AnalysesSecurityChecksApiCreateScurityChecksTaskRequest {
      * @memberof AnalysesSecurityChecksApicreateScurityChecksTask
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesSecurityChecksApicreateScurityChecksTask
+     */
+    apiKey?: string
 }
 
 export interface AnalysesSecurityChecksApiGetSecurityChecksRequest {
@@ -1382,6 +1606,13 @@ export interface AnalysesSecurityChecksApiGetSecurityChecksRequest {
      * @memberof AnalysesSecurityChecksApigetSecurityChecks
      */
     pageSize: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesSecurityChecksApigetSecurityChecks
+     */
+    apiKey?: string
 }
 
 export interface AnalysesSecurityChecksApiGetSecurityChecksTaskStatusRequest {
@@ -1392,6 +1623,13 @@ export interface AnalysesSecurityChecksApiGetSecurityChecksTaskStatusRequest {
      * @memberof AnalysesSecurityChecksApigetSecurityChecksTaskStatus
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesSecurityChecksApigetSecurityChecksTaskStatus
+     */
+    apiKey?: string
 }
 
 export class ObjectAnalysesSecurityChecksApi {
@@ -1406,7 +1644,7 @@ export class ObjectAnalysesSecurityChecksApi {
      * @param param the request object
      */
     public createScurityChecksTaskWithHttpInfo(param: AnalysesSecurityChecksApiCreateScurityChecksTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<QueuedSecurityChecksTaskResponse>> {
-        return this.api.createScurityChecksTaskWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.createScurityChecksTaskWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1414,7 +1652,7 @@ export class ObjectAnalysesSecurityChecksApi {
      * @param param the request object
      */
     public createScurityChecksTask(param: AnalysesSecurityChecksApiCreateScurityChecksTaskRequest, options?: ConfigurationOptions): Promise<QueuedSecurityChecksTaskResponse> {
-        return this.api.createScurityChecksTask(param.analysisId,  options).toPromise();
+        return this.api.createScurityChecksTask(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1423,7 +1661,7 @@ export class ObjectAnalysesSecurityChecksApi {
      * @param param the request object
      */
     public getSecurityChecksWithHttpInfo(param: AnalysesSecurityChecksApiGetSecurityChecksRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseSecurityChecksResponse>> {
-        return this.api.getSecurityChecksWithHttpInfo(param.analysisId, param.page, param.pageSize,  options).toPromise();
+        return this.api.getSecurityChecksWithHttpInfo(param.analysisId, param.page, param.pageSize, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1432,7 +1670,7 @@ export class ObjectAnalysesSecurityChecksApi {
      * @param param the request object
      */
     public getSecurityChecks(param: AnalysesSecurityChecksApiGetSecurityChecksRequest, options?: ConfigurationOptions): Promise<BaseResponseSecurityChecksResponse> {
-        return this.api.getSecurityChecks(param.analysisId, param.page, param.pageSize,  options).toPromise();
+        return this.api.getSecurityChecks(param.analysisId, param.page, param.pageSize, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1440,7 +1678,7 @@ export class ObjectAnalysesSecurityChecksApi {
      * @param param the request object
      */
     public getSecurityChecksTaskStatusWithHttpInfo(param: AnalysesSecurityChecksApiGetSecurityChecksTaskStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<CheckSecurityChecksTaskResponse>> {
-        return this.api.getSecurityChecksTaskStatusWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getSecurityChecksTaskStatusWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1448,7 +1686,7 @@ export class ObjectAnalysesSecurityChecksApi {
      * @param param the request object
      */
     public getSecurityChecksTaskStatus(param: AnalysesSecurityChecksApiGetSecurityChecksTaskStatusRequest, options?: ConfigurationOptions): Promise<CheckSecurityChecksTaskResponse> {
-        return this.api.getSecurityChecksTaskStatus(param.analysisId,  options).toPromise();
+        return this.api.getSecurityChecksTaskStatus(param.analysisId, param.apiKey,  options).toPromise();
     }
 
 }
@@ -1457,6 +1695,13 @@ import { ObservableAuthenticationUsersApi } from "./ObservableAPI";
 import { AuthenticationUsersApiRequestFactory, AuthenticationUsersApiResponseProcessor} from "../apis/AuthenticationUsersApi";
 
 export interface AuthenticationUsersApiGetRequesterUserInfoRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AuthenticationUsersApigetRequesterUserInfo
+     */
+    apiKey?: string
 }
 
 export interface AuthenticationUsersApiGetUserRequest {
@@ -1467,12 +1712,33 @@ export interface AuthenticationUsersApiGetUserRequest {
      * @memberof AuthenticationUsersApigetUser
      */
     userId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AuthenticationUsersApigetUser
+     */
+    apiKey?: string
 }
 
 export interface AuthenticationUsersApiGetUserActivityRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AuthenticationUsersApigetUserActivity
+     */
+    apiKey?: string
 }
 
 export interface AuthenticationUsersApiGetUserCommentsRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AuthenticationUsersApigetUserComments
+     */
+    apiKey?: string
 }
 
 export interface AuthenticationUsersApiLoginUserRequest {
@@ -1496,7 +1762,7 @@ export class ObjectAuthenticationUsersApi {
      * @param param the request object
      */
     public getRequesterUserInfoWithHttpInfo(param: AuthenticationUsersApiGetRequesterUserInfoRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGetUserResponse>> {
-        return this.api.getRequesterUserInfoWithHttpInfo( options).toPromise();
+        return this.api.getRequesterUserInfoWithHttpInfo(param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1504,7 +1770,7 @@ export class ObjectAuthenticationUsersApi {
      * @param param the request object
      */
     public getRequesterUserInfo(param: AuthenticationUsersApiGetRequesterUserInfoRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseGetUserResponse> {
-        return this.api.getRequesterUserInfo( options).toPromise();
+        return this.api.getRequesterUserInfo(param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1512,7 +1778,7 @@ export class ObjectAuthenticationUsersApi {
      * @param param the request object
      */
     public getUserWithHttpInfo(param: AuthenticationUsersApiGetUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGetPublicUserResponse>> {
-        return this.api.getUserWithHttpInfo(param.userId,  options).toPromise();
+        return this.api.getUserWithHttpInfo(param.userId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1520,7 +1786,7 @@ export class ObjectAuthenticationUsersApi {
      * @param param the request object
      */
     public getUser(param: AuthenticationUsersApiGetUserRequest, options?: ConfigurationOptions): Promise<BaseResponseGetPublicUserResponse> {
-        return this.api.getUser(param.userId,  options).toPromise();
+        return this.api.getUser(param.userId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1528,7 +1794,7 @@ export class ObjectAuthenticationUsersApi {
      * @param param the request object
      */
     public getUserActivityWithHttpInfo(param: AuthenticationUsersApiGetUserActivityRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListUserActivityResponse>> {
-        return this.api.getUserActivityWithHttpInfo( options).toPromise();
+        return this.api.getUserActivityWithHttpInfo(param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1536,7 +1802,7 @@ export class ObjectAuthenticationUsersApi {
      * @param param the request object
      */
     public getUserActivity(param: AuthenticationUsersApiGetUserActivityRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseListUserActivityResponse> {
-        return this.api.getUserActivity( options).toPromise();
+        return this.api.getUserActivity(param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1545,7 +1811,7 @@ export class ObjectAuthenticationUsersApi {
      * @param param the request object
      */
     public getUserCommentsWithHttpInfo(param: AuthenticationUsersApiGetUserCommentsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getUserCommentsWithHttpInfo( options).toPromise();
+        return this.api.getUserCommentsWithHttpInfo(param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1554,7 +1820,7 @@ export class ObjectAuthenticationUsersApi {
      * @param param the request object
      */
     public getUserComments(param: AuthenticationUsersApiGetUserCommentsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getUserComments( options).toPromise();
+        return this.api.getUserComments(param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1588,6 +1854,13 @@ export interface BinariesApiDownloadZippedBinaryRequest {
      * @memberof BinariesApidownloadZippedBinary
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApidownloadZippedBinary
+     */
+    apiKey?: string
 }
 
 export interface BinariesApiGetBinaryAdditionalDetailsRequest {
@@ -1598,6 +1871,13 @@ export interface BinariesApiGetBinaryAdditionalDetailsRequest {
      * @memberof BinariesApigetBinaryAdditionalDetails
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryAdditionalDetails
+     */
+    apiKey?: string
 }
 
 export interface BinariesApiGetBinaryDetailsRequest {
@@ -1608,6 +1888,13 @@ export interface BinariesApiGetBinaryDetailsRequest {
      * @memberof BinariesApigetBinaryDetails
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryDetails
+     */
+    apiKey?: string
 }
 
 export interface BinariesApiGetBinaryDieInfoRequest {
@@ -1618,6 +1905,13 @@ export interface BinariesApiGetBinaryDieInfoRequest {
      * @memberof BinariesApigetBinaryDieInfo
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryDieInfo
+     */
+    apiKey?: string
 }
 
 export interface BinariesApiGetBinaryExternalsRequest {
@@ -1628,6 +1922,13 @@ export interface BinariesApiGetBinaryExternalsRequest {
      * @memberof BinariesApigetBinaryExternals
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryExternals
+     */
+    apiKey?: string
 }
 
 export interface BinariesApiGetRelatedBinariesRequest {
@@ -1638,6 +1939,13 @@ export interface BinariesApiGetRelatedBinariesRequest {
      * @memberof BinariesApigetRelatedBinaries
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetRelatedBinaries
+     */
+    apiKey?: string
 }
 
 export class ObjectBinariesApi {
@@ -1652,7 +1960,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public downloadZippedBinaryWithHttpInfo(param: BinariesApiDownloadZippedBinaryRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.downloadZippedBinaryWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.downloadZippedBinaryWithHttpInfo(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1660,7 +1968,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public downloadZippedBinary(param: BinariesApiDownloadZippedBinaryRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.downloadZippedBinary(param.binaryId,  options).toPromise();
+        return this.api.downloadZippedBinary(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1668,7 +1976,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryAdditionalDetailsWithHttpInfo(param: BinariesApiGetBinaryAdditionalDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
-        return this.api.getBinaryAdditionalDetailsWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryAdditionalDetailsWithHttpInfo(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1676,7 +1984,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryAdditionalDetails(param: BinariesApiGetBinaryAdditionalDetailsRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryAdditionalResponse> {
-        return this.api.getBinaryAdditionalDetails(param.binaryId,  options).toPromise();
+        return this.api.getBinaryAdditionalDetails(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1684,7 +1992,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryDetailsWithHttpInfo(param: BinariesApiGetBinaryDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryDetailsResponse>> {
-        return this.api.getBinaryDetailsWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryDetailsWithHttpInfo(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1692,7 +2000,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryDetails(param: BinariesApiGetBinaryDetailsRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryDetailsResponse> {
-        return this.api.getBinaryDetails(param.binaryId,  options).toPromise();
+        return this.api.getBinaryDetails(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1700,7 +2008,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryDieInfoWithHttpInfo(param: BinariesApiGetBinaryDieInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListDieMatch>> {
-        return this.api.getBinaryDieInfoWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryDieInfoWithHttpInfo(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1708,7 +2016,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryDieInfo(param: BinariesApiGetBinaryDieInfoRequest, options?: ConfigurationOptions): Promise<BaseResponseListDieMatch> {
-        return this.api.getBinaryDieInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryDieInfo(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1716,7 +2024,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryExternalsWithHttpInfo(param: BinariesApiGetBinaryExternalsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryExternalsResponse>> {
-        return this.api.getBinaryExternalsWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryExternalsWithHttpInfo(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1724,7 +2032,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryExternals(param: BinariesApiGetBinaryExternalsRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryExternalsResponse> {
-        return this.api.getBinaryExternals(param.binaryId,  options).toPromise();
+        return this.api.getBinaryExternals(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1732,7 +2040,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getRelatedBinariesWithHttpInfo(param: BinariesApiGetRelatedBinariesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseChildBinariesResponse>> {
-        return this.api.getRelatedBinariesWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getRelatedBinariesWithHttpInfo(param.binaryId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1740,7 +2048,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getRelatedBinaries(param: BinariesApiGetRelatedBinariesRequest, options?: ConfigurationOptions): Promise<BaseResponseChildBinariesResponse> {
-        return this.api.getRelatedBinaries(param.binaryId,  options).toPromise();
+        return this.api.getRelatedBinaries(param.binaryId, param.apiKey,  options).toPromise();
     }
 
 }
@@ -1755,6 +2063,13 @@ export interface CollectionsApiCreateCollectionRequest {
      * @memberof CollectionsApicreateCollection
      */
     collectionCreateRequest: CollectionCreateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CollectionsApicreateCollection
+     */
+    apiKey?: string
 }
 
 export interface CollectionsApiDeleteCollectionRequest {
@@ -1765,6 +2080,13 @@ export interface CollectionsApiDeleteCollectionRequest {
      * @memberof CollectionsApideleteCollection
      */
     collectionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CollectionsApideleteCollection
+     */
+    apiKey?: string
 }
 
 export interface CollectionsApiGetCollectionRequest {
@@ -1789,6 +2111,13 @@ export interface CollectionsApiGetCollectionRequest {
      * @memberof CollectionsApigetCollection
      */
     includeBinaries?: boolean
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CollectionsApigetCollection
+     */
+    apiKey?: string
 }
 
 export interface CollectionsApiListCollectionsRequest {
@@ -1836,6 +2165,13 @@ export interface CollectionsApiListCollectionsRequest {
      * @memberof CollectionsApilistCollections
      */
     order?: Order
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CollectionsApilistCollections
+     */
+    apiKey?: string
 }
 
 export interface CollectionsApiUpdateCollectionRequest {
@@ -1852,6 +2188,13 @@ export interface CollectionsApiUpdateCollectionRequest {
      * @memberof CollectionsApiupdateCollection
      */
     collectionUpdateRequest: CollectionUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CollectionsApiupdateCollection
+     */
+    apiKey?: string
 }
 
 export interface CollectionsApiUpdateCollectionBinariesRequest {
@@ -1868,6 +2211,13 @@ export interface CollectionsApiUpdateCollectionBinariesRequest {
      * @memberof CollectionsApiupdateCollectionBinaries
      */
     collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CollectionsApiupdateCollectionBinaries
+     */
+    apiKey?: string
 }
 
 export interface CollectionsApiUpdateCollectionTagsRequest {
@@ -1884,6 +2234,13 @@ export interface CollectionsApiUpdateCollectionTagsRequest {
      * @memberof CollectionsApiupdateCollectionTags
      */
     collectionTagsUpdateRequest: CollectionTagsUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CollectionsApiupdateCollectionTags
+     */
+    apiKey?: string
 }
 
 export class ObjectCollectionsApi {
@@ -1899,7 +2256,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public createCollectionWithHttpInfo(param: CollectionsApiCreateCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
-        return this.api.createCollectionWithHttpInfo(param.collectionCreateRequest,  options).toPromise();
+        return this.api.createCollectionWithHttpInfo(param.collectionCreateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1908,7 +2265,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public createCollection(param: CollectionsApiCreateCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionResponse> {
-        return this.api.createCollection(param.collectionCreateRequest,  options).toPromise();
+        return this.api.createCollection(param.collectionCreateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1917,7 +2274,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public deleteCollectionWithHttpInfo(param: CollectionsApiDeleteCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        return this.api.deleteCollectionWithHttpInfo(param.collectionId,  options).toPromise();
+        return this.api.deleteCollectionWithHttpInfo(param.collectionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1926,7 +2283,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public deleteCollection(param: CollectionsApiDeleteCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
-        return this.api.deleteCollection(param.collectionId,  options).toPromise();
+        return this.api.deleteCollection(param.collectionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1935,7 +2292,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public getCollectionWithHttpInfo(param: CollectionsApiGetCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
-        return this.api.getCollectionWithHttpInfo(param.collectionId, param.includeTags, param.includeBinaries,  options).toPromise();
+        return this.api.getCollectionWithHttpInfo(param.collectionId, param.includeTags, param.includeBinaries, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1944,7 +2301,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public getCollection(param: CollectionsApiGetCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionResponse> {
-        return this.api.getCollection(param.collectionId, param.includeTags, param.includeBinaries,  options).toPromise();
+        return this.api.getCollection(param.collectionId, param.includeTags, param.includeBinaries, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1953,7 +2310,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public listCollectionsWithHttpInfo(param: CollectionsApiListCollectionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCollectionResults>> {
-        return this.api.listCollectionsWithHttpInfo(param.searchTerm, param.filters, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
+        return this.api.listCollectionsWithHttpInfo(param.searchTerm, param.filters, param.limit, param.offset, param.orderBy, param.order, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1962,7 +2319,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public listCollections(param: CollectionsApiListCollectionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseListCollectionResults> {
-        return this.api.listCollections(param.searchTerm, param.filters, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
+        return this.api.listCollections(param.searchTerm, param.filters, param.limit, param.offset, param.orderBy, param.order, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1971,7 +2328,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public updateCollectionWithHttpInfo(param: CollectionsApiUpdateCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
-        return this.api.updateCollectionWithHttpInfo(param.collectionId, param.collectionUpdateRequest,  options).toPromise();
+        return this.api.updateCollectionWithHttpInfo(param.collectionId, param.collectionUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1980,7 +2337,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public updateCollection(param: CollectionsApiUpdateCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionResponse> {
-        return this.api.updateCollection(param.collectionId, param.collectionUpdateRequest,  options).toPromise();
+        return this.api.updateCollection(param.collectionId, param.collectionUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1989,7 +2346,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public updateCollectionBinariesWithHttpInfo(param: CollectionsApiUpdateCollectionBinariesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionBinariesUpdateResponse>> {
-        return this.api.updateCollectionBinariesWithHttpInfo(param.collectionId, param.collectionBinariesUpdateRequest,  options).toPromise();
+        return this.api.updateCollectionBinariesWithHttpInfo(param.collectionId, param.collectionBinariesUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -1998,7 +2355,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public updateCollectionBinaries(param: CollectionsApiUpdateCollectionBinariesRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionBinariesUpdateResponse> {
-        return this.api.updateCollectionBinaries(param.collectionId, param.collectionBinariesUpdateRequest,  options).toPromise();
+        return this.api.updateCollectionBinaries(param.collectionId, param.collectionBinariesUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2007,7 +2364,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public updateCollectionTagsWithHttpInfo(param: CollectionsApiUpdateCollectionTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionTagsUpdateResponse>> {
-        return this.api.updateCollectionTagsWithHttpInfo(param.collectionId, param.collectionTagsUpdateRequest,  options).toPromise();
+        return this.api.updateCollectionTagsWithHttpInfo(param.collectionId, param.collectionTagsUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2016,7 +2373,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public updateCollectionTags(param: CollectionsApiUpdateCollectionTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionTagsUpdateResponse> {
-        return this.api.updateCollectionTags(param.collectionId, param.collectionTagsUpdateRequest,  options).toPromise();
+        return this.api.updateCollectionTags(param.collectionId, param.collectionTagsUpdateRequest, param.apiKey,  options).toPromise();
     }
 
 }
@@ -2032,6 +2389,13 @@ export interface ExternalSourcesApiCreateExternalTaskMbRequest {
      * @memberof ExternalSourcesApicreateExternalTaskMb
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ExternalSourcesApicreateExternalTaskMb
+     */
+    apiKey?: string
 }
 
 export interface ExternalSourcesApiCreateExternalTaskVtRequest {
@@ -2042,6 +2406,13 @@ export interface ExternalSourcesApiCreateExternalTaskVtRequest {
      * @memberof ExternalSourcesApicreateExternalTaskVt
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ExternalSourcesApicreateExternalTaskVt
+     */
+    apiKey?: string
 }
 
 export interface ExternalSourcesApiGetMbDataRequest {
@@ -2052,6 +2423,13 @@ export interface ExternalSourcesApiGetMbDataRequest {
      * @memberof ExternalSourcesApigetMbData
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ExternalSourcesApigetMbData
+     */
+    apiKey?: string
 }
 
 export interface ExternalSourcesApiGetMbTaskStatusRequest {
@@ -2062,6 +2440,13 @@ export interface ExternalSourcesApiGetMbTaskStatusRequest {
      * @memberof ExternalSourcesApigetMbTaskStatus
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ExternalSourcesApigetMbTaskStatus
+     */
+    apiKey?: string
 }
 
 export interface ExternalSourcesApiGetVtDataRequest {
@@ -2072,6 +2457,13 @@ export interface ExternalSourcesApiGetVtDataRequest {
      * @memberof ExternalSourcesApigetVtData
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ExternalSourcesApigetVtData
+     */
+    apiKey?: string
 }
 
 export interface ExternalSourcesApiGetVtTaskStatusRequest {
@@ -2082,6 +2474,13 @@ export interface ExternalSourcesApiGetVtTaskStatusRequest {
      * @memberof ExternalSourcesApigetVtTaskStatus
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ExternalSourcesApigetVtTaskStatus
+     */
+    apiKey?: string
 }
 
 export class ObjectExternalSourcesApi {
@@ -2096,7 +2495,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public createExternalTaskMbWithHttpInfo(param: ExternalSourcesApiCreateExternalTaskMbRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
-        return this.api.createExternalTaskMbWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.createExternalTaskMbWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2104,7 +2503,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public createExternalTaskMb(param: ExternalSourcesApiCreateExternalTaskMbRequest, options?: ConfigurationOptions): Promise<BaseResponseStr> {
-        return this.api.createExternalTaskMb(param.analysisId,  options).toPromise();
+        return this.api.createExternalTaskMb(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2112,7 +2511,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public createExternalTaskVtWithHttpInfo(param: ExternalSourcesApiCreateExternalTaskVtRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
-        return this.api.createExternalTaskVtWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.createExternalTaskVtWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2120,7 +2519,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public createExternalTaskVt(param: ExternalSourcesApiCreateExternalTaskVtRequest, options?: ConfigurationOptions): Promise<BaseResponseStr> {
-        return this.api.createExternalTaskVt(param.analysisId,  options).toPromise();
+        return this.api.createExternalTaskVt(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2128,7 +2527,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public getMbDataWithHttpInfo(param: ExternalSourcesApiGetMbDataRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
-        return this.api.getMbDataWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getMbDataWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2136,7 +2535,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public getMbData(param: ExternalSourcesApiGetMbDataRequest, options?: ConfigurationOptions): Promise<BaseResponseExternalResponse> {
-        return this.api.getMbData(param.analysisId,  options).toPromise();
+        return this.api.getMbData(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2144,7 +2543,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public getMbTaskStatusWithHttpInfo(param: ExternalSourcesApiGetMbTaskStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
-        return this.api.getMbTaskStatusWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getMbTaskStatusWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2152,7 +2551,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public getMbTaskStatus(param: ExternalSourcesApiGetMbTaskStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseTaskResponse> {
-        return this.api.getMbTaskStatus(param.analysisId,  options).toPromise();
+        return this.api.getMbTaskStatus(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2160,7 +2559,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public getVtDataWithHttpInfo(param: ExternalSourcesApiGetVtDataRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
-        return this.api.getVtDataWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getVtDataWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2168,7 +2567,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public getVtData(param: ExternalSourcesApiGetVtDataRequest, options?: ConfigurationOptions): Promise<BaseResponseExternalResponse> {
-        return this.api.getVtData(param.analysisId,  options).toPromise();
+        return this.api.getVtData(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2176,7 +2575,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public getVtTaskStatusWithHttpInfo(param: ExternalSourcesApiGetVtTaskStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
-        return this.api.getVtTaskStatusWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getVtTaskStatusWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2184,7 +2583,7 @@ export class ObjectExternalSourcesApi {
      * @param param the request object
      */
     public getVtTaskStatus(param: ExternalSourcesApiGetVtTaskStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseTaskResponse> {
-        return this.api.getVtTaskStatus(param.analysisId,  options).toPromise();
+        return this.api.getVtTaskStatus(param.analysisId, param.apiKey,  options).toPromise();
     }
 
 }
@@ -2200,6 +2599,13 @@ export interface FirmwareApiGetBinariesForFirmwareTaskRequest {
      * @memberof FirmwareApigetBinariesForFirmwareTask
      */
     taskId: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FirmwareApigetBinariesForFirmwareTask
+     */
+    apiKey?: string
 }
 
 export interface FirmwareApiUploadFirmwareRequest {
@@ -2210,6 +2616,13 @@ export interface FirmwareApiUploadFirmwareRequest {
      * @memberof FirmwareApiuploadFirmware
      */
     file: HttpFile
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FirmwareApiuploadFirmware
+     */
+    apiKey?: string
     /**
      * 
      * Defaults to: undefined
@@ -2232,7 +2645,7 @@ export class ObjectFirmwareApi {
      * @param param the request object
      */
     public getBinariesForFirmwareTaskWithHttpInfo(param: FirmwareApiGetBinariesForFirmwareTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.getBinariesForFirmwareTaskWithHttpInfo(param.taskId,  options).toPromise();
+        return this.api.getBinariesForFirmwareTaskWithHttpInfo(param.taskId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2241,7 +2654,7 @@ export class ObjectFirmwareApi {
      * @param param the request object
      */
     public getBinariesForFirmwareTask(param: FirmwareApiGetBinariesForFirmwareTaskRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.getBinariesForFirmwareTask(param.taskId,  options).toPromise();
+        return this.api.getBinariesForFirmwareTask(param.taskId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2250,7 +2663,7 @@ export class ObjectFirmwareApi {
      * @param param the request object
      */
     public uploadFirmwareWithHttpInfo(param: FirmwareApiUploadFirmwareRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.uploadFirmwareWithHttpInfo(param.file, param.password,  options).toPromise();
+        return this.api.uploadFirmwareWithHttpInfo(param.file, param.apiKey, param.password,  options).toPromise();
     }
 
     /**
@@ -2259,7 +2672,7 @@ export class ObjectFirmwareApi {
      * @param param the request object
      */
     public uploadFirmware(param: FirmwareApiUploadFirmwareRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.uploadFirmware(param.file, param.password,  options).toPromise();
+        return this.api.uploadFirmware(param.file, param.apiKey, param.password,  options).toPromise();
     }
 
 }
@@ -2281,6 +2694,13 @@ export interface FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest 
      * @memberof FunctionsAIDecompilationApicreateAiDecompilationComment
      */
     functionCommentCreateRequest: FunctionCommentCreateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilationComment
+     */
+    apiKey?: string
 }
 
 export interface FunctionsAIDecompilationApiCreateAiDecompilationTaskRequest {
@@ -2291,6 +2711,13 @@ export interface FunctionsAIDecompilationApiCreateAiDecompilationTaskRequest {
      * @memberof FunctionsAIDecompilationApicreateAiDecompilationTask
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilationTask
+     */
+    apiKey?: string
 }
 
 export interface FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest {
@@ -2309,6 +2736,13 @@ export interface FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest 
      * @memberof FunctionsAIDecompilationApideleteAiDecompilationComment
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApideleteAiDecompilationComment
+     */
+    apiKey?: string
 }
 
 export interface FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest {
@@ -2319,6 +2753,13 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest {
      * @memberof FunctionsAIDecompilationApigetAiDecompilationComments
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationComments
+     */
+    apiKey?: string
 }
 
 export interface FunctionsAIDecompilationApiGetAiDecompilationRatingRequest {
@@ -2329,6 +2770,13 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationRatingRequest {
      * @memberof FunctionsAIDecompilationApigetAiDecompilationRating
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationRating
+     */
+    apiKey?: string
 }
 
 export interface FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest {
@@ -2353,6 +2801,13 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest 
      * @memberof FunctionsAIDecompilationApigetAiDecompilationTaskResult
      */
     generateInlineComments?: boolean
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationTaskResult
+     */
+    apiKey?: string
 }
 
 export interface FunctionsAIDecompilationApiGetAiDecompilationTaskStatusRequest {
@@ -2363,6 +2818,13 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationTaskStatusRequest 
      * @memberof FunctionsAIDecompilationApigetAiDecompilationTaskStatus
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationTaskStatus
+     */
+    apiKey?: string
 }
 
 export interface FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest {
@@ -2387,6 +2849,13 @@ export interface FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest 
      * @memberof FunctionsAIDecompilationApiupdateAiDecompilationComment
      */
     commentUpdateRequest: CommentUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApiupdateAiDecompilationComment
+     */
+    apiKey?: string
 }
 
 export interface FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest {
@@ -2403,6 +2872,13 @@ export interface FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest {
      * @memberof FunctionsAIDecompilationApiupsertAiDecompilationRating
      */
     upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApiupsertAiDecompilationRating
+     */
+    apiKey?: string
 }
 
 export class ObjectFunctionsAIDecompilationApi {
@@ -2418,7 +2894,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public createAiDecompilationCommentWithHttpInfo(param: FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.createAiDecompilationCommentWithHttpInfo(param.functionId, param.functionCommentCreateRequest,  options).toPromise();
+        return this.api.createAiDecompilationCommentWithHttpInfo(param.functionId, param.functionCommentCreateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2427,7 +2903,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public createAiDecompilationComment(param: FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.createAiDecompilationComment(param.functionId, param.functionCommentCreateRequest,  options).toPromise();
+        return this.api.createAiDecompilationComment(param.functionId, param.functionCommentCreateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2436,7 +2912,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public createAiDecompilationTaskWithHttpInfo(param: FunctionsAIDecompilationApiCreateAiDecompilationTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.createAiDecompilationTaskWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.createAiDecompilationTaskWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2445,7 +2921,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public createAiDecompilationTask(param: FunctionsAIDecompilationApiCreateAiDecompilationTaskRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.createAiDecompilationTask(param.functionId,  options).toPromise();
+        return this.api.createAiDecompilationTask(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2454,7 +2930,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public deleteAiDecompilationCommentWithHttpInfo(param: FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        return this.api.deleteAiDecompilationCommentWithHttpInfo(param.commentId, param.functionId,  options).toPromise();
+        return this.api.deleteAiDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2463,7 +2939,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public deleteAiDecompilationComment(param: FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
-        return this.api.deleteAiDecompilationComment(param.commentId, param.functionId,  options).toPromise();
+        return this.api.deleteAiDecompilationComment(param.commentId, param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2472,7 +2948,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationCommentsWithHttpInfo(param: FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getAiDecompilationCommentsWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getAiDecompilationCommentsWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2481,7 +2957,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationComments(param: FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getAiDecompilationComments(param.functionId,  options).toPromise();
+        return this.api.getAiDecompilationComments(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2489,7 +2965,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationRatingWithHttpInfo(param: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationRatingResponse>> {
-        return this.api.getAiDecompilationRatingWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getAiDecompilationRatingWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2497,7 +2973,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationRating(param: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<BaseResponseGetAiDecompilationRatingResponse> {
-        return this.api.getAiDecompilationRating(param.functionId,  options).toPromise();
+        return this.api.getAiDecompilationRating(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2506,7 +2982,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationTaskResultWithHttpInfo(param: FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationTask>> {
-        return this.api.getAiDecompilationTaskResultWithHttpInfo(param.functionId, param.summarise, param.generateInlineComments,  options).toPromise();
+        return this.api.getAiDecompilationTaskResultWithHttpInfo(param.functionId, param.summarise, param.generateInlineComments, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2515,7 +2991,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationTaskResult(param: FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest, options?: ConfigurationOptions): Promise<BaseResponseGetAiDecompilationTask> {
-        return this.api.getAiDecompilationTaskResult(param.functionId, param.summarise, param.generateInlineComments,  options).toPromise();
+        return this.api.getAiDecompilationTaskResult(param.functionId, param.summarise, param.generateInlineComments, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2523,7 +2999,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationTaskStatusWithHttpInfo(param: FunctionsAIDecompilationApiGetAiDecompilationTaskStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionTaskResponse>> {
-        return this.api.getAiDecompilationTaskStatusWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getAiDecompilationTaskStatusWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2531,7 +3007,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationTaskStatus(param: FunctionsAIDecompilationApiGetAiDecompilationTaskStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionTaskResponse> {
-        return this.api.getAiDecompilationTaskStatus(param.functionId,  options).toPromise();
+        return this.api.getAiDecompilationTaskStatus(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2540,7 +3016,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public updateAiDecompilationCommentWithHttpInfo(param: FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.updateAiDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateAiDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.commentUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2549,7 +3025,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public updateAiDecompilationComment(param: FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.updateAiDecompilationComment(param.commentId, param.functionId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateAiDecompilationComment(param.commentId, param.functionId, param.commentUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2557,7 +3033,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public upsertAiDecompilationRatingWithHttpInfo(param: FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.upsertAiDecompilationRatingWithHttpInfo(param.functionId, param.upsertAiDecomplationRatingRequest,  options).toPromise();
+        return this.api.upsertAiDecompilationRatingWithHttpInfo(param.functionId, param.upsertAiDecomplationRatingRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2565,7 +3041,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public upsertAiDecompilationRating(param: FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.upsertAiDecompilationRating(param.functionId, param.upsertAiDecomplationRatingRequest,  options).toPromise();
+        return this.api.upsertAiDecompilationRating(param.functionId, param.upsertAiDecomplationRatingRequest, param.apiKey,  options).toPromise();
     }
 
 }
@@ -2587,6 +3063,13 @@ export interface FunctionsBlockCommentsApiGenerateBlockCommentsForBlockInFunctio
      * @memberof FunctionsBlockCommentsApigenerateBlockCommentsForBlockInFunction
      */
     block: Block
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsBlockCommentsApigenerateBlockCommentsForBlockInFunction
+     */
+    apiKey?: string
 }
 
 export interface FunctionsBlockCommentsApiGenerateBlockCommentsForFunctionRequest {
@@ -2597,6 +3080,13 @@ export interface FunctionsBlockCommentsApiGenerateBlockCommentsForFunctionReques
      * @memberof FunctionsBlockCommentsApigenerateBlockCommentsForFunction
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsBlockCommentsApigenerateBlockCommentsForFunction
+     */
+    apiKey?: string
 }
 
 export interface FunctionsBlockCommentsApiGenerateOverviewCommentForFunctionRequest {
@@ -2607,6 +3097,13 @@ export interface FunctionsBlockCommentsApiGenerateOverviewCommentForFunctionRequ
      * @memberof FunctionsBlockCommentsApigenerateOverviewCommentForFunction
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsBlockCommentsApigenerateOverviewCommentForFunction
+     */
+    apiKey?: string
 }
 
 export class ObjectFunctionsBlockCommentsApi {
@@ -2621,7 +3118,7 @@ export class ObjectFunctionsBlockCommentsApi {
      * @param param the request object
      */
     public generateBlockCommentsForBlockInFunctionWithHttpInfo(param: FunctionsBlockCommentsApiGenerateBlockCommentsForBlockInFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
-        return this.api.generateBlockCommentsForBlockInFunctionWithHttpInfo(param.functionId, param.block,  options).toPromise();
+        return this.api.generateBlockCommentsForBlockInFunctionWithHttpInfo(param.functionId, param.block, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2629,7 +3126,7 @@ export class ObjectFunctionsBlockCommentsApi {
      * @param param the request object
      */
     public generateBlockCommentsForBlockInFunction(param: FunctionsBlockCommentsApiGenerateBlockCommentsForBlockInFunctionRequest, options?: ConfigurationOptions): Promise<BaseResponseBlockCommentsGenerationForFunctionResponse> {
-        return this.api.generateBlockCommentsForBlockInFunction(param.functionId, param.block,  options).toPromise();
+        return this.api.generateBlockCommentsForBlockInFunction(param.functionId, param.block, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2637,7 +3134,7 @@ export class ObjectFunctionsBlockCommentsApi {
      * @param param the request object
      */
     public generateBlockCommentsForFunctionWithHttpInfo(param: FunctionsBlockCommentsApiGenerateBlockCommentsForFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
-        return this.api.generateBlockCommentsForFunctionWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.generateBlockCommentsForFunctionWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2645,7 +3142,7 @@ export class ObjectFunctionsBlockCommentsApi {
      * @param param the request object
      */
     public generateBlockCommentsForFunction(param: FunctionsBlockCommentsApiGenerateBlockCommentsForFunctionRequest, options?: ConfigurationOptions): Promise<BaseResponseBlockCommentsGenerationForFunctionResponse> {
-        return this.api.generateBlockCommentsForFunction(param.functionId,  options).toPromise();
+        return this.api.generateBlockCommentsForFunction(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2653,7 +3150,7 @@ export class ObjectFunctionsBlockCommentsApi {
      * @param param the request object
      */
     public generateOverviewCommentForFunctionWithHttpInfo(param: FunctionsBlockCommentsApiGenerateOverviewCommentForFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>> {
-        return this.api.generateOverviewCommentForFunctionWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.generateOverviewCommentForFunctionWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2661,7 +3158,7 @@ export class ObjectFunctionsBlockCommentsApi {
      * @param param the request object
      */
     public generateOverviewCommentForFunction(param: FunctionsBlockCommentsApiGenerateOverviewCommentForFunctionRequest, options?: ConfigurationOptions): Promise<BaseResponseBlockCommentsOverviewGenerationResponse> {
-        return this.api.generateOverviewCommentForFunction(param.functionId,  options).toPromise();
+        return this.api.generateOverviewCommentForFunction(param.functionId, param.apiKey,  options).toPromise();
     }
 
 }
@@ -2683,6 +3180,13 @@ export interface FunctionsCoreApiAiUnstripRequest {
      * @memberof FunctionsCoreApiaiUnstrip
      */
     aiUnstripRequest: AiUnstripRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApiaiUnstrip
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiAnalysisFunctionMatchingRequest {
@@ -2699,6 +3203,13 @@ export interface FunctionsCoreApiAnalysisFunctionMatchingRequest {
      * @memberof FunctionsCoreApianalysisFunctionMatching
      */
     analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApianalysisFunctionMatching
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiAutoUnstripRequest {
@@ -2715,6 +3226,13 @@ export interface FunctionsCoreApiAutoUnstripRequest {
      * @memberof FunctionsCoreApiautoUnstrip
      */
     autoUnstripRequest: AutoUnstripRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApiautoUnstrip
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiBatchFunctionMatchingRequest {
@@ -2724,6 +3242,13 @@ export interface FunctionsCoreApiBatchFunctionMatchingRequest {
      * @memberof FunctionsCoreApibatchFunctionMatching
      */
     functionMatchingRequest: FunctionMatchingRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApibatchFunctionMatching
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiCancelAiUnstripRequest {
@@ -2734,6 +3259,13 @@ export interface FunctionsCoreApiCancelAiUnstripRequest {
      * @memberof FunctionsCoreApicancelAiUnstrip
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApicancelAiUnstrip
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiCancelAutoUnstripRequest {
@@ -2744,6 +3276,13 @@ export interface FunctionsCoreApiCancelAutoUnstripRequest {
      * @memberof FunctionsCoreApicancelAutoUnstrip
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApicancelAutoUnstrip
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiGetAnalysisStringsRequest {
@@ -2785,6 +3324,13 @@ export interface FunctionsCoreApiGetAnalysisStringsRequest {
      * @memberof FunctionsCoreApigetAnalysisStrings
      */
     functionSearch?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApigetAnalysisStrings
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiGetFunctionBlocksRequest {
@@ -2795,6 +3341,13 @@ export interface FunctionsCoreApiGetFunctionBlocksRequest {
      * @memberof FunctionsCoreApigetFunctionBlocks
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApigetFunctionBlocks
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiGetFunctionCalleesCallersRequest {
@@ -2805,6 +3358,13 @@ export interface FunctionsCoreApiGetFunctionCalleesCallersRequest {
      * @memberof FunctionsCoreApigetFunctionCalleesCallers
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApigetFunctionCalleesCallers
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiGetFunctionCapabilitiesRequest {
@@ -2815,6 +3375,13 @@ export interface FunctionsCoreApiGetFunctionCapabilitiesRequest {
      * @memberof FunctionsCoreApigetFunctionCapabilities
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApigetFunctionCapabilities
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiGetFunctionDetailsRequest {
@@ -2825,6 +3392,13 @@ export interface FunctionsCoreApiGetFunctionDetailsRequest {
      * @memberof FunctionsCoreApigetFunctionDetails
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApigetFunctionDetails
+     */
+    apiKey?: string
 }
 
 export interface FunctionsCoreApiGetFunctionStringsRequest {
@@ -2859,6 +3433,13 @@ export interface FunctionsCoreApiGetFunctionStringsRequest {
      * @memberof FunctionsCoreApigetFunctionStrings
      */
     search?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApigetFunctionStrings
+     */
+    apiKey?: string
 }
 
 export class ObjectFunctionsCoreApi {
@@ -2874,7 +3455,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public aiUnstripWithHttpInfo(param: FunctionsCoreApiAiUnstripRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
-        return this.api.aiUnstripWithHttpInfo(param.analysisId, param.aiUnstripRequest,  options).toPromise();
+        return this.api.aiUnstripWithHttpInfo(param.analysisId, param.aiUnstripRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2883,7 +3464,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public aiUnstrip(param: FunctionsCoreApiAiUnstripRequest, options?: ConfigurationOptions): Promise<AutoUnstripResponse> {
-        return this.api.aiUnstrip(param.analysisId, param.aiUnstripRequest,  options).toPromise();
+        return this.api.aiUnstrip(param.analysisId, param.aiUnstripRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2892,7 +3473,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public analysisFunctionMatchingWithHttpInfo(param: FunctionsCoreApiAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<HttpInfo<FunctionMatchingBatchResponse>> {
-        return this.api.analysisFunctionMatchingWithHttpInfo(param.analysisId, param.analysisFunctionMatchingRequest,  options).toPromise();
+        return this.api.analysisFunctionMatchingWithHttpInfo(param.analysisId, param.analysisFunctionMatchingRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2901,7 +3482,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public analysisFunctionMatching(param: FunctionsCoreApiAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<FunctionMatchingBatchResponse> {
-        return this.api.analysisFunctionMatching(param.analysisId, param.analysisFunctionMatchingRequest,  options).toPromise();
+        return this.api.analysisFunctionMatching(param.analysisId, param.analysisFunctionMatchingRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2910,7 +3491,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public autoUnstripWithHttpInfo(param: FunctionsCoreApiAutoUnstripRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
-        return this.api.autoUnstripWithHttpInfo(param.analysisId, param.autoUnstripRequest,  options).toPromise();
+        return this.api.autoUnstripWithHttpInfo(param.analysisId, param.autoUnstripRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2919,7 +3500,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public autoUnstrip(param: FunctionsCoreApiAutoUnstripRequest, options?: ConfigurationOptions): Promise<AutoUnstripResponse> {
-        return this.api.autoUnstrip(param.analysisId, param.autoUnstripRequest,  options).toPromise();
+        return this.api.autoUnstrip(param.analysisId, param.autoUnstripRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2928,7 +3509,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public batchFunctionMatchingWithHttpInfo(param: FunctionsCoreApiBatchFunctionMatchingRequest, options?: ConfigurationOptions): Promise<HttpInfo<FunctionMatchingBatchResponse>> {
-        return this.api.batchFunctionMatchingWithHttpInfo(param.functionMatchingRequest,  options).toPromise();
+        return this.api.batchFunctionMatchingWithHttpInfo(param.functionMatchingRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2937,7 +3518,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public batchFunctionMatching(param: FunctionsCoreApiBatchFunctionMatchingRequest, options?: ConfigurationOptions): Promise<FunctionMatchingBatchResponse> {
-        return this.api.batchFunctionMatching(param.functionMatchingRequest,  options).toPromise();
+        return this.api.batchFunctionMatching(param.functionMatchingRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2946,7 +3527,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public cancelAiUnstripWithHttpInfo(param: FunctionsCoreApiCancelAiUnstripRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
-        return this.api.cancelAiUnstripWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.cancelAiUnstripWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2955,7 +3536,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public cancelAiUnstrip(param: FunctionsCoreApiCancelAiUnstripRequest, options?: ConfigurationOptions): Promise<AutoUnstripResponse> {
-        return this.api.cancelAiUnstrip(param.analysisId,  options).toPromise();
+        return this.api.cancelAiUnstrip(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2964,7 +3545,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public cancelAutoUnstripWithHttpInfo(param: FunctionsCoreApiCancelAutoUnstripRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
-        return this.api.cancelAutoUnstripWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.cancelAutoUnstripWithHttpInfo(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2973,7 +3554,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public cancelAutoUnstrip(param: FunctionsCoreApiCancelAutoUnstripRequest, options?: ConfigurationOptions): Promise<AutoUnstripResponse> {
-        return this.api.cancelAutoUnstrip(param.analysisId,  options).toPromise();
+        return this.api.cancelAutoUnstrip(param.analysisId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2982,7 +3563,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getAnalysisStringsWithHttpInfo(param: FunctionsCoreApiGetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsResponse>> {
-        return this.api.getAnalysisStringsWithHttpInfo(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch,  options).toPromise();
+        return this.api.getAnalysisStringsWithHttpInfo(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -2991,7 +3572,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getAnalysisStrings(param: FunctionsCoreApiGetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisStringsResponse> {
-        return this.api.getAnalysisStrings(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch,  options).toPromise();
+        return this.api.getAnalysisStrings(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3000,7 +3581,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getFunctionBlocksWithHttpInfo(param: FunctionsCoreApiGetFunctionBlocksRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionBlocksResponse>> {
-        return this.api.getFunctionBlocksWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getFunctionBlocksWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3009,7 +3590,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getFunctionBlocks(param: FunctionsCoreApiGetFunctionBlocksRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionBlocksResponse> {
-        return this.api.getFunctionBlocks(param.functionId,  options).toPromise();
+        return this.api.getFunctionBlocks(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3017,7 +3598,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getFunctionCalleesCallersWithHttpInfo(param: FunctionsCoreApiGetFunctionCalleesCallersRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCalleesCallerFunctionsResponse>> {
-        return this.api.getFunctionCalleesCallersWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getFunctionCalleesCallersWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3025,7 +3606,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getFunctionCalleesCallers(param: FunctionsCoreApiGetFunctionCalleesCallersRequest, options?: ConfigurationOptions): Promise<BaseResponseCalleesCallerFunctionsResponse> {
-        return this.api.getFunctionCalleesCallers(param.functionId,  options).toPromise();
+        return this.api.getFunctionCalleesCallers(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3033,7 +3614,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getFunctionCapabilitiesWithHttpInfo(param: FunctionsCoreApiGetFunctionCapabilitiesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionCapabilityResponse>> {
-        return this.api.getFunctionCapabilitiesWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getFunctionCapabilitiesWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3041,7 +3622,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getFunctionCapabilities(param: FunctionsCoreApiGetFunctionCapabilitiesRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionCapabilityResponse> {
-        return this.api.getFunctionCapabilities(param.functionId,  options).toPromise();
+        return this.api.getFunctionCapabilities(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3049,7 +3630,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getFunctionDetailsWithHttpInfo(param: FunctionsCoreApiGetFunctionDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionsDetailResponse>> {
-        return this.api.getFunctionDetailsWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getFunctionDetailsWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3057,7 +3638,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getFunctionDetails(param: FunctionsCoreApiGetFunctionDetailsRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionsDetailResponse> {
-        return this.api.getFunctionDetails(param.functionId,  options).toPromise();
+        return this.api.getFunctionDetails(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3066,7 +3647,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getFunctionStringsWithHttpInfo(param: FunctionsCoreApiGetFunctionStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionStringsResponse>> {
-        return this.api.getFunctionStringsWithHttpInfo(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
+        return this.api.getFunctionStringsWithHttpInfo(param.functionId, param.page, param.pageSize, param.search, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3075,7 +3656,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getFunctionStrings(param: FunctionsCoreApiGetFunctionStringsRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionStringsResponse> {
-        return this.api.getFunctionStrings(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
+        return this.api.getFunctionStrings(param.functionId, param.page, param.pageSize, param.search, param.apiKey,  options).toPromise();
     }
 
 }
@@ -3097,6 +3678,13 @@ export interface FunctionsDataTypesApiGenerateFunctionDataTypesForAnalysisReques
      * @memberof FunctionsDataTypesApigenerateFunctionDataTypesForAnalysis
      */
     functionDataTypesParams: FunctionDataTypesParams
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDataTypesApigenerateFunctionDataTypesForAnalysis
+     */
+    apiKey?: string
 }
 
 export interface FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsRequest {
@@ -3106,6 +3694,13 @@ export interface FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsReque
      * @memberof FunctionsDataTypesApigenerateFunctionDataTypesForFunctions
      */
     functionDataTypesParams: FunctionDataTypesParams
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDataTypesApigenerateFunctionDataTypesForFunctions
+     */
+    apiKey?: string
 }
 
 export interface FunctionsDataTypesApiGetFunctionDataTypesRequest {
@@ -3123,6 +3718,13 @@ export interface FunctionsDataTypesApiGetFunctionDataTypesRequest {
      * @memberof FunctionsDataTypesApigetFunctionDataTypes
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDataTypesApigetFunctionDataTypes
+     */
+    apiKey?: string
 }
 
 export interface FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest {
@@ -3140,6 +3742,13 @@ export interface FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest {
      * @memberof FunctionsDataTypesApilistFunctionDataTypesForAnalysis
      */
     functionIds?: Array<number>
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDataTypesApilistFunctionDataTypesForAnalysis
+     */
+    apiKey?: string
 }
 
 export interface FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest {
@@ -3150,6 +3759,13 @@ export interface FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest {
      * @memberof FunctionsDataTypesApilistFunctionDataTypesForFunctions
      */
     functionIds?: Array<number>
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDataTypesApilistFunctionDataTypesForFunctions
+     */
+    apiKey?: string
 }
 
 export interface FunctionsDataTypesApiUpdateFunctionDataTypesRequest {
@@ -3173,6 +3789,13 @@ export interface FunctionsDataTypesApiUpdateFunctionDataTypesRequest {
      * @memberof FunctionsDataTypesApiupdateFunctionDataTypes
      */
     updateFunctionDataTypes: UpdateFunctionDataTypes
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDataTypesApiupdateFunctionDataTypes
+     */
+    apiKey?: string
 }
 
 export class ObjectFunctionsDataTypesApi {
@@ -3188,7 +3811,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public generateFunctionDataTypesForAnalysisWithHttpInfo(param: FunctionsDataTypesApiGenerateFunctionDataTypesForAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGenerateFunctionDataTypes>> {
-        return this.api.generateFunctionDataTypesForAnalysisWithHttpInfo(param.analysisId, param.functionDataTypesParams,  options).toPromise();
+        return this.api.generateFunctionDataTypesForAnalysisWithHttpInfo(param.analysisId, param.functionDataTypesParams, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3197,7 +3820,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public generateFunctionDataTypesForAnalysis(param: FunctionsDataTypesApiGenerateFunctionDataTypesForAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseGenerateFunctionDataTypes> {
-        return this.api.generateFunctionDataTypesForAnalysis(param.analysisId, param.functionDataTypesParams,  options).toPromise();
+        return this.api.generateFunctionDataTypesForAnalysis(param.analysisId, param.functionDataTypesParams, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3206,7 +3829,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public generateFunctionDataTypesForFunctionsWithHttpInfo(param: FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGenerationStatusList>> {
-        return this.api.generateFunctionDataTypesForFunctionsWithHttpInfo(param.functionDataTypesParams,  options).toPromise();
+        return this.api.generateFunctionDataTypesForFunctionsWithHttpInfo(param.functionDataTypesParams, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3215,7 +3838,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public generateFunctionDataTypesForFunctions(param: FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsRequest, options?: ConfigurationOptions): Promise<BaseResponseGenerationStatusList> {
-        return this.api.generateFunctionDataTypesForFunctions(param.functionDataTypesParams,  options).toPromise();
+        return this.api.generateFunctionDataTypesForFunctions(param.functionDataTypesParams, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3224,7 +3847,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public getFunctionDataTypesWithHttpInfo(param: FunctionsDataTypesApiGetFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypes>> {
-        return this.api.getFunctionDataTypesWithHttpInfo(param.analysisId, param.functionId,  options).toPromise();
+        return this.api.getFunctionDataTypesWithHttpInfo(param.analysisId, param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3233,7 +3856,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public getFunctionDataTypes(param: FunctionsDataTypesApiGetFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionDataTypes> {
-        return this.api.getFunctionDataTypes(param.analysisId, param.functionId,  options).toPromise();
+        return this.api.getFunctionDataTypes(param.analysisId, param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3242,7 +3865,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public listFunctionDataTypesForAnalysisWithHttpInfo(param: FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypesList>> {
-        return this.api.listFunctionDataTypesForAnalysisWithHttpInfo(param.analysisId, param.functionIds,  options).toPromise();
+        return this.api.listFunctionDataTypesForAnalysisWithHttpInfo(param.analysisId, param.functionIds, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3251,7 +3874,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public listFunctionDataTypesForAnalysis(param: FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
-        return this.api.listFunctionDataTypesForAnalysis(param.analysisId, param.functionIds,  options).toPromise();
+        return this.api.listFunctionDataTypesForAnalysis(param.analysisId, param.functionIds, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3260,7 +3883,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public listFunctionDataTypesForFunctionsWithHttpInfo(param: FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypesList>> {
-        return this.api.listFunctionDataTypesForFunctionsWithHttpInfo(param.functionIds,  options).toPromise();
+        return this.api.listFunctionDataTypesForFunctionsWithHttpInfo(param.functionIds, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3269,7 +3892,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public listFunctionDataTypesForFunctions(param: FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
-        return this.api.listFunctionDataTypesForFunctions(param.functionIds,  options).toPromise();
+        return this.api.listFunctionDataTypesForFunctions(param.functionIds, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3278,7 +3901,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public updateFunctionDataTypesWithHttpInfo(param: FunctionsDataTypesApiUpdateFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypes>> {
-        return this.api.updateFunctionDataTypesWithHttpInfo(param.analysisId, param.functionId, param.updateFunctionDataTypes,  options).toPromise();
+        return this.api.updateFunctionDataTypesWithHttpInfo(param.analysisId, param.functionId, param.updateFunctionDataTypes, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3287,7 +3910,7 @@ export class ObjectFunctionsDataTypesApi {
      * @param param the request object
      */
     public updateFunctionDataTypes(param: FunctionsDataTypesApiUpdateFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionDataTypes> {
-        return this.api.updateFunctionDataTypes(param.analysisId, param.functionId, param.updateFunctionDataTypes,  options).toPromise();
+        return this.api.updateFunctionDataTypes(param.analysisId, param.functionId, param.updateFunctionDataTypes, param.apiKey,  options).toPromise();
     }
 
 }
@@ -3309,6 +3932,13 @@ export interface FunctionsDecompilationApiCreateDecompilationCommentRequest {
      * @memberof FunctionsDecompilationApicreateDecompilationComment
      */
     functionCommentCreateRequest: FunctionCommentCreateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApicreateDecompilationComment
+     */
+    apiKey?: string
 }
 
 export interface FunctionsDecompilationApiDeleteDecompilationCommentRequest {
@@ -3327,6 +3957,13 @@ export interface FunctionsDecompilationApiDeleteDecompilationCommentRequest {
      * @memberof FunctionsDecompilationApideleteDecompilationComment
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApideleteDecompilationComment
+     */
+    apiKey?: string
 }
 
 export interface FunctionsDecompilationApiGetDecompilationCommentsRequest {
@@ -3337,6 +3974,13 @@ export interface FunctionsDecompilationApiGetDecompilationCommentsRequest {
      * @memberof FunctionsDecompilationApigetDecompilationComments
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApigetDecompilationComments
+     */
+    apiKey?: string
 }
 
 export interface FunctionsDecompilationApiUpdateDecompilationCommentRequest {
@@ -3361,6 +4005,13 @@ export interface FunctionsDecompilationApiUpdateDecompilationCommentRequest {
      * @memberof FunctionsDecompilationApiupdateDecompilationComment
      */
     commentUpdateRequest: CommentUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApiupdateDecompilationComment
+     */
+    apiKey?: string
 }
 
 export class ObjectFunctionsDecompilationApi {
@@ -3376,7 +4027,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public createDecompilationCommentWithHttpInfo(param: FunctionsDecompilationApiCreateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.createDecompilationCommentWithHttpInfo(param.functionId, param.functionCommentCreateRequest,  options).toPromise();
+        return this.api.createDecompilationCommentWithHttpInfo(param.functionId, param.functionCommentCreateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3385,7 +4036,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public createDecompilationComment(param: FunctionsDecompilationApiCreateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.createDecompilationComment(param.functionId, param.functionCommentCreateRequest,  options).toPromise();
+        return this.api.createDecompilationComment(param.functionId, param.functionCommentCreateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3394,7 +4045,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public deleteDecompilationCommentWithHttpInfo(param: FunctionsDecompilationApiDeleteDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        return this.api.deleteDecompilationCommentWithHttpInfo(param.commentId, param.functionId,  options).toPromise();
+        return this.api.deleteDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3403,7 +4054,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public deleteDecompilationComment(param: FunctionsDecompilationApiDeleteDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
-        return this.api.deleteDecompilationComment(param.commentId, param.functionId,  options).toPromise();
+        return this.api.deleteDecompilationComment(param.commentId, param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3412,7 +4063,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public getDecompilationCommentsWithHttpInfo(param: FunctionsDecompilationApiGetDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getDecompilationCommentsWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getDecompilationCommentsWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3421,7 +4072,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public getDecompilationComments(param: FunctionsDecompilationApiGetDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getDecompilationComments(param.functionId,  options).toPromise();
+        return this.api.getDecompilationComments(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3430,7 +4081,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public updateDecompilationCommentWithHttpInfo(param: FunctionsDecompilationApiUpdateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.updateDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.commentUpdateRequest, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3439,7 +4090,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public updateDecompilationComment(param: FunctionsDecompilationApiUpdateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.updateDecompilationComment(param.commentId, param.functionId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateDecompilationComment(param.commentId, param.functionId, param.commentUpdateRequest, param.apiKey,  options).toPromise();
     }
 
 }
@@ -3454,6 +4105,13 @@ export interface FunctionsRenamingHistoryApiBatchRenameFunctionRequest {
      * @memberof FunctionsRenamingHistoryApibatchRenameFunction
      */
     functionsListRename: FunctionsListRename
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsRenamingHistoryApibatchRenameFunction
+     */
+    apiKey?: string
 }
 
 export interface FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest {
@@ -3464,6 +4122,13 @@ export interface FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest {
      * @memberof FunctionsRenamingHistoryApigetFunctionNameHistory
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsRenamingHistoryApigetFunctionNameHistory
+     */
+    apiKey?: string
 }
 
 export interface FunctionsRenamingHistoryApiRenameFunctionIdRequest {
@@ -3480,6 +4145,13 @@ export interface FunctionsRenamingHistoryApiRenameFunctionIdRequest {
      * @memberof FunctionsRenamingHistoryApirenameFunctionId
      */
     functionRename: FunctionRename
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsRenamingHistoryApirenameFunctionId
+     */
+    apiKey?: string
 }
 
 export interface FunctionsRenamingHistoryApiRevertFunctionNameRequest {
@@ -3497,6 +4169,13 @@ export interface FunctionsRenamingHistoryApiRevertFunctionNameRequest {
      * @memberof FunctionsRenamingHistoryApirevertFunctionName
      */
     historyId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsRenamingHistoryApirevertFunctionName
+     */
+    apiKey?: string
 }
 
 export class ObjectFunctionsRenamingHistoryApi {
@@ -3512,7 +4191,7 @@ export class ObjectFunctionsRenamingHistoryApi {
      * @param param the request object
      */
     public batchRenameFunctionWithHttpInfo(param: FunctionsRenamingHistoryApiBatchRenameFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.batchRenameFunctionWithHttpInfo(param.functionsListRename,  options).toPromise();
+        return this.api.batchRenameFunctionWithHttpInfo(param.functionsListRename, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3521,7 +4200,7 @@ export class ObjectFunctionsRenamingHistoryApi {
      * @param param the request object
      */
     public batchRenameFunction(param: FunctionsRenamingHistoryApiBatchRenameFunctionRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.batchRenameFunction(param.functionsListRename,  options).toPromise();
+        return this.api.batchRenameFunction(param.functionsListRename, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3530,7 +4209,7 @@ export class ObjectFunctionsRenamingHistoryApi {
      * @param param the request object
      */
     public getFunctionNameHistoryWithHttpInfo(param: FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListFunctionNameHistory>> {
-        return this.api.getFunctionNameHistoryWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getFunctionNameHistoryWithHttpInfo(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3539,7 +4218,7 @@ export class ObjectFunctionsRenamingHistoryApi {
      * @param param the request object
      */
     public getFunctionNameHistory(param: FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest, options?: ConfigurationOptions): Promise<BaseResponseListFunctionNameHistory> {
-        return this.api.getFunctionNameHistory(param.functionId,  options).toPromise();
+        return this.api.getFunctionNameHistory(param.functionId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3548,7 +4227,7 @@ export class ObjectFunctionsRenamingHistoryApi {
      * @param param the request object
      */
     public renameFunctionIdWithHttpInfo(param: FunctionsRenamingHistoryApiRenameFunctionIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.renameFunctionIdWithHttpInfo(param.functionId, param.functionRename,  options).toPromise();
+        return this.api.renameFunctionIdWithHttpInfo(param.functionId, param.functionRename, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3557,7 +4236,7 @@ export class ObjectFunctionsRenamingHistoryApi {
      * @param param the request object
      */
     public renameFunctionId(param: FunctionsRenamingHistoryApiRenameFunctionIdRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.renameFunctionId(param.functionId, param.functionRename,  options).toPromise();
+        return this.api.renameFunctionId(param.functionId, param.functionRename, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3566,7 +4245,7 @@ export class ObjectFunctionsRenamingHistoryApi {
      * @param param the request object
      */
     public revertFunctionNameWithHttpInfo(param: FunctionsRenamingHistoryApiRevertFunctionNameRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.revertFunctionNameWithHttpInfo(param.functionId, param.historyId,  options).toPromise();
+        return this.api.revertFunctionNameWithHttpInfo(param.functionId, param.historyId, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3575,7 +4254,7 @@ export class ObjectFunctionsRenamingHistoryApi {
      * @param param the request object
      */
     public revertFunctionName(param: FunctionsRenamingHistoryApiRevertFunctionNameRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.revertFunctionName(param.functionId, param.historyId,  options).toPromise();
+        return this.api.revertFunctionName(param.functionId, param.historyId, param.apiKey,  options).toPromise();
     }
 
 }
@@ -3584,6 +4263,13 @@ import { ObservableModelsApi } from "./ObservableAPI";
 import { ModelsApiRequestFactory, ModelsApiResponseProcessor} from "../apis/ModelsApi";
 
 export interface ModelsApiGetModelsRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof ModelsApigetModels
+     */
+    apiKey?: string
 }
 
 export class ObjectModelsApi {
@@ -3599,7 +4285,7 @@ export class ObjectModelsApi {
      * @param param the request object
      */
     public getModelsWithHttpInfo(param: ModelsApiGetModelsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseModelsResponse>> {
-        return this.api.getModelsWithHttpInfo( options).toPromise();
+        return this.api.getModelsWithHttpInfo(param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3608,7 +4294,7 @@ export class ObjectModelsApi {
      * @param param the request object
      */
     public getModels(param: ModelsApiGetModelsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseModelsResponse> {
-        return this.api.getModels( options).toPromise();
+        return this.api.getModels(param.apiKey,  options).toPromise();
     }
 
 }
@@ -3669,6 +4355,13 @@ export interface SearchApiSearchBinariesRequest {
      * @memberof SearchApisearchBinaries
      */
     userFilesOnly?: boolean
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof SearchApisearchBinaries
+     */
+    apiKey?: string
 }
 
 export interface SearchApiSearchCollectionsRequest {
@@ -3745,6 +4438,13 @@ export interface SearchApiSearchCollectionsRequest {
      * @memberof SearchApisearchCollections
      */
     orderByDirection?: Order
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof SearchApisearchCollections
+     */
+    apiKey?: string
 }
 
 export interface SearchApiSearchFunctionsRequest {
@@ -3779,6 +4479,13 @@ export interface SearchApiSearchFunctionsRequest {
      * @memberof SearchApisearchFunctions
      */
     modelName?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof SearchApisearchFunctions
+     */
+    apiKey?: string
 }
 
 export interface SearchApiSearchTagsRequest {
@@ -3821,7 +4528,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchBinariesWithHttpInfo(param: SearchApiSearchBinariesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinarySearchResponse>> {
-        return this.api.searchBinariesWithHttpInfo(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly,  options).toPromise();
+        return this.api.searchBinariesWithHttpInfo(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3830,7 +4537,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchBinaries(param: SearchApiSearchBinariesRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseBinarySearchResponse> {
-        return this.api.searchBinaries(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly,  options).toPromise();
+        return this.api.searchBinaries(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3839,7 +4546,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchCollectionsWithHttpInfo(param: SearchApiSearchCollectionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionSearchResponse>> {
-        return this.api.searchCollectionsWithHttpInfo(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.modelName, param.filters, param.orderBy, param.orderByDirection,  options).toPromise();
+        return this.api.searchCollectionsWithHttpInfo(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.modelName, param.filters, param.orderBy, param.orderByDirection, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3848,7 +4555,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchCollections(param: SearchApiSearchCollectionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseCollectionSearchResponse> {
-        return this.api.searchCollections(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.modelName, param.filters, param.orderBy, param.orderByDirection,  options).toPromise();
+        return this.api.searchCollections(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.modelName, param.filters, param.orderBy, param.orderByDirection, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3857,7 +4564,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchFunctionsWithHttpInfo(param: SearchApiSearchFunctionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionSearchResponse>> {
-        return this.api.searchFunctionsWithHttpInfo(param.page, param.pageSize, param.partialName, param.modelName,  options).toPromise();
+        return this.api.searchFunctionsWithHttpInfo(param.page, param.pageSize, param.partialName, param.modelName, param.apiKey,  options).toPromise();
     }
 
     /**
@@ -3866,7 +4573,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchFunctions(param: SearchApiSearchFunctionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseFunctionSearchResponse> {
-        return this.api.searchFunctions(param.page, param.pageSize, param.partialName, param.modelName,  options).toPromise();
+        return this.api.searchFunctions(param.page, param.pageSize, param.partialName, param.modelName, param.apiKey,  options).toPromise();
     }
 
     /**

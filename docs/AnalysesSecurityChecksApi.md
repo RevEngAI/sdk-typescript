@@ -26,6 +26,8 @@ const apiInstance = new AnalysesSecurityChecksApi(configuration);
 const request: AnalysesSecurityChecksApiCreateScurityChecksTaskRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.createScurityChecksTask(request);
@@ -38,6 +40,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -85,6 +88,8 @@ const request: AnalysesSecurityChecksApiGetSecurityChecksRequest = {
   page: 1,
     // Number of items per page.
   pageSize: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getSecurityChecks(request);
@@ -99,6 +104,7 @@ Name | Type | Description  | Notes
  **analysisId** | [**number**] |  | defaults to undefined
  **page** | [**number**] | The page number to retrieve. | defaults to undefined
  **pageSize** | [**number**] | Number of items per page. | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -140,6 +146,8 @@ const apiInstance = new AnalysesSecurityChecksApi(configuration);
 const request: AnalysesSecurityChecksApiGetSecurityChecksTaskStatusRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getSecurityChecksTaskStatus(request);
@@ -152,6 +160,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

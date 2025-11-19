@@ -30,6 +30,8 @@ const apiInstance = new AnalysesDynamicExecutionApi(configuration);
 const request: AnalysesDynamicExecutionApiGetDynamicExecutionStatusRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getDynamicExecutionStatus(request);
@@ -42,6 +44,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -83,6 +86,8 @@ const apiInstance = new AnalysesDynamicExecutionApi(configuration);
 const request: AnalysesDynamicExecutionApiGetNetworkOverviewRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getNetworkOverview(request);
@@ -95,6 +100,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -138,6 +144,8 @@ const request: AnalysesDynamicExecutionApiGetProcessDumpRequest = {
   analysisId: 1,
   
   dumpName: "dump_name_example",
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getProcessDump(request);
@@ -151,6 +159,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
  **dumpName** | [**string**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -192,6 +201,8 @@ const apiInstance = new AnalysesDynamicExecutionApi(configuration);
 const request: AnalysesDynamicExecutionApiGetProcessDumpsRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getProcessDumps(request);
@@ -204,6 +215,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -245,6 +257,8 @@ const apiInstance = new AnalysesDynamicExecutionApi(configuration);
 const request: AnalysesDynamicExecutionApiGetProcessRegistryRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getProcessRegistry(request);
@@ -257,6 +271,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -298,6 +313,8 @@ const apiInstance = new AnalysesDynamicExecutionApi(configuration);
 const request: AnalysesDynamicExecutionApiGetProcessTreeRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getProcessTree(request);
@@ -310,6 +327,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -351,6 +369,8 @@ const apiInstance = new AnalysesDynamicExecutionApi(configuration);
 const request: AnalysesDynamicExecutionApiGetTtpsRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getTtps(request);
@@ -363,6 +383,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

@@ -29,8 +29,9 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * Create a comment for this function
      * @param functionId 
      * @param functionCommentCreateRequest 
+     * @param apiKey 
      */
-    public async createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
@@ -43,6 +44,7 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         if (functionCommentCreateRequest === null || functionCommentCreateRequest === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "createAiDecompilationComment", "functionCommentCreateRequest");
         }
+
 
 
         // Path Params
@@ -84,14 +86,16 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
      * @param functionId The ID of the function for which we are creating the decompilation task
+     * @param apiKey 
      */
-    public async createAiDecompilationTask(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async createAiDecompilationTask(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "createAiDecompilationTask", "functionId");
         }
+
 
 
         // Path Params
@@ -123,8 +127,9 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * Delete a comment
      * @param commentId 
      * @param functionId 
+     * @param apiKey 
      */
-    public async deleteAiDecompilationComment(commentId: number, functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async deleteAiDecompilationComment(commentId: number, functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commentId' is not null or undefined
@@ -137,6 +142,7 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "deleteAiDecompilationComment", "functionId");
         }
+
 
 
         // Path Params
@@ -168,14 +174,16 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId 
+     * @param apiKey 
      */
-    public async getAiDecompilationComments(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAiDecompilationComments(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationComments", "functionId");
         }
+
 
 
         // Path Params
@@ -205,14 +213,16 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
     /**
      * Get rating for AI decompilation
      * @param functionId The ID of the function for which to get the rating
+     * @param apiKey 
      */
-    public async getAiDecompilationRating(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAiDecompilationRating(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationRating", "functionId");
         }
+
 
 
         // Path Params
@@ -245,14 +255,16 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * @param functionId The ID of the function being decompiled
      * @param summarise Generate a summary for the decompilation
      * @param generateInlineComments Generate inline comments for the decompilation (only works if summarise is enabled)
+     * @param apiKey 
      */
-    public async getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationTaskResult", "functionId");
         }
+
 
 
 
@@ -294,14 +306,16 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
     /**
      * Check the status of a function ai decompilation
      * @param functionId The ID of the function being checked
+     * @param apiKey 
      */
-    public async getAiDecompilationTaskStatus(functionId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAiDecompilationTaskStatus(functionId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationTaskStatus", "functionId");
         }
+
 
 
         // Path Params
@@ -334,8 +348,9 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * @param commentId 
      * @param functionId 
      * @param commentUpdateRequest 
+     * @param apiKey 
      */
-    public async updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commentId' is not null or undefined
@@ -354,6 +369,7 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         if (commentUpdateRequest === null || commentUpdateRequest === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "updateAiDecompilationComment", "commentUpdateRequest");
         }
+
 
 
         // Path Params
@@ -396,8 +412,9 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * Upsert rating for AI decompilation
      * @param functionId The ID of the function being rated
      * @param upsertAiDecomplationRatingRequest 
+     * @param apiKey 
      */
-    public async upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: Configuration): Promise<RequestContext> {
+    public async upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
@@ -410,6 +427,7 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         if (upsertAiDecomplationRatingRequest === null || upsertAiDecomplationRatingRequest === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "upsertAiDecompilationRating", "upsertAiDecomplationRatingRequest");
         }
+
 
 
         // Path Params

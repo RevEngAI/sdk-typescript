@@ -20,11 +20,15 @@ Method | HTTP request | Description
 
 ```typescript
 import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
+import type { AuthenticationUsersApiGetRequesterUserInfoRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AuthenticationUsersApi(configuration);
 
-const request = {};
+const request: AuthenticationUsersApiGetRequesterUserInfoRequest = {
+  
+  apiKey: "api_key_example",
+};
 
 const data = await apiInstance.getRequesterUserInfo(request);
 console.log('API called successfully. Returned data:', data);
@@ -32,7 +36,10 @@ console.log('API called successfully. Returned data:', data);
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -74,6 +81,8 @@ const apiInstance = new AuthenticationUsersApi(configuration);
 const request: AuthenticationUsersApiGetUserRequest = {
   
   userId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getUser(request);
@@ -86,6 +95,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **userId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -119,11 +129,15 @@ Name | Type | Description  | Notes
 
 ```typescript
 import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
+import type { AuthenticationUsersApiGetUserActivityRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AuthenticationUsersApi(configuration);
 
-const request = {};
+const request: AuthenticationUsersApiGetUserActivityRequest = {
+  
+  apiKey: "api_key_example",
+};
 
 const data = await apiInstance.getUserActivity(request);
 console.log('API called successfully. Returned data:', data);
@@ -131,7 +145,10 @@ console.log('API called successfully. Returned data:', data);
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -166,11 +183,15 @@ Retrieves all comments created by a specific user. Only returns comments for res
 
 ```typescript
 import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
+import type { AuthenticationUsersApiGetUserCommentsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AuthenticationUsersApi(configuration);
 
-const request = {};
+const request: AuthenticationUsersApiGetUserCommentsRequest = {
+  
+  apiKey: "api_key_example",
+};
 
 const data = await apiInstance.getUserComments(request);
 console.log('API called successfully. Returned data:', data);
@@ -178,7 +199,10 @@ console.log('API called successfully. Returned data:', data);
 
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

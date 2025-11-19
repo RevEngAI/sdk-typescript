@@ -42,6 +42,8 @@ const request: SearchApiSearchBinariesRequest = {
   modelName: "model_name_example",
     // Whether to only search user\'s uploaded files (optional)
   userFilesOnly: false,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.searchBinaries(request);
@@ -60,6 +62,7 @@ Name | Type | Description  | Notes
  **tags** | **Array&lt;string&gt;** | The tags to be searched for | (optional) defaults to undefined
  **modelName** | [**string**] | The name of the model used to analyze the binary the function belongs to | (optional) defaults to undefined
  **userFilesOnly** | [**boolean**] | Whether to only search user\&#39;s uploaded files | (optional) defaults to false
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -124,6 +127,8 @@ const request: SearchApiSearchCollectionsRequest = {
   orderBy: "created",
     // The order direction in which to return results (optional)
   orderByDirection: "ASC",
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.searchCollections(request);
@@ -145,6 +150,7 @@ Name | Type | Description  | Notes
  **filters** | **Array&lt;Filters&gt;** | The filters to be used for the search | (optional) defaults to undefined
  **orderBy** | **AppApiRestV2CollectionsEnumsOrderBy** | The field to sort the order by in the results | (optional) defaults to undefined
  **orderByDirection** | **Order** | The order direction in which to return results | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -194,6 +200,8 @@ const request: SearchApiSearchFunctionsRequest = {
   partialName: "partial_name_example",
     // The name of the model used to analyze the binary the function belongs to (optional)
   modelName: "model_name_example",
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.searchFunctions(request);
@@ -209,6 +217,7 @@ Name | Type | Description  | Notes
  **pageSize** | [**number**] | Number of items per page. | (optional) defaults to 10
  **partialName** | [**string**] | The partial or full name of the function being searched | (optional) defaults to undefined
  **modelName** | [**string**] | The name of the model used to analyze the binary the function belongs to | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

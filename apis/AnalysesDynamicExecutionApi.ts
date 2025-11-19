@@ -24,14 +24,16 @@ export class AnalysesDynamicExecutionApiRequestFactory extends BaseAPIRequestFac
     /**
      * Get the status of a dynamic execution task
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getDynamicExecutionStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getDynamicExecutionStatus(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesDynamicExecutionApi", "getDynamicExecutionStatus", "analysisId");
         }
+
 
 
         // Path Params
@@ -61,14 +63,16 @@ export class AnalysesDynamicExecutionApiRequestFactory extends BaseAPIRequestFac
     /**
      * Get the dynamic execution results for network overview
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getNetworkOverview(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getNetworkOverview(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesDynamicExecutionApi", "getNetworkOverview", "analysisId");
         }
+
 
 
         // Path Params
@@ -99,8 +103,9 @@ export class AnalysesDynamicExecutionApiRequestFactory extends BaseAPIRequestFac
      * Get the dynamic execution results for a specific process dump
      * @param analysisId 
      * @param dumpName 
+     * @param apiKey 
      */
-    public async getProcessDump(analysisId: number, dumpName: string, _options?: Configuration): Promise<RequestContext> {
+    public async getProcessDump(analysisId: number, dumpName: string, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -113,6 +118,7 @@ export class AnalysesDynamicExecutionApiRequestFactory extends BaseAPIRequestFac
         if (dumpName === null || dumpName === undefined) {
             throw new RequiredError("AnalysesDynamicExecutionApi", "getProcessDump", "dumpName");
         }
+
 
 
         // Path Params
@@ -143,14 +149,16 @@ export class AnalysesDynamicExecutionApiRequestFactory extends BaseAPIRequestFac
     /**
      * Get the dynamic execution results for process dumps
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getProcessDumps(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getProcessDumps(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesDynamicExecutionApi", "getProcessDumps", "analysisId");
         }
+
 
 
         // Path Params
@@ -180,14 +188,16 @@ export class AnalysesDynamicExecutionApiRequestFactory extends BaseAPIRequestFac
     /**
      * Get the dynamic execution results for process registry
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getProcessRegistry(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getProcessRegistry(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesDynamicExecutionApi", "getProcessRegistry", "analysisId");
         }
+
 
 
         // Path Params
@@ -217,14 +227,16 @@ export class AnalysesDynamicExecutionApiRequestFactory extends BaseAPIRequestFac
     /**
      * Get the dynamic execution results for process tree
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getProcessTree(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getProcessTree(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesDynamicExecutionApi", "getProcessTree", "analysisId");
         }
+
 
 
         // Path Params
@@ -254,14 +266,16 @@ export class AnalysesDynamicExecutionApiRequestFactory extends BaseAPIRequestFac
     /**
      * Get the dynamic execution results for ttps
      * @param analysisId 
+     * @param apiKey 
      */
-    public async getTtps(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getTtps(analysisId: number, apiKey?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesDynamicExecutionApi", "getTtps", "analysisId");
         }
+
 
 
         // Path Params

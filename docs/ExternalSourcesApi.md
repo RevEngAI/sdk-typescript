@@ -29,6 +29,8 @@ const apiInstance = new ExternalSourcesApi(configuration);
 const request: ExternalSourcesApiCreateExternalTaskMbRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.createExternalTaskMb(request);
@@ -41,6 +43,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -83,6 +86,8 @@ const apiInstance = new ExternalSourcesApi(configuration);
 const request: ExternalSourcesApiCreateExternalTaskVtRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.createExternalTaskVt(request);
@@ -95,6 +100,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -137,6 +143,8 @@ const apiInstance = new ExternalSourcesApi(configuration);
 const request: ExternalSourcesApiGetMbDataRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getMbData(request);
@@ -149,6 +157,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -191,6 +200,8 @@ const apiInstance = new ExternalSourcesApi(configuration);
 const request: ExternalSourcesApiGetMbTaskStatusRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getMbTaskStatus(request);
@@ -203,6 +214,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -244,6 +256,8 @@ const apiInstance = new ExternalSourcesApi(configuration);
 const request: ExternalSourcesApiGetVtDataRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getVtData(request);
@@ -256,6 +270,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -298,6 +313,8 @@ const apiInstance = new ExternalSourcesApi(configuration);
 const request: ExternalSourcesApiGetVtTaskStatusRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getVtTaskStatus(request);
@@ -310,6 +327,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

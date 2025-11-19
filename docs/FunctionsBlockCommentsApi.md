@@ -30,6 +30,8 @@ const request: FunctionsBlockCommentsApiGenerateBlockCommentsForBlockInFunctionR
   block: {
     virtualAddress: 1,
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.generateBlockCommentsForBlockInFunction(request);
@@ -43,6 +45,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **block** | **Block**|  |
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -84,6 +87,8 @@ const apiInstance = new FunctionsBlockCommentsApi(configuration);
 const request: FunctionsBlockCommentsApiGenerateBlockCommentsForFunctionRequest = {
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.generateBlockCommentsForFunction(request);
@@ -96,6 +101,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -137,6 +143,8 @@ const apiInstance = new FunctionsBlockCommentsApi(configuration);
 const request: FunctionsBlockCommentsApiGenerateOverviewCommentForFunctionRequest = {
   
   functionId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.generateOverviewCommentForFunction(request);
@@ -149,6 +157,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

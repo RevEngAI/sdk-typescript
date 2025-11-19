@@ -32,6 +32,8 @@ const request: AnalysesCommentsApiCreateAnalysisCommentRequest = {
   commentBase: {
     content: "content_example",
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.createAnalysisComment(request);
@@ -45,6 +47,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentBase** | **CommentBase**|  |
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -90,6 +93,8 @@ const request: AnalysesCommentsApiDeleteAnalysisCommentRequest = {
   commentId: 1,
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.deleteAnalysisComment(request);
@@ -103,6 +108,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | [**number**] |  | defaults to undefined
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -147,6 +153,8 @@ const apiInstance = new AnalysesCommentsApi(configuration);
 const request: AnalysesCommentsApiGetAnalysisCommentsRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAnalysisComments(request);
@@ -159,6 +167,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -207,6 +216,8 @@ const request: AnalysesCommentsApiUpdateAnalysisCommentRequest = {
   commentUpdateRequest: {
     content: "content_example",
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.updateAnalysisComment(request);
@@ -221,6 +232,7 @@ Name | Type | Description  | Notes
  **commentUpdateRequest** | **CommentUpdateRequest**|  |
  **commentId** | [**number**] |  | defaults to undefined
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

@@ -76,6 +76,8 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
       fileFormat: "pe",
     },
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.createAnalysis(request);
@@ -88,6 +90,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisCreateRequest** | **AnalysisCreateRequest**|  |
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -132,6 +135,8 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiDeleteAnalysisRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.deleteAnalysis(request);
@@ -144,6 +149,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -188,6 +194,8 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiGetAnalysisBasicInfoRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAnalysisBasicInfo(request);
@@ -200,6 +208,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -242,6 +251,8 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiGetAnalysisFunctionMapRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAnalysisFunctionMap(request);
@@ -254,6 +265,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -296,6 +308,8 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiGetAnalysisLogsRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAnalysisLogs(request);
@@ -308,6 +322,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -350,6 +365,8 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiGetAnalysisParamsRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAnalysisParams(request);
@@ -362,6 +379,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -404,6 +422,8 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiGetAnalysisStatusRequest = {
   
   analysisId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.getAnalysisStatus(request);
@@ -416,6 +436,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -484,6 +505,8 @@ const request: AnalysesCoreApiListAnalysesRequest = {
   orderBy: "created",
   
   order: "ASC",
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.listAnalyses(request);
@@ -506,6 +529,7 @@ Name | Type | Description  | Notes
  **offset** | [**number**] |  | (optional) defaults to 0
  **orderBy** | **AppApiRestV2AnalysesEnumsOrderBy** |  | (optional) defaults to undefined
  **order** | **Order** |  | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -548,6 +572,8 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiLookupBinaryIdRequest = {
   
   binaryId: 1,
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.lookupBinaryId(request);
@@ -560,6 +586,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -611,6 +638,8 @@ const request: AnalysesCoreApiRequeueAnalysisRequest = {
     modelName: "modelName_example",
     noCache: false,
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.requeueAnalysis(request);
@@ -624,6 +653,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **reAnalysisForm** | **ReAnalysisForm**|  |
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -673,6 +703,8 @@ const request: AnalysesCoreApiUpdateAnalysisRequest = {
     binaryName: "binaryName_example",
     analysisScope: "PUBLIC",
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.updateAnalysis(request);
@@ -686,6 +718,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisUpdateRequest** | **AnalysisUpdateRequest**|  |
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -734,6 +767,8 @@ const request: AnalysesCoreApiUpdateAnalysisTagsRequest = {
       "tags_example",
     ],
   },
+  
+  apiKey: "api_key_example",
 };
 
 const data = await apiInstance.updateAnalysisTags(request);
@@ -747,6 +782,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisUpdateTagsRequest** | **AnalysisUpdateTagsRequest**|  |
  **analysisId** | [**number**] |  | defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -793,6 +829,8 @@ const request: AnalysesCoreApiUploadFileRequest = {
   
   packedPassword: "packed_password_example",
   
+  apiKey: "api_key_example",
+  
   forceOverwrite: false,
 };
 
@@ -808,6 +846,7 @@ Name | Type | Description  | Notes
  **uploadFileType** | **UploadFileType** |  | defaults to undefined
  **file** | [**HttpFile**] |  | defaults to undefined
  **packedPassword** | [**string**] |  | (optional) defaults to undefined
+ **apiKey** | [**string**] |  | (optional) defaults to undefined
  **forceOverwrite** | [**boolean**] |  | (optional) defaults to false
 
 
