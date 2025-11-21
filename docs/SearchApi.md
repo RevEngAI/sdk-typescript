@@ -121,9 +121,9 @@ const request: SearchApiSearchCollectionsRequest = {
     "official_only",
   ],
     // The field to sort the order by in the results (optional)
-  orderBy: "created",
+  orderBy: null,
     // The order direction in which to return results (optional)
-  orderByDirection: "ASC",
+  orderByDirection: null,
 };
 
 const data = await apiInstance.searchCollections(request);

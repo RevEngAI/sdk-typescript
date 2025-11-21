@@ -33,7 +33,7 @@ const request: CollectionsApiCreateCollectionRequest = {
   collectionCreateRequest: {
     collectionName: "collectionName_example",
     description: "description_example",
-    collectionScope: "PRIVATE",
+    collectionScope: null,
     tags: [
       "tags_example",
     ],
@@ -219,9 +219,9 @@ const request: CollectionsApiListCollectionsRequest = {
   
   offset: 0,
   
-  orderBy: "created",
+  orderBy: null,
   
-  order: "ASC",
+  order: null,
 };
 
 const data = await apiInstance.listCollections(request);
@@ -285,7 +285,7 @@ const request: CollectionsApiUpdateCollectionRequest = {
   collectionUpdateRequest: {
     collectionName: "collectionName_example",
     description: "description_example",
-    collectionScope: "PRIVATE",
+    collectionScope: null,
   },
 };
 

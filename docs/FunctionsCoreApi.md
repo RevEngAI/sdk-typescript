@@ -98,12 +98,7 @@ const request: FunctionsCoreApiAnalysisFunctionMatchingRequest = {
   
   analysisFunctionMatchingRequest: {
     minSimilarity: 90.0,
-    filters: {
-      binaryIds: [],
-      collectionIds: [],
-      functionIds: [],
-      debugTypes: [],
-    },
+    filters: null,
     resultsPerFunction: 1,
     page: 1,
     pageSize: 0,
@@ -234,12 +229,7 @@ const request: FunctionsCoreApiBatchFunctionMatchingRequest = {
       1,
     ],
     minSimilarity: 90.0,
-    filters: {
-      binaryIds: [],
-      collectionIds: [],
-      functionIds: [],
-      debugTypes: [],
-    },
+    filters: null,
     resultsPerFunction: 1,
     page: 1,
     pageSize: 0,

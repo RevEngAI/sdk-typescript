@@ -326,44 +326,7 @@ const request: FunctionsDataTypesApiUpdateFunctionDataTypesRequest = {
   
   updateFunctionDataTypes: {
     dataTypesVersion: 1,
-    dataTypes: {
-      funcTypes: {
-        lastChange: "lastChange_example",
-        addr: 1,
-        size: 1,
-        header: {
-          lastChange: "lastChange_example",
-          name: "name_example",
-          addr: 1,
-          type: "type_example",
-          args: {
-            "key": {
-              lastChange: "lastChange_example",
-              offset: 1,
-              name: "name_example",
-              type: "type_example",
-              size: 1,
-            },
-          },
-        },
-        stackVars: {
-          "key": {
-            lastChange: "lastChange_example",
-            offset: 1,
-            name: "name_example",
-            type: "type_example",
-            size: 1,
-            addr: 1,
-          },
-        },
-        name: "name_example",
-        type: "type_example",
-        artifactType: "Function",
-      },
-      funcDeps: [
-        null,
-      ],
-    },
+    dataTypes: null,
   },
 };
 

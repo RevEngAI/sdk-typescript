@@ -31,10 +31,7 @@ const request: FunctionsDecompilationApiCreateDecompilationCommentRequest = {
   
   functionCommentCreateRequest: {
     content: "content_example",
-    context: {
-      startLine: 1,
-      endLine: 1,
-    },
+    context: null,
   },
 };
 

@@ -44,37 +44,11 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
         name: "name_example",
       },
     ],
-    analysisScope: "PRIVATE",
-    symbols: {
-      baseAddress: 1,
-      functionBoundaries: [
-        {
-          mangledName: "mangledName_example",
-          startAddress: 1,
-          endAddress: 1,
-        },
-      ],
-    },
+    analysisScope: null,
+    symbols: null,
     debugHash: "debugHash_example",
-    analysisConfig: {
-      scrapeThirdPartyConfig: {
-        enabled: false,
-      },
-      generateCves: false,
-      generateSbom: false,
-      generateCapabilities: false,
-      noCache: false,
-      advancedAnalysis: false,
-      sandboxConfig: {
-        enabled: false,
-        commandLineArgs: "",
-      },
-    },
-    binaryConfig: {
-      isa: "x86",
-      platform: "linux",
-      fileFormat: "pe",
-    },
+    analysisConfig: null,
+    binaryConfig: null,
   },
 };
 
@@ -471,7 +445,7 @@ const request: AnalysesCoreApiListAnalysesRequest = {
     "binnet-0.7-x86-64-windows",
   ],
     // Show analysis that have a dynamic execution with the given status (optional)
-  dynamicExecutionStatus: "PENDING",
+  dynamicExecutionStatus: null,
     // Show analysis belonging to the user (optional)
   usernames: [],
   
@@ -481,9 +455,9 @@ const request: AnalysesCoreApiListAnalysesRequest = {
   
   offset: 0,
   
-  orderBy: "created",
+  orderBy: null,
   
-  order: "ASC",
+  order: null,
 };
 
 const data = await apiInstance.listAnalyses(request);

@@ -36,10 +36,7 @@ const request: FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest = 
   
   functionCommentCreateRequest: {
     content: "content_example",
-    context: {
-      startLine: 1,
-      endLine: 1,
-    },
+    context: null,
   },
 };
 
@@ -500,7 +497,7 @@ const request: FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest = {
   functionId: 1,
   
   upsertAiDecomplationRatingRequest: {
-    rating: "POSITIVE",
+    rating: null,
     reason: "reason_example",
   },
 };

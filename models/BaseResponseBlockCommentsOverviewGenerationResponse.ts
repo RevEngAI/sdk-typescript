@@ -18,7 +18,7 @@ export class BaseResponseBlockCommentsOverviewGenerationResponse {
     * Response status on whether the request succeeded
     */
     'status'?: boolean;
-    'data'?: any;
+    'data'?: any | null;
     'message'?: string | null;
     'errors'?: Array<ErrorModel> | null;
     /**
