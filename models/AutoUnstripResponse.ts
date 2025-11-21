@@ -15,6 +15,7 @@ import { HttpFile } from '../http/http';
 export class AutoUnstripResponse {
     /**
     * Progress of the auto-unstrip operation, represented as a percentage
+    * @deprecated
     */
     'progress'?: number;
     'status'?: string | null;

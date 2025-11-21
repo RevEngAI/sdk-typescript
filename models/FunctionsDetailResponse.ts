@@ -17,6 +17,7 @@ export class FunctionsDetailResponse {
     */
     'functionId': number;
     'functionName': string;
+    'functionNameMangled': string;
     'functionVaddr': number;
     'functionSize': number;
     'analysisId': number;
@@ -42,6 +43,12 @@ export class FunctionsDetailResponse {
         {
             "name": "functionName",
             "baseName": "function_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "functionNameMangled",
+            "baseName": "function_name_mangled",
             "type": "string",
             "format": ""
         },
