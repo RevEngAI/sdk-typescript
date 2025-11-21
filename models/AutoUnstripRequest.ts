@@ -14,26 +14,32 @@ import { HttpFile } from '../http/http';
 export class AutoUnstripRequest {
     /**
     * Minimum similarity expected for a match as a percentage, default is 90
+    * @deprecated
     */
     'minSimilarity'?: number;
     /**
     * Whether to apply the matched function names to the target binary, default is False
+    * @deprecated
     */
     'apply'?: boolean;
     /**
     * Confidence threshold for applying function names as a percentage, default is 90
+    * @deprecated
     */
     'confidenceThreshold'?: number;
     /**
     * Minimum number of matching functions required to consider for a match, default is 10
+    * @deprecated
     */
     'minGroupSize'?: number;
     /**
     * If set to true, only returns the status of the auto-unstrip operation without the actual results
+    * @deprecated
     */
     'statusOnly'?: boolean;
     /**
     * If set to true, forces the system to bypass any cached results and perform a fresh computation
+    * @deprecated
     */
     'noCache'?: boolean;
 
