@@ -76,6 +76,8 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
       fileFormat: "pe",
     },
   },
+  
+  xRevEngApplication: "X-RevEng-Application_example",
 };
 
 const data = await apiInstance.createAnalysis(request);
@@ -88,6 +90,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisCreateRequest** | **AnalysisCreateRequest**|  |
+ **xRevEngApplication** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type
@@ -611,6 +614,8 @@ const request: AnalysesCoreApiRequeueAnalysisRequest = {
     modelName: "modelName_example",
     noCache: false,
   },
+  
+  xRevEngApplication: "X-RevEng-Application_example",
 };
 
 const data = await apiInstance.requeueAnalysis(request);
@@ -624,6 +629,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **reAnalysisForm** | **ReAnalysisForm**|  |
  **analysisId** | [**number**] |  | defaults to undefined
+ **xRevEngApplication** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

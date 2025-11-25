@@ -445,6 +445,13 @@ export interface AnalysesCoreApiCreateAnalysisRequest {
      * @memberof AnalysesCoreApicreateAnalysis
      */
     analysisCreateRequest: AnalysisCreateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApicreateAnalysis
+     */
+    xRevEngApplication?: string
 }
 
 export interface AnalysesCoreApiDeleteAnalysisRequest {
@@ -613,6 +620,13 @@ export interface AnalysesCoreApiRequeueAnalysisRequest {
      * @memberof AnalysesCoreApirequeueAnalysis
      */
     reAnalysisForm: ReAnalysisForm
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApirequeueAnalysis
+     */
+    xRevEngApplication?: string
 }
 
 export interface AnalysesCoreApiUpdateAnalysisRequest {
@@ -691,7 +705,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public createAnalysisWithHttpInfo(param: AnalysesCoreApiCreateAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisCreateResponse>> {
-        return this.api.createAnalysisWithHttpInfo(param.analysisCreateRequest,  options).toPromise();
+        return this.api.createAnalysisWithHttpInfo(param.analysisCreateRequest, param.xRevEngApplication,  options).toPromise();
     }
 
     /**
@@ -700,7 +714,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public createAnalysis(param: AnalysesCoreApiCreateAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisCreateResponse> {
-        return this.api.createAnalysis(param.analysisCreateRequest,  options).toPromise();
+        return this.api.createAnalysis(param.analysisCreateRequest, param.xRevEngApplication,  options).toPromise();
     }
 
     /**
@@ -853,7 +867,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public requeueAnalysisWithHttpInfo(param: AnalysesCoreApiRequeueAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCreated>> {
-        return this.api.requeueAnalysisWithHttpInfo(param.analysisId, param.reAnalysisForm,  options).toPromise();
+        return this.api.requeueAnalysisWithHttpInfo(param.analysisId, param.reAnalysisForm, param.xRevEngApplication,  options).toPromise();
     }
 
     /**
@@ -862,7 +876,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public requeueAnalysis(param: AnalysesCoreApiRequeueAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseCreated> {
-        return this.api.requeueAnalysis(param.analysisId, param.reAnalysisForm,  options).toPromise();
+        return this.api.requeueAnalysis(param.analysisId, param.reAnalysisForm, param.xRevEngApplication,  options).toPromise();
     }
 
     /**

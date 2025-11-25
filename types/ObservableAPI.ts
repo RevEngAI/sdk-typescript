@@ -466,11 +466,12 @@ export class ObservableAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [xRevEngApplication]
      */
-    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisCreateResponse>> {
+    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisCreateResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createAnalysis(analysisCreateRequest, _config);
+        const requestContextPromise = this.requestFactory.createAnalysis(analysisCreateRequest, xRevEngApplication, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -491,9 +492,10 @@ export class ObservableAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [xRevEngApplication]
      */
-    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisCreateResponse> {
-        return this.createAnalysisWithHttpInfo(analysisCreateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisCreateResponse>) => apiResponse.data));
+    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisCreateResponse> {
+        return this.createAnalysisWithHttpInfo(analysisCreateRequest, xRevEngApplication, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisCreateResponse>) => apiResponse.data));
     }
 
     /**
@@ -793,11 +795,12 @@ export class ObservableAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [xRevEngApplication]
      */
-    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCreated>> {
+    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCreated>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.requeueAnalysis(analysisId, reAnalysisForm, _config);
+        const requestContextPromise = this.requestFactory.requeueAnalysis(analysisId, reAnalysisForm, xRevEngApplication, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -819,9 +822,10 @@ export class ObservableAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [xRevEngApplication]
      */
-    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, _options?: ConfigurationOptions): Observable<BaseResponseCreated> {
-        return this.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCreated>) => apiResponse.data));
+    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<BaseResponseCreated> {
+        return this.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, xRevEngApplication, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCreated>) => apiResponse.data));
     }
 
     /**

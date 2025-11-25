@@ -415,10 +415,11 @@ export class PromiseAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [xRevEngApplication]
      */
-    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisCreateResponse>> {
+    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisCreateResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAnalysisWithHttpInfo(analysisCreateRequest, observableOptions);
+        const result = this.api.createAnalysisWithHttpInfo(analysisCreateRequest, xRevEngApplication, observableOptions);
         return result.toPromise();
     }
 
@@ -426,10 +427,11 @@ export class PromiseAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [xRevEngApplication]
      */
-    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisCreateResponse> {
+    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisCreateResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAnalysis(analysisCreateRequest, observableOptions);
+        const result = this.api.createAnalysis(analysisCreateRequest, xRevEngApplication, observableOptions);
         return result.toPromise();
     }
 
@@ -634,10 +636,11 @@ export class PromiseAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [xRevEngApplication]
      */
-    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCreated>> {
+    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCreated>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, observableOptions);
+        const result = this.api.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, xRevEngApplication, observableOptions);
         return result.toPromise();
     }
 
@@ -646,10 +649,11 @@ export class PromiseAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [xRevEngApplication]
      */
-    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, _options?: PromiseConfigurationOptions): Promise<BaseResponseCreated> {
+    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCreated> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.requeueAnalysis(analysisId, reAnalysisForm, observableOptions);
+        const result = this.api.requeueAnalysis(analysisId, reAnalysisForm, xRevEngApplication, observableOptions);
         return result.toPromise();
     }
 
