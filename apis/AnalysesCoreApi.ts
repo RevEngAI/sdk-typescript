@@ -42,8 +42,9 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest 
+     * @param xRevEngApplication 
      */
-    public async createAnalysis(analysisCreateRequest: AnalysisCreateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async createAnalysis(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisCreateRequest' is not null or undefined
@@ -52,12 +53,16 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
         // Path Params
         const localVarPath = '/v2/analyses';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Header Params
+        requestContext.setHeaderParam("X-RevEng-Application", ObjectSerializer.serialize(xRevEngApplication, "string", ""));
 
 
         // Body Params
@@ -476,8 +481,9 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Requeue Analysis
      * @param analysisId 
      * @param reAnalysisForm 
+     * @param xRevEngApplication 
      */
-    public async requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, _options?: Configuration): Promise<RequestContext> {
+    public async requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -492,6 +498,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
         // Path Params
         const localVarPath = '/v2/analyses/{analysis_id}/requeue'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
@@ -499,6 +506,9 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Header Params
+        requestContext.setHeaderParam("X-RevEng-Application", ObjectSerializer.serialize(xRevEngApplication, "string", ""));
 
 
         // Body Params
