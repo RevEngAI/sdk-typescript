@@ -171,10 +171,10 @@ export * from '../models/FunctionInfoOutput';
 export * from '../models/FunctionLocalVariableResponse';
 export * from '../models/FunctionMapping';
 export * from '../models/FunctionMappingFull';
-export * from '../models/FunctionMatchingBatchResponse';
+export * from '../models/FunctionMatch';
 export * from '../models/FunctionMatchingFilters';
 export * from '../models/FunctionMatchingRequest';
-export * from '../models/FunctionMatchingResultWithBestMatch';
+export * from '../models/FunctionMatchingResponse';
 export * from '../models/FunctionNameHistory';
 export * from '../models/FunctionParamResponse';
 export * from '../models/FunctionRename';
@@ -452,10 +452,10 @@ import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
-import { FunctionMatchingBatchResponse } from '../models/FunctionMatchingBatchResponse';
+import { FunctionMatch } from '../models/FunctionMatch';
 import { FunctionMatchingFilters   , FunctionMatchingFiltersDebugTypesEnum   } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
-import { FunctionMatchingResultWithBestMatch } from '../models/FunctionMatchingResultWithBestMatch';
+import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 import { FunctionNameHistory        } from '../models/FunctionNameHistory';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
@@ -765,10 +765,10 @@ let typeMap: {[index: string]: any} = {
     "FunctionLocalVariableResponse": FunctionLocalVariableResponse,
     "FunctionMapping": FunctionMapping,
     "FunctionMappingFull": FunctionMappingFull,
-    "FunctionMatchingBatchResponse": FunctionMatchingBatchResponse,
+    "FunctionMatch": FunctionMatch,
     "FunctionMatchingFilters": FunctionMatchingFilters,
     "FunctionMatchingRequest": FunctionMatchingRequest,
-    "FunctionMatchingResultWithBestMatch": FunctionMatchingResultWithBestMatch,
+    "FunctionMatchingResponse": FunctionMatchingResponse,
     "FunctionNameHistory": FunctionNameHistory,
     "FunctionParamResponse": FunctionParamResponse,
     "FunctionRename": FunctionRename,

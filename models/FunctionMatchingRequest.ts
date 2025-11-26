@@ -32,14 +32,17 @@ export class FunctionMatchingRequest {
     'resultsPerFunction'?: number;
     /**
     * Page number for paginated results, default is 1 (first page)
+    * @deprecated
     */
     'page'?: number;
     /**
     * Number of functions to return per page, default is 0 (all functions), max is 1000
+    * @deprecated
     */
     'pageSize'?: number;
     /**
     * If set to true, only returns the status of the matching operation without the actual results
+    * @deprecated
     */
     'statusOnly'?: boolean;
     /**

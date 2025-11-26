@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **analysisFunctionMatching**
-> FunctionMatchingBatchResponse analysisFunctionMatching(analysisFunctionMatchingRequest)
+> FunctionMatchingResponse analysisFunctionMatching(analysisFunctionMatchingRequest)
 
 Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
 
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**FunctionMatchingBatchResponse**
+**FunctionMatchingResponse**
 
 ### Authorization
 
@@ -212,7 +212,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **batchFunctionMatching**
-> FunctionMatchingBatchResponse batchFunctionMatching(functionMatchingRequest)
+> FunctionMatchingResponse batchFunctionMatching(functionMatchingRequest)
 
 Takes in an input of functions ID\'s and settings and finds the nearest functions for each function that\'s within the system
 
@@ -262,7 +262,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**FunctionMatchingBatchResponse**
+**FunctionMatchingResponse**
 
 ### Authorization
 

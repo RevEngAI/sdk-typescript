@@ -13,7 +13,7 @@ import { MatchedFunction } from '../models/MatchedFunction';
 import { NameConfidence } from '../models/NameConfidence';
 import { HttpFile } from '../http/http';
 
-export class FunctionMatchingResultWithBestMatch {
+export class FunctionMatch {
     /**
     * Unique identifier of the function
     */
@@ -46,7 +46,7 @@ export class FunctionMatchingResultWithBestMatch {
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionMatchingResultWithBestMatch.attributeTypeMap;
+        return FunctionMatch.attributeTypeMap;
     }
 
     public constructor() {

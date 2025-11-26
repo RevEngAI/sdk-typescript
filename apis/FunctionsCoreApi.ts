@@ -19,8 +19,8 @@ import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFuncti
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
 import { BaseResponseFunctionStringsResponse } from '../models/BaseResponseFunctionStringsResponse';
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
-import { FunctionMatchingBatchResponse } from '../models/FunctionMatchingBatchResponse';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
+import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 
 /**
  * no description
@@ -640,13 +640,13 @@ export class FunctionsCoreApiResponseProcessor {
      * @params response Response returned by the server for a request to analysisFunctionMatching
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async analysisFunctionMatchingWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FunctionMatchingBatchResponse >> {
+     public async analysisFunctionMatchingWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FunctionMatchingResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: FunctionMatchingBatchResponse = ObjectSerializer.deserialize(
+            const body: FunctionMatchingResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "FunctionMatchingBatchResponse", ""
-            ) as FunctionMatchingBatchResponse;
+                "FunctionMatchingResponse", ""
+            ) as FunctionMatchingResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
@@ -659,10 +659,10 @@ export class FunctionsCoreApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: FunctionMatchingBatchResponse = ObjectSerializer.deserialize(
+            const body: FunctionMatchingResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "FunctionMatchingBatchResponse", ""
-            ) as FunctionMatchingBatchResponse;
+                "FunctionMatchingResponse", ""
+            ) as FunctionMatchingResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -712,13 +712,13 @@ export class FunctionsCoreApiResponseProcessor {
      * @params response Response returned by the server for a request to batchFunctionMatching
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async batchFunctionMatchingWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FunctionMatchingBatchResponse >> {
+     public async batchFunctionMatchingWithHttpInfo(response: ResponseContext): Promise<HttpInfo<FunctionMatchingResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: FunctionMatchingBatchResponse = ObjectSerializer.deserialize(
+            const body: FunctionMatchingResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "FunctionMatchingBatchResponse", ""
-            ) as FunctionMatchingBatchResponse;
+                "FunctionMatchingResponse", ""
+            ) as FunctionMatchingResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
@@ -731,10 +731,10 @@ export class FunctionsCoreApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: FunctionMatchingBatchResponse = ObjectSerializer.deserialize(
+            const body: FunctionMatchingResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "FunctionMatchingBatchResponse", ""
-            ) as FunctionMatchingBatchResponse;
+                "FunctionMatchingResponse", ""
+            ) as FunctionMatchingResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

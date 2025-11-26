@@ -175,10 +175,10 @@ import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
-import { FunctionMatchingBatchResponse } from '../models/FunctionMatchingBatchResponse';
+import { FunctionMatch } from '../models/FunctionMatch';
 import { FunctionMatchingFilters } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
-import { FunctionMatchingResultWithBestMatch } from '../models/FunctionMatchingResultWithBestMatch';
+import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 import { FunctionNameHistory } from '../models/FunctionNameHistory';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
@@ -2154,7 +2154,7 @@ export class PromiseFunctionsCoreApi {
      * @param analysisId
      * @param analysisFunctionMatchingRequest
      */
-    public analysisFunctionMatchingWithHttpInfo(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionMatchingBatchResponse>> {
+    public analysisFunctionMatchingWithHttpInfo(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionMatchingResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.analysisFunctionMatchingWithHttpInfo(analysisId, analysisFunctionMatchingRequest, observableOptions);
         return result.toPromise();
@@ -2166,7 +2166,7 @@ export class PromiseFunctionsCoreApi {
      * @param analysisId
      * @param analysisFunctionMatchingRequest
      */
-    public analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<FunctionMatchingBatchResponse> {
+    public analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<FunctionMatchingResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.analysisFunctionMatching(analysisId, analysisFunctionMatchingRequest, observableOptions);
         return result.toPromise();
@@ -2201,7 +2201,7 @@ export class PromiseFunctionsCoreApi {
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param functionMatchingRequest
      */
-    public batchFunctionMatchingWithHttpInfo(functionMatchingRequest: FunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionMatchingBatchResponse>> {
+    public batchFunctionMatchingWithHttpInfo(functionMatchingRequest: FunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionMatchingResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.batchFunctionMatchingWithHttpInfo(functionMatchingRequest, observableOptions);
         return result.toPromise();
@@ -2212,7 +2212,7 @@ export class PromiseFunctionsCoreApi {
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param functionMatchingRequest
      */
-    public batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<FunctionMatchingBatchResponse> {
+    public batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, _options?: PromiseConfigurationOptions): Promise<FunctionMatchingResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.batchFunctionMatching(functionMatchingRequest, observableOptions);
         return result.toPromise();

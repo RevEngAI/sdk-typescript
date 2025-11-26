@@ -176,10 +176,10 @@ import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
-import { FunctionMatchingBatchResponse } from '../models/FunctionMatchingBatchResponse';
+import { FunctionMatch } from '../models/FunctionMatch';
 import { FunctionMatchingFilters } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
-import { FunctionMatchingResultWithBestMatch } from '../models/FunctionMatchingResultWithBestMatch';
+import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 import { FunctionNameHistory } from '../models/FunctionNameHistory';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
@@ -3022,7 +3022,7 @@ export class ObservableFunctionsCoreApi {
      * @param analysisId
      * @param analysisFunctionMatchingRequest
      */
-    public analysisFunctionMatchingWithHttpInfo(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionMatchingBatchResponse>> {
+    public analysisFunctionMatchingWithHttpInfo(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionMatchingResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.analysisFunctionMatching(analysisId, analysisFunctionMatchingRequest, _config);
@@ -3048,8 +3048,8 @@ export class ObservableFunctionsCoreApi {
      * @param analysisId
      * @param analysisFunctionMatchingRequest
      */
-    public analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: ConfigurationOptions): Observable<FunctionMatchingBatchResponse> {
-        return this.analysisFunctionMatchingWithHttpInfo(analysisId, analysisFunctionMatchingRequest, _options).pipe(map((apiResponse: HttpInfo<FunctionMatchingBatchResponse>) => apiResponse.data));
+    public analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: ConfigurationOptions): Observable<FunctionMatchingResponse> {
+        return this.analysisFunctionMatchingWithHttpInfo(analysisId, analysisFunctionMatchingRequest, _options).pipe(map((apiResponse: HttpInfo<FunctionMatchingResponse>) => apiResponse.data));
     }
 
     /**
@@ -3093,7 +3093,7 @@ export class ObservableFunctionsCoreApi {
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param functionMatchingRequest
      */
-    public batchFunctionMatchingWithHttpInfo(functionMatchingRequest: FunctionMatchingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionMatchingBatchResponse>> {
+    public batchFunctionMatchingWithHttpInfo(functionMatchingRequest: FunctionMatchingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionMatchingResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.batchFunctionMatching(functionMatchingRequest, _config);
@@ -3118,8 +3118,8 @@ export class ObservableFunctionsCoreApi {
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param functionMatchingRequest
      */
-    public batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, _options?: ConfigurationOptions): Observable<FunctionMatchingBatchResponse> {
-        return this.batchFunctionMatchingWithHttpInfo(functionMatchingRequest, _options).pipe(map((apiResponse: HttpInfo<FunctionMatchingBatchResponse>) => apiResponse.data));
+    public batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, _options?: ConfigurationOptions): Observable<FunctionMatchingResponse> {
+        return this.batchFunctionMatchingWithHttpInfo(functionMatchingRequest, _options).pipe(map((apiResponse: HttpInfo<FunctionMatchingResponse>) => apiResponse.data));
     }
 
     /**
