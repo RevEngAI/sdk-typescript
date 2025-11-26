@@ -175,10 +175,10 @@ import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
-import { FunctionMatchingBatchResponse } from '../models/FunctionMatchingBatchResponse';
+import { FunctionMatch } from '../models/FunctionMatch';
 import { FunctionMatchingFilters } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
-import { FunctionMatchingResultWithBestMatch } from '../models/FunctionMatchingResultWithBestMatch';
+import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 import { FunctionNameHistory } from '../models/FunctionNameHistory';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
@@ -2905,7 +2905,7 @@ export class ObjectFunctionsCoreApi {
      * Perform matching for the functions of an analysis
      * @param param the request object
      */
-    public analysisFunctionMatchingWithHttpInfo(param: FunctionsCoreApiAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<HttpInfo<FunctionMatchingBatchResponse>> {
+    public analysisFunctionMatchingWithHttpInfo(param: FunctionsCoreApiAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<HttpInfo<FunctionMatchingResponse>> {
         return this.api.analysisFunctionMatchingWithHttpInfo(param.analysisId, param.analysisFunctionMatchingRequest,  options).toPromise();
     }
 
@@ -2914,7 +2914,7 @@ export class ObjectFunctionsCoreApi {
      * Perform matching for the functions of an analysis
      * @param param the request object
      */
-    public analysisFunctionMatching(param: FunctionsCoreApiAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<FunctionMatchingBatchResponse> {
+    public analysisFunctionMatching(param: FunctionsCoreApiAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<FunctionMatchingResponse> {
         return this.api.analysisFunctionMatching(param.analysisId, param.analysisFunctionMatchingRequest,  options).toPromise();
     }
 
@@ -2941,7 +2941,7 @@ export class ObjectFunctionsCoreApi {
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param param the request object
      */
-    public batchFunctionMatchingWithHttpInfo(param: FunctionsCoreApiBatchFunctionMatchingRequest, options?: ConfigurationOptions): Promise<HttpInfo<FunctionMatchingBatchResponse>> {
+    public batchFunctionMatchingWithHttpInfo(param: FunctionsCoreApiBatchFunctionMatchingRequest, options?: ConfigurationOptions): Promise<HttpInfo<FunctionMatchingResponse>> {
         return this.api.batchFunctionMatchingWithHttpInfo(param.functionMatchingRequest,  options).toPromise();
     }
 
@@ -2950,7 +2950,7 @@ export class ObjectFunctionsCoreApi {
      * Perform function matching for an arbitrary batch of functions, binaries or collections
      * @param param the request object
      */
-    public batchFunctionMatching(param: FunctionsCoreApiBatchFunctionMatchingRequest, options?: ConfigurationOptions): Promise<FunctionMatchingBatchResponse> {
+    public batchFunctionMatching(param: FunctionsCoreApiBatchFunctionMatchingRequest, options?: ConfigurationOptions): Promise<FunctionMatchingResponse> {
         return this.api.batchFunctionMatching(param.functionMatchingRequest,  options).toPromise();
     }
 

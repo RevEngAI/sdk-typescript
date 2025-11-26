@@ -13,7 +13,7 @@ import { HttpFile } from '../http/http';
 
 export class LoginRequest {
     /**
-    * User\'s username
+    * User\'s username or email
     */
     'username': string;
     /**

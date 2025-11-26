@@ -9,10 +9,10 @@
  * Do not edit the class manually.
  */
 
-import { FunctionMatchingResultWithBestMatch } from '../models/FunctionMatchingResultWithBestMatch';
+import { FunctionMatch } from '../models/FunctionMatch';
 import { HttpFile } from '../http/http';
 
-export class FunctionMatchingBatchResponse {
+export class FunctionMatchingResponse {
     /**
     * Progress of the matching operation, represented as a percentage
     */
@@ -22,7 +22,10 @@ export class FunctionMatchingBatchResponse {
     'errorMessage'?: string | null;
     'currentPage'?: number | null;
     'totalPages'?: number | null;
-    'matches'?: Array<FunctionMatchingResultWithBestMatch> | null;
+    'matches'?: Array<FunctionMatch> | null;
+    'numMatches'?: number | null;
+    'numDebugMatches'?: number | null;
+    'updatedAt'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -68,12 +71,30 @@ export class FunctionMatchingBatchResponse {
         {
             "name": "matches",
             "baseName": "matches",
-            "type": "Array<FunctionMatchingResultWithBestMatch>",
+            "type": "Array<FunctionMatch>",
+            "format": ""
+        },
+        {
+            "name": "numMatches",
+            "baseName": "num_matches",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "numDebugMatches",
+            "baseName": "num_debug_matches",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "updatedAt",
+            "baseName": "updated_at",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionMatchingBatchResponse.attributeTypeMap;
+        return FunctionMatchingResponse.attributeTypeMap;
     }
 
     public constructor() {
