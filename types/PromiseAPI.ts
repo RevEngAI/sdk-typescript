@@ -1471,10 +1471,13 @@ export class PromiseCollectionsApi {
      * @param collectionId
      * @param [includeTags]
      * @param [includeBinaries]
+     * @param [pageSize]
+     * @param [pageNumber]
+     * @param [binarySearchStr]
      */
-    public getCollectionWithHttpInfo(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
+    public getCollectionWithHttpInfo(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, pageSize?: number, pageNumber?: number, binarySearchStr?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getCollectionWithHttpInfo(collectionId, includeTags, includeBinaries, observableOptions);
+        const result = this.api.getCollectionWithHttpInfo(collectionId, includeTags, includeBinaries, pageSize, pageNumber, binarySearchStr, observableOptions);
         return result.toPromise();
     }
 
@@ -1484,10 +1487,13 @@ export class PromiseCollectionsApi {
      * @param collectionId
      * @param [includeTags]
      * @param [includeBinaries]
+     * @param [pageSize]
+     * @param [pageNumber]
+     * @param [binarySearchStr]
      */
-    public getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionResponse> {
+    public getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, pageSize?: number, pageNumber?: number, binarySearchStr?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getCollection(collectionId, includeTags, includeBinaries, observableOptions);
+        const result = this.api.getCollection(collectionId, includeTags, includeBinaries, pageSize, pageNumber, binarySearchStr, observableOptions);
         return result.toPromise();
     }
 
