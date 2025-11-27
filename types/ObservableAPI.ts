@@ -2032,11 +2032,14 @@ export class ObservableCollectionsApi {
      * @param collectionId
      * @param [includeTags]
      * @param [includeBinaries]
+     * @param [pageSize]
+     * @param [pageNumber]
+     * @param [binarySearchStr]
      */
-    public getCollectionWithHttpInfo(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
+    public getCollectionWithHttpInfo(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, pageSize?: number, pageNumber?: number, binarySearchStr?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getCollection(collectionId, includeTags, includeBinaries, _config);
+        const requestContextPromise = this.requestFactory.getCollection(collectionId, includeTags, includeBinaries, pageSize, pageNumber, binarySearchStr, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2059,9 +2062,12 @@ export class ObservableCollectionsApi {
      * @param collectionId
      * @param [includeTags]
      * @param [includeBinaries]
+     * @param [pageSize]
+     * @param [pageNumber]
+     * @param [binarySearchStr]
      */
-    public getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
-        return this.getCollectionWithHttpInfo(collectionId, includeTags, includeBinaries, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
+    public getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, pageSize?: number, pageNumber?: number, binarySearchStr?: string, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
+        return this.getCollectionWithHttpInfo(collectionId, includeTags, includeBinaries, pageSize, pageNumber, binarySearchStr, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
     }
 
     /**

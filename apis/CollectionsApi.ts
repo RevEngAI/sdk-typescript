@@ -119,14 +119,20 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
      * @param collectionId 
      * @param includeTags 
      * @param includeBinaries 
+     * @param pageSize 
+     * @param pageNumber 
+     * @param binarySearchStr 
      */
-    public async getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, pageSize?: number, pageNumber?: number, binarySearchStr?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'collectionId' is not null or undefined
         if (collectionId === null || collectionId === undefined) {
             throw new RequiredError("CollectionsApi", "getCollection", "collectionId");
         }
+
+
+
 
 
 
@@ -147,6 +153,21 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (includeBinaries !== undefined) {
             requestContext.setQueryParam("include_binaries", ObjectSerializer.serialize(includeBinaries, "boolean", ""));
+        }
+
+        // Query Params
+        if (pageSize !== undefined) {
+            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", ""));
+        }
+
+        // Query Params
+        if (pageNumber !== undefined) {
+            requestContext.setQueryParam("page_number", ObjectSerializer.serialize(pageNumber, "number", ""));
+        }
+
+        // Query Params
+        if (binarySearchStr !== undefined) {
+            requestContext.setQueryParam("binary_search_str", ObjectSerializer.serialize(binarySearchStr, "string", ""));
         }
 
 

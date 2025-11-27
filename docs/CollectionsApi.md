@@ -154,6 +154,12 @@ const request: CollectionsApiGetCollectionRequest = {
   includeTags: false,
   
   includeBinaries: false,
+  
+  pageSize: 10,
+  
+  pageNumber: 1,
+  
+  binarySearchStr: "binary_search_str_example",
 };
 
 const data = await apiInstance.getCollection(request);
@@ -168,6 +174,9 @@ Name | Type | Description  | Notes
  **collectionId** | [**number**] |  | defaults to undefined
  **includeTags** | [**boolean**] |  | (optional) defaults to false
  **includeBinaries** | [**boolean**] |  | (optional) defaults to false
+ **pageSize** | [**number**] |  | (optional) defaults to 10
+ **pageNumber** | [**number**] |  | (optional) defaults to 1
+ **binarySearchStr** | [**string**] |  | (optional) defaults to undefined
 
 
 ### Return type

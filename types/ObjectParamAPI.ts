@@ -1803,6 +1803,30 @@ export interface CollectionsApiGetCollectionRequest {
      * @memberof CollectionsApigetCollection
      */
     includeBinaries?: boolean
+    /**
+     * 
+     * Minimum: 1
+     * Maximum: 100
+     * Defaults to: 10
+     * @type number
+     * @memberof CollectionsApigetCollection
+     */
+    pageSize?: number
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: 1
+     * @type number
+     * @memberof CollectionsApigetCollection
+     */
+    pageNumber?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CollectionsApigetCollection
+     */
+    binarySearchStr?: string
 }
 
 export interface CollectionsApiListCollectionsRequest {
@@ -1949,7 +1973,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public getCollectionWithHttpInfo(param: CollectionsApiGetCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
-        return this.api.getCollectionWithHttpInfo(param.collectionId, param.includeTags, param.includeBinaries,  options).toPromise();
+        return this.api.getCollectionWithHttpInfo(param.collectionId, param.includeTags, param.includeBinaries, param.pageSize, param.pageNumber, param.binarySearchStr,  options).toPromise();
     }
 
     /**
@@ -1958,7 +1982,7 @@ export class ObjectCollectionsApi {
      * @param param the request object
      */
     public getCollection(param: CollectionsApiGetCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionResponse> {
-        return this.api.getCollection(param.collectionId, param.includeTags, param.includeBinaries,  options).toPromise();
+        return this.api.getCollection(param.collectionId, param.includeTags, param.includeBinaries, param.pageSize, param.pageNumber, param.binarySearchStr,  options).toPromise();
     }
 
     /**
