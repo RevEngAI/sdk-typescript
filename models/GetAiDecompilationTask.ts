@@ -22,6 +22,7 @@ export class GetAiDecompilationTask {
     'summary'?: string | null;
     'aiSummary'?: string | null;
     'rawAiSummary'?: string | null;
+    'predictedFunctionName'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -73,6 +74,12 @@ export class GetAiDecompilationTask {
         {
             "name": "rawAiSummary",
             "baseName": "raw_ai_summary",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "predictedFunctionName",
+            "baseName": "predicted_function_name",
             "type": "string",
             "format": ""
         }    ];
