@@ -36,8 +36,8 @@ export class AppApiRestV2FunctionsTypesFunction {
     * Whether the function is debug
     */
     'debug': boolean;
-    'embedding3d': Array<number> | null;
-    'embedding1d': Array<number> | null;
+    'embedding3d'?: Array<number> | null;
+    'embedding1d'?: Array<number> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
