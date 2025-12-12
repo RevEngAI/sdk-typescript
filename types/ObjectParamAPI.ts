@@ -13,6 +13,7 @@ import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
+import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
@@ -34,6 +35,7 @@ import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalys
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
+import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
 import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
@@ -172,6 +174,7 @@ import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfoInput } from '../models/FunctionInfoInput';
 import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
 import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
+import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
@@ -1137,6 +1140,34 @@ export class ObjectAnalysesDynamicExecutionApi {
 import { ObservableAnalysesResultsMetadataApi } from "./ObservableAPI";
 import { AnalysesResultsMetadataApiRequestFactory, AnalysesResultsMetadataApiResponseProcessor} from "../apis/AnalysesResultsMetadataApi";
 
+export interface AnalysesResultsMetadataApiGetAnalysisFunctionsPaginatedRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesResultsMetadataApigetAnalysisFunctionsPaginated
+     */
+    analysisId: number
+    /**
+     * The page number to retrieve.
+     * Minimum: 1
+     * Maximum: 100000
+     * Defaults to: 1
+     * @type number
+     * @memberof AnalysesResultsMetadataApigetAnalysisFunctionsPaginated
+     */
+    page?: number
+    /**
+     * Number of items per page.
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: 1000
+     * @type number
+     * @memberof AnalysesResultsMetadataApigetAnalysisFunctionsPaginated
+     */
+    pageSize?: number
+}
+
 export interface AnalysesResultsMetadataApiGetCapabilitiesRequest {
     /**
      * 
@@ -1240,6 +1271,24 @@ export class ObjectAnalysesResultsMetadataApi {
 
     public constructor(configuration: Configuration, requestFactory?: AnalysesResultsMetadataApiRequestFactory, responseProcessor?: AnalysesResultsMetadataApiResponseProcessor) {
         this.api = new ObservableAnalysesResultsMetadataApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Returns a paginated list of functions identified during analysis
+     * Get functions from analysis
+     * @param param the request object
+     */
+    public getAnalysisFunctionsPaginatedWithHttpInfo(param: AnalysesResultsMetadataApiGetAnalysisFunctionsPaginatedRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctionsList>> {
+        return this.api.getAnalysisFunctionsPaginatedWithHttpInfo(param.analysisId, param.page, param.pageSize,  options).toPromise();
+    }
+
+    /**
+     * Returns a paginated list of functions identified during analysis
+     * Get functions from analysis
+     * @param param the request object
+     */
+    public getAnalysisFunctionsPaginated(param: AnalysesResultsMetadataApiGetAnalysisFunctionsPaginatedRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisFunctionsList> {
+        return this.api.getAnalysisFunctionsPaginated(param.analysisId, param.page, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -2062,42 +2111,12 @@ export class ObjectCollectionsApi {
 import { ObservableExternalSourcesApi } from "./ObservableAPI";
 import { ExternalSourcesApiRequestFactory, ExternalSourcesApiResponseProcessor} from "../apis/ExternalSourcesApi";
 
-export interface ExternalSourcesApiCreateExternalTaskMbRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof ExternalSourcesApicreateExternalTaskMb
-     */
-    analysisId: number
-}
-
 export interface ExternalSourcesApiCreateExternalTaskVtRequest {
     /**
      * 
      * Defaults to: undefined
      * @type number
      * @memberof ExternalSourcesApicreateExternalTaskVt
-     */
-    analysisId: number
-}
-
-export interface ExternalSourcesApiGetMbDataRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof ExternalSourcesApigetMbData
-     */
-    analysisId: number
-}
-
-export interface ExternalSourcesApiGetMbTaskStatusRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof ExternalSourcesApigetMbTaskStatus
      */
     analysisId: number
 }
@@ -2133,22 +2152,6 @@ export class ObjectExternalSourcesApi {
      * Pulls data from VirusTotal
      * @param param the request object
      */
-    public createExternalTaskMbWithHttpInfo(param: ExternalSourcesApiCreateExternalTaskMbRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
-        return this.api.createExternalTaskMbWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param param the request object
-     */
-    public createExternalTaskMb(param: ExternalSourcesApiCreateExternalTaskMbRequest, options?: ConfigurationOptions): Promise<BaseResponseStr> {
-        return this.api.createExternalTaskMb(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param param the request object
-     */
     public createExternalTaskVtWithHttpInfo(param: ExternalSourcesApiCreateExternalTaskVtRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
         return this.api.createExternalTaskVtWithHttpInfo(param.analysisId,  options).toPromise();
     }
@@ -2159,38 +2162,6 @@ export class ObjectExternalSourcesApi {
      */
     public createExternalTaskVt(param: ExternalSourcesApiCreateExternalTaskVtRequest, options?: ConfigurationOptions): Promise<BaseResponseStr> {
         return this.api.createExternalTaskVt(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get MalwareBazaar data
-     * @param param the request object
-     */
-    public getMbDataWithHttpInfo(param: ExternalSourcesApiGetMbDataRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
-        return this.api.getMbDataWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get MalwareBazaar data
-     * @param param the request object
-     */
-    public getMbData(param: ExternalSourcesApiGetMbDataRequest, options?: ConfigurationOptions): Promise<BaseResponseExternalResponse> {
-        return this.api.getMbData(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of MalwareBazaar data retrieval
-     * @param param the request object
-     */
-    public getMbTaskStatusWithHttpInfo(param: ExternalSourcesApiGetMbTaskStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
-        return this.api.getMbTaskStatusWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of MalwareBazaar data retrieval
-     * @param param the request object
-     */
-    public getMbTaskStatus(param: ExternalSourcesApiGetMbTaskStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseTaskResponse> {
-        return this.api.getMbTaskStatus(param.analysisId,  options).toPromise();
     }
 
     /**

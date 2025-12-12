@@ -13,6 +13,7 @@ import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
+import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
@@ -34,6 +35,7 @@ import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalys
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
+import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
 import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
@@ -172,6 +174,7 @@ import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfoInput } from '../models/FunctionInfoInput';
 import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
 import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
+import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
@@ -912,6 +915,32 @@ export class PromiseAnalysesResultsMetadataApi {
     }
 
     /**
+     * Returns a paginated list of functions identified during analysis
+     * Get functions from analysis
+     * @param analysisId
+     * @param [page] The page number to retrieve.
+     * @param [pageSize] Number of items per page.
+     */
+    public getAnalysisFunctionsPaginatedWithHttpInfo(analysisId: number, page?: number, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctionsList>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAnalysisFunctionsPaginatedWithHttpInfo(analysisId, page, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a paginated list of functions identified during analysis
+     * Get functions from analysis
+     * @param analysisId
+     * @param [page] The page number to retrieve.
+     * @param [pageSize] Number of items per page.
+     */
+    public getAnalysisFunctionsPaginated(analysisId: number, page?: number, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisFunctionsList> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAnalysisFunctionsPaginated(analysisId, page, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Gets the capabilities from the analysis
      * @param analysisId
      */
@@ -1624,26 +1653,6 @@ export class PromiseExternalSourcesApi {
      * Pulls data from VirusTotal
      * @param analysisId
      */
-    public createExternalTaskMbWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createExternalTaskMbWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param analysisId
-     */
-    public createExternalTaskMb(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseStr> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createExternalTaskMb(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param analysisId
-     */
     public createExternalTaskVtWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createExternalTaskVtWithHttpInfo(analysisId, observableOptions);
@@ -1657,46 +1666,6 @@ export class PromiseExternalSourcesApi {
     public createExternalTaskVt(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseStr> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createExternalTaskVt(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get MalwareBazaar data
-     * @param analysisId
-     */
-    public getMbDataWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getMbDataWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get MalwareBazaar data
-     * @param analysisId
-     */
-    public getMbData(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseExternalResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getMbData(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Check the status of MalwareBazaar data retrieval
-     * @param analysisId
-     */
-    public getMbTaskStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getMbTaskStatusWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Check the status of MalwareBazaar data retrieval
-     * @param analysisId
-     */
-    public getMbTaskStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseTaskResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getMbTaskStatus(analysisId, observableOptions);
         return result.toPromise();
     }
 
