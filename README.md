@@ -71,6 +71,7 @@ Class | Method | HTTP request | Description
 *AnalysesDynamicExecutionApi* | [**getProcessRegistry**](docs/AnalysesDynamicExecutionApi.md#getProcessRegistry) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/process-registry | Get the dynamic execution results for process registry
 *AnalysesDynamicExecutionApi* | [**getProcessTree**](docs/AnalysesDynamicExecutionApi.md#getProcessTree) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/process-tree | Get the dynamic execution results for process tree
 *AnalysesDynamicExecutionApi* | [**getTtps**](docs/AnalysesDynamicExecutionApi.md#getTtps) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/ttps | Get the dynamic execution results for ttps
+*AnalysesResultsMetadataApi* | [**getAnalysisFunctionsPaginated**](docs/AnalysesResultsMetadataApi.md#getAnalysisFunctionsPaginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 *AnalysesResultsMetadataApi* | [**getCapabilities**](docs/AnalysesResultsMetadataApi.md#getCapabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 *AnalysesResultsMetadataApi* | [**getCommunities**](docs/AnalysesResultsMetadataApi.md#getCommunities) | **GET** /v2/analyses/{analysis_id}/communities | Gets the communities found in the analysis
 *AnalysesResultsMetadataApi* | [**getFunctionsList**](docs/AnalysesResultsMetadataApi.md#getFunctionsList) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
@@ -99,10 +100,7 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**updateCollection**](docs/CollectionsApi.md#updateCollection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 *CollectionsApi* | [**updateCollectionBinaries**](docs/CollectionsApi.md#updateCollectionBinaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**updateCollectionTags**](docs/CollectionsApi.md#updateCollectionTags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
-*ExternalSourcesApi* | [**createExternalTaskMb**](docs/ExternalSourcesApi.md#createExternalTaskMb) | **POST** /v2/analysis/{analysis_id}/external/mb | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**createExternalTaskVt**](docs/ExternalSourcesApi.md#createExternalTaskVt) | **POST** /v2/analysis/{analysis_id}/external/vt | Pulls data from VirusTotal
-*ExternalSourcesApi* | [**getMbData**](docs/ExternalSourcesApi.md#getMbData) | **GET** /v2/analysis/{analysis_id}/external/mb | Get MalwareBazaar data
-*ExternalSourcesApi* | [**getMbTaskStatus**](docs/ExternalSourcesApi.md#getMbTaskStatus) | **GET** /v2/analysis/{analysis_id}/external/mb/status | Check the status of MalwareBazaar data retrieval
 *ExternalSourcesApi* | [**getVtData**](docs/ExternalSourcesApi.md#getVtData) | **GET** /v2/analysis/{analysis_id}/external/vt | Get VirusTotal data
 *ExternalSourcesApi* | [**getVtTaskStatus**](docs/ExternalSourcesApi.md#getVtTaskStatus) | **GET** /v2/analysis/{analysis_id}/external/vt/status | Check the status of VirusTotal data retrieval
 *FirmwareApi* | [**getBinariesForFirmwareTask**](docs/FirmwareApi.md#getBinariesForFirmwareTask) | **GET** /v2/firmware/get-binaries/{task_id} | Upload firmware for unpacking
@@ -165,6 +163,7 @@ Class | Method | HTTP request | Description
  - [AnalysisFunctionMapping](AnalysisFunctionMapping.md)
  - [AnalysisFunctionMatchingRequest](AnalysisFunctionMatchingRequest.md)
  - [AnalysisFunctions](AnalysisFunctions.md)
+ - [AnalysisFunctionsList](AnalysisFunctionsList.md)
  - [AnalysisRecord](AnalysisRecord.md)
  - [AnalysisScope](AnalysisScope.md)
  - [AnalysisStringsResponse](AnalysisStringsResponse.md)
@@ -186,6 +185,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseAnalysisDetailResponse](BaseResponseAnalysisDetailResponse.md)
  - [BaseResponseAnalysisFunctionMapping](BaseResponseAnalysisFunctionMapping.md)
  - [BaseResponseAnalysisFunctions](BaseResponseAnalysisFunctions.md)
+ - [BaseResponseAnalysisFunctionsList](BaseResponseAnalysisFunctionsList.md)
  - [BaseResponseAnalysisStringsResponse](BaseResponseAnalysisStringsResponse.md)
  - [BaseResponseAnalysisTags](BaseResponseAnalysisTags.md)
  - [BaseResponseAnalysisUpdateTagsResponse](BaseResponseAnalysisUpdateTagsResponse.md)
@@ -324,6 +324,7 @@ Class | Method | HTTP request | Description
  - [FunctionInfoInput](FunctionInfoInput.md)
  - [FunctionInfoInputFuncDepsInner](FunctionInfoInputFuncDepsInner.md)
  - [FunctionInfoOutput](FunctionInfoOutput.md)
+ - [FunctionListItem](FunctionListItem.md)
  - [FunctionLocalVariableResponse](FunctionLocalVariableResponse.md)
  - [FunctionMapping](FunctionMapping.md)
  - [FunctionMappingFull](FunctionMappingFull.md)

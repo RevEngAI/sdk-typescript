@@ -14,6 +14,7 @@ import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
+import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
@@ -35,6 +36,7 @@ import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalys
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
+import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
 import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
@@ -173,6 +175,7 @@ import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfoInput } from '../models/FunctionInfoInput';
 import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
 import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
+import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
@@ -1198,6 +1201,44 @@ export class ObservableAnalysesResultsMetadataApi {
         this.configuration = configuration;
         this.requestFactory = requestFactory || new AnalysesResultsMetadataApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new AnalysesResultsMetadataApiResponseProcessor();
+    }
+
+    /**
+     * Returns a paginated list of functions identified during analysis
+     * Get functions from analysis
+     * @param analysisId
+     * @param [page] The page number to retrieve.
+     * @param [pageSize] Number of items per page.
+     */
+    public getAnalysisFunctionsPaginatedWithHttpInfo(analysisId: number, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctionsList>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAnalysisFunctionsPaginated(analysisId, page, pageSize, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisFunctionsPaginatedWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns a paginated list of functions identified during analysis
+     * Get functions from analysis
+     * @param analysisId
+     * @param [page] The page number to retrieve.
+     * @param [pageSize] Number of items per page.
+     */
+    public getAnalysisFunctionsPaginated(analysisId: number, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctionsList> {
+        return this.getAnalysisFunctionsPaginatedWithHttpInfo(analysisId, page, pageSize, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctionsList>) => apiResponse.data));
     }
 
     /**
@@ -2244,38 +2285,6 @@ export class ObservableExternalSourcesApi {
      * Pulls data from VirusTotal
      * @param analysisId
      */
-    public createExternalTaskMbWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStr>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createExternalTaskMb(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createExternalTaskMbWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param analysisId
-     */
-    public createExternalTaskMb(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseStr> {
-        return this.createExternalTaskMbWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStr>) => apiResponse.data));
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param analysisId
-     */
     public createExternalTaskVtWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStr>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
@@ -2302,70 +2311,6 @@ export class ObservableExternalSourcesApi {
      */
     public createExternalTaskVt(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseStr> {
         return this.createExternalTaskVtWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStr>) => apiResponse.data));
-    }
-
-    /**
-     * Get MalwareBazaar data
-     * @param analysisId
-     */
-    public getMbDataWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseExternalResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getMbData(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getMbDataWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get MalwareBazaar data
-     * @param analysisId
-     */
-    public getMbData(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseExternalResponse> {
-        return this.getMbDataWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseExternalResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Check the status of MalwareBazaar data retrieval
-     * @param analysisId
-     */
-    public getMbTaskStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTaskResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getMbTaskStatus(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getMbTaskStatusWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Check the status of MalwareBazaar data retrieval
-     * @param analysisId
-     */
-    public getMbTaskStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseTaskResponse> {
-        return this.getMbTaskStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTaskResponse>) => apiResponse.data));
     }
 
     /**

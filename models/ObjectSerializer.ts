@@ -9,6 +9,7 @@ export * from '../models/AnalysisDetailResponse';
 export * from '../models/AnalysisFunctionMapping';
 export * from '../models/AnalysisFunctionMatchingRequest';
 export * from '../models/AnalysisFunctions';
+export * from '../models/AnalysisFunctionsList';
 export * from '../models/AnalysisRecord';
 export * from '../models/AnalysisScope';
 export * from '../models/AnalysisStringsResponse';
@@ -30,6 +31,7 @@ export * from '../models/BaseResponseAnalysisCreateResponse';
 export * from '../models/BaseResponseAnalysisDetailResponse';
 export * from '../models/BaseResponseAnalysisFunctionMapping';
 export * from '../models/BaseResponseAnalysisFunctions';
+export * from '../models/BaseResponseAnalysisFunctionsList';
 export * from '../models/BaseResponseAnalysisStringsResponse';
 export * from '../models/BaseResponseAnalysisTags';
 export * from '../models/BaseResponseAnalysisUpdateTagsResponse';
@@ -168,6 +170,7 @@ export * from '../models/FunctionHeader';
 export * from '../models/FunctionInfoInput';
 export * from '../models/FunctionInfoInputFuncDepsInner';
 export * from '../models/FunctionInfoOutput';
+export * from '../models/FunctionListItem';
 export * from '../models/FunctionLocalVariableResponse';
 export * from '../models/FunctionMapping';
 export * from '../models/FunctionMappingFull';
@@ -290,6 +293,7 @@ import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
+import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord                 } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
@@ -311,6 +315,7 @@ import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalys
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
+import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
 import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
@@ -449,6 +454,7 @@ import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfoInput } from '../models/FunctionInfoInput';
 import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
 import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
+import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
@@ -613,6 +619,7 @@ let typeMap: {[index: string]: any} = {
     "AnalysisFunctionMapping": AnalysisFunctionMapping,
     "AnalysisFunctionMatchingRequest": AnalysisFunctionMatchingRequest,
     "AnalysisFunctions": AnalysisFunctions,
+    "AnalysisFunctionsList": AnalysisFunctionsList,
     "AnalysisRecord": AnalysisRecord,
     "AnalysisStringsResponse": AnalysisStringsResponse,
     "AnalysisTags": AnalysisTags,
@@ -630,6 +637,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseAnalysisDetailResponse": BaseResponseAnalysisDetailResponse,
     "BaseResponseAnalysisFunctionMapping": BaseResponseAnalysisFunctionMapping,
     "BaseResponseAnalysisFunctions": BaseResponseAnalysisFunctions,
+    "BaseResponseAnalysisFunctionsList": BaseResponseAnalysisFunctionsList,
     "BaseResponseAnalysisStringsResponse": BaseResponseAnalysisStringsResponse,
     "BaseResponseAnalysisTags": BaseResponseAnalysisTags,
     "BaseResponseAnalysisUpdateTagsResponse": BaseResponseAnalysisUpdateTagsResponse,
@@ -762,6 +770,7 @@ let typeMap: {[index: string]: any} = {
     "FunctionInfoInput": FunctionInfoInput,
     "FunctionInfoInputFuncDepsInner": FunctionInfoInputFuncDepsInner,
     "FunctionInfoOutput": FunctionInfoOutput,
+    "FunctionListItem": FunctionListItem,
     "FunctionLocalVariableResponse": FunctionLocalVariableResponse,
     "FunctionMapping": FunctionMapping,
     "FunctionMappingFull": FunctionMappingFull,
