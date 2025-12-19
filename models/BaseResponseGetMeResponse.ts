@@ -10,16 +10,16 @@
  */
 
 import { ErrorModel } from '../models/ErrorModel';
-import { GetUserResponse } from '../models/GetUserResponse';
+import { GetMeResponse } from '../models/GetMeResponse';
 import { MetaModel } from '../models/MetaModel';
 import { HttpFile } from '../http/http';
 
-export class BaseResponseGetUserResponse {
+export class BaseResponseGetMeResponse {
     /**
     * Response status on whether the request succeeded
     */
     'status'?: boolean;
-    'data'?: GetUserResponse | null;
+    'data'?: GetMeResponse | null;
     'message'?: string | null;
     'errors'?: Array<ErrorModel> | null;
     /**
@@ -41,7 +41,7 @@ export class BaseResponseGetUserResponse {
         {
             "name": "data",
             "baseName": "data",
-            "type": "GetUserResponse",
+            "type": "GetMeResponse",
             "format": ""
         },
         {
@@ -64,7 +64,7 @@ export class BaseResponseGetUserResponse {
         }    ];
 
     static getAttributeTypeMap() {
-        return BaseResponseGetUserResponse.attributeTypeMap;
+        return BaseResponseGetMeResponse.attributeTypeMap;
     }
 
     public constructor() {

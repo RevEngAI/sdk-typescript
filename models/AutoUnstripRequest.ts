@@ -42,6 +42,11 @@ export class AutoUnstripRequest {
     * @deprecated
     */
     'noCache'?: boolean;
+    /**
+    * Whether to use canonical function names during matching for auto-unstrip, default is False
+    * @deprecated
+    */
+    'useCanonicalNames'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -81,6 +86,12 @@ export class AutoUnstripRequest {
         {
             "name": "noCache",
             "baseName": "no_cache",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "useCanonicalNames",
+            "baseName": "use_canonical_names",
             "type": "boolean",
             "format": ""
         }    ];

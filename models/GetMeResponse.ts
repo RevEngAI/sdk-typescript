@@ -11,7 +11,7 @@
 
 import { HttpFile } from '../http/http';
 
-export class GetUserResponse {
+export class GetMeResponse {
     'username': string;
     'userId': number;
     'firstName': string;
@@ -19,6 +19,7 @@ export class GetUserResponse {
     'email': string;
     'creation': Date;
     'tutorialSeen': boolean;
+    'role': GetMeResponseRoleEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -66,12 +67,26 @@ export class GetUserResponse {
             "baseName": "tutorial_seen",
             "type": "boolean",
             "format": ""
+        },
+        {
+            "name": "role",
+            "baseName": "role",
+            "type": "GetMeResponseRoleEnum",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return GetUserResponse.attributeTypeMap;
+        return GetMeResponse.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+export enum GetMeResponseRoleEnum {
+    User = 'USER',
+    Admin = 'ADMIN',
+    Superadmin = 'SUPERADMIN',
+    System = 'SYSTEM'
+}
+

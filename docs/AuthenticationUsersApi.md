@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 
 # **getRequesterUserInfo**
-> BaseResponseGetUserResponse getRequesterUserInfo()
+> BaseResponseGetMeResponse getRequesterUserInfo()
 
 
 ### Example
@@ -37,7 +37,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**BaseResponseGetUserResponse**
+**BaseResponseGetMeResponse**
 
 ### Authorization
 
