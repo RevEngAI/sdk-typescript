@@ -41,6 +41,11 @@ export class AnalysisFunctionMatchingRequest {
     * If set to true, forces the system to bypass any cached results and perform a fresh computation
     */
     'noCache'?: boolean;
+    /**
+    * Whether to use canonical function names during function matching for confidence results, default is False
+    * @deprecated
+    */
+    'useCanonicalNames'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -86,6 +91,12 @@ export class AnalysisFunctionMatchingRequest {
         {
             "name": "noCache",
             "baseName": "no_cache",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "useCanonicalNames",
+            "baseName": "use_canonical_names",
             "type": "boolean",
             "format": ""
         }    ];

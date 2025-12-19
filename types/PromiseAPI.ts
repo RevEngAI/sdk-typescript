@@ -73,8 +73,8 @@ import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGen
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
 import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResponseGetAiDecompilationRatingResponse';
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
+import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
-import { BaseResponseGetUserResponse } from '../models/BaseResponseGetUserResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
@@ -201,8 +201,8 @@ import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
+import { GetMeResponse } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
-import { GetUserResponse } from '../models/GetUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
@@ -1197,7 +1197,7 @@ export class PromiseAuthenticationUsersApi {
     /**
      * Get the requesters user information
      */
-    public getRequesterUserInfoWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetUserResponse>> {
+    public getRequesterUserInfoWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetMeResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getRequesterUserInfoWithHttpInfo(observableOptions);
         return result.toPromise();
@@ -1206,7 +1206,7 @@ export class PromiseAuthenticationUsersApi {
     /**
      * Get the requesters user information
      */
-    public getRequesterUserInfo(_options?: PromiseConfigurationOptions): Promise<BaseResponseGetUserResponse> {
+    public getRequesterUserInfo(_options?: PromiseConfigurationOptions): Promise<BaseResponseGetMeResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getRequesterUserInfo(observableOptions);
         return result.toPromise();

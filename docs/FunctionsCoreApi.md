@@ -109,6 +109,7 @@ const request: FunctionsCoreApiAnalysisFunctionMatchingRequest = {
     pageSize: 0,
     statusOnly: false,
     noCache: false,
+    useCanonicalNames: false,
   },
 };
 
@@ -173,6 +174,7 @@ const request: FunctionsCoreApiAutoUnstripRequest = {
     minGroupSize: 10,
     statusOnly: false,
     noCache: false,
+    useCanonicalNames: false,
   },
 };
 
@@ -245,6 +247,7 @@ const request: FunctionsCoreApiBatchFunctionMatchingRequest = {
     pageSize: 0,
     statusOnly: false,
     noCache: false,
+    useCanonicalNames: false,
   },
 };
 

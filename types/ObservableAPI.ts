@@ -74,8 +74,8 @@ import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGen
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
 import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResponseGetAiDecompilationRatingResponse';
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
+import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
-import { BaseResponseGetUserResponse } from '../models/BaseResponseGetUserResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
@@ -202,8 +202,8 @@ import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
+import { GetMeResponse } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
-import { GetUserResponse } from '../models/GetUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
@@ -1616,7 +1616,7 @@ export class ObservableAuthenticationUsersApi {
     /**
      * Get the requesters user information
      */
-    public getRequesterUserInfoWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetUserResponse>> {
+    public getRequesterUserInfoWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetMeResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getRequesterUserInfo(_config);
@@ -1639,8 +1639,8 @@ export class ObservableAuthenticationUsersApi {
     /**
      * Get the requesters user information
      */
-    public getRequesterUserInfo(_options?: ConfigurationOptions): Observable<BaseResponseGetUserResponse> {
-        return this.getRequesterUserInfoWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseGetUserResponse>) => apiResponse.data));
+    public getRequesterUserInfo(_options?: ConfigurationOptions): Observable<BaseResponseGetMeResponse> {
+        return this.getRequesterUserInfoWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseGetMeResponse>) => apiResponse.data));
     }
 
     /**

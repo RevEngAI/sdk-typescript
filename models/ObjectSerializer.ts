@@ -69,8 +69,8 @@ export * from '../models/BaseResponseGenerateFunctionDataTypes';
 export * from '../models/BaseResponseGenerationStatusList';
 export * from '../models/BaseResponseGetAiDecompilationRatingResponse';
 export * from '../models/BaseResponseGetAiDecompilationTask';
+export * from '../models/BaseResponseGetMeResponse';
 export * from '../models/BaseResponseGetPublicUserResponse';
-export * from '../models/BaseResponseGetUserResponse';
 export * from '../models/BaseResponseListCollectionResults';
 export * from '../models/BaseResponseListCommentResponse';
 export * from '../models/BaseResponseListDieMatch';
@@ -197,8 +197,8 @@ export * from '../models/GenerateFunctionDataTypes';
 export * from '../models/GenerationStatusList';
 export * from '../models/GetAiDecompilationRatingResponse';
 export * from '../models/GetAiDecompilationTask';
+export * from '../models/GetMeResponse';
 export * from '../models/GetPublicUserResponse';
-export * from '../models/GetUserResponse';
 export * from '../models/GlobalVariable';
 export * from '../models/ISA';
 export * from '../models/IconModel';
@@ -353,8 +353,8 @@ import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGen
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
 import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResponseGetAiDecompilationRatingResponse';
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
+import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
-import { BaseResponseGetUserResponse } from '../models/BaseResponseGetUserResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
@@ -481,8 +481,8 @@ import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
+import { GetMeResponse       , GetMeResponseRoleEnum   } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
-import { GetUserResponse } from '../models/GetUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
@@ -594,6 +594,7 @@ let enumsMap: Set<string> = new Set<string>([
     "FunctionMatchingFiltersDebugTypesEnum",
     "FunctionSourceType",
     "FunctionTaskStatus",
+    "GetMeResponseRoleEnum",
     "ISA",
     "ModelName",
     "NetworkOverviewMetadataTypeEnum",
@@ -675,8 +676,8 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseGenerationStatusList": BaseResponseGenerationStatusList,
     "BaseResponseGetAiDecompilationRatingResponse": BaseResponseGetAiDecompilationRatingResponse,
     "BaseResponseGetAiDecompilationTask": BaseResponseGetAiDecompilationTask,
+    "BaseResponseGetMeResponse": BaseResponseGetMeResponse,
     "BaseResponseGetPublicUserResponse": BaseResponseGetPublicUserResponse,
-    "BaseResponseGetUserResponse": BaseResponseGetUserResponse,
     "BaseResponseListCollectionResults": BaseResponseListCollectionResults,
     "BaseResponseListCommentResponse": BaseResponseListCommentResponse,
     "BaseResponseListDieMatch": BaseResponseListDieMatch,
@@ -795,8 +796,8 @@ let typeMap: {[index: string]: any} = {
     "GenerationStatusList": GenerationStatusList,
     "GetAiDecompilationRatingResponse": GetAiDecompilationRatingResponse,
     "GetAiDecompilationTask": GetAiDecompilationTask,
+    "GetMeResponse": GetMeResponse,
     "GetPublicUserResponse": GetPublicUserResponse,
-    "GetUserResponse": GetUserResponse,
     "GlobalVariable": GlobalVariable,
     "IconModel": IconModel,
     "ImportModel": ImportModel,

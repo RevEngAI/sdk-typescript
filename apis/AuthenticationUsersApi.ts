@@ -9,8 +9,8 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { BaseResponse } from '../models/BaseResponse';
+import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
-import { BaseResponseGetUserResponse } from '../models/BaseResponseGetUserResponse';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
@@ -205,13 +205,13 @@ export class AuthenticationUsersApiResponseProcessor {
      * @params response Response returned by the server for a request to getRequesterUserInfo
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getRequesterUserInfoWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseGetUserResponse >> {
+     public async getRequesterUserInfoWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseGetMeResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseGetUserResponse = ObjectSerializer.deserialize(
+            const body: BaseResponseGetMeResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseGetUserResponse", ""
-            ) as BaseResponseGetUserResponse;
+                "BaseResponseGetMeResponse", ""
+            ) as BaseResponseGetMeResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
@@ -224,10 +224,10 @@ export class AuthenticationUsersApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseGetUserResponse = ObjectSerializer.deserialize(
+            const body: BaseResponseGetMeResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseGetUserResponse", ""
-            ) as BaseResponseGetUserResponse;
+                "BaseResponseGetMeResponse", ""
+            ) as BaseResponseGetMeResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
