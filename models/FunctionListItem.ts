@@ -21,6 +21,10 @@ export class FunctionListItem {
     */
     'name': string;
     /**
+    * The source (process) the function name came from
+    */
+    'nameSourceType': FunctionListItemNameSourceTypeEnum;
+    /**
     * Mangled name of the function
     */
     'mangledName': string;
@@ -55,6 +59,12 @@ export class FunctionListItem {
             "format": ""
         },
         {
+            "name": "nameSourceType",
+            "baseName": "name_source_type",
+            "type": "FunctionListItemNameSourceTypeEnum",
+            "format": ""
+        },
+        {
             "name": "mangledName",
             "baseName": "mangled_name",
             "type": "string",
@@ -86,3 +96,12 @@ export class FunctionListItem {
     public constructor() {
     }
 }
+
+export enum FunctionListItemNameSourceTypeEnum {
+    System = 'SYSTEM',
+    User = 'USER',
+    AutoUnstrip = 'AUTO_UNSTRIP',
+    External = 'EXTERNAL',
+    AiUnstrip = 'AI_UNSTRIP'
+}
+
