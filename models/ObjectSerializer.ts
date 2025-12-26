@@ -454,7 +454,7 @@ import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfoInput } from '../models/FunctionInfoInput';
 import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
 import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
-import { FunctionListItem } from '../models/FunctionListItem';
+import { FunctionListItem  , FunctionListItemNameSourceTypeEnum       } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
@@ -591,6 +591,7 @@ let enumsMap: Set<string> = new Set<string>([
     "DynamicExecutionStatusInput",
     "FileFormat",
     "Filters",
+    "FunctionListItemNameSourceTypeEnum",
     "FunctionMatchingFiltersDebugTypesEnum",
     "FunctionSourceType",
     "FunctionTaskStatus",

@@ -156,6 +156,8 @@ export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFact
     }
 
     /**
+     * @deprecated
+     *
      * Gets the functions identified during analysis
      * Gets functions from analysis
      * @param analysisId 
