@@ -36,6 +36,10 @@ export class CollectionBinaryResponse {
     * Binary creation date
     */
     'createdAt': Date;
+    /**
+    * Is the analysis owned by a RevEng.AI account
+    */
+    'isSystemAnalysis': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -77,6 +81,12 @@ export class CollectionBinaryResponse {
             "baseName": "created_at",
             "type": "Date",
             "format": "date-time"
+        },
+        {
+            "name": "isSystemAnalysis",
+            "baseName": "is_system_analysis",
+            "type": "boolean",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

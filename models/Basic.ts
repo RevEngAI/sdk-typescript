@@ -41,6 +41,10 @@ export class Basic {
     */
     'ownerUsername': string;
     /**
+    * Whether the analysis is a system analysis
+    */
+    'isSystem': boolean;
+    /**
     * The scope of the analysis
     */
     'analysisScope': string;
@@ -107,6 +111,12 @@ export class Basic {
             "name": "ownerUsername",
             "baseName": "owner_username",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "isSystem",
+            "baseName": "is_system",
+            "type": "boolean",
             "format": ""
         },
         {
