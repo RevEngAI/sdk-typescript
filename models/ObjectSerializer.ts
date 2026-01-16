@@ -13,6 +13,7 @@ export * from '../models/AnalysisFunctionsList';
 export * from '../models/AnalysisRecord';
 export * from '../models/AnalysisScope';
 export * from '../models/AnalysisStringsResponse';
+export * from '../models/AnalysisStringsStatusResponse';
 export * from '../models/AnalysisTags';
 export * from '../models/AnalysisUpdateRequest';
 export * from '../models/AnalysisUpdateTagsRequest';
@@ -33,6 +34,7 @@ export * from '../models/BaseResponseAnalysisFunctionMapping';
 export * from '../models/BaseResponseAnalysisFunctions';
 export * from '../models/BaseResponseAnalysisFunctionsList';
 export * from '../models/BaseResponseAnalysisStringsResponse';
+export * from '../models/BaseResponseAnalysisStringsStatusResponse';
 export * from '../models/BaseResponseAnalysisTags';
 export * from '../models/BaseResponseAnalysisUpdateTagsResponse';
 export * from '../models/BaseResponseBasic';
@@ -96,6 +98,7 @@ export * from '../models/BaseResponseTaskResponse';
 export * from '../models/BaseResponseUploadResponse';
 export * from '../models/BaseResponseVulnerabilities';
 export * from '../models/Basic';
+export * from '../models/BinariesTaskStatus';
 export * from '../models/BinaryAdditionalDetailsDataResponse';
 export * from '../models/BinaryAdditionalResponse';
 export * from '../models/BinaryConfig';
@@ -297,6 +300,7 @@ import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord                 } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
+import { AnalysisStringsStatusResponse  } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
 import { AnalysisUpdateRequest , AnalysisUpdateRequestAnalysisScopeEnum   } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
@@ -317,6 +321,7 @@ import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnaly
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
 import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
 import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
+import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseResponseAnalysisStringsStatusResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
 import { BaseResponseBasic } from '../models/BaseResponseBasic';
@@ -380,6 +385,7 @@ import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { Basic } from '../models/Basic';
+import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
 import { BinaryConfig    } from '../models/BinaryConfig';
@@ -585,6 +591,7 @@ let enumsMap: Set<string> = new Set<string>([
     "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
+    "BinariesTaskStatus",
     "BinaryTaskStatus",
     "CollectionScope",
     "ConfidenceType",
@@ -624,6 +631,7 @@ let typeMap: {[index: string]: any} = {
     "AnalysisFunctionsList": AnalysisFunctionsList,
     "AnalysisRecord": AnalysisRecord,
     "AnalysisStringsResponse": AnalysisStringsResponse,
+    "AnalysisStringsStatusResponse": AnalysisStringsStatusResponse,
     "AnalysisTags": AnalysisTags,
     "AnalysisUpdateRequest": AnalysisUpdateRequest,
     "AnalysisUpdateTagsRequest": AnalysisUpdateTagsRequest,
@@ -641,6 +649,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseAnalysisFunctions": BaseResponseAnalysisFunctions,
     "BaseResponseAnalysisFunctionsList": BaseResponseAnalysisFunctionsList,
     "BaseResponseAnalysisStringsResponse": BaseResponseAnalysisStringsResponse,
+    "BaseResponseAnalysisStringsStatusResponse": BaseResponseAnalysisStringsStatusResponse,
     "BaseResponseAnalysisTags": BaseResponseAnalysisTags,
     "BaseResponseAnalysisUpdateTagsResponse": BaseResponseAnalysisUpdateTagsResponse,
     "BaseResponseBasic": BaseResponseBasic,

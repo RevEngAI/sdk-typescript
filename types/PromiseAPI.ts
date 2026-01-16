@@ -17,6 +17,7 @@ import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
+import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
 import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
@@ -37,6 +38,7 @@ import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnaly
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
 import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
 import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
+import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseResponseAnalysisStringsStatusResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
 import { BaseResponseBasic } from '../models/BaseResponseBasic';
@@ -100,6 +102,7 @@ import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { Basic } from '../models/Basic';
+import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
 import { BinaryConfig } from '../models/BinaryConfig';
@@ -2264,6 +2267,28 @@ export class PromiseFunctionsCoreApi {
     public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisStringsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get string processing state for the Analysis
+     * Get string processing state for the Analysis
+     * @param analysisId
+     */
+    public getAnalysisStringsStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsStatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAnalysisStringsStatusWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get string processing state for the Analysis
+     * Get string processing state for the Analysis
+     * @param analysisId
+     */
+    public getAnalysisStringsStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisStringsStatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAnalysisStringsStatus(analysisId, observableOptions);
         return result.toPromise();
     }
 
