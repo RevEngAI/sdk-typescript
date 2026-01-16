@@ -124,6 +124,7 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**cancelAiUnstrip**](docs/FunctionsCoreApi.md#cancelAiUnstrip) | **DELETE** /v2/analyses/{analysis_id}/functions/ai-unstrip/cancel | Cancels a running ai-unstrip
 *FunctionsCoreApi* | [**cancelAutoUnstrip**](docs/FunctionsCoreApi.md#cancelAutoUnstrip) | **DELETE** /v2/analyses/{analysis_id}/functions/unstrip/cancel | Cancels a running auto-unstrip
 *FunctionsCoreApi* | [**getAnalysisStrings**](docs/FunctionsCoreApi.md#getAnalysisStrings) | **GET** /v2/analyses/{analysis_id}/functions/strings | Get string information found in the Analysis
+*FunctionsCoreApi* | [**getAnalysisStringsStatus**](docs/FunctionsCoreApi.md#getAnalysisStringsStatus) | **GET** /v2/analyses/{analysis_id}/functions/strings/status | Get string processing state for the Analysis
 *FunctionsCoreApi* | [**getFunctionBlocks**](docs/FunctionsCoreApi.md#getFunctionBlocks) | **GET** /v2/functions/{function_id}/blocks | Get disassembly blocks related to the function
 *FunctionsCoreApi* | [**getFunctionCalleesCallers**](docs/FunctionsCoreApi.md#getFunctionCalleesCallers) | **GET** /v2/functions/{function_id}/callees_callers | Get list of functions that call or are called by the specified function
 *FunctionsCoreApi* | [**getFunctionCapabilities**](docs/FunctionsCoreApi.md#getFunctionCapabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
@@ -167,6 +168,7 @@ Class | Method | HTTP request | Description
  - [AnalysisRecord](AnalysisRecord.md)
  - [AnalysisScope](AnalysisScope.md)
  - [AnalysisStringsResponse](AnalysisStringsResponse.md)
+ - [AnalysisStringsStatusResponse](AnalysisStringsStatusResponse.md)
  - [AnalysisTags](AnalysisTags.md)
  - [AnalysisUpdateRequest](AnalysisUpdateRequest.md)
  - [AnalysisUpdateTagsRequest](AnalysisUpdateTagsRequest.md)
@@ -187,6 +189,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseAnalysisFunctions](BaseResponseAnalysisFunctions.md)
  - [BaseResponseAnalysisFunctionsList](BaseResponseAnalysisFunctionsList.md)
  - [BaseResponseAnalysisStringsResponse](BaseResponseAnalysisStringsResponse.md)
+ - [BaseResponseAnalysisStringsStatusResponse](BaseResponseAnalysisStringsStatusResponse.md)
  - [BaseResponseAnalysisTags](BaseResponseAnalysisTags.md)
  - [BaseResponseAnalysisUpdateTagsResponse](BaseResponseAnalysisUpdateTagsResponse.md)
  - [BaseResponseBasic](BaseResponseBasic.md)
@@ -250,6 +253,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseUploadResponse](BaseResponseUploadResponse.md)
  - [BaseResponseVulnerabilities](BaseResponseVulnerabilities.md)
  - [Basic](Basic.md)
+ - [BinariesTaskStatus](BinariesTaskStatus.md)
  - [BinaryAdditionalDetailsDataResponse](BinaryAdditionalDetailsDataResponse.md)
  - [BinaryAdditionalResponse](BinaryAdditionalResponse.md)
  - [BinaryConfig](BinaryConfig.md)
