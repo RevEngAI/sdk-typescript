@@ -43,7 +43,6 @@ export class AnalysisFunctionMatchingRequest {
     'noCache'?: boolean;
     /**
     * Whether to use canonical function names during function matching for confidence results, default is False
-    * @deprecated
     */
     'useCanonicalNames'?: boolean;
 

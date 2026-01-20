@@ -44,7 +44,6 @@ export class AutoUnstripRequest {
     'noCache'?: boolean;
     /**
     * Whether to use canonical function names during matching for auto-unstrip, default is False
-    * @deprecated
     */
     'useCanonicalNames'?: boolean;
 
