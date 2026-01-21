@@ -89,9 +89,11 @@ Class | Method | HTTP request | Description
 *AuthenticationUsersApi* | [**loginUser**](docs/AuthenticationUsersApi.md#loginUser) | **POST** /v2/auth/login | Authenticate a user
 *BinariesApi* | [**downloadZippedBinary**](docs/BinariesApi.md#downloadZippedBinary) | **GET** /v2/binaries/{binary_id}/download-zipped | Downloads a zipped binary with password protection
 *BinariesApi* | [**getBinaryAdditionalDetails**](docs/BinariesApi.md#getBinaryAdditionalDetails) | **GET** /v2/binaries/{binary_id}/additional-details | Gets the additional details of a binary
+*BinariesApi* | [**getBinaryAdditionalDetailsStatus**](docs/BinariesApi.md#getBinaryAdditionalDetailsStatus) | **GET** /v2/binaries/{binary_id}/additional-details/status | Gets the status of the additional details task for a binary
 *BinariesApi* | [**getBinaryDetails**](docs/BinariesApi.md#getBinaryDetails) | **GET** /v2/binaries/{binary_id}/details | Gets the details of a binary
 *BinariesApi* | [**getBinaryDieInfo**](docs/BinariesApi.md#getBinaryDieInfo) | **GET** /v2/binaries/{binary_id}/die-info | Gets the die info of a binary
 *BinariesApi* | [**getBinaryExternals**](docs/BinariesApi.md#getBinaryExternals) | **GET** /v2/binaries/{binary_id}/externals | Gets the external details of a binary
+*BinariesApi* | [**getBinaryRelatedStatus**](docs/BinariesApi.md#getBinaryRelatedStatus) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 *BinariesApi* | [**getRelatedBinaries**](docs/BinariesApi.md#getRelatedBinaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
 *CollectionsApi* | [**createCollection**](docs/CollectionsApi.md#createCollection) | **POST** /v2/collections | Creates new collection information
 *CollectionsApi* | [**deleteCollection**](docs/CollectionsApi.md#deleteCollection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
@@ -153,6 +155,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [AdditionalDetailsStatusResponse](AdditionalDetailsStatusResponse.md)
  - [Addr](Addr.md)
  - [AiDecompilationRating](AiDecompilationRating.md)
  - [AiUnstripRequest](AiUnstripRequest.md)
@@ -183,6 +186,7 @@ Class | Method | HTTP request | Description
  - [AutoUnstripRequest](AutoUnstripRequest.md)
  - [AutoUnstripResponse](AutoUnstripResponse.md)
  - [BaseResponse](BaseResponse.md)
+ - [BaseResponseAdditionalDetailsStatusResponse](BaseResponseAdditionalDetailsStatusResponse.md)
  - [BaseResponseAnalysisCreateResponse](BaseResponseAnalysisCreateResponse.md)
  - [BaseResponseAnalysisDetailResponse](BaseResponseAnalysisDetailResponse.md)
  - [BaseResponseAnalysisFunctionMapping](BaseResponseAnalysisFunctionMapping.md)
@@ -193,6 +197,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseAnalysisTags](BaseResponseAnalysisTags.md)
  - [BaseResponseAnalysisUpdateTagsResponse](BaseResponseAnalysisUpdateTagsResponse.md)
  - [BaseResponseBasic](BaseResponseBasic.md)
+ - [BaseResponseBinariesRelatedStatusResponse](BaseResponseBinariesRelatedStatusResponse.md)
  - [BaseResponseBinaryAdditionalResponse](BaseResponseBinaryAdditionalResponse.md)
  - [BaseResponseBinaryDetailsResponse](BaseResponseBinaryDetailsResponse.md)
  - [BaseResponseBinaryExternalsResponse](BaseResponseBinaryExternalsResponse.md)
@@ -253,6 +258,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseUploadResponse](BaseResponseUploadResponse.md)
  - [BaseResponseVulnerabilities](BaseResponseVulnerabilities.md)
  - [Basic](Basic.md)
+ - [BinariesRelatedStatusResponse](BinariesRelatedStatusResponse.md)
  - [BinariesTaskStatus](BinariesTaskStatus.md)
  - [BinaryAdditionalDetailsDataResponse](BinaryAdditionalDetailsDataResponse.md)
  - [BinaryAdditionalResponse](BinaryAdditionalResponse.md)

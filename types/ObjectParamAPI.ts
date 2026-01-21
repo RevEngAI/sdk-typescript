@@ -2,6 +2,7 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration, ConfigurationOptions } from '../configuration'
 import type { Middleware } from '../middleware';
 
+import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
@@ -32,6 +33,7 @@ import { Argument } from '../models/Argument';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { BaseResponse } from '../models/BaseResponse';
+import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
 import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalysisCreateResponse';
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
@@ -42,6 +44,7 @@ import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseRespons
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
 import { BaseResponseBasic } from '../models/BaseResponseBasic';
+import { BaseResponseBinariesRelatedStatusResponse } from '../models/BaseResponseBinariesRelatedStatusResponse';
 import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBinaryAdditionalResponse';
 import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
 import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
@@ -102,6 +105,7 @@ import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { Basic } from '../models/Basic';
+import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
@@ -1666,6 +1670,16 @@ export interface BinariesApiGetBinaryAdditionalDetailsRequest {
     binaryId: number
 }
 
+export interface BinariesApiGetBinaryAdditionalDetailsStatusRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetBinaryAdditionalDetailsStatus
+     */
+    binaryId: number
+}
+
 export interface BinariesApiGetBinaryDetailsRequest {
     /**
      * 
@@ -1692,6 +1706,16 @@ export interface BinariesApiGetBinaryExternalsRequest {
      * Defaults to: undefined
      * @type number
      * @memberof BinariesApigetBinaryExternals
+     */
+    binaryId: number
+}
+
+export interface BinariesApiGetBinaryRelatedStatusRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetBinaryRelatedStatus
      */
     binaryId: number
 }
@@ -1746,6 +1770,22 @@ export class ObjectBinariesApi {
     }
 
     /**
+     * Gets the status of the additional details task for a binary
+     * @param param the request object
+     */
+    public getBinaryAdditionalDetailsStatusWithHttpInfo(param: BinariesApiGetBinaryAdditionalDetailsStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAdditionalDetailsStatusResponse>> {
+        return this.api.getBinaryAdditionalDetailsStatusWithHttpInfo(param.binaryId,  options).toPromise();
+    }
+
+    /**
+     * Gets the status of the additional details task for a binary
+     * @param param the request object
+     */
+    public getBinaryAdditionalDetailsStatus(param: BinariesApiGetBinaryAdditionalDetailsStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseAdditionalDetailsStatusResponse> {
+        return this.api.getBinaryAdditionalDetailsStatus(param.binaryId,  options).toPromise();
+    }
+
+    /**
      * Gets the details of a binary
      * @param param the request object
      */
@@ -1791,6 +1831,22 @@ export class ObjectBinariesApi {
      */
     public getBinaryExternals(param: BinariesApiGetBinaryExternalsRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryExternalsResponse> {
         return this.api.getBinaryExternals(param.binaryId,  options).toPromise();
+    }
+
+    /**
+     * Gets the status of the unpack binary task for a binary
+     * @param param the request object
+     */
+    public getBinaryRelatedStatusWithHttpInfo(param: BinariesApiGetBinaryRelatedStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinariesRelatedStatusResponse>> {
+        return this.api.getBinaryRelatedStatusWithHttpInfo(param.binaryId,  options).toPromise();
+    }
+
+    /**
+     * Gets the status of the unpack binary task for a binary
+     * @param param the request object
+     */
+    public getBinaryRelatedStatus(param: BinariesApiGetBinaryRelatedStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseBinariesRelatedStatusResponse> {
+        return this.api.getBinaryRelatedStatus(param.binaryId,  options).toPromise();
     }
 
     /**

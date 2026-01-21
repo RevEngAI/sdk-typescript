@@ -3,6 +3,7 @@ import { Configuration, ConfigurationOptions, mergeConfiguration } from '../conf
 import type { Middleware } from '../middleware';
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
+import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
@@ -33,6 +34,7 @@ import { Argument } from '../models/Argument';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { BaseResponse } from '../models/BaseResponse';
+import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
 import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalysisCreateResponse';
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
@@ -43,6 +45,7 @@ import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseRespons
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
 import { BaseResponseBasic } from '../models/BaseResponseBasic';
+import { BaseResponseBinariesRelatedStatusResponse } from '../models/BaseResponseBinariesRelatedStatusResponse';
 import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBinaryAdditionalResponse';
 import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
 import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
@@ -103,6 +106,7 @@ import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { Basic } from '../models/Basic';
+import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
@@ -1857,6 +1861,38 @@ export class ObservableBinariesApi {
     }
 
     /**
+     * Gets the status of the additional details task for a binary
+     * @param binaryId
+     */
+    public getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAdditionalDetailsStatusResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetailsStatus(binaryId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryAdditionalDetailsStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Gets the status of the additional details task for a binary
+     * @param binaryId
+     */
+    public getBinaryAdditionalDetailsStatus(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseAdditionalDetailsStatusResponse> {
+        return this.getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAdditionalDetailsStatusResponse>) => apiResponse.data));
+    }
+
+    /**
      * Gets the details of a binary
      * @param binaryId
      */
@@ -1950,6 +1986,38 @@ export class ObservableBinariesApi {
      */
     public getBinaryExternals(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryExternalsResponse> {
         return this.getBinaryExternalsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryExternalsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Gets the status of the unpack binary task for a binary
+     * @param binaryId
+     */
+    public getBinaryRelatedStatusWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinariesRelatedStatusResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getBinaryRelatedStatus(binaryId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryRelatedStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Gets the status of the unpack binary task for a binary
+     * @param binaryId
+     */
+    public getBinaryRelatedStatus(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinariesRelatedStatusResponse> {
+        return this.getBinaryRelatedStatusWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinariesRelatedStatusResponse>) => apiResponse.data));
     }
 
     /**

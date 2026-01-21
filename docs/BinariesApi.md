@@ -6,9 +6,11 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**downloadZippedBinary**](BinariesApi.md#downloadZippedBinary) | **GET** /v2/binaries/{binary_id}/download-zipped | Downloads a zipped binary with password protection
 [**getBinaryAdditionalDetails**](BinariesApi.md#getBinaryAdditionalDetails) | **GET** /v2/binaries/{binary_id}/additional-details | Gets the additional details of a binary
+[**getBinaryAdditionalDetailsStatus**](BinariesApi.md#getBinaryAdditionalDetailsStatus) | **GET** /v2/binaries/{binary_id}/additional-details/status | Gets the status of the additional details task for a binary
 [**getBinaryDetails**](BinariesApi.md#getBinaryDetails) | **GET** /v2/binaries/{binary_id}/details | Gets the details of a binary
 [**getBinaryDieInfo**](BinariesApi.md#getBinaryDieInfo) | **GET** /v2/binaries/{binary_id}/die-info | Gets the die info of a binary
 [**getBinaryExternals**](BinariesApi.md#getBinaryExternals) | **GET** /v2/binaries/{binary_id}/externals | Gets the external details of a binary
+[**getBinaryRelatedStatus**](BinariesApi.md#getBinaryRelatedStatus) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 [**getRelatedBinaries**](BinariesApi.md#getRelatedBinaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
 
 
@@ -99,6 +101,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BaseResponseBinaryAdditionalResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getBinaryAdditionalDetailsStatus**
+> BaseResponseAdditionalDetailsStatusResponse getBinaryAdditionalDetailsStatus()
+
+
+### Example
+
+
+```typescript
+import { createConfiguration, BinariesApi } from '@revengai/sdk';
+import type { BinariesApiGetBinaryAdditionalDetailsStatusRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new BinariesApi(configuration);
+
+const request: BinariesApiGetBinaryAdditionalDetailsStatusRequest = {
+  
+  binaryId: 1,
+};
+
+const data = await apiInstance.getBinaryAdditionalDetailsStatus(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **binaryId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseAdditionalDetailsStatusResponse**
 
 ### Authorization
 
@@ -258,6 +313,59 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BaseResponseBinaryExternalsResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getBinaryRelatedStatus**
+> BaseResponseBinariesRelatedStatusResponse getBinaryRelatedStatus()
+
+
+### Example
+
+
+```typescript
+import { createConfiguration, BinariesApi } from '@revengai/sdk';
+import type { BinariesApiGetBinaryRelatedStatusRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new BinariesApi(configuration);
+
+const request: BinariesApiGetBinaryRelatedStatusRequest = {
+  
+  binaryId: 1,
+};
+
+const data = await apiInstance.getBinaryRelatedStatus(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **binaryId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseBinariesRelatedStatusResponse**
 
 ### Authorization
 

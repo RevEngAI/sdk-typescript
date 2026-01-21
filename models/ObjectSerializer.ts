@@ -1,3 +1,4 @@
+export * from '../models/AdditionalDetailsStatusResponse';
 export * from '../models/Addr';
 export * from '../models/AiDecompilationRating';
 export * from '../models/AiUnstripRequest';
@@ -28,6 +29,7 @@ export * from '../models/Argument';
 export * from '../models/AutoUnstripRequest';
 export * from '../models/AutoUnstripResponse';
 export * from '../models/BaseResponse';
+export * from '../models/BaseResponseAdditionalDetailsStatusResponse';
 export * from '../models/BaseResponseAnalysisCreateResponse';
 export * from '../models/BaseResponseAnalysisDetailResponse';
 export * from '../models/BaseResponseAnalysisFunctionMapping';
@@ -38,6 +40,7 @@ export * from '../models/BaseResponseAnalysisStringsStatusResponse';
 export * from '../models/BaseResponseAnalysisTags';
 export * from '../models/BaseResponseAnalysisUpdateTagsResponse';
 export * from '../models/BaseResponseBasic';
+export * from '../models/BaseResponseBinariesRelatedStatusResponse';
 export * from '../models/BaseResponseBinaryAdditionalResponse';
 export * from '../models/BaseResponseBinaryDetailsResponse';
 export * from '../models/BaseResponseBinaryExternalsResponse';
@@ -98,6 +101,7 @@ export * from '../models/BaseResponseTaskResponse';
 export * from '../models/BaseResponseUploadResponse';
 export * from '../models/BaseResponseVulnerabilities';
 export * from '../models/Basic';
+export * from '../models/BinariesRelatedStatusResponse';
 export * from '../models/BinariesTaskStatus';
 export * from '../models/BinaryAdditionalDetailsDataResponse';
 export * from '../models/BinaryAdditionalResponse';
@@ -285,6 +289,7 @@ export * from '../models/Vulnerability';
 export * from '../models/VulnerabilityType';
 export * from '../models/Workspace';
 
+import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
@@ -315,6 +320,7 @@ import { Argument } from '../models/Argument';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { BaseResponse } from '../models/BaseResponse';
+import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
 import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalysisCreateResponse';
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
@@ -325,6 +331,7 @@ import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseRespons
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
 import { BaseResponseBasic } from '../models/BaseResponseBasic';
+import { BaseResponseBinariesRelatedStatusResponse } from '../models/BaseResponseBinariesRelatedStatusResponse';
 import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBinaryAdditionalResponse';
 import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
 import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
@@ -385,6 +392,7 @@ import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { Basic } from '../models/Basic';
+import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
@@ -618,6 +626,7 @@ let enumsMap: Set<string> = new Set<string>([
 ]);
 
 let typeMap: {[index: string]: any} = {
+    "AdditionalDetailsStatusResponse": AdditionalDetailsStatusResponse,
     "Addr": Addr,
     "AiUnstripRequest": AiUnstripRequest,
     "AnalysisAccessInfo": AnalysisAccessInfo,
@@ -643,6 +652,7 @@ let typeMap: {[index: string]: any} = {
     "AutoUnstripRequest": AutoUnstripRequest,
     "AutoUnstripResponse": AutoUnstripResponse,
     "BaseResponse": BaseResponse,
+    "BaseResponseAdditionalDetailsStatusResponse": BaseResponseAdditionalDetailsStatusResponse,
     "BaseResponseAnalysisCreateResponse": BaseResponseAnalysisCreateResponse,
     "BaseResponseAnalysisDetailResponse": BaseResponseAnalysisDetailResponse,
     "BaseResponseAnalysisFunctionMapping": BaseResponseAnalysisFunctionMapping,
@@ -653,6 +663,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseAnalysisTags": BaseResponseAnalysisTags,
     "BaseResponseAnalysisUpdateTagsResponse": BaseResponseAnalysisUpdateTagsResponse,
     "BaseResponseBasic": BaseResponseBasic,
+    "BaseResponseBinariesRelatedStatusResponse": BaseResponseBinariesRelatedStatusResponse,
     "BaseResponseBinaryAdditionalResponse": BaseResponseBinaryAdditionalResponse,
     "BaseResponseBinaryDetailsResponse": BaseResponseBinaryDetailsResponse,
     "BaseResponseBinaryExternalsResponse": BaseResponseBinaryExternalsResponse,
@@ -713,6 +724,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseUploadResponse": BaseResponseUploadResponse,
     "BaseResponseVulnerabilities": BaseResponseVulnerabilities,
     "Basic": Basic,
+    "BinariesRelatedStatusResponse": BinariesRelatedStatusResponse,
     "BinaryAdditionalDetailsDataResponse": BinaryAdditionalDetailsDataResponse,
     "BinaryAdditionalResponse": BinaryAdditionalResponse,
     "BinaryConfig": BinaryConfig,
