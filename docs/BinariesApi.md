@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **downloadZippedBinary**
-> any downloadZippedBinary()
+> HttpFile downloadZippedBinary()
 
 
 ### Example
@@ -47,7 +47,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**any**
+**HttpFile**
 
 ### Authorization
 
@@ -56,13 +56,13 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
+ - **Accept**: application/zip, application/json
 
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Successful Response |  -  |
+**200** | Download file |  -  |
 **422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
