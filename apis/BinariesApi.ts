@@ -329,29 +329,26 @@ export class BinariesApiResponseProcessor {
      * @params response Response returned by the server for a request to downloadZippedBinary
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async downloadZippedBinaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<any >> {
+     public async downloadZippedBinaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<HttpFile >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: any = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "any", ""
-            ) as any;
+            const body: HttpFile = await response.getBodyAsFile() as any as HttpFile;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
+                "BaseResponse", "binary"
             ) as BaseResponse;
             throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: any = ObjectSerializer.deserialize(
+            const body: HttpFile = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "any", ""
-            ) as any;
+                "HttpFile", "binary"
+            ) as HttpFile;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
