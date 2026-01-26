@@ -1741,7 +1741,7 @@ export class ObjectBinariesApi {
      * Downloads a zipped binary with password protection
      * @param param the request object
      */
-    public downloadZippedBinaryWithHttpInfo(param: BinariesApiDownloadZippedBinaryRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
+    public downloadZippedBinaryWithHttpInfo(param: BinariesApiDownloadZippedBinaryRequest, options?: ConfigurationOptions): Promise<HttpInfo<HttpFile>> {
         return this.api.downloadZippedBinaryWithHttpInfo(param.binaryId,  options).toPromise();
     }
 
@@ -1749,7 +1749,7 @@ export class ObjectBinariesApi {
      * Downloads a zipped binary with password protection
      * @param param the request object
      */
-    public downloadZippedBinary(param: BinariesApiDownloadZippedBinaryRequest, options?: ConfigurationOptions): Promise<any> {
+    public downloadZippedBinary(param: BinariesApiDownloadZippedBinaryRequest, options?: ConfigurationOptions): Promise<HttpFile> {
         return this.api.downloadZippedBinary(param.binaryId,  options).toPromise();
     }
 

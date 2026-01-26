@@ -1322,7 +1322,7 @@ export class PromiseBinariesApi {
      * Downloads a zipped binary with password protection
      * @param binaryId
      */
-    public downloadZippedBinaryWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public downloadZippedBinaryWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<HttpFile>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.downloadZippedBinaryWithHttpInfo(binaryId, observableOptions);
         return result.toPromise();
@@ -1332,7 +1332,7 @@ export class PromiseBinariesApi {
      * Downloads a zipped binary with password protection
      * @param binaryId
      */
-    public downloadZippedBinary(binaryId: number, _options?: PromiseConfigurationOptions): Promise<any> {
+    public downloadZippedBinary(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpFile> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.downloadZippedBinary(binaryId, observableOptions);
         return result.toPromise();

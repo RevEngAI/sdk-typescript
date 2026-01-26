@@ -1800,7 +1800,7 @@ export class ObservableBinariesApi {
      * Downloads a zipped binary with password protection
      * @param binaryId
      */
-    public downloadZippedBinaryWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
+    public downloadZippedBinaryWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<HttpFile>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.downloadZippedBinary(binaryId, _config);
@@ -1824,8 +1824,8 @@ export class ObservableBinariesApi {
      * Downloads a zipped binary with password protection
      * @param binaryId
      */
-    public downloadZippedBinary(binaryId: number, _options?: ConfigurationOptions): Observable<any> {
-        return this.downloadZippedBinaryWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
+    public downloadZippedBinary(binaryId: number, _options?: ConfigurationOptions): Observable<HttpFile> {
+        return this.downloadZippedBinaryWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<HttpFile>) => apiResponse.data));
     }
 
     /**
