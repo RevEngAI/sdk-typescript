@@ -58,6 +58,7 @@ export * from '../models/BaseResponseCollectionSearchResponse';
 export * from '../models/BaseResponseCollectionTagsUpdateResponse';
 export * from '../models/BaseResponseCommentResponse';
 export * from '../models/BaseResponseCommunities';
+export * from '../models/BaseResponseConfigResponse';
 export * from '../models/BaseResponseCreated';
 export * from '../models/BaseResponseDict';
 export * from '../models/BaseResponseDynamicExecutionStatus';
@@ -140,6 +141,7 @@ export * from '../models/CommentUpdateRequest';
 export * from '../models/Communities';
 export * from '../models/CommunityMatchPercentages';
 export * from '../models/ConfidenceType';
+export * from '../models/ConfigResponse';
 export * from '../models/Context';
 export * from '../models/Created';
 export * from '../models/DecompilationCommentContext';
@@ -223,6 +225,7 @@ export * from '../models/MetaModel';
 export * from '../models/ModelName';
 export * from '../models/ModelsResponse';
 export * from '../models/NameConfidence';
+export * from '../models/NameSourceType';
 export * from '../models/NetworkOverviewDns';
 export * from '../models/NetworkOverviewDnsAnswer';
 export * from '../models/NetworkOverviewMetadata';
@@ -349,6 +352,7 @@ import { BaseResponseCollectionSearchResponse } from '../models/BaseResponseColl
 import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponseCollectionTagsUpdateResponse';
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
 import { BaseResponseCommunities } from '../models/BaseResponseCommunities';
+import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseDynamicExecutionStatus } from '../models/BaseResponseDynamicExecutionStatus';
@@ -431,6 +435,7 @@ import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { Communities } from '../models/Communities';
 import { CommunityMatchPercentages } from '../models/CommunityMatchPercentages';
 import { ConfidenceType } from '../models/ConfidenceType';
+import { ConfigResponse } from '../models/ConfigResponse';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
@@ -468,7 +473,7 @@ import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfoInput } from '../models/FunctionInfoInput';
 import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
 import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
-import { FunctionListItem  , FunctionListItemNameSourceTypeEnum       } from '../models/FunctionListItem';
+import { FunctionListItem  , FunctionListItemNameSourceTypeEnum        } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
@@ -514,6 +519,7 @@ import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
+import { NameSourceType, NameSourceTypeTypeEnum     } from '../models/NameSourceType';
 import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
 import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata   , NetworkOverviewMetadataTypeEnum   } from '../models/NetworkOverviewMetadata';
@@ -613,6 +619,7 @@ let enumsMap: Set<string> = new Set<string>([
     "GetMeResponseRoleEnum",
     "ISA",
     "ModelName",
+    "NameSourceTypeTypeEnum",
     "NetworkOverviewMetadataTypeEnum",
     "Order",
     "Platform",
@@ -681,6 +688,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseCollectionTagsUpdateResponse": BaseResponseCollectionTagsUpdateResponse,
     "BaseResponseCommentResponse": BaseResponseCommentResponse,
     "BaseResponseCommunities": BaseResponseCommunities,
+    "BaseResponseConfigResponse": BaseResponseConfigResponse,
     "BaseResponseCreated": BaseResponseCreated,
     "BaseResponseDict": BaseResponseDict,
     "BaseResponseDynamicExecutionStatus": BaseResponseDynamicExecutionStatus,
@@ -759,6 +767,7 @@ let typeMap: {[index: string]: any} = {
     "CommentUpdateRequest": CommentUpdateRequest,
     "Communities": Communities,
     "CommunityMatchPercentages": CommunityMatchPercentages,
+    "ConfigResponse": ConfigResponse,
     "Context": Context,
     "Created": Created,
     "DecompilationCommentContext": DecompilationCommentContext,
@@ -835,6 +844,7 @@ let typeMap: {[index: string]: any} = {
     "MetaModel": MetaModel,
     "ModelsResponse": ModelsResponse,
     "NameConfidence": NameConfidence,
+    "NameSourceType": NameSourceType,
     "NetworkOverviewDns": NetworkOverviewDns,
     "NetworkOverviewDnsAnswer": NetworkOverviewDnsAnswer,
     "NetworkOverviewMetadata": NetworkOverviewMetadata,

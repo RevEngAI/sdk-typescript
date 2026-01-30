@@ -102,6 +102,7 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**updateCollection**](docs/CollectionsApi.md#updateCollection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 *CollectionsApi* | [**updateCollectionBinaries**](docs/CollectionsApi.md#updateCollectionBinaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**updateCollectionTags**](docs/CollectionsApi.md#updateCollectionTags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
+*ConfigApi* | [**getConfig**](docs/ConfigApi.md#getConfig) | **GET** /v2/config | Get Config
 *ExternalSourcesApi* | [**createExternalTaskVt**](docs/ExternalSourcesApi.md#createExternalTaskVt) | **POST** /v2/analysis/{analysis_id}/external/vt | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**getVtData**](docs/ExternalSourcesApi.md#getVtData) | **GET** /v2/analysis/{analysis_id}/external/vt | Get VirusTotal data
 *ExternalSourcesApi* | [**getVtTaskStatus**](docs/ExternalSourcesApi.md#getVtTaskStatus) | **GET** /v2/analysis/{analysis_id}/external/vt/status | Check the status of VirusTotal data retrieval
@@ -215,6 +216,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseCollectionTagsUpdateResponse](BaseResponseCollectionTagsUpdateResponse.md)
  - [BaseResponseCommentResponse](BaseResponseCommentResponse.md)
  - [BaseResponseCommunities](BaseResponseCommunities.md)
+ - [BaseResponseConfigResponse](BaseResponseConfigResponse.md)
  - [BaseResponseCreated](BaseResponseCreated.md)
  - [BaseResponseDict](BaseResponseDict.md)
  - [BaseResponseDynamicExecutionStatus](BaseResponseDynamicExecutionStatus.md)
@@ -297,6 +299,7 @@ Class | Method | HTTP request | Description
  - [Communities](Communities.md)
  - [CommunityMatchPercentages](CommunityMatchPercentages.md)
  - [ConfidenceType](ConfidenceType.md)
+ - [ConfigResponse](ConfigResponse.md)
  - [Context](Context.md)
  - [Created](Created.md)
  - [DecompilationCommentContext](DecompilationCommentContext.md)
@@ -380,6 +383,7 @@ Class | Method | HTTP request | Description
  - [ModelName](ModelName.md)
  - [ModelsResponse](ModelsResponse.md)
  - [NameConfidence](NameConfidence.md)
+ - [NameSourceType](NameSourceType.md)
  - [NetworkOverviewDns](NetworkOverviewDns.md)
  - [NetworkOverviewDnsAnswer](NetworkOverviewDnsAnswer.md)
  - [NetworkOverviewMetadata](NetworkOverviewMetadata.md)

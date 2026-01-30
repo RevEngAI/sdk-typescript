@@ -63,6 +63,7 @@ import { BaseResponseCollectionSearchResponse } from '../models/BaseResponseColl
 import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponseCollectionTagsUpdateResponse';
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
 import { BaseResponseCommunities } from '../models/BaseResponseCommunities';
+import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseDynamicExecutionStatus } from '../models/BaseResponseDynamicExecutionStatus';
@@ -145,6 +146,7 @@ import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { Communities } from '../models/Communities';
 import { CommunityMatchPercentages } from '../models/CommunityMatchPercentages';
 import { ConfidenceType } from '../models/ConfidenceType';
+import { ConfigResponse } from '../models/ConfigResponse';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
@@ -228,6 +230,7 @@ import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
+import { NameSourceType } from '../models/NameSourceType';
 import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
 import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata } from '../models/NetworkOverviewMetadata';
@@ -2332,6 +2335,56 @@ export class ObservableCollectionsApi {
      */
     public updateCollectionTags(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionTagsUpdateResponse> {
         return this.updateCollectionTagsWithHttpInfo(collectionId, collectionTagsUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionTagsUpdateResponse>) => apiResponse.data));
+    }
+
+}
+
+import { ConfigApiRequestFactory, ConfigApiResponseProcessor} from "../apis/ConfigApi";
+export class ObservableConfigApi {
+    private requestFactory: ConfigApiRequestFactory;
+    private responseProcessor: ConfigApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ConfigApiRequestFactory,
+        responseProcessor?: ConfigApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new ConfigApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ConfigApiResponseProcessor();
+    }
+
+    /**
+     * General configuration endpoint
+     * Get Config
+     */
+    public getConfigWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseConfigResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getConfig(_config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getConfigWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * General configuration endpoint
+     * Get Config
+     */
+    public getConfig(_options?: ConfigurationOptions): Observable<BaseResponseConfigResponse> {
+        return this.getConfigWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseConfigResponse>) => apiResponse.data));
     }
 
 }
