@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+import { NameSourceType } from '../models/NameSourceType';
 import { HttpFile } from '../http/http';
 
 export class FunctionListItem {
@@ -24,6 +25,10 @@ export class FunctionListItem {
     * The source (process) the function name came from
     */
     'nameSourceType': FunctionListItemNameSourceTypeEnum;
+    /**
+    * The source of the current function name.
+    */
+    'nameSource': NameSourceType;
     /**
     * Mangled name of the function
     */
@@ -62,6 +67,12 @@ export class FunctionListItem {
             "name": "nameSourceType",
             "baseName": "name_source_type",
             "type": "FunctionListItemNameSourceTypeEnum",
+            "format": ""
+        },
+        {
+            "name": "nameSource",
+            "baseName": "name_source",
+            "type": "NameSourceType",
             "format": ""
         },
         {

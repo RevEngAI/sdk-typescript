@@ -13,5 +13,6 @@ import { HttpFile } from '../http/http';
 
 export enum Platform {
     Linux = 'linux',
-    Windows = 'windows'
+    Windows = 'windows',
+    Android = 'android'
 }

@@ -62,6 +62,7 @@ import { BaseResponseCollectionSearchResponse } from '../models/BaseResponseColl
 import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponseCollectionTagsUpdateResponse';
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
 import { BaseResponseCommunities } from '../models/BaseResponseCommunities';
+import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseDynamicExecutionStatus } from '../models/BaseResponseDynamicExecutionStatus';
@@ -144,6 +145,7 @@ import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { Communities } from '../models/Communities';
 import { CommunityMatchPercentages } from '../models/CommunityMatchPercentages';
 import { ConfidenceType } from '../models/ConfidenceType';
+import { ConfigResponse } from '../models/ConfigResponse';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
@@ -227,6 +229,7 @@ import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
+import { NameSourceType } from '../models/NameSourceType';
 import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
 import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata } from '../models/NetworkOverviewMetadata';
@@ -1674,6 +1677,45 @@ export class PromiseCollectionsApi {
     public updateCollectionTags(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionTagsUpdateResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateCollectionTags(collectionId, collectionTagsUpdateRequest, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableConfigApi } from './ObservableAPI';
+
+import { ConfigApiRequestFactory, ConfigApiResponseProcessor} from "../apis/ConfigApi";
+export class PromiseConfigApi {
+    private api: ObservableConfigApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ConfigApiRequestFactory,
+        responseProcessor?: ConfigApiResponseProcessor
+    ) {
+        this.api = new ObservableConfigApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * General configuration endpoint
+     * Get Config
+     */
+    public getConfigWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseConfigResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getConfigWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * General configuration endpoint
+     * Get Config
+     */
+    public getConfig(_options?: PromiseConfigurationOptions): Promise<BaseResponseConfigResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getConfig(observableOptions);
         return result.toPromise();
     }
 
