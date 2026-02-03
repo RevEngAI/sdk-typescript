@@ -24,6 +24,10 @@ export class ConfigResponse {
     * List of programming languages that are not supported for AI decompilation
     */
     'aiDecompilerUnsupportedLanguages': Array<string>;
+    /**
+    * List of models that support AI decompilation
+    */
+    'aiDecompilerSupportedModels': Array<string>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -45,6 +49,12 @@ export class ConfigResponse {
         {
             "name": "aiDecompilerUnsupportedLanguages",
             "baseName": "ai_decompiler_unsupported_languages",
+            "type": "Array<string>",
+            "format": ""
+        },
+        {
+            "name": "aiDecompilerSupportedModels",
+            "baseName": "ai_decompiler_supported_models",
             "type": "Array<string>",
             "format": ""
         }    ];
