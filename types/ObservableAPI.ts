@@ -1324,11 +1324,14 @@ export class ObservableAnalysesResultsMetadataApi {
      * @param [searchTerm]
      * @param [minVAddr]
      * @param [maxVAddr]
+     * @param [includeEmbeddings]
+     * @param [page] The page number to retrieve.
+     * @param [pageSize] Number of items per page.
      */
-    public getFunctionsListWithHttpInfo(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctions>> {
+    public getFunctionsListWithHttpInfo(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, includeEmbeddings?: boolean, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctions>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionsList(analysisId, searchTerm, minVAddr, maxVAddr, _config);
+        const requestContextPromise = this.requestFactory.getFunctionsList(analysisId, searchTerm, minVAddr, maxVAddr, includeEmbeddings, page, pageSize, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1352,9 +1355,12 @@ export class ObservableAnalysesResultsMetadataApi {
      * @param [searchTerm]
      * @param [minVAddr]
      * @param [maxVAddr]
+     * @param [includeEmbeddings]
+     * @param [page] The page number to retrieve.
+     * @param [pageSize] Number of items per page.
      */
-    public getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctions> {
-        return this.getFunctionsListWithHttpInfo(analysisId, searchTerm, minVAddr, maxVAddr, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctions>) => apiResponse.data));
+    public getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, includeEmbeddings?: boolean, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctions> {
+        return this.getFunctionsListWithHttpInfo(analysisId, searchTerm, minVAddr, maxVAddr, includeEmbeddings, page, pageSize, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctions>) => apiResponse.data));
     }
 
     /**

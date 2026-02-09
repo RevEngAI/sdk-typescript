@@ -207,6 +207,12 @@ const request: AnalysesResultsMetadataApiGetFunctionsListRequest = {
   minVAddr: 1,
   
   maxVAddr: 1,
+  
+  includeEmbeddings: true,
+    // The page number to retrieve. (optional)
+  page: 1,
+    // Number of items per page. (optional)
+  pageSize: 1000,
 };
 
 const data = await apiInstance.getFunctionsList(request);
@@ -222,6 +228,9 @@ Name | Type | Description  | Notes
  **searchTerm** | [**string**] |  | (optional) defaults to undefined
  **minVAddr** | [**number**] |  | (optional) defaults to undefined
  **maxVAddr** | [**number**] |  | (optional) defaults to undefined
+ **includeEmbeddings** | [**boolean**] |  | (optional) defaults to true
+ **page** | [**number**] | The page number to retrieve. | (optional) defaults to 1
+ **pageSize** | [**number**] | Number of items per page. | (optional) defaults to 1000
 
 
 ### Return type
