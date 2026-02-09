@@ -1234,6 +1234,31 @@ export interface AnalysesResultsMetadataApiGetFunctionsListRequest {
      * @memberof AnalysesResultsMetadataApigetFunctionsList
      */
     maxVAddr?: number
+    /**
+     * 
+     * Defaults to: true
+     * @type boolean
+     * @memberof AnalysesResultsMetadataApigetFunctionsList
+     */
+    includeEmbeddings?: boolean
+    /**
+     * The page number to retrieve.
+     * Minimum: 1
+     * Maximum: 100000
+     * Defaults to: 1
+     * @type number
+     * @memberof AnalysesResultsMetadataApigetFunctionsList
+     */
+    page?: number
+    /**
+     * Number of items per page.
+     * Minimum: 1
+     * Maximum: 1000
+     * Defaults to: 1000
+     * @type number
+     * @memberof AnalysesResultsMetadataApigetFunctionsList
+     */
+    pageSize?: number
 }
 
 export interface AnalysesResultsMetadataApiGetPdfRequest {
@@ -1339,7 +1364,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getFunctionsListWithHttpInfo(param: AnalysesResultsMetadataApiGetFunctionsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctions>> {
-        return this.api.getFunctionsListWithHttpInfo(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr,  options).toPromise();
+        return this.api.getFunctionsListWithHttpInfo(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr, param.includeEmbeddings, param.page, param.pageSize,  options).toPromise();
     }
 
     /**
@@ -1348,7 +1373,7 @@ export class ObjectAnalysesResultsMetadataApi {
      * @param param the request object
      */
     public getFunctionsList(param: AnalysesResultsMetadataApiGetFunctionsListRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisFunctions> {
-        return this.api.getFunctionsList(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr,  options).toPromise();
+        return this.api.getFunctionsList(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr, param.includeEmbeddings, param.page, param.pageSize,  options).toPromise();
     }
 
     /**

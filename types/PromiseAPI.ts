@@ -999,10 +999,13 @@ export class PromiseAnalysesResultsMetadataApi {
      * @param [searchTerm]
      * @param [minVAddr]
      * @param [maxVAddr]
+     * @param [includeEmbeddings]
+     * @param [page] The page number to retrieve.
+     * @param [pageSize] Number of items per page.
      */
-    public getFunctionsListWithHttpInfo(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctions>> {
+    public getFunctionsListWithHttpInfo(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, includeEmbeddings?: boolean, page?: number, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctions>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionsListWithHttpInfo(analysisId, searchTerm, minVAddr, maxVAddr, observableOptions);
+        const result = this.api.getFunctionsListWithHttpInfo(analysisId, searchTerm, minVAddr, maxVAddr, includeEmbeddings, page, pageSize, observableOptions);
         return result.toPromise();
     }
 
@@ -1013,10 +1016,13 @@ export class PromiseAnalysesResultsMetadataApi {
      * @param [searchTerm]
      * @param [minVAddr]
      * @param [maxVAddr]
+     * @param [includeEmbeddings]
+     * @param [page] The page number to retrieve.
+     * @param [pageSize] Number of items per page.
      */
-    public getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisFunctions> {
+    public getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, includeEmbeddings?: boolean, page?: number, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisFunctions> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionsList(analysisId, searchTerm, minVAddr, maxVAddr, observableOptions);
+        const result = this.api.getFunctionsList(analysisId, searchTerm, minVAddr, maxVAddr, includeEmbeddings, page, pageSize, observableOptions);
         return result.toPromise();
     }
 

@@ -164,14 +164,20 @@ export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFact
      * @param searchTerm 
      * @param minVAddr 
      * @param maxVAddr 
+     * @param includeEmbeddings 
+     * @param page The page number to retrieve.
+     * @param pageSize Number of items per page.
      */
-    public async getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, includeEmbeddings?: boolean, page?: number, pageSize?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesResultsMetadataApi", "getFunctionsList", "analysisId");
         }
+
+
+
 
 
 
@@ -198,6 +204,21 @@ export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFact
         // Query Params
         if (maxVAddr !== undefined) {
             requestContext.setQueryParam("max_v_addr", ObjectSerializer.serialize(maxVAddr, "number", ""));
+        }
+
+        // Query Params
+        if (includeEmbeddings !== undefined) {
+            requestContext.setQueryParam("include_embeddings", ObjectSerializer.serialize(includeEmbeddings, "boolean", ""));
+        }
+
+        // Query Params
+        if (page !== undefined) {
+            requestContext.setQueryParam("page", ObjectSerializer.serialize(page, "number", ""));
+        }
+
+        // Query Params
+        if (pageSize !== undefined) {
+            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", ""));
         }
 
 
