@@ -65,6 +65,8 @@ export class Basic {
     */
     'isAdvanced': boolean;
     'baseAddress': number | null;
+    'binaryUuid'?: string | null;
+    'sequencerVersion'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -153,6 +155,18 @@ export class Basic {
             "name": "baseAddress",
             "baseName": "base_address",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "binaryUuid",
+            "baseName": "binary_uuid",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "sequencerVersion",
+            "baseName": "sequencer_version",
+            "type": "string",
             "format": ""
         }    ];
 
