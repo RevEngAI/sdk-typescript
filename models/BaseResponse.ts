@@ -18,10 +18,7 @@ export class BaseResponse {
     * Response status on whether the request succeeded
     */
     'status'?: boolean;
-    /**
-    * Response data
-    */
-    'data'?:  | null;
+    'data'?: any | null;
     'message'?: string | null;
     'errors'?: Array<ErrorModel> | null;
     /**
@@ -43,7 +40,7 @@ export class BaseResponse {
         {
             "name": "data",
             "baseName": "data",
-            "type": "",
+            "type": "any",
             "format": ""
         },
         {

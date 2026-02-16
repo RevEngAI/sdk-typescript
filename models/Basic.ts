@@ -13,6 +13,10 @@ import { HttpFile } from '../http/http';
 
 export class Basic {
     /**
+    * The ID of the binary
+    */
+    'binaryId': number;
+    /**
     * The name of the binary uploaded
     */
     'binaryName': string;
@@ -73,6 +77,12 @@ export class Basic {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "binaryId",
+            "baseName": "binary_id",
+            "type": "number",
+            "format": ""
+        },
         {
             "name": "binaryName",
             "baseName": "binary_name",

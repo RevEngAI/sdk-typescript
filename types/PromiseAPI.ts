@@ -216,6 +216,7 @@ import { GlobalVariable } from '../models/GlobalVariable';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
+import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
@@ -577,6 +578,30 @@ export class PromiseAnalysesCoreApi {
     public getAnalysisStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseStatus> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getAnalysisStatus(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
+     * Insert a log entry for an analysis
+     * @param analysisId
+     * @param insertAnalysisLogRequest
+     */
+    public insertAnalysisLogWithHttpInfo(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.insertAnalysisLogWithHttpInfo(analysisId, insertAnalysisLogRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
+     * Insert a log entry for an analysis
+     * @param analysisId
+     * @param insertAnalysisLogRequest
+     */
+    public insertAnalysisLog(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.insertAnalysisLog(analysisId, insertAnalysisLogRequest, observableOptions);
         return result.toPromise();
     }
 

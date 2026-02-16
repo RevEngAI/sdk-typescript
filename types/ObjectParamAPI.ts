@@ -216,6 +216,7 @@ import { GlobalVariable } from '../models/GlobalVariable';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
+import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
@@ -527,6 +528,22 @@ export interface AnalysesCoreApiGetAnalysisStatusRequest {
     analysisId: number
 }
 
+export interface AnalysesCoreApiInsertAnalysisLogRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiinsertAnalysisLog
+     */
+    analysisId: number
+    /**
+     * 
+     * @type InsertAnalysisLogRequest
+     * @memberof AnalysesCoreApiinsertAnalysisLog
+     */
+    insertAnalysisLogRequest: InsertAnalysisLogRequest
+}
+
 export interface AnalysesCoreApiListAnalysesRequest {
     /**
      * 
@@ -836,6 +853,24 @@ export class ObjectAnalysesCoreApi {
      */
     public getAnalysisStatus(param: AnalysesCoreApiGetAnalysisStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseStatus> {
         return this.api.getAnalysisStatus(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
+     * Insert a log entry for an analysis
+     * @param param the request object
+     */
+    public insertAnalysisLogWithHttpInfo(param: AnalysesCoreApiInsertAnalysisLogRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+        return this.api.insertAnalysisLogWithHttpInfo(param.analysisId, param.insertAnalysisLogRequest,  options).toPromise();
+    }
+
+    /**
+     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
+     * Insert a log entry for an analysis
+     * @param param the request object
+     */
+    public insertAnalysisLog(param: AnalysesCoreApiInsertAnalysisLogRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
+        return this.api.insertAnalysisLog(param.analysisId, param.insertAnalysisLogRequest,  options).toPromise();
     }
 
     /**

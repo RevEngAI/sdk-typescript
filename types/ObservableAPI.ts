@@ -217,6 +217,7 @@ import { GlobalVariable } from '../models/GlobalVariable';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
+import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
@@ -713,6 +714,42 @@ export class ObservableAnalysesCoreApi {
      */
     public getAnalysisStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseStatus> {
         return this.getAnalysisStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStatus>) => apiResponse.data));
+    }
+
+    /**
+     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
+     * Insert a log entry for an analysis
+     * @param analysisId
+     * @param insertAnalysisLogRequest
+     */
+    public insertAnalysisLogWithHttpInfo(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.insertAnalysisLog(analysisId, insertAnalysisLogRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.insertAnalysisLogWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
+     * Insert a log entry for an analysis
+     * @param analysisId
+     * @param insertAnalysisLogRequest
+     */
+    public insertAnalysisLog(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: ConfigurationOptions): Observable<BaseResponse> {
+        return this.insertAnalysisLogWithHttpInfo(analysisId, insertAnalysisLogRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
     }
 
     /**

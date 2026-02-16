@@ -212,6 +212,7 @@ export * from '../models/GlobalVariable';
 export * from '../models/ISA';
 export * from '../models/IconModel';
 export * from '../models/ImportModel';
+export * from '../models/InsertAnalysisLogRequest';
 export * from '../models/InverseFunctionMapItem';
 export * from '../models/InverseStringMapItem';
 export * from '../models/InverseValue';
@@ -506,6 +507,7 @@ import { GlobalVariable } from '../models/GlobalVariable';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
+import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
@@ -832,6 +834,7 @@ let typeMap: {[index: string]: any} = {
     "GlobalVariable": GlobalVariable,
     "IconModel": IconModel,
     "ImportModel": ImportModel,
+    "InsertAnalysisLogRequest": InsertAnalysisLogRequest,
     "InverseFunctionMapItem": InverseFunctionMapItem,
     "InverseStringMapItem": InverseStringMapItem,
     "InverseValue": InverseValue,
