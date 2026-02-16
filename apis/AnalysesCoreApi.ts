@@ -26,6 +26,7 @@ import { BaseResponseRecent } from '../models/BaseResponseRecent';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInput';
+import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { ModelName } from '../models/ModelName';
 import { Order } from '../models/Order';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
@@ -303,6 +304,62 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
+     * Insert a log entry for an analysis
+     * @param analysisId 
+     * @param insertAnalysisLogRequest 
+     */
+    public async insertAnalysisLog(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "insertAnalysisLog", "analysisId");
+        }
+
+
+        // verify required parameter 'insertAnalysisLogRequest' is not null or undefined
+        if (insertAnalysisLogRequest === null || insertAnalysisLogRequest === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "insertAnalysisLog", "insertAnalysisLogRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/analyses/{analysis_id}/logs'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(insertAnalysisLogRequest, "InsertAnalysisLogRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -1014,6 +1071,42 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseStatus", ""
             ) as BaseResponseStatus;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to insertAnalysisLog
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async insertAnalysisLogWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponse >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

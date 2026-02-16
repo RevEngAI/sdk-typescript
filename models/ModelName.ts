@@ -20,5 +20,8 @@ export enum ModelName {
     Binnet07X8632Windows = 'binnet-0.7-x86-32-windows',
     Binnet07X8632Linux = 'binnet-0.7-x86-32-linux',
     Binnet07Arm64Windows = 'binnet-0.7-arm-64-windows',
-    Binnet07Arm64Linux = 'binnet-0.7-arm-64-linux'
+    Binnet07Arm64Linux = 'binnet-0.7-arm-64-linux',
+    Binnet07X8664Android = 'binnet-0.7-x86-64-android',
+    Binnet07X8632Android = 'binnet-0.7-x86-32-android',
+    Binnet07Arm64Android = 'binnet-0.7-arm-64-android'
 }
