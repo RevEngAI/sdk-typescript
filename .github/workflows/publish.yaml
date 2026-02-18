@@ -15,13 +15,13 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4
+      uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
     - name: Generate a token
       id: generate-token
-      uses: actions/create-github-app-token@v2
+      uses: actions/create-github-app-token@29824e69f54612133e76f7eaac726eef6c875baf # v2.2.1
       with:
-        app-id: ${{ vars.REVENG_APP_ID }}
+        app-id: ${{ secrets.REVENG_APP_ID }}
         private-key: ${{ secrets.REVENG_APP_PRIVATE_KEY }}
 
     - name: Read version from file
@@ -31,25 +31,27 @@ jobs:
           echo "Error: .sdk-version file not found"
           exit 1
         fi
-        
+
         VERSION=$(cat .sdk-version | tr -d '\n\r' | xargs)
-        
+
         if [ -z "$VERSION" ]; then
           echo "Error: .sdk-version file is empty"
           exit 1
         fi
-        
+
         echo "Found version: $VERSION"
         echo "version=$VERSION" >> $GITHUB_OUTPUT
 
     - name: Check if tag already exists
       id: check-tag
+      env:
+        SDK_VERSION: ${{ steps.version.outputs.version }}
       run: |
-        if git ls-remote --tags origin | grep -q "refs/tags/${{ steps.version.outputs.version }}$"; then
-          echo "Tag ${{ steps.version.outputs.version }} already exists"
+        if git ls-remote --tags origin | grep -q "refs/tags/${SDK_VERSION}$"; then
+          echo "Tag ${SDK_VERSION} already exists"
           echo "tag_exists=true" >> $GITHUB_OUTPUT
         else
-          echo "Tag ${{ steps.version.outputs.version }} does not exist"
+          echo "Tag ${SDK_VERSION} does not exist"
           echo "tag_exists=false" >> $GITHUB_OUTPUT
         fi
 
@@ -57,33 +59,36 @@ jobs:
       if: steps.check-tag.outputs.tag_exists == 'false'
       env:
         GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+        GH_REPO: ${{ github.repository }}
+        SDK_VERSION: ${{ steps.version.outputs.version }}
       run: |
         git config --global user.name "reveng-github[bot]"
         git config --global user.email "reveng-github[bot]@users.noreply.github.com"
-        
+
         # Configure git to use the token for authentication
-        git remote set-url origin https://x-access-token:${{ steps.generate-token.outputs.token }}@github.com/${{ github.repository }}.git
-        
-        TAG_NAME="${{ steps.version.outputs.version }}"
-        
+        git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GH_REPO}.git"
+
+        TAG_NAME="${SDK_VERSION}"
+
         git tag "$TAG_NAME"
         git push origin "$TAG_NAME"
-        
+
         echo "Created and pushed tag: $TAG_NAME"
 
     - name: Create GitHub release
       if: steps.check-tag.outputs.tag_exists == 'false'
       env:
         GITHUB_TOKEN: ${{ steps.generate-token.outputs.token }}
+        SDK_VERSION: ${{ steps.version.outputs.version }}
       run: |
-        TAG_NAME="${{ steps.version.outputs.version }}"
-        
+        TAG_NAME="${SDK_VERSION}"
+
         gh release create "$TAG_NAME" \
           --title "$TAG_NAME" \
           --notes "$TAG_NAME" \
           --verify-tag
 
-    - uses: actions/setup-node@v6
+    - uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6.2.0
       with:
         node-version: '24'
         cache: 'npm'
@@ -96,12 +101,13 @@ jobs:
 
     - name: Notify the releases channel about the release
       if: steps.check-tag.outputs.tag_exists == 'false'
-      uses: slackapi/slack-github-action@v2.0.0
+      uses: slackapi/slack-github-action@91efab103c0de0a537f72a35f6b8cda0ee76bf0a # v2.1.1
       env:
-        REPO_URL: "${{github.server_url}}/${{github.repository}}"
-        RELEASE_URL: "${{github.server_url}}/${{github.repository}}/releases/tag/${{ steps.version.outputs.version }}"
+        REPO_URL: "${{ github.server_url }}/${{ github.repository }}"
+        RELEASE_URL: "${{ github.server_url }}/${{ github.repository }}/releases/tag/${{ steps.version.outputs.version }}"
+        SDK_VERSION: ${{ steps.version.outputs.version }}
       with:
         webhook: ${{ secrets.RELEASES_SLACK_WEBHOOK }}
         webhook-type: incoming-webhook
         payload: |
-          text: "<${{ env.RELEASE_URL }}|${{ steps.version.outputs.version }}> has been released for <${{ env.REPO_URL }}|${{ github.repository }}>"
+          text: "<${{ env.RELEASE_URL }}|${{ env.SDK_VERSION }}> has been released for <${{ env.REPO_URL }}|${{ github.repository }}>"
