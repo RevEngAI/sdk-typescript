@@ -42,7 +42,7 @@ export class BinaryDetailsResponse {
     * SHA256 hash of the binary
     */
     'sha256': string;
-    'ssdeep': string;
+    'ssdeep': string | null;
     '_static': boolean;
     'stripped': boolean;
     'subSys': string;
