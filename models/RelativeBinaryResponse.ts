@@ -16,6 +16,7 @@ export class RelativeBinaryResponse {
     * ID of the relative binary
     */
     'binaryId': number;
+    'analysisId'?: number | null;
     /**
     * Name of the relative binary
     */
@@ -33,6 +34,12 @@ export class RelativeBinaryResponse {
         {
             "name": "binaryId",
             "baseName": "binary_id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "analysisId",
+            "baseName": "analysis_id",
             "type": "number",
             "format": ""
         },
