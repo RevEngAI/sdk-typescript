@@ -521,7 +521,7 @@ import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
-import { NameSourceType, NameSourceTypeTypeEnum     } from '../models/NameSourceType';
+import { NameSourceType, NameSourceTypeTypeEnum      } from '../models/NameSourceType';
 import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
 import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata   , NetworkOverviewMetadataTypeEnum   } from '../models/NetworkOverviewMetadata';

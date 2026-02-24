@@ -18,6 +18,7 @@ export class NameSourceType {
     'type': NameSourceTypeTypeEnum;
     'functionId'?: number | null;
     'binaryId'?: number | null;
+    'analysisId'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -39,6 +40,12 @@ export class NameSourceType {
         {
             "name": "binaryId",
             "baseName": "binary_id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "analysisId",
+            "baseName": "analysis_id",
             "type": "number",
             "format": ""
         }    ];

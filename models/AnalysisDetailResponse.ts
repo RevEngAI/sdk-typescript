@@ -23,6 +23,10 @@ export class AnalysisDetailResponse {
     'binarySize': number;
     'binaryType': string;
     'creation': string;
+    /**
+    * URL to view this analysis in the dashboard
+    */
+    'dashboardUrl': string;
     'debug': boolean;
     'modelName': string;
     'sbom'?: { [key: string]: any; } | null;
@@ -90,6 +94,12 @@ export class AnalysisDetailResponse {
         {
             "name": "creation",
             "baseName": "creation",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "dashboardUrl",
+            "baseName": "dashboard_url",
             "type": "string",
             "format": ""
         },
