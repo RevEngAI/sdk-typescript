@@ -30,7 +30,7 @@ export class InverseStringMapItem {
             "name": "addr",
             "baseName": "addr",
             "type": "number",
-            "format": ""
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
