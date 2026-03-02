@@ -2949,6 +2949,20 @@ export interface FunctionsCoreApiGetAnalysisStringsRequest {
      * @memberof FunctionsCoreApigetAnalysisStrings
      */
     functionSearch?: string
+    /**
+     * Order by field
+     * Defaults to: &#39;value&#39;
+     * @type &#39;length&#39; | &#39;value&#39;
+     * @memberof FunctionsCoreApigetAnalysisStrings
+     */
+    orderBy?: 'length' | 'value'
+    /**
+     * Sort order for the results
+     * Defaults to: &#39;ASC&#39;
+     * @type &#39;ASC&#39; | &#39;DESC&#39;
+     * @memberof FunctionsCoreApigetAnalysisStrings
+     */
+    sortOrder?: 'ASC' | 'DESC'
 }
 
 export interface FunctionsCoreApiGetAnalysisStringsStatusRequest {
@@ -3156,7 +3170,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getAnalysisStringsWithHttpInfo(param: FunctionsCoreApiGetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsResponse>> {
-        return this.api.getAnalysisStringsWithHttpInfo(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch,  options).toPromise();
+        return this.api.getAnalysisStringsWithHttpInfo(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
     }
 
     /**
@@ -3165,7 +3179,7 @@ export class ObjectFunctionsCoreApi {
      * @param param the request object
      */
     public getAnalysisStrings(param: FunctionsCoreApiGetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisStringsResponse> {
-        return this.api.getAnalysisStrings(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch,  options).toPromise();
+        return this.api.getAnalysisStrings(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
     }
 
     /**

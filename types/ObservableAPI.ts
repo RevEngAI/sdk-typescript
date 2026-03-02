@@ -3316,11 +3316,13 @@ export class ObservableFunctionsCoreApi {
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
      * @param [functionSearch] Search is applied to function names
+     * @param [orderBy] Order by field
+     * @param [sortOrder] Sort order for the results
      */
-    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisStringsResponse>> {
+    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'length' | 'value', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisStringsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3345,9 +3347,11 @@ export class ObservableFunctionsCoreApi {
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
      * @param [functionSearch] Search is applied to function names
+     * @param [orderBy] Order by field
+     * @param [sortOrder] Sort order for the results
      */
-    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisStringsResponse> {
-        return this.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisStringsResponse>) => apiResponse.data));
+    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'length' | 'value', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<BaseResponseAnalysisStringsResponse> {
+        return this.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisStringsResponse>) => apiResponse.data));
     }
 
     /**

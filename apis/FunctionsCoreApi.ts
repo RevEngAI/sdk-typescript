@@ -328,14 +328,18 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Number of items per page.
      * @param search Search is applied to string value
      * @param functionSearch Search is applied to function names
+     * @param orderBy Order by field
+     * @param sortOrder Sort order for the results
      */
-    public async getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'length' | 'value', sortOrder?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("FunctionsCoreApi", "getAnalysisStrings", "analysisId");
         }
+
+
 
 
 
@@ -368,6 +372,16 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (functionSearch !== undefined) {
             requestContext.setQueryParam("function_search", ObjectSerializer.serialize(functionSearch, "string", ""));
+        }
+
+        // Query Params
+        if (orderBy !== undefined) {
+            requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "'length' | 'value'", ""));
+        }
+
+        // Query Params
+        if (sortOrder !== undefined) {
+            requestContext.setQueryParam("sort_order", ObjectSerializer.serialize(sortOrder, "'ASC' | 'DESC'", ""));
         }
 
 

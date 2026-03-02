@@ -420,6 +420,10 @@ const request: FunctionsCoreApiGetAnalysisStringsRequest = {
   search: "search_example",
     // Search is applied to function names (optional)
   functionSearch: "function_search_example",
+    // Order by field (optional)
+  orderBy: "value",
+    // Sort order for the results (optional)
+  sortOrder: "ASC",
 };
 
 const data = await apiInstance.getAnalysisStrings(request);
@@ -436,6 +440,8 @@ Name | Type | Description  | Notes
  **pageSize** | [**number**] | Number of items per page. | (optional) defaults to 100
  **search** | [**string**] | Search is applied to string value | (optional) defaults to undefined
  **functionSearch** | [**string**] | Search is applied to function names | (optional) defaults to undefined
+ **orderBy** | [**&#39;length&#39; | &#39;value&#39;**]**Array<&#39;length&#39; &#124; &#39;value&#39;>** | Order by field | (optional) defaults to 'value'
+ **sortOrder** | [**&#39;ASC&#39; | &#39;DESC&#39;**]**Array<&#39;ASC&#39; &#124; &#39;DESC&#39;>** | Sort order for the results | (optional) defaults to 'ASC'
 
 
 ### Return type
