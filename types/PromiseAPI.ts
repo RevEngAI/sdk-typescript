@@ -2365,10 +2365,12 @@ export class PromiseFunctionsCoreApi {
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
      * @param [functionSearch] Search is applied to function names
+     * @param [orderBy] Order by field
+     * @param [sortOrder] Sort order for the results
      */
-    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsResponse>> {
+    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'length' | 'value', sortOrder?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, observableOptions);
+        const result = this.api.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, observableOptions);
         return result.toPromise();
     }
 
@@ -2380,10 +2382,12 @@ export class PromiseFunctionsCoreApi {
      * @param [pageSize] Number of items per page.
      * @param [search] Search is applied to string value
      * @param [functionSearch] Search is applied to function names
+     * @param [orderBy] Order by field
+     * @param [sortOrder] Sort order for the results
      */
-    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisStringsResponse> {
+    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'length' | 'value', sortOrder?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisStringsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, observableOptions);
+        const result = this.api.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, observableOptions);
         return result.toPromise();
     }
 
