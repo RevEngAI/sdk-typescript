@@ -9,12 +9,16 @@
  * Do not edit the class manually.
  */
 
+import { AiDecompilationTaskStatus } from '../models/AiDecompilationTaskStatus';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { HttpFile } from '../http/http';
 
 export class GetAiDecompilationTask {
-    'status': string;
+    /**
+    * The status of the AI decompilation task
+    */
+    'status': AiDecompilationTaskStatus;
     'decompilation': string | null;
     'rawDecompilation': string | null;
     'functionMapping': { [key: string]: InverseFunctionMapItem; } | null;
@@ -32,7 +36,7 @@ export class GetAiDecompilationTask {
         {
             "name": "status",
             "baseName": "status",
-            "type": "string",
+            "type": "AiDecompilationTaskStatus",
             "format": ""
         },
         {
@@ -91,3 +95,5 @@ export class GetAiDecompilationTask {
     public constructor() {
     }
 }
+
+

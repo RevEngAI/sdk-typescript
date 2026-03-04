@@ -1,8 +1,12 @@
 export * from '../models/AdditionalDetailsStatusResponse';
 export * from '../models/Addr';
 export * from '../models/AiDecompilationRating';
+export * from '../models/AiDecompilationTaskStatus';
 export * from '../models/AiUnstripRequest';
 export * from '../models/AnalysisAccessInfo';
+export * from '../models/AnalysisBulkAddTagsRequest';
+export * from '../models/AnalysisBulkAddTagsResponse';
+export * from '../models/AnalysisBulkAddTagsResponseItem';
 export * from '../models/AnalysisConfig';
 export * from '../models/AnalysisCreateRequest';
 export * from '../models/AnalysisCreateResponse';
@@ -30,6 +34,7 @@ export * from '../models/AutoUnstripRequest';
 export * from '../models/AutoUnstripResponse';
 export * from '../models/BaseResponse';
 export * from '../models/BaseResponseAdditionalDetailsStatusResponse';
+export * from '../models/BaseResponseAnalysisBulkAddTagsResponse';
 export * from '../models/BaseResponseAnalysisCreateResponse';
 export * from '../models/BaseResponseAnalysisDetailResponse';
 export * from '../models/BaseResponseAnalysisFunctionMapping';
@@ -296,8 +301,12 @@ export * from '../models/Workspace';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
+import { AiDecompilationTaskStatus } from '../models/AiDecompilationTaskStatus';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
+import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
+import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
+import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
 import { AnalysisConfig } from '../models/AnalysisConfig';
 import { AnalysisCreateRequest         } from '../models/AnalysisCreateRequest';
 import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
@@ -306,7 +315,7 @@ import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
-import { AnalysisRecord                 } from '../models/AnalysisRecord';
+import { AnalysisRecord                  } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse  } from '../models/AnalysisStringsStatusResponse';
@@ -325,6 +334,7 @@ import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
+import { BaseResponseAnalysisBulkAddTagsResponse } from '../models/BaseResponseAnalysisBulkAddTagsResponse';
 import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalysisCreateResponse';
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
@@ -500,7 +510,7 @@ import { FunctionsListRename } from '../models/FunctionsListRename';
 import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
-import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
+import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTask';
 import { GetMeResponse       , GetMeResponseRoleEnum   } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
@@ -602,6 +612,7 @@ let primitives = [
 
 let enumsMap: Set<string> = new Set<string>([
     "AiDecompilationRating",
+    "AiDecompilationTaskStatus",
     "AnalysisScope",
     "AnalysisUpdateRequestAnalysisScopeEnum",
     "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
@@ -639,6 +650,9 @@ let typeMap: {[index: string]: any} = {
     "Addr": Addr,
     "AiUnstripRequest": AiUnstripRequest,
     "AnalysisAccessInfo": AnalysisAccessInfo,
+    "AnalysisBulkAddTagsRequest": AnalysisBulkAddTagsRequest,
+    "AnalysisBulkAddTagsResponse": AnalysisBulkAddTagsResponse,
+    "AnalysisBulkAddTagsResponseItem": AnalysisBulkAddTagsResponseItem,
     "AnalysisConfig": AnalysisConfig,
     "AnalysisCreateRequest": AnalysisCreateRequest,
     "AnalysisCreateResponse": AnalysisCreateResponse,
@@ -662,6 +676,7 @@ let typeMap: {[index: string]: any} = {
     "AutoUnstripResponse": AutoUnstripResponse,
     "BaseResponse": BaseResponse,
     "BaseResponseAdditionalDetailsStatusResponse": BaseResponseAdditionalDetailsStatusResponse,
+    "BaseResponseAnalysisBulkAddTagsResponse": BaseResponseAnalysisBulkAddTagsResponse,
     "BaseResponseAnalysisCreateResponse": BaseResponseAnalysisCreateResponse,
     "BaseResponseAnalysisDetailResponse": BaseResponseAnalysisDetailResponse,
     "BaseResponseAnalysisFunctionMapping": BaseResponseAnalysisFunctionMapping,
