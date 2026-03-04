@@ -51,6 +51,7 @@ Class | Method | HTTP request | Description
 *AnalysesCommentsApi* | [**deleteAnalysisComment**](docs/AnalysesCommentsApi.md#deleteAnalysisComment) | **DELETE** /v2/analyses/{analysis_id}/comments/{comment_id} | Delete a comment
 *AnalysesCommentsApi* | [**getAnalysisComments**](docs/AnalysesCommentsApi.md#getAnalysisComments) | **GET** /v2/analyses/{analysis_id}/comments | Get comments for this analysis
 *AnalysesCommentsApi* | [**updateAnalysisComment**](docs/AnalysesCommentsApi.md#updateAnalysisComment) | **PATCH** /v2/analyses/{analysis_id}/comments/{comment_id} | Update a comment
+*AnalysesCoreApi* | [**bulkAddAnalysisTags**](docs/AnalysesCoreApi.md#bulkAddAnalysisTags) | **PATCH** /v2/analyses/tags/add | Bulk Add Analysis Tags
 *AnalysesCoreApi* | [**createAnalysis**](docs/AnalysesCoreApi.md#createAnalysis) | **POST** /v2/analyses | Create Analysis
 *AnalysesCoreApi* | [**deleteAnalysis**](docs/AnalysesCoreApi.md#deleteAnalysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
 *AnalysesCoreApi* | [**getAnalysisBasicInfo**](docs/AnalysesCoreApi.md#getAnalysisBasicInfo) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
@@ -160,8 +161,12 @@ Class | Method | HTTP request | Description
  - [AdditionalDetailsStatusResponse](AdditionalDetailsStatusResponse.md)
  - [Addr](Addr.md)
  - [AiDecompilationRating](AiDecompilationRating.md)
+ - [AiDecompilationTaskStatus](AiDecompilationTaskStatus.md)
  - [AiUnstripRequest](AiUnstripRequest.md)
  - [AnalysisAccessInfo](AnalysisAccessInfo.md)
+ - [AnalysisBulkAddTagsRequest](AnalysisBulkAddTagsRequest.md)
+ - [AnalysisBulkAddTagsResponse](AnalysisBulkAddTagsResponse.md)
+ - [AnalysisBulkAddTagsResponseItem](AnalysisBulkAddTagsResponseItem.md)
  - [AnalysisConfig](AnalysisConfig.md)
  - [AnalysisCreateRequest](AnalysisCreateRequest.md)
  - [AnalysisCreateResponse](AnalysisCreateResponse.md)
@@ -189,6 +194,7 @@ Class | Method | HTTP request | Description
  - [AutoUnstripResponse](AutoUnstripResponse.md)
  - [BaseResponse](BaseResponse.md)
  - [BaseResponseAdditionalDetailsStatusResponse](BaseResponseAdditionalDetailsStatusResponse.md)
+ - [BaseResponseAnalysisBulkAddTagsResponse](BaseResponseAnalysisBulkAddTagsResponse.md)
  - [BaseResponseAnalysisCreateResponse](BaseResponseAnalysisCreateResponse.md)
  - [BaseResponseAnalysisDetailResponse](BaseResponseAnalysisDetailResponse.md)
  - [BaseResponseAnalysisFunctionMapping](BaseResponseAnalysisFunctionMapping.md)

@@ -10,6 +10,7 @@
  */
 
 import { AppApiRestV2AnalysesEnumsDynamicExecutionStatus } from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
+import { TagItem } from '../models/TagItem';
 import { HttpFile } from '../http/http';
 
 export class AnalysisRecord {
@@ -71,6 +72,10 @@ export class AnalysisRecord {
     * The base address of the binary
     */
     'baseAddress': number;
+    /**
+    * List of tags associated with the analysis
+    */
+    'tags'?: Array<TagItem>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -172,6 +177,12 @@ export class AnalysisRecord {
             "baseName": "base_address",
             "type": "number",
             "format": "bigint"
+        },
+        {
+            "name": "tags",
+            "baseName": "tags",
+            "type": "Array<TagItem>",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

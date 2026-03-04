@@ -5,8 +5,12 @@ import type { Middleware } from '../middleware';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
+import { AiDecompilationTaskStatus } from '../models/AiDecompilationTaskStatus';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
+import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
+import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
+import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
 import { AnalysisConfig } from '../models/AnalysisConfig';
 import { AnalysisCreateRequest } from '../models/AnalysisCreateRequest';
 import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
@@ -34,6 +38,7 @@ import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
+import { BaseResponseAnalysisBulkAddTagsResponse } from '../models/BaseResponseAnalysisBulkAddTagsResponse';
 import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalysisCreateResponse';
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
@@ -452,6 +457,15 @@ export class ObjectAnalysesCommentsApi {
 import { ObservableAnalysesCoreApi } from "./ObservableAPI";
 import { AnalysesCoreApiRequestFactory, AnalysesCoreApiResponseProcessor} from "../apis/AnalysesCoreApi";
 
+export interface AnalysesCoreApiBulkAddAnalysisTagsRequest {
+    /**
+     * 
+     * @type AnalysisBulkAddTagsRequest
+     * @memberof AnalysesCoreApibulkAddAnalysisTags
+     */
+    analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest
+}
+
 export interface AnalysesCoreApiCreateAnalysisRequest {
     /**
      * 
@@ -727,6 +741,24 @@ export class ObjectAnalysesCoreApi {
 
     public constructor(configuration: Configuration, requestFactory?: AnalysesCoreApiRequestFactory, responseProcessor?: AnalysesCoreApiResponseProcessor) {
         this.api = new ObservableAnalysesCoreApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Updates analysis tags for multiple analyses. User must be the owner.
+     * Bulk Add Analysis Tags
+     * @param param the request object
+     */
+    public bulkAddAnalysisTagsWithHttpInfo(param: AnalysesCoreApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
+        return this.api.bulkAddAnalysisTagsWithHttpInfo(param.analysisBulkAddTagsRequest,  options).toPromise();
+    }
+
+    /**
+     * Updates analysis tags for multiple analyses. User must be the owner.
+     * Bulk Add Analysis Tags
+     * @param param the request object
+     */
+    public bulkAddAnalysisTags(param: AnalysesCoreApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
+        return this.api.bulkAddAnalysisTags(param.analysisBulkAddTagsRequest,  options).toPromise();
     }
 
     /**

@@ -5,8 +5,12 @@ import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../midd
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
+import { AiDecompilationTaskStatus } from '../models/AiDecompilationTaskStatus';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
+import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
+import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
+import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
 import { AnalysisConfig } from '../models/AnalysisConfig';
 import { AnalysisCreateRequest } from '../models/AnalysisCreateRequest';
 import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
@@ -34,6 +38,7 @@ import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
+import { BaseResponseAnalysisBulkAddTagsResponse } from '../models/BaseResponseAnalysisBulkAddTagsResponse';
 import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalysisCreateResponse';
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
@@ -423,6 +428,28 @@ export class PromiseAnalysesCoreApi {
         responseProcessor?: AnalysesCoreApiResponseProcessor
     ) {
         this.api = new ObservableAnalysesCoreApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Updates analysis tags for multiple analyses. User must be the owner.
+     * Bulk Add Analysis Tags
+     * @param analysisBulkAddTagsRequest
+     */
+    public bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates analysis tags for multiple analyses. User must be the owner.
+     * Bulk Add Analysis Tags
+     * @param analysisBulkAddTagsRequest
+     */
+    public bulkAddAnalysisTags(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.bulkAddAnalysisTags(analysisBulkAddTagsRequest, observableOptions);
+        return result.toPromise();
     }
 
     /**
