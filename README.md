@@ -190,6 +190,7 @@ Class | Method | HTTP request | Description
  - [AppApiRestV2FunctionsTypesFunction](AppApiRestV2FunctionsTypesFunction.md)
  - [AppServicesDynamicExecutionSchemasDynamicExecutionStatus](AppServicesDynamicExecutionSchemasDynamicExecutionStatus.md)
  - [Argument](Argument.md)
+ - [AutoRunAgents](AutoRunAgents.md)
  - [AutoUnstripRequest](AutoUnstripRequest.md)
  - [AutoUnstripResponse](AutoUnstripResponse.md)
  - [BaseResponse](BaseResponse.md)

@@ -30,6 +30,7 @@ export * from '../models/AppApiRestV2FunctionsResponsesFunction';
 export * from '../models/AppApiRestV2FunctionsTypesFunction';
 export * from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 export * from '../models/Argument';
+export * from '../models/AutoRunAgents';
 export * from '../models/AutoUnstripRequest';
 export * from '../models/AutoUnstripResponse';
 export * from '../models/BaseResponse';
@@ -308,7 +309,7 @@ import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest
 import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
 import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
 import { AnalysisConfig } from '../models/AnalysisConfig';
-import { AnalysisCreateRequest         } from '../models/AnalysisCreateRequest';
+import { AnalysisCreateRequest          } from '../models/AnalysisCreateRequest';
 import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
 import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
@@ -330,6 +331,7 @@ import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2Fu
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppServicesDynamicExecutionSchemasDynamicExecutionStatus } from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 import { Argument } from '../models/Argument';
+import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { BaseResponse } from '../models/BaseResponse';
@@ -672,6 +674,7 @@ let typeMap: {[index: string]: any} = {
     "AppApiRestV2FunctionsTypesFunction": AppApiRestV2FunctionsTypesFunction,
     "AppServicesDynamicExecutionSchemasDynamicExecutionStatus": AppServicesDynamicExecutionSchemasDynamicExecutionStatus,
     "Argument": Argument,
+    "AutoRunAgents": AutoRunAgents,
     "AutoUnstripRequest": AutoUnstripRequest,
     "AutoUnstripResponse": AutoUnstripResponse,
     "BaseResponse": BaseResponse,
