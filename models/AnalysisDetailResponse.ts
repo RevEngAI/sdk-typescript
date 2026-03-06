@@ -10,6 +10,7 @@
  */
 
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
+import { AutoRunAgents } from '../models/AutoRunAgents';
 import { HttpFile } from '../http/http';
 
 export class AnalysisDetailResponse {
@@ -31,6 +32,7 @@ export class AnalysisDetailResponse {
     'modelName': string;
     'sbom'?: { [key: string]: any; } | null;
     'sha256Hash': string;
+    'autoRunAgents': AutoRunAgents;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -125,6 +127,12 @@ export class AnalysisDetailResponse {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "autoRunAgents",
+            "baseName": "auto_run_agents",
+            "type": "AutoRunAgents",
             "format": ""
         }    ];
 

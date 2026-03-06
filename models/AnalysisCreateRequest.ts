@@ -11,6 +11,7 @@
 
 import { AnalysisConfig } from '../models/AnalysisConfig';
 import { AnalysisScope } from '../models/AnalysisScope';
+import { AutoRunAgents } from '../models/AutoRunAgents';
 import { BinaryConfig } from '../models/BinaryConfig';
 import { Symbols } from '../models/Symbols';
 import { Tag } from '../models/Tag';
@@ -43,6 +44,7 @@ export class AnalysisCreateRequest {
     * The binary config can override automatically determined values such as ISA, Platform, File Format, etc
     */
     'binaryConfig'?: BinaryConfig;
+    'autoRunAgents'?: AutoRunAgents;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -95,6 +97,12 @@ export class AnalysisCreateRequest {
             "name": "binaryConfig",
             "baseName": "binary_config",
             "type": "BinaryConfig",
+            "format": ""
+        },
+        {
+            "name": "autoRunAgents",
+            "baseName": "auto_run_agents",
+            "type": "AutoRunAgents",
             "format": ""
         }    ];
 

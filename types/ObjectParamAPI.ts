@@ -34,6 +34,7 @@ import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2Fu
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppServicesDynamicExecutionSchemasDynamicExecutionStatus } from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 import { Argument } from '../models/Argument';
+import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { BaseResponse } from '../models/BaseResponse';

@@ -138,6 +138,9 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
       platform: "linux",
       fileFormat: "pe",
     },
+    autoRunAgents: {
+      triage: false,
+    },
   },
   
   xRevEngApplication: "X-RevEng-Application_example",
