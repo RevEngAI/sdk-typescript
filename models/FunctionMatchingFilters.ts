@@ -25,6 +25,10 @@ export class FunctionMatchingFilters {
     */
     'functionIds'?: Array<number>;
     /**
+    * ID\'s of users to limit the search to, if empty, search all scoped users
+    */
+    'userIds'?: Array<number>;
+    /**
     * Limit the search to specific debug types, if empty, search all scoped debug & non-debug functions
     */
     'debugTypes'?: Array<FunctionMatchingFiltersDebugTypesEnum>;
@@ -51,6 +55,12 @@ export class FunctionMatchingFilters {
             "baseName": "function_ids",
             "type": "Array<number>",
             "format": "int64"
+        },
+        {
+            "name": "userIds",
+            "baseName": "user_ids",
+            "type": "Array<number>",
+            "format": ""
         },
         {
             "name": "debugTypes",

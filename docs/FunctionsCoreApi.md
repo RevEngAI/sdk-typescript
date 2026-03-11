@@ -14,6 +14,7 @@ Method | HTTP request | Description
 [**getAnalysisStringsStatus**](FunctionsCoreApi.md#getAnalysisStringsStatus) | **GET** /v2/analyses/{analysis_id}/functions/strings/status | Get string processing state for the Analysis
 [**getFunctionBlocks**](FunctionsCoreApi.md#getFunctionBlocks) | **GET** /v2/functions/{function_id}/blocks | Get disassembly blocks related to the function
 [**getFunctionCalleesCallers**](FunctionsCoreApi.md#getFunctionCalleesCallers) | **GET** /v2/functions/{function_id}/callees_callers | Get list of functions that call or are called by the specified function
+[**getFunctionCalleesCallersBulk**](FunctionsCoreApi.md#getFunctionCalleesCallersBulk) | **GET** /v2/functions/callees_callers | Get list of functions that call or are called for a list of functions
 [**getFunctionCapabilities**](FunctionsCoreApi.md#getFunctionCapabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
 [**getFunctionDetails**](FunctionsCoreApi.md#getFunctionDetails) | **GET** /v2/functions/{function_id} | Get function details
 [**getFunctionStrings**](FunctionsCoreApi.md#getFunctionStrings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
@@ -103,6 +104,7 @@ const request: FunctionsCoreApiAnalysisFunctionMatchingRequest = {
       binaryIds: [],
       collectionIds: [],
       functionIds: [],
+      userIds: [],
       debugTypes: [],
     },
     resultsPerFunction: 1,
@@ -241,6 +243,7 @@ const request: FunctionsCoreApiBatchFunctionMatchingRequest = {
       binaryIds: [],
       collectionIds: [],
       functionIds: [],
+      userIds: [],
       debugTypes: [],
     },
     resultsPerFunction: 1,
@@ -609,6 +612,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BaseResponseCalleesCallerFunctionsResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getFunctionCalleesCallersBulk**
+> BaseResponseListCalleesCallerFunctionsResponse getFunctionCalleesCallersBulk()
+
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionCalleesCallersBulkRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiGetFunctionCalleesCallersBulkRequest = {
+  
+  functionIds: [
+    1,
+  ],
+};
+
+const data = await apiInstance.getFunctionCalleesCallersBulk(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionIds** | **Array&lt;number&gt;** |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseListCalleesCallerFunctionsResponse**
 
 ### Authorization
 

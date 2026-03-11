@@ -20,6 +20,7 @@ import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFuncti
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
 import { BaseResponseFunctionStringsResponse } from '../models/BaseResponseFunctionStringsResponse';
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
+import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
 import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 
@@ -496,6 +497,50 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Get list of functions that call or are called for a list of functions
+     * @param functionIds 
+     */
+    public async getFunctionCalleesCallersBulk(functionIds: Array<number>, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionIds' is not null or undefined
+        if (functionIds === null || functionIds === undefined) {
+            throw new RequiredError("FunctionsCoreApi", "getFunctionCalleesCallersBulk", "functionIds");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/functions/callees_callers';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (functionIds !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(functionIds, "Array<number>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("function_ids", serializedParam);
+            }
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1011,6 +1056,42 @@ export class FunctionsCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseCalleesCallerFunctionsResponse", ""
             ) as BaseResponseCalleesCallerFunctionsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getFunctionCalleesCallersBulk
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getFunctionCalleesCallersBulkWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseListCalleesCallerFunctionsResponse >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: BaseResponseListCalleesCallerFunctionsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponseListCalleesCallerFunctionsResponse", ""
+            ) as BaseResponseListCalleesCallerFunctionsResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: BaseResponseListCalleesCallerFunctionsResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponseListCalleesCallerFunctionsResponse", ""
+            ) as BaseResponseListCalleesCallerFunctionsResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

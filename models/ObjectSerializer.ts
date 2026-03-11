@@ -83,6 +83,7 @@ export * from '../models/BaseResponseGetAiDecompilationRatingResponse';
 export * from '../models/BaseResponseGetAiDecompilationTask';
 export * from '../models/BaseResponseGetMeResponse';
 export * from '../models/BaseResponseGetPublicUserResponse';
+export * from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 export * from '../models/BaseResponseListCollectionResults';
 export * from '../models/BaseResponseListCommentResponse';
 export * from '../models/BaseResponseListDieMatch';
@@ -384,6 +385,7 @@ import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResp
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
 import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
+import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
@@ -491,7 +493,7 @@ import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableRe
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
 import { FunctionMatch } from '../models/FunctionMatch';
-import { FunctionMatchingFilters   , FunctionMatchingFiltersDebugTypesEnum   } from '../models/FunctionMatchingFilters';
+import { FunctionMatchingFilters    , FunctionMatchingFiltersDebugTypesEnum   } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
 import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 import { FunctionNameHistory        } from '../models/FunctionNameHistory';
@@ -727,6 +729,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseGetAiDecompilationTask": BaseResponseGetAiDecompilationTask,
     "BaseResponseGetMeResponse": BaseResponseGetMeResponse,
     "BaseResponseGetPublicUserResponse": BaseResponseGetPublicUserResponse,
+    "BaseResponseListCalleesCallerFunctionsResponse": BaseResponseListCalleesCallerFunctionsResponse,
     "BaseResponseListCollectionResults": BaseResponseListCollectionResults,
     "BaseResponseListCommentResponse": BaseResponseListCommentResponse,
     "BaseResponseListDieMatch": BaseResponseListDieMatch,

@@ -87,6 +87,7 @@ import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResp
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
 import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
+import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
@@ -2480,6 +2481,26 @@ export class PromiseFunctionsCoreApi {
     public getFunctionCalleesCallers(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCalleesCallerFunctionsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getFunctionCalleesCallers(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get list of functions that call or are called for a list of functions
+     * @param functionIds
+     */
+    public getFunctionCalleesCallersBulkWithHttpInfo(functionIds: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCalleesCallerFunctionsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getFunctionCalleesCallersBulkWithHttpInfo(functionIds, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get list of functions that call or are called for a list of functions
+     * @param functionIds
+     */
+    public getFunctionCalleesCallersBulk(functionIds: Array<number>, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCalleesCallerFunctionsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getFunctionCalleesCallersBulk(functionIds, observableOptions);
         return result.toPromise();
     }
 
