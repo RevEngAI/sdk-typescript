@@ -88,6 +88,7 @@ import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResp
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
 import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
+import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
@@ -3492,6 +3493,38 @@ export class ObservableFunctionsCoreApi {
      */
     public getFunctionCalleesCallers(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseCalleesCallerFunctionsResponse> {
         return this.getFunctionCalleesCallersWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCalleesCallerFunctionsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Get list of functions that call or are called for a list of functions
+     * @param functionIds
+     */
+    public getFunctionCalleesCallersBulkWithHttpInfo(functionIds: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCalleesCallerFunctionsResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getFunctionCalleesCallersBulk(functionIds, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionCalleesCallersBulkWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Get list of functions that call or are called for a list of functions
+     * @param functionIds
+     */
+    public getFunctionCalleesCallersBulk(functionIds: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseListCalleesCallerFunctionsResponse> {
+        return this.getFunctionCalleesCallersBulkWithHttpInfo(functionIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCalleesCallerFunctionsResponse>) => apiResponse.data));
     }
 
     /**

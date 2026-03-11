@@ -87,6 +87,7 @@ import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResp
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
 import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
+import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
@@ -3028,6 +3029,16 @@ export interface FunctionsCoreApiGetFunctionCalleesCallersRequest {
     functionId: number
 }
 
+export interface FunctionsCoreApiGetFunctionCalleesCallersBulkRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof FunctionsCoreApigetFunctionCalleesCallersBulk
+     */
+    functionIds: Array<number>
+}
+
 export interface FunctionsCoreApiGetFunctionCapabilitiesRequest {
     /**
      * 
@@ -3265,6 +3276,22 @@ export class ObjectFunctionsCoreApi {
      */
     public getFunctionCalleesCallers(param: FunctionsCoreApiGetFunctionCalleesCallersRequest, options?: ConfigurationOptions): Promise<BaseResponseCalleesCallerFunctionsResponse> {
         return this.api.getFunctionCalleesCallers(param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Get list of functions that call or are called for a list of functions
+     * @param param the request object
+     */
+    public getFunctionCalleesCallersBulkWithHttpInfo(param: FunctionsCoreApiGetFunctionCalleesCallersBulkRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCalleesCallerFunctionsResponse>> {
+        return this.api.getFunctionCalleesCallersBulkWithHttpInfo(param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Get list of functions that call or are called for a list of functions
+     * @param param the request object
+     */
+    public getFunctionCalleesCallersBulk(param: FunctionsCoreApiGetFunctionCalleesCallersBulkRequest, options?: ConfigurationOptions): Promise<BaseResponseListCalleesCallerFunctionsResponse> {
+        return this.api.getFunctionCalleesCallersBulk(param.functionIds,  options).toPromise();
     }
 
     /**
