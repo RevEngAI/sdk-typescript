@@ -84,6 +84,7 @@ Class | Method | HTTP request | Description
 *AnalysesSecurityChecksApi* | [**createScurityChecksTask**](docs/AnalysesSecurityChecksApi.md#createScurityChecksTask) | **POST** /v2/analyses/{analysis_id}/security-checks | Queues a security check process
 *AnalysesSecurityChecksApi* | [**getSecurityChecks**](docs/AnalysesSecurityChecksApi.md#getSecurityChecks) | **GET** /v2/analyses/{analysis_id}/security-checks | Get Security Checks
 *AnalysesSecurityChecksApi* | [**getSecurityChecksTaskStatus**](docs/AnalysesSecurityChecksApi.md#getSecurityChecksTaskStatus) | **GET** /v2/analyses/{analysis_id}/security-checks/status | Check the status of a security check process
+*AnalysesXRefsApi* | [**getXrefByVaddr**](docs/AnalysesXRefsApi.md#getXrefByVaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up an xref by virtual address
 *AuthenticationUsersApi* | [**getRequesterUserInfo**](docs/AuthenticationUsersApi.md#getRequesterUserInfo) | **GET** /v2/users/me | Get the requesters user information
 *AuthenticationUsersApi* | [**getUser**](docs/AuthenticationUsersApi.md#getUser) | **GET** /v2/users/{user_id} | Get a user\&#39;s public information
 *AuthenticationUsersApi* | [**getUserActivity**](docs/AuthenticationUsersApi.md#getUserActivity) | **GET** /v2/users/activity | Get auth user activity
@@ -269,6 +270,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseTaskResponse](BaseResponseTaskResponse.md)
  - [BaseResponseUploadResponse](BaseResponseUploadResponse.md)
  - [BaseResponseVulnerabilities](BaseResponseVulnerabilities.md)
+ - [BaseResponseXRef](BaseResponseXRef.md)
  - [Basic](Basic.md)
  - [BinariesRelatedStatusResponse](BinariesRelatedStatusResponse.md)
  - [BinariesTaskStatus](BinariesTaskStatus.md)
@@ -425,6 +427,7 @@ Class | Method | HTTP request | Description
  - [SecurityChecksResponse](SecurityChecksResponse.md)
  - [SecurityChecksResult](SecurityChecksResult.md)
  - [SecurityModel](SecurityModel.md)
+ - [SegmentInfo](SegmentInfo.md)
  - [SeverityType](SeverityType.md)
  - [SingleCodeCertificateModel](SingleCodeCertificateModel.md)
  - [SingleCodeSignatureModel](SingleCodeSignatureModel.md)
@@ -460,3 +463,4 @@ Class | Method | HTTP request | Description
  - [Vulnerability](Vulnerability.md)
  - [VulnerabilityType](VulnerabilityType.md)
  - [Workspace](Workspace.md)
+ - [XRef](XRef.md)

@@ -108,6 +108,7 @@ export * from '../models/BaseResponseTagSearchResponse';
 export * from '../models/BaseResponseTaskResponse';
 export * from '../models/BaseResponseUploadResponse';
 export * from '../models/BaseResponseVulnerabilities';
+export * from '../models/BaseResponseXRef';
 export * from '../models/Basic';
 export * from '../models/BinariesRelatedStatusResponse';
 export * from '../models/BinariesTaskStatus';
@@ -264,6 +265,7 @@ export * from '../models/SectionModel';
 export * from '../models/SecurityChecksResponse';
 export * from '../models/SecurityChecksResult';
 export * from '../models/SecurityModel';
+export * from '../models/SegmentInfo';
 export * from '../models/SeverityType';
 export * from '../models/SingleCodeCertificateModel';
 export * from '../models/SingleCodeSignatureModel';
@@ -299,6 +301,7 @@ export * from '../models/Vulnerabilities';
 export * from '../models/Vulnerability';
 export * from '../models/VulnerabilityType';
 export * from '../models/Workspace';
+export * from '../models/XRef';
 
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
@@ -410,6 +413,7 @@ import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchRe
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
+import { BaseResponseXRef } from '../models/BaseResponseXRef';
 import { Basic } from '../models/Basic';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
@@ -566,6 +570,7 @@ import { SectionModel } from '../models/SectionModel';
 import { SecurityChecksResponse } from '../models/SecurityChecksResponse';
 import { SecurityChecksResult         } from '../models/SecurityChecksResult';
 import { SecurityModel } from '../models/SecurityModel';
+import { SegmentInfo } from '../models/SegmentInfo';
 import { SeverityType } from '../models/SeverityType';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
@@ -601,6 +606,7 @@ import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
 import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
+import { XRef } from '../models/XRef';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -754,6 +760,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseTaskResponse": BaseResponseTaskResponse,
     "BaseResponseUploadResponse": BaseResponseUploadResponse,
     "BaseResponseVulnerabilities": BaseResponseVulnerabilities,
+    "BaseResponseXRef": BaseResponseXRef,
     "Basic": Basic,
     "BinariesRelatedStatusResponse": BinariesRelatedStatusResponse,
     "BinaryAdditionalDetailsDataResponse": BinaryAdditionalDetailsDataResponse,
@@ -897,6 +904,7 @@ let typeMap: {[index: string]: any} = {
     "SecurityChecksResponse": SecurityChecksResponse,
     "SecurityChecksResult": SecurityChecksResult,
     "SecurityModel": SecurityModel,
+    "SegmentInfo": SegmentInfo,
     "SingleCodeCertificateModel": SingleCodeCertificateModel,
     "SingleCodeSignatureModel": SingleCodeSignatureModel,
     "SinglePDBEntryModel": SinglePDBEntryModel,
@@ -926,6 +934,7 @@ let typeMap: {[index: string]: any} = {
     "UserActivityResponse": UserActivityResponse,
     "Vulnerabilities": Vulnerabilities,
     "Vulnerability": Vulnerability,
+    "XRef": XRef,
 }
 
 type MimeTypeDescriptor = {

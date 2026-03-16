@@ -112,6 +112,7 @@ import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchRe
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
+import { BaseResponseXRef } from '../models/BaseResponseXRef';
 import { Basic } from '../models/Basic';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
@@ -268,6 +269,7 @@ import { SectionModel } from '../models/SectionModel';
 import { SecurityChecksResponse } from '../models/SecurityChecksResponse';
 import { SecurityChecksResult } from '../models/SecurityChecksResult';
 import { SecurityModel } from '../models/SecurityModel';
+import { SegmentInfo } from '../models/SegmentInfo';
 import { SeverityType } from '../models/SeverityType';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
@@ -303,6 +305,7 @@ import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
 import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
+import { XRef } from '../models/XRef';
 import { ObservableAnalysesCommentsApi } from './ObservableAPI';
 
 import { AnalysesCommentsApiRequestFactory, AnalysesCommentsApiResponseProcessor} from "../apis/AnalysesCommentsApi";
@@ -1242,6 +1245,49 @@ export class PromiseAnalysesSecurityChecksApi {
     public getSecurityChecksTaskStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<CheckSecurityChecksTaskResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getSecurityChecksTaskStatus(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableAnalysesXRefsApi } from './ObservableAPI';
+
+import { AnalysesXRefsApiRequestFactory, AnalysesXRefsApiResponseProcessor} from "../apis/AnalysesXRefsApi";
+export class PromiseAnalysesXRefsApi {
+    private api: ObservableAnalysesXRefsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: AnalysesXRefsApiRequestFactory,
+        responseProcessor?: AnalysesXRefsApiResponseProcessor
+    ) {
+        this.api = new ObservableAnalysesXRefsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * **This endpoint is in beta and may change without notice.**
+     * [Beta] Look up an xref by virtual address
+     * @param analysisId
+     * @param vaddr Virtual address to match against xref_to
+     */
+    public getXrefByVaddrWithHttpInfo(analysisId: number, vaddr: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseXRef>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getXrefByVaddrWithHttpInfo(analysisId, vaddr, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * **This endpoint is in beta and may change without notice.**
+     * [Beta] Look up an xref by virtual address
+     * @param analysisId
+     * @param vaddr Virtual address to match against xref_to
+     */
+    public getXrefByVaddr(analysisId: number, vaddr: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseXRef> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getXrefByVaddr(analysisId, vaddr, observableOptions);
         return result.toPromise();
     }
 
