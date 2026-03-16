@@ -113,6 +113,7 @@ import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchRe
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
+import { BaseResponseXRef } from '../models/BaseResponseXRef';
 import { Basic } from '../models/Basic';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
@@ -269,6 +270,7 @@ import { SectionModel } from '../models/SectionModel';
 import { SecurityChecksResponse } from '../models/SecurityChecksResponse';
 import { SecurityChecksResult } from '../models/SecurityChecksResult';
 import { SecurityModel } from '../models/SecurityModel';
+import { SegmentInfo } from '../models/SegmentInfo';
 import { SeverityType } from '../models/SeverityType';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
@@ -304,6 +306,7 @@ import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
 import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
+import { XRef } from '../models/XRef';
 
 import { AnalysesCommentsApiRequestFactory, AnalysesCommentsApiResponseProcessor} from "../apis/AnalysesCommentsApi";
 export class ObservableAnalysesCommentsApi {
@@ -1687,6 +1690,60 @@ export class ObservableAnalysesSecurityChecksApi {
      */
     public getSecurityChecksTaskStatus(analysisId: number, _options?: ConfigurationOptions): Observable<CheckSecurityChecksTaskResponse> {
         return this.getSecurityChecksTaskStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<CheckSecurityChecksTaskResponse>) => apiResponse.data));
+    }
+
+}
+
+import { AnalysesXRefsApiRequestFactory, AnalysesXRefsApiResponseProcessor} from "../apis/AnalysesXRefsApi";
+export class ObservableAnalysesXRefsApi {
+    private requestFactory: AnalysesXRefsApiRequestFactory;
+    private responseProcessor: AnalysesXRefsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: AnalysesXRefsApiRequestFactory,
+        responseProcessor?: AnalysesXRefsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new AnalysesXRefsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new AnalysesXRefsApiResponseProcessor();
+    }
+
+    /**
+     * **This endpoint is in beta and may change without notice.**
+     * [Beta] Look up an xref by virtual address
+     * @param analysisId
+     * @param vaddr Virtual address to match against xref_to
+     */
+    public getXrefByVaddrWithHttpInfo(analysisId: number, vaddr: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseXRef>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getXrefByVaddr(analysisId, vaddr, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getXrefByVaddrWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * **This endpoint is in beta and may change without notice.**
+     * [Beta] Look up an xref by virtual address
+     * @param analysisId
+     * @param vaddr Virtual address to match against xref_to
+     */
+    public getXrefByVaddr(analysisId: number, vaddr: number, _options?: ConfigurationOptions): Observable<BaseResponseXRef> {
+        return this.getXrefByVaddrWithHttpInfo(analysisId, vaddr, _options).pipe(map((apiResponse: HttpInfo<BaseResponseXRef>) => apiResponse.data));
     }
 
 }
