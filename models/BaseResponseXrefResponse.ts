@@ -11,15 +11,15 @@
 
 import { ErrorModel } from '../models/ErrorModel';
 import { MetaModel } from '../models/MetaModel';
-import { XRef } from '../models/XRef';
+import { XrefResponse } from '../models/XrefResponse';
 import { HttpFile } from '../http/http';
 
-export class BaseResponseXRef {
+export class BaseResponseXrefResponse {
     /**
     * Response status on whether the request succeeded
     */
     'status'?: boolean;
-    'data'?: XRef | null;
+    'data'?: XrefResponse | null;
     'message'?: string | null;
     'errors'?: Array<ErrorModel> | null;
     /**
@@ -41,7 +41,7 @@ export class BaseResponseXRef {
         {
             "name": "data",
             "baseName": "data",
-            "type": "XRef",
+            "type": "XrefResponse",
             "format": ""
         },
         {
@@ -64,7 +64,7 @@ export class BaseResponseXRef {
         }    ];
 
     static getAttributeTypeMap() {
-        return BaseResponseXRef.attributeTypeMap;
+        return BaseResponseXrefResponse.attributeTypeMap;
     }
 
     public constructor() {

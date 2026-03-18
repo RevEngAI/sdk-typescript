@@ -113,7 +113,7 @@ import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchRe
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
-import { BaseResponseXRef } from '../models/BaseResponseXRef';
+import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
@@ -306,7 +306,9 @@ import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
 import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
-import { XRef } from '../models/XRef';
+import { XrefFromResponse } from '../models/XrefFromResponse';
+import { XrefResponse } from '../models/XrefResponse';
+import { XrefToResponse } from '../models/XrefToResponse';
 
 import { AnalysesCommentsApiRequestFactory, AnalysesCommentsApiResponseProcessor} from "../apis/AnalysesCommentsApi";
 export class ObservableAnalysesCommentsApi {
@@ -1712,11 +1714,11 @@ export class ObservableAnalysesXRefsApi {
 
     /**
      * **This endpoint is in beta and may change without notice.**
-     * [Beta] Look up an xref by virtual address
+     * [Beta] Look up xrefs by virtual address
      * @param analysisId
-     * @param vaddr Virtual address to match against xref_to
+     * @param vaddr Virtual address to match against xrefs
      */
-    public getXrefByVaddrWithHttpInfo(analysisId: number, vaddr: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseXRef>> {
+    public getXrefByVaddrWithHttpInfo(analysisId: number, vaddr: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseXrefResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getXrefByVaddr(analysisId, vaddr, _config);
@@ -1738,12 +1740,12 @@ export class ObservableAnalysesXRefsApi {
 
     /**
      * **This endpoint is in beta and may change without notice.**
-     * [Beta] Look up an xref by virtual address
+     * [Beta] Look up xrefs by virtual address
      * @param analysisId
-     * @param vaddr Virtual address to match against xref_to
+     * @param vaddr Virtual address to match against xrefs
      */
-    public getXrefByVaddr(analysisId: number, vaddr: number, _options?: ConfigurationOptions): Observable<BaseResponseXRef> {
-        return this.getXrefByVaddrWithHttpInfo(analysisId, vaddr, _options).pipe(map((apiResponse: HttpInfo<BaseResponseXRef>) => apiResponse.data));
+    public getXrefByVaddr(analysisId: number, vaddr: number, _options?: ConfigurationOptions): Observable<BaseResponseXrefResponse> {
+        return this.getXrefByVaddrWithHttpInfo(analysisId, vaddr, _options).pipe(map((apiResponse: HttpInfo<BaseResponseXrefResponse>) => apiResponse.data));
     }
 
 }

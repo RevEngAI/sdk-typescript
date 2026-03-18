@@ -112,7 +112,7 @@ import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchRe
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
-import { BaseResponseXRef } from '../models/BaseResponseXRef';
+import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
@@ -305,7 +305,9 @@ import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
 import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
-import { XRef } from '../models/XRef';
+import { XrefFromResponse } from '../models/XrefFromResponse';
+import { XrefResponse } from '../models/XrefResponse';
+import { XrefToResponse } from '../models/XrefToResponse';
 
 import { ObservableAnalysesCommentsApi } from "./ObservableAPI";
 import { AnalysesCommentsApiRequestFactory, AnalysesCommentsApiResponseProcessor} from "../apis/AnalysesCommentsApi";
@@ -1635,7 +1637,7 @@ export interface AnalysesXRefsApiGetXrefByVaddrRequest {
      */
     analysisId: number
     /**
-     * Virtual address to match against xref_to
+     * Virtual address to match against xrefs
      * Defaults to: undefined
      * @type number
      * @memberof AnalysesXRefsApigetXrefByVaddr
@@ -1652,19 +1654,19 @@ export class ObjectAnalysesXRefsApi {
 
     /**
      * **This endpoint is in beta and may change without notice.**
-     * [Beta] Look up an xref by virtual address
+     * [Beta] Look up xrefs by virtual address
      * @param param the request object
      */
-    public getXrefByVaddrWithHttpInfo(param: AnalysesXRefsApiGetXrefByVaddrRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseXRef>> {
+    public getXrefByVaddrWithHttpInfo(param: AnalysesXRefsApiGetXrefByVaddrRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseXrefResponse>> {
         return this.api.getXrefByVaddrWithHttpInfo(param.analysisId, param.vaddr,  options).toPromise();
     }
 
     /**
      * **This endpoint is in beta and may change without notice.**
-     * [Beta] Look up an xref by virtual address
+     * [Beta] Look up xrefs by virtual address
      * @param param the request object
      */
-    public getXrefByVaddr(param: AnalysesXRefsApiGetXrefByVaddrRequest, options?: ConfigurationOptions): Promise<BaseResponseXRef> {
+    public getXrefByVaddr(param: AnalysesXRefsApiGetXrefByVaddrRequest, options?: ConfigurationOptions): Promise<BaseResponseXrefResponse> {
         return this.api.getXrefByVaddr(param.analysisId, param.vaddr,  options).toPromise();
     }
 
