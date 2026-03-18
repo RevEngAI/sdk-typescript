@@ -4,11 +4,11 @@ All URIs are relative to *https://api.reveng.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getXrefByVaddr**](AnalysesXRefsApi.md#getXrefByVaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up an xref by virtual address
+[**getXrefByVaddr**](AnalysesXRefsApi.md#getXrefByVaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up xrefs by virtual address
 
 
 # **getXrefByVaddr**
-> BaseResponseXRef getXrefByVaddr()
+> BaseResponseXrefResponse getXrefByVaddr()
 
 **This endpoint is in beta and may change without notice.**
 
@@ -25,7 +25,7 @@ const apiInstance = new AnalysesXRefsApi(configuration);
 const request: AnalysesXRefsApiGetXrefByVaddrRequest = {
   
   analysisId: 1,
-    // Virtual address to match against xref_to
+    // Virtual address to match against xrefs
   vaddr: 1,
 };
 
@@ -39,12 +39,12 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
- **vaddr** | [**number**] | Virtual address to match against xref_to | defaults to undefined
+ **vaddr** | [**number**] | Virtual address to match against xrefs | defaults to undefined
 
 
 ### Return type
 
-**BaseResponseXRef**
+**BaseResponseXrefResponse**
 
 ### Authorization
 

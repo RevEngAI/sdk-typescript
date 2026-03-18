@@ -12,16 +12,16 @@
 import { SegmentInfo } from '../models/SegmentInfo';
 import { HttpFile } from '../http/http';
 
-export class XRef {
+export class XrefFromResponse {
     'value': string | null;
-    'xrefTo': string | null;
     'isScalar'?: boolean | null;
     'isCall'?: boolean | null;
     'isData'?: boolean | null;
     'isString'?: boolean | null;
-    'rawData'?: HttpFile | null;
+    'rawData'?: string | null;
     'segment'?: SegmentInfo | null;
     'origStrEncoding'?: string | null;
+    'xrefTo': string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,12 +31,6 @@ export class XRef {
         {
             "name": "value",
             "baseName": "value",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "xrefTo",
-            "baseName": "xref_to",
             "type": "string",
             "format": ""
         },
@@ -67,8 +61,8 @@ export class XRef {
         {
             "name": "rawData",
             "baseName": "raw_data",
-            "type": "HttpFile",
-            "format": "binary"
+            "type": "string",
+            "format": ""
         },
         {
             "name": "segment",
@@ -81,10 +75,16 @@ export class XRef {
             "baseName": "orig_str_encoding",
             "type": "string",
             "format": ""
+        },
+        {
+            "name": "xrefTo",
+            "baseName": "xref_to",
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return XRef.attributeTypeMap;
+        return XrefFromResponse.attributeTypeMap;
     }
 
     public constructor() {

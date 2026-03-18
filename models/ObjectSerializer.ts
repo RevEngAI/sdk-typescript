@@ -108,7 +108,7 @@ export * from '../models/BaseResponseTagSearchResponse';
 export * from '../models/BaseResponseTaskResponse';
 export * from '../models/BaseResponseUploadResponse';
 export * from '../models/BaseResponseVulnerabilities';
-export * from '../models/BaseResponseXRef';
+export * from '../models/BaseResponseXrefResponse';
 export * from '../models/Basic';
 export * from '../models/BinariesRelatedStatusResponse';
 export * from '../models/BinariesTaskStatus';
@@ -301,7 +301,9 @@ export * from '../models/Vulnerabilities';
 export * from '../models/Vulnerability';
 export * from '../models/VulnerabilityType';
 export * from '../models/Workspace';
-export * from '../models/XRef';
+export * from '../models/XrefFromResponse';
+export * from '../models/XrefResponse';
+export * from '../models/XrefToResponse';
 
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
@@ -413,7 +415,7 @@ import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchRe
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
-import { BaseResponseXRef } from '../models/BaseResponseXRef';
+import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
@@ -606,7 +608,9 @@ import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
 import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
-import { XRef } from '../models/XRef';
+import { XrefFromResponse } from '../models/XrefFromResponse';
+import { XrefResponse } from '../models/XrefResponse';
+import { XrefToResponse } from '../models/XrefToResponse';
 
 /* tslint:disable:no-unused-variable */
 let primitives = [
@@ -760,7 +764,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseTaskResponse": BaseResponseTaskResponse,
     "BaseResponseUploadResponse": BaseResponseUploadResponse,
     "BaseResponseVulnerabilities": BaseResponseVulnerabilities,
-    "BaseResponseXRef": BaseResponseXRef,
+    "BaseResponseXrefResponse": BaseResponseXrefResponse,
     "Basic": Basic,
     "BinariesRelatedStatusResponse": BinariesRelatedStatusResponse,
     "BinaryAdditionalDetailsDataResponse": BinaryAdditionalDetailsDataResponse,
@@ -934,7 +938,9 @@ let typeMap: {[index: string]: any} = {
     "UserActivityResponse": UserActivityResponse,
     "Vulnerabilities": Vulnerabilities,
     "Vulnerability": Vulnerability,
-    "XRef": XRef,
+    "XrefFromResponse": XrefFromResponse,
+    "XrefResponse": XrefResponse,
+    "XrefToResponse": XrefToResponse,
 }
 
 type MimeTypeDescriptor = {

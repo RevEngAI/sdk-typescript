@@ -9,7 +9,7 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { BaseResponse } from '../models/BaseResponse';
-import { BaseResponseXRef } from '../models/BaseResponseXRef';
+import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { ErrorModel } from '../models/ErrorModel';
 
 /**
@@ -19,9 +19,9 @@ export class AnalysesXRefsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
      * **This endpoint is in beta and may change without notice.**
-     * [Beta] Look up an xref by virtual address
+     * [Beta] Look up xrefs by virtual address
      * @param analysisId 
-     * @param vaddr Virtual address to match against xref_to
+     * @param vaddr Virtual address to match against xrefs
      */
     public async getXrefByVaddr(analysisId: number, vaddr: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -74,13 +74,13 @@ export class AnalysesXRefsApiResponseProcessor {
      * @params response Response returned by the server for a request to getXrefByVaddr
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getXrefByVaddrWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseXRef >> {
+     public async getXrefByVaddrWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseXrefResponse >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseXRef = ObjectSerializer.deserialize(
+            const body: BaseResponseXrefResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseXRef", ""
-            ) as BaseResponseXRef;
+                "BaseResponseXrefResponse", ""
+            ) as BaseResponseXrefResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
@@ -100,10 +100,10 @@ export class AnalysesXRefsApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseXRef = ObjectSerializer.deserialize(
+            const body: BaseResponseXrefResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseXRef", ""
-            ) as BaseResponseXRef;
+                "BaseResponseXrefResponse", ""
+            ) as BaseResponseXrefResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
