@@ -15,6 +15,7 @@ export class FunctionBoundary {
     'mangledName': string;
     'startAddress': number;
     'endAddress': number;
+    'includeInAnalysis'?: boolean | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -38,6 +39,12 @@ export class FunctionBoundary {
             "baseName": "end_address",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "includeInAnalysis",
+            "baseName": "include_in_analysis",
+            "type": "boolean",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

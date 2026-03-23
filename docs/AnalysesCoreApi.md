@@ -115,6 +115,7 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
           mangledName: "mangledName_example",
           startAddress: 1,
           endAddress: 1,
+          includeInAnalysis: true,
         },
       ],
     },
