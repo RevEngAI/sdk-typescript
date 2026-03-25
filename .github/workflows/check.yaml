@@ -42,7 +42,7 @@ jobs:
         def get_openapi_version():
             """Get version from OpenAPI spec"""
             try:
-                response = requests.get('https://api.reveng.ai/openapi.json', timeout=30)
+                response = requests.get('https://docs.reveng.ai/openapi.json', timeout=30)
                 response.raise_for_status()
                 openapi_data = response.json()
                 return openapi_data.get('info', {}).get('version')
@@ -106,7 +106,7 @@ jobs:
       with:
         generator: typescript
         generator-tag: 'v7.17.0'
-        openapi-url: https://api.reveng.ai/openapi.json
+        openapi-url: https://docs.reveng.ai/openapi.json
         config-file: config.yml
         template-dir: templates
         # For the artifact version drop the `v` prefix as it's not usually used in NPM versions
@@ -199,7 +199,7 @@ jobs:
         - **OpenAPI Spec Version**: \`${OPENAPI_VERSION}\`
 
         ### 🔧 Changes
-        - Generated fresh SDK from [OpenAPI specification](https://api.reveng.ai/openapi.json)
+        - Generated fresh SDK from [OpenAPI specification](https://docs.reveng.ai/openapi.json)
         - Updated package version to match OpenAPI spec version
         - All changes are auto-generated using openapi-generator
 
