@@ -85,6 +85,8 @@ Class | Method | HTTP request | Description
 *AnalysesSecurityChecksApi* | [**getSecurityChecks**](docs/AnalysesSecurityChecksApi.md#getSecurityChecks) | **GET** /v2/analyses/{analysis_id}/security-checks | Get Security Checks
 *AnalysesSecurityChecksApi* | [**getSecurityChecksTaskStatus**](docs/AnalysesSecurityChecksApi.md#getSecurityChecksTaskStatus) | **GET** /v2/analyses/{analysis_id}/security-checks/status | Check the status of a security check process
 *AnalysesXRefsApi* | [**getXrefByVaddr**](docs/AnalysesXRefsApi.md#getXrefByVaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up xrefs by virtual address
+*AnalysisStagesApi* | [**getAnalysisStages**](docs/AnalysisStagesApi.md#getAnalysisStages) | **GET** /v2/analysis-stages/{analysis_id} | Get Analysis Stages
+*AnalysisStagesApi* | [**getPipelineStatus**](docs/AnalysisStagesApi.md#getPipelineStatus) | **GET** /v2/analysis-stages/{analysis_id}/pipeline-status | Get Pipeline Status
 *AuthenticationUsersApi* | [**getRequesterUserInfo**](docs/AuthenticationUsersApi.md#getRequesterUserInfo) | **GET** /v2/users/me | Get the requesters user information
 *AuthenticationUsersApi* | [**getUser**](docs/AuthenticationUsersApi.md#getUser) | **GET** /v2/users/{user_id} | Get a user\&#39;s public information
 *AuthenticationUsersApi* | [**getUserActivity**](docs/AuthenticationUsersApi.md#getUserActivity) | **GET** /v2/users/activity | Get auth user activity
@@ -179,6 +181,9 @@ Class | Method | HTTP request | Description
  - [AnalysisFunctionsList](AnalysisFunctionsList.md)
  - [AnalysisRecord](AnalysisRecord.md)
  - [AnalysisScope](AnalysisScope.md)
+ - [AnalysisStage](AnalysisStage.md)
+ - [AnalysisStageStatus](AnalysisStageStatus.md)
+ - [AnalysisStagesResponse](AnalysisStagesResponse.md)
  - [AnalysisStringsResponse](AnalysisStringsResponse.md)
  - [AnalysisStringsStatusResponse](AnalysisStringsStatusResponse.md)
  - [AnalysisTags](AnalysisTags.md)
@@ -203,6 +208,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseAnalysisFunctionMapping](BaseResponseAnalysisFunctionMapping.md)
  - [BaseResponseAnalysisFunctions](BaseResponseAnalysisFunctions.md)
  - [BaseResponseAnalysisFunctionsList](BaseResponseAnalysisFunctionsList.md)
+ - [BaseResponseAnalysisStagesResponse](BaseResponseAnalysisStagesResponse.md)
  - [BaseResponseAnalysisStringsResponse](BaseResponseAnalysisStringsResponse.md)
  - [BaseResponseAnalysisStringsStatusResponse](BaseResponseAnalysisStringsStatusResponse.md)
  - [BaseResponseAnalysisTags](BaseResponseAnalysisTags.md)
@@ -257,6 +263,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseModelsResponse](BaseResponseModelsResponse.md)
  - [BaseResponseNetworkOverviewResponse](BaseResponseNetworkOverviewResponse.md)
  - [BaseResponseParams](BaseResponseParams.md)
+ - [BaseResponsePipelineStatusResponse](BaseResponsePipelineStatusResponse.md)
  - [BaseResponseProcessDumps](BaseResponseProcessDumps.md)
  - [BaseResponseProcessRegistry](BaseResponseProcessRegistry.md)
  - [BaseResponseProcessTree](BaseResponseProcessTree.md)
@@ -406,6 +413,8 @@ Class | Method | HTTP request | Description
  - [PEModel](PEModel.md)
  - [PaginationModel](PaginationModel.md)
  - [Params](Params.md)
+ - [PipelineStageStatus](PipelineStageStatus.md)
+ - [PipelineStatusResponse](PipelineStatusResponse.md)
  - [Platform](Platform.md)
  - [Process](Process.md)
  - [ProcessDump](ProcessDump.md)
@@ -434,6 +443,8 @@ Class | Method | HTTP request | Description
  - [SinglePDBEntryModel](SinglePDBEntryModel.md)
  - [SingleSectionModel](SingleSectionModel.md)
  - [StackVariable](StackVariable.md)
+ - [StageEvent](StageEvent.md)
+ - [StageStatus](StageStatus.md)
  - [StatusInput](StatusInput.md)
  - [StatusOutput](StatusOutput.md)
  - [StringFunctions](StringFunctions.md)
