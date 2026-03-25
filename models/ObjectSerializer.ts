@@ -17,6 +17,9 @@ export * from '../models/AnalysisFunctions';
 export * from '../models/AnalysisFunctionsList';
 export * from '../models/AnalysisRecord';
 export * from '../models/AnalysisScope';
+export * from '../models/AnalysisStage';
+export * from '../models/AnalysisStageStatus';
+export * from '../models/AnalysisStagesResponse';
 export * from '../models/AnalysisStringsResponse';
 export * from '../models/AnalysisStringsStatusResponse';
 export * from '../models/AnalysisTags';
@@ -41,6 +44,7 @@ export * from '../models/BaseResponseAnalysisDetailResponse';
 export * from '../models/BaseResponseAnalysisFunctionMapping';
 export * from '../models/BaseResponseAnalysisFunctions';
 export * from '../models/BaseResponseAnalysisFunctionsList';
+export * from '../models/BaseResponseAnalysisStagesResponse';
 export * from '../models/BaseResponseAnalysisStringsResponse';
 export * from '../models/BaseResponseAnalysisStringsStatusResponse';
 export * from '../models/BaseResponseAnalysisTags';
@@ -95,6 +99,7 @@ export * from '../models/BaseResponseLogs';
 export * from '../models/BaseResponseModelsResponse';
 export * from '../models/BaseResponseNetworkOverviewResponse';
 export * from '../models/BaseResponseParams';
+export * from '../models/BaseResponsePipelineStatusResponse';
 export * from '../models/BaseResponseProcessDumps';
 export * from '../models/BaseResponseProcessRegistry';
 export * from '../models/BaseResponseProcessTree';
@@ -244,6 +249,8 @@ export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
 export * from '../models/PaginationModel';
 export * from '../models/Params';
+export * from '../models/PipelineStageStatus';
+export * from '../models/PipelineStatusResponse';
 export * from '../models/Platform';
 export * from '../models/Process';
 export * from '../models/ProcessDump';
@@ -272,6 +279,8 @@ export * from '../models/SingleCodeSignatureModel';
 export * from '../models/SinglePDBEntryModel';
 export * from '../models/SingleSectionModel';
 export * from '../models/StackVariable';
+export * from '../models/StageEvent';
+export * from '../models/StageStatus';
 export * from '../models/StatusInput';
 export * from '../models/StatusOutput';
 export * from '../models/StringFunctions';
@@ -324,6 +333,9 @@ import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord                  } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
+import { AnalysisStage } from '../models/AnalysisStage';
+import { AnalysisStageStatus } from '../models/AnalysisStageStatus';
+import { AnalysisStagesResponse } from '../models/AnalysisStagesResponse';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse  } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
@@ -348,6 +360,7 @@ import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalys
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
 import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
+import { BaseResponseAnalysisStagesResponse } from '../models/BaseResponseAnalysisStagesResponse';
 import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
 import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseResponseAnalysisStringsStatusResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
@@ -402,6 +415,7 @@ import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
 import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
 import { BaseResponseParams } from '../models/BaseResponseParams';
+import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipelineStatusResponse';
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
 import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
 import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
@@ -551,6 +565,8 @@ import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PipelineStageStatus } from '../models/PipelineStageStatus';
+import { PipelineStatusResponse } from '../models/PipelineStatusResponse';
 import { Platform } from '../models/Platform';
 import { Process } from '../models/Process';
 import { ProcessDump } from '../models/ProcessDump';
@@ -579,6 +595,8 @@ import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
 import { SingleSectionModel } from '../models/SingleSectionModel';
 import { StackVariable } from '../models/StackVariable';
+import { StageEvent    } from '../models/StageEvent';
+import { StageStatus    } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StringFunctions } from '../models/StringFunctions';
@@ -628,6 +646,8 @@ let enumsMap: Set<string> = new Set<string>([
     "AiDecompilationRating",
     "AiDecompilationTaskStatus",
     "AnalysisScope",
+    "AnalysisStage",
+    "AnalysisStageStatus",
     "AnalysisUpdateRequestAnalysisScopeEnum",
     "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
     "AppApiRestV2AnalysesEnumsOrderBy",
@@ -649,6 +669,7 @@ let enumsMap: Set<string> = new Set<string>([
     "NameSourceTypeTypeEnum",
     "NetworkOverviewMetadataTypeEnum",
     "Order",
+    "PipelineStageStatus",
     "Platform",
     "SeverityType",
     "StatusInput",
@@ -676,6 +697,7 @@ let typeMap: {[index: string]: any} = {
     "AnalysisFunctions": AnalysisFunctions,
     "AnalysisFunctionsList": AnalysisFunctionsList,
     "AnalysisRecord": AnalysisRecord,
+    "AnalysisStagesResponse": AnalysisStagesResponse,
     "AnalysisStringsResponse": AnalysisStringsResponse,
     "AnalysisStringsStatusResponse": AnalysisStringsStatusResponse,
     "AnalysisTags": AnalysisTags,
@@ -697,6 +719,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseAnalysisFunctionMapping": BaseResponseAnalysisFunctionMapping,
     "BaseResponseAnalysisFunctions": BaseResponseAnalysisFunctions,
     "BaseResponseAnalysisFunctionsList": BaseResponseAnalysisFunctionsList,
+    "BaseResponseAnalysisStagesResponse": BaseResponseAnalysisStagesResponse,
     "BaseResponseAnalysisStringsResponse": BaseResponseAnalysisStringsResponse,
     "BaseResponseAnalysisStringsStatusResponse": BaseResponseAnalysisStringsStatusResponse,
     "BaseResponseAnalysisTags": BaseResponseAnalysisTags,
@@ -751,6 +774,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseModelsResponse": BaseResponseModelsResponse,
     "BaseResponseNetworkOverviewResponse": BaseResponseNetworkOverviewResponse,
     "BaseResponseParams": BaseResponseParams,
+    "BaseResponsePipelineStatusResponse": BaseResponsePipelineStatusResponse,
     "BaseResponseProcessDumps": BaseResponseProcessDumps,
     "BaseResponseProcessRegistry": BaseResponseProcessRegistry,
     "BaseResponseProcessTree": BaseResponseProcessTree,
@@ -888,6 +912,7 @@ let typeMap: {[index: string]: any} = {
     "PEModel": PEModel,
     "PaginationModel": PaginationModel,
     "Params": Params,
+    "PipelineStatusResponse": PipelineStatusResponse,
     "Process": Process,
     "ProcessDump": ProcessDump,
     "ProcessDumpMetadata": ProcessDumpMetadata,
@@ -914,6 +939,8 @@ let typeMap: {[index: string]: any} = {
     "SinglePDBEntryModel": SinglePDBEntryModel,
     "SingleSectionModel": SingleSectionModel,
     "StackVariable": StackVariable,
+    "StageEvent": StageEvent,
+    "StageStatus": StageStatus,
     "StatusOutput": StatusOutput,
     "StringFunctions": StringFunctions,
     "Structure": Structure,

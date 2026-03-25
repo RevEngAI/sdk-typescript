@@ -21,6 +21,9 @@ import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
+import { AnalysisStage } from '../models/AnalysisStage';
+import { AnalysisStageStatus } from '../models/AnalysisStageStatus';
+import { AnalysisStagesResponse } from '../models/AnalysisStagesResponse';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
@@ -45,6 +48,7 @@ import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalys
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
 import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
+import { BaseResponseAnalysisStagesResponse } from '../models/BaseResponseAnalysisStagesResponse';
 import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
 import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseResponseAnalysisStringsStatusResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
@@ -99,6 +103,7 @@ import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
 import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
 import { BaseResponseParams } from '../models/BaseResponseParams';
+import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipelineStatusResponse';
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
 import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
 import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
@@ -248,6 +253,8 @@ import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PipelineStageStatus } from '../models/PipelineStageStatus';
+import { PipelineStatusResponse } from '../models/PipelineStatusResponse';
 import { Platform } from '../models/Platform';
 import { Process } from '../models/Process';
 import { ProcessDump } from '../models/ProcessDump';
@@ -276,6 +283,8 @@ import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
 import { SingleSectionModel } from '../models/SingleSectionModel';
 import { StackVariable } from '../models/StackVariable';
+import { StageEvent } from '../models/StageEvent';
+import { StageStatus } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StringFunctions } from '../models/StringFunctions';
@@ -1668,6 +1677,74 @@ export class ObjectAnalysesXRefsApi {
      */
     public getXrefByVaddr(param: AnalysesXRefsApiGetXrefByVaddrRequest, options?: ConfigurationOptions): Promise<BaseResponseXrefResponse> {
         return this.api.getXrefByVaddr(param.analysisId, param.vaddr,  options).toPromise();
+    }
+
+}
+
+import { ObservableAnalysisStagesApi } from "./ObservableAPI";
+import { AnalysisStagesApiRequestFactory, AnalysisStagesApiResponseProcessor} from "../apis/AnalysisStagesApi";
+
+export interface AnalysisStagesApiGetAnalysisStagesRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysisStagesApigetAnalysisStages
+     */
+    analysisId: number
+}
+
+export interface AnalysisStagesApiGetPipelineStatusRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysisStagesApigetPipelineStatus
+     */
+    analysisId: number
+}
+
+export class ObjectAnalysisStagesApi {
+    private api: ObservableAnalysisStagesApi
+
+    public constructor(configuration: Configuration, requestFactory?: AnalysisStagesApiRequestFactory, responseProcessor?: AnalysisStagesApiResponseProcessor) {
+        this.api = new ObservableAnalysisStagesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Returns all stage events for an analysis ordered by timestamp.
+     * Get Analysis Stages
+     * @param param the request object
+     */
+    public getAnalysisStagesWithHttpInfo(param: AnalysisStagesApiGetAnalysisStagesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStagesResponse>> {
+        return this.api.getAnalysisStagesWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns all stage events for an analysis ordered by timestamp.
+     * Get Analysis Stages
+     * @param param the request object
+     */
+    public getAnalysisStages(param: AnalysisStagesApiGetAnalysisStagesRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisStagesResponse> {
+        return this.api.getAnalysisStages(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the latest status for each core pipeline stage with the number of analyses ahead in the queue.
+     * Get Pipeline Status
+     * @param param the request object
+     */
+    public getPipelineStatusWithHttpInfo(param: AnalysisStagesApiGetPipelineStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponsePipelineStatusResponse>> {
+        return this.api.getPipelineStatusWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the latest status for each core pipeline stage with the number of analyses ahead in the queue.
+     * Get Pipeline Status
+     * @param param the request object
+     */
+    public getPipelineStatus(param: AnalysisStagesApiGetPipelineStatusRequest, options?: ConfigurationOptions): Promise<BaseResponsePipelineStatusResponse> {
+        return this.api.getPipelineStatus(param.analysisId,  options).toPromise();
     }
 
 }
