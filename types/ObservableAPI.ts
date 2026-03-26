@@ -25,6 +25,7 @@ import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStage } from '../models/AnalysisStage';
 import { AnalysisStageStatus } from '../models/AnalysisStageStatus';
 import { AnalysisStagesResponse } from '../models/AnalysisStagesResponse';
+import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
@@ -72,7 +73,6 @@ import { BaseResponseCollectionResponse } from '../models/BaseResponseCollection
 import { BaseResponseCollectionSearchResponse } from '../models/BaseResponseCollectionSearchResponse';
 import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponseCollectionTagsUpdateResponse';
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
-import { BaseResponseCommunities } from '../models/BaseResponseCommunities';
 import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
@@ -156,8 +156,6 @@ import { CollectionUpdateRequest } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
-import { Communities } from '../models/Communities';
-import { CommunityMatchPercentages } from '../models/CommunityMatchPercentages';
 import { ConfidenceType } from '../models/ConfidenceType';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { Context } from '../models/Context';
@@ -264,6 +262,7 @@ import { ProcessDumps } from '../models/ProcessDumps';
 import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
+import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedSecurityChecksTaskResponse } from '../models/QueuedSecurityChecksTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
@@ -289,6 +288,7 @@ import { StageStatus } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StringFunctions } from '../models/StringFunctions';
+import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { Symbols } from '../models/Symbols';
@@ -896,6 +896,42 @@ export class ObservableAnalysesCoreApi {
     }
 
     /**
+     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+     * Add strings to the analysis
+     * @param analysisId
+     * @param putAnalysisStringsRequest
+     */
+    public putAnalysisStringsWithHttpInfo(analysisId: number, putAnalysisStringsRequest: PutAnalysisStringsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.putAnalysisStrings(analysisId, putAnalysisStringsRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.putAnalysisStringsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+     * Add strings to the analysis
+     * @param analysisId
+     * @param putAnalysisStringsRequest
+     */
+    public putAnalysisStrings(analysisId: number, putAnalysisStringsRequest: PutAnalysisStringsRequest, _options?: ConfigurationOptions): Observable<BaseResponse> {
+        return this.putAnalysisStringsWithHttpInfo(analysisId, putAnalysisStringsRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
+    }
+
+    /**
      * Re-queues an already uploaded analysis
      * Requeue Analysis
      * @param analysisId
@@ -1373,40 +1409,6 @@ export class ObservableAnalysesResultsMetadataApi {
      */
     public getCapabilities(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseCapabilities> {
         return this.getCapabilitiesWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCapabilities>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the communities found in the analysis
-     * @param analysisId
-     * @param [userName] The user name to limit communities to
-     */
-    public getCommunitiesWithHttpInfo(analysisId: number, userName?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommunities>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getCommunities(analysisId, userName, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCommunitiesWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the communities found in the analysis
-     * @param analysisId
-     * @param [userName] The user name to limit communities to
-     */
-    public getCommunities(analysisId: number, userName?: string, _options?: ConfigurationOptions): Observable<BaseResponseCommunities> {
-        return this.getCommunitiesWithHttpInfo(analysisId, userName, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommunities>) => apiResponse.data));
     }
 
     /**
@@ -3022,7 +3024,7 @@ export class ObservableFunctionsAIDecompilationApi {
      * Polls AI Decompilation Process
      * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
-     * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
+     * @param [generateInlineComments] Generate inline comments for the decompilation
      */
     public getAiDecompilationTaskResultWithHttpInfo(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetAiDecompilationTask>> {
         const _config = mergeConfiguration(this.configuration, _options);
@@ -3049,7 +3051,7 @@ export class ObservableFunctionsAIDecompilationApi {
      * Polls AI Decompilation Process
      * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
-     * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
+     * @param [generateInlineComments] Generate inline comments for the decompilation
      */
     public getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseGetAiDecompilationTask> {
         return this.getAiDecompilationTaskResultWithHttpInfo(functionId, summarise, generateInlineComments, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetAiDecompilationTask>) => apiResponse.data));

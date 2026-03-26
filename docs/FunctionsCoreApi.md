@@ -99,7 +99,7 @@ const request: FunctionsCoreApiAnalysisFunctionMatchingRequest = {
   analysisId: 1,
   
   analysisFunctionMatchingRequest: {
-    minSimilarity: 90.0,
+    minSimilarity: 90,
     filters: {
       binaryIds: [],
       collectionIds: [],
@@ -171,9 +171,9 @@ const request: FunctionsCoreApiAutoUnstripRequest = {
   analysisId: 1,
   
   autoUnstripRequest: {
-    minSimilarity: 90.0,
+    minSimilarity: 90,
     apply: false,
-    confidenceThreshold: 90.0,
+    confidenceThreshold: 90,
     minGroupSize: 10,
     statusOnly: false,
     noCache: false,
@@ -238,7 +238,7 @@ const request: FunctionsCoreApiBatchFunctionMatchingRequest = {
     functionIds: [
       1,
     ],
-    minSimilarity: 90.0,
+    minSimilarity: 90,
     filters: {
       binaryIds: [],
       collectionIds: [],

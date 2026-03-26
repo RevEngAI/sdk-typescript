@@ -9,13 +9,14 @@
  * Do not edit the class manually.
  */
 
+import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { HttpFile } from '../http/http';
 
-export class CommunityMatchPercentages {
-    'binaryName': string;
-    'binaryId': number;
-    'matchedCommunitiesPercent': number;
-    'unmatchedCommunitiesPercent': number;
+export class PutAnalysisStringsRequest {
+    /**
+    * The strings to add to the analysis
+    */
+    'strings': Array<AnalysisStringInput>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,32 +24,14 @@ export class CommunityMatchPercentages {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "binaryName",
-            "baseName": "binary_name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "binaryId",
-            "baseName": "binary_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "matchedCommunitiesPercent",
-            "baseName": "matched_communities_percent",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "unmatchedCommunitiesPercent",
-            "baseName": "unmatched_communities_percent",
-            "type": "number",
+            "name": "strings",
+            "baseName": "strings",
+            "type": "Array<AnalysisStringInput>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return CommunityMatchPercentages.attributeTypeMap;
+        return PutAnalysisStringsRequest.attributeTypeMap;
     }
 
     public constructor() {

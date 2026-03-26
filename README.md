@@ -62,6 +62,7 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**insertAnalysisLog**](docs/AnalysesCoreApi.md#insertAnalysisLog) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 *AnalysesCoreApi* | [**listAnalyses**](docs/AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 *AnalysesCoreApi* | [**lookupBinaryId**](docs/AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
+*AnalysesCoreApi* | [**putAnalysisStrings**](docs/AnalysesCoreApi.md#putAnalysisStrings) | **PUT** /v2/analyses/{analysis_id}/strings | Add strings to the analysis
 *AnalysesCoreApi* | [**requeueAnalysis**](docs/AnalysesCoreApi.md#requeueAnalysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
 *AnalysesCoreApi* | [**updateAnalysis**](docs/AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 *AnalysesCoreApi* | [**updateAnalysisTags**](docs/AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
@@ -75,7 +76,6 @@ Class | Method | HTTP request | Description
 *AnalysesDynamicExecutionApi* | [**getTtps**](docs/AnalysesDynamicExecutionApi.md#getTtps) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/ttps | Get the dynamic execution results for ttps
 *AnalysesResultsMetadataApi* | [**getAnalysisFunctionsPaginated**](docs/AnalysesResultsMetadataApi.md#getAnalysisFunctionsPaginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 *AnalysesResultsMetadataApi* | [**getCapabilities**](docs/AnalysesResultsMetadataApi.md#getCapabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
-*AnalysesResultsMetadataApi* | [**getCommunities**](docs/AnalysesResultsMetadataApi.md#getCommunities) | **GET** /v2/analyses/{analysis_id}/communities | Gets the communities found in the analysis
 *AnalysesResultsMetadataApi* | [**getFunctionsList**](docs/AnalysesResultsMetadataApi.md#getFunctionsList) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
 *AnalysesResultsMetadataApi* | [**getPdf**](docs/AnalysesResultsMetadataApi.md#getPdf) | **GET** /v2/analyses/{analysis_id}/pdf | Gets the PDF found in the analysis
 *AnalysesResultsMetadataApi* | [**getSbom**](docs/AnalysesResultsMetadataApi.md#getSbom) | **GET** /v2/analyses/{analysis_id}/sbom | Gets the software-bill-of-materials (SBOM) found in the analysis
@@ -184,6 +184,7 @@ Class | Method | HTTP request | Description
  - [AnalysisStage](AnalysisStage.md)
  - [AnalysisStageStatus](AnalysisStageStatus.md)
  - [AnalysisStagesResponse](AnalysisStagesResponse.md)
+ - [AnalysisStringInput](AnalysisStringInput.md)
  - [AnalysisStringsResponse](AnalysisStringsResponse.md)
  - [AnalysisStringsStatusResponse](AnalysisStringsStatusResponse.md)
  - [AnalysisTags](AnalysisTags.md)
@@ -231,7 +232,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseCollectionSearchResponse](BaseResponseCollectionSearchResponse.md)
  - [BaseResponseCollectionTagsUpdateResponse](BaseResponseCollectionTagsUpdateResponse.md)
  - [BaseResponseCommentResponse](BaseResponseCommentResponse.md)
- - [BaseResponseCommunities](BaseResponseCommunities.md)
  - [BaseResponseConfigResponse](BaseResponseConfigResponse.md)
  - [BaseResponseCreated](BaseResponseCreated.md)
  - [BaseResponseDict](BaseResponseDict.md)
@@ -315,8 +315,6 @@ Class | Method | HTTP request | Description
  - [CommentBase](CommentBase.md)
  - [CommentResponse](CommentResponse.md)
  - [CommentUpdateRequest](CommentUpdateRequest.md)
- - [Communities](Communities.md)
- - [CommunityMatchPercentages](CommunityMatchPercentages.md)
  - [ConfidenceType](ConfidenceType.md)
  - [ConfigResponse](ConfigResponse.md)
  - [Context](Context.md)
@@ -423,6 +421,7 @@ Class | Method | HTTP request | Description
  - [ProcessDumpsData](ProcessDumpsData.md)
  - [ProcessRegistry](ProcessRegistry.md)
  - [ProcessTree](ProcessTree.md)
+ - [PutAnalysisStringsRequest](PutAnalysisStringsRequest.md)
  - [QueuedSecurityChecksTaskResponse](QueuedSecurityChecksTaskResponse.md)
  - [ReAnalysisForm](ReAnalysisForm.md)
  - [Recent](Recent.md)
@@ -448,6 +447,7 @@ Class | Method | HTTP request | Description
  - [StatusInput](StatusInput.md)
  - [StatusOutput](StatusOutput.md)
  - [StringFunctions](StringFunctions.md)
+ - [StringSource](StringSource.md)
  - [Structure](Structure.md)
  - [StructureMember](StructureMember.md)
  - [Symbols](Symbols.md)

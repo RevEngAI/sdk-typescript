@@ -9,23 +9,25 @@
  * Do not edit the class manually.
  */
 
-import { Communities } from '../models/Communities';
-import { ErrorModel } from '../models/ErrorModel';
-import { MetaModel } from '../models/MetaModel';
+import { StringSource } from '../models/StringSource';
 import { HttpFile } from '../http/http';
 
-export class BaseResponseCommunities {
+/**
+* Input model for inserting a string into an analysis.
+*/
+export class AnalysisStringInput {
     /**
-    * Response status on whether the request succeeded
+    * The string literal value
     */
-    'status'?: boolean;
-    'data'?: Communities | null;
-    'message'?: string | null;
-    'errors'?: Array<ErrorModel> | null;
+    'value': string;
     /**
-    * Metadata
+    * The virtual address of the string
     */
-    'meta'?: MetaModel;
+    'vaddr': number;
+    /**
+    * The source of the string
+    */
+    'source': StringSource;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,40 +35,30 @@ export class BaseResponseCommunities {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "data",
-            "baseName": "data",
-            "type": "Communities",
-            "format": ""
-        },
-        {
-            "name": "message",
-            "baseName": "message",
+            "name": "value",
+            "baseName": "value",
             "type": "string",
             "format": ""
         },
         {
-            "name": "errors",
-            "baseName": "errors",
-            "type": "Array<ErrorModel>",
+            "name": "vaddr",
+            "baseName": "vaddr",
+            "type": "number",
             "format": ""
         },
         {
-            "name": "meta",
-            "baseName": "meta",
-            "type": "MetaModel",
+            "name": "source",
+            "baseName": "source",
+            "type": "StringSource",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return BaseResponseCommunities.attributeTypeMap;
+        return AnalysisStringInput.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+

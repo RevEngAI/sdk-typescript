@@ -24,6 +24,7 @@ import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStage } from '../models/AnalysisStage';
 import { AnalysisStageStatus } from '../models/AnalysisStageStatus';
 import { AnalysisStagesResponse } from '../models/AnalysisStagesResponse';
+import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
@@ -71,7 +72,6 @@ import { BaseResponseCollectionResponse } from '../models/BaseResponseCollection
 import { BaseResponseCollectionSearchResponse } from '../models/BaseResponseCollectionSearchResponse';
 import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponseCollectionTagsUpdateResponse';
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
-import { BaseResponseCommunities } from '../models/BaseResponseCommunities';
 import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
@@ -155,8 +155,6 @@ import { CollectionUpdateRequest } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
-import { Communities } from '../models/Communities';
-import { CommunityMatchPercentages } from '../models/CommunityMatchPercentages';
 import { ConfidenceType } from '../models/ConfidenceType';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { Context } from '../models/Context';
@@ -263,6 +261,7 @@ import { ProcessDumps } from '../models/ProcessDumps';
 import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
+import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedSecurityChecksTaskResponse } from '../models/QueuedSecurityChecksTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
@@ -288,6 +287,7 @@ import { StageStatus } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StringFunctions } from '../models/StringFunctions';
+import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { Symbols } from '../models/Symbols';
@@ -666,6 +666,22 @@ export interface AnalysesCoreApiLookupBinaryIdRequest {
     binaryId: number
 }
 
+export interface AnalysesCoreApiPutAnalysisStringsRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiputAnalysisStrings
+     */
+    analysisId: number
+    /**
+     * 
+     * @type PutAnalysisStringsRequest
+     * @memberof AnalysesCoreApiputAnalysisStrings
+     */
+    putAnalysisStringsRequest: PutAnalysisStringsRequest
+}
+
 export interface AnalysesCoreApiRequeueAnalysisRequest {
     /**
      * 
@@ -955,6 +971,24 @@ export class ObjectAnalysesCoreApi {
      */
     public lookupBinaryId(param: AnalysesCoreApiLookupBinaryIdRequest, options?: ConfigurationOptions): Promise<any> {
         return this.api.lookupBinaryId(param.binaryId,  options).toPromise();
+    }
+
+    /**
+     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+     * Add strings to the analysis
+     * @param param the request object
+     */
+    public putAnalysisStringsWithHttpInfo(param: AnalysesCoreApiPutAnalysisStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+        return this.api.putAnalysisStringsWithHttpInfo(param.analysisId, param.putAnalysisStringsRequest,  options).toPromise();
+    }
+
+    /**
+     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+     * Add strings to the analysis
+     * @param param the request object
+     */
+    public putAnalysisStrings(param: AnalysesCoreApiPutAnalysisStringsRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
+        return this.api.putAnalysisStrings(param.analysisId, param.putAnalysisStringsRequest,  options).toPromise();
     }
 
     /**
@@ -1271,23 +1305,6 @@ export interface AnalysesResultsMetadataApiGetCapabilitiesRequest {
     analysisId: number
 }
 
-export interface AnalysesResultsMetadataApiGetCommunitiesRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetCommunities
-     */
-    analysisId: number
-    /**
-     * The user name to limit communities to
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesResultsMetadataApigetCommunities
-     */
-    userName?: string
-}
-
 export interface AnalysesResultsMetadataApiGetFunctionsListRequest {
     /**
      * 
@@ -1423,22 +1440,6 @@ export class ObjectAnalysesResultsMetadataApi {
      */
     public getCapabilities(param: AnalysesResultsMetadataApiGetCapabilitiesRequest, options?: ConfigurationOptions): Promise<BaseResponseCapabilities> {
         return this.api.getCapabilities(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the communities found in the analysis
-     * @param param the request object
-     */
-    public getCommunitiesWithHttpInfo(param: AnalysesResultsMetadataApiGetCommunitiesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommunities>> {
-        return this.api.getCommunitiesWithHttpInfo(param.analysisId, param.userName,  options).toPromise();
-    }
-
-    /**
-     * Gets the communities found in the analysis
-     * @param param the request object
-     */
-    public getCommunities(param: AnalysesResultsMetadataApiGetCommunitiesRequest, options?: ConfigurationOptions): Promise<BaseResponseCommunities> {
-        return this.api.getCommunities(param.analysisId, param.userName,  options).toPromise();
     }
 
     /**
@@ -2674,7 +2675,7 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest 
      */
     summarise?: boolean
     /**
-     * Generate inline comments for the decompilation (only works if summarise is enabled)
+     * Generate inline comments for the decompilation
      * Defaults to: true
      * @type boolean
      * @memberof FunctionsAIDecompilationApigetAiDecompilationTaskResult
