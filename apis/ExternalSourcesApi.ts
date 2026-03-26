@@ -149,19 +149,19 @@ export class ExternalSourcesApiResponseProcessor {
             ) as BaseResponseStr;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
         if (isCodeInRange("409", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
             throw new ApiException<BaseResponse>(response.httpStatusCode, "Request already queued", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -192,19 +192,19 @@ export class ExternalSourcesApiResponseProcessor {
             ) as BaseResponseExternalResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
         if (isCodeInRange("404", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
             throw new ApiException<BaseResponse>(response.httpStatusCode, "No data retrieved from VirusTotal for the given analysis_id", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

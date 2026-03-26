@@ -12,15 +12,21 @@
 import { HttpFile } from '../http/http';
 
 export class TagItem {
+    'collectionId'?: number | null;
     'name': string;
     'origin': string;
-    'collectionId'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "collectionId",
+            "baseName": "collection_id",
+            "type": "number",
+            "format": ""
+        },
         {
             "name": "name",
             "baseName": "name",
@@ -31,12 +37,6 @@ export class TagItem {
             "name": "origin",
             "baseName": "origin",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "collectionId",
-            "baseName": "collection_id",
-            "type": "number",
             "format": ""
         }    ];
 

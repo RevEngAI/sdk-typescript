@@ -13,6 +13,10 @@ import { HttpFile } from '../http/http';
 
 export class Capability {
     /**
+    * The list of capabilities associated with the function
+    */
+    'capabilities': Array<string>;
+    /**
     * The name of the function with a capability
     */
     'functionName': string;
@@ -20,16 +24,18 @@ export class Capability {
     * The virtual address of the function where the capability comes from
     */
     'functionVaddr': number;
-    /**
-    * The list of capabilities associated with the function
-    */
-    'capabilities': Array<string>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "capabilities",
+            "baseName": "capabilities",
+            "type": "Array<string>",
+            "format": ""
+        },
         {
             "name": "functionName",
             "baseName": "function_name",
@@ -41,12 +47,6 @@ export class Capability {
             "baseName": "function_vaddr",
             "type": "number",
             "format": "int64"
-        },
-        {
-            "name": "capabilities",
-            "baseName": "capabilities",
-            "type": "Array<string>",
-            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

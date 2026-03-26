@@ -12,11 +12,11 @@
 import { HttpFile } from '../http/http';
 
 export class SandboxOptions {
-    'enabled'?: boolean;
     /**
     * The command line parameters to pass to the dynamic execution sandbox. Requires `sandbox` to be True.
     */
     'commandLineArgs'?: string;
+    'enabled'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,15 +24,15 @@ export class SandboxOptions {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "enabled",
-            "baseName": "enabled",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "commandLineArgs",
             "baseName": "command_line_args",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "enabled",
+            "baseName": "enabled",
+            "type": "boolean",
             "format": ""
         }    ];
 

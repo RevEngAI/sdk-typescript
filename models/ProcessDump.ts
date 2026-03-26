@@ -13,10 +13,10 @@ import { ProcessDumpMetadata } from '../models/ProcessDumpMetadata';
 import { HttpFile } from '../http/http';
 
 export class ProcessDump {
-    'baseAddress': number;
     'actualFilename': string;
-    'filenameFriendly': string;
+    'baseAddress': number;
     'extendedMetadata': ProcessDumpMetadata;
+    'filenameFriendly': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,27 +24,27 @@ export class ProcessDump {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "baseAddress",
-            "baseName": "base_address",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "actualFilename",
             "baseName": "actual_filename",
             "type": "string",
             "format": ""
         },
         {
-            "name": "filenameFriendly",
-            "baseName": "filename_friendly",
-            "type": "string",
+            "name": "baseAddress",
+            "baseName": "base_address",
+            "type": "number",
             "format": ""
         },
         {
             "name": "extendedMetadata",
             "baseName": "extended_metadata",
             "type": "ProcessDumpMetadata",
+            "format": ""
+        },
+        {
+            "name": "filenameFriendly",
+            "baseName": "filename_friendly",
+            "type": "string",
             "format": ""
         }    ];
 

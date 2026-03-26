@@ -15,11 +15,11 @@ export class FileHashes {
     'md5': string | null;
     'sha1': string | null;
     'sha256': string | null;
-    'sha512': string | null;
     'sha3224': string | null;
     'sha3256': string | null;
     'sha3384': string | null;
     'sha3512': string | null;
+    'sha512': string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -45,12 +45,6 @@ export class FileHashes {
             "format": ""
         },
         {
-            "name": "sha512",
-            "baseName": "sha512",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "sha3224",
             "baseName": "sha3_224",
             "type": "string",
@@ -71,6 +65,12 @@ export class FileHashes {
         {
             "name": "sha3512",
             "baseName": "sha3_512",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "sha512",
+            "baseName": "sha512",
             "type": "string",
             "format": ""
         }    ];

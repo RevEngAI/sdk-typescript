@@ -13,6 +13,14 @@ import { HttpFile } from '../http/http';
 
 export class ConfigResponse {
     /**
+    * List of models that support AI decompilation
+    */
+    'aiDecompilerSupportedModels': Array<string>;
+    /**
+    * List of programming languages that are not supported for AI decompilation
+    */
+    'aiDecompilerUnsupportedLanguages': Array<string>;
+    /**
     * The domain of the RevEng.AI platform you are connected to
     */
     'dashboardUrl'?: string;
@@ -20,20 +28,24 @@ export class ConfigResponse {
     * Maximum file size (in bytes) that can be uploaded for analysis
     */
     'maxFileSizeBytes': number;
-    /**
-    * List of programming languages that are not supported for AI decompilation
-    */
-    'aiDecompilerUnsupportedLanguages': Array<string>;
-    /**
-    * List of models that support AI decompilation
-    */
-    'aiDecompilerSupportedModels': Array<string>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "aiDecompilerSupportedModels",
+            "baseName": "ai_decompiler_supported_models",
+            "type": "Array<string>",
+            "format": ""
+        },
+        {
+            "name": "aiDecompilerUnsupportedLanguages",
+            "baseName": "ai_decompiler_unsupported_languages",
+            "type": "Array<string>",
+            "format": ""
+        },
         {
             "name": "dashboardUrl",
             "baseName": "dashboard_url",
@@ -44,18 +56,6 @@ export class ConfigResponse {
             "name": "maxFileSizeBytes",
             "baseName": "max_file_size_bytes",
             "type": "number",
-            "format": ""
-        },
-        {
-            "name": "aiDecompilerUnsupportedLanguages",
-            "baseName": "ai_decompiler_unsupported_languages",
-            "type": "Array<string>",
-            "format": ""
-        },
-        {
-            "name": "aiDecompilerSupportedModels",
-            "baseName": "ai_decompiler_supported_models",
-            "type": "Array<string>",
             "format": ""
         }    ];
 

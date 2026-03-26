@@ -358,15 +358,15 @@ export class AuthenticationUsersApiResponseProcessor {
             ) as BaseResponseLoginResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("401", response.httpStatusCode)) {
+            throw new ApiException<undefined>(response.httpStatusCode, "Invalid credentials", undefined, response.headers);
+        }
         if (isCodeInRange("422", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
             throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-        if (isCodeInRange("401", response.httpStatusCode)) {
-            throw new ApiException<undefined>(response.httpStatusCode, "Invalid credentials", undefined, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

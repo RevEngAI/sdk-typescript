@@ -12,9 +12,9 @@
 import { HttpFile } from '../http/http';
 
 export class PaginationModel {
-    'pageSize': number;
-    'pageNumber': number;
     'hasNextPage': boolean;
+    'pageNumber': number;
+    'pageSize': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,9 +22,9 @@ export class PaginationModel {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "pageSize",
-            "baseName": "page_size",
-            "type": "number",
+            "name": "hasNextPage",
+            "baseName": "has_next_page",
+            "type": "boolean",
             "format": ""
         },
         {
@@ -34,9 +34,9 @@ export class PaginationModel {
             "format": ""
         },
         {
-            "name": "hasNextPage",
-            "baseName": "has_next_page",
-            "type": "boolean",
+            "name": "pageSize",
+            "baseName": "page_size",
+            "type": "number",
             "format": ""
         }    ];
 

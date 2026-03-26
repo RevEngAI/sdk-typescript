@@ -12,19 +12,37 @@
 import { HttpFile } from '../http/http';
 
 export class Process {
+    'args': Array<string>;
+    'children': Array<any>;
+    'executableName': string;
     'pid': number;
     'procname': string;
-    'executableName': string;
-    'args': Array<string>;
     'tsFrom': number;
     'tsTo': number | null;
-    'children': Array<any>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "args",
+            "baseName": "args",
+            "type": "Array<string>",
+            "format": ""
+        },
+        {
+            "name": "children",
+            "baseName": "children",
+            "type": "Array<any>",
+            "format": ""
+        },
+        {
+            "name": "executableName",
+            "baseName": "executable_name",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "pid",
             "baseName": "pid",
@@ -38,18 +56,6 @@ export class Process {
             "format": ""
         },
         {
-            "name": "executableName",
-            "baseName": "executable_name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "args",
-            "baseName": "args",
-            "type": "Array<string>",
-            "format": ""
-        },
-        {
             "name": "tsFrom",
             "baseName": "ts_from",
             "type": "number",
@@ -59,12 +65,6 @@ export class Process {
             "name": "tsTo",
             "baseName": "ts_to",
             "type": "number",
-            "format": ""
-        },
-        {
-            "name": "children",
-            "baseName": "children",
-            "type": "Array<any>",
             "format": ""
         }    ];
 

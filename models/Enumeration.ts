@@ -12,19 +12,19 @@
 import { HttpFile } from '../http/http';
 
 export class Enumeration {
-    'lastChange'?: string | null;
     /**
-    * Name of the enumeration
+    * Type of artifact that the enumeration is associated with
     */
-    'name': string;
+    'artifactType'?: string;
+    'lastChange'?: string | null;
     /**
     * Dictionary of enumeration members and their values
     */
     'members': { [key: string]: number; };
     /**
-    * Type of artifact that the enumeration is associated with
+    * Name of the enumeration
     */
-    'artifactType'?: string;
+    'name': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -32,14 +32,14 @@ export class Enumeration {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "lastChange",
-            "baseName": "last_change",
+            "name": "artifactType",
+            "baseName": "artifact_type",
             "type": "string",
             "format": ""
         },
         {
-            "name": "name",
-            "baseName": "name",
+            "name": "lastChange",
+            "baseName": "last_change",
             "type": "string",
             "format": ""
         },
@@ -50,8 +50,8 @@ export class Enumeration {
             "format": ""
         },
         {
-            "name": "artifactType",
-            "baseName": "artifact_type",
+            "name": "name",
+            "baseName": "name",
             "type": "string",
             "format": ""
         }    ];

@@ -12,6 +12,7 @@
 import { HttpFile } from '../http/http';
 
 export class BinaryDetailsResponse {
+    '_class': string;
     /**
     * The architecture of the binary
     */
@@ -21,15 +22,16 @@ export class BinaryDetailsResponse {
     */
     'bits': number;
     'crc32': string;
-    '_class': string;
+    'debug': boolean;
     'entropy': number;
     'fileSize': number;
+    'firstSeen': Date;
     /**
     * 
     */
     'language': string;
-    'md5': string;
     'machine': string;
+    'md5': string;
     /**
     * OS target of the binary
     */
@@ -48,14 +50,18 @@ export class BinaryDetailsResponse {
     'subSys': string;
     'tlsh': string;
     'type': string;
-    'debug': boolean;
-    'firstSeen': Date;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "_class",
+            "baseName": "Class",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "arch",
             "baseName": "arch",
@@ -75,9 +81,9 @@ export class BinaryDetailsResponse {
             "format": ""
         },
         {
-            "name": "_class",
-            "baseName": "Class",
-            "type": "string",
+            "name": "debug",
+            "baseName": "debug",
+            "type": "boolean",
             "format": ""
         },
         {
@@ -93,20 +99,26 @@ export class BinaryDetailsResponse {
             "format": ""
         },
         {
+            "name": "firstSeen",
+            "baseName": "first_seen",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
             "name": "language",
             "baseName": "language",
             "type": "string",
             "format": ""
         },
         {
-            "name": "md5",
-            "baseName": "md5",
+            "name": "machine",
+            "baseName": "machine",
             "type": "string",
             "format": ""
         },
         {
-            "name": "machine",
-            "baseName": "machine",
+            "name": "md5",
+            "baseName": "md5",
             "type": "string",
             "format": ""
         },
@@ -163,18 +175,6 @@ export class BinaryDetailsResponse {
             "baseName": "type",
             "type": "string",
             "format": ""
-        },
-        {
-            "name": "debug",
-            "baseName": "debug",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "firstSeen",
-            "baseName": "first_seen",
-            "type": "Date",
-            "format": "date-time"
         }    ];
 
     static getAttributeTypeMap() {

@@ -14,13 +14,13 @@ import { HttpFile } from '../http/http';
 
 export class UpdateFunctionDataTypes {
     /**
-    * Version of the function data types, used to check this update is not overwriting a newer one
-    */
-    'dataTypesVersion': number;
-    /**
     * Function data types information to update
     */
     'dataTypes': FunctionInfoInput;
+    /**
+    * Version of the function data types, used to check this update is not overwriting a newer one
+    */
+    'dataTypesVersion': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -28,15 +28,15 @@ export class UpdateFunctionDataTypes {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "dataTypesVersion",
-            "baseName": "data_types_version",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "dataTypes",
             "baseName": "data_types",
             "type": "FunctionInfoInput",
+            "format": ""
+        },
+        {
+            "name": "dataTypesVersion",
+            "baseName": "data_types_version",
+            "type": "number",
             "format": ""
         }    ];
 

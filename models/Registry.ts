@@ -12,10 +12,10 @@
 import { HttpFile } from '../http/http';
 
 export class Registry {
-    'method': string;
     'key': string;
-    'valueName': string | null;
+    'method': string;
     'value': string | null;
+    'valueName': string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,26 +23,26 @@ export class Registry {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "method",
-            "baseName": "method",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "key",
             "baseName": "key",
             "type": "string",
             "format": ""
         },
         {
-            "name": "valueName",
-            "baseName": "value_name",
+            "name": "method",
+            "baseName": "method",
             "type": "string",
             "format": ""
         },
         {
             "name": "value",
             "baseName": "value",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "valueName",
+            "baseName": "value_name",
             "type": "string",
             "format": ""
         }    ];

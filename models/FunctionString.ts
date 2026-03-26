@@ -9,17 +9,22 @@
  * Do not edit the class manually.
  */
 
+import { StringSource } from '../models/StringSource';
 import { HttpFile } from '../http/http';
 
 export class FunctionString {
     /**
-    * The value of the string literal
+    * The source of the string
     */
-    'value': string;
+    'source'?: StringSource;
     /**
     * The vaddr of the string value
     */
     'vaddr': number;
+    /**
+    * The value of the string literal
+    */
+    'value': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -27,15 +32,21 @@ export class FunctionString {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "value",
-            "baseName": "value",
-            "type": "string",
+            "name": "source",
+            "baseName": "source",
+            "type": "StringSource",
             "format": ""
         },
         {
             "name": "vaddr",
             "baseName": "vaddr",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "value",
+            "baseName": "value",
+            "type": "string",
             "format": ""
         }    ];
 
@@ -46,3 +57,5 @@ export class FunctionString {
     public constructor() {
     }
 }
+
+

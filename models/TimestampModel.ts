@@ -12,9 +12,9 @@
 import { HttpFile } from '../http/http';
 
 export class TimestampModel {
-    'peTimestamp': number;
-    'exportTimestamp': number;
     'debugTimestamp': number;
+    'exportTimestamp': number;
+    'peTimestamp': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,8 +22,8 @@ export class TimestampModel {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "peTimestamp",
-            "baseName": "pe_timestamp",
+            "name": "debugTimestamp",
+            "baseName": "debug_timestamp",
             "type": "number",
             "format": ""
         },
@@ -34,8 +34,8 @@ export class TimestampModel {
             "format": ""
         },
         {
-            "name": "debugTimestamp",
-            "baseName": "debug_timestamp",
+            "name": "peTimestamp",
+            "baseName": "pe_timestamp",
             "type": "number",
             "format": ""
         }    ];

@@ -12,6 +12,10 @@
 import { HttpFile } from '../http/http';
 
 export class TypeDefinition {
+    /**
+    * Type of artifact the type definition is associated with
+    */
+    'artifactType'?: string;
     'lastChange'?: string | null;
     /**
     * Name of the type definition
@@ -21,16 +25,18 @@ export class TypeDefinition {
     * Underlying type of the type definition
     */
     'type': string;
-    /**
-    * Type of artifact the type definition is associated with
-    */
-    'artifactType'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "artifactType",
+            "baseName": "artifact_type",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "lastChange",
             "baseName": "last_change",
@@ -46,12 +52,6 @@ export class TypeDefinition {
         {
             "name": "type",
             "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "artifactType",
-            "baseName": "artifact_type",
             "type": "string",
             "format": ""
         }    ];

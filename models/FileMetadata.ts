@@ -13,10 +13,10 @@ import { FileHashes } from '../models/FileHashes';
 import { HttpFile } from '../http/http';
 
 export class FileMetadata {
-    'size': number;
-    'friendlySize': string;
     'entropy': number;
+    'friendlySize': string;
     'hashes': FileHashes;
+    'size': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,8 +24,8 @@ export class FileMetadata {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "size",
-            "baseName": "size",
+            "name": "entropy",
+            "baseName": "entropy",
             "type": "number",
             "format": ""
         },
@@ -36,15 +36,15 @@ export class FileMetadata {
             "format": ""
         },
         {
-            "name": "entropy",
-            "baseName": "entropy",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "hashes",
             "baseName": "hashes",
             "type": "FileHashes",
+            "format": ""
+        },
+        {
+            "name": "size",
+            "baseName": "size",
+            "type": "number",
             "format": ""
         }    ];
 

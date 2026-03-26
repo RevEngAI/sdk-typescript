@@ -14,8 +14,8 @@ import { XrefToResponse } from '../models/XrefToResponse';
 import { HttpFile } from '../http/http';
 
 export class XrefResponse {
-    'xrefToList': Array<XrefToResponse>;
     'xrefFromList': Array<XrefFromResponse>;
+    'xrefToList': Array<XrefToResponse>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,15 +23,15 @@ export class XrefResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "xrefToList",
-            "baseName": "xref_to_list",
-            "type": "Array<XrefToResponse>",
-            "format": ""
-        },
-        {
             "name": "xrefFromList",
             "baseName": "xref_from_list",
             "type": "Array<XrefFromResponse>",
+            "format": ""
+        },
+        {
+            "name": "xrefToList",
+            "baseName": "xref_to_list",
+            "type": "Array<XrefToResponse>",
             "format": ""
         }    ];
 

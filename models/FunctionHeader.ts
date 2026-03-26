@@ -13,29 +13,41 @@ import { Argument } from '../models/Argument';
 import { HttpFile } from '../http/http';
 
 export class FunctionHeader {
+    /**
+    * Memory address of the function
+    */
+    'addr': number;
+    /**
+    * Dictionary of function arguments
+    */
+    'args': { [key: string]: Argument; };
     'lastChange'?: string | null;
     /**
     * Name of the function
     */
     'name': string;
     /**
-    * Memory address of the function
-    */
-    'addr': number;
-    /**
     * Return type of the function
     */
     'type': string;
-    /**
-    * Dictionary of function arguments
-    */
-    'args': { [key: string]: Argument; };
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "addr",
+            "baseName": "addr",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "args",
+            "baseName": "args",
+            "type": "{ [key: string]: Argument; }",
+            "format": ""
+        },
         {
             "name": "lastChange",
             "baseName": "last_change",
@@ -49,21 +61,9 @@ export class FunctionHeader {
             "format": ""
         },
         {
-            "name": "addr",
-            "baseName": "addr",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "type",
             "baseName": "type",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "args",
-            "baseName": "args",
-            "type": "{ [key: string]: Argument; }",
             "format": ""
         }    ];
 

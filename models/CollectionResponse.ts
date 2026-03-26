@@ -14,6 +14,7 @@ import { CollectionScope } from '../models/CollectionScope';
 import { HttpFile } from '../http/http';
 
 export class CollectionResponse {
+    'binaries'?: Array<CollectionResponseBinariesInner> | null;
     /**
     * Collection ID
     */
@@ -23,19 +24,6 @@ export class CollectionResponse {
     */
     'collectionName': string;
     /**
-    * Collection description
-    */
-    'description': string;
-    /**
-    * Collection model ID
-    */
-    'modelId': number;
-    /**
-    * Collection user ID
-    */
-    'userId': number;
-    'teamId'?: number | null;
-    /**
     * Collection public status
     */
     'collectionScope': CollectionScope;
@@ -44,17 +32,35 @@ export class CollectionResponse {
     */
     'createdAt': Date;
     /**
+    * Collection description
+    */
+    'description': string;
+    /**
+    * Collection model ID
+    */
+    'modelId': number;
+    'tags'?: Array<string> | null;
+    'teamId'?: number | null;
+    /**
     * Collection last update date
     */
     'updatedAt': Date;
-    'tags'?: Array<string> | null;
-    'binaries'?: Array<CollectionResponseBinariesInner> | null;
+    /**
+    * Collection user ID
+    */
+    'userId': number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "binaries",
+            "baseName": "binaries",
+            "type": "Array<CollectionResponseBinariesInner>",
+            "format": ""
+        },
         {
             "name": "collectionId",
             "baseName": "collection_id",
@@ -65,30 +71,6 @@ export class CollectionResponse {
             "name": "collectionName",
             "baseName": "collection_name",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "description",
-            "baseName": "description",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "modelId",
-            "baseName": "model_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "teamId",
-            "baseName": "team_id",
-            "type": "number",
             "format": ""
         },
         {
@@ -104,10 +86,16 @@ export class CollectionResponse {
             "format": "date-time"
         },
         {
-            "name": "updatedAt",
-            "baseName": "updated_at",
-            "type": "Date",
-            "format": "date-time"
+            "name": "description",
+            "baseName": "description",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "modelId",
+            "baseName": "model_id",
+            "type": "number",
+            "format": ""
         },
         {
             "name": "tags",
@@ -116,9 +104,21 @@ export class CollectionResponse {
             "format": ""
         },
         {
-            "name": "binaries",
-            "baseName": "binaries",
-            "type": "Array<CollectionResponseBinariesInner>",
+            "name": "teamId",
+            "baseName": "team_id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "updatedAt",
+            "baseName": "updated_at",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number",
             "format": ""
         }    ];
 

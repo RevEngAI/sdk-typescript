@@ -13,8 +13,8 @@ import { HttpFile } from '../http/http';
 
 export class ProcessDumpMetadata {
     'sha256': string;
-    'type': string;
     'size': number;
+    'type': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -28,15 +28,15 @@ export class ProcessDumpMetadata {
             "format": ""
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "size",
             "baseName": "size",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
             "format": ""
         }    ];
 

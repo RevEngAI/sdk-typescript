@@ -12,14 +12,14 @@
 import { HttpFile } from '../http/http';
 
 export class GetMeResponse {
-    'username': string;
-    'userId': number;
+    'creation': Date;
+    'email': string;
     'firstName': string;
     'lastName': string;
-    'email': string;
-    'creation': Date;
-    'tutorialSeen': boolean;
     'role': GetMeResponseRoleEnum;
+    'tutorialSeen': boolean;
+    'userId': number;
+    'username': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -27,16 +27,16 @@ export class GetMeResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "username",
-            "baseName": "username",
-            "type": "string",
-            "format": ""
+            "name": "creation",
+            "baseName": "creation",
+            "type": "Date",
+            "format": "date-time"
         },
         {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "number",
-            "format": ""
+            "name": "email",
+            "baseName": "email",
+            "type": "string",
+            "format": "email"
         },
         {
             "name": "firstName",
@@ -51,16 +51,10 @@ export class GetMeResponse {
             "format": ""
         },
         {
-            "name": "email",
-            "baseName": "email",
-            "type": "string",
-            "format": "email"
-        },
-        {
-            "name": "creation",
-            "baseName": "creation",
-            "type": "Date",
-            "format": "date-time"
+            "name": "role",
+            "baseName": "role",
+            "type": "GetMeResponseRoleEnum",
+            "format": ""
         },
         {
             "name": "tutorialSeen",
@@ -69,9 +63,15 @@ export class GetMeResponse {
             "format": ""
         },
         {
-            "name": "role",
-            "baseName": "role",
-            "type": "GetMeResponseRoleEnum",
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "username",
+            "baseName": "username",
+            "type": "string",
             "format": ""
         }    ];
 

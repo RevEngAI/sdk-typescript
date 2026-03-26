@@ -13,13 +13,13 @@ import { HttpFile } from '../http/http';
 
 export class LoginRequest {
     /**
-    * User\'s username or email
-    */
-    'username': string;
-    /**
     * User\'s password
     */
     'password': string;
+    /**
+    * User\'s username or email
+    */
+    'username': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -27,14 +27,14 @@ export class LoginRequest {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "username",
-            "baseName": "username",
+            "name": "password",
+            "baseName": "password",
             "type": "string",
             "format": ""
         },
         {
-            "name": "password",
-            "baseName": "password",
+            "name": "username",
+            "baseName": "username",
             "type": "string",
             "format": ""
         }    ];

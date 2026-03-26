@@ -14,33 +14,33 @@ import { HttpFile } from '../http/http';
 
 export class FunctionNameHistory {
     /**
-    * The ID of the history record
-    */
-    'historyId': number;
-    /**
     * The user who made the change
     */
     'changeMadeBy': string;
+    /**
+    * The timestamp when the function name was created
+    */
+    'createdAt': string;
     /**
     * The name of the function
     */
     'functionName': string;
     /**
-    * The mangled name of the function
+    * The ID of the history record
     */
-    'mangledName': string;
+    'historyId': number;
     /**
     * Whether the function is debugged
     */
     'isDebug': boolean;
     /**
+    * The mangled name of the function
+    */
+    'mangledName': string;
+    /**
     * The source type of the function
     */
     'sourceType': FunctionSourceType;
-    /**
-    * The timestamp when the function name was created
-    */
-    'createdAt': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -48,14 +48,14 @@ export class FunctionNameHistory {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "historyId",
-            "baseName": "history_id",
-            "type": "number",
+            "name": "changeMadeBy",
+            "baseName": "change_made_by",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "changeMadeBy",
-            "baseName": "change_made_by",
+            "name": "createdAt",
+            "baseName": "created_at",
             "type": "string",
             "format": ""
         },
@@ -66,9 +66,9 @@ export class FunctionNameHistory {
             "format": ""
         },
         {
-            "name": "mangledName",
-            "baseName": "mangled_name",
-            "type": "string",
+            "name": "historyId",
+            "baseName": "history_id",
+            "type": "number",
             "format": ""
         },
         {
@@ -78,15 +78,15 @@ export class FunctionNameHistory {
             "format": ""
         },
         {
-            "name": "sourceType",
-            "baseName": "source_type",
-            "type": "FunctionSourceType",
+            "name": "mangledName",
+            "baseName": "mangled_name",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "createdAt",
-            "baseName": "created_at",
-            "type": "string",
+            "name": "sourceType",
+            "baseName": "source_type",
+            "type": "FunctionSourceType",
             "format": ""
         }    ];
 

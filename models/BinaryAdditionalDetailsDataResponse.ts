@@ -15,15 +15,21 @@ import { PEModel } from '../models/PEModel';
 import { HttpFile } from '../http/http';
 
 export class BinaryAdditionalDetailsDataResponse {
+    'elf'?: ELFModel | null;
     'file': FileMetadata;
     'pe'?: PEModel | null;
-    'elf'?: ELFModel | null;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "elf",
+            "baseName": "elf",
+            "type": "ELFModel",
+            "format": ""
+        },
         {
             "name": "file",
             "baseName": "file",
@@ -34,12 +40,6 @@ export class BinaryAdditionalDetailsDataResponse {
             "name": "pe",
             "baseName": "pe",
             "type": "PEModel",
-            "format": ""
-        },
-        {
-            "name": "elf",
-            "baseName": "elf",
-            "type": "ELFModel",
             "format": ""
         }    ];
 

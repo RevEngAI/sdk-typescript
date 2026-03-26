@@ -12,13 +12,13 @@
 import { HttpFile } from '../http/http';
 
 export class NameSourceType {
+    'analysisId'?: number | null;
+    'binaryId'?: number | null;
+    'functionId'?: number | null;
     /**
     * The source (process) the function name came from
     */
     'type': NameSourceTypeTypeEnum;
-    'functionId'?: number | null;
-    'binaryId'?: number | null;
-    'analysisId'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,14 +26,8 @@ export class NameSourceType {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "NameSourceTypeTypeEnum",
-            "format": ""
-        },
-        {
-            "name": "functionId",
-            "baseName": "function_id",
+            "name": "analysisId",
+            "baseName": "analysis_id",
             "type": "number",
             "format": ""
         },
@@ -44,9 +38,15 @@ export class NameSourceType {
             "format": ""
         },
         {
-            "name": "analysisId",
-            "baseName": "analysis_id",
+            "name": "functionId",
+            "baseName": "function_id",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "type",
+            "baseName": "type",
+            "type": "NameSourceTypeTypeEnum",
             "format": ""
         }    ];
 

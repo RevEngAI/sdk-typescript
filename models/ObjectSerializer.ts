@@ -20,6 +20,7 @@ export * from '../models/AnalysisScope';
 export * from '../models/AnalysisStage';
 export * from '../models/AnalysisStageStatus';
 export * from '../models/AnalysisStagesResponse';
+export * from '../models/AnalysisStringInput';
 export * from '../models/AnalysisStringsResponse';
 export * from '../models/AnalysisStringsStatusResponse';
 export * from '../models/AnalysisTags';
@@ -259,6 +260,7 @@ export * from '../models/ProcessDumps';
 export * from '../models/ProcessDumpsData';
 export * from '../models/ProcessRegistry';
 export * from '../models/ProcessTree';
+export * from '../models/PutAnalysisStringsRequest';
 export * from '../models/QueuedSecurityChecksTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
@@ -284,6 +286,7 @@ export * from '../models/StageStatus';
 export * from '../models/StatusInput';
 export * from '../models/StatusOutput';
 export * from '../models/StringFunctions';
+export * from '../models/StringSource';
 export * from '../models/Structure';
 export * from '../models/StructureMember';
 export * from '../models/Symbols';
@@ -336,10 +339,11 @@ import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStage } from '../models/AnalysisStage';
 import { AnalysisStageStatus } from '../models/AnalysisStageStatus';
 import { AnalysisStagesResponse } from '../models/AnalysisStagesResponse';
+import { AnalysisStringInput    } from '../models/AnalysisStringInput';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse  } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
-import { AnalysisUpdateRequest , AnalysisUpdateRequestAnalysisScopeEnum   } from '../models/AnalysisUpdateRequest';
+import { AnalysisUpdateRequest, AnalysisUpdateRequestAnalysisScopeEnum    } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { AppApiRestV2AnalysesEnumsDynamicExecutionStatus } from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
@@ -508,12 +512,12 @@ import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfoInput } from '../models/FunctionInfoInput';
 import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
 import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
-import { FunctionListItem  , FunctionListItemNameSourceTypeEnum        } from '../models/FunctionListItem';
+import { FunctionListItem     , FunctionListItemNameSourceTypeEnum     } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMappingFull } from '../models/FunctionMappingFull';
 import { FunctionMatch } from '../models/FunctionMatch';
-import { FunctionMatchingFilters    , FunctionMatchingFiltersDebugTypesEnum   } from '../models/FunctionMatchingFilters';
+import { FunctionMatchingFilters  , FunctionMatchingFiltersDebugTypesEnum     } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
 import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 import { FunctionNameHistory        } from '../models/FunctionNameHistory';
@@ -523,7 +527,7 @@ import { FunctionRenameMap } from '../models/FunctionRenameMap';
 import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
 import { FunctionSearchResult } from '../models/FunctionSearchResult';
 import { FunctionSourceType } from '../models/FunctionSourceType';
-import { FunctionString } from '../models/FunctionString';
+import { FunctionString    } from '../models/FunctionString';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionTaskResponse   } from '../models/FunctionTaskResponse';
 import { FunctionTaskStatus } from '../models/FunctionTaskStatus';
@@ -535,7 +539,7 @@ import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTask';
-import { GetMeResponse       , GetMeResponseRoleEnum   } from '../models/GetMeResponse';
+import { GetMeResponse    , GetMeResponseRoleEnum      } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { ISA } from '../models/ISA';
@@ -555,7 +559,7 @@ import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
-import { NameSourceType, NameSourceTypeTypeEnum      } from '../models/NameSourceType';
+import { NameSourceType   , NameSourceTypeTypeEnum   } from '../models/NameSourceType';
 import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
 import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { NetworkOverviewMetadata   , NetworkOverviewMetadataTypeEnum   } from '../models/NetworkOverviewMetadata';
@@ -575,6 +579,7 @@ import { ProcessDumps } from '../models/ProcessDumps';
 import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
+import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedSecurityChecksTaskResponse } from '../models/QueuedSecurityChecksTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
@@ -599,7 +604,8 @@ import { StageEvent    } from '../models/StageEvent';
 import { StageStatus    } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
-import { StringFunctions } from '../models/StringFunctions';
+import { StringFunctions    } from '../models/StringFunctions';
+import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { Symbols } from '../models/Symbols';
@@ -623,7 +629,7 @@ import { UploadResponse    } from '../models/UploadResponse';
 import { UpsertAiDecomplationRatingRequest   } from '../models/UpsertAiDecomplationRatingRequest';
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
-import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
+import { Vulnerability       , VulnerabilitySeverityEnum      } from '../models/Vulnerability';
 import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
@@ -673,6 +679,7 @@ let enumsMap: Set<string> = new Set<string>([
     "Platform",
     "SeverityType",
     "StatusInput",
+    "StringSource",
     "TaskStatus",
     "UploadFileType",
     "VulnerabilitySeverityEnum",
@@ -698,6 +705,7 @@ let typeMap: {[index: string]: any} = {
     "AnalysisFunctionsList": AnalysisFunctionsList,
     "AnalysisRecord": AnalysisRecord,
     "AnalysisStagesResponse": AnalysisStagesResponse,
+    "AnalysisStringInput": AnalysisStringInput,
     "AnalysisStringsResponse": AnalysisStringsResponse,
     "AnalysisStringsStatusResponse": AnalysisStringsStatusResponse,
     "AnalysisTags": AnalysisTags,
@@ -920,6 +928,7 @@ let typeMap: {[index: string]: any} = {
     "ProcessDumpsData": ProcessDumpsData,
     "ProcessRegistry": ProcessRegistry,
     "ProcessTree": ProcessTree,
+    "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
     "QueuedSecurityChecksTaskResponse": QueuedSecurityChecksTaskResponse,
     "ReAnalysisForm": ReAnalysisForm,
     "Recent": Recent,

@@ -12,28 +12,16 @@
 import { HttpFile } from '../http/http';
 
 export class FunctionBoundary {
-    'mangledName': string;
-    'startAddress': number;
     'endAddress': number;
     'includeInAnalysis'?: boolean | null;
+    'mangledName': string;
+    'startAddress': number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "mangledName",
-            "baseName": "mangled_name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "startAddress",
-            "baseName": "start_address",
-            "type": "number",
-            "format": "int64"
-        },
         {
             "name": "endAddress",
             "baseName": "end_address",
@@ -45,6 +33,18 @@ export class FunctionBoundary {
             "baseName": "include_in_analysis",
             "type": "boolean",
             "format": ""
+        },
+        {
+            "name": "mangledName",
+            "baseName": "mangled_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "startAddress",
+            "baseName": "start_address",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {

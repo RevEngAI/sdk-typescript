@@ -380,19 +380,19 @@ export class SearchApiResponseProcessor {
             ) as BaseResponseCollectionSearchResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "You must provide at least one of the filters; partial_collection_name, partial_binary_name, partial_binary_sha256, tags or model_name to search", body, response.headers);
-        }
         if (isCodeInRange("404", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
             throw new ApiException<BaseResponse>(response.httpStatusCode, "The model name provided does not exist", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "You must provide at least one of the filters; partial_collection_name, partial_binary_name, partial_binary_sha256, tags or model_name to search", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

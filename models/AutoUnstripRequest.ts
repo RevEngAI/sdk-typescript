@@ -13,11 +13,6 @@ import { HttpFile } from '../http/http';
 
 export class AutoUnstripRequest {
     /**
-    * Minimum similarity expected for a match as a percentage, default is 90
-    * @deprecated
-    */
-    'minSimilarity'?: number;
-    /**
     * Whether to apply the matched function names to the target binary, default is False
     * @deprecated
     */
@@ -33,15 +28,20 @@ export class AutoUnstripRequest {
     */
     'minGroupSize'?: number;
     /**
-    * If set to true, only returns the status of the auto-unstrip operation without the actual results
+    * Minimum similarity expected for a match as a percentage, default is 90
     * @deprecated
     */
-    'statusOnly'?: boolean;
+    'minSimilarity'?: number;
     /**
     * If set to true, forces the system to bypass any cached results and perform a fresh computation
     * @deprecated
     */
     'noCache'?: boolean;
+    /**
+    * If set to true, only returns the status of the auto-unstrip operation without the actual results
+    * @deprecated
+    */
+    'statusOnly'?: boolean;
     /**
     * Whether to use canonical function names during matching for auto-unstrip, default is False
     */
@@ -52,12 +52,6 @@ export class AutoUnstripRequest {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "minSimilarity",
-            "baseName": "min_similarity",
-            "type": "number",
-            "format": ""
-        },
         {
             "name": "apply",
             "baseName": "apply",
@@ -77,14 +71,20 @@ export class AutoUnstripRequest {
             "format": ""
         },
         {
-            "name": "statusOnly",
-            "baseName": "status_only",
-            "type": "boolean",
+            "name": "minSimilarity",
+            "baseName": "min_similarity",
+            "type": "number",
             "format": ""
         },
         {
             "name": "noCache",
             "baseName": "no_cache",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "statusOnly",
+            "baseName": "status_only",
             "type": "boolean",
             "format": ""
         },

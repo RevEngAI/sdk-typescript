@@ -13,8 +13,8 @@ import { FunctionTaskStatus } from '../models/FunctionTaskStatus';
 import { HttpFile } from '../http/http';
 
 export class FunctionTaskResponse {
-    'status'?: FunctionTaskStatus;
     'errorMessage'?: string | null;
+    'status'?: FunctionTaskStatus;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,15 +22,15 @@ export class FunctionTaskResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "FunctionTaskStatus",
-            "format": ""
-        },
-        {
             "name": "errorMessage",
             "baseName": "error_message",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "FunctionTaskStatus",
             "format": ""
         }    ];
 

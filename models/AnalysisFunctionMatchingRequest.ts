@@ -13,15 +13,15 @@ import { FunctionMatchingFilters } from '../models/FunctionMatchingFilters';
 import { HttpFile } from '../http/http';
 
 export class AnalysisFunctionMatchingRequest {
+    'filters'?: FunctionMatchingFilters | null;
     /**
     * Minimum similarity expected for a match as a percentage, default is 90
     */
     'minSimilarity'?: number;
-    'filters'?: FunctionMatchingFilters | null;
     /**
-    * Maximum number of matches to return per function, default is 1, max is 10
+    * If set to true, forces the system to bypass any cached results and perform a fresh computation
     */
-    'resultsPerFunction'?: number;
+    'noCache'?: boolean;
     /**
     * Page number for paginated results, default is 1 (first page)
     * @deprecated
@@ -33,14 +33,14 @@ export class AnalysisFunctionMatchingRequest {
     */
     'pageSize'?: number;
     /**
+    * Maximum number of matches to return per function, default is 1, max is 10
+    */
+    'resultsPerFunction'?: number;
+    /**
     * If set to true, only returns the status of the matching operation without the actual results
     * @deprecated
     */
     'statusOnly'?: boolean;
-    /**
-    * If set to true, forces the system to bypass any cached results and perform a fresh computation
-    */
-    'noCache'?: boolean;
     /**
     * Whether to use canonical function names during function matching for confidence results, default is False
     */
@@ -52,21 +52,21 @@ export class AnalysisFunctionMatchingRequest {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "minSimilarity",
-            "baseName": "min_similarity",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "filters",
             "baseName": "filters",
             "type": "FunctionMatchingFilters",
             "format": ""
         },
         {
-            "name": "resultsPerFunction",
-            "baseName": "results_per_function",
+            "name": "minSimilarity",
+            "baseName": "min_similarity",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "noCache",
+            "baseName": "no_cache",
+            "type": "boolean",
             "format": ""
         },
         {
@@ -82,14 +82,14 @@ export class AnalysisFunctionMatchingRequest {
             "format": ""
         },
         {
-            "name": "statusOnly",
-            "baseName": "status_only",
-            "type": "boolean",
+            "name": "resultsPerFunction",
+            "baseName": "results_per_function",
+            "type": "number",
             "format": ""
         },
         {
-            "name": "noCache",
-            "baseName": "no_cache",
+            "name": "statusOnly",
+            "baseName": "status_only",
             "type": "boolean",
             "format": ""
         },

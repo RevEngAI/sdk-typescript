@@ -15,18 +15,24 @@ import { HttpFile } from '../http/http';
 * Represents the information about a segment.  Attributes:     name: The name of the segment.     r: Determines if the segment has read permission.     w: Determines if the segment has write permission.     x: Determines if the segment has execute permission.     start: The start address of the segment.     end: The end address of the segment.
 */
 export class SegmentInfo {
+    'end'?: number;
     'name'?: string;
     'r'?: boolean | null;
+    'start'?: number;
     'w'?: boolean | null;
     'x'?: boolean | null;
-    'start'?: number;
-    'end'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "end",
+            "baseName": "end",
+            "type": "number",
+            "format": ""
+        },
         {
             "name": "name",
             "baseName": "name",
@@ -40,6 +46,12 @@ export class SegmentInfo {
             "format": ""
         },
         {
+            "name": "start",
+            "baseName": "start",
+            "type": "number",
+            "format": ""
+        },
+        {
             "name": "w",
             "baseName": "w",
             "type": "boolean",
@@ -49,18 +61,6 @@ export class SegmentInfo {
             "name": "x",
             "baseName": "x",
             "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "start",
-            "baseName": "start",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "end",
-            "baseName": "end",
-            "type": "number",
             "format": ""
         }    ];
 

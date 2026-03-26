@@ -13,16 +13,6 @@ import { HttpFile } from '../http/http';
 
 export class CallerFunctionInfo {
     /**
-    * Unique identifier of the function
-    */
-    'functionId': number;
-    'matchedFunctionId': number | null;
-    'dashboardUrl': string | null;
-    /**
-    * Indicates if the function is external
-    */
-    'isExternal'?: boolean;
-    /**
     * Name of the calling function
     */
     'callerName': string;
@@ -30,36 +20,22 @@ export class CallerFunctionInfo {
     * Virtual address of the calling function
     */
     'callerVaddr': string;
+    'dashboardUrl': string | null;
+    /**
+    * Unique identifier of the function
+    */
+    'functionId': number;
+    /**
+    * Indicates if the function is external
+    */
+    'isExternal'?: boolean;
+    'matchedFunctionId': number | null;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "functionId",
-            "baseName": "function_id",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "matchedFunctionId",
-            "baseName": "matched_function_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "dashboardUrl",
-            "baseName": "dashboard_url",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "isExternal",
-            "baseName": "is_external",
-            "type": "boolean",
-            "format": ""
-        },
         {
             "name": "callerName",
             "baseName": "caller_name",
@@ -70,6 +46,30 @@ export class CallerFunctionInfo {
             "name": "callerVaddr",
             "baseName": "caller_vaddr",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "dashboardUrl",
+            "baseName": "dashboard_url",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "isExternal",
+            "baseName": "is_external",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "matchedFunctionId",
+            "baseName": "matched_function_id",
+            "type": "number",
             "format": ""
         }    ];
 

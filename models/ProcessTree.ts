@@ -13,8 +13,8 @@ import { Process } from '../models/Process';
 import { HttpFile } from '../http/http';
 
 export class ProcessTree {
-    'success': boolean;
     'data': Array<Process>;
+    'success': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,15 +22,15 @@ export class ProcessTree {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "success",
-            "baseName": "success",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "data",
             "baseName": "data",
             "type": "Array<Process>",
+            "format": ""
+        },
+        {
+            "name": "success",
+            "baseName": "success",
+            "type": "boolean",
             "format": ""
         }    ];
 

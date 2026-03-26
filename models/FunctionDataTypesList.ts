@@ -14,6 +14,10 @@ import { HttpFile } from '../http/http';
 
 export class FunctionDataTypesList {
     /**
+    * List of function data types information
+    */
+    'items': Array<FunctionDataTypesListItem>;
+    /**
     * Total number of functions in analysis
     */
     'totalCount'?: number;
@@ -21,16 +25,18 @@ export class FunctionDataTypesList {
     * Total number of functions with data types
     */
     'totalDataTypesCount'?: number;
-    /**
-    * List of function data types information
-    */
-    'items': Array<FunctionDataTypesListItem>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "items",
+            "baseName": "items",
+            "type": "Array<FunctionDataTypesListItem>",
+            "format": ""
+        },
         {
             "name": "totalCount",
             "baseName": "total_count",
@@ -41,12 +47,6 @@ export class FunctionDataTypesList {
             "name": "totalDataTypesCount",
             "baseName": "total_data_types_count",
             "type": "number",
-            "format": ""
-        },
-        {
-            "name": "items",
-            "baseName": "items",
-            "type": "Array<FunctionDataTypesListItem>",
             "format": ""
         }    ];
 

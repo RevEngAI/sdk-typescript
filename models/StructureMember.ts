@@ -22,13 +22,13 @@ export class StructureMember {
     */
     'offset': number;
     /**
-    * Data type of the structure member
-    */
-    'type': string;
-    /**
     * Size of the structure member in bytes
     */
     'size': number;
+    /**
+    * Data type of the structure member
+    */
+    'type': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -54,15 +54,15 @@ export class StructureMember {
             "format": ""
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "size",
             "baseName": "size",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
             "format": ""
         }    ];
 

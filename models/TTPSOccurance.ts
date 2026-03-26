@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class TTPSOccurance {
-    'ppid': number;
     'pid': number;
+    'ppid': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,14 +21,14 @@ export class TTPSOccurance {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "ppid",
-            "baseName": "ppid",
+            "name": "pid",
+            "baseName": "pid",
             "type": "number",
             "format": ""
         },
         {
-            "name": "pid",
-            "baseName": "pid",
+            "name": "ppid",
+            "baseName": "ppid",
             "type": "number",
             "format": ""
         }    ];

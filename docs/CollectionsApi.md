@@ -31,16 +31,16 @@ const apiInstance = new CollectionsApi(configuration);
 const request: CollectionsApiCreateCollectionRequest = {
   
   collectionCreateRequest: {
-    collectionName: "collectionName_example",
-    description: "description_example",
-    collectionScope: "PRIVATE",
-    tags: [
-      "tags_example",
-    ],
     binaries: [
       1,
     ],
+    collectionName: "collectionName_example",
+    collectionScope: "PRIVATE",
+    description: "description_example",
     modelId: 1,
+    tags: [
+      "tags_example",
+    ],
   },
 };
 
@@ -293,8 +293,8 @@ const request: CollectionsApiUpdateCollectionRequest = {
   
   collectionUpdateRequest: {
     collectionName: "collectionName_example",
-    description: "description_example",
     collectionScope: "PRIVATE",
+    description: "description_example",
   },
 };
 

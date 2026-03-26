@@ -62,6 +62,7 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**insertAnalysisLog**](docs/AnalysesCoreApi.md#insertAnalysisLog) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 *AnalysesCoreApi* | [**listAnalyses**](docs/AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 *AnalysesCoreApi* | [**lookupBinaryId**](docs/AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
+*AnalysesCoreApi* | [**putAnalysisStrings**](docs/AnalysesCoreApi.md#putAnalysisStrings) | **PUT** /v2/analyses/{analysis_id}/strings | Add strings to the analysis
 *AnalysesCoreApi* | [**requeueAnalysis**](docs/AnalysesCoreApi.md#requeueAnalysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
 *AnalysesCoreApi* | [**updateAnalysis**](docs/AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 *AnalysesCoreApi* | [**updateAnalysisTags**](docs/AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
@@ -184,6 +185,7 @@ Class | Method | HTTP request | Description
  - [AnalysisStage](AnalysisStage.md)
  - [AnalysisStageStatus](AnalysisStageStatus.md)
  - [AnalysisStagesResponse](AnalysisStagesResponse.md)
+ - [AnalysisStringInput](AnalysisStringInput.md)
  - [AnalysisStringsResponse](AnalysisStringsResponse.md)
  - [AnalysisStringsStatusResponse](AnalysisStringsStatusResponse.md)
  - [AnalysisTags](AnalysisTags.md)
@@ -423,6 +425,7 @@ Class | Method | HTTP request | Description
  - [ProcessDumpsData](ProcessDumpsData.md)
  - [ProcessRegistry](ProcessRegistry.md)
  - [ProcessTree](ProcessTree.md)
+ - [PutAnalysisStringsRequest](PutAnalysisStringsRequest.md)
  - [QueuedSecurityChecksTaskResponse](QueuedSecurityChecksTaskResponse.md)
  - [ReAnalysisForm](ReAnalysisForm.md)
  - [Recent](Recent.md)
@@ -448,6 +451,7 @@ Class | Method | HTTP request | Description
  - [StatusInput](StatusInput.md)
  - [StatusOutput](StatusOutput.md)
  - [StringFunctions](StringFunctions.md)
+ - [StringSource](StringSource.md)
  - [Structure](Structure.md)
  - [StructureMember](StructureMember.md)
  - [Symbols](Symbols.md)

@@ -12,27 +12,27 @@
 import { HttpFile } from '../http/http';
 
 export class StackVariable {
-    'lastChange'?: string | null;
     /**
-    * Offset of the stack variable
+    * Memory address of the stack variable
     */
-    'offset': number;
+    'addr': number;
+    'lastChange'?: string | null;
     /**
     * Name of the stack variable
     */
     'name': string;
     /**
-    * Data type of the stack variable
+    * Offset of the stack variable
     */
-    'type': string;
+    'offset': number;
     /**
     * Size of the stack variable in bytes
     */
     'size': number;
     /**
-    * Memory address of the stack variable
+    * Data type of the stack variable
     */
-    'addr': number;
+    'type': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -40,8 +40,20 @@ export class StackVariable {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "addr",
+            "baseName": "addr",
+            "type": "number",
+            "format": ""
+        },
+        {
             "name": "lastChange",
             "baseName": "last_change",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "name",
+            "baseName": "name",
             "type": "string",
             "format": ""
         },
@@ -52,27 +64,15 @@ export class StackVariable {
             "format": ""
         },
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "size",
             "baseName": "size",
             "type": "number",
             "format": ""
         },
         {
-            "name": "addr",
-            "baseName": "addr",
-            "type": "number",
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
             "format": ""
         }    ];
 

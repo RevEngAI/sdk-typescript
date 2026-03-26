@@ -9,23 +9,25 @@
  * Do not edit the class manually.
  */
 
-import { ErrorModel } from '../models/ErrorModel';
-import { Logs } from '../models/Logs';
-import { MetaModel } from '../models/MetaModel';
+import { StringSource } from '../models/StringSource';
 import { HttpFile } from '../http/http';
 
-export class BaseResponseLogs {
-    'data'?: Logs | null;
-    'errors'?: Array<ErrorModel> | null;
-    'message'?: string | null;
+/**
+* Input model for inserting a string into an analysis.
+*/
+export class AnalysisStringInput {
     /**
-    * Metadata
+    * The source of the string
     */
-    'meta'?: MetaModel;
+    'source': StringSource;
     /**
-    * Response status on whether the request succeeded
+    * The virtual address of the string
     */
-    'status'?: boolean;
+    'vaddr': number;
+    /**
+    * The string literal value
+    */
+    'value': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,40 +35,30 @@ export class BaseResponseLogs {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "Logs",
+            "name": "source",
+            "baseName": "source",
+            "type": "StringSource",
             "format": ""
         },
         {
-            "name": "errors",
-            "baseName": "errors",
-            "type": "Array<ErrorModel>",
+            "name": "vaddr",
+            "baseName": "vaddr",
+            "type": "number",
             "format": ""
         },
         {
-            "name": "message",
-            "baseName": "message",
+            "name": "value",
+            "baseName": "value",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "meta",
-            "baseName": "meta",
-            "type": "MetaModel",
-            "format": ""
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "boolean",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return BaseResponseLogs.attributeTypeMap;
+        return AnalysisStringInput.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+

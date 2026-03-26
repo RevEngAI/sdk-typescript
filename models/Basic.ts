@@ -13,6 +13,11 @@ import { HttpFile } from '../http/http';
 
 export class Basic {
     /**
+    * The scope of the analysis
+    */
+    'analysisScope': string;
+    'baseAddress': number | null;
+    /**
     * The ID of the binary
     */
     'binaryId': number;
@@ -24,38 +29,11 @@ export class Basic {
     * The size of the binary uploaded (bytes)
     */
     'binarySize': number;
+    'binaryUuid'?: string | null;
     /**
     * When the binary was uploaded
     */
     'creation': Date;
-    /**
-    * The hash of the binary uploaded
-    */
-    'sha256Hash': string;
-    /**
-    * The model name used for analysis
-    */
-    'modelName': string;
-    /**
-    * The model ID used for analysis
-    */
-    'modelId': number;
-    /**
-    * The name of the owner of the binary
-    */
-    'ownerUsername': string;
-    /**
-    * Whether the analysis is a system analysis
-    */
-    'isSystem': boolean;
-    /**
-    * The scope of the analysis
-    */
-    'analysisScope': string;
-    /**
-    * Whether the current user is the owner
-    */
-    'isOwner': boolean;
     /**
     * Whether the current analysis was analysed with debug symbols
     */
@@ -68,15 +46,49 @@ export class Basic {
     * Whether the analysis was advanced
     */
     'isAdvanced': boolean;
-    'baseAddress': number | null;
-    'binaryUuid'?: string | null;
+    /**
+    * Whether the current user is the owner
+    */
+    'isOwner': boolean;
+    /**
+    * Whether the analysis is a system analysis
+    */
+    'isSystem': boolean;
+    /**
+    * The model ID used for analysis
+    */
+    'modelId': number;
+    /**
+    * The model name used for analysis
+    */
+    'modelName': string;
+    /**
+    * The name of the owner of the binary
+    */
+    'ownerUsername': string;
     'sequencerVersion'?: string | null;
+    /**
+    * The hash of the binary uploaded
+    */
+    'sha256Hash': string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "analysisScope",
+            "baseName": "analysis_scope",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "baseAddress",
+            "baseName": "base_address",
+            "type": "number",
+            "format": ""
+        },
         {
             "name": "binaryId",
             "baseName": "binary_id",
@@ -96,52 +108,16 @@ export class Basic {
             "format": ""
         },
         {
+            "name": "binaryUuid",
+            "baseName": "binary_uuid",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "creation",
             "baseName": "creation",
             "type": "Date",
             "format": "date-time"
-        },
-        {
-            "name": "sha256Hash",
-            "baseName": "sha_256_hash",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "modelName",
-            "baseName": "model_name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "modelId",
-            "baseName": "model_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "ownerUsername",
-            "baseName": "owner_username",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "isSystem",
-            "baseName": "is_system",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "analysisScope",
-            "baseName": "analysis_scope",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "isOwner",
-            "baseName": "is_owner",
-            "type": "boolean",
-            "format": ""
         },
         {
             "name": "debug",
@@ -162,20 +138,44 @@ export class Basic {
             "format": ""
         },
         {
-            "name": "baseAddress",
-            "baseName": "base_address",
+            "name": "isOwner",
+            "baseName": "is_owner",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "isSystem",
+            "baseName": "is_system",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "modelId",
+            "baseName": "model_id",
             "type": "number",
             "format": ""
         },
         {
-            "name": "binaryUuid",
-            "baseName": "binary_uuid",
+            "name": "modelName",
+            "baseName": "model_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "ownerUsername",
+            "baseName": "owner_username",
             "type": "string",
             "format": ""
         },
         {
             "name": "sequencerVersion",
             "baseName": "sequencer_version",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "sha256Hash",
+            "baseName": "sha_256_hash",
             "type": "string",
             "format": ""
         }    ];

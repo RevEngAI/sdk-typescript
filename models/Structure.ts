@@ -13,20 +13,20 @@ import { StructureMember } from '../models/StructureMember';
 import { HttpFile } from '../http/http';
 
 export class Structure {
-    'lastChange'?: string | null;
     /**
-    * Name of the structure
+    * Type of artifact that the structure is associated with
     */
-    'name': string;
-    'size'?: number | null;
+    'artifactType'?: string;
+    'lastChange'?: string | null;
     /**
     * Dictionary of structure members
     */
     'members': { [key: string]: StructureMember; };
     /**
-    * Type of artifact that the structure is associated with
+    * Name of the structure
     */
-    'artifactType'?: string;
+    'name': string;
+    'size'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -34,9 +34,21 @@ export class Structure {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "artifactType",
+            "baseName": "artifact_type",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "lastChange",
             "baseName": "last_change",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "members",
+            "baseName": "members",
+            "type": "{ [key: string]: StructureMember; }",
             "format": ""
         },
         {
@@ -49,18 +61,6 @@ export class Structure {
             "name": "size",
             "baseName": "size",
             "type": "number",
-            "format": ""
-        },
-        {
-            "name": "members",
-            "baseName": "members",
-            "type": "{ [key: string]: StructureMember; }",
-            "format": ""
-        },
-        {
-            "name": "artifactType",
-            "baseName": "artifact_type",
-            "type": "string",
             "format": ""
         }    ];
 

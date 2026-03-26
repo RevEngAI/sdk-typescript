@@ -12,13 +12,13 @@
 import { HttpFile } from '../http/http';
 
 export class ELFSymbol {
+    'binding': string;
     'name': string;
-    'value': number;
+    'sectionIndex': number;
     'size': number;
     'type': string;
-    'binding': string;
+    'value': number;
     'visibility': string;
-    'sectionIndex': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,14 +26,20 @@ export class ELFSymbol {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "binding",
+            "baseName": "binding",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "name",
             "baseName": "name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "value",
-            "baseName": "value",
+            "name": "sectionIndex",
+            "baseName": "section_index",
             "type": "number",
             "format": ""
         },
@@ -50,21 +56,15 @@ export class ELFSymbol {
             "format": ""
         },
         {
-            "name": "binding",
-            "baseName": "binding",
-            "type": "string",
+            "name": "value",
+            "baseName": "value",
+            "type": "number",
             "format": ""
         },
         {
             "name": "visibility",
             "baseName": "visibility",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "sectionIndex",
-            "baseName": "section_index",
-            "type": "number",
             "format": ""
         }    ];
 

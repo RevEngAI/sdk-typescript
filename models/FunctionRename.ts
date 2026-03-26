@@ -13,13 +13,13 @@ import { HttpFile } from '../http/http';
 
 export class FunctionRename {
     /**
-    * The new name for the function
-    */
-    'newName': string;
-    /**
     * The new mangled name for the function
     */
     'newMangledName': string;
+    /**
+    * The new name for the function
+    */
+    'newName': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -27,14 +27,14 @@ export class FunctionRename {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "newName",
-            "baseName": "new_name",
+            "name": "newMangledName",
+            "baseName": "new_mangled_name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "newMangledName",
-            "baseName": "new_mangled_name",
+            "name": "newName",
+            "baseName": "new_name",
             "type": "string",
             "format": ""
         }    ];

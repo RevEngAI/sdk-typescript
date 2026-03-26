@@ -13,6 +13,9 @@ import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
 import { HttpFile } from '../http/http';
 
 export class AutoUnstripResponse {
+    'applied'?: boolean | null;
+    'errorMessage'?: string | null;
+    'matches'?: Array<MatchedFunctionSuggestion> | null;
     /**
     * Progress of the auto-unstrip operation, represented as a percentage
     * @deprecated
@@ -20,15 +23,30 @@ export class AutoUnstripResponse {
     'progress'?: number;
     'status'?: string | null;
     'totalTime'?: number | null;
-    'matches'?: Array<MatchedFunctionSuggestion> | null;
-    'applied'?: boolean | null;
-    'errorMessage'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "applied",
+            "baseName": "applied",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "errorMessage",
+            "baseName": "error_message",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "matches",
+            "baseName": "matches",
+            "type": "Array<MatchedFunctionSuggestion>",
+            "format": ""
+        },
         {
             "name": "progress",
             "baseName": "progress",
@@ -45,24 +63,6 @@ export class AutoUnstripResponse {
             "name": "totalTime",
             "baseName": "total_time",
             "type": "number",
-            "format": ""
-        },
-        {
-            "name": "matches",
-            "baseName": "matches",
-            "type": "Array<MatchedFunctionSuggestion>",
-            "format": ""
-        },
-        {
-            "name": "applied",
-            "baseName": "applied",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "errorMessage",
-            "baseName": "error_message",
-            "type": "string",
             "format": ""
         }    ];
 

@@ -15,17 +15,17 @@ import { UploadResponse } from '../models/UploadResponse';
 import { HttpFile } from '../http/http';
 
 export class BaseResponseUploadResponse {
-    /**
-    * Response status on whether the request succeeded
-    */
-    'status'?: boolean;
     'data'?: UploadResponse | null;
-    'message'?: string | null;
     'errors'?: Array<ErrorModel> | null;
+    'message'?: string | null;
     /**
     * Metadata
     */
     'meta'?: MetaModel;
+    /**
+    * Response status on whether the request succeeded
+    */
+    'status'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,21 +33,9 @@ export class BaseResponseUploadResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "data",
             "baseName": "data",
             "type": "UploadResponse",
-            "format": ""
-        },
-        {
-            "name": "message",
-            "baseName": "message",
-            "type": "string",
             "format": ""
         },
         {
@@ -57,9 +45,21 @@ export class BaseResponseUploadResponse {
             "format": ""
         },
         {
+            "name": "message",
+            "baseName": "message",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "meta",
             "baseName": "meta",
             "type": "MetaModel",
+            "format": ""
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "boolean",
             "format": ""
         }    ];
 

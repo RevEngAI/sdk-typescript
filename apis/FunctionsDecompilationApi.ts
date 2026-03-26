@@ -244,19 +244,19 @@ export class FunctionsDecompilationApiResponseProcessor {
             ) as BaseResponseCommentResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
         if (isCodeInRange("400", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
             throw new ApiException<BaseResponse>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -287,12 +287,12 @@ export class FunctionsDecompilationApiResponseProcessor {
             ) as BaseResponseBool;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("422", response.httpStatusCode)) {
+        if (isCodeInRange("400", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
@@ -301,12 +301,12 @@ export class FunctionsDecompilationApiResponseProcessor {
             ) as BaseResponse;
             throw new ApiException<BaseResponse>(response.httpStatusCode, "You can only delete your own comments", body, response.headers);
         }
-        if (isCodeInRange("400", response.httpStatusCode)) {
+        if (isCodeInRange("422", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Bad Request", body, response.headers);
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
@@ -373,12 +373,12 @@ export class FunctionsDecompilationApiResponseProcessor {
             ) as BaseResponseCommentResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("422", response.httpStatusCode)) {
+        if (isCodeInRange("400", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
@@ -387,12 +387,12 @@ export class FunctionsDecompilationApiResponseProcessor {
             ) as BaseResponse;
             throw new ApiException<BaseResponse>(response.httpStatusCode, "You can only update your own comments", body, response.headers);
         }
-        if (isCodeInRange("400", response.httpStatusCode)) {
+        if (isCodeInRange("422", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Bad Request", body, response.headers);
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

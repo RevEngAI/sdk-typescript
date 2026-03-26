@@ -17,13 +17,13 @@ export class FunctionRenameMap {
     */
     'functionId': number;
     /**
-    * The new name for the function
-    */
-    'newName': string;
-    /**
     * The new mangled name for the function
     */
     'newMangledName': string;
+    /**
+    * The new name for the function
+    */
+    'newName': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -37,14 +37,14 @@ export class FunctionRenameMap {
             "format": "int64"
         },
         {
-            "name": "newName",
-            "baseName": "new_name",
+            "name": "newMangledName",
+            "baseName": "new_mangled_name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "newMangledName",
-            "baseName": "new_mangled_name",
+            "name": "newName",
+            "baseName": "new_name",
             "type": "string",
             "format": ""
         }    ];

@@ -14,11 +14,11 @@ import { FunctionTypeOutput } from '../models/FunctionTypeOutput';
 import { HttpFile } from '../http/http';
 
 export class FunctionInfoOutput {
-    'funcTypes'?: FunctionTypeOutput | null;
     /**
     * List of function dependencies
     */
     'funcDeps': Array<FunctionInfoInputFuncDepsInner>;
+    'funcTypes'?: FunctionTypeOutput | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,15 +26,15 @@ export class FunctionInfoOutput {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "funcTypes",
-            "baseName": "func_types",
-            "type": "FunctionTypeOutput",
-            "format": ""
-        },
-        {
             "name": "funcDeps",
             "baseName": "func_deps",
             "type": "Array<FunctionInfoInputFuncDepsInner>",
+            "format": ""
+        },
+        {
+            "name": "funcTypes",
+            "baseName": "func_types",
+            "type": "FunctionTypeOutput",
             "format": ""
         }    ];
 

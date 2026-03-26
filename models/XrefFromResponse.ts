@@ -13,14 +13,14 @@ import { SegmentInfo } from '../models/SegmentInfo';
 import { HttpFile } from '../http/http';
 
 export class XrefFromResponse {
-    'value': string | null;
-    'isScalar'?: boolean | null;
     'isCall'?: boolean | null;
     'isData'?: boolean | null;
+    'isScalar'?: boolean | null;
     'isString'?: boolean | null;
+    'origStrEncoding'?: string | null;
     'rawData'?: string | null;
     'segment'?: SegmentInfo | null;
-    'origStrEncoding'?: string | null;
+    'value': string | null;
     'xrefTo': string | null;
 
     static readonly discriminator: string | undefined = undefined;
@@ -28,18 +28,6 @@ export class XrefFromResponse {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "value",
-            "baseName": "value",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "isScalar",
-            "baseName": "is_scalar",
-            "type": "boolean",
-            "format": ""
-        },
         {
             "name": "isCall",
             "baseName": "is_call",
@@ -53,9 +41,21 @@ export class XrefFromResponse {
             "format": ""
         },
         {
+            "name": "isScalar",
+            "baseName": "is_scalar",
+            "type": "boolean",
+            "format": ""
+        },
+        {
             "name": "isString",
             "baseName": "is_string",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "origStrEncoding",
+            "baseName": "orig_str_encoding",
+            "type": "string",
             "format": ""
         },
         {
@@ -71,8 +71,8 @@ export class XrefFromResponse {
             "format": ""
         },
         {
-            "name": "origStrEncoding",
-            "baseName": "orig_str_encoding",
+            "name": "value",
+            "baseName": "value",
             "type": "string",
             "format": ""
         },

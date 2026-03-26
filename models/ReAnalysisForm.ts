@@ -16,18 +16,9 @@ import { HttpFile } from '../http/http';
 */
 export class ReAnalysisForm {
     /**
-    * Tags associated with the analysis
-    */
-    'tags'?: Array<string>;
-    /**
     * Command line arguments for dynamic execution
     */
     'commandLineArgs'?: string;
-    /**
-    * Priority of the analysis
-    * @deprecated
-    */
-    'priority'?: number;
     /**
     * Only runs essential parts of the analysis, skips tags/sbom/cves etc.
     */
@@ -37,6 +28,15 @@ export class ReAnalysisForm {
     * When enabled, skips using cached data within the processing.
     */
     'noCache'?: boolean;
+    /**
+    * Priority of the analysis
+    * @deprecated
+    */
+    'priority'?: number;
+    /**
+    * Tags associated with the analysis
+    */
+    'tags'?: Array<string>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -44,21 +44,9 @@ export class ReAnalysisForm {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "tags",
-            "baseName": "tags",
-            "type": "Array<string>",
-            "format": ""
-        },
-        {
             "name": "commandLineArgs",
             "baseName": "command_line_args",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "priority",
-            "baseName": "priority",
-            "type": "number",
             "format": ""
         },
         {
@@ -77,6 +65,18 @@ export class ReAnalysisForm {
             "name": "noCache",
             "baseName": "no_cache",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "priority",
+            "baseName": "priority",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "tags",
+            "baseName": "tags",
+            "type": "Array<string>",
             "format": ""
         }    ];
 

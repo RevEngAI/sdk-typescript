@@ -15,20 +15,32 @@ import { VulnerabilityType } from '../models/VulnerabilityType';
 import { HttpFile } from '../http/http';
 
 export class SecurityChecksResult {
+    'confidence': ConfidenceType;
+    'description': string;
     'functionId': number;
     'functionName': string;
     'name': string;
-    'vulnClass': VulnerabilityType;
-    'description': string;
     'remediation': string;
-    'confidence': ConfidenceType;
     'severity': SeverityType;
+    'vulnClass': VulnerabilityType;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "confidence",
+            "baseName": "confidence",
+            "type": "ConfidenceType",
+            "format": ""
+        },
+        {
+            "name": "description",
+            "baseName": "description",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "functionId",
             "baseName": "function_id",
@@ -48,33 +60,21 @@ export class SecurityChecksResult {
             "format": ""
         },
         {
-            "name": "vulnClass",
-            "baseName": "vuln_class",
-            "type": "VulnerabilityType",
-            "format": ""
-        },
-        {
-            "name": "description",
-            "baseName": "description",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "remediation",
             "baseName": "remediation",
             "type": "string",
             "format": ""
         },
         {
-            "name": "confidence",
-            "baseName": "confidence",
-            "type": "ConfidenceType",
-            "format": ""
-        },
-        {
             "name": "severity",
             "baseName": "severity",
             "type": "SeverityType",
+            "format": ""
+        },
+        {
+            "name": "vulnClass",
+            "baseName": "vuln_class",
+            "type": "VulnerabilityType",
             "format": ""
         }    ];
 

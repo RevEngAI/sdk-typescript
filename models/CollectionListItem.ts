@@ -13,45 +13,45 @@ import { HttpFile } from '../http/http';
 
 export class CollectionListItem {
     /**
+    * The ID of the collection
+    */
+    'collectionId': number;
+    /**
     * The name of the collection
     */
     'collectionName': string;
-    /**
-    * The description of the collection
-    */
-    'description': string;
-    /**
-    * The scope of the collection
-    */
-    'collectionScope': string;
     /**
     * The owner of the collection
     */
     'collectionOwner': string;
     /**
-    * Whether the collection is maintained by RevEng.AI
+    * The scope of the collection
     */
-    'officialCollection': boolean;
-    /**
-    * The tags of the collection
-    */
-    'collectionTags'?: Array<string>;
+    'collectionScope': string;
     /**
     * The size of the collection
     */
     'collectionSize': number;
     /**
-    * The ID of the collection
+    * The tags of the collection
     */
-    'collectionId': number;
+    'collectionTags'?: Array<string>;
     /**
     * The datetime of when the collection was created
     */
     'creation': Date;
     /**
+    * The description of the collection
+    */
+    'description': string;
+    /**
     * The model being used for the collection
     */
     'modelName': string;
+    /**
+    * Whether the collection is maintained by RevEng.AI
+    */
+    'officialCollection': boolean;
     'teamId'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
@@ -60,20 +60,14 @@ export class CollectionListItem {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "collectionId",
+            "baseName": "collection_id",
+            "type": "number",
+            "format": ""
+        },
+        {
             "name": "collectionName",
             "baseName": "collection_name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "description",
-            "baseName": "description",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "collectionScope",
-            "baseName": "collection_scope",
             "type": "string",
             "format": ""
         },
@@ -84,15 +78,9 @@ export class CollectionListItem {
             "format": ""
         },
         {
-            "name": "officialCollection",
-            "baseName": "official_collection",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "collectionTags",
-            "baseName": "collection_tags",
-            "type": "Array<string>",
+            "name": "collectionScope",
+            "baseName": "collection_scope",
+            "type": "string",
             "format": ""
         },
         {
@@ -102,9 +90,9 @@ export class CollectionListItem {
             "format": ""
         },
         {
-            "name": "collectionId",
-            "baseName": "collection_id",
-            "type": "number",
+            "name": "collectionTags",
+            "baseName": "collection_tags",
+            "type": "Array<string>",
             "format": ""
         },
         {
@@ -114,9 +102,21 @@ export class CollectionListItem {
             "format": "date-time"
         },
         {
+            "name": "description",
+            "baseName": "description",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "modelName",
             "baseName": "model_name",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "officialCollection",
+            "baseName": "official_collection",
+            "type": "boolean",
             "format": ""
         },
         {

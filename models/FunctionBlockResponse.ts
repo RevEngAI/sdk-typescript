@@ -17,23 +17,23 @@ export class FunctionBlockResponse {
     * The ordered assembly strings for this chunk
     */
     'asm': Array<string>;
+    'comment'?: string | null;
+    /**
+    * The potential execution flow destinations from this block
+    */
+    'destinations': Array<FunctionBlockDestinationResponse>;
     /**
     * ID of the block
     */
     'id': number;
     /**
-    * The minimum vaddr of the block
-    */
-    'minAddr': number;
-    /**
     * The maximum vaddr of the block
     */
     'maxAddr': number;
     /**
-    * The potential execution flow destinations from this block
+    * The minimum vaddr of the block
     */
-    'destinations': Array<FunctionBlockDestinationResponse>;
-    'comment'?: string | null;
+    'minAddr': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -47,14 +47,20 @@ export class FunctionBlockResponse {
             "format": ""
         },
         {
-            "name": "id",
-            "baseName": "id",
-            "type": "number",
+            "name": "comment",
+            "baseName": "comment",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "minAddr",
-            "baseName": "min_addr",
+            "name": "destinations",
+            "baseName": "destinations",
+            "type": "Array<FunctionBlockDestinationResponse>",
+            "format": ""
+        },
+        {
+            "name": "id",
+            "baseName": "id",
             "type": "number",
             "format": ""
         },
@@ -65,15 +71,9 @@ export class FunctionBlockResponse {
             "format": ""
         },
         {
-            "name": "destinations",
-            "baseName": "destinations",
-            "type": "Array<FunctionBlockDestinationResponse>",
-            "format": ""
-        },
-        {
-            "name": "comment",
-            "baseName": "comment",
-            "type": "string",
+            "name": "minAddr",
+            "baseName": "min_addr",
+            "type": "number",
             "format": ""
         }    ];
 

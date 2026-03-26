@@ -14,37 +14,37 @@ import { HttpFile } from '../http/http';
 
 export class FunctionListItem {
     /**
+    * Whether the function has debug information
+    */
+    'debug': boolean;
+    /**
     * Function id
     */
     'id': number;
-    /**
-    * Name of the function
-    */
-    'name': string;
-    /**
-    * The source (process) the function name came from
-    */
-    'nameSourceType': FunctionListItemNameSourceTypeEnum;
-    /**
-    * The source of the current function name.
-    */
-    'nameSource': NameSourceType;
     /**
     * Mangled name of the function
     */
     'mangledName': string;
     /**
-    * Function virtual address
+    * Name of the function
     */
-    'vaddr': number;
+    'name': string;
+    /**
+    * The source of the current function name.
+    */
+    'nameSource': NameSourceType;
+    /**
+    * The source (process) the function name came from
+    */
+    'nameSourceType': FunctionListItemNameSourceTypeEnum;
     /**
     * Function size in bytes
     */
     'size': number;
     /**
-    * Whether the function has debug information
+    * Function virtual address
     */
-    'debug': boolean;
+    'vaddr': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -52,21 +52,27 @@ export class FunctionListItem {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "debug",
+            "baseName": "debug",
+            "type": "boolean",
+            "format": ""
+        },
+        {
             "name": "id",
             "baseName": "id",
             "type": "number",
             "format": "int64"
         },
         {
-            "name": "name",
-            "baseName": "name",
+            "name": "mangledName",
+            "baseName": "mangled_name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "nameSourceType",
-            "baseName": "name_source_type",
-            "type": "FunctionListItemNameSourceTypeEnum",
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
             "format": ""
         },
         {
@@ -76,16 +82,10 @@ export class FunctionListItem {
             "format": ""
         },
         {
-            "name": "mangledName",
-            "baseName": "mangled_name",
-            "type": "string",
+            "name": "nameSourceType",
+            "baseName": "name_source_type",
+            "type": "FunctionListItemNameSourceTypeEnum",
             "format": ""
-        },
-        {
-            "name": "vaddr",
-            "baseName": "vaddr",
-            "type": "number",
-            "format": "int64"
         },
         {
             "name": "size",
@@ -94,10 +94,10 @@ export class FunctionListItem {
             "format": ""
         },
         {
-            "name": "debug",
-            "baseName": "debug",
-            "type": "boolean",
-            "format": ""
+            "name": "vaddr",
+            "baseName": "vaddr",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {

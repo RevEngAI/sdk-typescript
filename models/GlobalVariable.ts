@@ -12,27 +12,27 @@
 import { HttpFile } from '../http/http';
 
 export class GlobalVariable {
-    'lastChange'?: string | null;
     /**
     * Memory address of the global variable
     */
     'addr': number;
     /**
+    * Type of artifact that the global variable is associated with
+    */
+    'artifactType'?: string;
+    'lastChange'?: string | null;
+    /**
     * Name of the global variable
     */
     'name': string;
-    /**
-    * Data type of the global variable
-    */
-    'type': string;
     /**
     * Size of the global variable in bytes
     */
     'size': number;
     /**
-    * Type of artifact that the global variable is associated with
+    * Data type of the global variable
     */
-    'artifactType'?: string;
+    'type': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -40,26 +40,26 @@ export class GlobalVariable {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "lastChange",
-            "baseName": "last_change",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "addr",
             "baseName": "addr",
             "type": "number",
             "format": ""
         },
         {
-            "name": "name",
-            "baseName": "name",
+            "name": "artifactType",
+            "baseName": "artifact_type",
             "type": "string",
             "format": ""
         },
         {
-            "name": "type",
-            "baseName": "type",
+            "name": "lastChange",
+            "baseName": "last_change",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "name",
+            "baseName": "name",
             "type": "string",
             "format": ""
         },
@@ -70,8 +70,8 @@ export class GlobalVariable {
             "format": ""
         },
         {
-            "name": "artifactType",
-            "baseName": "artifact_type",
+            "name": "type",
+            "baseName": "type",
             "type": "string",
             "format": ""
         }    ];

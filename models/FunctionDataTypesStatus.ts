@@ -13,13 +13,13 @@ import { HttpFile } from '../http/http';
 
 export class FunctionDataTypesStatus {
     /**
-    * Function id
-    */
-    'functionId': number;
-    /**
     * Whether the service has completed data types generation
     */
     'completed': boolean;
+    /**
+    * Function id
+    */
+    'functionId': number;
     /**
     * The current status of the data types service
     */
@@ -31,16 +31,16 @@ export class FunctionDataTypesStatus {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "functionId",
-            "baseName": "function_id",
-            "type": "number",
-            "format": "int64"
-        },
-        {
             "name": "completed",
             "baseName": "completed",
             "type": "boolean",
             "format": ""
+        },
+        {
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
         },
         {
             "name": "status",

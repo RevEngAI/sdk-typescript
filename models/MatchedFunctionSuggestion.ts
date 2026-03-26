@@ -20,11 +20,11 @@ export class MatchedFunctionSuggestion {
     * Virtual address of the matched function
     */
     'functionVaddr': number;
-    'suggestedName'?: string | null;
     /**
     * De-mangled name of the function group that contains the matched functions
     */
     'suggestedDemangledName': string;
+    'suggestedName'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -44,14 +44,14 @@ export class MatchedFunctionSuggestion {
             "format": "int64"
         },
         {
-            "name": "suggestedName",
-            "baseName": "suggested_name",
+            "name": "suggestedDemangledName",
+            "baseName": "suggested_demangled_name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "suggestedDemangledName",
-            "baseName": "suggested_demangled_name",
+            "name": "suggestedName",
+            "baseName": "suggested_name",
             "type": "string",
             "format": ""
         }    ];

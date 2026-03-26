@@ -12,20 +12,20 @@
 import { HttpFile } from '../http/http';
 
 export class MatchedFunction {
+    'analysisId': number;
+    'binaryId': number;
+    'binaryName': string;
+    'confidence'?: number | null;
+    'debug': boolean;
     /**
     * Unique identifier of the matched function
     */
     'functionId': number;
-    'binaryId': number;
     'functionName': string;
     'functionVaddr': number;
     'mangledName': string;
-    'debug': boolean;
-    'binaryName': string;
     'sha256Hash': string;
-    'analysisId': number;
     'similarity'?: number | null;
-    'confidence'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,16 +33,40 @@ export class MatchedFunction {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "functionId",
-            "baseName": "function_id",
+            "name": "analysisId",
+            "baseName": "analysis_id",
             "type": "number",
-            "format": "int64"
+            "format": ""
         },
         {
             "name": "binaryId",
             "baseName": "binary_id",
             "type": "number",
             "format": ""
+        },
+        {
+            "name": "binaryName",
+            "baseName": "binary_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "confidence",
+            "baseName": "confidence",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "debug",
+            "baseName": "debug",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
         },
         {
             "name": "functionName",
@@ -63,38 +87,14 @@ export class MatchedFunction {
             "format": ""
         },
         {
-            "name": "debug",
-            "baseName": "debug",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "binaryName",
-            "baseName": "binary_name",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
             "type": "string",
             "format": ""
         },
         {
-            "name": "analysisId",
-            "baseName": "analysis_id",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "similarity",
             "baseName": "similarity",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "confidence",
-            "baseName": "confidence",
             "type": "number",
             "format": ""
         }    ];

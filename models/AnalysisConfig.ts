@@ -15,9 +15,13 @@ import { HttpFile } from '../http/http';
 
 export class AnalysisConfig {
     /**
-    * Settings to scrape third party sources
+    * Enables an advanced security analysis.
     */
-    'scrapeThirdPartyConfig'?: ScrapeThirdPartyConfig;
+    'advancedAnalysis'?: boolean;
+    /**
+    * A configuration option for generating capabilities of a binary
+    */
+    'generateCapabilities'?: boolean;
     /**
     * A configuration option for fetching CVEs data.
     */
@@ -27,21 +31,17 @@ export class AnalysisConfig {
     */
     'generateSbom'?: boolean;
     /**
-    * A configuration option for generating capabilities of a binary
-    */
-    'generateCapabilities'?: boolean;
-    /**
     * When enabled, skips using cached data within the processing.
     */
     'noCache'?: boolean;
     /**
-    * Enables an advanced security analysis.
-    */
-    'advancedAnalysis'?: boolean;
-    /**
     * Including a sandbox config enables the dynamic execution sandbox
     */
     'sandboxConfig'?: SandboxOptions;
+    /**
+    * Settings to scrape third party sources
+    */
+    'scrapeThirdPartyConfig'?: ScrapeThirdPartyConfig;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -49,9 +49,15 @@ export class AnalysisConfig {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "scrapeThirdPartyConfig",
-            "baseName": "scrape_third_party_config",
-            "type": "ScrapeThirdPartyConfig",
+            "name": "advancedAnalysis",
+            "baseName": "advanced_analysis",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "generateCapabilities",
+            "baseName": "generate_capabilities",
+            "type": "boolean",
             "format": ""
         },
         {
@@ -67,20 +73,8 @@ export class AnalysisConfig {
             "format": ""
         },
         {
-            "name": "generateCapabilities",
-            "baseName": "generate_capabilities",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "noCache",
             "baseName": "no_cache",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "advancedAnalysis",
-            "baseName": "advanced_analysis",
             "type": "boolean",
             "format": ""
         },
@@ -88,6 +82,12 @@ export class AnalysisConfig {
             "name": "sandboxConfig",
             "baseName": "sandbox_config",
             "type": "SandboxOptions",
+            "format": ""
+        },
+        {
+            "name": "scrapeThirdPartyConfig",
+            "baseName": "scrape_third_party_config",
+            "type": "ScrapeThirdPartyConfig",
             "format": ""
         }    ];
 

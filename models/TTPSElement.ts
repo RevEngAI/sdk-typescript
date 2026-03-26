@@ -14,8 +14,8 @@ import { TTPSOccurance } from '../models/TTPSOccurance';
 import { HttpFile } from '../http/http';
 
 export class TTPSElement {
-    'name': string;
     'attack': Array<TTPSAttack>;
+    'name': string;
     'occurrences': Array<TTPSOccurance>;
     'score': number;
 
@@ -25,15 +25,15 @@ export class TTPSElement {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "attack",
             "baseName": "attack",
             "type": "Array<TTPSAttack>",
+            "format": ""
+        },
+        {
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
             "format": ""
         },
         {

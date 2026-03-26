@@ -14,18 +14,24 @@ import { NameConfidence } from '../models/NameConfidence';
 import { HttpFile } from '../http/http';
 
 export class FunctionMatch {
+    'confidences'?: Array<NameConfidence> | null;
     /**
     * Unique identifier of the function
     */
     'functionId': number;
     'matchedFunctions': Array<MatchedFunction>;
-    'confidences'?: Array<NameConfidence> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "confidences",
+            "baseName": "confidences",
+            "type": "Array<NameConfidence>",
+            "format": ""
+        },
         {
             "name": "functionId",
             "baseName": "function_id",
@@ -36,12 +42,6 @@ export class FunctionMatch {
             "name": "matchedFunctions",
             "baseName": "matched_functions",
             "type": "Array<MatchedFunction>",
-            "format": ""
-        },
-        {
-            "name": "confidences",
-            "baseName": "confidences",
-            "type": "Array<NameConfidence>",
             "format": ""
         }    ];
 

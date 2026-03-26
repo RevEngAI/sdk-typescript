@@ -12,13 +12,13 @@
 import { HttpFile } from '../http/http';
 
 export class ELFRelocation {
-    'address': number;
-    'type': string;
-    'size': number;
     'addend': number;
-    'symbolName': string;
+    'address': number;
     'isDynamic': boolean;
     'isPltgot': boolean;
+    'size': number;
+    'symbolName': string;
+    'type': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,33 +26,15 @@ export class ELFRelocation {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "address",
-            "baseName": "address",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "size",
-            "baseName": "size",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "addend",
             "baseName": "addend",
             "type": "number",
             "format": ""
         },
         {
-            "name": "symbolName",
-            "baseName": "symbol_name",
-            "type": "string",
+            "name": "address",
+            "baseName": "address",
+            "type": "number",
             "format": ""
         },
         {
@@ -65,6 +47,24 @@ export class ELFRelocation {
             "name": "isPltgot",
             "baseName": "is_pltgot",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "size",
+            "baseName": "size",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "symbolName",
+            "baseName": "symbol_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
             "format": ""
         }    ];
 

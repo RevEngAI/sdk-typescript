@@ -17,12 +17,12 @@ export class FunctionDataTypes {
     * Whether the service has completed data types generation
     */
     'completed': boolean;
+    'dataTypes'?: FunctionInfoOutput | null;
+    'dataTypesVersion'?: number | null;
     /**
     * The current status of the data types service
     */
     'status': string;
-    'dataTypes'?: FunctionInfoOutput | null;
-    'dataTypesVersion'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -36,12 +36,6 @@ export class FunctionDataTypes {
             "format": ""
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "dataTypes",
             "baseName": "data_types",
             "type": "FunctionInfoOutput",
@@ -51,6 +45,12 @@ export class FunctionDataTypes {
             "name": "dataTypesVersion",
             "baseName": "data_types_version",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "string",
             "format": ""
         }    ];
 

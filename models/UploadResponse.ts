@@ -13,21 +13,15 @@ import { UploadFileType } from '../models/UploadFileType';
 import { HttpFile } from '../http/http';
 
 export class UploadResponse {
-    'sha256Hash': string;
     'fileType': UploadFileType;
     'filename': string;
+    'sha256Hash': string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "sha256Hash",
-            "baseName": "sha_256_hash",
-            "type": "string",
-            "format": ""
-        },
         {
             "name": "fileType",
             "baseName": "file_type",
@@ -37,6 +31,12 @@ export class UploadResponse {
         {
             "name": "filename",
             "baseName": "filename",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "sha256Hash",
+            "baseName": "sha_256_hash",
             "type": "string",
             "format": ""
         }    ];

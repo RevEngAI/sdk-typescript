@@ -14,32 +14,32 @@ import { StackVariable } from '../models/StackVariable';
 import { HttpFile } from '../http/http';
 
 export class FunctionTypeOutput {
-    'lastChange'?: string | null;
     /**
     * Memory address of the function
     */
     'addr': number;
     /**
-    * Size of the function in bytes
+    * Type of artifact that the structure is associated with
     */
-    'size': number;
+    'artifactType'?: string;
     /**
     * Function header information
     */
     'header': FunctionHeader;
-    'stackVars'?: { [key: string]: StackVariable; } | null;
+    'lastChange'?: string | null;
     /**
     * Name of the function
     */
     'name': string;
     /**
+    * Size of the function in bytes
+    */
+    'size': number;
+    'stackVars'?: { [key: string]: StackVariable; } | null;
+    /**
     * Return type of the function
     */
     'type': string;
-    /**
-    * Type of artifact that the structure is associated with
-    */
-    'artifactType'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -47,21 +47,15 @@ export class FunctionTypeOutput {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "lastChange",
-            "baseName": "last_change",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "addr",
             "baseName": "addr",
             "type": "number",
             "format": ""
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number",
+            "name": "artifactType",
+            "baseName": "artifact_type",
+            "type": "string",
             "format": ""
         },
         {
@@ -71,9 +65,9 @@ export class FunctionTypeOutput {
             "format": ""
         },
         {
-            "name": "stackVars",
-            "baseName": "stack_vars",
-            "type": "{ [key: string]: StackVariable; }",
+            "name": "lastChange",
+            "baseName": "last_change",
+            "type": "string",
             "format": ""
         },
         {
@@ -83,14 +77,20 @@ export class FunctionTypeOutput {
             "format": ""
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
+            "name": "size",
+            "baseName": "size",
+            "type": "number",
             "format": ""
         },
         {
-            "name": "artifactType",
-            "baseName": "artifact_type",
+            "name": "stackVars",
+            "baseName": "stack_vars",
+            "type": "{ [key: string]: StackVariable; }",
+            "format": ""
+        },
+        {
+            "name": "type",
+            "baseName": "type",
             "type": "string",
             "format": ""
         }    ];

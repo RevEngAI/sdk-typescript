@@ -12,13 +12,13 @@
 import { HttpFile } from '../http/http';
 
 export class SingleSectionModel {
+    'characteristics': string;
+    'entropy': number;
     'name': string;
+    'rawSize': number;
+    'sha3256': string;
     'virtualAddress': number;
     'virtualSize': number;
-    'characteristics': string;
-    'rawSize': number;
-    'entropy': number;
-    'sha3256': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,8 +26,32 @@ export class SingleSectionModel {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "characteristics",
+            "baseName": "characteristics",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "entropy",
+            "baseName": "entropy",
+            "type": "number",
+            "format": ""
+        },
+        {
             "name": "name",
             "baseName": "name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "rawSize",
+            "baseName": "raw_size",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "sha3256",
+            "baseName": "sha3_256",
             "type": "string",
             "format": ""
         },
@@ -41,30 +65,6 @@ export class SingleSectionModel {
             "name": "virtualSize",
             "baseName": "virtual_size",
             "type": "number",
-            "format": ""
-        },
-        {
-            "name": "characteristics",
-            "baseName": "characteristics",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "rawSize",
-            "baseName": "raw_size",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "entropy",
-            "baseName": "entropy",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "sha3256",
-            "baseName": "sha3_256",
-            "type": "string",
             "format": ""
         }    ];
 

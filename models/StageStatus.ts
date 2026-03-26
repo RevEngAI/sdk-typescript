@@ -14,15 +14,21 @@ import { PipelineStageStatus } from '../models/PipelineStageStatus';
 import { HttpFile } from '../http/http';
 
 export class StageStatus {
+    'numAhead': number;
     'stage': AnalysisStage;
     'status': PipelineStageStatus;
-    'numAhead': number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "numAhead",
+            "baseName": "num_ahead",
+            "type": "number",
+            "format": ""
+        },
         {
             "name": "stage",
             "baseName": "stage",
@@ -33,12 +39,6 @@ export class StageStatus {
             "name": "status",
             "baseName": "status",
             "type": "PipelineStageStatus",
-            "format": ""
-        },
-        {
-            "name": "numAhead",
-            "baseName": "num_ahead",
-            "type": "number",
             "format": ""
         }    ];
 

@@ -13,8 +13,8 @@ import { HttpFile } from '../http/http';
 
 export class AnalysisBulkAddTagsResponseItem {
     'analysisId': number;
-    'message': string | null;
     'error'?: string | null;
+    'message': string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -28,14 +28,14 @@ export class AnalysisBulkAddTagsResponseItem {
             "format": ""
         },
         {
-            "name": "message",
-            "baseName": "message",
+            "name": "error",
+            "baseName": "error",
             "type": "string",
             "format": ""
         },
         {
-            "name": "error",
-            "baseName": "error",
+            "name": "message",
+            "baseName": "message",
             "type": "string",
             "format": ""
         }    ];

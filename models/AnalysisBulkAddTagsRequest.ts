@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class AnalysisBulkAddTagsRequest {
-    'tags': Array<string>;
     'analysisIds': Array<number>;
+    'tags': Array<string>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,15 +21,15 @@ export class AnalysisBulkAddTagsRequest {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "tags",
-            "baseName": "tags",
-            "type": "Array<string>",
-            "format": ""
-        },
-        {
             "name": "analysisIds",
             "baseName": "analysis_ids",
             "type": "Array<number>",
+            "format": ""
+        },
+        {
+            "name": "tags",
+            "baseName": "tags",
+            "type": "Array<string>",
             "format": ""
         }    ];
 

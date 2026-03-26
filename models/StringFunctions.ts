@@ -10,6 +10,7 @@
  */
 
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
+import { StringSource } from '../models/StringSource';
 import { HttpFile } from '../http/http';
 
 /**
@@ -17,13 +18,17 @@ import { HttpFile } from '../http/http';
 */
 export class StringFunctions {
     /**
-    * The value of the string literal
-    */
-    'value': string;
-    /**
     * The function ids the string literal was found within
     */
     'functions': Array<AppApiRestV2FunctionsResponsesFunction>;
+    /**
+    * The source of the string
+    */
+    'source'?: StringSource;
+    /**
+    * The value of the string literal
+    */
+    'value': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,15 +36,21 @@ export class StringFunctions {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "value",
-            "baseName": "value",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "functions",
             "baseName": "functions",
             "type": "Array<AppApiRestV2FunctionsResponsesFunction>",
+            "format": ""
+        },
+        {
+            "name": "source",
+            "baseName": "source",
+            "type": "StringSource",
+            "format": ""
+        },
+        {
+            "name": "value",
+            "baseName": "value",
+            "type": "string",
             "format": ""
         }    ];
 
@@ -50,3 +61,5 @@ export class StringFunctions {
     public constructor() {
     }
 }
+
+

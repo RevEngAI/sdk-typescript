@@ -58,8 +58,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 **409** | Request already queued |  -  |
+**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -112,8 +112,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 **404** | No data retrieved from VirusTotal for the given analysis_id |  -  |
+**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

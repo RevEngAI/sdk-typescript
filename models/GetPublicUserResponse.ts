@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class GetPublicUserResponse {
-    'username': string;
     'userId': number;
+    'username': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,15 +21,15 @@ export class GetPublicUserResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "username",
-            "baseName": "username",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "userId",
             "baseName": "user_id",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "username",
+            "baseName": "username",
+            "type": "string",
             "format": ""
         }    ];
 

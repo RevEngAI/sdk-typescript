@@ -14,13 +14,13 @@ import { HttpFile } from '../http/http';
 
 export class SBOM {
     /**
-    * The packages found
-    */
-    'packages': Array<SBOMPackage>;
-    /**
     * The import libraries found
     */
     'importedLibs': Array<string>;
+    /**
+    * The packages found
+    */
+    'packages': Array<SBOMPackage>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -28,15 +28,15 @@ export class SBOM {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "packages",
-            "baseName": "packages",
-            "type": "Array<SBOMPackage>",
-            "format": ""
-        },
-        {
             "name": "importedLibs",
             "baseName": "imported_libs",
             "type": "Array<string>",
+            "format": ""
+        },
+        {
+            "name": "packages",
+            "baseName": "packages",
+            "type": "Array<SBOMPackage>",
             "format": ""
         }    ];
 

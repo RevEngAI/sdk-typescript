@@ -15,17 +15,17 @@ import { MetaModel } from '../models/MetaModel';
 import { HttpFile } from '../http/http';
 
 export class BaseResponseListCollectionResults {
-    /**
-    * Response status on whether the request succeeded
-    */
-    'status'?: boolean;
     'data'?: ListCollectionResults | null;
-    'message'?: string | null;
     'errors'?: Array<ErrorModel> | null;
+    'message'?: string | null;
     /**
     * Metadata
     */
     'meta'?: MetaModel;
+    /**
+    * Response status on whether the request succeeded
+    */
+    'status'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,21 +33,9 @@ export class BaseResponseListCollectionResults {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "data",
             "baseName": "data",
             "type": "ListCollectionResults",
-            "format": ""
-        },
-        {
-            "name": "message",
-            "baseName": "message",
-            "type": "string",
             "format": ""
         },
         {
@@ -57,9 +45,21 @@ export class BaseResponseListCollectionResults {
             "format": ""
         },
         {
+            "name": "message",
+            "baseName": "message",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "meta",
             "baseName": "meta",
             "type": "MetaModel",
+            "format": ""
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "boolean",
             "format": ""
         }    ];
 

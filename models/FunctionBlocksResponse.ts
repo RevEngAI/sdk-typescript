@@ -26,11 +26,11 @@ export class FunctionBlocksResponse {
     * Local variables associated with this function
     */
     'localVariables': Array<FunctionLocalVariableResponse>;
+    'overviewComment': string | null;
     /**
     * Params associated with this function
     */
     'params': Array<FunctionParamResponse>;
-    'overviewComment': string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -50,15 +50,15 @@ export class FunctionBlocksResponse {
             "format": ""
         },
         {
-            "name": "params",
-            "baseName": "params",
-            "type": "Array<FunctionParamResponse>",
-            "format": ""
-        },
-        {
             "name": "overviewComment",
             "baseName": "overview_comment",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "params",
+            "baseName": "params",
+            "type": "Array<FunctionParamResponse>",
             "format": ""
         }    ];
 

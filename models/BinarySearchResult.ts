@@ -13,6 +13,10 @@ import { HttpFile } from '../http/http';
 
 export class BinarySearchResult {
     /**
+    * The analysis ID
+    */
+    'analysisId': number;
+    /**
     * The binary ID
     */
     'binaryId': number;
@@ -20,15 +24,6 @@ export class BinarySearchResult {
     * The name of the binary
     */
     'binaryName': string;
-    /**
-    * The analysis ID
-    */
-    'analysisId': number;
-    /**
-    * The SHA-256 hash of the binary
-    */
-    'sha256Hash': string;
-    'tags': Array<string> | null;
     /**
     * The creation date of the binary
     */
@@ -45,12 +40,23 @@ export class BinarySearchResult {
     * The owner of the binary
     */
     'ownedBy': string;
+    /**
+    * The SHA-256 hash of the binary
+    */
+    'sha256Hash': string;
+    'tags': Array<string> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "analysisId",
+            "baseName": "analysis_id",
+            "type": "number",
+            "format": ""
+        },
         {
             "name": "binaryId",
             "baseName": "binary_id",
@@ -61,24 +67,6 @@ export class BinarySearchResult {
             "name": "binaryName",
             "baseName": "binary_name",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "analysisId",
-            "baseName": "analysis_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "sha256Hash",
-            "baseName": "sha_256_hash",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "tags",
-            "baseName": "tags",
-            "type": "Array<string>",
             "format": ""
         },
         {
@@ -103,6 +91,18 @@ export class BinarySearchResult {
             "name": "ownedBy",
             "baseName": "owned_by",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "sha256Hash",
+            "baseName": "sha_256_hash",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "tags",
+            "baseName": "tags",
+            "type": "Array<string>",
             "format": ""
         }    ];
 

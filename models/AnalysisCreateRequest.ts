@@ -19,6 +19,20 @@ import { HttpFile } from '../http/http';
 
 export class AnalysisCreateRequest {
     /**
+    * The analysis config enables the configuration of optional analysis stages
+    */
+    'analysisConfig'?: AnalysisConfig;
+    /**
+    * The scope of the analysis determines who can access it
+    */
+    'analysisScope'?: AnalysisScope;
+    'autoRunAgents'?: AutoRunAgents;
+    /**
+    * The binary config can override automatically determined values such as ISA, Platform, File Format, etc
+    */
+    'binaryConfig'?: BinaryConfig;
+    'debugHash'?: string | null;
+    /**
     * The name of the file
     */
     'filename': string;
@@ -26,31 +40,47 @@ export class AnalysisCreateRequest {
     * The name of the file
     */
     'sha256Hash': string;
+    'symbols'?: Symbols | null;
     /**
     * List of community tags to assign to an analysis
     */
     'tags'?: Array<Tag>;
-    /**
-    * The scope of the analysis determines who can access it
-    */
-    'analysisScope'?: AnalysisScope;
-    'symbols'?: Symbols | null;
-    'debugHash'?: string | null;
-    /**
-    * The analysis config enables the configuration of optional analysis stages
-    */
-    'analysisConfig'?: AnalysisConfig;
-    /**
-    * The binary config can override automatically determined values such as ISA, Platform, File Format, etc
-    */
-    'binaryConfig'?: BinaryConfig;
-    'autoRunAgents'?: AutoRunAgents;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "analysisConfig",
+            "baseName": "analysis_config",
+            "type": "AnalysisConfig",
+            "format": ""
+        },
+        {
+            "name": "analysisScope",
+            "baseName": "analysis_scope",
+            "type": "AnalysisScope",
+            "format": ""
+        },
+        {
+            "name": "autoRunAgents",
+            "baseName": "auto_run_agents",
+            "type": "AutoRunAgents",
+            "format": ""
+        },
+        {
+            "name": "binaryConfig",
+            "baseName": "binary_config",
+            "type": "BinaryConfig",
+            "format": ""
+        },
+        {
+            "name": "debugHash",
+            "baseName": "debug_hash",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "filename",
             "baseName": "filename",
@@ -64,45 +94,15 @@ export class AnalysisCreateRequest {
             "format": ""
         },
         {
-            "name": "tags",
-            "baseName": "tags",
-            "type": "Array<Tag>",
-            "format": ""
-        },
-        {
-            "name": "analysisScope",
-            "baseName": "analysis_scope",
-            "type": "AnalysisScope",
-            "format": ""
-        },
-        {
             "name": "symbols",
             "baseName": "symbols",
             "type": "Symbols",
             "format": ""
         },
         {
-            "name": "debugHash",
-            "baseName": "debug_hash",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "analysisConfig",
-            "baseName": "analysis_config",
-            "type": "AnalysisConfig",
-            "format": ""
-        },
-        {
-            "name": "binaryConfig",
-            "baseName": "binary_config",
-            "type": "BinaryConfig",
-            "format": ""
-        },
-        {
-            "name": "autoRunAgents",
-            "baseName": "auto_run_agents",
-            "type": "AutoRunAgents",
+            "name": "tags",
+            "baseName": "tags",
+            "type": "Array<Tag>",
             "format": ""
         }    ];
 

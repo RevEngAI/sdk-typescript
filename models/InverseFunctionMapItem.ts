@@ -13,21 +13,15 @@ import { Addr } from '../models/Addr';
 import { HttpFile } from '../http/http';
 
 export class InverseFunctionMapItem {
-    'name': string;
     'addr': Addr | null;
     'isExternal'?: boolean;
+    'name': string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
-            "format": ""
-        },
         {
             "name": "addr",
             "baseName": "addr",
@@ -38,6 +32,12 @@ export class InverseFunctionMapItem {
             "name": "isExternal",
             "baseName": "is_external",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
             "format": ""
         }    ];
 

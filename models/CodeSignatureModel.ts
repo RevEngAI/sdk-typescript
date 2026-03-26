@@ -13,15 +13,21 @@ import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { HttpFile } from '../http/http';
 
 export class CodeSignatureModel {
+    'signatures': Array<SingleCodeSignatureModel>;
     'signed': boolean;
     'validSignature': boolean;
-    'signatures': Array<SingleCodeSignatureModel>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "signatures",
+            "baseName": "signatures",
+            "type": "Array<SingleCodeSignatureModel>",
+            "format": ""
+        },
         {
             "name": "signed",
             "baseName": "signed",
@@ -32,12 +38,6 @@ export class CodeSignatureModel {
             "name": "validSignature",
             "baseName": "valid_signature",
             "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "signatures",
-            "baseName": "signatures",
-            "type": "Array<SingleCodeSignatureModel>",
             "format": ""
         }    ];
 

@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class AnalysisUpdateRequest {
-    'binaryName'?: string | null;
     'analysisScope'?: AnalysisUpdateRequestAnalysisScopeEnum | null;
+    'binaryName'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,15 +21,15 @@ export class AnalysisUpdateRequest {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "binaryName",
-            "baseName": "binary_name",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "analysisScope",
             "baseName": "analysis_scope",
             "type": "AnalysisUpdateRequestAnalysisScopeEnum",
+            "format": ""
+        },
+        {
+            "name": "binaryName",
+            "baseName": "binary_name",
+            "type": "string",
             "format": ""
         }    ];
 

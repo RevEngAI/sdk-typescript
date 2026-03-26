@@ -24,6 +24,7 @@ import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStage } from '../models/AnalysisStage';
 import { AnalysisStageStatus } from '../models/AnalysisStageStatus';
 import { AnalysisStagesResponse } from '../models/AnalysisStagesResponse';
+import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
@@ -263,6 +264,7 @@ import { ProcessDumps } from '../models/ProcessDumps';
 import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
+import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedSecurityChecksTaskResponse } from '../models/QueuedSecurityChecksTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
@@ -288,6 +290,7 @@ import { StageStatus } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StringFunctions } from '../models/StringFunctions';
+import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { Symbols } from '../models/Symbols';
@@ -713,6 +716,30 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
+     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+     * Add strings to the analysis
+     * @param analysisId
+     * @param putAnalysisStringsRequest
+     */
+    public putAnalysisStringsWithHttpInfo(analysisId: number, putAnalysisStringsRequest: PutAnalysisStringsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.putAnalysisStringsWithHttpInfo(analysisId, putAnalysisStringsRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+     * Add strings to the analysis
+     * @param analysisId
+     * @param putAnalysisStringsRequest
+     */
+    public putAnalysisStrings(analysisId: number, putAnalysisStringsRequest: PutAnalysisStringsRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.putAnalysisStrings(analysisId, putAnalysisStringsRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Re-queues an already uploaded analysis
      * Requeue Analysis
      * @param analysisId
@@ -788,27 +815,27 @@ export class PromiseAnalysesCoreApi {
 
     /**
      * Upload File
-     * @param uploadFileType
      * @param file
+     * @param uploadFileType
      * @param [packedPassword]
      * @param [forceOverwrite]
      */
-    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
+    public uploadFileWithHttpInfo(file: HttpFile, uploadFileType: UploadFileType, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, forceOverwrite, observableOptions);
+        const result = this.api.uploadFileWithHttpInfo(file, uploadFileType, packedPassword, forceOverwrite, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Upload File
-     * @param uploadFileType
      * @param file
+     * @param uploadFileType
      * @param [packedPassword]
      * @param [forceOverwrite]
      */
-    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
+    public uploadFile(file: HttpFile, uploadFileType: UploadFileType, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFile(uploadFileType, file, packedPassword, forceOverwrite, observableOptions);
+        const result = this.api.uploadFile(file, uploadFileType, packedPassword, forceOverwrite, observableOptions);
         return result.toPromise();
     }
 
@@ -2179,7 +2206,7 @@ export class PromiseFunctionsAIDecompilationApi {
      * Polls AI Decompilation Process
      * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
-     * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
+     * @param [generateInlineComments] Generate inline comments for the decompilation
      */
     public getAiDecompilationTaskResultWithHttpInfo(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationTask>> {
         const observableOptions = wrapOptions(_options);
@@ -2192,7 +2219,7 @@ export class PromiseFunctionsAIDecompilationApi {
      * Polls AI Decompilation Process
      * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
-     * @param [generateInlineComments] Generate inline comments for the decompilation (only works if summarise is enabled)
+     * @param [generateInlineComments] Generate inline comments for the decompilation
      */
     public getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetAiDecompilationTask> {
         const observableOptions = wrapOptions(_options);

@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class InverseStringMapItem {
-    'string': string;
     'addr': number | null;
+    'string': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,16 +21,16 @@ export class InverseStringMapItem {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "string",
-            "baseName": "string",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "addr",
             "baseName": "addr",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "string",
+            "baseName": "string",
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

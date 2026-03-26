@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class SinglePDBEntryModel {
-    'guid': string;
     'age': number;
+    'guid': string;
     'path': string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -22,15 +22,15 @@ export class SinglePDBEntryModel {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "guid",
-            "baseName": "guid",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "age",
             "baseName": "age",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "guid",
+            "baseName": "guid",
+            "type": "string",
             "format": ""
         },
         {

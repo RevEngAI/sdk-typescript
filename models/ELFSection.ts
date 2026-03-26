@@ -12,16 +12,16 @@
 import { HttpFile } from '../http/http';
 
 export class ELFSection {
-    'name': string;
-    'type': string;
-    'virtualAddress': number;
-    'virtualSize': number;
-    'rawSize': number;
+    'alignment': number;
+    'entropy': number;
     'fileOffset': number;
     'flags': string;
     'flagsRaw': number;
-    'entropy': number;
-    'alignment': number;
+    'name': string;
+    'rawSize': number;
+    'type': string;
+    'virtualAddress': number;
+    'virtualSize': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -29,32 +29,14 @@ export class ELFSection {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "virtualAddress",
-            "baseName": "virtual_address",
+            "name": "alignment",
+            "baseName": "alignment",
             "type": "number",
             "format": ""
         },
         {
-            "name": "virtualSize",
-            "baseName": "virtual_size",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "rawSize",
-            "baseName": "raw_size",
+            "name": "entropy",
+            "baseName": "entropy",
             "type": "number",
             "format": ""
         },
@@ -77,14 +59,32 @@ export class ELFSection {
             "format": ""
         },
         {
-            "name": "entropy",
-            "baseName": "entropy",
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "rawSize",
+            "baseName": "raw_size",
             "type": "number",
             "format": ""
         },
         {
-            "name": "alignment",
-            "baseName": "alignment",
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "virtualAddress",
+            "baseName": "virtual_address",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "virtualSize",
+            "baseName": "virtual_size",
             "type": "number",
             "format": ""
         }    ];

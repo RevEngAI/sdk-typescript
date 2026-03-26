@@ -12,9 +12,9 @@
 import { HttpFile } from '../http/http';
 
 export class NetworkOverviewMetadata {
-    'host': string;
-    'countryCode': string;
     'ASN': string;
+    'countryCode': string;
+    'host': string;
     'type': NetworkOverviewMetadataTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
@@ -23,8 +23,8 @@ export class NetworkOverviewMetadata {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "host",
-            "baseName": "host",
+            "name": "ASN",
+            "baseName": "ASN",
             "type": "string",
             "format": ""
         },
@@ -35,8 +35,8 @@ export class NetworkOverviewMetadata {
             "format": ""
         },
         {
-            "name": "ASN",
-            "baseName": "ASN",
+            "name": "host",
+            "baseName": "host",
             "type": "string",
             "format": ""
         },

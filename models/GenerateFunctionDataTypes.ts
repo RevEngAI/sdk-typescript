@@ -14,6 +14,10 @@ import { HttpFile } from '../http/http';
 
 export class GenerateFunctionDataTypes {
     /**
+    * List of function data types information that are either already generated, or now queued for generation
+    */
+    'dataTypesList': GenerationStatusList;
+    /**
     * [DEPRECATED] This value has been replaced with the `data_types_list` field
     * @deprecated
     */
@@ -23,16 +27,18 @@ export class GenerateFunctionDataTypes {
     * @deprecated
     */
     'reference': string;
-    /**
-    * List of function data types information that are either already generated, or now queued for generation
-    */
-    'dataTypesList': GenerationStatusList;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "dataTypesList",
+            "baseName": "data_types_list",
+            "type": "GenerationStatusList",
+            "format": ""
+        },
         {
             "name": "queued",
             "baseName": "queued",
@@ -43,12 +49,6 @@ export class GenerateFunctionDataTypes {
             "name": "reference",
             "baseName": "reference",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "dataTypesList",
-            "baseName": "data_types_list",
-            "type": "GenerationStatusList",
             "format": ""
         }    ];
 

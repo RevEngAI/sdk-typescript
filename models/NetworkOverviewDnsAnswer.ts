@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class NetworkOverviewDnsAnswer {
-    'type': string;
     'data': string;
+    'type': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,14 +21,14 @@ export class NetworkOverviewDnsAnswer {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "type",
-            "baseName": "type",
+            "name": "data",
+            "baseName": "data",
             "type": "string",
             "format": ""
         },
         {
-            "name": "data",
-            "baseName": "data",
+            "name": "type",
+            "baseName": "type",
             "type": "string",
             "format": ""
         }    ];

@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class ExportModel {
-    'numberOfExports': number;
     'exports': Array<{ [key: string]: number; }>;
+    'numberOfExports': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,15 +21,15 @@ export class ExportModel {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "numberOfExports",
-            "baseName": "number_of_exports",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "exports",
             "baseName": "exports",
             "type": "Array<{ [key: string]: number; }>",
+            "format": ""
+        },
+        {
+            "name": "numberOfExports",
+            "baseName": "number_of_exports",
+            "type": "number",
             "format": ""
         }    ];
 

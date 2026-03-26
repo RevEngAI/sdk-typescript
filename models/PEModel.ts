@@ -21,44 +21,32 @@ import { TimestampModel } from '../models/TimestampModel';
 import { HttpFile } from '../http/http';
 
 export class PEModel {
-    'type': string;
-    'timestamps': TimestampModel | null;
     'architecture': string;
     'checksum': number;
-    'imageBase': number;
-    'security': SecurityModel | null;
-    'versionInfo': { [key: string]: any; } | null;
     'debugInfo': PDBDebugModel | null;
-    'numberOfResources': number | null;
-    'entryPoint': EntrypointModel | null;
-    'signature': CodeSignatureModel | null;
-    'dotnet': boolean;
     'debugStripped': boolean;
-    'importHash': string;
+    'dotnet': boolean;
+    'entryPoint': EntrypointModel | null;
     'exportHash': string;
-    'richHeaderHash': string;
-    'sections': SectionModel | null;
-    'imports': ImportModel | null;
     'exports': ExportModel | null;
     'iconData': IconModel | null;
+    'imageBase': number;
+    'importHash': string;
+    'imports': ImportModel | null;
+    'numberOfResources': number | null;
+    'richHeaderHash': string;
+    'sections': SectionModel | null;
+    'security': SecurityModel | null;
+    'signature': CodeSignatureModel | null;
+    'timestamps': TimestampModel | null;
+    'type': string;
+    'versionInfo': { [key: string]: any; } | null;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "timestamps",
-            "baseName": "timestamps",
-            "type": "TimestampModel",
-            "format": ""
-        },
         {
             "name": "architecture",
             "baseName": "architecture",
@@ -72,51 +60,9 @@ export class PEModel {
             "format": ""
         },
         {
-            "name": "imageBase",
-            "baseName": "image_base",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "security",
-            "baseName": "security",
-            "type": "SecurityModel",
-            "format": ""
-        },
-        {
-            "name": "versionInfo",
-            "baseName": "version_info",
-            "type": "{ [key: string]: any; }",
-            "format": ""
-        },
-        {
             "name": "debugInfo",
             "baseName": "debug_info",
             "type": "PDBDebugModel",
-            "format": ""
-        },
-        {
-            "name": "numberOfResources",
-            "baseName": "number_of_resources",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "entryPoint",
-            "baseName": "entry_point",
-            "type": "EntrypointModel",
-            "format": ""
-        },
-        {
-            "name": "signature",
-            "baseName": "signature",
-            "type": "CodeSignatureModel",
-            "format": ""
-        },
-        {
-            "name": "dotnet",
-            "baseName": "dotnet",
-            "type": "boolean",
             "format": ""
         },
         {
@@ -126,15 +72,57 @@ export class PEModel {
             "format": ""
         },
         {
-            "name": "importHash",
-            "baseName": "import_hash",
-            "type": "string",
+            "name": "dotnet",
+            "baseName": "dotnet",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "entryPoint",
+            "baseName": "entry_point",
+            "type": "EntrypointModel",
             "format": ""
         },
         {
             "name": "exportHash",
             "baseName": "export_hash",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "exports",
+            "baseName": "exports",
+            "type": "ExportModel",
+            "format": ""
+        },
+        {
+            "name": "iconData",
+            "baseName": "icon_data",
+            "type": "IconModel",
+            "format": ""
+        },
+        {
+            "name": "imageBase",
+            "baseName": "image_base",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "importHash",
+            "baseName": "import_hash",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "imports",
+            "baseName": "imports",
+            "type": "ImportModel",
+            "format": ""
+        },
+        {
+            "name": "numberOfResources",
+            "baseName": "number_of_resources",
+            "type": "number",
             "format": ""
         },
         {
@@ -150,21 +138,33 @@ export class PEModel {
             "format": ""
         },
         {
-            "name": "imports",
-            "baseName": "imports",
-            "type": "ImportModel",
+            "name": "security",
+            "baseName": "security",
+            "type": "SecurityModel",
             "format": ""
         },
         {
-            "name": "exports",
-            "baseName": "exports",
-            "type": "ExportModel",
+            "name": "signature",
+            "baseName": "signature",
+            "type": "CodeSignatureModel",
             "format": ""
         },
         {
-            "name": "iconData",
-            "baseName": "icon_data",
-            "type": "IconModel",
+            "name": "timestamps",
+            "baseName": "timestamps",
+            "type": "TimestampModel",
+            "format": ""
+        },
+        {
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "versionInfo",
+            "baseName": "version_info",
+            "type": "{ [key: string]: any; }",
             "format": ""
         }    ];
 

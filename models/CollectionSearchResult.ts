@@ -21,17 +21,17 @@ export class CollectionSearchResult {
     */
     'collectionName': string;
     /**
-    * The scope of the collection
+    * The creation date of the collection
     */
-    'scope': string;
+    'createdAt': Date;
+    /**
+    * The description of the collection
+    */
+    'description': string;
     /**
     * The last update date of the collection
     */
     'lastUpdatedAt': Date;
-    /**
-    * The creation date of the collection
-    */
-    'createdAt': Date;
     /**
     * The model ID of the binary
     */
@@ -44,12 +44,12 @@ export class CollectionSearchResult {
     * The owner of the collection
     */
     'ownedBy': string;
-    'tags'?: Array<string> | null;
-    'size'?: number | null;
     /**
-    * The description of the collection
+    * The scope of the collection
     */
-    'description': string;
+    'scope': string;
+    'size'?: number | null;
+    'tags'?: Array<string> | null;
     'teamId'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
@@ -70,20 +70,20 @@ export class CollectionSearchResult {
             "format": ""
         },
         {
-            "name": "scope",
-            "baseName": "scope",
+            "name": "createdAt",
+            "baseName": "created_at",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "description",
+            "baseName": "description",
             "type": "string",
             "format": ""
         },
         {
             "name": "lastUpdatedAt",
             "baseName": "last_updated_at",
-            "type": "Date",
-            "format": "date-time"
-        },
-        {
-            "name": "createdAt",
-            "baseName": "created_at",
             "type": "Date",
             "format": "date-time"
         },
@@ -106,9 +106,9 @@ export class CollectionSearchResult {
             "format": ""
         },
         {
-            "name": "tags",
-            "baseName": "tags",
-            "type": "Array<string>",
+            "name": "scope",
+            "baseName": "scope",
+            "type": "string",
             "format": ""
         },
         {
@@ -118,9 +118,9 @@ export class CollectionSearchResult {
             "format": ""
         },
         {
-            "name": "description",
-            "baseName": "description",
-            "type": "string",
+            "name": "tags",
+            "baseName": "tags",
+            "type": "Array<string>",
             "format": ""
         },
         {

@@ -13,12 +13,12 @@ import { CollectionScope } from '../models/CollectionScope';
 import { HttpFile } from '../http/http';
 
 export class CollectionCreateRequest {
-    'collectionName': string;
-    'description': string;
-    'collectionScope'?: CollectionScope;
-    'tags'?: Array<string> | null;
     'binaries'?: Array<number> | null;
+    'collectionName': string;
+    'collectionScope'?: CollectionScope;
+    'description': string;
     'modelId': number;
+    'tags'?: Array<string> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,14 +26,14 @@ export class CollectionCreateRequest {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "collectionName",
-            "baseName": "collection_name",
-            "type": "string",
+            "name": "binaries",
+            "baseName": "binaries",
+            "type": "Array<number>",
             "format": ""
         },
         {
-            "name": "description",
-            "baseName": "description",
+            "name": "collectionName",
+            "baseName": "collection_name",
             "type": "string",
             "format": ""
         },
@@ -44,21 +44,21 @@ export class CollectionCreateRequest {
             "format": ""
         },
         {
-            "name": "tags",
-            "baseName": "tags",
-            "type": "Array<string>",
-            "format": ""
-        },
-        {
-            "name": "binaries",
-            "baseName": "binaries",
-            "type": "Array<number>",
+            "name": "description",
+            "baseName": "description",
+            "type": "string",
             "format": ""
         },
         {
             "name": "modelId",
             "baseName": "model_id",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "tags",
+            "baseName": "tags",
+            "type": "Array<string>",
             "format": ""
         }    ];
 

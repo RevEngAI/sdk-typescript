@@ -13,18 +13,18 @@ import { FunctionMatch } from '../models/FunctionMatch';
 import { HttpFile } from '../http/http';
 
 export class FunctionMatchingResponse {
+    'currentPage'?: number | null;
+    'errorMessage'?: string | null;
+    'matches'?: Array<FunctionMatch> | null;
+    'numDebugMatches'?: number | null;
+    'numMatches'?: number | null;
     /**
     * Progress of the matching operation, represented as a percentage
     */
     'progress'?: number;
     'status'?: string | null;
-    'totalTime'?: number | null;
-    'errorMessage'?: string | null;
-    'currentPage'?: number | null;
     'totalPages'?: number | null;
-    'matches'?: Array<FunctionMatch> | null;
-    'numMatches'?: number | null;
-    'numDebugMatches'?: number | null;
+    'totalTime'?: number | null;
     'updatedAt'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
@@ -32,6 +32,36 @@ export class FunctionMatchingResponse {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "currentPage",
+            "baseName": "current_page",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "errorMessage",
+            "baseName": "error_message",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "matches",
+            "baseName": "matches",
+            "type": "Array<FunctionMatch>",
+            "format": ""
+        },
+        {
+            "name": "numDebugMatches",
+            "baseName": "num_debug_matches",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "numMatches",
+            "baseName": "num_matches",
+            "type": "number",
+            "format": ""
+        },
         {
             "name": "progress",
             "baseName": "progress",
@@ -45,44 +75,14 @@ export class FunctionMatchingResponse {
             "format": ""
         },
         {
-            "name": "totalTime",
-            "baseName": "total_time",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "errorMessage",
-            "baseName": "error_message",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "currentPage",
-            "baseName": "current_page",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "totalPages",
             "baseName": "total_pages",
             "type": "number",
             "format": ""
         },
         {
-            "name": "matches",
-            "baseName": "matches",
-            "type": "Array<FunctionMatch>",
-            "format": ""
-        },
-        {
-            "name": "numMatches",
-            "baseName": "num_matches",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "numDebugMatches",
-            "baseName": "num_debug_matches",
+            "name": "totalTime",
+            "baseName": "total_time",
             "type": "number",
             "format": ""
         },

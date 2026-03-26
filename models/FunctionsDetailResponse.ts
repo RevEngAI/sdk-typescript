@@ -12,58 +12,28 @@
 import { HttpFile } from '../http/http';
 
 export class FunctionsDetailResponse {
+    'analysisId': number;
+    'binaryId': number;
+    'binaryName': string;
+    'debug': boolean;
+    'debugHash': string | null;
+    'embedding1d'?: Array<number> | null;
+    'embedding3d'?: Array<number> | null;
     /**
     * Function id
     */
     'functionId': number;
     'functionName': string;
     'functionNameMangled': string;
-    'functionVaddr': number;
     'functionSize': number;
-    'analysisId': number;
-    'binaryId': number;
-    'binaryName': string;
+    'functionVaddr': number;
     'sha256Hash': string;
-    'debugHash': string | null;
-    'debug': boolean;
-    'embedding3d'?: Array<number> | null;
-    'embedding1d'?: Array<number> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "functionId",
-            "baseName": "function_id",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "functionName",
-            "baseName": "function_name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "functionNameMangled",
-            "baseName": "function_name_mangled",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "functionVaddr",
-            "baseName": "function_vaddr",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "functionSize",
-            "baseName": "function_size",
-            "type": "number",
-            "format": ""
-        },
         {
             "name": "analysisId",
             "baseName": "analysis_id",
@@ -83,9 +53,9 @@ export class FunctionsDetailResponse {
             "format": ""
         },
         {
-            "name": "sha256Hash",
-            "baseName": "sha_256_hash",
-            "type": "string",
+            "name": "debug",
+            "baseName": "debug",
+            "type": "boolean",
             "format": ""
         },
         {
@@ -95,9 +65,9 @@ export class FunctionsDetailResponse {
             "format": ""
         },
         {
-            "name": "debug",
-            "baseName": "debug",
-            "type": "boolean",
+            "name": "embedding1d",
+            "baseName": "embedding_1d",
+            "type": "Array<number>",
             "format": ""
         },
         {
@@ -107,9 +77,39 @@ export class FunctionsDetailResponse {
             "format": ""
         },
         {
-            "name": "embedding1d",
-            "baseName": "embedding_1d",
-            "type": "Array<number>",
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "functionName",
+            "baseName": "function_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "functionNameMangled",
+            "baseName": "function_name_mangled",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "functionSize",
+            "baseName": "function_size",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "functionVaddr",
+            "baseName": "function_vaddr",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "sha256Hash",
+            "baseName": "sha_256_hash",
+            "type": "string",
             "format": ""
         }    ];
 

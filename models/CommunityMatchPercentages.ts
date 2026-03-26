@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class CommunityMatchPercentages {
-    'binaryName': string;
     'binaryId': number;
+    'binaryName': string;
     'matchedCommunitiesPercent': number;
     'unmatchedCommunitiesPercent': number;
 
@@ -23,15 +23,15 @@ export class CommunityMatchPercentages {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "binaryName",
-            "baseName": "binary_name",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "binaryId",
             "baseName": "binary_id",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "binaryName",
+            "baseName": "binary_name",
+            "type": "string",
             "format": ""
         },
         {

@@ -13,10 +13,7 @@ import { FunctionMatchingFilters } from '../models/FunctionMatchingFilters';
 import { HttpFile } from '../http/http';
 
 export class FunctionMatchingRequest {
-    /**
-    * ID of the model used for function matching, used to determine the embedding model
-    */
-    'modelId': number;
+    'filters'?: FunctionMatchingFilters | null;
     /**
     * ID\'s of functions to find matches for, must be at least one function ID
     */
@@ -25,11 +22,14 @@ export class FunctionMatchingRequest {
     * Minimum similarity expected for a match as a percentage, default is 90
     */
     'minSimilarity'?: number;
-    'filters'?: FunctionMatchingFilters | null;
     /**
-    * Maximum number of matches to return per function, default is 1, max is 50
+    * ID of the model used for function matching, used to determine the embedding model
     */
-    'resultsPerFunction'?: number;
+    'modelId': number;
+    /**
+    * If set to true, forces the system to bypass any cached results and perform a fresh computation
+    */
+    'noCache'?: boolean;
     /**
     * Page number for paginated results, default is 1 (first page)
     * @deprecated
@@ -41,14 +41,14 @@ export class FunctionMatchingRequest {
     */
     'pageSize'?: number;
     /**
+    * Maximum number of matches to return per function, default is 1, max is 50
+    */
+    'resultsPerFunction'?: number;
+    /**
     * If set to true, only returns the status of the matching operation without the actual results
     * @deprecated
     */
     'statusOnly'?: boolean;
-    /**
-    * If set to true, forces the system to bypass any cached results and perform a fresh computation
-    */
-    'noCache'?: boolean;
     /**
     * Whether to use canonical function names during function matching for confidence results, default is False
     */
@@ -60,9 +60,9 @@ export class FunctionMatchingRequest {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "modelId",
-            "baseName": "model_id",
-            "type": "number",
+            "name": "filters",
+            "baseName": "filters",
+            "type": "FunctionMatchingFilters",
             "format": ""
         },
         {
@@ -78,15 +78,15 @@ export class FunctionMatchingRequest {
             "format": ""
         },
         {
-            "name": "filters",
-            "baseName": "filters",
-            "type": "FunctionMatchingFilters",
+            "name": "modelId",
+            "baseName": "model_id",
+            "type": "number",
             "format": ""
         },
         {
-            "name": "resultsPerFunction",
-            "baseName": "results_per_function",
-            "type": "number",
+            "name": "noCache",
+            "baseName": "no_cache",
+            "type": "boolean",
             "format": ""
         },
         {
@@ -102,14 +102,14 @@ export class FunctionMatchingRequest {
             "format": ""
         },
         {
-            "name": "statusOnly",
-            "baseName": "status_only",
-            "type": "boolean",
+            "name": "resultsPerFunction",
+            "baseName": "results_per_function",
+            "type": "number",
             "format": ""
         },
         {
-            "name": "noCache",
-            "baseName": "no_cache",
+            "name": "statusOnly",
+            "baseName": "status_only",
             "type": "boolean",
             "format": ""
         },

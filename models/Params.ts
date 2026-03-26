@@ -12,27 +12,27 @@
 import { HttpFile } from '../http/http';
 
 export class Params {
-    'debugHash': string | null;
-    /**
-    * The size of the binary data
-    */
-    'binarySize': number;
     /**
     * The architecture of the binary data
     */
     'architecture': string;
     /**
-    * The type of binary data
+    * Whether the binary data is dynamic
     */
-    'binaryType': string;
+    'binaryDynamic': boolean;
     /**
     * The format of the binary data
     */
     'binaryFormat': string;
     /**
-    * Whether the binary data is dynamic
+    * The size of the binary data
     */
-    'binaryDynamic': boolean;
+    'binarySize': number;
+    /**
+    * The type of binary data
+    */
+    'binaryType': string;
+    'debugHash': string | null;
     /**
     * The name of the model
     */
@@ -44,8 +44,20 @@ export class Params {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "debugHash",
-            "baseName": "debug_hash",
+            "name": "architecture",
+            "baseName": "architecture",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "binaryDynamic",
+            "baseName": "binary_dynamic",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "binaryFormat",
+            "baseName": "binary_format",
             "type": "string",
             "format": ""
         },
@@ -56,27 +68,15 @@ export class Params {
             "format": ""
         },
         {
-            "name": "architecture",
-            "baseName": "architecture",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "binaryType",
             "baseName": "binary_type",
             "type": "string",
             "format": ""
         },
         {
-            "name": "binaryFormat",
-            "baseName": "binary_format",
+            "name": "debugHash",
+            "baseName": "debug_hash",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "binaryDynamic",
-            "baseName": "binary_dynamic",
-            "type": "boolean",
             "format": ""
         },
         {

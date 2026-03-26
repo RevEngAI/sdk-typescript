@@ -13,15 +13,21 @@ import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
 import { HttpFile } from '../http/http';
 
 export class NetworkOverviewDns {
+    'answers': Array<NetworkOverviewDnsAnswer>;
     'host': string;
     'type': string;
-    'answers': Array<NetworkOverviewDnsAnswer>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "answers",
+            "baseName": "answers",
+            "type": "Array<NetworkOverviewDnsAnswer>",
+            "format": ""
+        },
         {
             "name": "host",
             "baseName": "host",
@@ -32,12 +38,6 @@ export class NetworkOverviewDns {
             "name": "type",
             "baseName": "type",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "answers",
-            "baseName": "answers",
-            "type": "Array<NetworkOverviewDnsAnswer>",
             "format": ""
         }    ];
 

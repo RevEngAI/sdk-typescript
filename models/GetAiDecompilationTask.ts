@@ -15,18 +15,18 @@ import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { HttpFile } from '../http/http';
 
 export class GetAiDecompilationTask {
+    'aiSummary'?: string | null;
+    'decompilation': string | null;
+    'functionMapping': { [key: string]: InverseFunctionMapItem; } | null;
+    'functionMappingFull': FunctionMappingFull | null;
+    'predictedFunctionName'?: string | null;
+    'rawAiSummary'?: string | null;
+    'rawDecompilation': string | null;
     /**
     * The status of the AI decompilation task
     */
     'status': AiDecompilationTaskStatus;
-    'decompilation': string | null;
-    'rawDecompilation': string | null;
-    'functionMapping': { [key: string]: InverseFunctionMapItem; } | null;
-    'functionMappingFull': FunctionMappingFull | null;
     'summary'?: string | null;
-    'aiSummary'?: string | null;
-    'rawAiSummary'?: string | null;
-    'predictedFunctionName'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -34,20 +34,14 @@ export class GetAiDecompilationTask {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "AiDecompilationTaskStatus",
+            "name": "aiSummary",
+            "baseName": "ai_summary",
+            "type": "string",
             "format": ""
         },
         {
             "name": "decompilation",
             "baseName": "decompilation",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "rawDecompilation",
-            "baseName": "raw_decompilation",
             "type": "string",
             "format": ""
         },
@@ -64,14 +58,8 @@ export class GetAiDecompilationTask {
             "format": ""
         },
         {
-            "name": "summary",
-            "baseName": "summary",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "aiSummary",
-            "baseName": "ai_summary",
+            "name": "predictedFunctionName",
+            "baseName": "predicted_function_name",
             "type": "string",
             "format": ""
         },
@@ -82,8 +70,20 @@ export class GetAiDecompilationTask {
             "format": ""
         },
         {
-            "name": "predictedFunctionName",
-            "baseName": "predicted_function_name",
+            "name": "rawDecompilation",
+            "baseName": "raw_decompilation",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "AiDecompilationTaskStatus",
+            "format": ""
+        },
+        {
+            "name": "summary",
+            "baseName": "summary",
             "type": "string",
             "format": ""
         }    ];

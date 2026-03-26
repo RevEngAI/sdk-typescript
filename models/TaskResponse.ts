@@ -13,8 +13,8 @@ import { TaskStatus } from '../models/TaskStatus';
 import { HttpFile } from '../http/http';
 
 export class TaskResponse {
-    'status'?: TaskStatus;
     'errorMessage'?: string | null;
+    'status'?: TaskStatus;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,15 +22,15 @@ export class TaskResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "TaskStatus",
-            "format": ""
-        },
-        {
             "name": "errorMessage",
             "baseName": "error_message",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "TaskStatus",
             "format": ""
         }    ];
 

@@ -12,11 +12,11 @@
 import { HttpFile } from '../http/http';
 
 export class RelativeBinaryResponse {
+    'analysisId'?: number | null;
     /**
     * ID of the relative binary
     */
     'binaryId': number;
-    'analysisId'?: number | null;
     /**
     * Name of the relative binary
     */
@@ -32,14 +32,14 @@ export class RelativeBinaryResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "binaryId",
-            "baseName": "binary_id",
+            "name": "analysisId",
+            "baseName": "analysis_id",
             "type": "number",
             "format": ""
         },
         {
-            "name": "analysisId",
-            "baseName": "analysis_id",
+            "name": "binaryId",
+            "baseName": "binary_id",
             "type": "number",
             "format": ""
         },

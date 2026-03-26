@@ -17,13 +17,13 @@ export class CommentResponse {
     * Comment text content
     */
     'content': string;
-    'id': number;
-    'userId': number;
-    'resourceType': string;
-    'resourceId': string;
     'context'?: Context | null;
     'createdAt': Date;
+    'id': number;
+    'resourceId': string;
+    'resourceType': string;
     'updatedAt': Date;
+    'userId': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,30 +33,6 @@ export class CommentResponse {
         {
             "name": "content",
             "baseName": "content",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "id",
-            "baseName": "id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "userId",
-            "baseName": "user_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "resourceType",
-            "baseName": "resource_type",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "resourceId",
-            "baseName": "resource_id",
             "type": "string",
             "format": ""
         },
@@ -73,10 +49,34 @@ export class CommentResponse {
             "format": "date-time"
         },
         {
+            "name": "id",
+            "baseName": "id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "resourceId",
+            "baseName": "resource_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "resourceType",
+            "baseName": "resource_type",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "updatedAt",
             "baseName": "updated_at",
             "type": "Date",
             "format": "date-time"
+        },
+        {
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

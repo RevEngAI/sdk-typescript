@@ -13,31 +13,31 @@ import { HttpFile } from '../http/http';
 
 export class AppApiRestV2FunctionsTypesFunction {
     /**
+    * Whether the function is debug
+    */
+    'debug': boolean;
+    'embedding1d'?: Array<number> | null;
+    'embedding3d'?: Array<number> | null;
+    /**
     * Function id
     */
     'functionId': number;
-    /**
-    * Demangled name of the function
-    */
-    'functionName': string;
     /**
     * Mangled name of the function
     */
     'functionMangledName': string;
     /**
-    * Function virtual address
+    * Demangled name of the function
     */
-    'functionVaddr': number;
+    'functionName': string;
     /**
     * Function size
     */
     'functionSize': number;
     /**
-    * Whether the function is debug
+    * Function virtual address
     */
-    'debug': boolean;
-    'embedding3d'?: Array<number> | null;
-    'embedding1d'?: Array<number> | null;
+    'functionVaddr': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -45,39 +45,15 @@ export class AppApiRestV2FunctionsTypesFunction {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "functionId",
-            "baseName": "function_id",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "functionName",
-            "baseName": "function_name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "functionMangledName",
-            "baseName": "function_mangled_name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "functionVaddr",
-            "baseName": "function_vaddr",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "functionSize",
-            "baseName": "function_size",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "debug",
             "baseName": "debug",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "embedding1d",
+            "baseName": "embedding_1d",
+            "type": "Array<number>",
             "format": ""
         },
         {
@@ -87,10 +63,34 @@ export class AppApiRestV2FunctionsTypesFunction {
             "format": ""
         },
         {
-            "name": "embedding1d",
-            "baseName": "embedding_1d",
-            "type": "Array<number>",
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "functionMangledName",
+            "baseName": "function_mangled_name",
+            "type": "string",
             "format": ""
+        },
+        {
+            "name": "functionName",
+            "baseName": "function_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "functionSize",
+            "baseName": "function_size",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "functionVaddr",
+            "baseName": "function_vaddr",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {

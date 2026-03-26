@@ -13,8 +13,8 @@ import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel
 import { HttpFile } from '../http/http';
 
 export class SingleCodeSignatureModel {
-    'certificates': Array<SingleCodeCertificateModel>;
     'authenticodeDigest': string;
+    'certificates': Array<SingleCodeCertificateModel>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,15 +22,15 @@ export class SingleCodeSignatureModel {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "certificates",
-            "baseName": "certificates",
-            "type": "Array<SingleCodeCertificateModel>",
-            "format": ""
-        },
-        {
             "name": "authenticodeDigest",
             "baseName": "authenticode_digest",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "certificates",
+            "baseName": "certificates",
+            "type": "Array<SingleCodeCertificateModel>",
             "format": ""
         }    ];
 

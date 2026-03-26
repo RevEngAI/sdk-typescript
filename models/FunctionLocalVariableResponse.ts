@@ -14,9 +14,9 @@ import { HttpFile } from '../http/http';
 export class FunctionLocalVariableResponse {
     'address': string;
     'dType': string;
-    'size': number;
     'loc': string;
     'name': string;
+    'size': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -36,12 +36,6 @@ export class FunctionLocalVariableResponse {
             "format": ""
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "loc",
             "baseName": "loc",
             "type": "string",
@@ -51,6 +45,12 @@ export class FunctionLocalVariableResponse {
             "name": "name",
             "baseName": "name",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "size",
+            "baseName": "size",
+            "type": "number",
             "format": ""
         }    ];
 

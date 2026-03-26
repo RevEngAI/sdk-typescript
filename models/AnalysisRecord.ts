@@ -23,9 +23,35 @@ export class AnalysisRecord {
     */
     'analysisScope': string;
     /**
+    * The base address of the binary
+    */
+    'baseAddress': number;
+    /**
     * ID to identify the binary analyse
     */
     'binaryId': number;
+    /**
+    * The name of the file uploaded
+    */
+    'binaryName': string;
+    /**
+    * The size of the binary
+    */
+    'binarySize': number;
+    /**
+    * The datetime of when the analysis was created
+    */
+    'creation': Date;
+    'dynamicExecutionStatus'?: AppApiRestV2AnalysesEnumsDynamicExecutionStatus | null;
+    'dynamicExecutionTaskId'?: number | null;
+    /**
+    * The hash of the function boundaries
+    */
+    'functionBoundariesHash': string;
+    /**
+    * Whether the current user is the owner of a binary
+    */
+    'isOwner': boolean;
     /**
     * ID to identify the model used for analysis
     */
@@ -35,47 +61,21 @@ export class AnalysisRecord {
     */
     'modelName': string;
     /**
-    * The current status of analysis
-    */
-    'status': string;
-    /**
-    * The datetime of when the analysis was created
-    */
-    'creation': Date;
-    /**
-    * Whether the current user is the owner of a binary
-    */
-    'isOwner': boolean;
-    /**
-    * The name of the file uploaded
-    */
-    'binaryName': string;
-    /**
     * The hash of the binary
     */
     'sha256Hash': string;
     /**
-    * The hash of the function boundaries
+    * The current status of analysis
     */
-    'functionBoundariesHash': string;
-    /**
-    * The size of the binary
-    */
-    'binarySize': number;
-    /**
-    * The username of the analysis owner
-    */
-    'username': string;
-    'dynamicExecutionStatus'?: AppApiRestV2AnalysesEnumsDynamicExecutionStatus | null;
-    'dynamicExecutionTaskId'?: number | null;
-    /**
-    * The base address of the binary
-    */
-    'baseAddress': number;
+    'status': string;
     /**
     * List of tags associated with the analysis
     */
     'tags'?: Array<TagItem>;
+    /**
+    * The username of the analysis owner
+    */
+    'username': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -95,9 +95,57 @@ export class AnalysisRecord {
             "format": ""
         },
         {
+            "name": "baseAddress",
+            "baseName": "base_address",
+            "type": "number",
+            "format": "bigint"
+        },
+        {
             "name": "binaryId",
             "baseName": "binary_id",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "binaryName",
+            "baseName": "binary_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "binarySize",
+            "baseName": "binary_size",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "creation",
+            "baseName": "creation",
+            "type": "Date",
+            "format": "date-time"
+        },
+        {
+            "name": "dynamicExecutionStatus",
+            "baseName": "dynamic_execution_status",
+            "type": "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
+            "format": ""
+        },
+        {
+            "name": "dynamicExecutionTaskId",
+            "baseName": "dynamic_execution_task_id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "functionBoundariesHash",
+            "baseName": "function_boundaries_hash",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "isOwner",
+            "baseName": "is_owner",
+            "type": "boolean",
             "format": ""
         },
         {
@@ -113,75 +161,27 @@ export class AnalysisRecord {
             "format": ""
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "creation",
-            "baseName": "creation",
-            "type": "Date",
-            "format": "date-time"
-        },
-        {
-            "name": "isOwner",
-            "baseName": "is_owner",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "binaryName",
-            "baseName": "binary_name",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
             "type": "string",
             "format": ""
         },
         {
-            "name": "functionBoundariesHash",
-            "baseName": "function_boundaries_hash",
+            "name": "status",
+            "baseName": "status",
             "type": "string",
             "format": ""
         },
         {
-            "name": "binarySize",
-            "baseName": "binary_size",
-            "type": "number",
+            "name": "tags",
+            "baseName": "tags",
+            "type": "Array<TagItem>",
             "format": ""
         },
         {
             "name": "username",
             "baseName": "username",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "dynamicExecutionStatus",
-            "baseName": "dynamic_execution_status",
-            "type": "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
-            "format": ""
-        },
-        {
-            "name": "dynamicExecutionTaskId",
-            "baseName": "dynamic_execution_task_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "baseAddress",
-            "baseName": "base_address",
-            "type": "number",
-            "format": "bigint"
-        },
-        {
-            "name": "tags",
-            "baseName": "tags",
-            "type": "Array<TagItem>",
             "format": ""
         }    ];
 

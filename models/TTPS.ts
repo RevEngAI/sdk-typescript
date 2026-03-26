@@ -13,8 +13,8 @@ import { TTPSData } from '../models/TTPSData';
 import { HttpFile } from '../http/http';
 
 export class TTPS {
-    'success': boolean;
     'data': TTPSData;
+    'success': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,15 +22,15 @@ export class TTPS {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "success",
-            "baseName": "success",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "data",
             "baseName": "data",
             "type": "TTPSData",
+            "format": ""
+        },
+        {
+            "name": "success",
+            "baseName": "success",
+            "type": "boolean",
             "format": ""
         }    ];
 

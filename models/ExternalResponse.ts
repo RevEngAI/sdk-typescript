@@ -12,21 +12,15 @@
 import { HttpFile } from '../http/http';
 
 export class ExternalResponse {
-    'sha256Hash': string;
     'data': { [key: string]: any; };
     'lastUpdated': Date;
+    'sha256Hash': string;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "sha256Hash",
-            "baseName": "sha_256_hash",
-            "type": "string",
-            "format": ""
-        },
         {
             "name": "data",
             "baseName": "data",
@@ -38,6 +32,12 @@ export class ExternalResponse {
             "baseName": "last_updated",
             "type": "Date",
             "format": "date-time"
+        },
+        {
+            "name": "sha256Hash",
+            "baseName": "sha_256_hash",
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

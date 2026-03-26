@@ -14,14 +14,6 @@ import { HttpFile } from '../http/http';
 
 export class Communities {
     /**
-    * The total number of matched community functions
-    */
-    'totalFunctions': number;
-    /**
-    * The total number of functions in the binary
-    */
-    'totalMatchedFunctions': number;
-    /**
     * The list of directly matched communities
     */
     'directCommunityMatchPercentages': Array<CommunityMatchPercentages>;
@@ -29,24 +21,20 @@ export class Communities {
     * The top components of the binary
     */
     'topComponents': Array<{ [key: string]: any; }>;
+    /**
+    * The total number of matched community functions
+    */
+    'totalFunctions': number;
+    /**
+    * The total number of functions in the binary
+    */
+    'totalMatchedFunctions': number;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "totalFunctions",
-            "baseName": "total_functions",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "totalMatchedFunctions",
-            "baseName": "total_matched_functions",
-            "type": "number",
-            "format": ""
-        },
         {
             "name": "directCommunityMatchPercentages",
             "baseName": "direct_community_match_percentages",
@@ -57,6 +45,18 @@ export class Communities {
             "name": "topComponents",
             "baseName": "top_components",
             "type": "Array<{ [key: string]: any; }>",
+            "format": ""
+        },
+        {
+            "name": "totalFunctions",
+            "baseName": "total_functions",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "totalMatchedFunctions",
+            "baseName": "total_matched_functions",
+            "type": "number",
             "format": ""
         }    ];
 

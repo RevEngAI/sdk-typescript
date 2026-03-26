@@ -19,25 +19,25 @@ import { ElfDynamicEntry } from '../models/ElfDynamicEntry';
 import { HttpFile } from '../http/http';
 
 export class ELFModel {
-    'fileType': string;
     'architecture': string;
+    'buildId': string;
+    'debugInfo': { [key: string]: any; };
+    'dynamicEntries': Array<ElfDynamicEntry>;
+    'dynamicSymbols': Array<ELFSymbol>;
     'endianness': string;
     'entryPoint': number;
     'entryPointBytes': string;
-    'importHash': string;
     'exportHash': string;
-    'buildId': string;
-    'security': ELFSecurity;
+    'exportedFunctions': Array<string>;
+    'fileType': string;
+    'importHash': string;
+    'imports': ELFImportModel;
+    'notes': Array<{ [key: string]: any; }>;
+    'relocations': Array<ELFRelocation>;
     'sections': Array<ELFSection>;
+    'security': ELFSecurity;
     'segments': Array<ELFSegment>;
     'symbols': Array<ELFSymbol>;
-    'dynamicSymbols': Array<ELFSymbol>;
-    'relocations': Array<ELFRelocation>;
-    'imports': ELFImportModel;
-    'exportedFunctions': Array<string>;
-    'dynamicEntries': Array<ElfDynamicEntry>;
-    'notes': Array<{ [key: string]: any; }>;
-    'debugInfo': { [key: string]: any; };
     'versionInfo': { [key: string]: any; };
 
     static readonly discriminator: string | undefined = undefined;
@@ -46,15 +46,33 @@ export class ELFModel {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "fileType",
-            "baseName": "file_type",
+            "name": "architecture",
+            "baseName": "architecture",
             "type": "string",
             "format": ""
         },
         {
-            "name": "architecture",
-            "baseName": "architecture",
+            "name": "buildId",
+            "baseName": "build_id",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "debugInfo",
+            "baseName": "debug_info",
+            "type": "{ [key: string]: any; }",
+            "format": ""
+        },
+        {
+            "name": "dynamicEntries",
+            "baseName": "dynamic_entries",
+            "type": "Array<ElfDynamicEntry>",
+            "format": ""
+        },
+        {
+            "name": "dynamicSymbols",
+            "baseName": "dynamic_symbols",
+            "type": "Array<ELFSymbol>",
             "format": ""
         },
         {
@@ -76,33 +94,57 @@ export class ELFModel {
             "format": ""
         },
         {
-            "name": "importHash",
-            "baseName": "import_hash",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "exportHash",
             "baseName": "export_hash",
             "type": "string",
             "format": ""
         },
         {
-            "name": "buildId",
-            "baseName": "build_id",
+            "name": "exportedFunctions",
+            "baseName": "exported_functions",
+            "type": "Array<string>",
+            "format": ""
+        },
+        {
+            "name": "fileType",
+            "baseName": "file_type",
             "type": "string",
             "format": ""
         },
         {
-            "name": "security",
-            "baseName": "security",
-            "type": "ELFSecurity",
+            "name": "importHash",
+            "baseName": "import_hash",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "imports",
+            "baseName": "imports",
+            "type": "ELFImportModel",
+            "format": ""
+        },
+        {
+            "name": "notes",
+            "baseName": "notes",
+            "type": "Array<{ [key: string]: any; }>",
+            "format": ""
+        },
+        {
+            "name": "relocations",
+            "baseName": "relocations",
+            "type": "Array<ELFRelocation>",
             "format": ""
         },
         {
             "name": "sections",
             "baseName": "sections",
             "type": "Array<ELFSection>",
+            "format": ""
+        },
+        {
+            "name": "security",
+            "baseName": "security",
+            "type": "ELFSecurity",
             "format": ""
         },
         {
@@ -115,48 +157,6 @@ export class ELFModel {
             "name": "symbols",
             "baseName": "symbols",
             "type": "Array<ELFSymbol>",
-            "format": ""
-        },
-        {
-            "name": "dynamicSymbols",
-            "baseName": "dynamic_symbols",
-            "type": "Array<ELFSymbol>",
-            "format": ""
-        },
-        {
-            "name": "relocations",
-            "baseName": "relocations",
-            "type": "Array<ELFRelocation>",
-            "format": ""
-        },
-        {
-            "name": "imports",
-            "baseName": "imports",
-            "type": "ELFImportModel",
-            "format": ""
-        },
-        {
-            "name": "exportedFunctions",
-            "baseName": "exported_functions",
-            "type": "Array<string>",
-            "format": ""
-        },
-        {
-            "name": "dynamicEntries",
-            "baseName": "dynamic_entries",
-            "type": "Array<ElfDynamicEntry>",
-            "format": ""
-        },
-        {
-            "name": "notes",
-            "baseName": "notes",
-            "type": "Array<{ [key: string]: any; }>",
-            "format": ""
-        },
-        {
-            "name": "debugInfo",
-            "baseName": "debug_info",
-            "type": "{ [key: string]: any; }",
             "format": ""
         },
         {

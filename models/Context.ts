@@ -13,8 +13,8 @@ import { DecompilationCommentContext } from '../models/DecompilationCommentConte
 import { HttpFile } from '../http/http';
 
 export class Context {
-    'startLine': number;
     'endLine': number;
+    'startLine': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,14 +22,14 @@ export class Context {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "startLine",
-            "baseName": "start_line",
+            "name": "endLine",
+            "baseName": "end_line",
             "type": "number",
             "format": ""
         },
         {
-            "name": "endLine",
-            "baseName": "end_line",
+            "name": "startLine",
+            "baseName": "start_line",
             "type": "number",
             "format": ""
         }    ];

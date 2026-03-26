@@ -58,8 +58,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 **409** | Security checks already extracted or queued |  -  |
+**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

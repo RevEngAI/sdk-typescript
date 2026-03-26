@@ -13,8 +13,8 @@ import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { HttpFile } from '../http/http';
 
 export class ProcessDumps {
-    'success': boolean;
     'data': ProcessDumpsData;
+    'success': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,15 +22,15 @@ export class ProcessDumps {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "success",
-            "baseName": "success",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "data",
             "baseName": "data",
             "type": "ProcessDumpsData",
+            "format": ""
+        },
+        {
+            "name": "success",
+            "baseName": "success",
+            "type": "boolean",
             "format": ""
         }    ];
 

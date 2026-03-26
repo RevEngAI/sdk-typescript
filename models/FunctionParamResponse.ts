@@ -12,10 +12,10 @@
 import { HttpFile } from '../http/http';
 
 export class FunctionParamResponse {
-    'dType': string;
-    'loc': string;
     'addr': string;
+    'dType': string;
     'length': number;
+    'loc': string;
     'name': string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -24,20 +24,14 @@ export class FunctionParamResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "dType",
-            "baseName": "d_type",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "loc",
-            "baseName": "loc",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "addr",
             "baseName": "addr",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "dType",
+            "baseName": "d_type",
             "type": "string",
             "format": ""
         },
@@ -45,6 +39,12 @@ export class FunctionParamResponse {
             "name": "length",
             "baseName": "length",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "loc",
+            "baseName": "loc",
+            "type": "string",
             "format": ""
         },
         {

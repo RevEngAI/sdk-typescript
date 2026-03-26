@@ -14,8 +14,8 @@ import { HttpFile } from '../http/http';
 
 export class BinaryAdditionalResponse {
     'binaryId': number;
-    'details': BinaryAdditionalDetailsDataResponse | null;
     'creation'?: Date | null;
+    'details': BinaryAdditionalDetailsDataResponse | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -29,16 +29,16 @@ export class BinaryAdditionalResponse {
             "format": ""
         },
         {
-            "name": "details",
-            "baseName": "details",
-            "type": "BinaryAdditionalDetailsDataResponse",
-            "format": ""
-        },
-        {
             "name": "creation",
             "baseName": "creation",
             "type": "Date",
             "format": "date-time"
+        },
+        {
+            "name": "details",
+            "baseName": "details",
+            "type": "BinaryAdditionalDetailsDataResponse",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

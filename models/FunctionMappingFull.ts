@@ -15,23 +15,23 @@ import { InverseValue } from '../models/InverseValue';
 import { HttpFile } from '../http/http';
 
 export class FunctionMappingFull {
-    'inverseStringMap': { [key: string]: InverseStringMapItem; };
-    'inverseFunctionMap': { [key: string]: InverseFunctionMapItem; };
-    'unmatchedFunctions': { [key: string]: InverseValue; };
-    'unmatchedCustomTypes': { [key: string]: InverseValue; };
-    'unmatchedStrings': { [key: string]: InverseValue; };
-    'unmatchedVars': { [key: string]: InverseValue; };
-    'unmatchedGoToLabels': { [key: string]: InverseValue; };
-    'unmatchedCustomFunctionPointers': { [key: string]: InverseValue; };
-    'unmatchedVariadicLists': { [key: string]: InverseValue; };
-    'unmatchedEnums': { [key: string]: InverseValue; };
-    'unmatchedGlobalVars': { [key: string]: InverseValue; };
     'fields': { [key: string]: { [key: string]: InverseValue; }; };
+    'inverseFunctionMap': { [key: string]: InverseFunctionMapItem; };
+    'inverseStringMap': { [key: string]: InverseStringMapItem; };
+    'unmatchedCustomFunctionPointers': { [key: string]: InverseValue; };
+    'unmatchedCustomTypes': { [key: string]: InverseValue; };
+    'unmatchedEnums': { [key: string]: InverseValue; };
     /**
     * No longer provided.
     * @deprecated
     */
     'unmatchedExternalVars'?: { [key: string]: InverseValue; };
+    'unmatchedFunctions': { [key: string]: InverseValue; };
+    'unmatchedGlobalVars': { [key: string]: InverseValue; };
+    'unmatchedGoToLabels': { [key: string]: InverseValue; };
+    'unmatchedStrings': { [key: string]: InverseValue; };
+    'unmatchedVariadicLists': { [key: string]: InverseValue; };
+    'unmatchedVars': { [key: string]: InverseValue; };
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -39,9 +39,9 @@ export class FunctionMappingFull {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "inverseStringMap",
-            "baseName": "inverse_string_map",
-            "type": "{ [key: string]: InverseStringMapItem; }",
+            "name": "fields",
+            "baseName": "fields",
+            "type": "{ [key: string]: { [key: string]: InverseValue; }; }",
             "format": ""
         },
         {
@@ -51,8 +51,14 @@ export class FunctionMappingFull {
             "format": ""
         },
         {
-            "name": "unmatchedFunctions",
-            "baseName": "unmatched_functions",
+            "name": "inverseStringMap",
+            "baseName": "inverse_string_map",
+            "type": "{ [key: string]: InverseStringMapItem; }",
+            "format": ""
+        },
+        {
+            "name": "unmatchedCustomFunctionPointers",
+            "baseName": "unmatched_custom_function_pointers",
             "type": "{ [key: string]: InverseValue; }",
             "format": ""
         },
@@ -63,38 +69,20 @@ export class FunctionMappingFull {
             "format": ""
         },
         {
-            "name": "unmatchedStrings",
-            "baseName": "unmatched_strings",
-            "type": "{ [key: string]: InverseValue; }",
-            "format": ""
-        },
-        {
-            "name": "unmatchedVars",
-            "baseName": "unmatched_vars",
-            "type": "{ [key: string]: InverseValue; }",
-            "format": ""
-        },
-        {
-            "name": "unmatchedGoToLabels",
-            "baseName": "unmatched_go_to_labels",
-            "type": "{ [key: string]: InverseValue; }",
-            "format": ""
-        },
-        {
-            "name": "unmatchedCustomFunctionPointers",
-            "baseName": "unmatched_custom_function_pointers",
-            "type": "{ [key: string]: InverseValue; }",
-            "format": ""
-        },
-        {
-            "name": "unmatchedVariadicLists",
-            "baseName": "unmatched_variadic_lists",
-            "type": "{ [key: string]: InverseValue; }",
-            "format": ""
-        },
-        {
             "name": "unmatchedEnums",
             "baseName": "unmatched_enums",
+            "type": "{ [key: string]: InverseValue; }",
+            "format": ""
+        },
+        {
+            "name": "unmatchedExternalVars",
+            "baseName": "unmatched_external_vars",
+            "type": "{ [key: string]: InverseValue; }",
+            "format": ""
+        },
+        {
+            "name": "unmatchedFunctions",
+            "baseName": "unmatched_functions",
             "type": "{ [key: string]: InverseValue; }",
             "format": ""
         },
@@ -105,14 +93,26 @@ export class FunctionMappingFull {
             "format": ""
         },
         {
-            "name": "fields",
-            "baseName": "fields",
-            "type": "{ [key: string]: { [key: string]: InverseValue; }; }",
+            "name": "unmatchedGoToLabels",
+            "baseName": "unmatched_go_to_labels",
+            "type": "{ [key: string]: InverseValue; }",
             "format": ""
         },
         {
-            "name": "unmatchedExternalVars",
-            "baseName": "unmatched_external_vars",
+            "name": "unmatchedStrings",
+            "baseName": "unmatched_strings",
+            "type": "{ [key: string]: InverseValue; }",
+            "format": ""
+        },
+        {
+            "name": "unmatchedVariadicLists",
+            "baseName": "unmatched_variadic_lists",
+            "type": "{ [key: string]: InverseValue; }",
+            "format": ""
+        },
+        {
+            "name": "unmatchedVars",
+            "baseName": "unmatched_vars",
             "type": "{ [key: string]: InverseValue; }",
             "format": ""
         }    ];

@@ -325,45 +325,45 @@ const request: FunctionsDataTypesApiUpdateFunctionDataTypesRequest = {
   functionId: 1,
   
   updateFunctionDataTypes: {
-    dataTypesVersion: 1,
     dataTypes: {
-      funcTypes: {
-        lastChange: "lastChange_example",
-        addr: 1,
-        size: 1,
-        header: {
-          lastChange: "lastChange_example",
-          name: "name_example",
-          addr: 1,
-          type: "type_example",
-          args: {
-            "key": {
-              lastChange: "lastChange_example",
-              offset: 1,
-              name: "name_example",
-              type: "type_example",
-              size: 1,
-            },
-          },
-        },
-        stackVars: {
-          "key": {
-            lastChange: "lastChange_example",
-            offset: 1,
-            name: "name_example",
-            type: "type_example",
-            size: 1,
-            addr: 1,
-          },
-        },
-        name: "name_example",
-        type: "type_example",
-        artifactType: "Function",
-      },
       funcDeps: [
         null,
       ],
+      funcTypes: {
+        addr: 1,
+        artifactType: "Function",
+        header: {
+          addr: 1,
+          args: {
+            "key": {
+              lastChange: "lastChange_example",
+              name: "name_example",
+              offset: 1,
+              size: 1,
+              type: "type_example",
+            },
+          },
+          lastChange: "lastChange_example",
+          name: "name_example",
+          type: "type_example",
+        },
+        lastChange: "lastChange_example",
+        name: "name_example",
+        size: 1,
+        stackVars: {
+          "key": {
+            addr: 1,
+            lastChange: "lastChange_example",
+            name: "name_example",
+            offset: 1,
+            size: 1,
+            type: "type_example",
+          },
+        },
+        type: "type_example",
+      },
     },
+    dataTypesVersion: 1,
   },
 };
 

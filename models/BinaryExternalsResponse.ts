@@ -13,6 +13,14 @@ import { HttpFile } from '../http/http';
 
 export class BinaryExternalsResponse {
     /**
+    * MalwareBazaar information
+    */
+    'mb': { [key: string]: any; };
+    /**
+    * MalwareBazaar last updated date
+    */
+    'mbLastUpdated': Date;
+    /**
     * SHA256 hash of the binary
     */
     'sha256Hash': string;
@@ -24,20 +32,24 @@ export class BinaryExternalsResponse {
     * VirusTotal last updated date
     */
     'vtLastUpdated': Date;
-    /**
-    * MalwareBazaar information
-    */
-    'mb': { [key: string]: any; };
-    /**
-    * MalwareBazaar last updated date
-    */
-    'mbLastUpdated': Date;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "mb",
+            "baseName": "mb",
+            "type": "{ [key: string]: any; }",
+            "format": ""
+        },
+        {
+            "name": "mbLastUpdated",
+            "baseName": "mb_last_updated",
+            "type": "Date",
+            "format": "date-time"
+        },
         {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
@@ -53,18 +65,6 @@ export class BinaryExternalsResponse {
         {
             "name": "vtLastUpdated",
             "baseName": "vt_last_updated",
-            "type": "Date",
-            "format": "date-time"
-        },
-        {
-            "name": "mb",
-            "baseName": "mb",
-            "type": "{ [key: string]: any; }",
-            "format": ""
-        },
-        {
-            "name": "mbLastUpdated",
-            "baseName": "mb_last_updated",
             "type": "Date",
             "format": "date-time"
         }    ];

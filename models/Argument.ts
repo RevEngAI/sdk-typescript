@@ -14,21 +14,21 @@ import { HttpFile } from '../http/http';
 export class Argument {
     'lastChange'?: string | null;
     /**
-    * Offset of the argument in the function signature
-    */
-    'offset': number;
-    /**
     * Name of the argument
     */
     'name': string;
     /**
-    * Data type of the argument
+    * Offset of the argument in the function signature
     */
-    'type': string;
+    'offset': number;
     /**
     * Size of the argument in bytes
     */
     'size': number;
+    /**
+    * Data type of the argument
+    */
+    'type': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -42,27 +42,27 @@ export class Argument {
             "format": ""
         },
         {
-            "name": "offset",
-            "baseName": "offset",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "name",
             "baseName": "name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
+            "name": "offset",
+            "baseName": "offset",
+            "type": "number",
             "format": ""
         },
         {
             "name": "size",
             "baseName": "size",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
             "format": ""
         }    ];
 

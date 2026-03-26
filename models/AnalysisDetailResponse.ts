@@ -18,6 +18,7 @@ export class AnalysisDetailResponse {
     'analysisId': number;
     'analysisScope': string;
     'architecture': string;
+    'autoRunAgents': AutoRunAgents;
     'binaryDynamic': boolean;
     'binaryFormat': string;
     'binaryName': string;
@@ -32,7 +33,6 @@ export class AnalysisDetailResponse {
     'modelName': string;
     'sbom'?: { [key: string]: any; } | null;
     'sha256Hash': string;
-    'autoRunAgents': AutoRunAgents;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -61,6 +61,12 @@ export class AnalysisDetailResponse {
             "name": "architecture",
             "baseName": "architecture",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "autoRunAgents",
+            "baseName": "auto_run_agents",
+            "type": "AutoRunAgents",
             "format": ""
         },
         {
@@ -127,12 +133,6 @@ export class AnalysisDetailResponse {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "autoRunAgents",
-            "baseName": "auto_run_agents",
-            "type": "AutoRunAgents",
             "format": ""
         }    ];
 

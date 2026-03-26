@@ -21,6 +21,10 @@ export class FunctionMatchingFilters {
     */
     'collectionIds'?: Array<number>;
     /**
+    * Limit the search to specific debug types, if empty, search all scoped debug & non-debug functions
+    */
+    'debugTypes'?: Array<FunctionMatchingFiltersDebugTypesEnum>;
+    /**
     * ID\'s of functions to limit the search to, if empty, search all scoped functions
     */
     'functionIds'?: Array<number>;
@@ -28,10 +32,6 @@ export class FunctionMatchingFilters {
     * ID\'s of users to limit the search to, if empty, search all scoped users
     */
     'userIds'?: Array<number>;
-    /**
-    * Limit the search to specific debug types, if empty, search all scoped debug & non-debug functions
-    */
-    'debugTypes'?: Array<FunctionMatchingFiltersDebugTypesEnum>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -51,6 +51,12 @@ export class FunctionMatchingFilters {
             "format": ""
         },
         {
+            "name": "debugTypes",
+            "baseName": "debug_types",
+            "type": "Array<FunctionMatchingFiltersDebugTypesEnum>",
+            "format": ""
+        },
+        {
             "name": "functionIds",
             "baseName": "function_ids",
             "type": "Array<number>",
@@ -60,12 +66,6 @@ export class FunctionMatchingFilters {
             "name": "userIds",
             "baseName": "user_ids",
             "type": "Array<number>",
-            "format": ""
-        },
-        {
-            "name": "debugTypes",
-            "baseName": "debug_types",
-            "type": "Array<FunctionMatchingFiltersDebugTypesEnum>",
             "format": ""
         }    ];
 

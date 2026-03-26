@@ -9,14 +9,14 @@
  * Do not edit the class manually.
  */
 
+import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { HttpFile } from '../http/http';
 
-export class ELFSecurity {
-    'canary': boolean;
-    'nx': boolean;
-    'pie': boolean;
-    'relo': boolean;
-    'stripped': boolean;
+export class PutAnalysisStringsRequest {
+    /**
+    * The strings to add to the analysis
+    */
+    'strings': Array<AnalysisStringInput>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,38 +24,14 @@ export class ELFSecurity {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "canary",
-            "baseName": "canary",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "nx",
-            "baseName": "nx",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "pie",
-            "baseName": "pie",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "relo",
-            "baseName": "relo",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "stripped",
-            "baseName": "stripped",
-            "type": "boolean",
+            "name": "strings",
+            "baseName": "strings",
+            "type": "Array<AnalysisStringInput>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return ELFSecurity.attributeTypeMap;
+        return PutAnalysisStringsRequest.attributeTypeMap;
     }
 
     public constructor() {

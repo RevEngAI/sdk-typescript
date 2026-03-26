@@ -24,6 +24,7 @@ import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStage } from '../models/AnalysisStage';
 import { AnalysisStageStatus } from '../models/AnalysisStageStatus';
 import { AnalysisStagesResponse } from '../models/AnalysisStagesResponse';
+import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
@@ -263,6 +264,7 @@ import { ProcessDumps } from '../models/ProcessDumps';
 import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
+import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedSecurityChecksTaskResponse } from '../models/QueuedSecurityChecksTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
@@ -288,6 +290,7 @@ import { StageStatus } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StringFunctions } from '../models/StringFunctions';
+import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { Symbols } from '../models/Symbols';
@@ -666,6 +669,22 @@ export interface AnalysesCoreApiLookupBinaryIdRequest {
     binaryId: number
 }
 
+export interface AnalysesCoreApiPutAnalysisStringsRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiputAnalysisStrings
+     */
+    analysisId: number
+    /**
+     * 
+     * @type PutAnalysisStringsRequest
+     * @memberof AnalysesCoreApiputAnalysisStrings
+     */
+    putAnalysisStringsRequest: PutAnalysisStringsRequest
+}
+
 export interface AnalysesCoreApiRequeueAnalysisRequest {
     /**
      * 
@@ -725,17 +744,17 @@ export interface AnalysesCoreApiUploadFileRequest {
     /**
      * 
      * Defaults to: undefined
-     * @type UploadFileType
-     * @memberof AnalysesCoreApiuploadFile
-     */
-    uploadFileType: UploadFileType
-    /**
-     * 
-     * Defaults to: undefined
      * @type HttpFile
      * @memberof AnalysesCoreApiuploadFile
      */
     file: HttpFile
+    /**
+     * 
+     * Defaults to: undefined
+     * @type UploadFileType
+     * @memberof AnalysesCoreApiuploadFile
+     */
+    uploadFileType: UploadFileType
     /**
      * 
      * Defaults to: undefined
@@ -958,6 +977,24 @@ export class ObjectAnalysesCoreApi {
     }
 
     /**
+     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+     * Add strings to the analysis
+     * @param param the request object
+     */
+    public putAnalysisStringsWithHttpInfo(param: AnalysesCoreApiPutAnalysisStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+        return this.api.putAnalysisStringsWithHttpInfo(param.analysisId, param.putAnalysisStringsRequest,  options).toPromise();
+    }
+
+    /**
+     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+     * Add strings to the analysis
+     * @param param the request object
+     */
+    public putAnalysisStrings(param: AnalysesCoreApiPutAnalysisStringsRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
+        return this.api.putAnalysisStrings(param.analysisId, param.putAnalysisStringsRequest,  options).toPromise();
+    }
+
+    /**
      * Re-queues an already uploaded analysis
      * Requeue Analysis
      * @param param the request object
@@ -1016,7 +1053,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public uploadFileWithHttpInfo(param: AnalysesCoreApiUploadFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
-        return this.api.uploadFileWithHttpInfo(param.uploadFileType, param.file, param.packedPassword, param.forceOverwrite,  options).toPromise();
+        return this.api.uploadFileWithHttpInfo(param.file, param.uploadFileType, param.packedPassword, param.forceOverwrite,  options).toPromise();
     }
 
     /**
@@ -1024,7 +1061,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public uploadFile(param: AnalysesCoreApiUploadFileRequest, options?: ConfigurationOptions): Promise<BaseResponseUploadResponse> {
-        return this.api.uploadFile(param.uploadFileType, param.file, param.packedPassword, param.forceOverwrite,  options).toPromise();
+        return this.api.uploadFile(param.file, param.uploadFileType, param.packedPassword, param.forceOverwrite,  options).toPromise();
     }
 
 }
@@ -2674,7 +2711,7 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest 
      */
     summarise?: boolean
     /**
-     * Generate inline comments for the decompilation (only works if summarise is enabled)
+     * Generate inline comments for the decompilation
      * Defaults to: true
      * @type boolean
      * @memberof FunctionsAIDecompilationApigetAiDecompilationTaskResult

@@ -12,12 +12,12 @@
 import { HttpFile } from '../http/http';
 
 export class SingleCodeCertificateModel {
-    'version': number;
-    'issuedOn': string;
     'expiresOn': string;
+    'issuedOn': string;
     'issuerName': string;
     'serialNumber': string;
     'subjectName': string;
+    'version': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -25,20 +25,14 @@ export class SingleCodeCertificateModel {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "version",
-            "baseName": "version",
-            "type": "number",
+            "name": "expiresOn",
+            "baseName": "expires_on",
+            "type": "string",
             "format": ""
         },
         {
             "name": "issuedOn",
             "baseName": "issued_on",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "expiresOn",
-            "baseName": "expires_on",
             "type": "string",
             "format": ""
         },
@@ -58,6 +52,12 @@ export class SingleCodeCertificateModel {
             "name": "subjectName",
             "baseName": "subject_name",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "version",
+            "baseName": "version",
+            "type": "number",
             "format": ""
         }    ];
 

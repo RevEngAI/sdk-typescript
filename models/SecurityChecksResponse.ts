@@ -14,8 +14,8 @@ import { HttpFile } from '../http/http';
 
 export class SecurityChecksResponse {
     'binaryId': number;
-    'totalResults': number;
     'results': Array<SecurityChecksResult>;
+    'totalResults': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -29,15 +29,15 @@ export class SecurityChecksResponse {
             "format": ""
         },
         {
-            "name": "totalResults",
-            "baseName": "total_results",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "results",
             "baseName": "results",
             "type": "Array<SecurityChecksResult>",
+            "format": ""
+        },
+        {
+            "name": "totalResults",
+            "baseName": "total_results",
+            "type": "number",
             "format": ""
         }    ];
 

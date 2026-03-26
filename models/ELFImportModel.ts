@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class ELFImportModel {
-    'numberOfImports': number;
     'imports': Array<string>;
+    'numberOfImports': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -21,15 +21,15 @@ export class ELFImportModel {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "numberOfImports",
-            "baseName": "number_of_imports",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "imports",
             "baseName": "imports",
             "type": "Array<string>",
+            "format": ""
+        },
+        {
+            "name": "numberOfImports",
+            "baseName": "number_of_imports",
+            "type": "number",
             "format": ""
         }    ];
 

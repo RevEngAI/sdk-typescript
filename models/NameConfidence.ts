@@ -13,13 +13,13 @@ import { HttpFile } from '../http/http';
 
 export class NameConfidence {
     /**
-    * The suggested function name
-    */
-    'name': string;
-    /**
     * Confidence score as a percentage
     */
     'confidence': number;
+    /**
+    * The suggested function name
+    */
+    'name': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -27,15 +27,15 @@ export class NameConfidence {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "confidence",
             "baseName": "confidence",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
             "format": ""
         }    ];
 

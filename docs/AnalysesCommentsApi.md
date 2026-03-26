@@ -65,8 +65,8 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 **400** | Bad Request |  -  |
+**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -123,9 +123,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**403** | You can only delete your own comments |  -  |
 **400** | Bad Request |  -  |
+**403** | You can only delete your own comments |  -  |
+**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -241,9 +241,9 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**403** | You can only update your own comments |  -  |
 **400** | Bad Request |  -  |
+**403** | You can only update your own comments |  -  |
+**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

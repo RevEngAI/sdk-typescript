@@ -16,7 +16,15 @@ import { TypeDefinition } from '../models/TypeDefinition';
 import { HttpFile } from '../http/http';
 
 export class FunctionInfoInputFuncDepsInner {
+    /**
+    * Type of artifact that the global variable is associated with
+    */
+    'artifactType'?: string;
     'lastChange'?: string;
+    /**
+    * Dictionary of enumeration members and their values
+    */
+    'members': { [key: string]: number; };
     /**
     * Name of the global variable
     */
@@ -25,14 +33,6 @@ export class FunctionInfoInputFuncDepsInner {
     * Size of the global variable in bytes
     */
     'size': number;
-    /**
-    * Dictionary of enumeration members and their values
-    */
-    'members': { [key: string]: number; };
-    /**
-    * Type of artifact that the global variable is associated with
-    */
-    'artifactType'?: string;
     /**
     * Data type of the global variable
     */
@@ -48,9 +48,21 @@ export class FunctionInfoInputFuncDepsInner {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "artifactType",
+            "baseName": "artifact_type",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "lastChange",
             "baseName": "last_change",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "members",
+            "baseName": "members",
+            "type": "{ [key: string]: number; }",
             "format": ""
         },
         {
@@ -63,18 +75,6 @@ export class FunctionInfoInputFuncDepsInner {
             "name": "size",
             "baseName": "size",
             "type": "number",
-            "format": ""
-        },
-        {
-            "name": "members",
-            "baseName": "members",
-            "type": "{ [key: string]: number; }",
-            "format": ""
-        },
-        {
-            "name": "artifactType",
-            "baseName": "artifact_type",
-            "type": "string",
             "format": ""
         },
         {

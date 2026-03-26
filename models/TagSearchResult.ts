@@ -13,13 +13,13 @@ import { HttpFile } from '../http/http';
 
 export class TagSearchResult {
     /**
-    * The ID of the tag
-    */
-    'tagId': number;
-    /**
     * The name of the tag
     */
     'tag': string;
+    /**
+    * The ID of the tag
+    */
+    'tagId': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -27,15 +27,15 @@ export class TagSearchResult {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "tagId",
-            "baseName": "tag_id",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "tag",
             "baseName": "tag",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "tagId",
+            "baseName": "tag_id",
+            "type": "number",
             "format": ""
         }    ];
 

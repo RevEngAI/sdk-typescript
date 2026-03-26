@@ -13,8 +13,8 @@ import { Registry } from '../models/Registry';
 import { HttpFile } from '../http/http';
 
 export class ProcessRegistry {
-    'success': boolean;
     'data': { [key: string]: Array<Registry>; };
+    'success': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,15 +22,15 @@ export class ProcessRegistry {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "success",
-            "baseName": "success",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "data",
             "baseName": "data",
             "type": "{ [key: string]: Array<Registry>; }",
+            "format": ""
+        },
+        {
+            "name": "success",
+            "baseName": "success",
+            "type": "boolean",
             "format": ""
         }    ];
 

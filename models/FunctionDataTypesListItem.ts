@@ -17,16 +17,16 @@ export class FunctionDataTypesListItem {
     * Whether the service has completed data types generation
     */
     'completed': boolean;
-    /**
-    * The current status of the data types service
-    */
-    'status': string;
     'dataTypes'?: FunctionInfoOutput | null;
     'dataTypesVersion'?: number | null;
     /**
     * Function id
     */
     'functionId': number;
+    /**
+    * The current status of the data types service
+    */
+    'status': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -37,12 +37,6 @@ export class FunctionDataTypesListItem {
             "name": "completed",
             "baseName": "completed",
             "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "string",
             "format": ""
         },
         {
@@ -62,6 +56,12 @@ export class FunctionDataTypesListItem {
             "baseName": "function_id",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

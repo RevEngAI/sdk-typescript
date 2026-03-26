@@ -14,8 +14,8 @@ import { HttpFile } from '../http/http';
 
 export class CollectionUpdateRequest {
     'collectionName'?: string | null;
-    'description'?: string | null;
     'collectionScope'?: CollectionScope | null;
+    'description'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -29,15 +29,15 @@ export class CollectionUpdateRequest {
             "format": ""
         },
         {
-            "name": "description",
-            "baseName": "description",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "collectionScope",
             "baseName": "collection_scope",
             "type": "CollectionScope",
+            "format": ""
+        },
+        {
+            "name": "description",
+            "baseName": "description",
+            "type": "string",
             "format": ""
         }    ];
 

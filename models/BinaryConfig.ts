@@ -15,15 +15,21 @@ import { Platform } from '../models/Platform';
 import { HttpFile } from '../http/http';
 
 export class BinaryConfig {
+    'fileFormat'?: FileFormat | null;
     'isa'?: ISA | null;
     'platform'?: Platform | null;
-    'fileFormat'?: FileFormat | null;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "fileFormat",
+            "baseName": "file_format",
+            "type": "FileFormat",
+            "format": ""
+        },
         {
             "name": "isa",
             "baseName": "isa",
@@ -34,12 +40,6 @@ export class BinaryConfig {
             "name": "platform",
             "baseName": "platform",
             "type": "Platform",
-            "format": ""
-        },
-        {
-            "name": "fileFormat",
-            "baseName": "file_format",
-            "type": "FileFormat",
             "format": ""
         }    ];
 

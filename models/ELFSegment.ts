@@ -12,15 +12,15 @@
 import { HttpFile } from '../http/http';
 
 export class ELFSegment {
-    'type': string;
-    'virtualAddress': number;
-    'virtualSize': number;
-    'physicalAddress': number;
-    'physicalSize': number;
+    'alignment': number;
     'fileOffset': number;
     'flags': string;
     'flagsRaw': number;
-    'alignment': number;
+    'physicalAddress': number;
+    'physicalSize': number;
+    'type': string;
+    'virtualAddress': number;
+    'virtualSize': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -28,32 +28,8 @@ export class ELFSegment {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "virtualAddress",
-            "baseName": "virtual_address",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "virtualSize",
-            "baseName": "virtual_size",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "physicalAddress",
-            "baseName": "physical_address",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "physicalSize",
-            "baseName": "physical_size",
+            "name": "alignment",
+            "baseName": "alignment",
             "type": "number",
             "format": ""
         },
@@ -76,8 +52,32 @@ export class ELFSegment {
             "format": ""
         },
         {
-            "name": "alignment",
-            "baseName": "alignment",
+            "name": "physicalAddress",
+            "baseName": "physical_address",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "physicalSize",
+            "baseName": "physical_size",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "virtualAddress",
+            "baseName": "virtual_address",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "virtualSize",
+            "baseName": "virtual_size",
             "type": "number",
             "format": ""
         }    ];

@@ -13,14 +13,6 @@ import { HttpFile } from '../http/http';
 
 export class FunctionSearchResult {
     /**
-    * The function ID
-    */
-    'functionId': number;
-    /**
-    * The name of the function
-    */
-    'functionName': string;
-    /**
     * The name of the binary the function belongs to
     */
     'binaryName': string;
@@ -28,6 +20,14 @@ export class FunctionSearchResult {
     * The creation date of the function
     */
     'createdAt': Date;
+    /**
+    * The function ID
+    */
+    'functionId': number;
+    /**
+    * The name of the function
+    */
+    'functionName': string;
     /**
     * The model ID used to analyze the binary the function belongs to
     */
@@ -47,18 +47,6 @@ export class FunctionSearchResult {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "functionId",
-            "baseName": "function_id",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "functionName",
-            "baseName": "function_name",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "binaryName",
             "baseName": "binary_name",
             "type": "string",
@@ -69,6 +57,18 @@ export class FunctionSearchResult {
             "baseName": "created_at",
             "type": "Date",
             "format": "date-time"
+        },
+        {
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "functionName",
+            "baseName": "function_name",
+            "type": "string",
+            "format": ""
         },
         {
             "name": "modelId",

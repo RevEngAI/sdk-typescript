@@ -12,17 +12,17 @@
 import { HttpFile } from '../http/http';
 
 export class SecurityModel {
-    'aslr': boolean;
-    'dep': boolean;
-    'cfg': boolean;
-    'driverModel': boolean;
     'appContainer': boolean;
-    'terminalServerAware': boolean;
-    'imageIsolation': boolean;
-    'codeIntegrity': boolean;
-    'highEntropy': boolean;
-    'seh': boolean;
+    'aslr': boolean;
     'boundImage': boolean;
+    'cfg': boolean;
+    'codeIntegrity': boolean;
+    'dep': boolean;
+    'driverModel': boolean;
+    'highEntropy': boolean;
+    'imageIsolation': boolean;
+    'seh': boolean;
+    'terminalServerAware': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -30,14 +30,20 @@ export class SecurityModel {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "appContainer",
+            "baseName": "app_container",
+            "type": "boolean",
+            "format": ""
+        },
+        {
             "name": "aslr",
             "baseName": "aslr",
             "type": "boolean",
             "format": ""
         },
         {
-            "name": "dep",
-            "baseName": "dep",
+            "name": "boundImage",
+            "baseName": "bound_image",
             "type": "boolean",
             "format": ""
         },
@@ -48,32 +54,20 @@ export class SecurityModel {
             "format": ""
         },
         {
-            "name": "driverModel",
-            "baseName": "driver_model",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "appContainer",
-            "baseName": "app_container",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "terminalServerAware",
-            "baseName": "terminal_server_aware",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "imageIsolation",
-            "baseName": "image_isolation",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "codeIntegrity",
             "baseName": "code_integrity",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "dep",
+            "baseName": "dep",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "driverModel",
+            "baseName": "driver_model",
             "type": "boolean",
             "format": ""
         },
@@ -84,14 +78,20 @@ export class SecurityModel {
             "format": ""
         },
         {
+            "name": "imageIsolation",
+            "baseName": "image_isolation",
+            "type": "boolean",
+            "format": ""
+        },
+        {
             "name": "seh",
             "baseName": "seh",
             "type": "boolean",
             "format": ""
         },
         {
-            "name": "boundImage",
-            "baseName": "bound_image",
+            "name": "terminalServerAware",
+            "baseName": "terminal_server_aware",
             "type": "boolean",
             "format": ""
         }    ];

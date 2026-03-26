@@ -26,14 +26,6 @@ export class CollectionResponseBinariesInner {
     */
     'binaryName': string;
     /**
-    * Binary owner
-    */
-    'ownerId': number;
-    /**
-    * Binary SHA-256 hash
-    */
-    'sha256Hash': string;
-    /**
     * Binary creation date
     */
     'createdAt': Date;
@@ -41,6 +33,14 @@ export class CollectionResponseBinariesInner {
     * Is the analysis owned by a RevEng.AI account
     */
     'isSystemAnalysis': boolean;
+    /**
+    * Binary owner
+    */
+    'ownerId': number;
+    /**
+    * Binary SHA-256 hash
+    */
+    'sha256Hash': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -66,18 +66,6 @@ export class CollectionResponseBinariesInner {
             "format": ""
         },
         {
-            "name": "ownerId",
-            "baseName": "owner_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "sha256Hash",
-            "baseName": "sha_256_hash",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "createdAt",
             "baseName": "created_at",
             "type": "Date",
@@ -87,6 +75,18 @@ export class CollectionResponseBinariesInner {
             "name": "isSystemAnalysis",
             "baseName": "is_system_analysis",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "ownerId",
+            "baseName": "owner_id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "sha256Hash",
+            "baseName": "sha_256_hash",
+            "type": "string",
             "format": ""
         }    ];
 
