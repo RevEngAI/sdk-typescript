@@ -323,7 +323,7 @@ const request: FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest = 
   functionId: 1,
     // Generate a summary for the decompilation (optional)
   summarise: true,
-    // Generate inline comments for the decompilation (only works if summarise is enabled) (optional)
+    // Generate inline comments for the decompilation (optional)
   generateInlineComments: true,
 };
 
@@ -338,7 +338,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] | The ID of the function being decompiled | defaults to undefined
  **summarise** | [**boolean**] | Generate a summary for the decompilation | (optional) defaults to true
- **generateInlineComments** | [**boolean**] | Generate inline comments for the decompilation (only works if summarise is enabled) | (optional) defaults to true
+ **generateInlineComments** | [**boolean**] | Generate inline comments for the decompilation | (optional) defaults to true
 
 
 ### Return type

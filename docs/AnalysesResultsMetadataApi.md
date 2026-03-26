@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAnalysisFunctionsPaginated**](AnalysesResultsMetadataApi.md#getAnalysisFunctionsPaginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 [**getCapabilities**](AnalysesResultsMetadataApi.md#getCapabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
-[**getCommunities**](AnalysesResultsMetadataApi.md#getCommunities) | **GET** /v2/analyses/{analysis_id}/communities | Gets the communities found in the analysis
 [**getFunctionsList**](AnalysesResultsMetadataApi.md#getFunctionsList) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
 [**getPdf**](AnalysesResultsMetadataApi.md#getPdf) | **GET** /v2/analyses/{analysis_id}/pdf | Gets the PDF found in the analysis
 [**getSbom**](AnalysesResultsMetadataApi.md#getSbom) | **GET** /v2/analyses/{analysis_id}/sbom | Gets the software-bill-of-materials (SBOM) found in the analysis
@@ -108,62 +107,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BaseResponseCapabilities**
-
-### Authorization
-
-[APIKey](README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getCommunities**
-> BaseResponseCommunities getCommunities()
-
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
-import type { AnalysesResultsMetadataApiGetCommunitiesRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesResultsMetadataApi(configuration);
-
-const request: AnalysesResultsMetadataApiGetCommunitiesRequest = {
-  
-  analysisId: 1,
-    // The user name to limit communities to (optional)
-  userName: "user_name_example",
-};
-
-const data = await apiInstance.getCommunities(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
- **userName** | [**string**] | The user name to limit communities to | (optional) defaults to undefined
-
-
-### Return type
-
-**BaseResponseCommunities**
 
 ### Authorization
 

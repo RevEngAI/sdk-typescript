@@ -31,6 +31,7 @@ import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInp
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { ModelName } from '../models/ModelName';
 import { Order } from '../models/Order';
+import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { StatusInput } from '../models/StatusInput';
 import { UploadFileType } from '../models/UploadFileType';
@@ -567,6 +568,62 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+     * Add strings to the analysis
+     * @param analysisId 
+     * @param putAnalysisStringsRequest 
+     */
+    public async putAnalysisStrings(analysisId: number, putAnalysisStringsRequest: PutAnalysisStringsRequest, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "putAnalysisStrings", "analysisId");
+        }
+
+
+        // verify required parameter 'putAnalysisStringsRequest' is not null or undefined
+        if (putAnalysisStringsRequest === null || putAnalysisStringsRequest === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "putAnalysisStrings", "putAnalysisStringsRequest");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/analyses/{analysis_id}/strings'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PUT);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(putAnalysisStringsRequest, "PutAnalysisStringsRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -1265,6 +1322,42 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "any", ""
             ) as any;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to putAnalysisStrings
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async putAnalysisStringsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponse >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: BaseResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "BaseResponse", ""
+            ) as BaseResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

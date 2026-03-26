@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+import { StringSource } from '../models/StringSource';
 import { HttpFile } from '../http/http';
 
 export class FunctionString {
@@ -20,6 +21,10 @@ export class FunctionString {
     * The vaddr of the string value
     */
     'vaddr': number;
+    /**
+    * The source of the string
+    */
+    'source'?: StringSource;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -37,6 +42,12 @@ export class FunctionString {
             "baseName": "vaddr",
             "type": "number",
             "format": ""
+        },
+        {
+            "name": "source",
+            "baseName": "source",
+            "type": "StringSource",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
@@ -46,3 +57,5 @@ export class FunctionString {
     public constructor() {
     }
 }
+
+

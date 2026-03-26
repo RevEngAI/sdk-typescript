@@ -19,7 +19,7 @@ export class AnalysisFunctionMatchingRequest {
     'minSimilarity'?: number;
     'filters'?: FunctionMatchingFilters | null;
     /**
-    * Maximum number of matches to return per function, default is 1, max is 10
+    * Maximum number of matches to return per function, default is 1, max is 30
     */
     'resultsPerFunction'?: number;
     /**

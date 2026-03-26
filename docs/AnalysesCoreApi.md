@@ -15,6 +15,7 @@ Method | HTTP request | Description
 [**insertAnalysisLog**](AnalysesCoreApi.md#insertAnalysisLog) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 [**listAnalyses**](AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 [**lookupBinaryId**](AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
+[**putAnalysisStrings**](AnalysesCoreApi.md#putAnalysisStrings) | **PUT** /v2/analyses/{analysis_id}/strings | Add strings to the analysis
 [**requeueAnalysis**](AnalysesCoreApi.md#requeueAnalysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
 [**updateAnalysis**](AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**updateAnalysisTags**](AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
@@ -709,6 +710,71 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **putAnalysisStrings**
+> BaseResponse putAnalysisStrings(putAnalysisStringsRequest)
+
+Add strings to the analysis. Rejects if any string already exists at the given vaddr.
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiPutAnalysisStringsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiPutAnalysisStringsRequest = {
+  
+  analysisId: 1,
+  
+  putAnalysisStringsRequest: {
+    strings: [
+      {
+        value: "value_example",
+        vaddr: 1,
+        source: "SYSTEM",
+      },
+    ],
+  },
+};
+
+const data = await apiInstance.putAnalysisStrings(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **putAnalysisStringsRequest** | **PutAnalysisStringsRequest**|  |
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)

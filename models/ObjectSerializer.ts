@@ -20,6 +20,7 @@ export * from '../models/AnalysisScope';
 export * from '../models/AnalysisStage';
 export * from '../models/AnalysisStageStatus';
 export * from '../models/AnalysisStagesResponse';
+export * from '../models/AnalysisStringInput';
 export * from '../models/AnalysisStringsResponse';
 export * from '../models/AnalysisStringsStatusResponse';
 export * from '../models/AnalysisTags';
@@ -67,7 +68,6 @@ export * from '../models/BaseResponseCollectionResponse';
 export * from '../models/BaseResponseCollectionSearchResponse';
 export * from '../models/BaseResponseCollectionTagsUpdateResponse';
 export * from '../models/BaseResponseCommentResponse';
-export * from '../models/BaseResponseCommunities';
 export * from '../models/BaseResponseConfigResponse';
 export * from '../models/BaseResponseCreated';
 export * from '../models/BaseResponseDict';
@@ -151,8 +151,6 @@ export * from '../models/CollectionUpdateRequest';
 export * from '../models/CommentBase';
 export * from '../models/CommentResponse';
 export * from '../models/CommentUpdateRequest';
-export * from '../models/Communities';
-export * from '../models/CommunityMatchPercentages';
 export * from '../models/ConfidenceType';
 export * from '../models/ConfigResponse';
 export * from '../models/Context';
@@ -259,6 +257,7 @@ export * from '../models/ProcessDumps';
 export * from '../models/ProcessDumpsData';
 export * from '../models/ProcessRegistry';
 export * from '../models/ProcessTree';
+export * from '../models/PutAnalysisStringsRequest';
 export * from '../models/QueuedSecurityChecksTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
@@ -284,6 +283,7 @@ export * from '../models/StageStatus';
 export * from '../models/StatusInput';
 export * from '../models/StatusOutput';
 export * from '../models/StringFunctions';
+export * from '../models/StringSource';
 export * from '../models/Structure';
 export * from '../models/StructureMember';
 export * from '../models/Symbols';
@@ -336,6 +336,7 @@ import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStage } from '../models/AnalysisStage';
 import { AnalysisStageStatus } from '../models/AnalysisStageStatus';
 import { AnalysisStagesResponse } from '../models/AnalysisStagesResponse';
+import { AnalysisStringInput    } from '../models/AnalysisStringInput';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse  } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
@@ -383,7 +384,6 @@ import { BaseResponseCollectionResponse } from '../models/BaseResponseCollection
 import { BaseResponseCollectionSearchResponse } from '../models/BaseResponseCollectionSearchResponse';
 import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponseCollectionTagsUpdateResponse';
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
-import { BaseResponseCommunities } from '../models/BaseResponseCommunities';
 import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
@@ -467,8 +467,6 @@ import { CollectionUpdateRequest    } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
-import { Communities } from '../models/Communities';
-import { CommunityMatchPercentages } from '../models/CommunityMatchPercentages';
 import { ConfidenceType } from '../models/ConfidenceType';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { Context } from '../models/Context';
@@ -523,7 +521,7 @@ import { FunctionRenameMap } from '../models/FunctionRenameMap';
 import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
 import { FunctionSearchResult } from '../models/FunctionSearchResult';
 import { FunctionSourceType } from '../models/FunctionSourceType';
-import { FunctionString } from '../models/FunctionString';
+import { FunctionString    } from '../models/FunctionString';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionTaskResponse   } from '../models/FunctionTaskResponse';
 import { FunctionTaskStatus } from '../models/FunctionTaskStatus';
@@ -575,6 +573,7 @@ import { ProcessDumps } from '../models/ProcessDumps';
 import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
+import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedSecurityChecksTaskResponse } from '../models/QueuedSecurityChecksTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
@@ -599,7 +598,8 @@ import { StageEvent    } from '../models/StageEvent';
 import { StageStatus    } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
-import { StringFunctions } from '../models/StringFunctions';
+import { StringFunctions    } from '../models/StringFunctions';
+import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { Symbols } from '../models/Symbols';
@@ -673,6 +673,7 @@ let enumsMap: Set<string> = new Set<string>([
     "Platform",
     "SeverityType",
     "StatusInput",
+    "StringSource",
     "TaskStatus",
     "UploadFileType",
     "VulnerabilitySeverityEnum",
@@ -698,6 +699,7 @@ let typeMap: {[index: string]: any} = {
     "AnalysisFunctionsList": AnalysisFunctionsList,
     "AnalysisRecord": AnalysisRecord,
     "AnalysisStagesResponse": AnalysisStagesResponse,
+    "AnalysisStringInput": AnalysisStringInput,
     "AnalysisStringsResponse": AnalysisStringsResponse,
     "AnalysisStringsStatusResponse": AnalysisStringsStatusResponse,
     "AnalysisTags": AnalysisTags,
@@ -742,7 +744,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseCollectionSearchResponse": BaseResponseCollectionSearchResponse,
     "BaseResponseCollectionTagsUpdateResponse": BaseResponseCollectionTagsUpdateResponse,
     "BaseResponseCommentResponse": BaseResponseCommentResponse,
-    "BaseResponseCommunities": BaseResponseCommunities,
     "BaseResponseConfigResponse": BaseResponseConfigResponse,
     "BaseResponseCreated": BaseResponseCreated,
     "BaseResponseDict": BaseResponseDict,
@@ -823,8 +824,6 @@ let typeMap: {[index: string]: any} = {
     "CommentBase": CommentBase,
     "CommentResponse": CommentResponse,
     "CommentUpdateRequest": CommentUpdateRequest,
-    "Communities": Communities,
-    "CommunityMatchPercentages": CommunityMatchPercentages,
     "ConfigResponse": ConfigResponse,
     "Context": Context,
     "Created": Created,
@@ -920,6 +919,7 @@ let typeMap: {[index: string]: any} = {
     "ProcessDumpsData": ProcessDumpsData,
     "ProcessRegistry": ProcessRegistry,
     "ProcessTree": ProcessTree,
+    "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
     "QueuedSecurityChecksTaskResponse": QueuedSecurityChecksTaskResponse,
     "ReAnalysisForm": ReAnalysisForm,
     "Recent": Recent,

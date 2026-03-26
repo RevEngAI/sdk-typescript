@@ -244,7 +244,7 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * Polls AI Decompilation Process
      * @param functionId The ID of the function being decompiled
      * @param summarise Generate a summary for the decompilation
-     * @param generateInlineComments Generate inline comments for the decompilation (only works if summarise is enabled)
+     * @param generateInlineComments Generate inline comments for the decompilation
      */
     public async getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;

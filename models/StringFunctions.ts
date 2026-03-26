@@ -10,6 +10,7 @@
  */
 
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
+import { StringSource } from '../models/StringSource';
 import { HttpFile } from '../http/http';
 
 /**
@@ -24,6 +25,10 @@ export class StringFunctions {
     * The function ids the string literal was found within
     */
     'functions': Array<AppApiRestV2FunctionsResponsesFunction>;
+    /**
+    * The source of the string
+    */
+    'source'?: StringSource;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -41,6 +46,12 @@ export class StringFunctions {
             "baseName": "functions",
             "type": "Array<AppApiRestV2FunctionsResponsesFunction>",
             "format": ""
+        },
+        {
+            "name": "source",
+            "baseName": "source",
+            "type": "StringSource",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
@@ -50,3 +61,5 @@ export class StringFunctions {
     public constructor() {
     }
 }
+
+
