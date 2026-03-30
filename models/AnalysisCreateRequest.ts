@@ -23,11 +23,11 @@ export class AnalysisCreateRequest {
     */
     'filename': string;
     /**
-    * The name of the file
+    * The sha256 hash of the file
     */
     'sha256Hash': string;
     /**
-    * List of community tags to assign to an analysis
+    * List of tags to assign to an analysis
     */
     'tags'?: Array<Tag>;
     /**

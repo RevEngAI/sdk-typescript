@@ -26,8 +26,6 @@ export class FunctionsDetailResponse {
     'sha256Hash': string;
     'debugHash': string | null;
     'debug': boolean;
-    'embedding3d'?: Array<number> | null;
-    'embedding1d'?: Array<number> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -98,18 +96,6 @@ export class FunctionsDetailResponse {
             "name": "debug",
             "baseName": "debug",
             "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "embedding3d",
-            "baseName": "embedding_3d",
-            "type": "Array<number>",
-            "format": ""
-        },
-        {
-            "name": "embedding1d",
-            "baseName": "embedding_1d",
-            "type": "Array<number>",
             "format": ""
         }    ];
 
