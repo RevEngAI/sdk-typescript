@@ -335,6 +335,48 @@ export interface AnalysesCommentsApiCreateAnalysisCommentRequest {
      * @memberof AnalysesCommentsApicreateAnalysisComment
      */
     commentBase: CommentBase
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApicreateAnalysisComment
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApicreateAnalysisComment
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCommentsApicreateAnalysisComment
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApicreateAnalysisComment
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApicreateAnalysisComment
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCommentsApicreateAnalysisComment
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCommentsApiDeleteAnalysisCommentRequest {
@@ -353,6 +395,48 @@ export interface AnalysesCommentsApiDeleteAnalysisCommentRequest {
      * @memberof AnalysesCommentsApideleteAnalysisComment
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApideleteAnalysisComment
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApideleteAnalysisComment
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCommentsApideleteAnalysisComment
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApideleteAnalysisComment
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApideleteAnalysisComment
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCommentsApideleteAnalysisComment
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCommentsApiGetAnalysisCommentsRequest {
@@ -363,6 +447,48 @@ export interface AnalysesCommentsApiGetAnalysisCommentsRequest {
      * @memberof AnalysesCommentsApigetAnalysisComments
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApigetAnalysisComments
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApigetAnalysisComments
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCommentsApigetAnalysisComments
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApigetAnalysisComments
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApigetAnalysisComments
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCommentsApigetAnalysisComments
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCommentsApiUpdateAnalysisCommentRequest {
@@ -387,6 +513,48 @@ export interface AnalysesCommentsApiUpdateAnalysisCommentRequest {
      * @memberof AnalysesCommentsApiupdateAnalysisComment
      */
     commentUpdateRequest: CommentUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApiupdateAnalysisComment
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApiupdateAnalysisComment
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCommentsApiupdateAnalysisComment
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApiupdateAnalysisComment
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCommentsApiupdateAnalysisComment
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCommentsApiupdateAnalysisComment
+     */
+    maxRetryAttempts?: number
 }
 
 export class ObjectAnalysesCommentsApi {
@@ -402,7 +570,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public createAnalysisCommentWithHttpInfo(param: AnalysesCommentsApiCreateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.createAnalysisCommentWithHttpInfo(param.analysisId, param.commentBase,  options).toPromise();
+        return this.api.createAnalysisCommentWithHttpInfo(param.analysisId, param.commentBase, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -411,7 +579,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public createAnalysisComment(param: AnalysesCommentsApiCreateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.createAnalysisComment(param.analysisId, param.commentBase,  options).toPromise();
+        return this.api.createAnalysisComment(param.analysisId, param.commentBase, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -420,7 +588,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public deleteAnalysisCommentWithHttpInfo(param: AnalysesCommentsApiDeleteAnalysisCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        return this.api.deleteAnalysisCommentWithHttpInfo(param.commentId, param.analysisId,  options).toPromise();
+        return this.api.deleteAnalysisCommentWithHttpInfo(param.commentId, param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -429,7 +597,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public deleteAnalysisComment(param: AnalysesCommentsApiDeleteAnalysisCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
-        return this.api.deleteAnalysisComment(param.commentId, param.analysisId,  options).toPromise();
+        return this.api.deleteAnalysisComment(param.commentId, param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -438,7 +606,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public getAnalysisCommentsWithHttpInfo(param: AnalysesCommentsApiGetAnalysisCommentsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getAnalysisCommentsWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisCommentsWithHttpInfo(param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -447,7 +615,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public getAnalysisComments(param: AnalysesCommentsApiGetAnalysisCommentsRequest, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getAnalysisComments(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisComments(param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -456,7 +624,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public updateAnalysisCommentWithHttpInfo(param: AnalysesCommentsApiUpdateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.updateAnalysisCommentWithHttpInfo(param.commentId, param.analysisId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateAnalysisCommentWithHttpInfo(param.commentId, param.analysisId, param.commentUpdateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -465,7 +633,7 @@ export class ObjectAnalysesCommentsApi {
      * @param param the request object
      */
     public updateAnalysisComment(param: AnalysesCommentsApiUpdateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.updateAnalysisComment(param.commentId, param.analysisId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateAnalysisComment(param.commentId, param.analysisId, param.commentUpdateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
 }
@@ -480,6 +648,48 @@ export interface AnalysesCoreApiBulkAddAnalysisTagsRequest {
      * @memberof AnalysesCoreApibulkAddAnalysisTags
      */
     analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApibulkAddAnalysisTags
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApibulkAddAnalysisTags
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApibulkAddAnalysisTags
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApibulkAddAnalysisTags
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApibulkAddAnalysisTags
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApibulkAddAnalysisTags
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCoreApiCreateAnalysisRequest {
@@ -489,6 +699,48 @@ export interface AnalysesCoreApiCreateAnalysisRequest {
      * @memberof AnalysesCoreApicreateAnalysis
      */
     analysisCreateRequest: AnalysisCreateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApicreateAnalysis
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApicreateAnalysis
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApicreateAnalysis
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApicreateAnalysis
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApicreateAnalysis
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApicreateAnalysis
+     */
+    maxRetryAttempts?: number
     /**
      * 
      * Defaults to: undefined
@@ -506,6 +758,48 @@ export interface AnalysesCoreApiDeleteAnalysisRequest {
      * @memberof AnalysesCoreApideleteAnalysis
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApideleteAnalysis
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApideleteAnalysis
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApideleteAnalysis
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApideleteAnalysis
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApideleteAnalysis
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApideleteAnalysis
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCoreApiGetAnalysisBasicInfoRequest {
@@ -526,6 +820,48 @@ export interface AnalysesCoreApiGetAnalysisFunctionMapRequest {
      * @memberof AnalysesCoreApigetAnalysisFunctionMap
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisFunctionMap
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisFunctionMap
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisFunctionMap
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisFunctionMap
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisFunctionMap
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisFunctionMap
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCoreApiGetAnalysisLogsRequest {
@@ -536,6 +872,48 @@ export interface AnalysesCoreApiGetAnalysisLogsRequest {
      * @memberof AnalysesCoreApigetAnalysisLogs
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisLogs
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisLogs
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisLogs
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisLogs
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisLogs
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisLogs
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCoreApiGetAnalysisParamsRequest {
@@ -546,6 +924,48 @@ export interface AnalysesCoreApiGetAnalysisParamsRequest {
      * @memberof AnalysesCoreApigetAnalysisParams
      */
     analysisId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisParams
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisParams
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisParams
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisParams
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisParams
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisParams
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCoreApiGetAnalysisStatusRequest {
@@ -572,6 +992,48 @@ export interface AnalysesCoreApiInsertAnalysisLogRequest {
      * @memberof AnalysesCoreApiinsertAnalysisLog
      */
     insertAnalysisLogRequest: InsertAnalysisLogRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiinsertAnalysisLog
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiinsertAnalysisLog
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiinsertAnalysisLog
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiinsertAnalysisLog
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiinsertAnalysisLog
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApiinsertAnalysisLog
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCoreApiListAnalysesRequest {
@@ -702,6 +1164,48 @@ export interface AnalysesCoreApiRequeueAnalysisRequest {
      * @type string
      * @memberof AnalysesCoreApirequeueAnalysis
      */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApirequeueAnalysis
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApirequeueAnalysis
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApirequeueAnalysis
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApirequeueAnalysis
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApirequeueAnalysis
+     */
+    maxRetryAttempts?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApirequeueAnalysis
+     */
     xRevEngApplication?: string
 }
 
@@ -719,6 +1223,48 @@ export interface AnalysesCoreApiUpdateAnalysisRequest {
      * @memberof AnalysesCoreApiupdateAnalysis
      */
     analysisUpdateRequest: AnalysisUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiupdateAnalysis
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiupdateAnalysis
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiupdateAnalysis
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiupdateAnalysis
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiupdateAnalysis
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApiupdateAnalysis
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCoreApiUpdateAnalysisTagsRequest {
@@ -735,6 +1281,48 @@ export interface AnalysesCoreApiUpdateAnalysisTagsRequest {
      * @memberof AnalysesCoreApiupdateAnalysisTags
      */
     analysisUpdateTagsRequest: AnalysisUpdateTagsRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiupdateAnalysisTags
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiupdateAnalysisTags
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiupdateAnalysisTags
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiupdateAnalysisTags
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiupdateAnalysisTags
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApiupdateAnalysisTags
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AnalysesCoreApiUploadFileRequest {
@@ -761,6 +1349,48 @@ export interface AnalysesCoreApiUploadFileRequest {
     packedPassword?: string
     /**
      * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiuploadFile
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiuploadFile
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiuploadFile
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiuploadFile
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiuploadFile
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApiuploadFile
+     */
+    maxRetryAttempts?: number
+    /**
+     * 
      * Defaults to: false
      * @type boolean
      * @memberof AnalysesCoreApiuploadFile
@@ -781,7 +1411,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public bulkAddAnalysisTagsWithHttpInfo(param: AnalysesCoreApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
-        return this.api.bulkAddAnalysisTagsWithHttpInfo(param.analysisBulkAddTagsRequest,  options).toPromise();
+        return this.api.bulkAddAnalysisTagsWithHttpInfo(param.analysisBulkAddTagsRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -790,7 +1420,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public bulkAddAnalysisTags(param: AnalysesCoreApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
-        return this.api.bulkAddAnalysisTags(param.analysisBulkAddTagsRequest,  options).toPromise();
+        return this.api.bulkAddAnalysisTags(param.analysisBulkAddTagsRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -799,7 +1429,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public createAnalysisWithHttpInfo(param: AnalysesCoreApiCreateAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisCreateResponse>> {
-        return this.api.createAnalysisWithHttpInfo(param.analysisCreateRequest, param.xRevEngApplication,  options).toPromise();
+        return this.api.createAnalysisWithHttpInfo(param.analysisCreateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts, param.xRevEngApplication,  options).toPromise();
     }
 
     /**
@@ -808,7 +1438,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public createAnalysis(param: AnalysesCoreApiCreateAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisCreateResponse> {
-        return this.api.createAnalysis(param.analysisCreateRequest, param.xRevEngApplication,  options).toPromise();
+        return this.api.createAnalysis(param.analysisCreateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts, param.xRevEngApplication,  options).toPromise();
     }
 
     /**
@@ -817,7 +1447,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public deleteAnalysisWithHttpInfo(param: AnalysesCoreApiDeleteAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
-        return this.api.deleteAnalysisWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.deleteAnalysisWithHttpInfo(param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -826,7 +1456,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public deleteAnalysis(param: AnalysesCoreApiDeleteAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseDict> {
-        return this.api.deleteAnalysis(param.analysisId,  options).toPromise();
+        return this.api.deleteAnalysis(param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -853,7 +1483,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisFunctionMapWithHttpInfo(param: AnalysesCoreApiGetAnalysisFunctionMapRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
-        return this.api.getAnalysisFunctionMapWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisFunctionMapWithHttpInfo(param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -862,7 +1492,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisFunctionMap(param: AnalysesCoreApiGetAnalysisFunctionMapRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisFunctionMapping> {
-        return this.api.getAnalysisFunctionMap(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisFunctionMap(param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -871,7 +1501,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisLogsWithHttpInfo(param: AnalysesCoreApiGetAnalysisLogsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseLogs>> {
-        return this.api.getAnalysisLogsWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisLogsWithHttpInfo(param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -880,7 +1510,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisLogs(param: AnalysesCoreApiGetAnalysisLogsRequest, options?: ConfigurationOptions): Promise<BaseResponseLogs> {
-        return this.api.getAnalysisLogs(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisLogs(param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -889,7 +1519,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisParamsWithHttpInfo(param: AnalysesCoreApiGetAnalysisParamsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseParams>> {
-        return this.api.getAnalysisParamsWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisParamsWithHttpInfo(param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -898,7 +1528,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public getAnalysisParams(param: AnalysesCoreApiGetAnalysisParamsRequest, options?: ConfigurationOptions): Promise<BaseResponseParams> {
-        return this.api.getAnalysisParams(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisParams(param.analysisId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -925,7 +1555,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public insertAnalysisLogWithHttpInfo(param: AnalysesCoreApiInsertAnalysisLogRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.insertAnalysisLogWithHttpInfo(param.analysisId, param.insertAnalysisLogRequest,  options).toPromise();
+        return this.api.insertAnalysisLogWithHttpInfo(param.analysisId, param.insertAnalysisLogRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -934,7 +1564,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public insertAnalysisLog(param: AnalysesCoreApiInsertAnalysisLogRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.insertAnalysisLog(param.analysisId, param.insertAnalysisLogRequest,  options).toPromise();
+        return this.api.insertAnalysisLog(param.analysisId, param.insertAnalysisLogRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -997,7 +1627,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public requeueAnalysisWithHttpInfo(param: AnalysesCoreApiRequeueAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCreated>> {
-        return this.api.requeueAnalysisWithHttpInfo(param.analysisId, param.reAnalysisForm, param.xRevEngApplication,  options).toPromise();
+        return this.api.requeueAnalysisWithHttpInfo(param.analysisId, param.reAnalysisForm, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts, param.xRevEngApplication,  options).toPromise();
     }
 
     /**
@@ -1006,7 +1636,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public requeueAnalysis(param: AnalysesCoreApiRequeueAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseCreated> {
-        return this.api.requeueAnalysis(param.analysisId, param.reAnalysisForm, param.xRevEngApplication,  options).toPromise();
+        return this.api.requeueAnalysis(param.analysisId, param.reAnalysisForm, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts, param.xRevEngApplication,  options).toPromise();
     }
 
     /**
@@ -1015,7 +1645,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public updateAnalysisWithHttpInfo(param: AnalysesCoreApiUpdateAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisDetailResponse>> {
-        return this.api.updateAnalysisWithHttpInfo(param.analysisId, param.analysisUpdateRequest,  options).toPromise();
+        return this.api.updateAnalysisWithHttpInfo(param.analysisId, param.analysisUpdateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -1024,7 +1654,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public updateAnalysis(param: AnalysesCoreApiUpdateAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisDetailResponse> {
-        return this.api.updateAnalysis(param.analysisId, param.analysisUpdateRequest,  options).toPromise();
+        return this.api.updateAnalysis(param.analysisId, param.analysisUpdateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -1033,7 +1663,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public updateAnalysisTagsWithHttpInfo(param: AnalysesCoreApiUpdateAnalysisTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
-        return this.api.updateAnalysisTagsWithHttpInfo(param.analysisId, param.analysisUpdateTagsRequest,  options).toPromise();
+        return this.api.updateAnalysisTagsWithHttpInfo(param.analysisId, param.analysisUpdateTagsRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -1042,7 +1672,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public updateAnalysisTags(param: AnalysesCoreApiUpdateAnalysisTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisUpdateTagsResponse> {
-        return this.api.updateAnalysisTags(param.analysisId, param.analysisUpdateTagsRequest,  options).toPromise();
+        return this.api.updateAnalysisTags(param.analysisId, param.analysisUpdateTagsRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -1050,7 +1680,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public uploadFileWithHttpInfo(param: AnalysesCoreApiUploadFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
-        return this.api.uploadFileWithHttpInfo(param.uploadFileType, param.file, param.packedPassword, param.forceOverwrite,  options).toPromise();
+        return this.api.uploadFileWithHttpInfo(param.uploadFileType, param.file, param.packedPassword, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts, param.forceOverwrite,  options).toPromise();
     }
 
     /**
@@ -1058,7 +1688,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public uploadFile(param: AnalysesCoreApiUploadFileRequest, options?: ConfigurationOptions): Promise<BaseResponseUploadResponse> {
-        return this.api.uploadFile(param.uploadFileType, param.file, param.packedPassword, param.forceOverwrite,  options).toPromise();
+        return this.api.uploadFile(param.uploadFileType, param.file, param.packedPassword, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts, param.forceOverwrite,  options).toPromise();
     }
 
 }
@@ -1770,6 +2400,48 @@ export interface AuthenticationUsersApiGetUserActivityRequest {
 }
 
 export interface AuthenticationUsersApiGetUserCommentsRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AuthenticationUsersApigetUserComments
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AuthenticationUsersApigetUserComments
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AuthenticationUsersApigetUserComments
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AuthenticationUsersApigetUserComments
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AuthenticationUsersApigetUserComments
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AuthenticationUsersApigetUserComments
+     */
+    maxRetryAttempts?: number
 }
 
 export interface AuthenticationUsersApiLoginUserRequest {
@@ -1842,7 +2514,7 @@ export class ObjectAuthenticationUsersApi {
      * @param param the request object
      */
     public getUserCommentsWithHttpInfo(param: AuthenticationUsersApiGetUserCommentsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getUserCommentsWithHttpInfo( options).toPromise();
+        return this.api.getUserCommentsWithHttpInfo(param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -1851,7 +2523,7 @@ export class ObjectAuthenticationUsersApi {
      * @param param the request object
      */
     public getUserComments(param: AuthenticationUsersApiGetUserCommentsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getUserComments( options).toPromise();
+        return this.api.getUserComments(param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -1885,6 +2557,48 @@ export interface BinariesApiDownloadZippedBinaryRequest {
      * @memberof BinariesApidownloadZippedBinary
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApidownloadZippedBinary
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApidownloadZippedBinary
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApidownloadZippedBinary
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApidownloadZippedBinary
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApidownloadZippedBinary
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof BinariesApidownloadZippedBinary
+     */
+    maxRetryAttempts?: number
 }
 
 export interface BinariesApiGetBinaryAdditionalDetailsRequest {
@@ -1895,6 +2609,48 @@ export interface BinariesApiGetBinaryAdditionalDetailsRequest {
      * @memberof BinariesApigetBinaryAdditionalDetails
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryAdditionalDetails
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryAdditionalDetails
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetBinaryAdditionalDetails
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryAdditionalDetails
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryAdditionalDetails
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof BinariesApigetBinaryAdditionalDetails
+     */
+    maxRetryAttempts?: number
 }
 
 export interface BinariesApiGetBinaryAdditionalDetailsStatusRequest {
@@ -1905,6 +2661,48 @@ export interface BinariesApiGetBinaryAdditionalDetailsStatusRequest {
      * @memberof BinariesApigetBinaryAdditionalDetailsStatus
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryAdditionalDetailsStatus
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryAdditionalDetailsStatus
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetBinaryAdditionalDetailsStatus
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryAdditionalDetailsStatus
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryAdditionalDetailsStatus
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof BinariesApigetBinaryAdditionalDetailsStatus
+     */
+    maxRetryAttempts?: number
 }
 
 export interface BinariesApiGetBinaryDetailsRequest {
@@ -1915,6 +2713,48 @@ export interface BinariesApiGetBinaryDetailsRequest {
      * @memberof BinariesApigetBinaryDetails
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryDetails
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryDetails
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetBinaryDetails
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryDetails
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryDetails
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof BinariesApigetBinaryDetails
+     */
+    maxRetryAttempts?: number
 }
 
 export interface BinariesApiGetBinaryDieInfoRequest {
@@ -1925,6 +2765,48 @@ export interface BinariesApiGetBinaryDieInfoRequest {
      * @memberof BinariesApigetBinaryDieInfo
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryDieInfo
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryDieInfo
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetBinaryDieInfo
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryDieInfo
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryDieInfo
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof BinariesApigetBinaryDieInfo
+     */
+    maxRetryAttempts?: number
 }
 
 export interface BinariesApiGetBinaryExternalsRequest {
@@ -1935,6 +2817,48 @@ export interface BinariesApiGetBinaryExternalsRequest {
      * @memberof BinariesApigetBinaryExternals
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryExternals
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryExternals
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetBinaryExternals
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryExternals
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryExternals
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof BinariesApigetBinaryExternals
+     */
+    maxRetryAttempts?: number
 }
 
 export interface BinariesApiGetBinaryRelatedStatusRequest {
@@ -1945,6 +2869,48 @@ export interface BinariesApiGetBinaryRelatedStatusRequest {
      * @memberof BinariesApigetBinaryRelatedStatus
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryRelatedStatus
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryRelatedStatus
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetBinaryRelatedStatus
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryRelatedStatus
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetBinaryRelatedStatus
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof BinariesApigetBinaryRelatedStatus
+     */
+    maxRetryAttempts?: number
 }
 
 export interface BinariesApiGetRelatedBinariesRequest {
@@ -1955,6 +2921,48 @@ export interface BinariesApiGetRelatedBinariesRequest {
      * @memberof BinariesApigetRelatedBinaries
      */
     binaryId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetRelatedBinaries
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetRelatedBinaries
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetRelatedBinaries
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetRelatedBinaries
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof BinariesApigetRelatedBinaries
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof BinariesApigetRelatedBinaries
+     */
+    maxRetryAttempts?: number
 }
 
 export class ObjectBinariesApi {
@@ -1969,7 +2977,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public downloadZippedBinaryWithHttpInfo(param: BinariesApiDownloadZippedBinaryRequest, options?: ConfigurationOptions): Promise<HttpInfo<HttpFile>> {
-        return this.api.downloadZippedBinaryWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.downloadZippedBinaryWithHttpInfo(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -1977,7 +2985,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public downloadZippedBinary(param: BinariesApiDownloadZippedBinaryRequest, options?: ConfigurationOptions): Promise<HttpFile> {
-        return this.api.downloadZippedBinary(param.binaryId,  options).toPromise();
+        return this.api.downloadZippedBinary(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -1985,7 +2993,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryAdditionalDetailsWithHttpInfo(param: BinariesApiGetBinaryAdditionalDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
-        return this.api.getBinaryAdditionalDetailsWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryAdditionalDetailsWithHttpInfo(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -1993,7 +3001,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryAdditionalDetails(param: BinariesApiGetBinaryAdditionalDetailsRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryAdditionalResponse> {
-        return this.api.getBinaryAdditionalDetails(param.binaryId,  options).toPromise();
+        return this.api.getBinaryAdditionalDetails(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2001,7 +3009,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryAdditionalDetailsStatusWithHttpInfo(param: BinariesApiGetBinaryAdditionalDetailsStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAdditionalDetailsStatusResponse>> {
-        return this.api.getBinaryAdditionalDetailsStatusWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryAdditionalDetailsStatusWithHttpInfo(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2009,7 +3017,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryAdditionalDetailsStatus(param: BinariesApiGetBinaryAdditionalDetailsStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseAdditionalDetailsStatusResponse> {
-        return this.api.getBinaryAdditionalDetailsStatus(param.binaryId,  options).toPromise();
+        return this.api.getBinaryAdditionalDetailsStatus(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2017,7 +3025,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryDetailsWithHttpInfo(param: BinariesApiGetBinaryDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryDetailsResponse>> {
-        return this.api.getBinaryDetailsWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryDetailsWithHttpInfo(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2025,7 +3033,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryDetails(param: BinariesApiGetBinaryDetailsRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryDetailsResponse> {
-        return this.api.getBinaryDetails(param.binaryId,  options).toPromise();
+        return this.api.getBinaryDetails(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2033,7 +3041,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryDieInfoWithHttpInfo(param: BinariesApiGetBinaryDieInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListDieMatch>> {
-        return this.api.getBinaryDieInfoWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryDieInfoWithHttpInfo(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2041,7 +3049,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryDieInfo(param: BinariesApiGetBinaryDieInfoRequest, options?: ConfigurationOptions): Promise<BaseResponseListDieMatch> {
-        return this.api.getBinaryDieInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryDieInfo(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2049,7 +3057,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryExternalsWithHttpInfo(param: BinariesApiGetBinaryExternalsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryExternalsResponse>> {
-        return this.api.getBinaryExternalsWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryExternalsWithHttpInfo(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2057,7 +3065,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryExternals(param: BinariesApiGetBinaryExternalsRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryExternalsResponse> {
-        return this.api.getBinaryExternals(param.binaryId,  options).toPromise();
+        return this.api.getBinaryExternals(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2065,7 +3073,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryRelatedStatusWithHttpInfo(param: BinariesApiGetBinaryRelatedStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinariesRelatedStatusResponse>> {
-        return this.api.getBinaryRelatedStatusWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getBinaryRelatedStatusWithHttpInfo(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2073,7 +3081,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getBinaryRelatedStatus(param: BinariesApiGetBinaryRelatedStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseBinariesRelatedStatusResponse> {
-        return this.api.getBinaryRelatedStatus(param.binaryId,  options).toPromise();
+        return this.api.getBinaryRelatedStatus(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2081,7 +3089,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getRelatedBinariesWithHttpInfo(param: BinariesApiGetRelatedBinariesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseChildBinariesResponse>> {
-        return this.api.getRelatedBinariesWithHttpInfo(param.binaryId,  options).toPromise();
+        return this.api.getRelatedBinariesWithHttpInfo(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2089,7 +3097,7 @@ export class ObjectBinariesApi {
      * @param param the request object
      */
     public getRelatedBinaries(param: BinariesApiGetRelatedBinariesRequest, options?: ConfigurationOptions): Promise<BaseResponseChildBinariesResponse> {
-        return this.api.getRelatedBinaries(param.binaryId,  options).toPromise();
+        return this.api.getRelatedBinaries(param.binaryId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
 }
@@ -2544,6 +3552,48 @@ export interface FirmwareApiUploadFirmwareRequest {
      * @type string
      * @memberof FirmwareApiuploadFirmware
      */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FirmwareApiuploadFirmware
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof FirmwareApiuploadFirmware
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FirmwareApiuploadFirmware
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FirmwareApiuploadFirmware
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof FirmwareApiuploadFirmware
+     */
+    maxRetryAttempts?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FirmwareApiuploadFirmware
+     */
     password?: string
 }
 
@@ -2578,7 +3628,7 @@ export class ObjectFirmwareApi {
      * @param param the request object
      */
     public uploadFirmwareWithHttpInfo(param: FirmwareApiUploadFirmwareRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.uploadFirmwareWithHttpInfo(param.file, param.password,  options).toPromise();
+        return this.api.uploadFirmwareWithHttpInfo(param.file, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts, param.password,  options).toPromise();
     }
 
     /**
@@ -2587,7 +3637,7 @@ export class ObjectFirmwareApi {
      * @param param the request object
      */
     public uploadFirmware(param: FirmwareApiUploadFirmwareRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.uploadFirmware(param.file, param.password,  options).toPromise();
+        return this.api.uploadFirmware(param.file, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts, param.password,  options).toPromise();
     }
 
 }
@@ -2609,6 +3659,48 @@ export interface FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest 
      * @memberof FunctionsAIDecompilationApicreateAiDecompilationComment
      */
     functionCommentCreateRequest: FunctionCommentCreateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilationComment
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilationComment
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilationComment
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilationComment
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilationComment
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilationComment
+     */
+    maxRetryAttempts?: number
 }
 
 export interface FunctionsAIDecompilationApiCreateAiDecompilationTaskRequest {
@@ -2637,6 +3729,48 @@ export interface FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest 
      * @memberof FunctionsAIDecompilationApideleteAiDecompilationComment
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApideleteAiDecompilationComment
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApideleteAiDecompilationComment
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsAIDecompilationApideleteAiDecompilationComment
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApideleteAiDecompilationComment
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApideleteAiDecompilationComment
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof FunctionsAIDecompilationApideleteAiDecompilationComment
+     */
+    maxRetryAttempts?: number
 }
 
 export interface FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest {
@@ -2647,6 +3781,48 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest {
      * @memberof FunctionsAIDecompilationApigetAiDecompilationComments
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationComments
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationComments
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationComments
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationComments
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationComments
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationComments
+     */
+    maxRetryAttempts?: number
 }
 
 export interface FunctionsAIDecompilationApiGetAiDecompilationRatingRequest {
@@ -2715,6 +3891,48 @@ export interface FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest 
      * @memberof FunctionsAIDecompilationApiupdateAiDecompilationComment
      */
     commentUpdateRequest: CommentUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApiupdateAiDecompilationComment
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApiupdateAiDecompilationComment
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsAIDecompilationApiupdateAiDecompilationComment
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApiupdateAiDecompilationComment
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsAIDecompilationApiupdateAiDecompilationComment
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof FunctionsAIDecompilationApiupdateAiDecompilationComment
+     */
+    maxRetryAttempts?: number
 }
 
 export interface FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest {
@@ -2746,7 +3964,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public createAiDecompilationCommentWithHttpInfo(param: FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.createAiDecompilationCommentWithHttpInfo(param.functionId, param.functionCommentCreateRequest,  options).toPromise();
+        return this.api.createAiDecompilationCommentWithHttpInfo(param.functionId, param.functionCommentCreateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2755,7 +3973,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public createAiDecompilationComment(param: FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.createAiDecompilationComment(param.functionId, param.functionCommentCreateRequest,  options).toPromise();
+        return this.api.createAiDecompilationComment(param.functionId, param.functionCommentCreateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2782,7 +4000,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public deleteAiDecompilationCommentWithHttpInfo(param: FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        return this.api.deleteAiDecompilationCommentWithHttpInfo(param.commentId, param.functionId,  options).toPromise();
+        return this.api.deleteAiDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2791,7 +4009,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public deleteAiDecompilationComment(param: FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
-        return this.api.deleteAiDecompilationComment(param.commentId, param.functionId,  options).toPromise();
+        return this.api.deleteAiDecompilationComment(param.commentId, param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2800,7 +4018,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationCommentsWithHttpInfo(param: FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getAiDecompilationCommentsWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getAiDecompilationCommentsWithHttpInfo(param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2809,7 +4027,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationComments(param: FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getAiDecompilationComments(param.functionId,  options).toPromise();
+        return this.api.getAiDecompilationComments(param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2868,7 +4086,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public updateAiDecompilationCommentWithHttpInfo(param: FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.updateAiDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateAiDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.commentUpdateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -2877,7 +4095,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public updateAiDecompilationComment(param: FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.updateAiDecompilationComment(param.commentId, param.functionId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateAiDecompilationComment(param.commentId, param.functionId, param.commentUpdateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -3705,6 +4923,48 @@ export interface FunctionsDecompilationApiCreateDecompilationCommentRequest {
      * @memberof FunctionsDecompilationApicreateDecompilationComment
      */
     functionCommentCreateRequest: FunctionCommentCreateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApicreateDecompilationComment
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApicreateDecompilationComment
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDecompilationApicreateDecompilationComment
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApicreateDecompilationComment
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApicreateDecompilationComment
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof FunctionsDecompilationApicreateDecompilationComment
+     */
+    maxRetryAttempts?: number
 }
 
 export interface FunctionsDecompilationApiDeleteDecompilationCommentRequest {
@@ -3723,6 +4983,48 @@ export interface FunctionsDecompilationApiDeleteDecompilationCommentRequest {
      * @memberof FunctionsDecompilationApideleteDecompilationComment
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApideleteDecompilationComment
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApideleteDecompilationComment
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDecompilationApideleteDecompilationComment
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApideleteDecompilationComment
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApideleteDecompilationComment
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof FunctionsDecompilationApideleteDecompilationComment
+     */
+    maxRetryAttempts?: number
 }
 
 export interface FunctionsDecompilationApiGetDecompilationCommentsRequest {
@@ -3733,6 +5035,48 @@ export interface FunctionsDecompilationApiGetDecompilationCommentsRequest {
      * @memberof FunctionsDecompilationApigetDecompilationComments
      */
     functionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApigetDecompilationComments
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApigetDecompilationComments
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDecompilationApigetDecompilationComments
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApigetDecompilationComments
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApigetDecompilationComments
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof FunctionsDecompilationApigetDecompilationComments
+     */
+    maxRetryAttempts?: number
 }
 
 export interface FunctionsDecompilationApiUpdateDecompilationCommentRequest {
@@ -3757,6 +5101,48 @@ export interface FunctionsDecompilationApiUpdateDecompilationCommentRequest {
      * @memberof FunctionsDecompilationApiupdateDecompilationComment
      */
     commentUpdateRequest: CommentUpdateRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApiupdateDecompilationComment
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApiupdateDecompilationComment
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDecompilationApiupdateDecompilationComment
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApiupdateDecompilationComment
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsDecompilationApiupdateDecompilationComment
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof FunctionsDecompilationApiupdateDecompilationComment
+     */
+    maxRetryAttempts?: number
 }
 
 export class ObjectFunctionsDecompilationApi {
@@ -3772,7 +5158,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public createDecompilationCommentWithHttpInfo(param: FunctionsDecompilationApiCreateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.createDecompilationCommentWithHttpInfo(param.functionId, param.functionCommentCreateRequest,  options).toPromise();
+        return this.api.createDecompilationCommentWithHttpInfo(param.functionId, param.functionCommentCreateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -3781,7 +5167,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public createDecompilationComment(param: FunctionsDecompilationApiCreateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.createDecompilationComment(param.functionId, param.functionCommentCreateRequest,  options).toPromise();
+        return this.api.createDecompilationComment(param.functionId, param.functionCommentCreateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -3790,7 +5176,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public deleteDecompilationCommentWithHttpInfo(param: FunctionsDecompilationApiDeleteDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        return this.api.deleteDecompilationCommentWithHttpInfo(param.commentId, param.functionId,  options).toPromise();
+        return this.api.deleteDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -3799,7 +5185,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public deleteDecompilationComment(param: FunctionsDecompilationApiDeleteDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
-        return this.api.deleteDecompilationComment(param.commentId, param.functionId,  options).toPromise();
+        return this.api.deleteDecompilationComment(param.commentId, param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -3808,7 +5194,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public getDecompilationCommentsWithHttpInfo(param: FunctionsDecompilationApiGetDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getDecompilationCommentsWithHttpInfo(param.functionId,  options).toPromise();
+        return this.api.getDecompilationCommentsWithHttpInfo(param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -3817,7 +5203,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public getDecompilationComments(param: FunctionsDecompilationApiGetDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getDecompilationComments(param.functionId,  options).toPromise();
+        return this.api.getDecompilationComments(param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -3826,7 +5212,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public updateDecompilationCommentWithHttpInfo(param: FunctionsDecompilationApiUpdateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.updateDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.commentUpdateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -3835,7 +5221,7 @@ export class ObjectFunctionsDecompilationApi {
      * @param param the request object
      */
     public updateDecompilationComment(param: FunctionsDecompilationApiUpdateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.updateDecompilationComment(param.commentId, param.functionId, param.commentUpdateRequest,  options).toPromise();
+        return this.api.updateDecompilationComment(param.commentId, param.functionId, param.commentUpdateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
 }

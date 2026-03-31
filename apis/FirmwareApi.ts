@@ -57,9 +57,15 @@ export class FirmwareApiRequestFactory extends BaseAPIRequestFactory {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param file 
+     * @param endpointUrl 
+     * @param localCacheDir 
+     * @param localCacheMaxSizeMb 
+     * @param customerSamplesBucket 
+     * @param firmwareSamplesBucket 
+     * @param maxRetryAttempts 
      * @param password 
      */
-    public async uploadFirmware(file: HttpFile, password?: string, _options?: Configuration): Promise<RequestContext> {
+    public async uploadFirmware(file: HttpFile, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'file' is not null or undefined
@@ -69,12 +75,48 @@ export class FirmwareApiRequestFactory extends BaseAPIRequestFactory {
 
 
 
+
+
+
+
+
+
         // Path Params
         const localVarPath = '/v2/firmware';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (endpointUrl !== undefined) {
+            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheDir !== undefined) {
+            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheMaxSizeMb !== undefined) {
+            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
+        }
+
+        // Query Params
+        if (customerSamplesBucket !== undefined) {
+            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (firmwareSamplesBucket !== undefined) {
+            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (maxRetryAttempts !== undefined) {
+            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
+        }
 
         // Form Params
         const useForm = canConsumeForm([

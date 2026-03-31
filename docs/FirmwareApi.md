@@ -81,6 +81,18 @@ const request: FirmwareApiUploadFirmwareRequest = {
   
   file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
   
+  endpointUrl: "endpoint_url_example",
+  
+  localCacheDir: "local_cache_dir_example",
+  
+  localCacheMaxSizeMb: 1,
+  
+  customerSamplesBucket: "customer_samples_bucket_example",
+  
+  firmwareSamplesBucket: "firmware_samples_bucket_example",
+  
+  maxRetryAttempts: 5,
+  
   password: "password_example",
 };
 
@@ -94,6 +106,12 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **file** | [**HttpFile**] |  | defaults to undefined
+ **endpointUrl** | [**string**] |  | (optional) defaults to undefined
+ **localCacheDir** | [**string**] |  | (optional) defaults to undefined
+ **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
+ **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
+ **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
+ **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
  **password** | [**string**] |  | (optional) defaults to undefined
 
 

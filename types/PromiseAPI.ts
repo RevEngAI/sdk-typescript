@@ -336,10 +336,16 @@ export class PromiseAnalysesCommentsApi {
      * Create a comment for this analysis
      * @param analysisId
      * @param commentBase
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createAnalysisCommentWithHttpInfo(analysisId: number, commentBase: CommentBase, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public createAnalysisCommentWithHttpInfo(analysisId: number, commentBase: CommentBase, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAnalysisCommentWithHttpInfo(analysisId, commentBase, observableOptions);
+        const result = this.api.createAnalysisCommentWithHttpInfo(analysisId, commentBase, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -348,10 +354,16 @@ export class PromiseAnalysesCommentsApi {
      * Create a comment for this analysis
      * @param analysisId
      * @param commentBase
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createAnalysisComment(analysisId: number, commentBase: CommentBase, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public createAnalysisComment(analysisId: number, commentBase: CommentBase, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAnalysisComment(analysisId, commentBase, observableOptions);
+        const result = this.api.createAnalysisComment(analysisId, commentBase, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -360,10 +372,16 @@ export class PromiseAnalysesCommentsApi {
      * Delete a comment
      * @param commentId
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
+    public deleteAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAnalysisCommentWithHttpInfo(commentId, analysisId, observableOptions);
+        const result = this.api.deleteAnalysisCommentWithHttpInfo(commentId, analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -372,10 +390,16 @@ export class PromiseAnalysesCommentsApi {
      * Delete a comment
      * @param commentId
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAnalysisComment(commentId: number, analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
+    public deleteAnalysisComment(commentId: number, analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAnalysisComment(commentId, analysisId, observableOptions);
+        const result = this.api.deleteAnalysisComment(commentId, analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -383,10 +407,16 @@ export class PromiseAnalysesCommentsApi {
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisCommentsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
+    public getAnalysisCommentsWithHttpInfo(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisCommentsWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisCommentsWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -394,10 +424,16 @@ export class PromiseAnalysesCommentsApi {
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisComments(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
+    public getAnalysisComments(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisComments(analysisId, observableOptions);
+        const result = this.api.getAnalysisComments(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -407,10 +443,16 @@ export class PromiseAnalysesCommentsApi {
      * @param commentId
      * @param analysisId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public updateAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysisCommentWithHttpInfo(commentId, analysisId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateAnalysisCommentWithHttpInfo(commentId, analysisId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -420,10 +462,16 @@ export class PromiseAnalysesCommentsApi {
      * @param commentId
      * @param analysisId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysisComment(commentId, analysisId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateAnalysisComment(commentId, analysisId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -450,10 +498,16 @@ export class PromiseAnalysesCoreApi {
      * Updates analysis tags for multiple analyses. User must be the owner.
      * Bulk Add Analysis Tags
      * @param analysisBulkAddTagsRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
+    public bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest, observableOptions);
+        const result = this.api.bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -461,10 +515,16 @@ export class PromiseAnalysesCoreApi {
      * Updates analysis tags for multiple analyses. User must be the owner.
      * Bulk Add Analysis Tags
      * @param analysisBulkAddTagsRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public bulkAddAnalysisTags(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
+    public bulkAddAnalysisTags(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.bulkAddAnalysisTags(analysisBulkAddTagsRequest, observableOptions);
+        const result = this.api.bulkAddAnalysisTags(analysisBulkAddTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -472,11 +532,17 @@ export class PromiseAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [xRevEngApplication]
      */
-    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisCreateResponse>> {
+    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisCreateResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAnalysisWithHttpInfo(analysisCreateRequest, xRevEngApplication, observableOptions);
+        const result = this.api.createAnalysisWithHttpInfo(analysisCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, xRevEngApplication, observableOptions);
         return result.toPromise();
     }
 
@@ -484,11 +550,17 @@ export class PromiseAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [xRevEngApplication]
      */
-    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisCreateResponse> {
+    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisCreateResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAnalysis(analysisCreateRequest, xRevEngApplication, observableOptions);
+        const result = this.api.createAnalysis(analysisCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, xRevEngApplication, observableOptions);
         return result.toPromise();
     }
 
@@ -496,10 +568,16 @@ export class PromiseAnalysesCoreApi {
      * Deletes an analysis based on the provided analysis ID.
      * Delete Analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAnalysisWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
+    public deleteAnalysisWithHttpInfo(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAnalysisWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.deleteAnalysisWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -507,10 +585,16 @@ export class PromiseAnalysesCoreApi {
      * Deletes an analysis based on the provided analysis ID.
      * Delete Analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAnalysis(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseDict> {
+    public deleteAnalysis(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseDict> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAnalysis(analysisId, observableOptions);
+        const result = this.api.deleteAnalysis(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -540,10 +624,16 @@ export class PromiseAnalysesCoreApi {
      * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
      * Get Analysis Function Map
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisFunctionMapWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
+    public getAnalysisFunctionMapWithHttpInfo(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisFunctionMapWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisFunctionMapWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -551,10 +641,16 @@ export class PromiseAnalysesCoreApi {
      * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
      * Get Analysis Function Map
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisFunctionMap(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisFunctionMapping> {
+    public getAnalysisFunctionMap(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisFunctionMapping> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisFunctionMap(analysisId, observableOptions);
+        const result = this.api.getAnalysisFunctionMap(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -562,10 +658,16 @@ export class PromiseAnalysesCoreApi {
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisLogsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseLogs>> {
+    public getAnalysisLogsWithHttpInfo(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseLogs>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisLogsWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisLogsWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -573,10 +675,16 @@ export class PromiseAnalysesCoreApi {
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisLogs(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseLogs> {
+    public getAnalysisLogs(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseLogs> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisLogs(analysisId, observableOptions);
+        const result = this.api.getAnalysisLogs(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -584,10 +692,16 @@ export class PromiseAnalysesCoreApi {
      * Gets the params that the analysis was run with
      * Gets analysis param information
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisParamsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseParams>> {
+    public getAnalysisParamsWithHttpInfo(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseParams>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisParamsWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.getAnalysisParamsWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -595,10 +709,16 @@ export class PromiseAnalysesCoreApi {
      * Gets the params that the analysis was run with
      * Gets analysis param information
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisParams(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseParams> {
+    public getAnalysisParams(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseParams> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisParams(analysisId, observableOptions);
+        const result = this.api.getAnalysisParams(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -629,10 +749,16 @@ export class PromiseAnalysesCoreApi {
      * Insert a log entry for an analysis
      * @param analysisId
      * @param insertAnalysisLogRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public insertAnalysisLogWithHttpInfo(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+    public insertAnalysisLogWithHttpInfo(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.insertAnalysisLogWithHttpInfo(analysisId, insertAnalysisLogRequest, observableOptions);
+        const result = this.api.insertAnalysisLogWithHttpInfo(analysisId, insertAnalysisLogRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -641,10 +767,16 @@ export class PromiseAnalysesCoreApi {
      * Insert a log entry for an analysis
      * @param analysisId
      * @param insertAnalysisLogRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public insertAnalysisLog(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
+    public insertAnalysisLog(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.insertAnalysisLog(analysisId, insertAnalysisLogRequest, observableOptions);
+        const result = this.api.insertAnalysisLog(analysisId, insertAnalysisLogRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -741,11 +873,17 @@ export class PromiseAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [xRevEngApplication]
      */
-    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCreated>> {
+    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCreated>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, xRevEngApplication, observableOptions);
+        const result = this.api.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, xRevEngApplication, observableOptions);
         return result.toPromise();
     }
 
@@ -754,11 +892,17 @@ export class PromiseAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [xRevEngApplication]
      */
-    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCreated> {
+    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseCreated> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.requeueAnalysis(analysisId, reAnalysisForm, xRevEngApplication, observableOptions);
+        const result = this.api.requeueAnalysis(analysisId, reAnalysisForm, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, xRevEngApplication, observableOptions);
         return result.toPromise();
     }
 
@@ -767,10 +911,16 @@ export class PromiseAnalysesCoreApi {
      * Update Analysis
      * @param analysisId
      * @param analysisUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysisWithHttpInfo(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisDetailResponse>> {
+    public updateAnalysisWithHttpInfo(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisDetailResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysisWithHttpInfo(analysisId, analysisUpdateRequest, observableOptions);
+        const result = this.api.updateAnalysisWithHttpInfo(analysisId, analysisUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -779,10 +929,16 @@ export class PromiseAnalysesCoreApi {
      * Update Analysis
      * @param analysisId
      * @param analysisUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisDetailResponse> {
+    public updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisDetailResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysis(analysisId, analysisUpdateRequest, observableOptions);
+        const result = this.api.updateAnalysis(analysisId, analysisUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -791,10 +947,16 @@ export class PromiseAnalysesCoreApi {
      * Update Analysis Tags
      * @param analysisId
      * @param analysisUpdateTagsRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysisTagsWithHttpInfo(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
+    public updateAnalysisTagsWithHttpInfo(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysisTagsWithHttpInfo(analysisId, analysisUpdateTagsRequest, observableOptions);
+        const result = this.api.updateAnalysisTagsWithHttpInfo(analysisId, analysisUpdateTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -803,10 +965,16 @@ export class PromiseAnalysesCoreApi {
      * Update Analysis Tags
      * @param analysisId
      * @param analysisUpdateTagsRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisUpdateTagsResponse> {
+    public updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisUpdateTagsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAnalysisTags(analysisId, analysisUpdateTagsRequest, observableOptions);
+        const result = this.api.updateAnalysisTags(analysisId, analysisUpdateTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -815,11 +983,17 @@ export class PromiseAnalysesCoreApi {
      * @param uploadFileType
      * @param file
      * @param [packedPassword]
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [forceOverwrite]
      */
-    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
+    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, forceOverwrite, observableOptions);
+        const result = this.api.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, forceOverwrite, observableOptions);
         return result.toPromise();
     }
 
@@ -828,11 +1002,17 @@ export class PromiseAnalysesCoreApi {
      * @param uploadFileType
      * @param file
      * @param [packedPassword]
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [forceOverwrite]
      */
-    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
+    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFile(uploadFileType, file, packedPassword, forceOverwrite, observableOptions);
+        const result = this.api.uploadFile(uploadFileType, file, packedPassword, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, forceOverwrite, observableOptions);
         return result.toPromise();
     }
 
@@ -1445,20 +1625,32 @@ export class PromiseAuthenticationUsersApi {
     /**
      * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
      * Get comments by user
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getUserCommentsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
+    public getUserCommentsWithHttpInfo(endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getUserCommentsWithHttpInfo(observableOptions);
+        const result = this.api.getUserCommentsWithHttpInfo(endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
      * Get comments by user
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getUserComments(_options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
+    public getUserComments(endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getUserComments(observableOptions);
+        const result = this.api.getUserComments(endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -1506,160 +1698,256 @@ export class PromiseBinariesApi {
     /**
      * Downloads a zipped binary with password protection
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public downloadZippedBinaryWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<HttpFile>> {
+    public downloadZippedBinaryWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<HttpFile>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.downloadZippedBinaryWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.downloadZippedBinaryWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Downloads a zipped binary with password protection
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public downloadZippedBinary(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpFile> {
+    public downloadZippedBinary(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpFile> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.downloadZippedBinary(binaryId, observableOptions);
+        const result = this.api.downloadZippedBinary(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the additional details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
+    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryAdditionalDetailsWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryAdditionalDetailsWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the additional details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryAdditionalDetails(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryAdditionalResponse> {
+    public getBinaryAdditionalDetails(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryAdditionalResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryAdditionalDetails(binaryId, observableOptions);
+        const result = this.api.getBinaryAdditionalDetails(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the status of the additional details task for a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAdditionalDetailsStatusResponse>> {
+    public getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAdditionalDetailsStatusResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the status of the additional details task for a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryAdditionalDetailsStatus(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAdditionalDetailsStatusResponse> {
+    public getBinaryAdditionalDetailsStatus(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAdditionalDetailsStatusResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryAdditionalDetailsStatus(binaryId, observableOptions);
+        const result = this.api.getBinaryAdditionalDetailsStatus(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryDetailsWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryDetailsResponse>> {
+    public getBinaryDetailsWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryDetailsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryDetailsWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryDetailsWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryDetails(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryDetailsResponse> {
+    public getBinaryDetails(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryDetailsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryDetails(binaryId, observableOptions);
+        const result = this.api.getBinaryDetails(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the die info of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryDieInfoWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListDieMatch>> {
+    public getBinaryDieInfoWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListDieMatch>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryDieInfoWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryDieInfoWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the die info of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryDieInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListDieMatch> {
+    public getBinaryDieInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListDieMatch> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryDieInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryDieInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the external details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryExternalsWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryExternalsResponse>> {
+    public getBinaryExternalsWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryExternalsResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryExternalsWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryExternalsWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the external details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryExternals(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryExternalsResponse> {
+    public getBinaryExternals(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinaryExternalsResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryExternals(binaryId, observableOptions);
+        const result = this.api.getBinaryExternals(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the status of the unpack binary task for a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryRelatedStatusWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinariesRelatedStatusResponse>> {
+    public getBinaryRelatedStatusWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinariesRelatedStatusResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryRelatedStatusWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getBinaryRelatedStatusWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the status of the unpack binary task for a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryRelatedStatus(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinariesRelatedStatusResponse> {
+    public getBinaryRelatedStatus(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinariesRelatedStatusResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinaryRelatedStatus(binaryId, observableOptions);
+        const result = this.api.getBinaryRelatedStatus(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the related binaries of a binary.
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getRelatedBinariesWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseChildBinariesResponse>> {
+    public getRelatedBinariesWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseChildBinariesResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getRelatedBinariesWithHttpInfo(binaryId, observableOptions);
+        const result = this.api.getRelatedBinariesWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Gets the related binaries of a binary.
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getRelatedBinaries(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseChildBinariesResponse> {
+    public getRelatedBinaries(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseChildBinariesResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getRelatedBinaries(binaryId, observableOptions);
+        const result = this.api.getRelatedBinaries(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2025,11 +2313,17 @@ export class PromiseFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param file
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [password]
      */
-    public uploadFirmwareWithHttpInfo(file: HttpFile, password?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public uploadFirmwareWithHttpInfo(file: HttpFile, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFirmwareWithHttpInfo(file, password, observableOptions);
+        const result = this.api.uploadFirmwareWithHttpInfo(file, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, password, observableOptions);
         return result.toPromise();
     }
 
@@ -2037,11 +2331,17 @@ export class PromiseFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param file
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [password]
      */
-    public uploadFirmware(file: HttpFile, password?: string, _options?: PromiseConfigurationOptions): Promise<any> {
+    public uploadFirmware(file: HttpFile, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFirmware(file, password, observableOptions);
+        const result = this.api.uploadFirmware(file, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, password, observableOptions);
         return result.toPromise();
     }
 
@@ -2069,10 +2369,16 @@ export class PromiseFunctionsAIDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createAiDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public createAiDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, observableOptions);
+        const result = this.api.createAiDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2081,10 +2387,16 @@ export class PromiseFunctionsAIDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationComment(functionId, functionCommentCreateRequest, observableOptions);
+        const result = this.api.createAiDecompilationComment(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2115,10 +2427,16 @@ export class PromiseFunctionsAIDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
+    public deleteAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAiDecompilationCommentWithHttpInfo(commentId, functionId, observableOptions);
+        const result = this.api.deleteAiDecompilationCommentWithHttpInfo(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2127,10 +2445,16 @@ export class PromiseFunctionsAIDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAiDecompilationComment(commentId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
+    public deleteAiDecompilationComment(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAiDecompilationComment(commentId, functionId, observableOptions);
+        const result = this.api.deleteAiDecompilationComment(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2138,10 +2462,16 @@ export class PromiseFunctionsAIDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAiDecompilationCommentsWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
+    public getAiDecompilationCommentsWithHttpInfo(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationCommentsWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getAiDecompilationCommentsWithHttpInfo(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2149,10 +2479,16 @@ export class PromiseFunctionsAIDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAiDecompilationComments(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
+    public getAiDecompilationComments(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationComments(functionId, observableOptions);
+        const result = this.api.getAiDecompilationComments(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2228,10 +2564,16 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public updateAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAiDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateAiDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2241,10 +2583,16 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAiDecompilationComment(commentId, functionId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateAiDecompilationComment(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2879,10 +3227,16 @@ export class PromiseFunctionsDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public createDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, observableOptions);
+        const result = this.api.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2891,10 +3245,16 @@ export class PromiseFunctionsDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createDecompilationComment(functionId, functionCommentCreateRequest, observableOptions);
+        const result = this.api.createDecompilationComment(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2903,10 +3263,16 @@ export class PromiseFunctionsDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteDecompilationCommentWithHttpInfo(commentId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
+    public deleteDecompilationCommentWithHttpInfo(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteDecompilationCommentWithHttpInfo(commentId, functionId, observableOptions);
+        const result = this.api.deleteDecompilationCommentWithHttpInfo(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2915,10 +3281,16 @@ export class PromiseFunctionsDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteDecompilationComment(commentId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
+    public deleteDecompilationComment(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteDecompilationComment(commentId, functionId, observableOptions);
+        const result = this.api.deleteDecompilationComment(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2926,10 +3298,16 @@ export class PromiseFunctionsDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getDecompilationCommentsWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
+    public getDecompilationCommentsWithHttpInfo(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getDecompilationCommentsWithHttpInfo(functionId, observableOptions);
+        const result = this.api.getDecompilationCommentsWithHttpInfo(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2937,10 +3315,16 @@ export class PromiseFunctionsDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getDecompilationComments(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
+    public getDecompilationComments(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getDecompilationComments(functionId, observableOptions);
+        const result = this.api.getDecompilationComments(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2950,10 +3334,16 @@ export class PromiseFunctionsDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
+    public updateDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 
@@ -2963,10 +3353,16 @@ export class PromiseFunctionsDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
+    public updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.updateDecompilationComment(commentId, functionId, commentUpdateRequest, observableOptions);
+        const result = this.api.updateDecompilationComment(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 

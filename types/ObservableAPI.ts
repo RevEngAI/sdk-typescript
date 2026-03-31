@@ -340,11 +340,17 @@ export class ObservableAnalysesCommentsApi {
      * Create a comment for this analysis
      * @param analysisId
      * @param commentBase
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createAnalysisCommentWithHttpInfo(analysisId: number, commentBase: CommentBase, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public createAnalysisCommentWithHttpInfo(analysisId: number, commentBase: CommentBase, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createAnalysisComment(analysisId, commentBase, _config);
+        const requestContextPromise = this.requestFactory.createAnalysisComment(analysisId, commentBase, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -366,9 +372,15 @@ export class ObservableAnalysesCommentsApi {
      * Create a comment for this analysis
      * @param analysisId
      * @param commentBase
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createAnalysisComment(analysisId: number, commentBase: CommentBase, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.createAnalysisCommentWithHttpInfo(analysisId, commentBase, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public createAnalysisComment(analysisId: number, commentBase: CommentBase, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.createAnalysisCommentWithHttpInfo(analysisId, commentBase, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -376,11 +388,17 @@ export class ObservableAnalysesCommentsApi {
      * Delete a comment
      * @param commentId
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
+    public deleteAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteAnalysisComment(commentId, analysisId, _config);
+        const requestContextPromise = this.requestFactory.deleteAnalysisComment(commentId, analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -402,20 +420,32 @@ export class ObservableAnalysesCommentsApi {
      * Delete a comment
      * @param commentId
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAnalysisComment(commentId: number, analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
-        return this.deleteAnalysisCommentWithHttpInfo(commentId, analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
+    public deleteAnalysisComment(commentId: number, analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
+        return this.deleteAnalysisCommentWithHttpInfo(commentId, analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
     }
 
     /**
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisCommentsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
+    public getAnalysisCommentsWithHttpInfo(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisComments(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisComments(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -436,9 +466,15 @@ export class ObservableAnalysesCommentsApi {
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisComments(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getAnalysisCommentsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
+    public getAnalysisComments(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
+        return this.getAnalysisCommentsWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -447,11 +483,17 @@ export class ObservableAnalysesCommentsApi {
      * @param commentId
      * @param analysisId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public updateAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateAnalysisComment(commentId, analysisId, commentUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateAnalysisComment(commentId, analysisId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -474,9 +516,15 @@ export class ObservableAnalysesCommentsApi {
      * @param commentId
      * @param analysisId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.updateAnalysisCommentWithHttpInfo(commentId, analysisId, commentUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.updateAnalysisCommentWithHttpInfo(commentId, analysisId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
 }
@@ -501,11 +549,17 @@ export class ObservableAnalysesCoreApi {
      * Updates analysis tags for multiple analyses. User must be the owner.
      * Bulk Add Analysis Tags
      * @param analysisBulkAddTagsRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
+    public bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.bulkAddAnalysisTags(analysisBulkAddTagsRequest, _config);
+        const requestContextPromise = this.requestFactory.bulkAddAnalysisTags(analysisBulkAddTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -526,21 +580,33 @@ export class ObservableAnalysesCoreApi {
      * Updates analysis tags for multiple analyses. User must be the owner.
      * Bulk Add Analysis Tags
      * @param analysisBulkAddTagsRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public bulkAddAnalysisTags(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisBulkAddTagsResponse> {
-        return this.bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>) => apiResponse.data));
+    public bulkAddAnalysisTags(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisBulkAddTagsResponse> {
+        return this.bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>) => apiResponse.data));
     }
 
     /**
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [xRevEngApplication]
      */
-    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisCreateResponse>> {
+    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisCreateResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createAnalysis(analysisCreateRequest, xRevEngApplication, _config);
+        const requestContextPromise = this.requestFactory.createAnalysis(analysisCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, xRevEngApplication, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -561,21 +627,33 @@ export class ObservableAnalysesCoreApi {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [xRevEngApplication]
      */
-    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisCreateResponse> {
-        return this.createAnalysisWithHttpInfo(analysisCreateRequest, xRevEngApplication, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisCreateResponse>) => apiResponse.data));
+    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisCreateResponse> {
+        return this.createAnalysisWithHttpInfo(analysisCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, xRevEngApplication, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisCreateResponse>) => apiResponse.data));
     }
 
     /**
      * Deletes an analysis based on the provided analysis ID.
      * Delete Analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAnalysisWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDict>> {
+    public deleteAnalysisWithHttpInfo(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDict>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteAnalysis(analysisId, _config);
+        const requestContextPromise = this.requestFactory.deleteAnalysis(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -596,9 +674,15 @@ export class ObservableAnalysesCoreApi {
      * Deletes an analysis based on the provided analysis ID.
      * Delete Analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAnalysis(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseDict> {
-        return this.deleteAnalysisWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDict>) => apiResponse.data));
+    public deleteAnalysis(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseDict> {
+        return this.deleteAnalysisWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDict>) => apiResponse.data));
     }
 
     /**
@@ -639,11 +723,17 @@ export class ObservableAnalysesCoreApi {
      * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
      * Get Analysis Function Map
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisFunctionMapWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
+    public getAnalysisFunctionMapWithHttpInfo(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisFunctionMap(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisFunctionMap(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -664,20 +754,32 @@ export class ObservableAnalysesCoreApi {
      * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
      * Get Analysis Function Map
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisFunctionMap(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctionMapping> {
-        return this.getAnalysisFunctionMapWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctionMapping>) => apiResponse.data));
+    public getAnalysisFunctionMap(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctionMapping> {
+        return this.getAnalysisFunctionMapWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctionMapping>) => apiResponse.data));
     }
 
     /**
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisLogsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseLogs>> {
+    public getAnalysisLogsWithHttpInfo(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseLogs>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisLogs(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisLogs(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -698,20 +800,32 @@ export class ObservableAnalysesCoreApi {
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisLogs(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseLogs> {
-        return this.getAnalysisLogsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseLogs>) => apiResponse.data));
+    public getAnalysisLogs(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseLogs> {
+        return this.getAnalysisLogsWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseLogs>) => apiResponse.data));
     }
 
     /**
      * Gets the params that the analysis was run with
      * Gets analysis param information
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisParamsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseParams>> {
+    public getAnalysisParamsWithHttpInfo(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseParams>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisParams(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisParams(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -732,9 +846,15 @@ export class ObservableAnalysesCoreApi {
      * Gets the params that the analysis was run with
      * Gets analysis param information
      * @param analysisId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAnalysisParams(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseParams> {
-        return this.getAnalysisParamsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseParams>) => apiResponse.data));
+    public getAnalysisParams(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseParams> {
+        return this.getAnalysisParamsWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseParams>) => apiResponse.data));
     }
 
     /**
@@ -776,11 +896,17 @@ export class ObservableAnalysesCoreApi {
      * Insert a log entry for an analysis
      * @param analysisId
      * @param insertAnalysisLogRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public insertAnalysisLogWithHttpInfo(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
+    public insertAnalysisLogWithHttpInfo(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.insertAnalysisLog(analysisId, insertAnalysisLogRequest, _config);
+        const requestContextPromise = this.requestFactory.insertAnalysisLog(analysisId, insertAnalysisLogRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -802,9 +928,15 @@ export class ObservableAnalysesCoreApi {
      * Insert a log entry for an analysis
      * @param analysisId
      * @param insertAnalysisLogRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public insertAnalysisLog(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.insertAnalysisLogWithHttpInfo(analysisId, insertAnalysisLogRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
+    public insertAnalysisLog(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponse> {
+        return this.insertAnalysisLogWithHttpInfo(analysisId, insertAnalysisLogRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
     }
 
     /**
@@ -936,12 +1068,18 @@ export class ObservableAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [xRevEngApplication]
      */
-    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCreated>> {
+    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCreated>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.requeueAnalysis(analysisId, reAnalysisForm, xRevEngApplication, _config);
+        const requestContextPromise = this.requestFactory.requeueAnalysis(analysisId, reAnalysisForm, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, xRevEngApplication, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -963,10 +1101,16 @@ export class ObservableAnalysesCoreApi {
      * Requeue Analysis
      * @param analysisId
      * @param reAnalysisForm
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [xRevEngApplication]
      */
-    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<BaseResponseCreated> {
-        return this.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, xRevEngApplication, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCreated>) => apiResponse.data));
+    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<BaseResponseCreated> {
+        return this.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, xRevEngApplication, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCreated>) => apiResponse.data));
     }
 
     /**
@@ -974,11 +1118,17 @@ export class ObservableAnalysesCoreApi {
      * Update Analysis
      * @param analysisId
      * @param analysisUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysisWithHttpInfo(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisDetailResponse>> {
+    public updateAnalysisWithHttpInfo(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisDetailResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateAnalysis(analysisId, analysisUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateAnalysis(analysisId, analysisUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1000,9 +1150,15 @@ export class ObservableAnalysesCoreApi {
      * Update Analysis
      * @param analysisId
      * @param analysisUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisDetailResponse> {
-        return this.updateAnalysisWithHttpInfo(analysisId, analysisUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisDetailResponse>) => apiResponse.data));
+    public updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisDetailResponse> {
+        return this.updateAnalysisWithHttpInfo(analysisId, analysisUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisDetailResponse>) => apiResponse.data));
     }
 
     /**
@@ -1010,11 +1166,17 @@ export class ObservableAnalysesCoreApi {
      * Update Analysis Tags
      * @param analysisId
      * @param analysisUpdateTagsRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysisTagsWithHttpInfo(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
+    public updateAnalysisTagsWithHttpInfo(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateAnalysisTags(analysisId, analysisUpdateTagsRequest, _config);
+        const requestContextPromise = this.requestFactory.updateAnalysisTags(analysisId, analysisUpdateTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1036,9 +1198,15 @@ export class ObservableAnalysesCoreApi {
      * Update Analysis Tags
      * @param analysisId
      * @param analysisUpdateTagsRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisUpdateTagsResponse> {
-        return this.updateAnalysisTagsWithHttpInfo(analysisId, analysisUpdateTagsRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisUpdateTagsResponse>) => apiResponse.data));
+    public updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisUpdateTagsResponse> {
+        return this.updateAnalysisTagsWithHttpInfo(analysisId, analysisUpdateTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisUpdateTagsResponse>) => apiResponse.data));
     }
 
     /**
@@ -1046,12 +1214,18 @@ export class ObservableAnalysesCoreApi {
      * @param uploadFileType
      * @param file
      * @param [packedPassword]
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [forceOverwrite]
      */
-    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUploadResponse>> {
+    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUploadResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.uploadFile(uploadFileType, file, packedPassword, forceOverwrite, _config);
+        const requestContextPromise = this.requestFactory.uploadFile(uploadFileType, file, packedPassword, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, forceOverwrite, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1073,10 +1247,16 @@ export class ObservableAnalysesCoreApi {
      * @param uploadFileType
      * @param file
      * @param [packedPassword]
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [forceOverwrite]
      */
-    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
-        return this.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, forceOverwrite, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUploadResponse>) => apiResponse.data));
+    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
+        return this.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, forceOverwrite, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUploadResponse>) => apiResponse.data));
     }
 
 }
@@ -1958,11 +2138,17 @@ export class ObservableAuthenticationUsersApi {
     /**
      * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
      * Get comments by user
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getUserCommentsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
+    public getUserCommentsWithHttpInfo(endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getUserComments(_config);
+        const requestContextPromise = this.requestFactory.getUserComments(endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1982,9 +2168,15 @@ export class ObservableAuthenticationUsersApi {
     /**
      * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
      * Get comments by user
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getUserComments(_options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getUserCommentsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
+    public getUserComments(endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
+        return this.getUserCommentsWithHttpInfo(endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -2042,11 +2234,17 @@ export class ObservableBinariesApi {
     /**
      * Downloads a zipped binary with password protection
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public downloadZippedBinaryWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<HttpFile>> {
+    public downloadZippedBinaryWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<HttpFile>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.downloadZippedBinary(binaryId, _config);
+        const requestContextPromise = this.requestFactory.downloadZippedBinary(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2066,19 +2264,31 @@ export class ObservableBinariesApi {
     /**
      * Downloads a zipped binary with password protection
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public downloadZippedBinary(binaryId: number, _options?: ConfigurationOptions): Observable<HttpFile> {
-        return this.downloadZippedBinaryWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<HttpFile>) => apiResponse.data));
+    public downloadZippedBinary(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpFile> {
+        return this.downloadZippedBinaryWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<HttpFile>) => apiResponse.data));
     }
 
     /**
      * Gets the additional details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
+    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetails(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetails(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2098,19 +2308,31 @@ export class ObservableBinariesApi {
     /**
      * Gets the additional details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryAdditionalDetails(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryAdditionalResponse> {
-        return this.getBinaryAdditionalDetailsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryAdditionalResponse>) => apiResponse.data));
+    public getBinaryAdditionalDetails(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryAdditionalResponse> {
+        return this.getBinaryAdditionalDetailsWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryAdditionalResponse>) => apiResponse.data));
     }
 
     /**
      * Gets the status of the additional details task for a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAdditionalDetailsStatusResponse>> {
+    public getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAdditionalDetailsStatusResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetailsStatus(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetailsStatus(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2130,19 +2352,31 @@ export class ObservableBinariesApi {
     /**
      * Gets the status of the additional details task for a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryAdditionalDetailsStatus(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseAdditionalDetailsStatusResponse> {
-        return this.getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAdditionalDetailsStatusResponse>) => apiResponse.data));
+    public getBinaryAdditionalDetailsStatus(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseAdditionalDetailsStatusResponse> {
+        return this.getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAdditionalDetailsStatusResponse>) => apiResponse.data));
     }
 
     /**
      * Gets the details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryDetailsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryDetailsResponse>> {
+    public getBinaryDetailsWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryDetailsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinaryDetails(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getBinaryDetails(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2162,19 +2396,31 @@ export class ObservableBinariesApi {
     /**
      * Gets the details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryDetails(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryDetailsResponse> {
-        return this.getBinaryDetailsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryDetailsResponse>) => apiResponse.data));
+    public getBinaryDetails(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryDetailsResponse> {
+        return this.getBinaryDetailsWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryDetailsResponse>) => apiResponse.data));
     }
 
     /**
      * Gets the die info of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryDieInfoWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListDieMatch>> {
+    public getBinaryDieInfoWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListDieMatch>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinaryDieInfo(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getBinaryDieInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2194,19 +2440,31 @@ export class ObservableBinariesApi {
     /**
      * Gets the die info of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryDieInfo(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseListDieMatch> {
-        return this.getBinaryDieInfoWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListDieMatch>) => apiResponse.data));
+    public getBinaryDieInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseListDieMatch> {
+        return this.getBinaryDieInfoWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListDieMatch>) => apiResponse.data));
     }
 
     /**
      * Gets the external details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryExternalsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryExternalsResponse>> {
+    public getBinaryExternalsWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryExternalsResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinaryExternals(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getBinaryExternals(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2226,19 +2484,31 @@ export class ObservableBinariesApi {
     /**
      * Gets the external details of a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryExternals(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryExternalsResponse> {
-        return this.getBinaryExternalsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryExternalsResponse>) => apiResponse.data));
+    public getBinaryExternals(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryExternalsResponse> {
+        return this.getBinaryExternalsWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryExternalsResponse>) => apiResponse.data));
     }
 
     /**
      * Gets the status of the unpack binary task for a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryRelatedStatusWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinariesRelatedStatusResponse>> {
+    public getBinaryRelatedStatusWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinariesRelatedStatusResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getBinaryRelatedStatus(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getBinaryRelatedStatus(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2258,19 +2528,31 @@ export class ObservableBinariesApi {
     /**
      * Gets the status of the unpack binary task for a binary
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getBinaryRelatedStatus(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinariesRelatedStatusResponse> {
-        return this.getBinaryRelatedStatusWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinariesRelatedStatusResponse>) => apiResponse.data));
+    public getBinaryRelatedStatus(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseBinariesRelatedStatusResponse> {
+        return this.getBinaryRelatedStatusWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinariesRelatedStatusResponse>) => apiResponse.data));
     }
 
     /**
      * Gets the related binaries of a binary.
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getRelatedBinariesWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseChildBinariesResponse>> {
+    public getRelatedBinariesWithHttpInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseChildBinariesResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getRelatedBinaries(binaryId, _config);
+        const requestContextPromise = this.requestFactory.getRelatedBinaries(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2290,9 +2572,15 @@ export class ObservableBinariesApi {
     /**
      * Gets the related binaries of a binary.
      * @param binaryId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getRelatedBinaries(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseChildBinariesResponse> {
-        return this.getRelatedBinariesWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseChildBinariesResponse>) => apiResponse.data));
+    public getRelatedBinaries(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseChildBinariesResponse> {
+        return this.getRelatedBinariesWithHttpInfo(binaryId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseChildBinariesResponse>) => apiResponse.data));
     }
 
 }
@@ -2797,12 +3085,18 @@ export class ObservableFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param file
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [password]
      */
-    public uploadFirmwareWithHttpInfo(file: HttpFile, password?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
+    public uploadFirmwareWithHttpInfo(file: HttpFile, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.uploadFirmware(file, password, _config);
+        const requestContextPromise = this.requestFactory.uploadFirmware(file, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, password, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2823,10 +3117,16 @@ export class ObservableFirmwareApi {
      * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
      * Upload firmware for unpacking
      * @param file
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      * @param [password]
      */
-    public uploadFirmware(file: HttpFile, password?: string, _options?: ConfigurationOptions): Observable<any> {
-        return this.uploadFirmwareWithHttpInfo(file, password, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
+    public uploadFirmware(file: HttpFile, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: ConfigurationOptions): Observable<any> {
+        return this.uploadFirmwareWithHttpInfo(file, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, password, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
 }
@@ -2852,11 +3152,17 @@ export class ObservableFunctionsAIDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createAiDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public createAiDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createAiDecompilationComment(functionId, functionCommentCreateRequest, _config);
+        const requestContextPromise = this.requestFactory.createAiDecompilationComment(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2878,9 +3184,15 @@ export class ObservableFunctionsAIDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.createAiDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.createAiDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -2922,11 +3234,17 @@ export class ObservableFunctionsAIDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
+    public deleteAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteAiDecompilationComment(commentId, functionId, _config);
+        const requestContextPromise = this.requestFactory.deleteAiDecompilationComment(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2948,20 +3266,32 @@ export class ObservableFunctionsAIDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteAiDecompilationComment(commentId: number, functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
-        return this.deleteAiDecompilationCommentWithHttpInfo(commentId, functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
+    public deleteAiDecompilationComment(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
+        return this.deleteAiDecompilationCommentWithHttpInfo(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
     }
 
     /**
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAiDecompilationCommentsWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
+    public getAiDecompilationCommentsWithHttpInfo(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAiDecompilationComments(functionId, _config);
+        const requestContextPromise = this.requestFactory.getAiDecompilationComments(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -2982,9 +3312,15 @@ export class ObservableFunctionsAIDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getAiDecompilationComments(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getAiDecompilationCommentsWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
+    public getAiDecompilationComments(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
+        return this.getAiDecompilationCommentsWithHttpInfo(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -3095,11 +3431,17 @@ export class ObservableFunctionsAIDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public updateAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateAiDecompilationComment(commentId, functionId, commentUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateAiDecompilationComment(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3122,9 +3464,15 @@ export class ObservableFunctionsAIDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.updateAiDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.updateAiDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -4042,11 +4390,17 @@ export class ObservableFunctionsDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public createDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createDecompilationComment(functionId, functionCommentCreateRequest, _config);
+        const requestContextPromise = this.requestFactory.createDecompilationComment(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4068,9 +4422,15 @@ export class ObservableFunctionsDecompilationApi {
      * Create a comment for this function
      * @param functionId
      * @param functionCommentCreateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -4078,11 +4438,17 @@ export class ObservableFunctionsDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteDecompilationCommentWithHttpInfo(commentId: number, functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
+    public deleteDecompilationCommentWithHttpInfo(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.deleteDecompilationComment(commentId, functionId, _config);
+        const requestContextPromise = this.requestFactory.deleteDecompilationComment(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4104,20 +4470,32 @@ export class ObservableFunctionsDecompilationApi {
      * Delete a comment
      * @param commentId
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public deleteDecompilationComment(commentId: number, functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
-        return this.deleteDecompilationCommentWithHttpInfo(commentId, functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
+    public deleteDecompilationComment(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
+        return this.deleteDecompilationCommentWithHttpInfo(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
     }
 
     /**
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getDecompilationCommentsWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
+    public getDecompilationCommentsWithHttpInfo(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getDecompilationComments(functionId, _config);
+        const requestContextPromise = this.requestFactory.getDecompilationComments(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4138,9 +4516,15 @@ export class ObservableFunctionsDecompilationApi {
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public getDecompilationComments(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getDecompilationCommentsWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
+    public getDecompilationComments(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
+        return this.getDecompilationCommentsWithHttpInfo(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
     }
 
     /**
@@ -4149,11 +4533,17 @@ export class ObservableFunctionsDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
+    public updateDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.updateDecompilationComment(commentId, functionId, commentUpdateRequest, _config);
+        const requestContextPromise = this.requestFactory.updateDecompilationComment(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4176,9 +4566,15 @@ export class ObservableFunctionsDecompilationApi {
      * @param commentId
      * @param functionId
      * @param commentUpdateRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
      */
-    public updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.updateDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    public updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
+        return this.updateDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
 }
