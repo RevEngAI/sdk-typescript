@@ -25,8 +25,14 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
      * Create a comment for this analysis
      * @param analysisId 
      * @param commentBase 
+     * @param endpointUrl 
+     * @param localCacheDir 
+     * @param localCacheMaxSizeMb 
+     * @param customerSamplesBucket 
+     * @param firmwareSamplesBucket 
+     * @param maxRetryAttempts 
      */
-    public async createAnalysisComment(analysisId: number, commentBase: CommentBase, _options?: Configuration): Promise<RequestContext> {
+    public async createAnalysisComment(analysisId: number, commentBase: CommentBase, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -41,6 +47,12 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
+
+
+
+
+
         // Path Params
         const localVarPath = '/v2/analyses/{analysis_id}/comments'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
@@ -48,6 +60,36 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (endpointUrl !== undefined) {
+            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheDir !== undefined) {
+            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheMaxSizeMb !== undefined) {
+            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
+        }
+
+        // Query Params
+        if (customerSamplesBucket !== undefined) {
+            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (firmwareSamplesBucket !== undefined) {
+            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (maxRetryAttempts !== undefined) {
+            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
+        }
 
 
         // Body Params
@@ -81,8 +123,14 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
      * Delete a comment
      * @param commentId 
      * @param analysisId 
+     * @param endpointUrl 
+     * @param localCacheDir 
+     * @param localCacheMaxSizeMb 
+     * @param customerSamplesBucket 
+     * @param firmwareSamplesBucket 
+     * @param maxRetryAttempts 
      */
-    public async deleteAnalysisComment(commentId: number, analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async deleteAnalysisComment(commentId: number, analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commentId' is not null or undefined
@@ -97,6 +145,12 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
+
+
+
+
+
         // Path Params
         const localVarPath = '/v2/analyses/{analysis_id}/comments/{comment_id}'
             .replace('{' + 'comment_id' + '}', encodeURIComponent(String(commentId)))
@@ -105,6 +159,36 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (endpointUrl !== undefined) {
+            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheDir !== undefined) {
+            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheMaxSizeMb !== undefined) {
+            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
+        }
+
+        // Query Params
+        if (customerSamplesBucket !== undefined) {
+            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (firmwareSamplesBucket !== undefined) {
+            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (maxRetryAttempts !== undefined) {
+            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -126,14 +210,26 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId 
+     * @param endpointUrl 
+     * @param localCacheDir 
+     * @param localCacheMaxSizeMb 
+     * @param customerSamplesBucket 
+     * @param firmwareSamplesBucket 
+     * @param maxRetryAttempts 
      */
-    public async getAnalysisComments(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisComments(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCommentsApi", "getAnalysisComments", "analysisId");
         }
+
+
+
+
+
+
 
 
         // Path Params
@@ -143,6 +239,36 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (endpointUrl !== undefined) {
+            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheDir !== undefined) {
+            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheMaxSizeMb !== undefined) {
+            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
+        }
+
+        // Query Params
+        if (customerSamplesBucket !== undefined) {
+            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (firmwareSamplesBucket !== undefined) {
+            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (maxRetryAttempts !== undefined) {
+            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -166,8 +292,14 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
      * @param commentId 
      * @param analysisId 
      * @param commentUpdateRequest 
+     * @param endpointUrl 
+     * @param localCacheDir 
+     * @param localCacheMaxSizeMb 
+     * @param customerSamplesBucket 
+     * @param firmwareSamplesBucket 
+     * @param maxRetryAttempts 
      */
-    public async updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: Configuration): Promise<RequestContext> {
+    public async updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commentId' is not null or undefined
@@ -188,6 +320,12 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
+
+
+
+
+
+
         // Path Params
         const localVarPath = '/v2/analyses/{analysis_id}/comments/{comment_id}'
             .replace('{' + 'comment_id' + '}', encodeURIComponent(String(commentId)))
@@ -196,6 +334,36 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (endpointUrl !== undefined) {
+            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheDir !== undefined) {
+            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheMaxSizeMb !== undefined) {
+            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
+        }
+
+        // Query Params
+        if (customerSamplesBucket !== undefined) {
+            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (firmwareSamplesBucket !== undefined) {
+            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (maxRetryAttempts !== undefined) {
+            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
+        }
 
 
         // Body Params

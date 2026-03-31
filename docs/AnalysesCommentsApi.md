@@ -32,6 +32,18 @@ const request: AnalysesCommentsApiCreateAnalysisCommentRequest = {
   commentBase: {
     content: "content_example",
   },
+  
+  endpointUrl: "endpoint_url_example",
+  
+  localCacheDir: "local_cache_dir_example",
+  
+  localCacheMaxSizeMb: 1,
+  
+  customerSamplesBucket: "customer_samples_bucket_example",
+  
+  firmwareSamplesBucket: "firmware_samples_bucket_example",
+  
+  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.createAnalysisComment(request);
@@ -45,6 +57,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentBase** | **CommentBase**|  |
  **analysisId** | [**number**] |  | defaults to undefined
+ **endpointUrl** | [**string**] |  | (optional) defaults to undefined
+ **localCacheDir** | [**string**] |  | (optional) defaults to undefined
+ **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
+ **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
+ **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
+ **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -90,6 +108,18 @@ const request: AnalysesCommentsApiDeleteAnalysisCommentRequest = {
   commentId: 1,
   
   analysisId: 1,
+  
+  endpointUrl: "endpoint_url_example",
+  
+  localCacheDir: "local_cache_dir_example",
+  
+  localCacheMaxSizeMb: 1,
+  
+  customerSamplesBucket: "customer_samples_bucket_example",
+  
+  firmwareSamplesBucket: "firmware_samples_bucket_example",
+  
+  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.deleteAnalysisComment(request);
@@ -103,6 +133,12 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | [**number**] |  | defaults to undefined
  **analysisId** | [**number**] |  | defaults to undefined
+ **endpointUrl** | [**string**] |  | (optional) defaults to undefined
+ **localCacheDir** | [**string**] |  | (optional) defaults to undefined
+ **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
+ **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
+ **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
+ **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -147,6 +183,18 @@ const apiInstance = new AnalysesCommentsApi(configuration);
 const request: AnalysesCommentsApiGetAnalysisCommentsRequest = {
   
   analysisId: 1,
+  
+  endpointUrl: "endpoint_url_example",
+  
+  localCacheDir: "local_cache_dir_example",
+  
+  localCacheMaxSizeMb: 1,
+  
+  customerSamplesBucket: "customer_samples_bucket_example",
+  
+  firmwareSamplesBucket: "firmware_samples_bucket_example",
+  
+  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getAnalysisComments(request);
@@ -159,6 +207,12 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
+ **endpointUrl** | [**string**] |  | (optional) defaults to undefined
+ **localCacheDir** | [**string**] |  | (optional) defaults to undefined
+ **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
+ **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
+ **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
+ **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -207,6 +261,18 @@ const request: AnalysesCommentsApiUpdateAnalysisCommentRequest = {
   commentUpdateRequest: {
     content: "content_example",
   },
+  
+  endpointUrl: "endpoint_url_example",
+  
+  localCacheDir: "local_cache_dir_example",
+  
+  localCacheMaxSizeMb: 1,
+  
+  customerSamplesBucket: "customer_samples_bucket_example",
+  
+  firmwareSamplesBucket: "firmware_samples_bucket_example",
+  
+  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.updateAnalysisComment(request);
@@ -221,6 +287,12 @@ Name | Type | Description  | Notes
  **commentUpdateRequest** | **CommentUpdateRequest**|  |
  **commentId** | [**number**] |  | defaults to undefined
  **analysisId** | [**number**] |  | defaults to undefined
+ **endpointUrl** | [**string**] |  | (optional) defaults to undefined
+ **localCacheDir** | [**string**] |  | (optional) defaults to undefined
+ **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
+ **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
+ **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
+ **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type

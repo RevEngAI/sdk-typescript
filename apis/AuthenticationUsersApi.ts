@@ -119,9 +119,21 @@ export class AuthenticationUsersApiRequestFactory extends BaseAPIRequestFactory 
     /**
      * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
      * Get comments by user
+     * @param endpointUrl 
+     * @param localCacheDir 
+     * @param localCacheMaxSizeMb 
+     * @param customerSamplesBucket 
+     * @param firmwareSamplesBucket 
+     * @param maxRetryAttempts 
      */
-    public async getUserComments(_options?: Configuration): Promise<RequestContext> {
+    public async getUserComments(endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
+
+
+
+
+
 
         // Path Params
         const localVarPath = '/v2/users/me/comments';
@@ -129,6 +141,36 @@ export class AuthenticationUsersApiRequestFactory extends BaseAPIRequestFactory 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (endpointUrl !== undefined) {
+            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheDir !== undefined) {
+            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
+        }
+
+        // Query Params
+        if (localCacheMaxSizeMb !== undefined) {
+            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
+        }
+
+        // Query Params
+        if (customerSamplesBucket !== undefined) {
+            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (firmwareSamplesBucket !== undefined) {
+            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
+        }
+
+        // Query Params
+        if (maxRetryAttempts !== undefined) {
+            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
