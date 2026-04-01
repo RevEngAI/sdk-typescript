@@ -88,7 +88,6 @@ import { BaseResponseFunctionTaskResponse } from '../models/BaseResponseFunction
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
 import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
-import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResponseGetAiDecompilationRatingResponse';
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
 import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
@@ -116,6 +115,7 @@ import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
+import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
@@ -3327,7 +3327,7 @@ export class ObservableFunctionsAIDecompilationApi {
      * Get rating for AI decompilation
      * @param functionId The ID of the function for which to get the rating
      */
-    public getAiDecompilationRatingWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetAiDecompilationRatingResponse>> {
+    public getAiDecompilationRatingWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUnionGetAiDecompilationRatingResponseNoneType>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getAiDecompilationRating(functionId, _config);
@@ -3351,8 +3351,8 @@ export class ObservableFunctionsAIDecompilationApi {
      * Get rating for AI decompilation
      * @param functionId The ID of the function for which to get the rating
      */
-    public getAiDecompilationRating(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseGetAiDecompilationRatingResponse> {
-        return this.getAiDecompilationRatingWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetAiDecompilationRatingResponse>) => apiResponse.data));
+    public getAiDecompilationRating(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseUnionGetAiDecompilationRatingResponseNoneType> {
+        return this.getAiDecompilationRatingWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUnionGetAiDecompilationRatingResponseNoneType>) => apiResponse.data));
     }
 
     /**

@@ -14,7 +14,7 @@ import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRa
 import { MetaModel } from '../models/MetaModel';
 import { HttpFile } from '../http/http';
 
-export class BaseResponseGetAiDecompilationRatingResponse {
+export class BaseResponseUnionGetAiDecompilationRatingResponseNoneType {
     /**
     * Response status on whether the request succeeded
     */
@@ -64,7 +64,7 @@ export class BaseResponseGetAiDecompilationRatingResponse {
         }    ];
 
     static getAttributeTypeMap() {
-        return BaseResponseGetAiDecompilationRatingResponse.attributeTypeMap;
+        return BaseResponseUnionGetAiDecompilationRatingResponseNoneType.attributeTypeMap;
     }
 
     public constructor() {

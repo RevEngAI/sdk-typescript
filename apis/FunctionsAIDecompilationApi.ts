@@ -12,9 +12,9 @@ import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
 import { BaseResponseFunctionTaskResponse } from '../models/BaseResponseFunctionTaskResponse';
-import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResponseGetAiDecompilationRatingResponse';
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
+import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateRequest';
 import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
@@ -819,13 +819,13 @@ export class FunctionsAIDecompilationApiResponseProcessor {
      * @params response Response returned by the server for a request to getAiDecompilationRating
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getAiDecompilationRatingWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseGetAiDecompilationRatingResponse >> {
+     public async getAiDecompilationRatingWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseUnionGetAiDecompilationRatingResponseNoneType >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseGetAiDecompilationRatingResponse = ObjectSerializer.deserialize(
+            const body: BaseResponseUnionGetAiDecompilationRatingResponseNoneType = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseGetAiDecompilationRatingResponse", ""
-            ) as BaseResponseGetAiDecompilationRatingResponse;
+                "BaseResponseUnionGetAiDecompilationRatingResponseNoneType", ""
+            ) as BaseResponseUnionGetAiDecompilationRatingResponseNoneType;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
@@ -838,10 +838,10 @@ export class FunctionsAIDecompilationApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseGetAiDecompilationRatingResponse = ObjectSerializer.deserialize(
+            const body: BaseResponseUnionGetAiDecompilationRatingResponseNoneType = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseGetAiDecompilationRatingResponse", ""
-            ) as BaseResponseGetAiDecompilationRatingResponse;
+                "BaseResponseUnionGetAiDecompilationRatingResponseNoneType", ""
+            ) as BaseResponseUnionGetAiDecompilationRatingResponseNoneType;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
