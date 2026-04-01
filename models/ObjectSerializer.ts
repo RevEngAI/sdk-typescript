@@ -83,7 +83,6 @@ export * from '../models/BaseResponseFunctionTaskResponse';
 export * from '../models/BaseResponseFunctionsDetailResponse';
 export * from '../models/BaseResponseGenerateFunctionDataTypes';
 export * from '../models/BaseResponseGenerationStatusList';
-export * from '../models/BaseResponseGetAiDecompilationRatingResponse';
 export * from '../models/BaseResponseGetAiDecompilationTask';
 export * from '../models/BaseResponseGetMeResponse';
 export * from '../models/BaseResponseGetPublicUserResponse';
@@ -111,6 +110,7 @@ export * from '../models/BaseResponseStr';
 export * from '../models/BaseResponseTTPS';
 export * from '../models/BaseResponseTagSearchResponse';
 export * from '../models/BaseResponseTaskResponse';
+export * from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 export * from '../models/BaseResponseUploadResponse';
 export * from '../models/BaseResponseVulnerabilities';
 export * from '../models/BaseResponseXrefResponse';
@@ -399,7 +399,6 @@ import { BaseResponseFunctionTaskResponse } from '../models/BaseResponseFunction
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
 import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
-import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResponseGetAiDecompilationRatingResponse';
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
 import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
@@ -427,6 +426,7 @@ import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
+import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
@@ -759,7 +759,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseFunctionsDetailResponse": BaseResponseFunctionsDetailResponse,
     "BaseResponseGenerateFunctionDataTypes": BaseResponseGenerateFunctionDataTypes,
     "BaseResponseGenerationStatusList": BaseResponseGenerationStatusList,
-    "BaseResponseGetAiDecompilationRatingResponse": BaseResponseGetAiDecompilationRatingResponse,
     "BaseResponseGetAiDecompilationTask": BaseResponseGetAiDecompilationTask,
     "BaseResponseGetMeResponse": BaseResponseGetMeResponse,
     "BaseResponseGetPublicUserResponse": BaseResponseGetPublicUserResponse,
@@ -787,6 +786,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseTTPS": BaseResponseTTPS,
     "BaseResponseTagSearchResponse": BaseResponseTagSearchResponse,
     "BaseResponseTaskResponse": BaseResponseTaskResponse,
+    "BaseResponseUnionGetAiDecompilationRatingResponseNoneType": BaseResponseUnionGetAiDecompilationRatingResponseNoneType,
     "BaseResponseUploadResponse": BaseResponseUploadResponse,
     "BaseResponseVulnerabilities": BaseResponseVulnerabilities,
     "BaseResponseXrefResponse": BaseResponseXrefResponse,

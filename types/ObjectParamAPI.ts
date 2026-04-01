@@ -87,7 +87,6 @@ import { BaseResponseFunctionTaskResponse } from '../models/BaseResponseFunction
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
 import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
-import { BaseResponseGetAiDecompilationRatingResponse } from '../models/BaseResponseGetAiDecompilationRatingResponse';
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
 import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
@@ -115,6 +114,7 @@ import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
+import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
@@ -4034,7 +4034,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * Get rating for AI decompilation
      * @param param the request object
      */
-    public getAiDecompilationRatingWithHttpInfo(param: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationRatingResponse>> {
+    public getAiDecompilationRatingWithHttpInfo(param: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseUnionGetAiDecompilationRatingResponseNoneType>> {
         return this.api.getAiDecompilationRatingWithHttpInfo(param.functionId,  options).toPromise();
     }
 
@@ -4042,7 +4042,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * Get rating for AI decompilation
      * @param param the request object
      */
-    public getAiDecompilationRating(param: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<BaseResponseGetAiDecompilationRatingResponse> {
+    public getAiDecompilationRating(param: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<BaseResponseUnionGetAiDecompilationRatingResponseNoneType> {
         return this.api.getAiDecompilationRating(param.functionId,  options).toPromise();
     }
 
