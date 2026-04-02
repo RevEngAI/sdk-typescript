@@ -131,6 +131,7 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
+import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -525,6 +526,40 @@ export class PromiseAnalysesCoreApi {
     public bulkAddAnalysisTags(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.bulkAddAnalysisTags(analysisBulkAddTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes multiple analyses. User must be the owner of all analyses.
+     * Bulk Delete Analyses
+     * @param bulkDeleteAnalysesRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
+     */
+    public bulkDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.bulkDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes multiple analyses. User must be the owner of all analyses.
+     * Bulk Delete Analyses
+     * @param bulkDeleteAnalysesRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
+     */
+    public bulkDeleteAnalyses(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseDict> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.bulkDeleteAnalyses(bulkDeleteAnalysesRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 

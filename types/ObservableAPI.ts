@@ -132,6 +132,7 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
+import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -589,6 +590,52 @@ export class ObservableAnalysesCoreApi {
      */
     public bulkAddAnalysisTags(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisBulkAddTagsResponse> {
         return this.bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Deletes multiple analyses. User must be the owner of all analyses.
+     * Bulk Delete Analyses
+     * @param bulkDeleteAnalysesRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
+     */
+    public bulkDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDict>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.bulkDeleteAnalyses(bulkDeleteAnalysesRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.bulkDeleteAnalysesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Deletes multiple analyses. User must be the owner of all analyses.
+     * Bulk Delete Analyses
+     * @param bulkDeleteAnalysesRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
+     */
+    public bulkDeleteAnalyses(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseDict> {
+        return this.bulkDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDict>) => apiResponse.data));
     }
 
     /**
