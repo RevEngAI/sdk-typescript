@@ -131,6 +131,7 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
+import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -688,6 +689,57 @@ export interface AnalysesCoreApiBulkAddAnalysisTagsRequest {
      * Defaults to: 5
      * @type number
      * @memberof AnalysesCoreApibulkAddAnalysisTags
+     */
+    maxRetryAttempts?: number
+}
+
+export interface AnalysesCoreApiBulkDeleteAnalysesRequest {
+    /**
+     * 
+     * @type BulkDeleteAnalysesRequest
+     * @memberof AnalysesCoreApibulkDeleteAnalyses
+     */
+    bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApibulkDeleteAnalyses
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApibulkDeleteAnalyses
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApibulkDeleteAnalyses
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApibulkDeleteAnalyses
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApibulkDeleteAnalyses
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesCoreApibulkDeleteAnalyses
      */
     maxRetryAttempts?: number
 }
@@ -1421,6 +1473,24 @@ export class ObjectAnalysesCoreApi {
      */
     public bulkAddAnalysisTags(param: AnalysesCoreApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
         return this.api.bulkAddAnalysisTags(param.analysisBulkAddTagsRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
+    }
+
+    /**
+     * Deletes multiple analyses. User must be the owner of all analyses.
+     * Bulk Delete Analyses
+     * @param param the request object
+     */
+    public bulkDeleteAnalysesWithHttpInfo(param: AnalysesCoreApiBulkDeleteAnalysesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
+        return this.api.bulkDeleteAnalysesWithHttpInfo(param.bulkDeleteAnalysesRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
+    }
+
+    /**
+     * Deletes multiple analyses. User must be the owner of all analyses.
+     * Bulk Delete Analyses
+     * @param param the request object
+     */
+    public bulkDeleteAnalyses(param: AnalysesCoreApiBulkDeleteAnalysesRequest, options?: ConfigurationOptions): Promise<BaseResponseDict> {
+        return this.api.bulkDeleteAnalyses(param.bulkDeleteAnalysesRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**

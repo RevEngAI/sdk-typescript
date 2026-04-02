@@ -127,6 +127,7 @@ export * from '../models/BinarySearchResult';
 export * from '../models/BinaryTaskStatus';
 export * from '../models/Block';
 export * from '../models/BlockCommentsGenerationForFunctionResponse';
+export * from '../models/BulkDeleteAnalysesRequest';
 export * from '../models/CalleeFunctionInfo';
 export * from '../models/CalleesCallerFunctionsResponse';
 export * from '../models/CallerFunctionInfo';
@@ -443,6 +444,7 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { Block } from '../models/Block';
 import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
+import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
@@ -801,6 +803,7 @@ let typeMap: {[index: string]: any} = {
     "BinarySearchResult": BinarySearchResult,
     "Block": Block,
     "BlockCommentsGenerationForFunctionResponse": BlockCommentsGenerationForFunctionResponse,
+    "BulkDeleteAnalysesRequest": BulkDeleteAnalysesRequest,
     "CalleeFunctionInfo": CalleeFunctionInfo,
     "CalleesCallerFunctionsResponse": CalleesCallerFunctionsResponse,
     "CallerFunctionInfo": CallerFunctionInfo,
