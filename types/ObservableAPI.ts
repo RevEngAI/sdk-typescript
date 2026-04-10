@@ -292,6 +292,7 @@ import { StringFunctions } from '../models/StringFunctions';
 import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
+import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
 import { Symbols } from '../models/Symbols';
 import { TTPS } from '../models/TTPS';
 import { TTPSAttack } from '../models/TTPSAttack';
@@ -2258,6 +2259,40 @@ export class ObservableAuthenticationUsersApi {
      */
     public loginUser(loginRequest: LoginRequest, _options?: ConfigurationOptions): Observable<BaseResponseLoginResponse> {
         return this.loginUserWithHttpInfo(loginRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseLoginResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Submits feedback about the application and forwards it to the RevEng.ai project management tool.
+     * Submit feedback about the application
+     * @param submitUserFeedbackRequest
+     */
+    public submitUserFeedbackWithHttpInfo(submitUserFeedbackRequest: SubmitUserFeedbackRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.submitUserFeedback(submitUserFeedbackRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.submitUserFeedbackWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Submits feedback about the application and forwards it to the RevEng.ai project management tool.
+     * Submit feedback about the application
+     * @param submitUserFeedbackRequest
+     */
+    public submitUserFeedback(submitUserFeedbackRequest: SubmitUserFeedbackRequest, _options?: ConfigurationOptions): Observable<BaseResponse> {
+        return this.submitUserFeedbackWithHttpInfo(submitUserFeedbackRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
     }
 
 }

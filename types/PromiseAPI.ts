@@ -291,6 +291,7 @@ import { StringFunctions } from '../models/StringFunctions';
 import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
+import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
 import { Symbols } from '../models/Symbols';
 import { TTPS } from '../models/TTPS';
 import { TTPSAttack } from '../models/TTPSAttack';
@@ -1708,6 +1709,28 @@ export class PromiseAuthenticationUsersApi {
     public loginUser(loginRequest: LoginRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseLoginResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.loginUser(loginRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Submits feedback about the application and forwards it to the RevEng.ai project management tool.
+     * Submit feedback about the application
+     * @param submitUserFeedbackRequest
+     */
+    public submitUserFeedbackWithHttpInfo(submitUserFeedbackRequest: SubmitUserFeedbackRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.submitUserFeedbackWithHttpInfo(submitUserFeedbackRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Submits feedback about the application and forwards it to the RevEng.ai project management tool.
+     * Submit feedback about the application
+     * @param submitUserFeedbackRequest
+     */
+    public submitUserFeedback(submitUserFeedbackRequest: SubmitUserFeedbackRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.submitUserFeedback(submitUserFeedbackRequest, observableOptions);
         return result.toPromise();
     }
 
