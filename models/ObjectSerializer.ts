@@ -287,6 +287,7 @@ export * from '../models/StringFunctions';
 export * from '../models/StringSource';
 export * from '../models/Structure';
 export * from '../models/StructureMember';
+export * from '../models/SubmitUserFeedbackRequest';
 export * from '../models/Symbols';
 export * from '../models/TTPS';
 export * from '../models/TTPSAttack';
@@ -604,6 +605,7 @@ import { StringFunctions    } from '../models/StringFunctions';
 import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
+import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
 import { Symbols } from '../models/Symbols';
 import { TTPS } from '../models/TTPS';
 import { TTPSAttack } from '../models/TTPSAttack';
@@ -948,6 +950,7 @@ let typeMap: {[index: string]: any} = {
     "StringFunctions": StringFunctions,
     "Structure": Structure,
     "StructureMember": StructureMember,
+    "SubmitUserFeedbackRequest": SubmitUserFeedbackRequest,
     "Symbols": Symbols,
     "TTPS": TTPS,
     "TTPSAttack": TTPSAttack,

@@ -291,6 +291,7 @@ import { StringFunctions } from '../models/StringFunctions';
 import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
+import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
 import { Symbols } from '../models/Symbols';
 import { TTPS } from '../models/TTPS';
 import { TTPSAttack } from '../models/TTPSAttack';
@@ -2523,6 +2524,15 @@ export interface AuthenticationUsersApiLoginUserRequest {
     loginRequest: LoginRequest
 }
 
+export interface AuthenticationUsersApiSubmitUserFeedbackRequest {
+    /**
+     * 
+     * @type SubmitUserFeedbackRequest
+     * @memberof AuthenticationUsersApisubmitUserFeedback
+     */
+    submitUserFeedbackRequest: SubmitUserFeedbackRequest
+}
+
 export class ObjectAuthenticationUsersApi {
     private api: ObservableAuthenticationUsersApi
 
@@ -2612,6 +2622,24 @@ export class ObjectAuthenticationUsersApi {
      */
     public loginUser(param: AuthenticationUsersApiLoginUserRequest, options?: ConfigurationOptions): Promise<BaseResponseLoginResponse> {
         return this.api.loginUser(param.loginRequest,  options).toPromise();
+    }
+
+    /**
+     * Submits feedback about the application and forwards it to the RevEng.ai project management tool.
+     * Submit feedback about the application
+     * @param param the request object
+     */
+    public submitUserFeedbackWithHttpInfo(param: AuthenticationUsersApiSubmitUserFeedbackRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+        return this.api.submitUserFeedbackWithHttpInfo(param.submitUserFeedbackRequest,  options).toPromise();
+    }
+
+    /**
+     * Submits feedback about the application and forwards it to the RevEng.ai project management tool.
+     * Submit feedback about the application
+     * @param param the request object
+     */
+    public submitUserFeedback(param: AuthenticationUsersApiSubmitUserFeedbackRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
+        return this.api.submitUserFeedback(param.submitUserFeedbackRequest,  options).toPromise();
     }
 
 }
