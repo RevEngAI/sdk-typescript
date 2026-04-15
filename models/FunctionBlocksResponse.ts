@@ -30,7 +30,7 @@ export class FunctionBlocksResponse {
     * Params associated with this function
     */
     'params': Array<FunctionParamResponse>;
-    'overviewComment': string | null;
+    'overviewComment'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 

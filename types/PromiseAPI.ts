@@ -60,12 +60,9 @@ import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBina
 import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
 import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
 import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySearchResponse';
-import { BaseResponseBlockCommentsGenerationForFunctionResponse } from '../models/BaseResponseBlockCommentsGenerationForFunctionResponse';
-import { BaseResponseBlockCommentsOverviewGenerationResponse } from '../models/BaseResponseBlockCommentsOverviewGenerationResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
 import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
 import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
-import { BaseResponseCheckSecurityChecksTaskResponse } from '../models/BaseResponseCheckSecurityChecksTaskResponse';
 import { BaseResponseChildBinariesResponse } from '../models/BaseResponseChildBinariesResponse';
 import { BaseResponseCollectionBinariesUpdateResponse } from '../models/BaseResponseCollectionBinariesUpdateResponse';
 import { BaseResponseCollectionResponse } from '../models/BaseResponseCollectionResponse';
@@ -106,9 +103,7 @@ import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipeli
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
 import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
 import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
-import { BaseResponseQueuedSecurityChecksTaskResponse } from '../models/BaseResponseQueuedSecurityChecksTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
-import { BaseResponseSecurityChecksResponse } from '../models/BaseResponseSecurityChecksResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
@@ -128,16 +123,12 @@ import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
 import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
 import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
-import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
-import { Block } from '../models/Block';
-import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
 import { Capabilities } from '../models/Capabilities';
 import { Capability } from '../models/Capability';
-import { CheckSecurityChecksTaskResponse } from '../models/CheckSecurityChecksTaskResponse';
 import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
 import { CodeSignatureModel } from '../models/CodeSignatureModel';
 import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
@@ -156,7 +147,6 @@ import { CollectionUpdateRequest } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
-import { ConfidenceType } from '../models/ConfidenceType';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
@@ -263,7 +253,6 @@ import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
-import { QueuedSecurityChecksTaskResponse } from '../models/QueuedSecurityChecksTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { Registry } from '../models/Registry';
@@ -273,11 +262,8 @@ import { SBOMPackage } from '../models/SBOMPackage';
 import { SandboxOptions } from '../models/SandboxOptions';
 import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
 import { SectionModel } from '../models/SectionModel';
-import { SecurityChecksResponse } from '../models/SecurityChecksResponse';
-import { SecurityChecksResult } from '../models/SecurityChecksResult';
 import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
-import { SeverityType } from '../models/SeverityType';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -314,7 +300,6 @@ import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplatio
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
-import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
 import { XrefResponse } from '../models/XrefResponse';
@@ -1389,91 +1374,6 @@ export class PromiseAnalysesResultsMetadataApi {
     public getVulnerabilities(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseVulnerabilities> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getVulnerabilities(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-
-}
-
-
-
-import { ObservableAnalysesSecurityChecksApi } from './ObservableAPI';
-
-import { AnalysesSecurityChecksApiRequestFactory, AnalysesSecurityChecksApiResponseProcessor} from "../apis/AnalysesSecurityChecksApi";
-export class PromiseAnalysesSecurityChecksApi {
-    private api: ObservableAnalysesSecurityChecksApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysesSecurityChecksApiRequestFactory,
-        responseProcessor?: AnalysesSecurityChecksApiResponseProcessor
-    ) {
-        this.api = new ObservableAnalysesSecurityChecksApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Queues a security check process
-     * @param analysisId
-     */
-    public createScurityChecksTaskWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<QueuedSecurityChecksTaskResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createScurityChecksTaskWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Queues a security check process
-     * @param analysisId
-     */
-    public createScurityChecksTask(analysisId: number, _options?: PromiseConfigurationOptions): Promise<QueuedSecurityChecksTaskResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createScurityChecksTask(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Retrieve security checks results with pagination.
-     * Get Security Checks
-     * @param analysisId
-     * @param page The page number to retrieve.
-     * @param pageSize Number of items per page.
-     */
-    public getSecurityChecksWithHttpInfo(analysisId: number, page: number, pageSize: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseSecurityChecksResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getSecurityChecksWithHttpInfo(analysisId, page, pageSize, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Retrieve security checks results with pagination.
-     * Get Security Checks
-     * @param analysisId
-     * @param page The page number to retrieve.
-     * @param pageSize Number of items per page.
-     */
-    public getSecurityChecks(analysisId: number, page: number, pageSize: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseSecurityChecksResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getSecurityChecks(analysisId, page, pageSize, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Check the status of a security check process
-     * @param analysisId
-     */
-    public getSecurityChecksTaskStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CheckSecurityChecksTaskResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getSecurityChecksTaskStatusWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Check the status of a security check process
-     * @param analysisId
-     */
-    public getSecurityChecksTaskStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<CheckSecurityChecksTaskResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getSecurityChecksTaskStatus(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -2681,87 +2581,6 @@ export class PromiseFunctionsAIDecompilationApi {
 
 
 
-import { ObservableFunctionsBlockCommentsApi } from './ObservableAPI';
-
-import { FunctionsBlockCommentsApiRequestFactory, FunctionsBlockCommentsApiResponseProcessor} from "../apis/FunctionsBlockCommentsApi";
-export class PromiseFunctionsBlockCommentsApi {
-    private api: ObservableFunctionsBlockCommentsApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: FunctionsBlockCommentsApiRequestFactory,
-        responseProcessor?: FunctionsBlockCommentsApiResponseProcessor
-    ) {
-        this.api = new ObservableFunctionsBlockCommentsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Generate block comments for a specific block in a function
-     * @param functionId
-     * @param block
-     */
-    public generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId: number, block: Block, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId, block, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Generate block comments for a specific block in a function
-     * @param functionId
-     * @param block
-     */
-    public generateBlockCommentsForBlockInFunction(functionId: number, block: Block, _options?: PromiseConfigurationOptions): Promise<BaseResponseBlockCommentsGenerationForFunctionResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.generateBlockCommentsForBlockInFunction(functionId, block, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Generate block comments for a function
-     * @param functionId
-     */
-    public generateBlockCommentsForFunctionWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.generateBlockCommentsForFunctionWithHttpInfo(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Generate block comments for a function
-     * @param functionId
-     */
-    public generateBlockCommentsForFunction(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBlockCommentsGenerationForFunctionResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.generateBlockCommentsForFunction(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Generate overview comment for a function
-     * @param functionId
-     */
-    public generateOverviewCommentForFunctionWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.generateOverviewCommentForFunctionWithHttpInfo(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Generate overview comment for a function
-     * @param functionId
-     */
-    public generateOverviewCommentForFunction(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBlockCommentsOverviewGenerationResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.generateOverviewCommentForFunction(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-
-}
-
-
-
 import { ObservableFunctionsCoreApi } from './ObservableAPI';
 
 import { FunctionsCoreApiRequestFactory, FunctionsCoreApiResponseProcessor} from "../apis/FunctionsCoreApi";
@@ -3258,169 +3077,6 @@ export class PromiseFunctionsDataTypesApi {
     public updateFunctionDataTypes(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypes> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateFunctionDataTypes(analysisId, functionId, updateFunctionDataTypes, observableOptions);
-        return result.toPromise();
-    }
-
-
-}
-
-
-
-import { ObservableFunctionsDecompilationApi } from './ObservableAPI';
-
-import { FunctionsDecompilationApiRequestFactory, FunctionsDecompilationApiResponseProcessor} from "../apis/FunctionsDecompilationApi";
-export class PromiseFunctionsDecompilationApi {
-    private api: ObservableFunctionsDecompilationApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: FunctionsDecompilationApiRequestFactory,
-        responseProcessor?: FunctionsDecompilationApiResponseProcessor
-    ) {
-        this.api = new ObservableFunctionsDecompilationApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Creates a comment associated with a specified function).
-     * Create a comment for this function
-     * @param functionId
-     * @param functionCommentCreateRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public createDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Creates a comment associated with a specified function).
-     * Create a comment for this function
-     * @param functionId
-     * @param functionCommentCreateRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createDecompilationComment(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param commentId
-     * @param functionId
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public deleteDecompilationCommentWithHttpInfo(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteDecompilationCommentWithHttpInfo(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param commentId
-     * @param functionId
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public deleteDecompilationComment(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteDecompilationComment(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
-     * Get comments for this function
-     * @param functionId
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public getDecompilationCommentsWithHttpInfo(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getDecompilationCommentsWithHttpInfo(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
-     * Get comments for this function
-     * @param functionId
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public getDecompilationComments(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getDecompilationComments(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param commentId
-     * @param functionId
-     * @param commentUpdateRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public updateDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.updateDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param commentId
-     * @param functionId
-     * @param commentUpdateRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.updateDecompilationComment(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
         return result.toPromise();
     }
 

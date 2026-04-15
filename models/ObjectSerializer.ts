@@ -56,12 +56,9 @@ export * from '../models/BaseResponseBinaryAdditionalResponse';
 export * from '../models/BaseResponseBinaryDetailsResponse';
 export * from '../models/BaseResponseBinaryExternalsResponse';
 export * from '../models/BaseResponseBinarySearchResponse';
-export * from '../models/BaseResponseBlockCommentsGenerationForFunctionResponse';
-export * from '../models/BaseResponseBlockCommentsOverviewGenerationResponse';
 export * from '../models/BaseResponseBool';
 export * from '../models/BaseResponseCalleesCallerFunctionsResponse';
 export * from '../models/BaseResponseCapabilities';
-export * from '../models/BaseResponseCheckSecurityChecksTaskResponse';
 export * from '../models/BaseResponseChildBinariesResponse';
 export * from '../models/BaseResponseCollectionBinariesUpdateResponse';
 export * from '../models/BaseResponseCollectionResponse';
@@ -102,9 +99,7 @@ export * from '../models/BaseResponsePipelineStatusResponse';
 export * from '../models/BaseResponseProcessDumps';
 export * from '../models/BaseResponseProcessRegistry';
 export * from '../models/BaseResponseProcessTree';
-export * from '../models/BaseResponseQueuedSecurityChecksTaskResponse';
 export * from '../models/BaseResponseRecent';
-export * from '../models/BaseResponseSecurityChecksResponse';
 export * from '../models/BaseResponseStatus';
 export * from '../models/BaseResponseStr';
 export * from '../models/BaseResponseTTPS';
@@ -124,16 +119,12 @@ export * from '../models/BinaryDetailsResponse';
 export * from '../models/BinaryExternalsResponse';
 export * from '../models/BinarySearchResponse';
 export * from '../models/BinarySearchResult';
-export * from '../models/BinaryTaskStatus';
-export * from '../models/Block';
-export * from '../models/BlockCommentsGenerationForFunctionResponse';
 export * from '../models/BulkDeleteAnalysesRequest';
 export * from '../models/CalleeFunctionInfo';
 export * from '../models/CalleesCallerFunctionsResponse';
 export * from '../models/CallerFunctionInfo';
 export * from '../models/Capabilities';
 export * from '../models/Capability';
-export * from '../models/CheckSecurityChecksTaskResponse';
 export * from '../models/ChildBinariesResponse';
 export * from '../models/CodeSignatureModel';
 export * from '../models/CollectionBinariesUpdateRequest';
@@ -152,7 +143,6 @@ export * from '../models/CollectionUpdateRequest';
 export * from '../models/CommentBase';
 export * from '../models/CommentResponse';
 export * from '../models/CommentUpdateRequest';
-export * from '../models/ConfidenceType';
 export * from '../models/ConfigResponse';
 export * from '../models/Context';
 export * from '../models/Created';
@@ -259,7 +249,6 @@ export * from '../models/ProcessDumpsData';
 export * from '../models/ProcessRegistry';
 export * from '../models/ProcessTree';
 export * from '../models/PutAnalysisStringsRequest';
-export * from '../models/QueuedSecurityChecksTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
 export * from '../models/Registry';
@@ -269,11 +258,8 @@ export * from '../models/SBOMPackage';
 export * from '../models/SandboxOptions';
 export * from '../models/ScrapeThirdPartyConfig';
 export * from '../models/SectionModel';
-export * from '../models/SecurityChecksResponse';
-export * from '../models/SecurityChecksResult';
 export * from '../models/SecurityModel';
 export * from '../models/SegmentInfo';
-export * from '../models/SeverityType';
 export * from '../models/SingleCodeCertificateModel';
 export * from '../models/SingleCodeSignatureModel';
 export * from '../models/SinglePDBEntryModel';
@@ -310,7 +296,6 @@ export * from '../models/UpsertAiDecomplationRatingRequest';
 export * from '../models/UserActivityResponse';
 export * from '../models/Vulnerabilities';
 export * from '../models/Vulnerability';
-export * from '../models/VulnerabilityType';
 export * from '../models/Workspace';
 export * from '../models/XrefFromResponse';
 export * from '../models/XrefResponse';
@@ -374,12 +359,9 @@ import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBina
 import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
 import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
 import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySearchResponse';
-import { BaseResponseBlockCommentsGenerationForFunctionResponse } from '../models/BaseResponseBlockCommentsGenerationForFunctionResponse';
-import { BaseResponseBlockCommentsOverviewGenerationResponse } from '../models/BaseResponseBlockCommentsOverviewGenerationResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
 import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
 import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
-import { BaseResponseCheckSecurityChecksTaskResponse } from '../models/BaseResponseCheckSecurityChecksTaskResponse';
 import { BaseResponseChildBinariesResponse } from '../models/BaseResponseChildBinariesResponse';
 import { BaseResponseCollectionBinariesUpdateResponse } from '../models/BaseResponseCollectionBinariesUpdateResponse';
 import { BaseResponseCollectionResponse } from '../models/BaseResponseCollectionResponse';
@@ -420,9 +402,7 @@ import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipeli
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
 import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
 import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
-import { BaseResponseQueuedSecurityChecksTaskResponse } from '../models/BaseResponseQueuedSecurityChecksTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
-import { BaseResponseSecurityChecksResponse } from '../models/BaseResponseSecurityChecksResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
@@ -442,16 +422,12 @@ import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
 import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
 import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
-import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
-import { Block } from '../models/Block';
-import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
 import { Capabilities } from '../models/Capabilities';
 import { Capability } from '../models/Capability';
-import { CheckSecurityChecksTaskResponse  } from '../models/CheckSecurityChecksTaskResponse';
 import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
 import { CodeSignatureModel } from '../models/CodeSignatureModel';
 import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
@@ -470,7 +446,6 @@ import { CollectionUpdateRequest    } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
-import { ConfidenceType } from '../models/ConfidenceType';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
@@ -577,7 +552,6 @@ import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
-import { QueuedSecurityChecksTaskResponse } from '../models/QueuedSecurityChecksTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { Registry } from '../models/Registry';
@@ -587,11 +561,8 @@ import { SBOMPackage } from '../models/SBOMPackage';
 import { SandboxOptions } from '../models/SandboxOptions';
 import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
 import { SectionModel } from '../models/SectionModel';
-import { SecurityChecksResponse } from '../models/SecurityChecksResponse';
-import { SecurityChecksResult         } from '../models/SecurityChecksResult';
 import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
-import { SeverityType } from '../models/SeverityType';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -628,7 +599,6 @@ import { UpsertAiDecomplationRatingRequest   } from '../models/UpsertAiDecomplat
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
-import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
 import { XrefResponse } from '../models/XrefResponse';
@@ -657,9 +627,7 @@ let enumsMap: Set<string> = new Set<string>([
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
     "BinariesTaskStatus",
-    "BinaryTaskStatus",
     "CollectionScope",
-    "ConfidenceType",
     "DynamicExecutionStatusInput",
     "FileFormat",
     "Filters",
@@ -675,13 +643,11 @@ let enumsMap: Set<string> = new Set<string>([
     "Order",
     "PipelineStageStatus",
     "Platform",
-    "SeverityType",
     "StatusInput",
     "StringSource",
     "TaskStatus",
     "UploadFileType",
     "VulnerabilitySeverityEnum",
-    "VulnerabilityType",
     "Workspace",
 ]);
 
@@ -736,12 +702,9 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseBinaryDetailsResponse": BaseResponseBinaryDetailsResponse,
     "BaseResponseBinaryExternalsResponse": BaseResponseBinaryExternalsResponse,
     "BaseResponseBinarySearchResponse": BaseResponseBinarySearchResponse,
-    "BaseResponseBlockCommentsGenerationForFunctionResponse": BaseResponseBlockCommentsGenerationForFunctionResponse,
-    "BaseResponseBlockCommentsOverviewGenerationResponse": BaseResponseBlockCommentsOverviewGenerationResponse,
     "BaseResponseBool": BaseResponseBool,
     "BaseResponseCalleesCallerFunctionsResponse": BaseResponseCalleesCallerFunctionsResponse,
     "BaseResponseCapabilities": BaseResponseCapabilities,
-    "BaseResponseCheckSecurityChecksTaskResponse": BaseResponseCheckSecurityChecksTaskResponse,
     "BaseResponseChildBinariesResponse": BaseResponseChildBinariesResponse,
     "BaseResponseCollectionBinariesUpdateResponse": BaseResponseCollectionBinariesUpdateResponse,
     "BaseResponseCollectionResponse": BaseResponseCollectionResponse,
@@ -782,9 +745,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseProcessDumps": BaseResponseProcessDumps,
     "BaseResponseProcessRegistry": BaseResponseProcessRegistry,
     "BaseResponseProcessTree": BaseResponseProcessTree,
-    "BaseResponseQueuedSecurityChecksTaskResponse": BaseResponseQueuedSecurityChecksTaskResponse,
     "BaseResponseRecent": BaseResponseRecent,
-    "BaseResponseSecurityChecksResponse": BaseResponseSecurityChecksResponse,
     "BaseResponseStatus": BaseResponseStatus,
     "BaseResponseStr": BaseResponseStr,
     "BaseResponseTTPS": BaseResponseTTPS,
@@ -803,15 +764,12 @@ let typeMap: {[index: string]: any} = {
     "BinaryExternalsResponse": BinaryExternalsResponse,
     "BinarySearchResponse": BinarySearchResponse,
     "BinarySearchResult": BinarySearchResult,
-    "Block": Block,
-    "BlockCommentsGenerationForFunctionResponse": BlockCommentsGenerationForFunctionResponse,
     "BulkDeleteAnalysesRequest": BulkDeleteAnalysesRequest,
     "CalleeFunctionInfo": CalleeFunctionInfo,
     "CalleesCallerFunctionsResponse": CalleesCallerFunctionsResponse,
     "CallerFunctionInfo": CallerFunctionInfo,
     "Capabilities": Capabilities,
     "Capability": Capability,
-    "CheckSecurityChecksTaskResponse": CheckSecurityChecksTaskResponse,
     "ChildBinariesResponse": ChildBinariesResponse,
     "CodeSignatureModel": CodeSignatureModel,
     "CollectionBinariesUpdateRequest": CollectionBinariesUpdateRequest,
@@ -925,7 +883,6 @@ let typeMap: {[index: string]: any} = {
     "ProcessRegistry": ProcessRegistry,
     "ProcessTree": ProcessTree,
     "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
-    "QueuedSecurityChecksTaskResponse": QueuedSecurityChecksTaskResponse,
     "ReAnalysisForm": ReAnalysisForm,
     "Recent": Recent,
     "Registry": Registry,
@@ -935,8 +892,6 @@ let typeMap: {[index: string]: any} = {
     "SandboxOptions": SandboxOptions,
     "ScrapeThirdPartyConfig": ScrapeThirdPartyConfig,
     "SectionModel": SectionModel,
-    "SecurityChecksResponse": SecurityChecksResponse,
-    "SecurityChecksResult": SecurityChecksResult,
     "SecurityModel": SecurityModel,
     "SegmentInfo": SegmentInfo,
     "SingleCodeCertificateModel": SingleCodeCertificateModel,

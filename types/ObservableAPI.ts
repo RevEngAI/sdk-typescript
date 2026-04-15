@@ -61,12 +61,9 @@ import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBina
 import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
 import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
 import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySearchResponse';
-import { BaseResponseBlockCommentsGenerationForFunctionResponse } from '../models/BaseResponseBlockCommentsGenerationForFunctionResponse';
-import { BaseResponseBlockCommentsOverviewGenerationResponse } from '../models/BaseResponseBlockCommentsOverviewGenerationResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
 import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
 import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
-import { BaseResponseCheckSecurityChecksTaskResponse } from '../models/BaseResponseCheckSecurityChecksTaskResponse';
 import { BaseResponseChildBinariesResponse } from '../models/BaseResponseChildBinariesResponse';
 import { BaseResponseCollectionBinariesUpdateResponse } from '../models/BaseResponseCollectionBinariesUpdateResponse';
 import { BaseResponseCollectionResponse } from '../models/BaseResponseCollectionResponse';
@@ -107,9 +104,7 @@ import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipeli
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
 import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
 import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
-import { BaseResponseQueuedSecurityChecksTaskResponse } from '../models/BaseResponseQueuedSecurityChecksTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
-import { BaseResponseSecurityChecksResponse } from '../models/BaseResponseSecurityChecksResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
@@ -129,16 +124,12 @@ import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
 import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
 import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
-import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
-import { Block } from '../models/Block';
-import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
 import { Capabilities } from '../models/Capabilities';
 import { Capability } from '../models/Capability';
-import { CheckSecurityChecksTaskResponse } from '../models/CheckSecurityChecksTaskResponse';
 import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
 import { CodeSignatureModel } from '../models/CodeSignatureModel';
 import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
@@ -157,7 +148,6 @@ import { CollectionUpdateRequest } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
-import { ConfidenceType } from '../models/ConfidenceType';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
@@ -264,7 +254,6 @@ import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
-import { QueuedSecurityChecksTaskResponse } from '../models/QueuedSecurityChecksTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { Registry } from '../models/Registry';
@@ -274,11 +263,8 @@ import { SBOMPackage } from '../models/SBOMPackage';
 import { SandboxOptions } from '../models/SandboxOptions';
 import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
 import { SectionModel } from '../models/SectionModel';
-import { SecurityChecksResponse } from '../models/SecurityChecksResponse';
-import { SecurityChecksResult } from '../models/SecurityChecksResult';
 import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
-import { SeverityType } from '../models/SeverityType';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -315,7 +301,6 @@ import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplatio
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
-import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
 import { XrefResponse } from '../models/XrefResponse';
@@ -1811,126 +1796,6 @@ export class ObservableAnalysesResultsMetadataApi {
      */
     public getVulnerabilities(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseVulnerabilities> {
         return this.getVulnerabilitiesWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseVulnerabilities>) => apiResponse.data));
-    }
-
-}
-
-import { AnalysesSecurityChecksApiRequestFactory, AnalysesSecurityChecksApiResponseProcessor} from "../apis/AnalysesSecurityChecksApi";
-export class ObservableAnalysesSecurityChecksApi {
-    private requestFactory: AnalysesSecurityChecksApiRequestFactory;
-    private responseProcessor: AnalysesSecurityChecksApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysesSecurityChecksApiRequestFactory,
-        responseProcessor?: AnalysesSecurityChecksApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new AnalysesSecurityChecksApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new AnalysesSecurityChecksApiResponseProcessor();
-    }
-
-    /**
-     * Queues a security check process
-     * @param analysisId
-     */
-    public createScurityChecksTaskWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<QueuedSecurityChecksTaskResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createScurityChecksTask(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createScurityChecksTaskWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Queues a security check process
-     * @param analysisId
-     */
-    public createScurityChecksTask(analysisId: number, _options?: ConfigurationOptions): Observable<QueuedSecurityChecksTaskResponse> {
-        return this.createScurityChecksTaskWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<QueuedSecurityChecksTaskResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieve security checks results with pagination.
-     * Get Security Checks
-     * @param analysisId
-     * @param page The page number to retrieve.
-     * @param pageSize Number of items per page.
-     */
-    public getSecurityChecksWithHttpInfo(analysisId: number, page: number, pageSize: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseSecurityChecksResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getSecurityChecks(analysisId, page, pageSize, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getSecurityChecksWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieve security checks results with pagination.
-     * Get Security Checks
-     * @param analysisId
-     * @param page The page number to retrieve.
-     * @param pageSize Number of items per page.
-     */
-    public getSecurityChecks(analysisId: number, page: number, pageSize: number, _options?: ConfigurationOptions): Observable<BaseResponseSecurityChecksResponse> {
-        return this.getSecurityChecksWithHttpInfo(analysisId, page, pageSize, _options).pipe(map((apiResponse: HttpInfo<BaseResponseSecurityChecksResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Check the status of a security check process
-     * @param analysisId
-     */
-    public getSecurityChecksTaskStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<CheckSecurityChecksTaskResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getSecurityChecksTaskStatus(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getSecurityChecksTaskStatusWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Check the status of a security check process
-     * @param analysisId
-     */
-    public getSecurityChecksTaskStatus(analysisId: number, _options?: ConfigurationOptions): Observable<CheckSecurityChecksTaskResponse> {
-        return this.getSecurityChecksTaskStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<CheckSecurityChecksTaskResponse>) => apiResponse.data));
     }
 
 }
@@ -3593,122 +3458,6 @@ export class ObservableFunctionsAIDecompilationApi {
 
 }
 
-import { FunctionsBlockCommentsApiRequestFactory, FunctionsBlockCommentsApiResponseProcessor} from "../apis/FunctionsBlockCommentsApi";
-export class ObservableFunctionsBlockCommentsApi {
-    private requestFactory: FunctionsBlockCommentsApiRequestFactory;
-    private responseProcessor: FunctionsBlockCommentsApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: FunctionsBlockCommentsApiRequestFactory,
-        responseProcessor?: FunctionsBlockCommentsApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new FunctionsBlockCommentsApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new FunctionsBlockCommentsApiResponseProcessor();
-    }
-
-    /**
-     * Generate block comments for a specific block in a function
-     * @param functionId
-     * @param block
-     */
-    public generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId: number, block: Block, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.generateBlockCommentsForBlockInFunction(functionId, block, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.generateBlockCommentsForBlockInFunctionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Generate block comments for a specific block in a function
-     * @param functionId
-     * @param block
-     */
-    public generateBlockCommentsForBlockInFunction(functionId: number, block: Block, _options?: ConfigurationOptions): Observable<BaseResponseBlockCommentsGenerationForFunctionResponse> {
-        return this.generateBlockCommentsForBlockInFunctionWithHttpInfo(functionId, block, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Generate block comments for a function
-     * @param functionId
-     */
-    public generateBlockCommentsForFunctionWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.generateBlockCommentsForFunction(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.generateBlockCommentsForFunctionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Generate block comments for a function
-     * @param functionId
-     */
-    public generateBlockCommentsForFunction(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseBlockCommentsGenerationForFunctionResponse> {
-        return this.generateBlockCommentsForFunctionWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Generate overview comment for a function
-     * @param functionId
-     */
-    public generateOverviewCommentForFunctionWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.generateOverviewCommentForFunction(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.generateOverviewCommentForFunctionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Generate overview comment for a function
-     * @param functionId
-     */
-    public generateOverviewCommentForFunction(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseBlockCommentsOverviewGenerationResponse> {
-        return this.generateOverviewCommentForFunctionWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>) => apiResponse.data));
-    }
-
-}
-
 import { FunctionsCoreApiRequestFactory, FunctionsCoreApiResponseProcessor} from "../apis/FunctionsCoreApi";
 export class ObservableFunctionsCoreApi {
     private requestFactory: FunctionsCoreApiRequestFactory;
@@ -4447,216 +4196,6 @@ export class ObservableFunctionsDataTypesApi {
      */
     public updateFunctionDataTypes(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypes> {
         return this.updateFunctionDataTypesWithHttpInfo(analysisId, functionId, updateFunctionDataTypes, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypes>) => apiResponse.data));
-    }
-
-}
-
-import { FunctionsDecompilationApiRequestFactory, FunctionsDecompilationApiResponseProcessor} from "../apis/FunctionsDecompilationApi";
-export class ObservableFunctionsDecompilationApi {
-    private requestFactory: FunctionsDecompilationApiRequestFactory;
-    private responseProcessor: FunctionsDecompilationApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: FunctionsDecompilationApiRequestFactory,
-        responseProcessor?: FunctionsDecompilationApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new FunctionsDecompilationApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new FunctionsDecompilationApiResponseProcessor();
-    }
-
-    /**
-     * Creates a comment associated with a specified function).
-     * Create a comment for this function
-     * @param functionId
-     * @param functionCommentCreateRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public createDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createDecompilationComment(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createDecompilationCommentWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a comment associated with a specified function).
-     * Create a comment for this function
-     * @param functionId
-     * @param functionCommentCreateRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public createDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.createDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param commentId
-     * @param functionId
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public deleteDecompilationCommentWithHttpInfo(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.deleteDecompilationComment(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteDecompilationCommentWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param commentId
-     * @param functionId
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public deleteDecompilationComment(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
-        return this.deleteDecompilationCommentWithHttpInfo(commentId, functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
-     * Get comments for this function
-     * @param functionId
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public getDecompilationCommentsWithHttpInfo(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getDecompilationComments(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDecompilationCommentsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
-     * Get comments for this function
-     * @param functionId
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public getDecompilationComments(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getDecompilationCommentsWithHttpInfo(functionId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param commentId
-     * @param functionId
-     * @param commentUpdateRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public updateDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateDecompilationComment(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateDecompilationCommentWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param commentId
-     * @param functionId
-     * @param commentUpdateRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public updateDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.updateDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
     }
 
 }

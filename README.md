@@ -82,9 +82,6 @@ Class | Method | HTTP request | Description
 *AnalysesResultsMetadataApi* | [**getSbom**](docs/AnalysesResultsMetadataApi.md#getSbom) | **GET** /v2/analyses/{analysis_id}/sbom | Gets the software-bill-of-materials (SBOM) found in the analysis
 *AnalysesResultsMetadataApi* | [**getTags**](docs/AnalysesResultsMetadataApi.md#getTags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
 *AnalysesResultsMetadataApi* | [**getVulnerabilities**](docs/AnalysesResultsMetadataApi.md#getVulnerabilities) | **GET** /v2/analyses/{analysis_id}/vulnerabilities | Gets the vulnerabilities found in the analysis
-*AnalysesSecurityChecksApi* | [**createScurityChecksTask**](docs/AnalysesSecurityChecksApi.md#createScurityChecksTask) | **POST** /v2/analyses/{analysis_id}/security-checks | Queues a security check process
-*AnalysesSecurityChecksApi* | [**getSecurityChecks**](docs/AnalysesSecurityChecksApi.md#getSecurityChecks) | **GET** /v2/analyses/{analysis_id}/security-checks | Get Security Checks
-*AnalysesSecurityChecksApi* | [**getSecurityChecksTaskStatus**](docs/AnalysesSecurityChecksApi.md#getSecurityChecksTaskStatus) | **GET** /v2/analyses/{analysis_id}/security-checks/status | Check the status of a security check process
 *AnalysesXRefsApi* | [**getXrefByVaddr**](docs/AnalysesXRefsApi.md#getXrefByVaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up xrefs by virtual address
 *AnalysisStagesApi* | [**getAnalysisStages**](docs/AnalysisStagesApi.md#getAnalysisStages) | **GET** /v2/analysis-stages/{analysis_id} | Get Analysis Stages
 *AnalysisStagesApi* | [**getPipelineStatus**](docs/AnalysisStagesApi.md#getPipelineStatus) | **GET** /v2/analysis-stages/{analysis_id}/pipeline-status | Get Pipeline Status
@@ -124,9 +121,6 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**getAiDecompilationTaskStatus**](docs/FunctionsAIDecompilationApi.md#getAiDecompilationTaskStatus) | **GET** /v2/functions/{function_id}/ai-decompilation/status | Check the status of a function ai decompilation
 *FunctionsAIDecompilationApi* | [**updateAiDecompilationComment**](docs/FunctionsAIDecompilationApi.md#updateAiDecompilationComment) | **PATCH** /v2/functions/{function_id}/ai-decompilation/comments/{comment_id} | Update a comment
 *FunctionsAIDecompilationApi* | [**upsertAiDecompilationRating**](docs/FunctionsAIDecompilationApi.md#upsertAiDecompilationRating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
-*FunctionsBlockCommentsApi* | [**generateBlockCommentsForBlockInFunction**](docs/FunctionsBlockCommentsApi.md#generateBlockCommentsForBlockInFunction) | **POST** /v2/functions/{function_id}/block-comments/single | Generate block comments for a specific block in a function
-*FunctionsBlockCommentsApi* | [**generateBlockCommentsForFunction**](docs/FunctionsBlockCommentsApi.md#generateBlockCommentsForFunction) | **POST** /v2/functions/{function_id}/block-comments | Generate block comments for a function
-*FunctionsBlockCommentsApi* | [**generateOverviewCommentForFunction**](docs/FunctionsBlockCommentsApi.md#generateOverviewCommentForFunction) | **POST** /v2/functions/{function_id}/block-comments/overview | Generate overview comment for a function
 *FunctionsCoreApi* | [**aiUnstrip**](docs/FunctionsCoreApi.md#aiUnstrip) | **POST** /v2/analyses/{analysis_id}/functions/ai-unstrip | Performs matching and auto-unstrip for an analysis and its functions
 *FunctionsCoreApi* | [**analysisFunctionMatching**](docs/FunctionsCoreApi.md#analysisFunctionMatching) | **POST** /v2/analyses/{analysis_id}/functions/matches | Perform matching for the functions of an analysis
 *FunctionsCoreApi* | [**autoUnstrip**](docs/FunctionsCoreApi.md#autoUnstrip) | **POST** /v2/analyses/{analysis_id}/functions/auto-unstrip | Performs matching and auto-unstrip for an analysis and its functions
@@ -147,10 +141,6 @@ Class | Method | HTTP request | Description
 *FunctionsDataTypesApi* | [**listFunctionDataTypesForAnalysis**](docs/FunctionsDataTypesApi.md#listFunctionDataTypesForAnalysis) | **GET** /v2/analyses/{analysis_id}/functions/data_types | List Function Data Types
 *FunctionsDataTypesApi* | [**listFunctionDataTypesForFunctions**](docs/FunctionsDataTypesApi.md#listFunctionDataTypesForFunctions) | **GET** /v2/functions/data_types | List Function Data Types
 *FunctionsDataTypesApi* | [**updateFunctionDataTypes**](docs/FunctionsDataTypesApi.md#updateFunctionDataTypes) | **PUT** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Update Function Data Types
-*FunctionsDecompilationApi* | [**createDecompilationComment**](docs/FunctionsDecompilationApi.md#createDecompilationComment) | **POST** /v2/functions/{function_id}/decompilation/comments | Create a comment for this function
-*FunctionsDecompilationApi* | [**deleteDecompilationComment**](docs/FunctionsDecompilationApi.md#deleteDecompilationComment) | **DELETE** /v2/functions/{function_id}/decompilation/comments/{comment_id} | Delete a comment
-*FunctionsDecompilationApi* | [**getDecompilationComments**](docs/FunctionsDecompilationApi.md#getDecompilationComments) | **GET** /v2/functions/{function_id}/decompilation/comments | Get comments for this function
-*FunctionsDecompilationApi* | [**updateDecompilationComment**](docs/FunctionsDecompilationApi.md#updateDecompilationComment) | **PATCH** /v2/functions/{function_id}/decompilation/comments/{comment_id} | Update a comment
 *FunctionsRenamingHistoryApi* | [**batchRenameFunction**](docs/FunctionsRenamingHistoryApi.md#batchRenameFunction) | **POST** /v2/functions/rename/batch | Batch Rename Functions
 *FunctionsRenamingHistoryApi* | [**getFunctionNameHistory**](docs/FunctionsRenamingHistoryApi.md#getFunctionNameHistory) | **GET** /v2/functions/history/{function_id} | Get Function Name History
 *FunctionsRenamingHistoryApi* | [**renameFunctionId**](docs/FunctionsRenamingHistoryApi.md#renameFunctionId) | **POST** /v2/functions/rename/{function_id} | Rename Function
@@ -222,12 +212,9 @@ Class | Method | HTTP request | Description
  - [BaseResponseBinaryDetailsResponse](BaseResponseBinaryDetailsResponse.md)
  - [BaseResponseBinaryExternalsResponse](BaseResponseBinaryExternalsResponse.md)
  - [BaseResponseBinarySearchResponse](BaseResponseBinarySearchResponse.md)
- - [BaseResponseBlockCommentsGenerationForFunctionResponse](BaseResponseBlockCommentsGenerationForFunctionResponse.md)
- - [BaseResponseBlockCommentsOverviewGenerationResponse](BaseResponseBlockCommentsOverviewGenerationResponse.md)
  - [BaseResponseBool](BaseResponseBool.md)
  - [BaseResponseCalleesCallerFunctionsResponse](BaseResponseCalleesCallerFunctionsResponse.md)
  - [BaseResponseCapabilities](BaseResponseCapabilities.md)
- - [BaseResponseCheckSecurityChecksTaskResponse](BaseResponseCheckSecurityChecksTaskResponse.md)
  - [BaseResponseChildBinariesResponse](BaseResponseChildBinariesResponse.md)
  - [BaseResponseCollectionBinariesUpdateResponse](BaseResponseCollectionBinariesUpdateResponse.md)
  - [BaseResponseCollectionResponse](BaseResponseCollectionResponse.md)
@@ -268,9 +255,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseProcessDumps](BaseResponseProcessDumps.md)
  - [BaseResponseProcessRegistry](BaseResponseProcessRegistry.md)
  - [BaseResponseProcessTree](BaseResponseProcessTree.md)
- - [BaseResponseQueuedSecurityChecksTaskResponse](BaseResponseQueuedSecurityChecksTaskResponse.md)
  - [BaseResponseRecent](BaseResponseRecent.md)
- - [BaseResponseSecurityChecksResponse](BaseResponseSecurityChecksResponse.md)
  - [BaseResponseStatus](BaseResponseStatus.md)
  - [BaseResponseStr](BaseResponseStr.md)
  - [BaseResponseTTPS](BaseResponseTTPS.md)
@@ -290,16 +275,12 @@ Class | Method | HTTP request | Description
  - [BinaryExternalsResponse](BinaryExternalsResponse.md)
  - [BinarySearchResponse](BinarySearchResponse.md)
  - [BinarySearchResult](BinarySearchResult.md)
- - [BinaryTaskStatus](BinaryTaskStatus.md)
- - [Block](Block.md)
- - [BlockCommentsGenerationForFunctionResponse](BlockCommentsGenerationForFunctionResponse.md)
  - [BulkDeleteAnalysesRequest](BulkDeleteAnalysesRequest.md)
  - [CalleeFunctionInfo](CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](CallerFunctionInfo.md)
  - [Capabilities](Capabilities.md)
  - [Capability](Capability.md)
- - [CheckSecurityChecksTaskResponse](CheckSecurityChecksTaskResponse.md)
  - [ChildBinariesResponse](ChildBinariesResponse.md)
  - [CodeSignatureModel](CodeSignatureModel.md)
  - [CollectionBinariesUpdateRequest](CollectionBinariesUpdateRequest.md)
@@ -318,7 +299,6 @@ Class | Method | HTTP request | Description
  - [CommentBase](CommentBase.md)
  - [CommentResponse](CommentResponse.md)
  - [CommentUpdateRequest](CommentUpdateRequest.md)
- - [ConfidenceType](ConfidenceType.md)
  - [ConfigResponse](ConfigResponse.md)
  - [Context](Context.md)
  - [Created](Created.md)
@@ -425,7 +405,6 @@ Class | Method | HTTP request | Description
  - [ProcessRegistry](ProcessRegistry.md)
  - [ProcessTree](ProcessTree.md)
  - [PutAnalysisStringsRequest](PutAnalysisStringsRequest.md)
- - [QueuedSecurityChecksTaskResponse](QueuedSecurityChecksTaskResponse.md)
  - [ReAnalysisForm](ReAnalysisForm.md)
  - [Recent](Recent.md)
  - [Registry](Registry.md)
@@ -435,11 +414,8 @@ Class | Method | HTTP request | Description
  - [SandboxOptions](SandboxOptions.md)
  - [ScrapeThirdPartyConfig](ScrapeThirdPartyConfig.md)
  - [SectionModel](SectionModel.md)
- - [SecurityChecksResponse](SecurityChecksResponse.md)
- - [SecurityChecksResult](SecurityChecksResult.md)
  - [SecurityModel](SecurityModel.md)
  - [SegmentInfo](SegmentInfo.md)
- - [SeverityType](SeverityType.md)
  - [SingleCodeCertificateModel](SingleCodeCertificateModel.md)
  - [SingleCodeSignatureModel](SingleCodeSignatureModel.md)
  - [SinglePDBEntryModel](SinglePDBEntryModel.md)
@@ -476,7 +452,6 @@ Class | Method | HTTP request | Description
  - [UserActivityResponse](UserActivityResponse.md)
  - [Vulnerabilities](Vulnerabilities.md)
  - [Vulnerability](Vulnerability.md)
- - [VulnerabilityType](VulnerabilityType.md)
  - [Workspace](Workspace.md)
  - [XrefFromResponse](XrefFromResponse.md)
  - [XrefResponse](XrefResponse.md)
