@@ -60,12 +60,9 @@ import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBina
 import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
 import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
 import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySearchResponse';
-import { BaseResponseBlockCommentsGenerationForFunctionResponse } from '../models/BaseResponseBlockCommentsGenerationForFunctionResponse';
-import { BaseResponseBlockCommentsOverviewGenerationResponse } from '../models/BaseResponseBlockCommentsOverviewGenerationResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
 import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
 import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
-import { BaseResponseCheckSecurityChecksTaskResponse } from '../models/BaseResponseCheckSecurityChecksTaskResponse';
 import { BaseResponseChildBinariesResponse } from '../models/BaseResponseChildBinariesResponse';
 import { BaseResponseCollectionBinariesUpdateResponse } from '../models/BaseResponseCollectionBinariesUpdateResponse';
 import { BaseResponseCollectionResponse } from '../models/BaseResponseCollectionResponse';
@@ -106,9 +103,7 @@ import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipeli
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
 import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
 import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
-import { BaseResponseQueuedSecurityChecksTaskResponse } from '../models/BaseResponseQueuedSecurityChecksTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
-import { BaseResponseSecurityChecksResponse } from '../models/BaseResponseSecurityChecksResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
@@ -128,16 +123,12 @@ import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
 import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
 import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
-import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
-import { Block } from '../models/Block';
-import { BlockCommentsGenerationForFunctionResponse } from '../models/BlockCommentsGenerationForFunctionResponse';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
 import { Capabilities } from '../models/Capabilities';
 import { Capability } from '../models/Capability';
-import { CheckSecurityChecksTaskResponse } from '../models/CheckSecurityChecksTaskResponse';
 import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
 import { CodeSignatureModel } from '../models/CodeSignatureModel';
 import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
@@ -156,7 +147,6 @@ import { CollectionUpdateRequest } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
-import { ConfidenceType } from '../models/ConfidenceType';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { Context } from '../models/Context';
 import { Created } from '../models/Created';
@@ -263,7 +253,6 @@ import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
-import { QueuedSecurityChecksTaskResponse } from '../models/QueuedSecurityChecksTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { Registry } from '../models/Registry';
@@ -273,11 +262,8 @@ import { SBOMPackage } from '../models/SBOMPackage';
 import { SandboxOptions } from '../models/SandboxOptions';
 import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
 import { SectionModel } from '../models/SectionModel';
-import { SecurityChecksResponse } from '../models/SecurityChecksResponse';
-import { SecurityChecksResult } from '../models/SecurityChecksResult';
 import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
-import { SeverityType } from '../models/SeverityType';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -314,7 +300,6 @@ import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplatio
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
-import { VulnerabilityType } from '../models/VulnerabilityType';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
 import { XrefResponse } from '../models/XrefResponse';
@@ -2227,115 +2212,6 @@ export class ObjectAnalysesResultsMetadataApi {
 
 }
 
-import { ObservableAnalysesSecurityChecksApi } from "./ObservableAPI";
-import { AnalysesSecurityChecksApiRequestFactory, AnalysesSecurityChecksApiResponseProcessor} from "../apis/AnalysesSecurityChecksApi";
-
-export interface AnalysesSecurityChecksApiCreateScurityChecksTaskRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesSecurityChecksApicreateScurityChecksTask
-     */
-    analysisId: number
-}
-
-export interface AnalysesSecurityChecksApiGetSecurityChecksRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesSecurityChecksApigetSecurityChecks
-     */
-    analysisId: number
-    /**
-     * The page number to retrieve.
-     * Minimum: 1
-     * Maximum: 100000
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesSecurityChecksApigetSecurityChecks
-     */
-    page: number
-    /**
-     * Number of items per page.
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesSecurityChecksApigetSecurityChecks
-     */
-    pageSize: number
-}
-
-export interface AnalysesSecurityChecksApiGetSecurityChecksTaskStatusRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesSecurityChecksApigetSecurityChecksTaskStatus
-     */
-    analysisId: number
-}
-
-export class ObjectAnalysesSecurityChecksApi {
-    private api: ObservableAnalysesSecurityChecksApi
-
-    public constructor(configuration: Configuration, requestFactory?: AnalysesSecurityChecksApiRequestFactory, responseProcessor?: AnalysesSecurityChecksApiResponseProcessor) {
-        this.api = new ObservableAnalysesSecurityChecksApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Queues a security check process
-     * @param param the request object
-     */
-    public createScurityChecksTaskWithHttpInfo(param: AnalysesSecurityChecksApiCreateScurityChecksTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<QueuedSecurityChecksTaskResponse>> {
-        return this.api.createScurityChecksTaskWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Queues a security check process
-     * @param param the request object
-     */
-    public createScurityChecksTask(param: AnalysesSecurityChecksApiCreateScurityChecksTaskRequest, options?: ConfigurationOptions): Promise<QueuedSecurityChecksTaskResponse> {
-        return this.api.createScurityChecksTask(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Retrieve security checks results with pagination.
-     * Get Security Checks
-     * @param param the request object
-     */
-    public getSecurityChecksWithHttpInfo(param: AnalysesSecurityChecksApiGetSecurityChecksRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseSecurityChecksResponse>> {
-        return this.api.getSecurityChecksWithHttpInfo(param.analysisId, param.page, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Retrieve security checks results with pagination.
-     * Get Security Checks
-     * @param param the request object
-     */
-    public getSecurityChecks(param: AnalysesSecurityChecksApiGetSecurityChecksRequest, options?: ConfigurationOptions): Promise<BaseResponseSecurityChecksResponse> {
-        return this.api.getSecurityChecks(param.analysisId, param.page, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Check the status of a security check process
-     * @param param the request object
-     */
-    public getSecurityChecksTaskStatusWithHttpInfo(param: AnalysesSecurityChecksApiGetSecurityChecksTaskStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<CheckSecurityChecksTaskResponse>> {
-        return this.api.getSecurityChecksTaskStatusWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of a security check process
-     * @param param the request object
-     */
-    public getSecurityChecksTaskStatus(param: AnalysesSecurityChecksApiGetSecurityChecksTaskStatusRequest, options?: ConfigurationOptions): Promise<CheckSecurityChecksTaskResponse> {
-        return this.api.getSecurityChecksTaskStatus(param.analysisId,  options).toPromise();
-    }
-
-}
-
 import { ObservableAnalysesXRefsApi } from "./ObservableAPI";
 import { AnalysesXRefsApiRequestFactory, AnalysesXRefsApiResponseProcessor} from "../apis/AnalysesXRefsApi";
 
@@ -4214,102 +4090,6 @@ export class ObjectFunctionsAIDecompilationApi {
 
 }
 
-import { ObservableFunctionsBlockCommentsApi } from "./ObservableAPI";
-import { FunctionsBlockCommentsApiRequestFactory, FunctionsBlockCommentsApiResponseProcessor} from "../apis/FunctionsBlockCommentsApi";
-
-export interface FunctionsBlockCommentsApiGenerateBlockCommentsForBlockInFunctionRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsBlockCommentsApigenerateBlockCommentsForBlockInFunction
-     */
-    functionId: number
-    /**
-     * 
-     * @type Block
-     * @memberof FunctionsBlockCommentsApigenerateBlockCommentsForBlockInFunction
-     */
-    block: Block
-}
-
-export interface FunctionsBlockCommentsApiGenerateBlockCommentsForFunctionRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsBlockCommentsApigenerateBlockCommentsForFunction
-     */
-    functionId: number
-}
-
-export interface FunctionsBlockCommentsApiGenerateOverviewCommentForFunctionRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsBlockCommentsApigenerateOverviewCommentForFunction
-     */
-    functionId: number
-}
-
-export class ObjectFunctionsBlockCommentsApi {
-    private api: ObservableFunctionsBlockCommentsApi
-
-    public constructor(configuration: Configuration, requestFactory?: FunctionsBlockCommentsApiRequestFactory, responseProcessor?: FunctionsBlockCommentsApiResponseProcessor) {
-        this.api = new ObservableFunctionsBlockCommentsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Generate block comments for a specific block in a function
-     * @param param the request object
-     */
-    public generateBlockCommentsForBlockInFunctionWithHttpInfo(param: FunctionsBlockCommentsApiGenerateBlockCommentsForBlockInFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
-        return this.api.generateBlockCommentsForBlockInFunctionWithHttpInfo(param.functionId, param.block,  options).toPromise();
-    }
-
-    /**
-     * Generate block comments for a specific block in a function
-     * @param param the request object
-     */
-    public generateBlockCommentsForBlockInFunction(param: FunctionsBlockCommentsApiGenerateBlockCommentsForBlockInFunctionRequest, options?: ConfigurationOptions): Promise<BaseResponseBlockCommentsGenerationForFunctionResponse> {
-        return this.api.generateBlockCommentsForBlockInFunction(param.functionId, param.block,  options).toPromise();
-    }
-
-    /**
-     * Generate block comments for a function
-     * @param param the request object
-     */
-    public generateBlockCommentsForFunctionWithHttpInfo(param: FunctionsBlockCommentsApiGenerateBlockCommentsForFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsGenerationForFunctionResponse>> {
-        return this.api.generateBlockCommentsForFunctionWithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Generate block comments for a function
-     * @param param the request object
-     */
-    public generateBlockCommentsForFunction(param: FunctionsBlockCommentsApiGenerateBlockCommentsForFunctionRequest, options?: ConfigurationOptions): Promise<BaseResponseBlockCommentsGenerationForFunctionResponse> {
-        return this.api.generateBlockCommentsForFunction(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Generate overview comment for a function
-     * @param param the request object
-     */
-    public generateOverviewCommentForFunctionWithHttpInfo(param: FunctionsBlockCommentsApiGenerateOverviewCommentForFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBlockCommentsOverviewGenerationResponse>> {
-        return this.api.generateOverviewCommentForFunctionWithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Generate overview comment for a function
-     * @param param the request object
-     */
-    public generateOverviewCommentForFunction(param: FunctionsBlockCommentsApiGenerateOverviewCommentForFunctionRequest, options?: ConfigurationOptions): Promise<BaseResponseBlockCommentsOverviewGenerationResponse> {
-        return this.api.generateOverviewCommentForFunction(param.functionId,  options).toPromise();
-    }
-
-}
-
 import { ObservableFunctionsCoreApi } from "./ObservableAPI";
 import { FunctionsCoreApiRequestFactory, FunctionsCoreApiResponseProcessor} from "../apis/FunctionsCoreApi";
 
@@ -5000,326 +4780,6 @@ export class ObjectFunctionsDataTypesApi {
      */
     public updateFunctionDataTypes(param: FunctionsDataTypesApiUpdateFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionDataTypes> {
         return this.api.updateFunctionDataTypes(param.analysisId, param.functionId, param.updateFunctionDataTypes,  options).toPromise();
-    }
-
-}
-
-import { ObservableFunctionsDecompilationApi } from "./ObservableAPI";
-import { FunctionsDecompilationApiRequestFactory, FunctionsDecompilationApiResponseProcessor} from "../apis/FunctionsDecompilationApi";
-
-export interface FunctionsDecompilationApiCreateDecompilationCommentRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApicreateDecompilationComment
-     */
-    functionId: number
-    /**
-     * 
-     * @type FunctionCommentCreateRequest
-     * @memberof FunctionsDecompilationApicreateDecompilationComment
-     */
-    functionCommentCreateRequest: FunctionCommentCreateRequest
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApicreateDecompilationComment
-     */
-    endpointUrl?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApicreateDecompilationComment
-     */
-    localCacheDir?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApicreateDecompilationComment
-     */
-    localCacheMaxSizeMb?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApicreateDecompilationComment
-     */
-    customerSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApicreateDecompilationComment
-     */
-    firmwareSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: 5
-     * @type number
-     * @memberof FunctionsDecompilationApicreateDecompilationComment
-     */
-    maxRetryAttempts?: number
-}
-
-export interface FunctionsDecompilationApiDeleteDecompilationCommentRequest {
-    /**
-     * 
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApideleteDecompilationComment
-     */
-    commentId: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApideleteDecompilationComment
-     */
-    functionId: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApideleteDecompilationComment
-     */
-    endpointUrl?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApideleteDecompilationComment
-     */
-    localCacheDir?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApideleteDecompilationComment
-     */
-    localCacheMaxSizeMb?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApideleteDecompilationComment
-     */
-    customerSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApideleteDecompilationComment
-     */
-    firmwareSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: 5
-     * @type number
-     * @memberof FunctionsDecompilationApideleteDecompilationComment
-     */
-    maxRetryAttempts?: number
-}
-
-export interface FunctionsDecompilationApiGetDecompilationCommentsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApigetDecompilationComments
-     */
-    functionId: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApigetDecompilationComments
-     */
-    endpointUrl?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApigetDecompilationComments
-     */
-    localCacheDir?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApigetDecompilationComments
-     */
-    localCacheMaxSizeMb?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApigetDecompilationComments
-     */
-    customerSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApigetDecompilationComments
-     */
-    firmwareSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: 5
-     * @type number
-     * @memberof FunctionsDecompilationApigetDecompilationComments
-     */
-    maxRetryAttempts?: number
-}
-
-export interface FunctionsDecompilationApiUpdateDecompilationCommentRequest {
-    /**
-     * 
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApiupdateDecompilationComment
-     */
-    commentId: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApiupdateDecompilationComment
-     */
-    functionId: number
-    /**
-     * 
-     * @type CommentUpdateRequest
-     * @memberof FunctionsDecompilationApiupdateDecompilationComment
-     */
-    commentUpdateRequest: CommentUpdateRequest
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApiupdateDecompilationComment
-     */
-    endpointUrl?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApiupdateDecompilationComment
-     */
-    localCacheDir?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDecompilationApiupdateDecompilationComment
-     */
-    localCacheMaxSizeMb?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApiupdateDecompilationComment
-     */
-    customerSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsDecompilationApiupdateDecompilationComment
-     */
-    firmwareSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: 5
-     * @type number
-     * @memberof FunctionsDecompilationApiupdateDecompilationComment
-     */
-    maxRetryAttempts?: number
-}
-
-export class ObjectFunctionsDecompilationApi {
-    private api: ObservableFunctionsDecompilationApi
-
-    public constructor(configuration: Configuration, requestFactory?: FunctionsDecompilationApiRequestFactory, responseProcessor?: FunctionsDecompilationApiResponseProcessor) {
-        this.api = new ObservableFunctionsDecompilationApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Creates a comment associated with a specified function).
-     * Create a comment for this function
-     * @param param the request object
-     */
-    public createDecompilationCommentWithHttpInfo(param: FunctionsDecompilationApiCreateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.createDecompilationCommentWithHttpInfo(param.functionId, param.functionCommentCreateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Creates a comment associated with a specified function).
-     * Create a comment for this function
-     * @param param the request object
-     */
-    public createDecompilationComment(param: FunctionsDecompilationApiCreateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.createDecompilationComment(param.functionId, param.functionCommentCreateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param param the request object
-     */
-    public deleteDecompilationCommentWithHttpInfo(param: FunctionsDecompilationApiDeleteDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        return this.api.deleteDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param param the request object
-     */
-    public deleteDecompilationComment(param: FunctionsDecompilationApiDeleteDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
-        return this.api.deleteDecompilationComment(param.commentId, param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
-     * Get comments for this function
-     * @param param the request object
-     */
-    public getDecompilationCommentsWithHttpInfo(param: FunctionsDecompilationApiGetDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getDecompilationCommentsWithHttpInfo(param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
-     * Get comments for this function
-     * @param param the request object
-     */
-    public getDecompilationComments(param: FunctionsDecompilationApiGetDecompilationCommentsRequest, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getDecompilationComments(param.functionId, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param param the request object
-     */
-    public updateDecompilationCommentWithHttpInfo(param: FunctionsDecompilationApiUpdateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.updateDecompilationCommentWithHttpInfo(param.commentId, param.functionId, param.commentUpdateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param param the request object
-     */
-    public updateDecompilationComment(param: FunctionsDecompilationApiUpdateDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.updateDecompilationComment(param.commentId, param.functionId, param.commentUpdateRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
 }
