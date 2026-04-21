@@ -31,11 +31,13 @@ import { AnalysisTags } from '../models/AnalysisTags';
 import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
+import { AppApiRestV2AgentSchemaCapability } from '../models/AppApiRestV2AgentSchemaCapability';
 import { AppApiRestV2AnalysesEnumsDynamicExecutionStatus } from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
+import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
 import { AppServicesDynamicExecutionSchemasDynamicExecutionStatus } from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 import { Argument } from '../models/Argument';
 import { AutoRunAgents } from '../models/AutoRunAgents';
@@ -63,6 +65,7 @@ import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySe
 import { BaseResponseBool } from '../models/BaseResponseBool';
 import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
 import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
+import { BaseResponseCapabilitiesAgentResponse } from '../models/BaseResponseCapabilitiesAgentResponse';
 import { BaseResponseChildBinariesResponse } from '../models/BaseResponseChildBinariesResponse';
 import { BaseResponseCollectionBinariesUpdateResponse } from '../models/BaseResponseCollectionBinariesUpdateResponse';
 import { BaseResponseCollectionResponse } from '../models/BaseResponseCollectionResponse';
@@ -103,12 +106,16 @@ import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipeli
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
 import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
 import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
+import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
+import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
+import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatusResponse';
+import { BaseResponseTriageReportResponse } from '../models/BaseResponseTriageReportResponse';
 import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
@@ -123,12 +130,13 @@ import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
 import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
 import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
+import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
 import { Capabilities } from '../models/Capabilities';
-import { Capability } from '../models/Capability';
+import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
 import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
 import { CodeSignatureModel } from '../models/CodeSignatureModel';
 import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
@@ -215,6 +223,7 @@ import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
 import { GetMeResponse } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
+import { IOC } from '../models/IOC';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
@@ -226,6 +235,7 @@ import { ListCollectionResults } from '../models/ListCollectionResults';
 import { LoginRequest } from '../models/LoginRequest';
 import { LoginResponse } from '../models/LoginResponse';
 import { Logs } from '../models/Logs';
+import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
 import { MetaModel } from '../models/MetaModel';
@@ -253,10 +263,12 @@ import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
+import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { Registry } from '../models/Registry';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { SBOM } from '../models/SBOM';
 import { SBOMPackage } from '../models/SBOMPackage';
 import { SandboxOptions } from '../models/SandboxOptions';
@@ -291,7 +303,10 @@ import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
 import { TaskResponse } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
+import { TaskStatusResponse } from '../models/TaskStatusResponse';
 import { TimestampModel } from '../models/TimestampModel';
+import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
+import { TriageReportResponse } from '../models/TriageReportResponse';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
 import { UploadFileType } from '../models/UploadFileType';
@@ -304,6 +319,205 @@ import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
 import { XrefResponse } from '../models/XrefResponse';
 import { XrefToResponse } from '../models/XrefToResponse';
+import { ObservableAgentApi } from './ObservableAPI';
+
+import { AgentApiRequestFactory, AgentApiResponseProcessor} from "../apis/AgentApi";
+export class PromiseAgentApi {
+    private api: ObservableAgentApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: AgentApiRequestFactory,
+        responseProcessor?: AgentApiResponseProcessor
+    ) {
+        this.api = new ObservableAgentApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Check the status of a capabilities analysis workflow
+     * @param analysisId
+     */
+    public checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TaskStatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Check the status of a capabilities analysis workflow
+     * @param analysisId
+     */
+    public checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<TaskStatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Check the status of a report analysis workflow
+     * @param analysisId
+     */
+    public checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TaskStatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Check the status of a report analysis workflow
+     * @param analysisId
+     */
+    public checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<TaskStatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Check the status of a triage analysis workflow
+     * @param analysisId
+     */
+    public checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TaskStatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Check the status of a triage analysis workflow
+     * @param analysisId
+     */
+    public checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<TaskStatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a capabilities analysis workflow process
+     * @param analysisId
+     */
+    public createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPostWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPostWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a capabilities analysis workflow process
+     * @param analysisId
+     */
+    public createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseQueuedWorkflowTaskResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a combined report analysis workflow process
+     * @param analysisId
+     */
+    public createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<QueuedWorkflowTaskResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a combined report analysis workflow process
+     * @param analysisId
+     */
+    public createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost(analysisId: number, _options?: PromiseConfigurationOptions): Promise<QueuedWorkflowTaskResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a triage analysis workflow process
+     * @param analysisId
+     */
+    public createTriageTaskV2AnalysesAnalysisIdAgentTriagePostWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createTriageTaskV2AnalysesAnalysisIdAgentTriagePostWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a triage analysis workflow process
+     * @param analysisId
+     */
+    public createTriageTaskV2AnalysesAnalysisIdAgentTriagePost(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseQueuedWorkflowTaskResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createTriageTaskV2AnalysesAnalysisIdAgentTriagePost(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get Capabilities Result
+     * @param analysisId
+     */
+    public getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCapabilitiesAgentResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get Capabilities Result
+     * @param analysisId
+     */
+    public getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCapabilitiesAgentResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get Report Analysis Result
+     * @param analysisId
+     */
+    public getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseReportAnalysisResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get Report Analysis Result
+     * @param analysisId
+     */
+    public getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseReportAnalysisResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get Triage Result
+     * @param analysisId
+     */
+    public getTriageResultV2AnalysesAnalysisIdAgentTriageGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseTriageReportResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getTriageResultV2AnalysesAnalysisIdAgentTriageGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Get Triage Result
+     * @param analysisId
+     */
+    public getTriageResultV2AnalysesAnalysisIdAgentTriageGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseTriageReportResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getTriageResultV2AnalysesAnalysisIdAgentTriageGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableAnalysesCommentsApi } from './ObservableAPI';
 
 import { AnalysesCommentsApiRequestFactory, AnalysesCommentsApiResponseProcessor} from "../apis/AnalysesCommentsApi";

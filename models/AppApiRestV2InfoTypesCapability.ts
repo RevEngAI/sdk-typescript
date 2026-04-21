@@ -11,7 +11,7 @@
 
 import { HttpFile } from '../http/http';
 
-export class Capability {
+export class AppApiRestV2InfoTypesCapability {
     /**
     * The name of the function with a capability
     */
@@ -50,7 +50,7 @@ export class Capability {
         }    ];
 
     static getAttributeTypeMap() {
-        return Capability.attributeTypeMap;
+        return AppApiRestV2InfoTypesCapability.attributeTypeMap;
     }
 
     public constructor() {
