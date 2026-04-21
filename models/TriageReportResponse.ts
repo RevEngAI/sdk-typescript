@@ -9,14 +9,22 @@
  * Do not edit the class manually.
  */
 
-import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
+import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
 import { HttpFile } from '../http/http';
 
-export class Capabilities {
+export class TriageReportResponse {
     /**
-    * List of capabilities for a given analysis
+    * Overall triage score for the software
     */
-    'capabilities': Array<AppApiRestV2InfoTypesCapability>;
+    'softwareScore': number;
+    /**
+    * Summary of the triage analysis
+    */
+    'summary': string;
+    /**
+    * List of triaged functions
+    */
+    'functions': Array<TriageFunctionResponse>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,14 +32,26 @@ export class Capabilities {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "capabilities",
-            "baseName": "capabilities",
-            "type": "Array<AppApiRestV2InfoTypesCapability>",
+            "name": "softwareScore",
+            "baseName": "software_score",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "summary",
+            "baseName": "summary",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "functions",
+            "baseName": "functions",
+            "type": "Array<TriageFunctionResponse>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return Capabilities.attributeTypeMap;
+        return TriageReportResponse.attributeTypeMap;
     }
 
     public constructor() {

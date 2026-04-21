@@ -27,11 +27,13 @@ export * from '../models/AnalysisTags';
 export * from '../models/AnalysisUpdateRequest';
 export * from '../models/AnalysisUpdateTagsRequest';
 export * from '../models/AnalysisUpdateTagsResponse';
+export * from '../models/AppApiRestV2AgentSchemaCapability';
 export * from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
 export * from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 export * from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 export * from '../models/AppApiRestV2FunctionsResponsesFunction';
 export * from '../models/AppApiRestV2FunctionsTypesFunction';
+export * from '../models/AppApiRestV2InfoTypesCapability';
 export * from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 export * from '../models/Argument';
 export * from '../models/AutoRunAgents';
@@ -59,6 +61,7 @@ export * from '../models/BaseResponseBinarySearchResponse';
 export * from '../models/BaseResponseBool';
 export * from '../models/BaseResponseCalleesCallerFunctionsResponse';
 export * from '../models/BaseResponseCapabilities';
+export * from '../models/BaseResponseCapabilitiesAgentResponse';
 export * from '../models/BaseResponseChildBinariesResponse';
 export * from '../models/BaseResponseCollectionBinariesUpdateResponse';
 export * from '../models/BaseResponseCollectionResponse';
@@ -99,12 +102,16 @@ export * from '../models/BaseResponsePipelineStatusResponse';
 export * from '../models/BaseResponseProcessDumps';
 export * from '../models/BaseResponseProcessRegistry';
 export * from '../models/BaseResponseProcessTree';
+export * from '../models/BaseResponseQueuedWorkflowTaskResponse';
 export * from '../models/BaseResponseRecent';
+export * from '../models/BaseResponseReportAnalysisResponse';
 export * from '../models/BaseResponseStatus';
 export * from '../models/BaseResponseStr';
 export * from '../models/BaseResponseTTPS';
 export * from '../models/BaseResponseTagSearchResponse';
 export * from '../models/BaseResponseTaskResponse';
+export * from '../models/BaseResponseTaskStatusResponse';
+export * from '../models/BaseResponseTriageReportResponse';
 export * from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 export * from '../models/BaseResponseUploadResponse';
 export * from '../models/BaseResponseVulnerabilities';
@@ -119,12 +126,13 @@ export * from '../models/BinaryDetailsResponse';
 export * from '../models/BinaryExternalsResponse';
 export * from '../models/BinarySearchResponse';
 export * from '../models/BinarySearchResult';
+export * from '../models/BinaryTaskStatus';
 export * from '../models/BulkDeleteAnalysesRequest';
 export * from '../models/CalleeFunctionInfo';
 export * from '../models/CalleesCallerFunctionsResponse';
 export * from '../models/CallerFunctionInfo';
 export * from '../models/Capabilities';
-export * from '../models/Capability';
+export * from '../models/CapabilitiesAgentResponse';
 export * from '../models/ChildBinariesResponse';
 export * from '../models/CodeSignatureModel';
 export * from '../models/CollectionBinariesUpdateRequest';
@@ -211,6 +219,7 @@ export * from '../models/GetAiDecompilationTask';
 export * from '../models/GetMeResponse';
 export * from '../models/GetPublicUserResponse';
 export * from '../models/GlobalVariable';
+export * from '../models/IOC';
 export * from '../models/ISA';
 export * from '../models/IconModel';
 export * from '../models/ImportModel';
@@ -222,6 +231,7 @@ export * from '../models/ListCollectionResults';
 export * from '../models/LoginRequest';
 export * from '../models/LoginResponse';
 export * from '../models/Logs';
+export * from '../models/MITRETechnique';
 export * from '../models/MatchedFunction';
 export * from '../models/MatchedFunctionSuggestion';
 export * from '../models/MetaModel';
@@ -249,10 +259,12 @@ export * from '../models/ProcessDumpsData';
 export * from '../models/ProcessRegistry';
 export * from '../models/ProcessTree';
 export * from '../models/PutAnalysisStringsRequest';
+export * from '../models/QueuedWorkflowTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
 export * from '../models/Registry';
 export * from '../models/RelativeBinaryResponse';
+export * from '../models/ReportAnalysisResponse';
 export * from '../models/SBOM';
 export * from '../models/SBOMPackage';
 export * from '../models/SandboxOptions';
@@ -287,7 +299,10 @@ export * from '../models/TagSearchResponse';
 export * from '../models/TagSearchResult';
 export * from '../models/TaskResponse';
 export * from '../models/TaskStatus';
+export * from '../models/TaskStatusResponse';
 export * from '../models/TimestampModel';
+export * from '../models/TriageFunctionResponse';
+export * from '../models/TriageReportResponse';
 export * from '../models/TypeDefinition';
 export * from '../models/UpdateFunctionDataTypes';
 export * from '../models/UploadFileType';
@@ -330,11 +345,13 @@ import { AnalysisTags } from '../models/AnalysisTags';
 import { AnalysisUpdateRequest , AnalysisUpdateRequestAnalysisScopeEnum   } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
+import { AppApiRestV2AgentSchemaCapability   , AppApiRestV2AgentSchemaCapabilityTypeEnum     } from '../models/AppApiRestV2AgentSchemaCapability';
 import { AppApiRestV2AnalysesEnumsDynamicExecutionStatus } from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
+import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
 import { AppServicesDynamicExecutionSchemasDynamicExecutionStatus } from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 import { Argument } from '../models/Argument';
 import { AutoRunAgents } from '../models/AutoRunAgents';
@@ -362,6 +379,7 @@ import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySe
 import { BaseResponseBool } from '../models/BaseResponseBool';
 import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
 import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
+import { BaseResponseCapabilitiesAgentResponse } from '../models/BaseResponseCapabilitiesAgentResponse';
 import { BaseResponseChildBinariesResponse } from '../models/BaseResponseChildBinariesResponse';
 import { BaseResponseCollectionBinariesUpdateResponse } from '../models/BaseResponseCollectionBinariesUpdateResponse';
 import { BaseResponseCollectionResponse } from '../models/BaseResponseCollectionResponse';
@@ -402,12 +420,16 @@ import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipeli
 import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
 import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
 import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
+import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
+import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
+import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatusResponse';
+import { BaseResponseTriageReportResponse } from '../models/BaseResponseTriageReportResponse';
 import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
@@ -422,12 +444,13 @@ import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
 import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
 import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
+import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
 import { Capabilities } from '../models/Capabilities';
-import { Capability } from '../models/Capability';
+import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
 import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
 import { CodeSignatureModel } from '../models/CodeSignatureModel';
 import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
@@ -514,6 +537,7 @@ import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTas
 import { GetMeResponse       , GetMeResponseRoleEnum   } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
+import { IOC, IOCTypeEnum        } from '../models/IOC';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
@@ -525,6 +549,7 @@ import { ListCollectionResults } from '../models/ListCollectionResults';
 import { LoginRequest } from '../models/LoginRequest';
 import { LoginResponse } from '../models/LoginResponse';
 import { Logs } from '../models/Logs';
+import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
 import { MetaModel } from '../models/MetaModel';
@@ -552,10 +577,12 @@ import { ProcessDumpsData } from '../models/ProcessDumpsData';
 import { ProcessRegistry } from '../models/ProcessRegistry';
 import { ProcessTree } from '../models/ProcessTree';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
+import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { Registry } from '../models/Registry';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { ReportAnalysisResponse , ReportAnalysisResponseSoftwareTypeEnum         } from '../models/ReportAnalysisResponse';
 import { SBOM } from '../models/SBOM';
 import { SBOMPackage } from '../models/SBOMPackage';
 import { SandboxOptions } from '../models/SandboxOptions';
@@ -590,7 +617,10 @@ import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
 import { TaskResponse   } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
+import { TaskStatusResponse  } from '../models/TaskStatusResponse';
 import { TimestampModel } from '../models/TimestampModel';
+import { TriageFunctionResponse    , TriageFunctionResponseCapabilitiesEnum   } from '../models/TriageFunctionResponse';
+import { TriageReportResponse } from '../models/TriageReportResponse';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
 import { UploadFileType } from '../models/UploadFileType';
@@ -623,10 +653,12 @@ let enumsMap: Set<string> = new Set<string>([
     "AnalysisStage",
     "AnalysisStageStatus",
     "AnalysisUpdateRequestAnalysisScopeEnum",
+    "AppApiRestV2AgentSchemaCapabilityTypeEnum",
     "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
     "BinariesTaskStatus",
+    "BinaryTaskStatus",
     "CollectionScope",
     "DynamicExecutionStatusInput",
     "FileFormat",
@@ -636,6 +668,7 @@ let enumsMap: Set<string> = new Set<string>([
     "FunctionSourceType",
     "FunctionTaskStatus",
     "GetMeResponseRoleEnum",
+    "IOCTypeEnum",
     "ISA",
     "ModelName",
     "NameSourceTypeTypeEnum",
@@ -643,9 +676,11 @@ let enumsMap: Set<string> = new Set<string>([
     "Order",
     "PipelineStageStatus",
     "Platform",
+    "ReportAnalysisResponseSoftwareTypeEnum",
     "StatusInput",
     "StringSource",
     "TaskStatus",
+    "TriageFunctionResponseCapabilitiesEnum",
     "UploadFileType",
     "VulnerabilitySeverityEnum",
     "Workspace",
@@ -676,8 +711,10 @@ let typeMap: {[index: string]: any} = {
     "AnalysisUpdateRequest": AnalysisUpdateRequest,
     "AnalysisUpdateTagsRequest": AnalysisUpdateTagsRequest,
     "AnalysisUpdateTagsResponse": AnalysisUpdateTagsResponse,
+    "AppApiRestV2AgentSchemaCapability": AppApiRestV2AgentSchemaCapability,
     "AppApiRestV2FunctionsResponsesFunction": AppApiRestV2FunctionsResponsesFunction,
     "AppApiRestV2FunctionsTypesFunction": AppApiRestV2FunctionsTypesFunction,
+    "AppApiRestV2InfoTypesCapability": AppApiRestV2InfoTypesCapability,
     "AppServicesDynamicExecutionSchemasDynamicExecutionStatus": AppServicesDynamicExecutionSchemasDynamicExecutionStatus,
     "Argument": Argument,
     "AutoRunAgents": AutoRunAgents,
@@ -705,6 +742,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseBool": BaseResponseBool,
     "BaseResponseCalleesCallerFunctionsResponse": BaseResponseCalleesCallerFunctionsResponse,
     "BaseResponseCapabilities": BaseResponseCapabilities,
+    "BaseResponseCapabilitiesAgentResponse": BaseResponseCapabilitiesAgentResponse,
     "BaseResponseChildBinariesResponse": BaseResponseChildBinariesResponse,
     "BaseResponseCollectionBinariesUpdateResponse": BaseResponseCollectionBinariesUpdateResponse,
     "BaseResponseCollectionResponse": BaseResponseCollectionResponse,
@@ -745,12 +783,16 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseProcessDumps": BaseResponseProcessDumps,
     "BaseResponseProcessRegistry": BaseResponseProcessRegistry,
     "BaseResponseProcessTree": BaseResponseProcessTree,
+    "BaseResponseQueuedWorkflowTaskResponse": BaseResponseQueuedWorkflowTaskResponse,
     "BaseResponseRecent": BaseResponseRecent,
+    "BaseResponseReportAnalysisResponse": BaseResponseReportAnalysisResponse,
     "BaseResponseStatus": BaseResponseStatus,
     "BaseResponseStr": BaseResponseStr,
     "BaseResponseTTPS": BaseResponseTTPS,
     "BaseResponseTagSearchResponse": BaseResponseTagSearchResponse,
     "BaseResponseTaskResponse": BaseResponseTaskResponse,
+    "BaseResponseTaskStatusResponse": BaseResponseTaskStatusResponse,
+    "BaseResponseTriageReportResponse": BaseResponseTriageReportResponse,
     "BaseResponseUnionGetAiDecompilationRatingResponseNoneType": BaseResponseUnionGetAiDecompilationRatingResponseNoneType,
     "BaseResponseUploadResponse": BaseResponseUploadResponse,
     "BaseResponseVulnerabilities": BaseResponseVulnerabilities,
@@ -769,7 +811,7 @@ let typeMap: {[index: string]: any} = {
     "CalleesCallerFunctionsResponse": CalleesCallerFunctionsResponse,
     "CallerFunctionInfo": CallerFunctionInfo,
     "Capabilities": Capabilities,
-    "Capability": Capability,
+    "CapabilitiesAgentResponse": CapabilitiesAgentResponse,
     "ChildBinariesResponse": ChildBinariesResponse,
     "CodeSignatureModel": CodeSignatureModel,
     "CollectionBinariesUpdateRequest": CollectionBinariesUpdateRequest,
@@ -850,6 +892,7 @@ let typeMap: {[index: string]: any} = {
     "GetMeResponse": GetMeResponse,
     "GetPublicUserResponse": GetPublicUserResponse,
     "GlobalVariable": GlobalVariable,
+    "IOC": IOC,
     "IconModel": IconModel,
     "ImportModel": ImportModel,
     "InsertAnalysisLogRequest": InsertAnalysisLogRequest,
@@ -860,6 +903,7 @@ let typeMap: {[index: string]: any} = {
     "LoginRequest": LoginRequest,
     "LoginResponse": LoginResponse,
     "Logs": Logs,
+    "MITRETechnique": MITRETechnique,
     "MatchedFunction": MatchedFunction,
     "MatchedFunctionSuggestion": MatchedFunctionSuggestion,
     "MetaModel": MetaModel,
@@ -883,10 +927,12 @@ let typeMap: {[index: string]: any} = {
     "ProcessRegistry": ProcessRegistry,
     "ProcessTree": ProcessTree,
     "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
+    "QueuedWorkflowTaskResponse": QueuedWorkflowTaskResponse,
     "ReAnalysisForm": ReAnalysisForm,
     "Recent": Recent,
     "Registry": Registry,
     "RelativeBinaryResponse": RelativeBinaryResponse,
+    "ReportAnalysisResponse": ReportAnalysisResponse,
     "SBOM": SBOM,
     "SBOMPackage": SBOMPackage,
     "SandboxOptions": SandboxOptions,
@@ -918,7 +964,10 @@ let typeMap: {[index: string]: any} = {
     "TagSearchResponse": TagSearchResponse,
     "TagSearchResult": TagSearchResult,
     "TaskResponse": TaskResponse,
+    "TaskStatusResponse": TaskStatusResponse,
     "TimestampModel": TimestampModel,
+    "TriageFunctionResponse": TriageFunctionResponse,
+    "TriageReportResponse": TriageReportResponse,
     "TypeDefinition": TypeDefinition,
     "UpdateFunctionDataTypes": UpdateFunctionDataTypes,
     "UploadResponse": UploadResponse,

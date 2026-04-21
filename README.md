@@ -47,6 +47,15 @@ All URIs are relative to *https://api.reveng.ai*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AgentApi* | [**checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet**](docs/AgentApi.md#checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet) | **GET** /v2/analyses/{analysis_id}/agent/capabilities/status | Check the status of a capabilities analysis workflow
+*AgentApi* | [**checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet**](docs/AgentApi.md#checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet) | **GET** /v2/analyses/{analysis_id}/agent/report-analysis/status | Check the status of a report analysis workflow
+*AgentApi* | [**checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet**](docs/AgentApi.md#checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet) | **GET** /v2/analyses/{analysis_id}/agent/triage/status | Check the status of a triage analysis workflow
+*AgentApi* | [**createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost**](docs/AgentApi.md#createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost) | **POST** /v2/analyses/{analysis_id}/agent/capabilities | Queues a capabilities analysis workflow process
+*AgentApi* | [**createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost**](docs/AgentApi.md#createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost) | **POST** /v2/analyses/{analysis_id}/agent/report-analysis | Queues a combined report analysis workflow process
+*AgentApi* | [**createTriageTaskV2AnalysesAnalysisIdAgentTriagePost**](docs/AgentApi.md#createTriageTaskV2AnalysesAnalysisIdAgentTriagePost) | **POST** /v2/analyses/{analysis_id}/agent/triage | Queues a triage analysis workflow process
+*AgentApi* | [**getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet**](docs/AgentApi.md#getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet) | **GET** /v2/analyses/{analysis_id}/agent/capabilities | Get Capabilities Result
+*AgentApi* | [**getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet**](docs/AgentApi.md#getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet) | **GET** /v2/analyses/{analysis_id}/agent/report-analysis | Get Report Analysis Result
+*AgentApi* | [**getTriageResultV2AnalysesAnalysisIdAgentTriageGet**](docs/AgentApi.md#getTriageResultV2AnalysesAnalysisIdAgentTriageGet) | **GET** /v2/analyses/{analysis_id}/agent/triage | Get Triage Result
 *AnalysesCommentsApi* | [**createAnalysisComment**](docs/AnalysesCommentsApi.md#createAnalysisComment) | **POST** /v2/analyses/{analysis_id}/comments | Create a comment for this analysis
 *AnalysesCommentsApi* | [**deleteAnalysisComment**](docs/AnalysesCommentsApi.md#deleteAnalysisComment) | **DELETE** /v2/analyses/{analysis_id}/comments/{comment_id} | Delete a comment
 *AnalysesCommentsApi* | [**getAnalysisComments**](docs/AnalysesCommentsApi.md#getAnalysisComments) | **GET** /v2/analyses/{analysis_id}/comments | Get comments for this analysis
@@ -183,11 +192,13 @@ Class | Method | HTTP request | Description
  - [AnalysisUpdateRequest](AnalysisUpdateRequest.md)
  - [AnalysisUpdateTagsRequest](AnalysisUpdateTagsRequest.md)
  - [AnalysisUpdateTagsResponse](AnalysisUpdateTagsResponse.md)
+ - [AppApiRestV2AgentSchemaCapability](AppApiRestV2AgentSchemaCapability.md)
  - [AppApiRestV2AnalysesEnumsDynamicExecutionStatus](AppApiRestV2AnalysesEnumsDynamicExecutionStatus.md)
  - [AppApiRestV2AnalysesEnumsOrderBy](AppApiRestV2AnalysesEnumsOrderBy.md)
  - [AppApiRestV2CollectionsEnumsOrderBy](AppApiRestV2CollectionsEnumsOrderBy.md)
  - [AppApiRestV2FunctionsResponsesFunction](AppApiRestV2FunctionsResponsesFunction.md)
  - [AppApiRestV2FunctionsTypesFunction](AppApiRestV2FunctionsTypesFunction.md)
+ - [AppApiRestV2InfoTypesCapability](AppApiRestV2InfoTypesCapability.md)
  - [AppServicesDynamicExecutionSchemasDynamicExecutionStatus](AppServicesDynamicExecutionSchemasDynamicExecutionStatus.md)
  - [Argument](Argument.md)
  - [AutoRunAgents](AutoRunAgents.md)
@@ -215,6 +226,7 @@ Class | Method | HTTP request | Description
  - [BaseResponseBool](BaseResponseBool.md)
  - [BaseResponseCalleesCallerFunctionsResponse](BaseResponseCalleesCallerFunctionsResponse.md)
  - [BaseResponseCapabilities](BaseResponseCapabilities.md)
+ - [BaseResponseCapabilitiesAgentResponse](BaseResponseCapabilitiesAgentResponse.md)
  - [BaseResponseChildBinariesResponse](BaseResponseChildBinariesResponse.md)
  - [BaseResponseCollectionBinariesUpdateResponse](BaseResponseCollectionBinariesUpdateResponse.md)
  - [BaseResponseCollectionResponse](BaseResponseCollectionResponse.md)
@@ -255,12 +267,16 @@ Class | Method | HTTP request | Description
  - [BaseResponseProcessDumps](BaseResponseProcessDumps.md)
  - [BaseResponseProcessRegistry](BaseResponseProcessRegistry.md)
  - [BaseResponseProcessTree](BaseResponseProcessTree.md)
+ - [BaseResponseQueuedWorkflowTaskResponse](BaseResponseQueuedWorkflowTaskResponse.md)
  - [BaseResponseRecent](BaseResponseRecent.md)
+ - [BaseResponseReportAnalysisResponse](BaseResponseReportAnalysisResponse.md)
  - [BaseResponseStatus](BaseResponseStatus.md)
  - [BaseResponseStr](BaseResponseStr.md)
  - [BaseResponseTTPS](BaseResponseTTPS.md)
  - [BaseResponseTagSearchResponse](BaseResponseTagSearchResponse.md)
  - [BaseResponseTaskResponse](BaseResponseTaskResponse.md)
+ - [BaseResponseTaskStatusResponse](BaseResponseTaskStatusResponse.md)
+ - [BaseResponseTriageReportResponse](BaseResponseTriageReportResponse.md)
  - [BaseResponseUnionGetAiDecompilationRatingResponseNoneType](BaseResponseUnionGetAiDecompilationRatingResponseNoneType.md)
  - [BaseResponseUploadResponse](BaseResponseUploadResponse.md)
  - [BaseResponseVulnerabilities](BaseResponseVulnerabilities.md)
@@ -275,12 +291,13 @@ Class | Method | HTTP request | Description
  - [BinaryExternalsResponse](BinaryExternalsResponse.md)
  - [BinarySearchResponse](BinarySearchResponse.md)
  - [BinarySearchResult](BinarySearchResult.md)
+ - [BinaryTaskStatus](BinaryTaskStatus.md)
  - [BulkDeleteAnalysesRequest](BulkDeleteAnalysesRequest.md)
  - [CalleeFunctionInfo](CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](CallerFunctionInfo.md)
  - [Capabilities](Capabilities.md)
- - [Capability](Capability.md)
+ - [CapabilitiesAgentResponse](CapabilitiesAgentResponse.md)
  - [ChildBinariesResponse](ChildBinariesResponse.md)
  - [CodeSignatureModel](CodeSignatureModel.md)
  - [CollectionBinariesUpdateRequest](CollectionBinariesUpdateRequest.md)
@@ -367,6 +384,7 @@ Class | Method | HTTP request | Description
  - [GetMeResponse](GetMeResponse.md)
  - [GetPublicUserResponse](GetPublicUserResponse.md)
  - [GlobalVariable](GlobalVariable.md)
+ - [IOC](IOC.md)
  - [ISA](ISA.md)
  - [IconModel](IconModel.md)
  - [ImportModel](ImportModel.md)
@@ -378,6 +396,7 @@ Class | Method | HTTP request | Description
  - [LoginRequest](LoginRequest.md)
  - [LoginResponse](LoginResponse.md)
  - [Logs](Logs.md)
+ - [MITRETechnique](MITRETechnique.md)
  - [MatchedFunction](MatchedFunction.md)
  - [MatchedFunctionSuggestion](MatchedFunctionSuggestion.md)
  - [MetaModel](MetaModel.md)
@@ -405,10 +424,12 @@ Class | Method | HTTP request | Description
  - [ProcessRegistry](ProcessRegistry.md)
  - [ProcessTree](ProcessTree.md)
  - [PutAnalysisStringsRequest](PutAnalysisStringsRequest.md)
+ - [QueuedWorkflowTaskResponse](QueuedWorkflowTaskResponse.md)
  - [ReAnalysisForm](ReAnalysisForm.md)
  - [Recent](Recent.md)
  - [Registry](Registry.md)
  - [RelativeBinaryResponse](RelativeBinaryResponse.md)
+ - [ReportAnalysisResponse](ReportAnalysisResponse.md)
  - [SBOM](SBOM.md)
  - [SBOMPackage](SBOMPackage.md)
  - [SandboxOptions](SandboxOptions.md)
@@ -443,7 +464,10 @@ Class | Method | HTTP request | Description
  - [TagSearchResult](TagSearchResult.md)
  - [TaskResponse](TaskResponse.md)
  - [TaskStatus](TaskStatus.md)
+ - [TaskStatusResponse](TaskStatusResponse.md)
  - [TimestampModel](TimestampModel.md)
+ - [TriageFunctionResponse](TriageFunctionResponse.md)
+ - [TriageReportResponse](TriageReportResponse.md)
  - [TypeDefinition](TypeDefinition.md)
  - [UpdateFunctionDataTypes](UpdateFunctionDataTypes.md)
  - [UploadFileType](UploadFileType.md)

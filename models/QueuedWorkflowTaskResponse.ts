@@ -9,14 +9,10 @@
  * Do not edit the class manually.
  */
 
-import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
 import { HttpFile } from '../http/http';
 
-export class Capabilities {
-    /**
-    * List of capabilities for a given analysis
-    */
-    'capabilities': Array<AppApiRestV2InfoTypesCapability>;
+export class QueuedWorkflowTaskResponse {
+    'taskId': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,14 +20,14 @@ export class Capabilities {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "capabilities",
-            "baseName": "capabilities",
-            "type": "Array<AppApiRestV2InfoTypesCapability>",
+            "name": "taskId",
+            "baseName": "task_id",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return Capabilities.attributeTypeMap;
+        return QueuedWorkflowTaskResponse.attributeTypeMap;
     }
 
     public constructor() {

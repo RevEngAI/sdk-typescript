@@ -9,14 +9,11 @@
  * Do not edit the class manually.
  */
 
-import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
+import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { HttpFile } from '../http/http';
 
-export class Capabilities {
-    /**
-    * List of capabilities for a given analysis
-    */
-    'capabilities': Array<AppApiRestV2InfoTypesCapability>;
+export class TaskStatusResponse {
+    'status': BinaryTaskStatus;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,16 +21,18 @@ export class Capabilities {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "capabilities",
-            "baseName": "capabilities",
-            "type": "Array<AppApiRestV2InfoTypesCapability>",
+            "name": "status",
+            "baseName": "status",
+            "type": "BinaryTaskStatus",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return Capabilities.attributeTypeMap;
+        return TaskStatusResponse.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+

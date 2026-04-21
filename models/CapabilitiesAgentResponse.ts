@@ -9,14 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
+import { AppApiRestV2AgentSchemaCapability } from '../models/AppApiRestV2AgentSchemaCapability';
 import { HttpFile } from '../http/http';
 
-export class Capabilities {
+export class CapabilitiesAgentResponse {
     /**
-    * List of capabilities for a given analysis
+    * List of enriched capability data
     */
-    'capabilities': Array<AppApiRestV2InfoTypesCapability>;
+    'capabilities': Array<AppApiRestV2AgentSchemaCapability>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,12 +26,12 @@ export class Capabilities {
         {
             "name": "capabilities",
             "baseName": "capabilities",
-            "type": "Array<AppApiRestV2InfoTypesCapability>",
+            "type": "Array<AppApiRestV2AgentSchemaCapability>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return Capabilities.attributeTypeMap;
+        return CapabilitiesAgentResponse.attributeTypeMap;
     }
 
     public constructor() {
