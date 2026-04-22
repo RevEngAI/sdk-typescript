@@ -266,6 +266,7 @@ import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
+import { RegenerateTarget } from '../models/RegenerateTarget';
 import { Registry } from '../models/Registry';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
@@ -562,6 +563,156 @@ export class ObjectAgentApi {
      */
     public getTriageResultV2AnalysesAnalysisIdAgentTriageGet(param: AgentApiGetTriageResultV2AnalysesAnalysisIdAgentTriageGetRequest, options?: ConfigurationOptions): Promise<BaseResponseTriageReportResponse> {
         return this.api.getTriageResultV2AnalysesAnalysisIdAgentTriageGet(param.analysisId,  options).toPromise();
+    }
+
+}
+
+import { ObservableAnalysesBulkActionsApi } from "./ObservableAPI";
+import { AnalysesBulkActionsApiRequestFactory, AnalysesBulkActionsApiResponseProcessor} from "../apis/AnalysesBulkActionsApi";
+
+export interface AnalysesBulkActionsApiBulkAddAnalysisTagsRequest {
+    /**
+     * 
+     * @type AnalysisBulkAddTagsRequest
+     * @memberof AnalysesBulkActionsApibulkAddAnalysisTags
+     */
+    analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesBulkActionsApibulkAddAnalysisTags
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesBulkActionsApibulkAddAnalysisTags
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesBulkActionsApibulkAddAnalysisTags
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesBulkActionsApibulkAddAnalysisTags
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesBulkActionsApibulkAddAnalysisTags
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesBulkActionsApibulkAddAnalysisTags
+     */
+    maxRetryAttempts?: number
+}
+
+export interface AnalysesBulkActionsApiBulkDeleteAnalysesRequest {
+    /**
+     * 
+     * @type BulkDeleteAnalysesRequest
+     * @memberof AnalysesBulkActionsApibulkDeleteAnalyses
+     */
+    bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesBulkActionsApibulkDeleteAnalyses
+     */
+    endpointUrl?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesBulkActionsApibulkDeleteAnalyses
+     */
+    localCacheDir?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesBulkActionsApibulkDeleteAnalyses
+     */
+    localCacheMaxSizeMb?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesBulkActionsApibulkDeleteAnalyses
+     */
+    customerSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesBulkActionsApibulkDeleteAnalyses
+     */
+    firmwareSamplesBucket?: string
+    /**
+     * 
+     * Defaults to: 5
+     * @type number
+     * @memberof AnalysesBulkActionsApibulkDeleteAnalyses
+     */
+    maxRetryAttempts?: number
+}
+
+export class ObjectAnalysesBulkActionsApi {
+    private api: ObservableAnalysesBulkActionsApi
+
+    public constructor(configuration: Configuration, requestFactory?: AnalysesBulkActionsApiRequestFactory, responseProcessor?: AnalysesBulkActionsApiResponseProcessor) {
+        this.api = new ObservableAnalysesBulkActionsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Updates analysis tags for multiple analyses. User must be the owner.
+     * Bulk Add Analysis Tags
+     * @param param the request object
+     */
+    public bulkAddAnalysisTagsWithHttpInfo(param: AnalysesBulkActionsApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
+        return this.api.bulkAddAnalysisTagsWithHttpInfo(param.analysisBulkAddTagsRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
+    }
+
+    /**
+     * Updates analysis tags for multiple analyses. User must be the owner.
+     * Bulk Add Analysis Tags
+     * @param param the request object
+     */
+    public bulkAddAnalysisTags(param: AnalysesBulkActionsApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
+        return this.api.bulkAddAnalysisTags(param.analysisBulkAddTagsRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
+    }
+
+    /**
+     * Deletes multiple analyses. User must be the owner of all analyses.
+     * Bulk Delete Analyses
+     * @param param the request object
+     */
+    public bulkDeleteAnalysesWithHttpInfo(param: AnalysesBulkActionsApiBulkDeleteAnalysesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
+        return this.api.bulkDeleteAnalysesWithHttpInfo(param.bulkDeleteAnalysesRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
+    }
+
+    /**
+     * Deletes multiple analyses. User must be the owner of all analyses.
+     * Bulk Delete Analyses
+     * @param param the request object
+     */
+    public bulkDeleteAnalyses(param: AnalysesBulkActionsApiBulkDeleteAnalysesRequest, options?: ConfigurationOptions): Promise<BaseResponseDict> {
+        return this.api.bulkDeleteAnalyses(param.bulkDeleteAnalysesRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
 }
@@ -888,108 +1039,6 @@ export class ObjectAnalysesCommentsApi {
 
 import { ObservableAnalysesCoreApi } from "./ObservableAPI";
 import { AnalysesCoreApiRequestFactory, AnalysesCoreApiResponseProcessor} from "../apis/AnalysesCoreApi";
-
-export interface AnalysesCoreApiBulkAddAnalysisTagsRequest {
-    /**
-     * 
-     * @type AnalysisBulkAddTagsRequest
-     * @memberof AnalysesCoreApibulkAddAnalysisTags
-     */
-    analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApibulkAddAnalysisTags
-     */
-    endpointUrl?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApibulkAddAnalysisTags
-     */
-    localCacheDir?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApibulkAddAnalysisTags
-     */
-    localCacheMaxSizeMb?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApibulkAddAnalysisTags
-     */
-    customerSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApibulkAddAnalysisTags
-     */
-    firmwareSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: 5
-     * @type number
-     * @memberof AnalysesCoreApibulkAddAnalysisTags
-     */
-    maxRetryAttempts?: number
-}
-
-export interface AnalysesCoreApiBulkDeleteAnalysesRequest {
-    /**
-     * 
-     * @type BulkDeleteAnalysesRequest
-     * @memberof AnalysesCoreApibulkDeleteAnalyses
-     */
-    bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApibulkDeleteAnalyses
-     */
-    endpointUrl?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApibulkDeleteAnalyses
-     */
-    localCacheDir?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApibulkDeleteAnalyses
-     */
-    localCacheMaxSizeMb?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApibulkDeleteAnalyses
-     */
-    customerSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApibulkDeleteAnalyses
-     */
-    firmwareSamplesBucket?: string
-    /**
-     * 
-     * Defaults to: 5
-     * @type number
-     * @memberof AnalysesCoreApibulkDeleteAnalyses
-     */
-    maxRetryAttempts?: number
-}
 
 export interface AnalysesCoreApiCreateAnalysisRequest {
     /**
@@ -1702,42 +1751,6 @@ export class ObjectAnalysesCoreApi {
 
     public constructor(configuration: Configuration, requestFactory?: AnalysesCoreApiRequestFactory, responseProcessor?: AnalysesCoreApiResponseProcessor) {
         this.api = new ObservableAnalysesCoreApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Updates analysis tags for multiple analyses. User must be the owner.
-     * Bulk Add Analysis Tags
-     * @param param the request object
-     */
-    public bulkAddAnalysisTagsWithHttpInfo(param: AnalysesCoreApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
-        return this.api.bulkAddAnalysisTagsWithHttpInfo(param.analysisBulkAddTagsRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Updates analysis tags for multiple analyses. User must be the owner.
-     * Bulk Add Analysis Tags
-     * @param param the request object
-     */
-    public bulkAddAnalysisTags(param: AnalysesCoreApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
-        return this.api.bulkAddAnalysisTags(param.analysisBulkAddTagsRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Deletes multiple analyses. User must be the owner of all analyses.
-     * Bulk Delete Analyses
-     * @param param the request object
-     */
-    public bulkDeleteAnalysesWithHttpInfo(param: AnalysesCoreApiBulkDeleteAnalysesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
-        return this.api.bulkDeleteAnalysesWithHttpInfo(param.bulkDeleteAnalysesRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Deletes multiple analyses. User must be the owner of all analyses.
-     * Bulk Delete Analyses
-     * @param param the request object
-     */
-    public bulkDeleteAnalyses(param: AnalysesCoreApiBulkDeleteAnalysesRequest, options?: ConfigurationOptions): Promise<BaseResponseDict> {
-        return this.api.bulkDeleteAnalyses(param.bulkDeleteAnalysesRequest, param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
     }
 
     /**
@@ -4092,6 +4105,13 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest 
      * @memberof FunctionsAIDecompilationApigetAiDecompilationTaskResult
      */
     generateInlineComments?: boolean
+    /**
+     * Force regeneration of summary and/or comments.
+     * Defaults to: undefined
+     * @type Array&lt;RegenerateTarget&gt;
+     * @memberof FunctionsAIDecompilationApigetAiDecompilationTaskResult
+     */
+    forceRegenerate?: Array<RegenerateTarget>
 }
 
 export interface FunctionsAIDecompilationApiGetAiDecompilationTaskStatusRequest {
@@ -4287,7 +4307,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationTaskResultWithHttpInfo(param: FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationTask>> {
-        return this.api.getAiDecompilationTaskResultWithHttpInfo(param.functionId, param.summarise, param.generateInlineComments,  options).toPromise();
+        return this.api.getAiDecompilationTaskResultWithHttpInfo(param.functionId, param.summarise, param.generateInlineComments, param.forceRegenerate,  options).toPromise();
     }
 
     /**
@@ -4296,7 +4316,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public getAiDecompilationTaskResult(param: FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest, options?: ConfigurationOptions): Promise<BaseResponseGetAiDecompilationTask> {
-        return this.api.getAiDecompilationTaskResult(param.functionId, param.summarise, param.generateInlineComments,  options).toPromise();
+        return this.api.getAiDecompilationTaskResult(param.functionId, param.summarise, param.generateInlineComments, param.forceRegenerate,  options).toPromise();
     }
 
     /**

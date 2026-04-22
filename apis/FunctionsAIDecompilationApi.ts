@@ -17,6 +17,7 @@ import { BaseResponseListCommentResponse } from '../models/BaseResponseListComme
 import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateRequest';
+import { RegenerateTarget } from '../models/RegenerateTarget';
 import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
 
 /**
@@ -371,14 +372,16 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * @param functionId The ID of the function being decompiled
      * @param summarise Generate a summary for the decompilation
      * @param generateInlineComments Generate inline comments for the decompilation
+     * @param forceRegenerate Force regeneration of summary and/or comments.
      */
-    public async getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, forceRegenerate?: Array<RegenerateTarget>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationTaskResult", "functionId");
         }
+
 
 
 
@@ -399,6 +402,14 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         // Query Params
         if (generateInlineComments !== undefined) {
             requestContext.setQueryParam("generate_inline_comments", ObjectSerializer.serialize(generateInlineComments, "boolean", ""));
+        }
+
+        // Query Params
+        if (forceRegenerate !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(forceRegenerate, "Array<RegenerateTarget>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("force_regenerate", serializedParam);
+            }
         }
 
 
