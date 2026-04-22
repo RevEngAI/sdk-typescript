@@ -266,6 +266,7 @@ import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
+import { RegenerateTarget } from '../models/RegenerateTarget';
 import { Registry } from '../models/Registry';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
@@ -518,6 +519,93 @@ export class PromiseAgentApi {
 
 
 
+import { ObservableAnalysesBulkActionsApi } from './ObservableAPI';
+
+import { AnalysesBulkActionsApiRequestFactory, AnalysesBulkActionsApiResponseProcessor} from "../apis/AnalysesBulkActionsApi";
+export class PromiseAnalysesBulkActionsApi {
+    private api: ObservableAnalysesBulkActionsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: AnalysesBulkActionsApiRequestFactory,
+        responseProcessor?: AnalysesBulkActionsApiResponseProcessor
+    ) {
+        this.api = new ObservableAnalysesBulkActionsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Updates analysis tags for multiple analyses. User must be the owner.
+     * Bulk Add Analysis Tags
+     * @param analysisBulkAddTagsRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
+     */
+    public bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates analysis tags for multiple analyses. User must be the owner.
+     * Bulk Add Analysis Tags
+     * @param analysisBulkAddTagsRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
+     */
+    public bulkAddAnalysisTags(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.bulkAddAnalysisTags(analysisBulkAddTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes multiple analyses. User must be the owner of all analyses.
+     * Bulk Delete Analyses
+     * @param bulkDeleteAnalysesRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
+     */
+    public bulkDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.bulkDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes multiple analyses. User must be the owner of all analyses.
+     * Bulk Delete Analyses
+     * @param bulkDeleteAnalysesRequest
+     * @param [endpointUrl]
+     * @param [localCacheDir]
+     * @param [localCacheMaxSizeMb]
+     * @param [customerSamplesBucket]
+     * @param [firmwareSamplesBucket]
+     * @param [maxRetryAttempts]
+     */
+    public bulkDeleteAnalyses(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseDict> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.bulkDeleteAnalyses(bulkDeleteAnalysesRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableAnalysesCommentsApi } from './ObservableAPI';
 
 import { AnalysesCommentsApiRequestFactory, AnalysesCommentsApiResponseProcessor} from "../apis/AnalysesCommentsApi";
@@ -693,74 +781,6 @@ export class PromiseAnalysesCoreApi {
         responseProcessor?: AnalysesCoreApiResponseProcessor
     ) {
         this.api = new ObservableAnalysesCoreApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Updates analysis tags for multiple analyses. User must be the owner.
-     * Bulk Add Analysis Tags
-     * @param analysisBulkAddTagsRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates analysis tags for multiple analyses. User must be the owner.
-     * Bulk Add Analysis Tags
-     * @param analysisBulkAddTagsRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public bulkAddAnalysisTags(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.bulkAddAnalysisTags(analysisBulkAddTagsRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Deletes multiple analyses. User must be the owner of all analyses.
-     * Bulk Delete Analyses
-     * @param bulkDeleteAnalysesRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public bulkDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.bulkDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Deletes multiple analyses. User must be the owner of all analyses.
-     * Bulk Delete Analyses
-     * @param bulkDeleteAnalysesRequest
-     * @param [endpointUrl]
-     * @param [localCacheDir]
-     * @param [localCacheMaxSizeMb]
-     * @param [customerSamplesBucket]
-     * @param [firmwareSamplesBucket]
-     * @param [maxRetryAttempts]
-     */
-    public bulkDeleteAnalyses(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseDict> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.bulkDeleteAnalyses(bulkDeleteAnalysesRequest, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
     }
 
     /**
@@ -2690,10 +2710,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
      * @param [generateInlineComments] Generate inline comments for the decompilation
+     * @param [forceRegenerate] Force regeneration of summary and/or comments.
      */
-    public getAiDecompilationTaskResultWithHttpInfo(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationTask>> {
+    public getAiDecompilationTaskResultWithHttpInfo(functionId: number, summarise?: boolean, generateInlineComments?: boolean, forceRegenerate?: Array<RegenerateTarget>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationTask>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTaskResultWithHttpInfo(functionId, summarise, generateInlineComments, observableOptions);
+        const result = this.api.getAiDecompilationTaskResultWithHttpInfo(functionId, summarise, generateInlineComments, forceRegenerate, observableOptions);
         return result.toPromise();
     }
 
@@ -2703,10 +2724,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param functionId The ID of the function being decompiled
      * @param [summarise] Generate a summary for the decompilation
      * @param [generateInlineComments] Generate inline comments for the decompilation
+     * @param [forceRegenerate] Force regeneration of summary and/or comments.
      */
-    public getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetAiDecompilationTask> {
+    public getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, forceRegenerate?: Array<RegenerateTarget>, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetAiDecompilationTask> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTaskResult(functionId, summarise, generateInlineComments, observableOptions);
+        const result = this.api.getAiDecompilationTaskResult(functionId, summarise, generateInlineComments, forceRegenerate, observableOptions);
         return result.toPromise();
     }
 

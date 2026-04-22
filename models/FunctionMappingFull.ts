@@ -32,6 +32,7 @@ export class FunctionMappingFull {
     * @deprecated
     */
     'unmatchedExternalVars'?: { [key: string]: InverseValue; };
+    'userOverrideMappings'?: { [key: string]: string; };
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -114,6 +115,12 @@ export class FunctionMappingFull {
             "name": "unmatchedExternalVars",
             "baseName": "unmatched_external_vars",
             "type": "{ [key: string]: InverseValue; }",
+            "format": ""
+        },
+        {
+            "name": "userOverrideMappings",
+            "baseName": "user_override_mappings",
+            "type": "{ [key: string]: string; }",
             "format": ""
         }    ];
 

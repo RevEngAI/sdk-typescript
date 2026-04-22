@@ -379,6 +379,10 @@ const request: FunctionsAIDecompilationApiGetAiDecompilationTaskResultRequest = 
   summarise: true,
     // Generate inline comments for the decompilation (optional)
   generateInlineComments: true,
+    // Force regeneration of summary and/or comments. (optional)
+  forceRegenerate: [
+    "[]",
+  ],
 };
 
 const data = await apiInstance.getAiDecompilationTaskResult(request);
@@ -393,6 +397,7 @@ Name | Type | Description  | Notes
  **functionId** | [**number**] | The ID of the function being decompiled | defaults to undefined
  **summarise** | [**boolean**] | Generate a summary for the decompilation | (optional) defaults to true
  **generateInlineComments** | [**boolean**] | Generate inline comments for the decompilation | (optional) defaults to true
+ **forceRegenerate** | **Array&lt;RegenerateTarget&gt;** | Force regeneration of summary and/or comments. | (optional) defaults to undefined
 
 
 ### Return type

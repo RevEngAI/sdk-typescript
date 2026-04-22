@@ -262,6 +262,7 @@ export * from '../models/PutAnalysisStringsRequest';
 export * from '../models/QueuedWorkflowTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
+export * from '../models/RegenerateTarget';
 export * from '../models/Registry';
 export * from '../models/RelativeBinaryResponse';
 export * from '../models/ReportAnalysisResponse';
@@ -580,6 +581,7 @@ import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
+import { RegenerateTarget } from '../models/RegenerateTarget';
 import { Registry } from '../models/Registry';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { ReportAnalysisResponse , ReportAnalysisResponseSoftwareTypeEnum         } from '../models/ReportAnalysisResponse';
@@ -676,6 +678,7 @@ let enumsMap: Set<string> = new Set<string>([
     "Order",
     "PipelineStageStatus",
     "Platform",
+    "RegenerateTarget",
     "ReportAnalysisResponseSoftwareTypeEnum",
     "StatusInput",
     "StringSource",
