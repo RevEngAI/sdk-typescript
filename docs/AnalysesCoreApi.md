@@ -1087,7 +1087,7 @@ const request: AnalysesCoreApiUploadFileRequest = {
   
   uploadFileType: "BINARY",
   
-  file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
+  file: "file_example",
   
   packedPassword: "packed_password_example",
   
@@ -1116,7 +1116,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **uploadFileType** | **UploadFileType** |  | defaults to undefined
- **file** | [**HttpFile**] |  | defaults to undefined
+ **file** | [**string**] |  | defaults to undefined
  **packedPassword** | [**string**] |  | (optional) defaults to undefined
  **endpointUrl** | [**string**] |  | (optional) defaults to undefined
  **localCacheDir** | [**string**] |  | (optional) defaults to undefined

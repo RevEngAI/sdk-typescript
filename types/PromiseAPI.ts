@@ -1246,7 +1246,7 @@ export class PromiseAnalysesCoreApi {
      * @param [maxRetryAttempts]
      * @param [forceOverwrite]
      */
-    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
+    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: string, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, forceOverwrite, observableOptions);
         return result.toPromise();
@@ -1265,7 +1265,7 @@ export class PromiseAnalysesCoreApi {
      * @param [maxRetryAttempts]
      * @param [forceOverwrite]
      */
-    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
+    public uploadFile(uploadFileType: UploadFileType, file: string, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.uploadFile(uploadFileType, file, packedPassword, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, forceOverwrite, observableOptions);
         return result.toPromise();
@@ -2513,7 +2513,7 @@ export class PromiseFirmwareApi {
      * @param [maxRetryAttempts]
      * @param [password]
      */
-    public uploadFirmwareWithHttpInfo(file: HttpFile, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public uploadFirmwareWithHttpInfo(file: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.uploadFirmwareWithHttpInfo(file, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, password, observableOptions);
         return result.toPromise();
@@ -2531,7 +2531,7 @@ export class PromiseFirmwareApi {
      * @param [maxRetryAttempts]
      * @param [password]
      */
-    public uploadFirmware(file: HttpFile, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: PromiseConfigurationOptions): Promise<any> {
+    public uploadFirmware(file: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.uploadFirmware(file, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, password, observableOptions);
         return result.toPromise();

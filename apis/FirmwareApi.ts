@@ -65,7 +65,7 @@ export class FirmwareApiRequestFactory extends BaseAPIRequestFactory {
      * @param maxRetryAttempts 
      * @param password 
      */
-    public async uploadFirmware(file: HttpFile, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: Configuration): Promise<RequestContext> {
+    public async uploadFirmware(file: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'file' is not null or undefined
@@ -132,9 +132,7 @@ export class FirmwareApiRequestFactory extends BaseAPIRequestFactory {
 
         if (file !== undefined) {
              // TODO: replace .append with .set
-             if (localVarFormParams instanceof FormData) {
-                 localVarFormParams.append('file', file, file.name);
-             }
+             localVarFormParams.append('file', file as any);
         }
         if (password !== undefined) {
              // TODO: replace .append with .set

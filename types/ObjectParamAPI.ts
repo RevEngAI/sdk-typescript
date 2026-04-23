@@ -1684,10 +1684,10 @@ export interface AnalysesCoreApiUploadFileRequest {
     /**
      * 
      * Defaults to: undefined
-     * @type HttpFile
+     * @type string
      * @memberof AnalysesCoreApiuploadFile
      */
-    file: HttpFile
+    file: string
     /**
      * 
      * Defaults to: undefined
@@ -3790,10 +3790,10 @@ export interface FirmwareApiUploadFirmwareRequest {
     /**
      * 
      * Defaults to: undefined
-     * @type HttpFile
+     * @type string
      * @memberof FirmwareApiuploadFirmware
      */
-    file: HttpFile
+    file: string
     /**
      * 
      * Defaults to: undefined

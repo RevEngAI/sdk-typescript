@@ -1595,7 +1595,7 @@ export class ObservableAnalysesCoreApi {
      * @param [maxRetryAttempts]
      * @param [forceOverwrite]
      */
-    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUploadResponse>> {
+    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: string, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUploadResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.uploadFile(uploadFileType, file, packedPassword, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, forceOverwrite, _config);
@@ -1628,7 +1628,7 @@ export class ObservableAnalysesCoreApi {
      * @param [maxRetryAttempts]
      * @param [forceOverwrite]
      */
-    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
+    public uploadFile(uploadFileType: UploadFileType, file: string, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
         return this.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, forceOverwrite, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUploadResponse>) => apiResponse.data));
     }
 
@@ -3380,7 +3380,7 @@ export class ObservableFirmwareApi {
      * @param [maxRetryAttempts]
      * @param [password]
      */
-    public uploadFirmwareWithHttpInfo(file: HttpFile, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
+    public uploadFirmwareWithHttpInfo(file: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.uploadFirmware(file, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, password, _config);
@@ -3412,7 +3412,7 @@ export class ObservableFirmwareApi {
      * @param [maxRetryAttempts]
      * @param [password]
      */
-    public uploadFirmware(file: HttpFile, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: ConfigurationOptions): Observable<any> {
+    public uploadFirmware(file: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, password?: string, _options?: ConfigurationOptions): Observable<any> {
         return this.uploadFirmwareWithHttpInfo(file, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, password, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
