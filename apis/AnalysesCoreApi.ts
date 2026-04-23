@@ -1154,7 +1154,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param maxRetryAttempts 
      * @param forceOverwrite 
      */
-    public async uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async uploadFile(uploadFileType: UploadFileType, file: string, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'uploadFileType' is not null or undefined
@@ -1237,9 +1237,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         }
         if (file !== undefined) {
              // TODO: replace .append with .set
-             if (localVarFormParams instanceof FormData) {
-                 localVarFormParams.append('file', file, file.name);
-             }
+             localVarFormParams.append('file', file as any);
         }
         if (forceOverwrite !== undefined) {
              // TODO: replace .append with .set

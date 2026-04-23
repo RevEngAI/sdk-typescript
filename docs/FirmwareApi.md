@@ -79,7 +79,7 @@ const apiInstance = new FirmwareApi(configuration);
 
 const request: FirmwareApiUploadFirmwareRequest = {
   
-  file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
+  file: "file_example",
   
   endpointUrl: "endpoint_url_example",
   
@@ -105,7 +105,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **file** | [**HttpFile**] |  | defaults to undefined
+ **file** | [**string**] |  | defaults to undefined
  **endpointUrl** | [**string**] |  | (optional) defaults to undefined
  **localCacheDir** | [**string**] |  | (optional) defaults to undefined
  **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
