@@ -93,7 +93,6 @@ export * from '../models/BaseResponseListDieMatch';
 export * from '../models/BaseResponseListFunctionNameHistory';
 export * from '../models/BaseResponseListSBOM';
 export * from '../models/BaseResponseListUserActivityResponse';
-export * from '../models/BaseResponseLoginResponse';
 export * from '../models/BaseResponseLogs';
 export * from '../models/BaseResponseModelsResponse';
 export * from '../models/BaseResponseNetworkOverviewResponse';
@@ -228,8 +227,6 @@ export * from '../models/InverseFunctionMapItem';
 export * from '../models/InverseStringMapItem';
 export * from '../models/InverseValue';
 export * from '../models/ListCollectionResults';
-export * from '../models/LoginRequest';
-export * from '../models/LoginResponse';
 export * from '../models/Logs';
 export * from '../models/MITRETechnique';
 export * from '../models/MatchedFunction';
@@ -412,7 +409,6 @@ import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
 import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
-import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
 import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
@@ -547,8 +543,6 @@ import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
 import { ListCollectionResults } from '../models/ListCollectionResults';
-import { LoginRequest } from '../models/LoginRequest';
-import { LoginResponse } from '../models/LoginResponse';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchedFunction } from '../models/MatchedFunction';
@@ -619,7 +613,7 @@ import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
 import { TaskResponse   } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
-import { TaskStatusResponse  } from '../models/TaskStatusResponse';
+import { TaskStatusResponse   } from '../models/TaskStatusResponse';
 import { TimestampModel } from '../models/TimestampModel';
 import { TriageFunctionResponse    , TriageFunctionResponseCapabilitiesEnum   } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
@@ -777,7 +771,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseListFunctionNameHistory": BaseResponseListFunctionNameHistory,
     "BaseResponseListSBOM": BaseResponseListSBOM,
     "BaseResponseListUserActivityResponse": BaseResponseListUserActivityResponse,
-    "BaseResponseLoginResponse": BaseResponseLoginResponse,
     "BaseResponseLogs": BaseResponseLogs,
     "BaseResponseModelsResponse": BaseResponseModelsResponse,
     "BaseResponseNetworkOverviewResponse": BaseResponseNetworkOverviewResponse,
@@ -903,8 +896,6 @@ let typeMap: {[index: string]: any} = {
     "InverseStringMapItem": InverseStringMapItem,
     "InverseValue": InverseValue,
     "ListCollectionResults": ListCollectionResults,
-    "LoginRequest": LoginRequest,
-    "LoginResponse": LoginResponse,
     "Logs": Logs,
     "MITRETechnique": MITRETechnique,
     "MatchedFunction": MatchedFunction,

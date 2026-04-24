@@ -98,7 +98,6 @@ Class | Method | HTTP request | Description
 *AuthenticationUsersApi* | [**getUser**](docs/AuthenticationUsersApi.md#getUser) | **GET** /v2/users/{user_id} | Get a user\&#39;s public information
 *AuthenticationUsersApi* | [**getUserActivity**](docs/AuthenticationUsersApi.md#getUserActivity) | **GET** /v2/users/activity | Get auth user activity
 *AuthenticationUsersApi* | [**getUserComments**](docs/AuthenticationUsersApi.md#getUserComments) | **GET** /v2/users/me/comments | Get comments by user
-*AuthenticationUsersApi* | [**loginUser**](docs/AuthenticationUsersApi.md#loginUser) | **POST** /v2/auth/login | Authenticate a user
 *AuthenticationUsersApi* | [**submitUserFeedback**](docs/AuthenticationUsersApi.md#submitUserFeedback) | **POST** /v2/users/feedback | Submit feedback about the application
 *BinariesApi* | [**downloadZippedBinary**](docs/BinariesApi.md#downloadZippedBinary) | **GET** /v2/binaries/{binary_id}/download-zipped | Downloads a zipped binary with password protection
 *BinariesApi* | [**getBinaryAdditionalDetails**](docs/BinariesApi.md#getBinaryAdditionalDetails) | **GET** /v2/binaries/{binary_id}/additional-details | Gets the additional details of a binary
@@ -258,7 +257,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseListFunctionNameHistory](BaseResponseListFunctionNameHistory.md)
  - [BaseResponseListSBOM](BaseResponseListSBOM.md)
  - [BaseResponseListUserActivityResponse](BaseResponseListUserActivityResponse.md)
- - [BaseResponseLoginResponse](BaseResponseLoginResponse.md)
  - [BaseResponseLogs](BaseResponseLogs.md)
  - [BaseResponseModelsResponse](BaseResponseModelsResponse.md)
  - [BaseResponseNetworkOverviewResponse](BaseResponseNetworkOverviewResponse.md)
@@ -393,8 +391,6 @@ Class | Method | HTTP request | Description
  - [InverseStringMapItem](InverseStringMapItem.md)
  - [InverseValue](InverseValue.md)
  - [ListCollectionResults](ListCollectionResults.md)
- - [LoginRequest](LoginRequest.md)
- - [LoginResponse](LoginResponse.md)
  - [Logs](Logs.md)
  - [MITRETechnique](MITRETechnique.md)
  - [MatchedFunction](MatchedFunction.md)

@@ -97,7 +97,6 @@ import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
 import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
-import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
 import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
@@ -232,8 +231,6 @@ import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
 import { ListCollectionResults } from '../models/ListCollectionResults';
-import { LoginRequest } from '../models/LoginRequest';
-import { LoginResponse } from '../models/LoginResponse';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchedFunction } from '../models/MatchedFunction';
@@ -2665,15 +2662,6 @@ export interface AuthenticationUsersApiGetUserCommentsRequest {
     maxRetryAttempts?: number
 }
 
-export interface AuthenticationUsersApiLoginUserRequest {
-    /**
-     * 
-     * @type LoginRequest
-     * @memberof AuthenticationUsersApiloginUser
-     */
-    loginRequest: LoginRequest
-}
-
 export interface AuthenticationUsersApiSubmitUserFeedbackRequest {
     /**
      * 
@@ -2754,24 +2742,6 @@ export class ObjectAuthenticationUsersApi {
      */
     public getUserComments(param: AuthenticationUsersApiGetUserCommentsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         return this.api.getUserComments(param.endpointUrl, param.localCacheDir, param.localCacheMaxSizeMb, param.customerSamplesBucket, param.firmwareSamplesBucket, param.maxRetryAttempts,  options).toPromise();
-    }
-
-    /**
-     * Authenticates a user and returns a token.
-     * Authenticate a user
-     * @param param the request object
-     */
-    public loginUserWithHttpInfo(param: AuthenticationUsersApiLoginUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseLoginResponse>> {
-        return this.api.loginUserWithHttpInfo(param.loginRequest,  options).toPromise();
-    }
-
-    /**
-     * Authenticates a user and returns a token.
-     * Authenticate a user
-     * @param param the request object
-     */
-    public loginUser(param: AuthenticationUsersApiLoginUserRequest, options?: ConfigurationOptions): Promise<BaseResponseLoginResponse> {
-        return this.api.loginUser(param.loginRequest,  options).toPromise();
     }
 
     /**

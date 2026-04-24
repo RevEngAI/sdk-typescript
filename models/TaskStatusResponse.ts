@@ -14,6 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class TaskStatusResponse {
     'status': BinaryTaskStatus;
+    'logHistory'?: Array<Array<any>> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,6 +25,12 @@ export class TaskStatusResponse {
             "name": "status",
             "baseName": "status",
             "type": "BinaryTaskStatus",
+            "format": ""
+        },
+        {
+            "name": "logHistory",
+            "baseName": "log_history",
+            "type": "Array<Array<any>>",
             "format": ""
         }    ];
 

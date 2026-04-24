@@ -97,7 +97,6 @@ import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
 import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
-import { BaseResponseLoginResponse } from '../models/BaseResponseLoginResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
 import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
@@ -232,8 +231,6 @@ import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
 import { ListCollectionResults } from '../models/ListCollectionResults';
-import { LoginRequest } from '../models/LoginRequest';
-import { LoginResponse } from '../models/LoginResponse';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchedFunction } from '../models/MatchedFunction';
@@ -1821,28 +1818,6 @@ export class PromiseAuthenticationUsersApi {
     public getUserComments(endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getUserComments(endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Authenticates a user and returns a token.
-     * Authenticate a user
-     * @param loginRequest
-     */
-    public loginUserWithHttpInfo(loginRequest: LoginRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseLoginResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.loginUserWithHttpInfo(loginRequest, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Authenticates a user and returns a token.
-     * Authenticate a user
-     * @param loginRequest
-     */
-    public loginUser(loginRequest: LoginRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseLoginResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.loginUser(loginRequest, observableOptions);
         return result.toPromise();
     }
 
