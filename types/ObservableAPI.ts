@@ -3,6 +3,7 @@ import { Configuration, ConfigurationOptions, mergeConfiguration } from '../conf
 import type { Middleware } from '../middleware';
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
+import { APIError } from '../models/APIError';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
@@ -33,13 +34,11 @@ import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { AppApiRestV2AgentSchemaCapability } from '../models/AppApiRestV2AgentSchemaCapability';
-import { AppApiRestV2AnalysesEnumsDynamicExecutionStatus } from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
-import { AppServicesDynamicExecutionSchemasDynamicExecutionStatus } from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 import { Argument } from '../models/Argument';
 import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
@@ -76,7 +75,6 @@ import { BaseResponseCommentResponse } from '../models/BaseResponseCommentRespon
 import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
-import { BaseResponseDynamicExecutionStatus } from '../models/BaseResponseDynamicExecutionStatus';
 import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
 import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
@@ -100,18 +98,13 @@ import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
-import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
 import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipelineStatusResponse';
-import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
-import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
-import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
 import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
-import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatusResponse';
@@ -156,11 +149,16 @@ import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { ConfigResponse } from '../models/ConfigResponse';
+import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Context } from '../models/Context';
+import { Conversation } from '../models/Conversation';
+import { ConversationContext } from '../models/ConversationContext';
+import { ConversationWithEvents } from '../models/ConversationWithEvents';
+import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DieMatch } from '../models/DieMatch';
-import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInput';
+import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { ELFImportModel } from '../models/ELFImportModel';
 import { ELFModel } from '../models/ELFModel';
 import { ELFRelocation } from '../models/ELFRelocation';
@@ -171,7 +169,25 @@ import { ELFSymbol } from '../models/ELFSymbol';
 import { ElfDynamicEntry } from '../models/ElfDynamicEntry';
 import { EntrypointModel } from '../models/EntrypointModel';
 import { Enumeration } from '../models/Enumeration';
+import { ErrorBody } from '../models/ErrorBody';
 import { ErrorModel } from '../models/ErrorModel';
+import { Event } from '../models/Event';
+import { EventCONTEXTCOMPACTED } from '../models/EventCONTEXTCOMPACTED';
+import { EventRUNCANCELLED } from '../models/EventRUNCANCELLED';
+import { EventRUNERROR } from '../models/EventRUNERROR';
+import { EventRUNFINISHED } from '../models/EventRUNFINISHED';
+import { EventRUNSTARTED } from '../models/EventRUNSTARTED';
+import { EventSTEPFINISHED } from '../models/EventSTEPFINISHED';
+import { EventSTEPSTARTED } from '../models/EventSTEPSTARTED';
+import { EventTEXTMESSAGECONTENT } from '../models/EventTEXTMESSAGECONTENT';
+import { EventTEXTMESSAGEEND } from '../models/EventTEXTMESSAGEEND';
+import { EventTEXTMESSAGESTART } from '../models/EventTEXTMESSAGESTART';
+import { EventTITLEUPDATED } from '../models/EventTITLEUPDATED';
+import { EventTOOLCALLARGSDELTA } from '../models/EventTOOLCALLARGSDELTA';
+import { EventTOOLCALLEND } from '../models/EventTOOLCALLEND';
+import { EventTOOLCALLRESULT } from '../models/EventTOOLCALLRESULT';
+import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
+import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { FileFormat } from '../models/FileFormat';
@@ -241,10 +257,6 @@ import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType } from '../models/NameSourceType';
-import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
-import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
-import { NetworkOverviewMetadata } from '../models/NetworkOverviewMetadata';
-import { NetworkOverviewResponse } from '../models/NetworkOverviewResponse';
 import { Order } from '../models/Order';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
@@ -253,19 +265,11 @@ import { Params } from '../models/Params';
 import { PipelineStageStatus } from '../models/PipelineStageStatus';
 import { PipelineStatusResponse } from '../models/PipelineStatusResponse';
 import { Platform } from '../models/Platform';
-import { Process } from '../models/Process';
-import { ProcessDump } from '../models/ProcessDump';
-import { ProcessDumpMetadata } from '../models/ProcessDumpMetadata';
-import { ProcessDumps } from '../models/ProcessDumps';
-import { ProcessDumpsData } from '../models/ProcessDumpsData';
-import { ProcessRegistry } from '../models/ProcessRegistry';
-import { ProcessTree } from '../models/ProcessTree';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { RegenerateTarget } from '../models/RegenerateTarget';
-import { Registry } from '../models/Registry';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { SBOM } from '../models/SBOM';
@@ -275,26 +279,40 @@ import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
 import { SectionModel } from '../models/SectionModel';
 import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
+import { SendMessageRequest } from '../models/SendMessageRequest';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
 import { SingleSectionModel } from '../models/SingleSectionModel';
+import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
+import { SseEventRunCancelledData } from '../models/SseEventRunCancelledData';
+import { SseEventRunErrorData } from '../models/SseEventRunErrorData';
+import { SseEventRunFinishedData } from '../models/SseEventRunFinishedData';
+import { SseEventRunStartedData } from '../models/SseEventRunStartedData';
+import { SseEventStepFinishedData } from '../models/SseEventStepFinishedData';
+import { SseEventStepStartedData } from '../models/SseEventStepStartedData';
+import { SseEventTextMessageContentData } from '../models/SseEventTextMessageContentData';
+import { SseEventTextMessageEndData } from '../models/SseEventTextMessageEndData';
+import { SseEventTextMessageStartData } from '../models/SseEventTextMessageStartData';
+import { SseEventTitleUpdatedData } from '../models/SseEventTitleUpdatedData';
+import { SseEventToolCallArgsDeltaData } from '../models/SseEventToolCallArgsDeltaData';
+import { SseEventToolCallEndData } from '../models/SseEventToolCallEndData';
+import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData';
+import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
+import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
 import { StackVariable } from '../models/StackVariable';
 import { StageEvent } from '../models/StageEvent';
 import { StageStatus } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
+import { StatusResponse } from '../models/StatusResponse';
+import { StreamEvents200ResponseInner } from '../models/StreamEvents200ResponseInner';
 import { StringFunctions } from '../models/StringFunctions';
 import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
 import { Symbols } from '../models/Symbols';
-import { TTPS } from '../models/TTPS';
-import { TTPSAttack } from '../models/TTPSAttack';
-import { TTPSData } from '../models/TTPSData';
-import { TTPSElement } from '../models/TTPSElement';
-import { TTPSOccurance } from '../models/TTPSOccurance';
 import { Tag } from '../models/Tag';
 import { TagItem } from '../models/TagItem';
 import { TagResponse } from '../models/TagResponse';
@@ -1324,7 +1342,7 @@ export class ObservableAnalysesCoreApi {
      * @param [orderBy]
      * @param [order]
      */
-    public listAnalysesWithHttpInfo(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseRecent>> {
+    public listAnalysesWithHttpInfo(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatus, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseRecent>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.listAnalyses(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, _config);
@@ -1359,7 +1377,7 @@ export class ObservableAnalysesCoreApi {
      * @param [orderBy]
      * @param [order]
      */
-    public listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<BaseResponseRecent> {
+    public listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatus, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<BaseResponseRecent> {
         return this.listAnalysesWithHttpInfo(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, _options).pipe(map((apiResponse: HttpInfo<BaseResponseRecent>) => apiResponse.data));
     }
 
@@ -1627,250 +1645,6 @@ export class ObservableAnalysesCoreApi {
      */
     public uploadFile(uploadFileType: UploadFileType, file: string, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
         return this.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, forceOverwrite, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUploadResponse>) => apiResponse.data));
-    }
-
-}
-
-import { AnalysesDynamicExecutionApiRequestFactory, AnalysesDynamicExecutionApiResponseProcessor} from "../apis/AnalysesDynamicExecutionApi";
-export class ObservableAnalysesDynamicExecutionApi {
-    private requestFactory: AnalysesDynamicExecutionApiRequestFactory;
-    private responseProcessor: AnalysesDynamicExecutionApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysesDynamicExecutionApiRequestFactory,
-        responseProcessor?: AnalysesDynamicExecutionApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new AnalysesDynamicExecutionApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new AnalysesDynamicExecutionApiResponseProcessor();
-    }
-
-    /**
-     * Get the status of a dynamic execution task
-     * @param analysisId
-     */
-    public getDynamicExecutionStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDynamicExecutionStatus>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getDynamicExecutionStatus(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getDynamicExecutionStatusWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get the status of a dynamic execution task
-     * @param analysisId
-     */
-    public getDynamicExecutionStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseDynamicExecutionStatus> {
-        return this.getDynamicExecutionStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDynamicExecutionStatus>) => apiResponse.data));
-    }
-
-    /**
-     * Get the dynamic execution results for network overview
-     * @param analysisId
-     */
-    public getNetworkOverviewWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseNetworkOverviewResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getNetworkOverview(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getNetworkOverviewWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get the dynamic execution results for network overview
-     * @param analysisId
-     */
-    public getNetworkOverview(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseNetworkOverviewResponse> {
-        return this.getNetworkOverviewWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseNetworkOverviewResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Get the dynamic execution results for a specific process dump
-     * @param analysisId
-     * @param dumpName
-     */
-    public getProcessDumpWithHttpInfo(analysisId: number, dumpName: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getProcessDump(analysisId, dumpName, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProcessDumpWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get the dynamic execution results for a specific process dump
-     * @param analysisId
-     * @param dumpName
-     */
-    public getProcessDump(analysisId: number, dumpName: string, _options?: ConfigurationOptions): Observable<any> {
-        return this.getProcessDumpWithHttpInfo(analysisId, dumpName, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
-    }
-
-    /**
-     * Get the dynamic execution results for process dumps
-     * @param analysisId
-     */
-    public getProcessDumpsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseProcessDumps>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getProcessDumps(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProcessDumpsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get the dynamic execution results for process dumps
-     * @param analysisId
-     */
-    public getProcessDumps(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseProcessDumps> {
-        return this.getProcessDumpsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseProcessDumps>) => apiResponse.data));
-    }
-
-    /**
-     * Get the dynamic execution results for process registry
-     * @param analysisId
-     */
-    public getProcessRegistryWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseProcessRegistry>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getProcessRegistry(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProcessRegistryWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get the dynamic execution results for process registry
-     * @param analysisId
-     */
-    public getProcessRegistry(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseProcessRegistry> {
-        return this.getProcessRegistryWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseProcessRegistry>) => apiResponse.data));
-    }
-
-    /**
-     * Get the dynamic execution results for process tree
-     * @param analysisId
-     */
-    public getProcessTreeWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseProcessTree>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getProcessTree(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getProcessTreeWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get the dynamic execution results for process tree
-     * @param analysisId
-     */
-    public getProcessTree(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseProcessTree> {
-        return this.getProcessTreeWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseProcessTree>) => apiResponse.data));
-    }
-
-    /**
-     * Get the dynamic execution results for ttps
-     * @param analysisId
-     */
-    public getTtpsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTTPS>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getTtps(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTtpsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get the dynamic execution results for ttps
-     * @param analysisId
-     */
-    public getTtps(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseTTPS> {
-        return this.getTtpsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTTPS>) => apiResponse.data));
     }
 
 }
@@ -3163,6 +2937,266 @@ export class ObservableConfigApi {
      */
     public getConfig(_options?: ConfigurationOptions): Observable<BaseResponseConfigResponse> {
         return this.getConfigWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseConfigResponse>) => apiResponse.data));
+    }
+
+}
+
+import { ConversationsApiRequestFactory, ConversationsApiResponseProcessor} from "../apis/ConversationsApi";
+export class ObservableConversationsApi {
+    private requestFactory: ConversationsApiRequestFactory;
+    private responseProcessor: ConversationsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ConversationsApiRequestFactory,
+        responseProcessor?: ConversationsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new ConversationsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ConversationsApiResponseProcessor();
+    }
+
+    /**
+     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancel an active run
+     * @param id Conversation UUID
+     */
+    public cancelRunWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<StatusResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.cancelRun(id, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.cancelRunWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancel an active run
+     * @param id Conversation UUID
+     */
+    public cancelRun(id: string, _options?: ConfigurationOptions): Observable<StatusResponse> {
+        return this.cancelRunWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<StatusResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
+     * Approve or reject a pending tool confirmation
+     * @param id Conversation UUID
+     * @param confirmToolInputBody
+     */
+    public confirmToolWithHttpInfo(id: string, confirmToolInputBody: ConfirmToolInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<StatusResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.confirmTool(id, confirmToolInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.confirmToolWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
+     * Approve or reject a pending tool confirmation
+     * @param id Conversation UUID
+     * @param confirmToolInputBody
+     */
+    public confirmTool(id: string, confirmToolInputBody: ConfirmToolInputBody, _options?: ConfigurationOptions): Observable<StatusResponse> {
+        return this.confirmToolWithHttpInfo(id, confirmToolInputBody, _options).pipe(map((apiResponse: HttpInfo<StatusResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new conversation for the authenticated user. Optionally include a binary analysis context to scope the assistant to a specific analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Create a new conversation
+     * @param createConversationRequest
+     */
+    public createConversationWithHttpInfo(createConversationRequest: CreateConversationRequest, _options?: ConfigurationOptions): Observable<HttpInfo<Conversation>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createConversation(createConversationRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createConversationWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new conversation for the authenticated user. Optionally include a binary analysis context to scope the assistant to a specific analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Create a new conversation
+     * @param createConversationRequest
+     */
+    public createConversation(createConversationRequest: CreateConversationRequest, _options?: ConfigurationOptions): Observable<Conversation> {
+        return this.createConversationWithHttpInfo(createConversationRequest, _options).pipe(map((apiResponse: HttpInfo<Conversation>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the conversation metadata along with all persisted events. Useful for reconstructing the full conversation history on page load.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found
+     * Get a conversation with its events
+     * @param id Conversation UUID
+     */
+    public getConversationWithHttpInfo(id: string, _options?: ConfigurationOptions): Observable<HttpInfo<ConversationWithEvents>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getConversation(id, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getConversationWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the conversation metadata along with all persisted events. Useful for reconstructing the full conversation history on page load.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found
+     * Get a conversation with its events
+     * @param id Conversation UUID
+     */
+    public getConversation(id: string, _options?: ConfigurationOptions): Observable<ConversationWithEvents> {
+        return this.getConversationWithHttpInfo(id, _options).pipe(map((apiResponse: HttpInfo<ConversationWithEvents>) => apiResponse.data));
+    }
+
+    /**
+     * Returns all conversations owned by the authenticated user, ordered by most recently updated.
+     * List conversations for the authenticated user
+     */
+    public listConversationsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<Array<Conversation>>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listConversations(_config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listConversationsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns all conversations owned by the authenticated user, ordered by most recently updated.
+     * List conversations for the authenticated user
+     */
+    public listConversations(_options?: ConfigurationOptions): Observable<Array<Conversation>> {
+        return this.listConversationsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<Array<Conversation>>) => apiResponse.data));
+    }
+
+    /**
+     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
+     * Send a message and start an agentic run
+     * @param id Conversation UUID
+     * @param sendMessageRequest
+     */
+    public sendMessageWithHttpInfo(id: string, sendMessageRequest: SendMessageRequest, _options?: ConfigurationOptions): Observable<HttpInfo<StatusResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.sendMessage(id, sendMessageRequest, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.sendMessageWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
+     * Send a message and start an agentic run
+     * @param id Conversation UUID
+     * @param sendMessageRequest
+     */
+    public sendMessage(id: string, sendMessageRequest: SendMessageRequest, _options?: ConfigurationOptions): Observable<StatusResponse> {
+        return this.sendMessageWithHttpInfo(id, sendMessageRequest, _options).pipe(map((apiResponse: HttpInfo<StatusResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Opens a Server-Sent Events stream for the given conversation. Events include run lifecycle updates, streaming text deltas, tool call progress, and more. Use the `last_event_id` query parameter to replay missed events after a reconnection.
+     * Stream conversation events (SSE)
+     * @param id Conversation UUID
+     * @param [lastEventId] Replay events after this ID
+     */
+    public streamEventsWithHttpInfo(id: string, lastEventId?: number, _options?: ConfigurationOptions): Observable<HttpInfo<Array<StreamEvents200ResponseInner>>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.streamEvents(id, lastEventId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.streamEventsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Opens a Server-Sent Events stream for the given conversation. Events include run lifecycle updates, streaming text deltas, tool call progress, and more. Use the `last_event_id` query parameter to replay missed events after a reconnection.
+     * Stream conversation events (SSE)
+     * @param id Conversation UUID
+     * @param [lastEventId] Replay events after this ID
+     */
+    public streamEvents(id: string, lastEventId?: number, _options?: ConfigurationOptions): Observable<Array<StreamEvents200ResponseInner>> {
+        return this.streamEventsWithHttpInfo(id, lastEventId, _options).pipe(map((apiResponse: HttpInfo<Array<StreamEvents200ResponseInner>>) => apiResponse.data));
     }
 
 }

@@ -77,13 +77,6 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**updateAnalysis**](docs/AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 *AnalysesCoreApi* | [**updateAnalysisTags**](docs/AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 *AnalysesCoreApi* | [**uploadFile**](docs/AnalysesCoreApi.md#uploadFile) | **POST** /v2/upload | Upload File
-*AnalysesDynamicExecutionApi* | [**getDynamicExecutionStatus**](docs/AnalysesDynamicExecutionApi.md#getDynamicExecutionStatus) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/status | Get the status of a dynamic execution task
-*AnalysesDynamicExecutionApi* | [**getNetworkOverview**](docs/AnalysesDynamicExecutionApi.md#getNetworkOverview) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/network-overview | Get the dynamic execution results for network overview
-*AnalysesDynamicExecutionApi* | [**getProcessDump**](docs/AnalysesDynamicExecutionApi.md#getProcessDump) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/process-dumps/{dump_name} | Get the dynamic execution results for a specific process dump
-*AnalysesDynamicExecutionApi* | [**getProcessDumps**](docs/AnalysesDynamicExecutionApi.md#getProcessDumps) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/process-dumps | Get the dynamic execution results for process dumps
-*AnalysesDynamicExecutionApi* | [**getProcessRegistry**](docs/AnalysesDynamicExecutionApi.md#getProcessRegistry) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/process-registry | Get the dynamic execution results for process registry
-*AnalysesDynamicExecutionApi* | [**getProcessTree**](docs/AnalysesDynamicExecutionApi.md#getProcessTree) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/process-tree | Get the dynamic execution results for process tree
-*AnalysesDynamicExecutionApi* | [**getTtps**](docs/AnalysesDynamicExecutionApi.md#getTtps) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/ttps | Get the dynamic execution results for ttps
 *AnalysesResultsMetadataApi* | [**getAnalysisFunctionsPaginated**](docs/AnalysesResultsMetadataApi.md#getAnalysisFunctionsPaginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 *AnalysesResultsMetadataApi* | [**getCapabilities**](docs/AnalysesResultsMetadataApi.md#getCapabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 *AnalysesResultsMetadataApi* | [**getFunctionsList**](docs/AnalysesResultsMetadataApi.md#getFunctionsList) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
@@ -115,6 +108,13 @@ Class | Method | HTTP request | Description
 *CollectionsApi* | [**updateCollectionBinaries**](docs/CollectionsApi.md#updateCollectionBinaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 *CollectionsApi* | [**updateCollectionTags**](docs/CollectionsApi.md#updateCollectionTags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
 *ConfigApi* | [**getConfig**](docs/ConfigApi.md#getConfig) | **GET** /v2/config | Get Config
+*ConversationsApi* | [**cancelRun**](docs/ConversationsApi.md#cancelRun) | **POST** /v2/conversations/{id}/cancel | Cancel an active run
+*ConversationsApi* | [**confirmTool**](docs/ConversationsApi.md#confirmTool) | **POST** /v2/conversations/{id}/confirm | Approve or reject a pending tool confirmation
+*ConversationsApi* | [**createConversation**](docs/ConversationsApi.md#createConversation) | **POST** /v2/conversations | Create a new conversation
+*ConversationsApi* | [**getConversation**](docs/ConversationsApi.md#getConversation) | **GET** /v2/conversations/{id} | Get a conversation with its events
+*ConversationsApi* | [**listConversations**](docs/ConversationsApi.md#listConversations) | **GET** /v2/conversations | List conversations for the authenticated user
+*ConversationsApi* | [**sendMessage**](docs/ConversationsApi.md#sendMessage) | **POST** /v2/conversations/{id}/messages | Send a message and start an agentic run
+*ConversationsApi* | [**streamEvents**](docs/ConversationsApi.md#streamEvents) | **GET** /v2/conversations/{id}/events | Stream conversation events (SSE)
 *ExternalSourcesApi* | [**createExternalTaskVt**](docs/ExternalSourcesApi.md#createExternalTaskVt) | **POST** /v2/analysis/{analysis_id}/external/vt | Pulls data from VirusTotal
 *ExternalSourcesApi* | [**getVtData**](docs/ExternalSourcesApi.md#getVtData) | **GET** /v2/analysis/{analysis_id}/external/vt | Get VirusTotal data
 *ExternalSourcesApi* | [**getVtTaskStatus**](docs/ExternalSourcesApi.md#getVtTaskStatus) | **GET** /v2/analysis/{analysis_id}/external/vt/status | Check the status of VirusTotal data retrieval
@@ -162,6 +162,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation for Models
 
+ - [APIError](APIError.md)
  - [AdditionalDetailsStatusResponse](AdditionalDetailsStatusResponse.md)
  - [Addr](Addr.md)
  - [AiDecompilationRating](AiDecompilationRating.md)
@@ -192,13 +193,11 @@ Class | Method | HTTP request | Description
  - [AnalysisUpdateTagsRequest](AnalysisUpdateTagsRequest.md)
  - [AnalysisUpdateTagsResponse](AnalysisUpdateTagsResponse.md)
  - [AppApiRestV2AgentSchemaCapability](AppApiRestV2AgentSchemaCapability.md)
- - [AppApiRestV2AnalysesEnumsDynamicExecutionStatus](AppApiRestV2AnalysesEnumsDynamicExecutionStatus.md)
  - [AppApiRestV2AnalysesEnumsOrderBy](AppApiRestV2AnalysesEnumsOrderBy.md)
  - [AppApiRestV2CollectionsEnumsOrderBy](AppApiRestV2CollectionsEnumsOrderBy.md)
  - [AppApiRestV2FunctionsResponsesFunction](AppApiRestV2FunctionsResponsesFunction.md)
  - [AppApiRestV2FunctionsTypesFunction](AppApiRestV2FunctionsTypesFunction.md)
  - [AppApiRestV2InfoTypesCapability](AppApiRestV2InfoTypesCapability.md)
- - [AppServicesDynamicExecutionSchemasDynamicExecutionStatus](AppServicesDynamicExecutionSchemasDynamicExecutionStatus.md)
  - [Argument](Argument.md)
  - [AutoRunAgents](AutoRunAgents.md)
  - [AutoUnstripRequest](AutoUnstripRequest.md)
@@ -235,7 +234,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseConfigResponse](BaseResponseConfigResponse.md)
  - [BaseResponseCreated](BaseResponseCreated.md)
  - [BaseResponseDict](BaseResponseDict.md)
- - [BaseResponseDynamicExecutionStatus](BaseResponseDynamicExecutionStatus.md)
  - [BaseResponseExternalResponse](BaseResponseExternalResponse.md)
  - [BaseResponseFunctionBlocksResponse](BaseResponseFunctionBlocksResponse.md)
  - [BaseResponseFunctionCapabilityResponse](BaseResponseFunctionCapabilityResponse.md)
@@ -259,18 +257,13 @@ Class | Method | HTTP request | Description
  - [BaseResponseListUserActivityResponse](BaseResponseListUserActivityResponse.md)
  - [BaseResponseLogs](BaseResponseLogs.md)
  - [BaseResponseModelsResponse](BaseResponseModelsResponse.md)
- - [BaseResponseNetworkOverviewResponse](BaseResponseNetworkOverviewResponse.md)
  - [BaseResponseParams](BaseResponseParams.md)
  - [BaseResponsePipelineStatusResponse](BaseResponsePipelineStatusResponse.md)
- - [BaseResponseProcessDumps](BaseResponseProcessDumps.md)
- - [BaseResponseProcessRegistry](BaseResponseProcessRegistry.md)
- - [BaseResponseProcessTree](BaseResponseProcessTree.md)
  - [BaseResponseQueuedWorkflowTaskResponse](BaseResponseQueuedWorkflowTaskResponse.md)
  - [BaseResponseRecent](BaseResponseRecent.md)
  - [BaseResponseReportAnalysisResponse](BaseResponseReportAnalysisResponse.md)
  - [BaseResponseStatus](BaseResponseStatus.md)
  - [BaseResponseStr](BaseResponseStr.md)
- - [BaseResponseTTPS](BaseResponseTTPS.md)
  - [BaseResponseTagSearchResponse](BaseResponseTagSearchResponse.md)
  - [BaseResponseTaskResponse](BaseResponseTaskResponse.md)
  - [BaseResponseTaskStatusResponse](BaseResponseTaskStatusResponse.md)
@@ -315,11 +308,16 @@ Class | Method | HTTP request | Description
  - [CommentResponse](CommentResponse.md)
  - [CommentUpdateRequest](CommentUpdateRequest.md)
  - [ConfigResponse](ConfigResponse.md)
+ - [ConfirmToolInputBody](ConfirmToolInputBody.md)
  - [Context](Context.md)
+ - [Conversation](Conversation.md)
+ - [ConversationContext](ConversationContext.md)
+ - [ConversationWithEvents](ConversationWithEvents.md)
+ - [CreateConversationRequest](CreateConversationRequest.md)
  - [Created](Created.md)
  - [DecompilationCommentContext](DecompilationCommentContext.md)
  - [DieMatch](DieMatch.md)
- - [DynamicExecutionStatusInput](DynamicExecutionStatusInput.md)
+ - [DynamicExecutionStatus](DynamicExecutionStatus.md)
  - [ELFImportModel](ELFImportModel.md)
  - [ELFModel](ELFModel.md)
  - [ELFRelocation](ELFRelocation.md)
@@ -330,7 +328,25 @@ Class | Method | HTTP request | Description
  - [ElfDynamicEntry](ElfDynamicEntry.md)
  - [EntrypointModel](EntrypointModel.md)
  - [Enumeration](Enumeration.md)
+ - [ErrorBody](ErrorBody.md)
  - [ErrorModel](ErrorModel.md)
+ - [Event](Event.md)
+ - [EventCONTEXTCOMPACTED](EventCONTEXTCOMPACTED.md)
+ - [EventRUNCANCELLED](EventRUNCANCELLED.md)
+ - [EventRUNERROR](EventRUNERROR.md)
+ - [EventRUNFINISHED](EventRUNFINISHED.md)
+ - [EventRUNSTARTED](EventRUNSTARTED.md)
+ - [EventSTEPFINISHED](EventSTEPFINISHED.md)
+ - [EventSTEPSTARTED](EventSTEPSTARTED.md)
+ - [EventTEXTMESSAGECONTENT](EventTEXTMESSAGECONTENT.md)
+ - [EventTEXTMESSAGEEND](EventTEXTMESSAGEEND.md)
+ - [EventTEXTMESSAGESTART](EventTEXTMESSAGESTART.md)
+ - [EventTITLEUPDATED](EventTITLEUPDATED.md)
+ - [EventTOOLCALLARGSDELTA](EventTOOLCALLARGSDELTA.md)
+ - [EventTOOLCALLEND](EventTOOLCALLEND.md)
+ - [EventTOOLCALLRESULT](EventTOOLCALLRESULT.md)
+ - [EventTOOLCALLSTART](EventTOOLCALLSTART.md)
+ - [EventTOOLCONFIRMATIONREQUIRED](EventTOOLCONFIRMATIONREQUIRED.md)
  - [ExportModel](ExportModel.md)
  - [ExternalResponse](ExternalResponse.md)
  - [FileFormat](FileFormat.md)
@@ -400,10 +416,6 @@ Class | Method | HTTP request | Description
  - [ModelsResponse](ModelsResponse.md)
  - [NameConfidence](NameConfidence.md)
  - [NameSourceType](NameSourceType.md)
- - [NetworkOverviewDns](NetworkOverviewDns.md)
- - [NetworkOverviewDnsAnswer](NetworkOverviewDnsAnswer.md)
- - [NetworkOverviewMetadata](NetworkOverviewMetadata.md)
- - [NetworkOverviewResponse](NetworkOverviewResponse.md)
  - [Order](Order.md)
  - [PDBDebugModel](PDBDebugModel.md)
  - [PEModel](PEModel.md)
@@ -412,19 +424,11 @@ Class | Method | HTTP request | Description
  - [PipelineStageStatus](PipelineStageStatus.md)
  - [PipelineStatusResponse](PipelineStatusResponse.md)
  - [Platform](Platform.md)
- - [Process](Process.md)
- - [ProcessDump](ProcessDump.md)
- - [ProcessDumpMetadata](ProcessDumpMetadata.md)
- - [ProcessDumps](ProcessDumps.md)
- - [ProcessDumpsData](ProcessDumpsData.md)
- - [ProcessRegistry](ProcessRegistry.md)
- - [ProcessTree](ProcessTree.md)
  - [PutAnalysisStringsRequest](PutAnalysisStringsRequest.md)
  - [QueuedWorkflowTaskResponse](QueuedWorkflowTaskResponse.md)
  - [ReAnalysisForm](ReAnalysisForm.md)
  - [Recent](Recent.md)
  - [RegenerateTarget](RegenerateTarget.md)
- - [Registry](Registry.md)
  - [RelativeBinaryResponse](RelativeBinaryResponse.md)
  - [ReportAnalysisResponse](ReportAnalysisResponse.md)
  - [SBOM](SBOM.md)
@@ -434,26 +438,40 @@ Class | Method | HTTP request | Description
  - [SectionModel](SectionModel.md)
  - [SecurityModel](SecurityModel.md)
  - [SegmentInfo](SegmentInfo.md)
+ - [SendMessageRequest](SendMessageRequest.md)
  - [SingleCodeCertificateModel](SingleCodeCertificateModel.md)
  - [SingleCodeSignatureModel](SingleCodeSignatureModel.md)
  - [SinglePDBEntryModel](SinglePDBEntryModel.md)
  - [SingleSectionModel](SingleSectionModel.md)
+ - [SseEventContextCompactedData](SseEventContextCompactedData.md)
+ - [SseEventRunCancelledData](SseEventRunCancelledData.md)
+ - [SseEventRunErrorData](SseEventRunErrorData.md)
+ - [SseEventRunFinishedData](SseEventRunFinishedData.md)
+ - [SseEventRunStartedData](SseEventRunStartedData.md)
+ - [SseEventStepFinishedData](SseEventStepFinishedData.md)
+ - [SseEventStepStartedData](SseEventStepStartedData.md)
+ - [SseEventTextMessageContentData](SseEventTextMessageContentData.md)
+ - [SseEventTextMessageEndData](SseEventTextMessageEndData.md)
+ - [SseEventTextMessageStartData](SseEventTextMessageStartData.md)
+ - [SseEventTitleUpdatedData](SseEventTitleUpdatedData.md)
+ - [SseEventToolCallArgsDeltaData](SseEventToolCallArgsDeltaData.md)
+ - [SseEventToolCallEndData](SseEventToolCallEndData.md)
+ - [SseEventToolCallResultData](SseEventToolCallResultData.md)
+ - [SseEventToolCallStartData](SseEventToolCallStartData.md)
+ - [SseEventToolConfirmationRequiredData](SseEventToolConfirmationRequiredData.md)
  - [StackVariable](StackVariable.md)
  - [StageEvent](StageEvent.md)
  - [StageStatus](StageStatus.md)
  - [StatusInput](StatusInput.md)
  - [StatusOutput](StatusOutput.md)
+ - [StatusResponse](StatusResponse.md)
+ - [StreamEvents200ResponseInner](StreamEvents200ResponseInner.md)
  - [StringFunctions](StringFunctions.md)
  - [StringSource](StringSource.md)
  - [Structure](Structure.md)
  - [StructureMember](StructureMember.md)
  - [SubmitUserFeedbackRequest](SubmitUserFeedbackRequest.md)
  - [Symbols](Symbols.md)
- - [TTPS](TTPS.md)
- - [TTPSAttack](TTPSAttack.md)
- - [TTPSData](TTPSData.md)
- - [TTPSElement](TTPSElement.md)
- - [TTPSOccurance](TTPSOccurance.md)
  - [Tag](Tag.md)
  - [TagItem](TagItem.md)
  - [TagResponse](TagResponse.md)
