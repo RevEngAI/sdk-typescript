@@ -675,7 +675,7 @@ Name | Type | Description  | Notes
  **workspace** | **Array&lt;Workspace&gt;** | The workspace to be viewed | (optional) defaults to undefined
  **status** | **Array&lt;StatusInput&gt;** | The status of the analysis | (optional) defaults to undefined
  **modelName** | **Array&lt;ModelName&gt;** | Show analysis belonging to the model | (optional) defaults to undefined
- **dynamicExecutionStatus** | **DynamicExecutionStatusInput** | Show analysis that have a dynamic execution with the given status | (optional) defaults to undefined
+ **dynamicExecutionStatus** | **DynamicExecutionStatus** | Show analysis that have a dynamic execution with the given status | (optional) defaults to undefined
  **usernames** | **Array&lt;string&gt;** | Show analysis belonging to the user | (optional) defaults to undefined
  **sha256Hash** | [**string**] |  | (optional) defaults to undefined
  **limit** | [**number**] |  | (optional) defaults to 20

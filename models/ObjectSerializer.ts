@@ -1,3 +1,4 @@
+export * from '../models/APIError';
 export * from '../models/AdditionalDetailsStatusResponse';
 export * from '../models/Addr';
 export * from '../models/AiDecompilationRating';
@@ -17,9 +18,6 @@ export * from '../models/AnalysisFunctions';
 export * from '../models/AnalysisFunctionsList';
 export * from '../models/AnalysisRecord';
 export * from '../models/AnalysisScope';
-export * from '../models/AnalysisStage';
-export * from '../models/AnalysisStageStatus';
-export * from '../models/AnalysisStagesResponse';
 export * from '../models/AnalysisStringInput';
 export * from '../models/AnalysisStringsResponse';
 export * from '../models/AnalysisStringsStatusResponse';
@@ -28,13 +26,11 @@ export * from '../models/AnalysisUpdateRequest';
 export * from '../models/AnalysisUpdateTagsRequest';
 export * from '../models/AnalysisUpdateTagsResponse';
 export * from '../models/AppApiRestV2AgentSchemaCapability';
-export * from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
 export * from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 export * from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 export * from '../models/AppApiRestV2FunctionsResponsesFunction';
 export * from '../models/AppApiRestV2FunctionsTypesFunction';
 export * from '../models/AppApiRestV2InfoTypesCapability';
-export * from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 export * from '../models/Argument';
 export * from '../models/AutoRunAgents';
 export * from '../models/AutoUnstripRequest';
@@ -47,7 +43,6 @@ export * from '../models/BaseResponseAnalysisDetailResponse';
 export * from '../models/BaseResponseAnalysisFunctionMapping';
 export * from '../models/BaseResponseAnalysisFunctions';
 export * from '../models/BaseResponseAnalysisFunctionsList';
-export * from '../models/BaseResponseAnalysisStagesResponse';
 export * from '../models/BaseResponseAnalysisStringsResponse';
 export * from '../models/BaseResponseAnalysisStringsStatusResponse';
 export * from '../models/BaseResponseAnalysisTags';
@@ -71,7 +66,6 @@ export * from '../models/BaseResponseCommentResponse';
 export * from '../models/BaseResponseConfigResponse';
 export * from '../models/BaseResponseCreated';
 export * from '../models/BaseResponseDict';
-export * from '../models/BaseResponseDynamicExecutionStatus';
 export * from '../models/BaseResponseExternalResponse';
 export * from '../models/BaseResponseFunctionBlocksResponse';
 export * from '../models/BaseResponseFunctionCapabilityResponse';
@@ -95,18 +89,12 @@ export * from '../models/BaseResponseListSBOM';
 export * from '../models/BaseResponseListUserActivityResponse';
 export * from '../models/BaseResponseLogs';
 export * from '../models/BaseResponseModelsResponse';
-export * from '../models/BaseResponseNetworkOverviewResponse';
 export * from '../models/BaseResponseParams';
-export * from '../models/BaseResponsePipelineStatusResponse';
-export * from '../models/BaseResponseProcessDumps';
-export * from '../models/BaseResponseProcessRegistry';
-export * from '../models/BaseResponseProcessTree';
 export * from '../models/BaseResponseQueuedWorkflowTaskResponse';
 export * from '../models/BaseResponseRecent';
 export * from '../models/BaseResponseReportAnalysisResponse';
 export * from '../models/BaseResponseStatus';
 export * from '../models/BaseResponseStr';
-export * from '../models/BaseResponseTTPS';
 export * from '../models/BaseResponseTagSearchResponse';
 export * from '../models/BaseResponseTaskResponse';
 export * from '../models/BaseResponseTaskStatusResponse';
@@ -151,11 +139,16 @@ export * from '../models/CommentBase';
 export * from '../models/CommentResponse';
 export * from '../models/CommentUpdateRequest';
 export * from '../models/ConfigResponse';
+export * from '../models/ConfirmToolInputBody';
 export * from '../models/Context';
+export * from '../models/Conversation';
+export * from '../models/ConversationContext';
+export * from '../models/ConversationWithEvents';
+export * from '../models/CreateConversationRequest';
 export * from '../models/Created';
 export * from '../models/DecompilationCommentContext';
 export * from '../models/DieMatch';
-export * from '../models/DynamicExecutionStatusInput';
+export * from '../models/DynamicExecutionStatus';
 export * from '../models/ELFImportModel';
 export * from '../models/ELFModel';
 export * from '../models/ELFRelocation';
@@ -166,7 +159,25 @@ export * from '../models/ELFSymbol';
 export * from '../models/ElfDynamicEntry';
 export * from '../models/EntrypointModel';
 export * from '../models/Enumeration';
+export * from '../models/ErrorBody';
 export * from '../models/ErrorModel';
+export * from '../models/Event';
+export * from '../models/EventCONTEXTCOMPACTED';
+export * from '../models/EventRUNCANCELLED';
+export * from '../models/EventRUNERROR';
+export * from '../models/EventRUNFINISHED';
+export * from '../models/EventRUNSTARTED';
+export * from '../models/EventSTEPFINISHED';
+export * from '../models/EventSTEPSTARTED';
+export * from '../models/EventTEXTMESSAGECONTENT';
+export * from '../models/EventTEXTMESSAGEEND';
+export * from '../models/EventTEXTMESSAGESTART';
+export * from '../models/EventTITLEUPDATED';
+export * from '../models/EventTOOLCALLARGSDELTA';
+export * from '../models/EventTOOLCALLEND';
+export * from '../models/EventTOOLCALLRESULT';
+export * from '../models/EventTOOLCALLSTART';
+export * from '../models/EventTOOLCONFIRMATIONREQUIRED';
 export * from '../models/ExportModel';
 export * from '../models/ExternalResponse';
 export * from '../models/FileFormat';
@@ -236,31 +247,18 @@ export * from '../models/ModelName';
 export * from '../models/ModelsResponse';
 export * from '../models/NameConfidence';
 export * from '../models/NameSourceType';
-export * from '../models/NetworkOverviewDns';
-export * from '../models/NetworkOverviewDnsAnswer';
-export * from '../models/NetworkOverviewMetadata';
-export * from '../models/NetworkOverviewResponse';
 export * from '../models/Order';
 export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
 export * from '../models/PaginationModel';
 export * from '../models/Params';
-export * from '../models/PipelineStageStatus';
-export * from '../models/PipelineStatusResponse';
 export * from '../models/Platform';
-export * from '../models/Process';
-export * from '../models/ProcessDump';
-export * from '../models/ProcessDumpMetadata';
-export * from '../models/ProcessDumps';
-export * from '../models/ProcessDumpsData';
-export * from '../models/ProcessRegistry';
-export * from '../models/ProcessTree';
 export * from '../models/PutAnalysisStringsRequest';
+export * from '../models/QueuePositionResponse';
 export * from '../models/QueuedWorkflowTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
 export * from '../models/RegenerateTarget';
-export * from '../models/Registry';
 export * from '../models/RelativeBinaryResponse';
 export * from '../models/ReportAnalysisResponse';
 export * from '../models/SBOM';
@@ -270,26 +268,38 @@ export * from '../models/ScrapeThirdPartyConfig';
 export * from '../models/SectionModel';
 export * from '../models/SecurityModel';
 export * from '../models/SegmentInfo';
+export * from '../models/SendMessageRequest';
 export * from '../models/SingleCodeCertificateModel';
 export * from '../models/SingleCodeSignatureModel';
 export * from '../models/SinglePDBEntryModel';
 export * from '../models/SingleSectionModel';
+export * from '../models/SseEventContextCompactedData';
+export * from '../models/SseEventRunCancelledData';
+export * from '../models/SseEventRunErrorData';
+export * from '../models/SseEventRunFinishedData';
+export * from '../models/SseEventRunStartedData';
+export * from '../models/SseEventStepFinishedData';
+export * from '../models/SseEventStepStartedData';
+export * from '../models/SseEventTextMessageContentData';
+export * from '../models/SseEventTextMessageEndData';
+export * from '../models/SseEventTextMessageStartData';
+export * from '../models/SseEventTitleUpdatedData';
+export * from '../models/SseEventToolCallArgsDeltaData';
+export * from '../models/SseEventToolCallEndData';
+export * from '../models/SseEventToolCallResultData';
+export * from '../models/SseEventToolCallStartData';
+export * from '../models/SseEventToolConfirmationRequiredData';
 export * from '../models/StackVariable';
-export * from '../models/StageEvent';
-export * from '../models/StageStatus';
 export * from '../models/StatusInput';
 export * from '../models/StatusOutput';
+export * from '../models/StatusResponse';
+export * from '../models/StreamEvents200ResponseInner';
 export * from '../models/StringFunctions';
 export * from '../models/StringSource';
 export * from '../models/Structure';
 export * from '../models/StructureMember';
 export * from '../models/SubmitUserFeedbackRequest';
 export * from '../models/Symbols';
-export * from '../models/TTPS';
-export * from '../models/TTPSAttack';
-export * from '../models/TTPSData';
-export * from '../models/TTPSElement';
-export * from '../models/TTPSOccurance';
 export * from '../models/Tag';
 export * from '../models/TagItem';
 export * from '../models/TagResponse';
@@ -314,6 +324,7 @@ export * from '../models/XrefFromResponse';
 export * from '../models/XrefResponse';
 export * from '../models/XrefToResponse';
 
+import { APIError } from '../models/APIError';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
@@ -333,9 +344,6 @@ import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord                  } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
-import { AnalysisStage } from '../models/AnalysisStage';
-import { AnalysisStageStatus } from '../models/AnalysisStageStatus';
-import { AnalysisStagesResponse } from '../models/AnalysisStagesResponse';
 import { AnalysisStringInput    } from '../models/AnalysisStringInput';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse  } from '../models/AnalysisStringsStatusResponse';
@@ -344,13 +352,11 @@ import { AnalysisUpdateRequest , AnalysisUpdateRequestAnalysisScopeEnum   } from
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { AppApiRestV2AgentSchemaCapability   , AppApiRestV2AgentSchemaCapabilityTypeEnum     } from '../models/AppApiRestV2AgentSchemaCapability';
-import { AppApiRestV2AnalysesEnumsDynamicExecutionStatus } from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
-import { AppServicesDynamicExecutionSchemasDynamicExecutionStatus } from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 import { Argument } from '../models/Argument';
 import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
@@ -363,7 +369,6 @@ import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalys
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
 import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
-import { BaseResponseAnalysisStagesResponse } from '../models/BaseResponseAnalysisStagesResponse';
 import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
 import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseResponseAnalysisStringsStatusResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
@@ -387,7 +392,6 @@ import { BaseResponseCommentResponse } from '../models/BaseResponseCommentRespon
 import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
-import { BaseResponseDynamicExecutionStatus } from '../models/BaseResponseDynamicExecutionStatus';
 import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
 import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
@@ -411,18 +415,12 @@ import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
-import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
 import { BaseResponseParams } from '../models/BaseResponseParams';
-import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipelineStatusResponse';
-import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
-import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
-import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
 import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
-import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatusResponse';
@@ -467,11 +465,16 @@ import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { ConfigResponse } from '../models/ConfigResponse';
+import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Context } from '../models/Context';
+import { Conversation } from '../models/Conversation';
+import { ConversationContext } from '../models/ConversationContext';
+import { ConversationWithEvents } from '../models/ConversationWithEvents';
+import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DieMatch } from '../models/DieMatch';
-import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInput';
+import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { ELFImportModel } from '../models/ELFImportModel';
 import { ELFModel } from '../models/ELFModel';
 import { ELFRelocation } from '../models/ELFRelocation';
@@ -482,7 +485,25 @@ import { ELFSymbol } from '../models/ELFSymbol';
 import { ElfDynamicEntry } from '../models/ElfDynamicEntry';
 import { EntrypointModel } from '../models/EntrypointModel';
 import { Enumeration } from '../models/Enumeration';
+import { ErrorBody, ErrorBodyCodeEnum       } from '../models/ErrorBody';
 import { ErrorModel } from '../models/ErrorModel';
+import { Event } from '../models/Event';
+import { EventCONTEXTCOMPACTED , EventCONTEXTCOMPACTEDEventEnum     } from '../models/EventCONTEXTCOMPACTED';
+import { EventRUNCANCELLED , EventRUNCANCELLEDEventEnum     } from '../models/EventRUNCANCELLED';
+import { EventRUNERROR , EventRUNERROREventEnum     } from '../models/EventRUNERROR';
+import { EventRUNFINISHED , EventRUNFINISHEDEventEnum     } from '../models/EventRUNFINISHED';
+import { EventRUNSTARTED , EventRUNSTARTEDEventEnum     } from '../models/EventRUNSTARTED';
+import { EventSTEPFINISHED , EventSTEPFINISHEDEventEnum     } from '../models/EventSTEPFINISHED';
+import { EventSTEPSTARTED , EventSTEPSTARTEDEventEnum     } from '../models/EventSTEPSTARTED';
+import { EventTEXTMESSAGECONTENT , EventTEXTMESSAGECONTENTEventEnum     } from '../models/EventTEXTMESSAGECONTENT';
+import { EventTEXTMESSAGEEND , EventTEXTMESSAGEENDEventEnum     } from '../models/EventTEXTMESSAGEEND';
+import { EventTEXTMESSAGESTART , EventTEXTMESSAGESTARTEventEnum     } from '../models/EventTEXTMESSAGESTART';
+import { EventTITLEUPDATED , EventTITLEUPDATEDEventEnum     } from '../models/EventTITLEUPDATED';
+import { EventTOOLCALLARGSDELTA , EventTOOLCALLARGSDELTAEventEnum     } from '../models/EventTOOLCALLARGSDELTA';
+import { EventTOOLCALLEND , EventTOOLCALLENDEventEnum     } from '../models/EventTOOLCALLEND';
+import { EventTOOLCALLRESULT , EventTOOLCALLRESULTEventEnum     } from '../models/EventTOOLCALLRESULT';
+import { EventTOOLCALLSTART , EventTOOLCALLSTARTEventEnum     } from '../models/EventTOOLCALLSTART';
+import { EventTOOLCONFIRMATIONREQUIRED , EventTOOLCONFIRMATIONREQUIREDEventEnum     } from '../models/EventTOOLCONFIRMATIONREQUIRED';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { FileFormat } from '../models/FileFormat';
@@ -552,31 +573,18 @@ import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType, NameSourceTypeTypeEnum      } from '../models/NameSourceType';
-import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
-import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
-import { NetworkOverviewMetadata   , NetworkOverviewMetadataTypeEnum   } from '../models/NetworkOverviewMetadata';
-import { NetworkOverviewResponse } from '../models/NetworkOverviewResponse';
 import { Order } from '../models/Order';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
-import { PipelineStageStatus } from '../models/PipelineStageStatus';
-import { PipelineStatusResponse } from '../models/PipelineStatusResponse';
 import { Platform } from '../models/Platform';
-import { Process } from '../models/Process';
-import { ProcessDump } from '../models/ProcessDump';
-import { ProcessDumpMetadata } from '../models/ProcessDumpMetadata';
-import { ProcessDumps } from '../models/ProcessDumps';
-import { ProcessDumpsData } from '../models/ProcessDumpsData';
-import { ProcessRegistry } from '../models/ProcessRegistry';
-import { ProcessTree } from '../models/ProcessTree';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
+import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { RegenerateTarget } from '../models/RegenerateTarget';
-import { Registry } from '../models/Registry';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { ReportAnalysisResponse , ReportAnalysisResponseSoftwareTypeEnum         } from '../models/ReportAnalysisResponse';
 import { SBOM } from '../models/SBOM';
@@ -586,26 +594,38 @@ import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
 import { SectionModel } from '../models/SectionModel';
 import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
+import { SendMessageRequest } from '../models/SendMessageRequest';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
 import { SingleSectionModel } from '../models/SingleSectionModel';
+import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
+import { SseEventRunCancelledData } from '../models/SseEventRunCancelledData';
+import { SseEventRunErrorData } from '../models/SseEventRunErrorData';
+import { SseEventRunFinishedData } from '../models/SseEventRunFinishedData';
+import { SseEventRunStartedData } from '../models/SseEventRunStartedData';
+import { SseEventStepFinishedData } from '../models/SseEventStepFinishedData';
+import { SseEventStepStartedData } from '../models/SseEventStepStartedData';
+import { SseEventTextMessageContentData } from '../models/SseEventTextMessageContentData';
+import { SseEventTextMessageEndData } from '../models/SseEventTextMessageEndData';
+import { SseEventTextMessageStartData } from '../models/SseEventTextMessageStartData';
+import { SseEventTitleUpdatedData } from '../models/SseEventTitleUpdatedData';
+import { SseEventToolCallArgsDeltaData } from '../models/SseEventToolCallArgsDeltaData';
+import { SseEventToolCallEndData } from '../models/SseEventToolCallEndData';
+import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData';
+import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
+import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
 import { StackVariable } from '../models/StackVariable';
-import { StageEvent    } from '../models/StageEvent';
-import { StageStatus    } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
+import { StatusResponse } from '../models/StatusResponse';
+import { StreamEvents200ResponseInnerClass } from '../models/StreamEvents200ResponseInner';
 import { StringFunctions    } from '../models/StringFunctions';
 import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
 import { Symbols } from '../models/Symbols';
-import { TTPS } from '../models/TTPS';
-import { TTPSAttack } from '../models/TTPSAttack';
-import { TTPSData } from '../models/TTPSData';
-import { TTPSElement } from '../models/TTPSElement';
-import { TTPSOccurance } from '../models/TTPSOccurance';
 import { Tag } from '../models/Tag';
 import { TagItem } from '../models/TagItem';
 import { TagResponse } from '../models/TagResponse';
@@ -646,17 +666,31 @@ let enumsMap: Set<string> = new Set<string>([
     "AiDecompilationRating",
     "AiDecompilationTaskStatus",
     "AnalysisScope",
-    "AnalysisStage",
-    "AnalysisStageStatus",
     "AnalysisUpdateRequestAnalysisScopeEnum",
     "AppApiRestV2AgentSchemaCapabilityTypeEnum",
-    "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
     "BinariesTaskStatus",
     "BinaryTaskStatus",
     "CollectionScope",
-    "DynamicExecutionStatusInput",
+    "DynamicExecutionStatus",
+    "ErrorBodyCodeEnum",
+    "EventCONTEXTCOMPACTEDEventEnum",
+    "EventRUNCANCELLEDEventEnum",
+    "EventRUNERROREventEnum",
+    "EventRUNFINISHEDEventEnum",
+    "EventRUNSTARTEDEventEnum",
+    "EventSTEPFINISHEDEventEnum",
+    "EventSTEPSTARTEDEventEnum",
+    "EventTEXTMESSAGECONTENTEventEnum",
+    "EventTEXTMESSAGEENDEventEnum",
+    "EventTEXTMESSAGESTARTEventEnum",
+    "EventTITLEUPDATEDEventEnum",
+    "EventTOOLCALLARGSDELTAEventEnum",
+    "EventTOOLCALLENDEventEnum",
+    "EventTOOLCALLRESULTEventEnum",
+    "EventTOOLCALLSTARTEventEnum",
+    "EventTOOLCONFIRMATIONREQUIREDEventEnum",
     "FileFormat",
     "Filters",
     "FunctionListItemNameSourceTypeEnum",
@@ -668,13 +702,12 @@ let enumsMap: Set<string> = new Set<string>([
     "ISA",
     "ModelName",
     "NameSourceTypeTypeEnum",
-    "NetworkOverviewMetadataTypeEnum",
     "Order",
-    "PipelineStageStatus",
     "Platform",
     "RegenerateTarget",
     "ReportAnalysisResponseSoftwareTypeEnum",
     "StatusInput",
+    "StreamEvents200ResponseInnerEventEnum",
     "StringSource",
     "TaskStatus",
     "TriageFunctionResponseCapabilitiesEnum",
@@ -684,6 +717,7 @@ let enumsMap: Set<string> = new Set<string>([
 ]);
 
 let typeMap: {[index: string]: any} = {
+    "APIError": APIError,
     "AdditionalDetailsStatusResponse": AdditionalDetailsStatusResponse,
     "Addr": Addr,
     "AiUnstripRequest": AiUnstripRequest,
@@ -700,7 +734,6 @@ let typeMap: {[index: string]: any} = {
     "AnalysisFunctions": AnalysisFunctions,
     "AnalysisFunctionsList": AnalysisFunctionsList,
     "AnalysisRecord": AnalysisRecord,
-    "AnalysisStagesResponse": AnalysisStagesResponse,
     "AnalysisStringInput": AnalysisStringInput,
     "AnalysisStringsResponse": AnalysisStringsResponse,
     "AnalysisStringsStatusResponse": AnalysisStringsStatusResponse,
@@ -712,7 +745,6 @@ let typeMap: {[index: string]: any} = {
     "AppApiRestV2FunctionsResponsesFunction": AppApiRestV2FunctionsResponsesFunction,
     "AppApiRestV2FunctionsTypesFunction": AppApiRestV2FunctionsTypesFunction,
     "AppApiRestV2InfoTypesCapability": AppApiRestV2InfoTypesCapability,
-    "AppServicesDynamicExecutionSchemasDynamicExecutionStatus": AppServicesDynamicExecutionSchemasDynamicExecutionStatus,
     "Argument": Argument,
     "AutoRunAgents": AutoRunAgents,
     "AutoUnstripRequest": AutoUnstripRequest,
@@ -725,7 +757,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseAnalysisFunctionMapping": BaseResponseAnalysisFunctionMapping,
     "BaseResponseAnalysisFunctions": BaseResponseAnalysisFunctions,
     "BaseResponseAnalysisFunctionsList": BaseResponseAnalysisFunctionsList,
-    "BaseResponseAnalysisStagesResponse": BaseResponseAnalysisStagesResponse,
     "BaseResponseAnalysisStringsResponse": BaseResponseAnalysisStringsResponse,
     "BaseResponseAnalysisStringsStatusResponse": BaseResponseAnalysisStringsStatusResponse,
     "BaseResponseAnalysisTags": BaseResponseAnalysisTags,
@@ -749,7 +780,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseConfigResponse": BaseResponseConfigResponse,
     "BaseResponseCreated": BaseResponseCreated,
     "BaseResponseDict": BaseResponseDict,
-    "BaseResponseDynamicExecutionStatus": BaseResponseDynamicExecutionStatus,
     "BaseResponseExternalResponse": BaseResponseExternalResponse,
     "BaseResponseFunctionBlocksResponse": BaseResponseFunctionBlocksResponse,
     "BaseResponseFunctionCapabilityResponse": BaseResponseFunctionCapabilityResponse,
@@ -773,18 +803,12 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseListUserActivityResponse": BaseResponseListUserActivityResponse,
     "BaseResponseLogs": BaseResponseLogs,
     "BaseResponseModelsResponse": BaseResponseModelsResponse,
-    "BaseResponseNetworkOverviewResponse": BaseResponseNetworkOverviewResponse,
     "BaseResponseParams": BaseResponseParams,
-    "BaseResponsePipelineStatusResponse": BaseResponsePipelineStatusResponse,
-    "BaseResponseProcessDumps": BaseResponseProcessDumps,
-    "BaseResponseProcessRegistry": BaseResponseProcessRegistry,
-    "BaseResponseProcessTree": BaseResponseProcessTree,
     "BaseResponseQueuedWorkflowTaskResponse": BaseResponseQueuedWorkflowTaskResponse,
     "BaseResponseRecent": BaseResponseRecent,
     "BaseResponseReportAnalysisResponse": BaseResponseReportAnalysisResponse,
     "BaseResponseStatus": BaseResponseStatus,
     "BaseResponseStr": BaseResponseStr,
-    "BaseResponseTTPS": BaseResponseTTPS,
     "BaseResponseTagSearchResponse": BaseResponseTagSearchResponse,
     "BaseResponseTaskResponse": BaseResponseTaskResponse,
     "BaseResponseTaskStatusResponse": BaseResponseTaskStatusResponse,
@@ -826,7 +850,12 @@ let typeMap: {[index: string]: any} = {
     "CommentResponse": CommentResponse,
     "CommentUpdateRequest": CommentUpdateRequest,
     "ConfigResponse": ConfigResponse,
+    "ConfirmToolInputBody": ConfirmToolInputBody,
     "Context": Context,
+    "Conversation": Conversation,
+    "ConversationContext": ConversationContext,
+    "ConversationWithEvents": ConversationWithEvents,
+    "CreateConversationRequest": CreateConversationRequest,
     "Created": Created,
     "DecompilationCommentContext": DecompilationCommentContext,
     "DieMatch": DieMatch,
@@ -840,7 +869,25 @@ let typeMap: {[index: string]: any} = {
     "ElfDynamicEntry": ElfDynamicEntry,
     "EntrypointModel": EntrypointModel,
     "Enumeration": Enumeration,
+    "ErrorBody": ErrorBody,
     "ErrorModel": ErrorModel,
+    "Event": Event,
+    "EventCONTEXTCOMPACTED": EventCONTEXTCOMPACTED,
+    "EventRUNCANCELLED": EventRUNCANCELLED,
+    "EventRUNERROR": EventRUNERROR,
+    "EventRUNFINISHED": EventRUNFINISHED,
+    "EventRUNSTARTED": EventRUNSTARTED,
+    "EventSTEPFINISHED": EventSTEPFINISHED,
+    "EventSTEPSTARTED": EventSTEPSTARTED,
+    "EventTEXTMESSAGECONTENT": EventTEXTMESSAGECONTENT,
+    "EventTEXTMESSAGEEND": EventTEXTMESSAGEEND,
+    "EventTEXTMESSAGESTART": EventTEXTMESSAGESTART,
+    "EventTITLEUPDATED": EventTITLEUPDATED,
+    "EventTOOLCALLARGSDELTA": EventTOOLCALLARGSDELTA,
+    "EventTOOLCALLEND": EventTOOLCALLEND,
+    "EventTOOLCALLRESULT": EventTOOLCALLRESULT,
+    "EventTOOLCALLSTART": EventTOOLCALLSTART,
+    "EventTOOLCONFIRMATIONREQUIRED": EventTOOLCONFIRMATIONREQUIRED,
     "ExportModel": ExportModel,
     "ExternalResponse": ExternalResponse,
     "FileHashes": FileHashes,
@@ -904,27 +951,15 @@ let typeMap: {[index: string]: any} = {
     "ModelsResponse": ModelsResponse,
     "NameConfidence": NameConfidence,
     "NameSourceType": NameSourceType,
-    "NetworkOverviewDns": NetworkOverviewDns,
-    "NetworkOverviewDnsAnswer": NetworkOverviewDnsAnswer,
-    "NetworkOverviewMetadata": NetworkOverviewMetadata,
-    "NetworkOverviewResponse": NetworkOverviewResponse,
     "PDBDebugModel": PDBDebugModel,
     "PEModel": PEModel,
     "PaginationModel": PaginationModel,
     "Params": Params,
-    "PipelineStatusResponse": PipelineStatusResponse,
-    "Process": Process,
-    "ProcessDump": ProcessDump,
-    "ProcessDumpMetadata": ProcessDumpMetadata,
-    "ProcessDumps": ProcessDumps,
-    "ProcessDumpsData": ProcessDumpsData,
-    "ProcessRegistry": ProcessRegistry,
-    "ProcessTree": ProcessTree,
     "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
+    "QueuePositionResponse": QueuePositionResponse,
     "QueuedWorkflowTaskResponse": QueuedWorkflowTaskResponse,
     "ReAnalysisForm": ReAnalysisForm,
     "Recent": Recent,
-    "Registry": Registry,
     "RelativeBinaryResponse": RelativeBinaryResponse,
     "ReportAnalysisResponse": ReportAnalysisResponse,
     "SBOM": SBOM,
@@ -934,24 +969,36 @@ let typeMap: {[index: string]: any} = {
     "SectionModel": SectionModel,
     "SecurityModel": SecurityModel,
     "SegmentInfo": SegmentInfo,
+    "SendMessageRequest": SendMessageRequest,
     "SingleCodeCertificateModel": SingleCodeCertificateModel,
     "SingleCodeSignatureModel": SingleCodeSignatureModel,
     "SinglePDBEntryModel": SinglePDBEntryModel,
     "SingleSectionModel": SingleSectionModel,
+    "SseEventContextCompactedData": SseEventContextCompactedData,
+    "SseEventRunCancelledData": SseEventRunCancelledData,
+    "SseEventRunErrorData": SseEventRunErrorData,
+    "SseEventRunFinishedData": SseEventRunFinishedData,
+    "SseEventRunStartedData": SseEventRunStartedData,
+    "SseEventStepFinishedData": SseEventStepFinishedData,
+    "SseEventStepStartedData": SseEventStepStartedData,
+    "SseEventTextMessageContentData": SseEventTextMessageContentData,
+    "SseEventTextMessageEndData": SseEventTextMessageEndData,
+    "SseEventTextMessageStartData": SseEventTextMessageStartData,
+    "SseEventTitleUpdatedData": SseEventTitleUpdatedData,
+    "SseEventToolCallArgsDeltaData": SseEventToolCallArgsDeltaData,
+    "SseEventToolCallEndData": SseEventToolCallEndData,
+    "SseEventToolCallResultData": SseEventToolCallResultData,
+    "SseEventToolCallStartData": SseEventToolCallStartData,
+    "SseEventToolConfirmationRequiredData": SseEventToolConfirmationRequiredData,
     "StackVariable": StackVariable,
-    "StageEvent": StageEvent,
-    "StageStatus": StageStatus,
     "StatusOutput": StatusOutput,
+    "StatusResponse": StatusResponse,
+    "StreamEvents200ResponseInner": StreamEvents200ResponseInnerClass,
     "StringFunctions": StringFunctions,
     "Structure": Structure,
     "StructureMember": StructureMember,
     "SubmitUserFeedbackRequest": SubmitUserFeedbackRequest,
     "Symbols": Symbols,
-    "TTPS": TTPS,
-    "TTPSAttack": TTPSAttack,
-    "TTPSData": TTPSData,
-    "TTPSElement": TTPSElement,
-    "TTPSOccurance": TTPSOccurance,
     "Tag": Tag,
     "TagItem": TagItem,
     "TagResponse": TagResponse,
