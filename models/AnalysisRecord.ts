@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import { AppApiRestV2AnalysesEnumsDynamicExecutionStatus } from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
+import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { TagItem } from '../models/TagItem';
 import { HttpFile } from '../http/http';
 
@@ -66,7 +66,7 @@ export class AnalysisRecord {
     * The username of the analysis owner
     */
     'username': string;
-    'dynamicExecutionStatus'?: AppApiRestV2AnalysesEnumsDynamicExecutionStatus | null;
+    'dynamicExecutionStatus'?: DynamicExecutionStatus | null;
     'dynamicExecutionTaskId'?: number | null;
     /**
     * The base address of the binary
@@ -163,7 +163,7 @@ export class AnalysisRecord {
         {
             "name": "dynamicExecutionStatus",
             "baseName": "dynamic_execution_status",
-            "type": "AppApiRestV2AnalysesEnumsDynamicExecutionStatus",
+            "type": "DynamicExecutionStatus",
             "format": ""
         },
         {

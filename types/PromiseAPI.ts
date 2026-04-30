@@ -2,6 +2,7 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration, PromiseConfigurationOptions, wrapOptions } from '../configuration'
 import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../middleware';
 
+import { APIError } from '../models/APIError';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
@@ -21,9 +22,6 @@ import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisScope } from '../models/AnalysisScope';
-import { AnalysisStage } from '../models/AnalysisStage';
-import { AnalysisStageStatus } from '../models/AnalysisStageStatus';
-import { AnalysisStagesResponse } from '../models/AnalysisStagesResponse';
 import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
@@ -32,13 +30,11 @@ import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { AppApiRestV2AgentSchemaCapability } from '../models/AppApiRestV2AgentSchemaCapability';
-import { AppApiRestV2AnalysesEnumsDynamicExecutionStatus } from '../models/AppApiRestV2AnalysesEnumsDynamicExecutionStatus';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
-import { AppServicesDynamicExecutionSchemasDynamicExecutionStatus } from '../models/AppServicesDynamicExecutionSchemasDynamicExecutionStatus';
 import { Argument } from '../models/Argument';
 import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
@@ -51,7 +47,6 @@ import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalys
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
 import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
-import { BaseResponseAnalysisStagesResponse } from '../models/BaseResponseAnalysisStagesResponse';
 import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
 import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseResponseAnalysisStringsStatusResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
@@ -75,7 +70,6 @@ import { BaseResponseCommentResponse } from '../models/BaseResponseCommentRespon
 import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
-import { BaseResponseDynamicExecutionStatus } from '../models/BaseResponseDynamicExecutionStatus';
 import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
 import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
@@ -99,18 +93,12 @@ import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
-import { BaseResponseNetworkOverviewResponse } from '../models/BaseResponseNetworkOverviewResponse';
 import { BaseResponseParams } from '../models/BaseResponseParams';
-import { BaseResponsePipelineStatusResponse } from '../models/BaseResponsePipelineStatusResponse';
-import { BaseResponseProcessDumps } from '../models/BaseResponseProcessDumps';
-import { BaseResponseProcessRegistry } from '../models/BaseResponseProcessRegistry';
-import { BaseResponseProcessTree } from '../models/BaseResponseProcessTree';
 import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
-import { BaseResponseTTPS } from '../models/BaseResponseTTPS';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
 import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatusResponse';
@@ -155,11 +143,16 @@ import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { ConfigResponse } from '../models/ConfigResponse';
+import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Context } from '../models/Context';
+import { Conversation } from '../models/Conversation';
+import { ConversationContext } from '../models/ConversationContext';
+import { ConversationWithEvents } from '../models/ConversationWithEvents';
+import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DieMatch } from '../models/DieMatch';
-import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInput';
+import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { ELFImportModel } from '../models/ELFImportModel';
 import { ELFModel } from '../models/ELFModel';
 import { ELFRelocation } from '../models/ELFRelocation';
@@ -170,7 +163,25 @@ import { ELFSymbol } from '../models/ELFSymbol';
 import { ElfDynamicEntry } from '../models/ElfDynamicEntry';
 import { EntrypointModel } from '../models/EntrypointModel';
 import { Enumeration } from '../models/Enumeration';
+import { ErrorBody } from '../models/ErrorBody';
 import { ErrorModel } from '../models/ErrorModel';
+import { Event } from '../models/Event';
+import { EventCONTEXTCOMPACTED } from '../models/EventCONTEXTCOMPACTED';
+import { EventRUNCANCELLED } from '../models/EventRUNCANCELLED';
+import { EventRUNERROR } from '../models/EventRUNERROR';
+import { EventRUNFINISHED } from '../models/EventRUNFINISHED';
+import { EventRUNSTARTED } from '../models/EventRUNSTARTED';
+import { EventSTEPFINISHED } from '../models/EventSTEPFINISHED';
+import { EventSTEPSTARTED } from '../models/EventSTEPSTARTED';
+import { EventTEXTMESSAGECONTENT } from '../models/EventTEXTMESSAGECONTENT';
+import { EventTEXTMESSAGEEND } from '../models/EventTEXTMESSAGEEND';
+import { EventTEXTMESSAGESTART } from '../models/EventTEXTMESSAGESTART';
+import { EventTITLEUPDATED } from '../models/EventTITLEUPDATED';
+import { EventTOOLCALLARGSDELTA } from '../models/EventTOOLCALLARGSDELTA';
+import { EventTOOLCALLEND } from '../models/EventTOOLCALLEND';
+import { EventTOOLCALLRESULT } from '../models/EventTOOLCALLRESULT';
+import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
+import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { FileFormat } from '../models/FileFormat';
@@ -240,31 +251,18 @@ import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType } from '../models/NameSourceType';
-import { NetworkOverviewDns } from '../models/NetworkOverviewDns';
-import { NetworkOverviewDnsAnswer } from '../models/NetworkOverviewDnsAnswer';
-import { NetworkOverviewMetadata } from '../models/NetworkOverviewMetadata';
-import { NetworkOverviewResponse } from '../models/NetworkOverviewResponse';
 import { Order } from '../models/Order';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
-import { PipelineStageStatus } from '../models/PipelineStageStatus';
-import { PipelineStatusResponse } from '../models/PipelineStatusResponse';
 import { Platform } from '../models/Platform';
-import { Process } from '../models/Process';
-import { ProcessDump } from '../models/ProcessDump';
-import { ProcessDumpMetadata } from '../models/ProcessDumpMetadata';
-import { ProcessDumps } from '../models/ProcessDumps';
-import { ProcessDumpsData } from '../models/ProcessDumpsData';
-import { ProcessRegistry } from '../models/ProcessRegistry';
-import { ProcessTree } from '../models/ProcessTree';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
+import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { RegenerateTarget } from '../models/RegenerateTarget';
-import { Registry } from '../models/Registry';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { SBOM } from '../models/SBOM';
@@ -274,26 +272,38 @@ import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
 import { SectionModel } from '../models/SectionModel';
 import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
+import { SendMessageRequest } from '../models/SendMessageRequest';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
 import { SingleSectionModel } from '../models/SingleSectionModel';
+import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
+import { SseEventRunCancelledData } from '../models/SseEventRunCancelledData';
+import { SseEventRunErrorData } from '../models/SseEventRunErrorData';
+import { SseEventRunFinishedData } from '../models/SseEventRunFinishedData';
+import { SseEventRunStartedData } from '../models/SseEventRunStartedData';
+import { SseEventStepFinishedData } from '../models/SseEventStepFinishedData';
+import { SseEventStepStartedData } from '../models/SseEventStepStartedData';
+import { SseEventTextMessageContentData } from '../models/SseEventTextMessageContentData';
+import { SseEventTextMessageEndData } from '../models/SseEventTextMessageEndData';
+import { SseEventTextMessageStartData } from '../models/SseEventTextMessageStartData';
+import { SseEventTitleUpdatedData } from '../models/SseEventTitleUpdatedData';
+import { SseEventToolCallArgsDeltaData } from '../models/SseEventToolCallArgsDeltaData';
+import { SseEventToolCallEndData } from '../models/SseEventToolCallEndData';
+import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData';
+import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
+import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
 import { StackVariable } from '../models/StackVariable';
-import { StageEvent } from '../models/StageEvent';
-import { StageStatus } from '../models/StageStatus';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
+import { StatusResponse } from '../models/StatusResponse';
+import { StreamEvents200ResponseInner } from '../models/StreamEvents200ResponseInner';
 import { StringFunctions } from '../models/StringFunctions';
 import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
 import { Symbols } from '../models/Symbols';
-import { TTPS } from '../models/TTPS';
-import { TTPSAttack } from '../models/TTPSAttack';
-import { TTPSData } from '../models/TTPSData';
-import { TTPSElement } from '../models/TTPSElement';
-import { TTPSOccurance } from '../models/TTPSOccurance';
 import { Tag } from '../models/Tag';
 import { TagItem } from '../models/TagItem';
 import { TagResponse } from '../models/TagResponse';
@@ -508,6 +518,47 @@ export class PromiseAgentApi {
     public getTriageResultV2AnalysesAnalysisIdAgentTriageGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseTriageReportResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getTriageResultV2AnalysesAnalysisIdAgentTriageGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableAnalysesApi } from './ObservableAPI';
+
+import { AnalysesApiRequestFactory, AnalysesApiResponseProcessor} from "../apis/AnalysesApi";
+export class PromiseAnalysesApi {
+    private api: ObservableAnalysesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: AnalysesApiRequestFactory,
+        responseProcessor?: AnalysesApiResponseProcessor
+    ) {
+        this.api = new ObservableAnalysesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the queue position of an analysis
+     * @param analysisId Analysis ID
+     */
+    public getAnalysisQueuePositionWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<QueuePositionResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAnalysisQueuePositionWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the queue position of an analysis
+     * @param analysisId Analysis ID
+     */
+    public getAnalysisQueuePosition(analysisId: number, _options?: PromiseConfigurationOptions): Promise<QueuePositionResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAnalysisQueuePosition(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -1047,7 +1098,7 @@ export class PromiseAnalysesCoreApi {
      * @param [orderBy]
      * @param [order]
      */
-    public listAnalysesWithHttpInfo(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseRecent>> {
+    public listAnalysesWithHttpInfo(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatus, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseRecent>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listAnalysesWithHttpInfo(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, observableOptions);
         return result.toPromise();
@@ -1068,7 +1119,7 @@ export class PromiseAnalysesCoreApi {
      * @param [orderBy]
      * @param [order]
      */
-    public listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: PromiseConfigurationOptions): Promise<BaseResponseRecent> {
+    public listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatus, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: PromiseConfigurationOptions): Promise<BaseResponseRecent> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.listAnalyses(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, observableOptions);
         return result.toPromise();
@@ -1265,167 +1316,6 @@ export class PromiseAnalysesCoreApi {
     public uploadFile(uploadFileType: UploadFileType, file: string, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.uploadFile(uploadFileType, file, packedPassword, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, forceOverwrite, observableOptions);
-        return result.toPromise();
-    }
-
-
-}
-
-
-
-import { ObservableAnalysesDynamicExecutionApi } from './ObservableAPI';
-
-import { AnalysesDynamicExecutionApiRequestFactory, AnalysesDynamicExecutionApiResponseProcessor} from "../apis/AnalysesDynamicExecutionApi";
-export class PromiseAnalysesDynamicExecutionApi {
-    private api: ObservableAnalysesDynamicExecutionApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysesDynamicExecutionApiRequestFactory,
-        responseProcessor?: AnalysesDynamicExecutionApiResponseProcessor
-    ) {
-        this.api = new ObservableAnalysesDynamicExecutionApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Get the status of a dynamic execution task
-     * @param analysisId
-     */
-    public getDynamicExecutionStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseDynamicExecutionStatus>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getDynamicExecutionStatusWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the status of a dynamic execution task
-     * @param analysisId
-     */
-    public getDynamicExecutionStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseDynamicExecutionStatus> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getDynamicExecutionStatus(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for network overview
-     * @param analysisId
-     */
-    public getNetworkOverviewWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseNetworkOverviewResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getNetworkOverviewWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for network overview
-     * @param analysisId
-     */
-    public getNetworkOverview(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseNetworkOverviewResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getNetworkOverview(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for a specific process dump
-     * @param analysisId
-     * @param dumpName
-     */
-    public getProcessDumpWithHttpInfo(analysisId: number, dumpName: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessDumpWithHttpInfo(analysisId, dumpName, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for a specific process dump
-     * @param analysisId
-     * @param dumpName
-     */
-    public getProcessDump(analysisId: number, dumpName: string, _options?: PromiseConfigurationOptions): Promise<any> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessDump(analysisId, dumpName, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for process dumps
-     * @param analysisId
-     */
-    public getProcessDumpsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseProcessDumps>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessDumpsWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for process dumps
-     * @param analysisId
-     */
-    public getProcessDumps(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseProcessDumps> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessDumps(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for process registry
-     * @param analysisId
-     */
-    public getProcessRegistryWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseProcessRegistry>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessRegistryWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for process registry
-     * @param analysisId
-     */
-    public getProcessRegistry(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseProcessRegistry> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessRegistry(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for process tree
-     * @param analysisId
-     */
-    public getProcessTreeWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseProcessTree>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessTreeWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for process tree
-     * @param analysisId
-     */
-    public getProcessTree(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseProcessTree> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getProcessTree(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for ttps
-     * @param analysisId
-     */
-    public getTtpsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseTTPS>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getTtpsWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get the dynamic execution results for ttps
-     * @param analysisId
-     */
-    public getTtps(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseTTPS> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getTtps(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -1648,69 +1538,6 @@ export class PromiseAnalysesXRefsApi {
     public getXrefByVaddr(analysisId: number, vaddr: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseXrefResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getXrefByVaddr(analysisId, vaddr, observableOptions);
-        return result.toPromise();
-    }
-
-
-}
-
-
-
-import { ObservableAnalysisStagesApi } from './ObservableAPI';
-
-import { AnalysisStagesApiRequestFactory, AnalysisStagesApiResponseProcessor} from "../apis/AnalysisStagesApi";
-export class PromiseAnalysisStagesApi {
-    private api: ObservableAnalysisStagesApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysisStagesApiRequestFactory,
-        responseProcessor?: AnalysisStagesApiResponseProcessor
-    ) {
-        this.api = new ObservableAnalysisStagesApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Returns all stage events for an analysis ordered by timestamp.
-     * Get Analysis Stages
-     * @param analysisId
-     */
-    public getAnalysisStagesWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStagesResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStagesWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns all stage events for an analysis ordered by timestamp.
-     * Get Analysis Stages
-     * @param analysisId
-     */
-    public getAnalysisStages(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisStagesResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStages(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the latest status for each core pipeline stage with the number of analyses ahead in the queue.
-     * Get Pipeline Status
-     * @param analysisId
-     */
-    public getPipelineStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponsePipelineStatusResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getPipelineStatusWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the latest status for each core pipeline stage with the number of analyses ahead in the queue.
-     * Get Pipeline Status
-     * @param analysisId
-     */
-    public getPipelineStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponsePipelineStatusResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getPipelineStatus(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -2353,6 +2180,183 @@ export class PromiseConfigApi {
     public getConfig(_options?: PromiseConfigurationOptions): Promise<BaseResponseConfigResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getConfig(observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableConversationsApi } from './ObservableAPI';
+
+import { ConversationsApiRequestFactory, ConversationsApiResponseProcessor} from "../apis/ConversationsApi";
+export class PromiseConversationsApi {
+    private api: ObservableConversationsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ConversationsApiRequestFactory,
+        responseProcessor?: ConversationsApiResponseProcessor
+    ) {
+        this.api = new ObservableConversationsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancel an active run
+     * @param id Conversation UUID
+     */
+    public cancelRunWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<StatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.cancelRunWithHttpInfo(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancel an active run
+     * @param id Conversation UUID
+     */
+    public cancelRun(id: string, _options?: PromiseConfigurationOptions): Promise<StatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.cancelRun(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
+     * Approve or reject a pending tool confirmation
+     * @param id Conversation UUID
+     * @param confirmToolInputBody
+     */
+    public confirmToolWithHttpInfo(id: string, confirmToolInputBody: ConfirmToolInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<StatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.confirmToolWithHttpInfo(id, confirmToolInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
+     * Approve or reject a pending tool confirmation
+     * @param id Conversation UUID
+     * @param confirmToolInputBody
+     */
+    public confirmTool(id: string, confirmToolInputBody: ConfirmToolInputBody, _options?: PromiseConfigurationOptions): Promise<StatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.confirmTool(id, confirmToolInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new conversation for the authenticated user. Optionally include a binary analysis context to scope the assistant to a specific analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Create a new conversation
+     * @param createConversationRequest
+     */
+    public createConversationWithHttpInfo(createConversationRequest: CreateConversationRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Conversation>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createConversationWithHttpInfo(createConversationRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new conversation for the authenticated user. Optionally include a binary analysis context to scope the assistant to a specific analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Create a new conversation
+     * @param createConversationRequest
+     */
+    public createConversation(createConversationRequest: CreateConversationRequest, _options?: PromiseConfigurationOptions): Promise<Conversation> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createConversation(createConversationRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the conversation metadata along with all persisted events. Useful for reconstructing the full conversation history on page load.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found
+     * Get a conversation with its events
+     * @param id Conversation UUID
+     */
+    public getConversationWithHttpInfo(id: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ConversationWithEvents>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getConversationWithHttpInfo(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the conversation metadata along with all persisted events. Useful for reconstructing the full conversation history on page load.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found
+     * Get a conversation with its events
+     * @param id Conversation UUID
+     */
+    public getConversation(id: string, _options?: PromiseConfigurationOptions): Promise<ConversationWithEvents> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getConversation(id, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns all conversations owned by the authenticated user, ordered by most recently updated.
+     * List conversations for the authenticated user
+     */
+    public listConversationsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<Conversation>>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listConversationsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns all conversations owned by the authenticated user, ordered by most recently updated.
+     * List conversations for the authenticated user
+     */
+    public listConversations(_options?: PromiseConfigurationOptions): Promise<Array<Conversation>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.listConversations(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
+     * Send a message and start an agentic run
+     * @param id Conversation UUID
+     * @param sendMessageRequest
+     */
+    public sendMessageWithHttpInfo(id: string, sendMessageRequest: SendMessageRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<StatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.sendMessageWithHttpInfo(id, sendMessageRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
+     * Send a message and start an agentic run
+     * @param id Conversation UUID
+     * @param sendMessageRequest
+     */
+    public sendMessage(id: string, sendMessageRequest: SendMessageRequest, _options?: PromiseConfigurationOptions): Promise<StatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.sendMessage(id, sendMessageRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Opens a Server-Sent Events stream for the given conversation. Events include run lifecycle updates, streaming text deltas, tool call progress, and more. Use the `last_event_id` query parameter to replay missed events after a reconnection.
+     * Stream conversation events (SSE)
+     * @param id Conversation UUID
+     * @param [lastEventId] Replay events after this ID
+     */
+    public streamEventsWithHttpInfo(id: string, lastEventId?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<StreamEvents200ResponseInner>>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.streamEventsWithHttpInfo(id, lastEventId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Opens a Server-Sent Events stream for the given conversation. Events include run lifecycle updates, streaming text deltas, tool call progress, and more. Use the `last_event_id` query parameter to replay missed events after a reconnection.
+     * Stream conversation events (SSE)
+     * @param id Conversation UUID
+     * @param [lastEventId] Replay events after this ID
+     */
+    public streamEvents(id: string, lastEventId?: number, _options?: PromiseConfigurationOptions): Promise<Array<StreamEvents200ResponseInner>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.streamEvents(id, lastEventId, observableOptions);
         return result.toPromise();
     }
 

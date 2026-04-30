@@ -25,7 +25,7 @@ import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
-import { DynamicExecutionStatusInput } from '../models/DynamicExecutionStatusInput';
+import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { ModelName } from '../models/ModelName';
 import { Order } from '../models/Order';
@@ -644,7 +644,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param orderBy 
      * @param order 
      */
-    public async listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatusInput, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: Configuration): Promise<RequestContext> {
+    public async listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatus, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -696,7 +696,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (dynamicExecutionStatus !== undefined) {
-            requestContext.setQueryParam("dynamic_execution_status", ObjectSerializer.serialize(dynamicExecutionStatus, "DynamicExecutionStatusInput", ""));
+            requestContext.setQueryParam("dynamic_execution_status", ObjectSerializer.serialize(dynamicExecutionStatus, "DynamicExecutionStatus", ""));
         }
 
         // Query Params
