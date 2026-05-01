@@ -635,58 +635,6 @@ export class ObservableAgentApi {
 
 }
 
-import { AnalysesApiRequestFactory, AnalysesApiResponseProcessor} from "../apis/AnalysesApi";
-export class ObservableAnalysesApi {
-    private requestFactory: AnalysesApiRequestFactory;
-    private responseProcessor: AnalysesApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysesApiRequestFactory,
-        responseProcessor?: AnalysesApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new AnalysesApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new AnalysesApiResponseProcessor();
-    }
-
-    /**
-     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the queue position of an analysis
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisQueuePositionWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<QueuePositionResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisQueuePosition(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisQueuePositionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the queue position of an analysis
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisQueuePosition(analysisId: number, _options?: ConfigurationOptions): Observable<QueuePositionResponse> {
-        return this.getAnalysisQueuePositionWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<QueuePositionResponse>) => apiResponse.data));
-    }
-
-}
-
 import { AnalysesBulkActionsApiRequestFactory, AnalysesBulkActionsApiResponseProcessor} from "../apis/AnalysesBulkActionsApi";
 export class ObservableAnalysesBulkActionsApi {
     private requestFactory: AnalysesBulkActionsApiRequestFactory;
@@ -1287,6 +1235,40 @@ export class ObservableAnalysesCoreApi {
      */
     public getAnalysisParams(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: ConfigurationOptions): Observable<BaseResponseParams> {
         return this.getAnalysisParamsWithHttpInfo(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, _options).pipe(map((apiResponse: HttpInfo<BaseResponseParams>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the queue position of an analysis
+     * @param analysisId Analysis ID
+     */
+    public getAnalysisQueuePositionWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<QueuePositionResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAnalysisQueuePosition(analysisId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisQueuePositionWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the queue position of an analysis
+     * @param analysisId Analysis ID
+     */
+    public getAnalysisQueuePosition(analysisId: number, _options?: ConfigurationOptions): Observable<QueuePositionResponse> {
+        return this.getAnalysisQueuePositionWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<QueuePositionResponse>) => apiResponse.data));
     }
 
     /**
