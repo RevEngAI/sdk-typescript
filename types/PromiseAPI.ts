@@ -526,47 +526,6 @@ export class PromiseAgentApi {
 
 
 
-import { ObservableAnalysesApi } from './ObservableAPI';
-
-import { AnalysesApiRequestFactory, AnalysesApiResponseProcessor} from "../apis/AnalysesApi";
-export class PromiseAnalysesApi {
-    private api: ObservableAnalysesApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysesApiRequestFactory,
-        responseProcessor?: AnalysesApiResponseProcessor
-    ) {
-        this.api = new ObservableAnalysesApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the queue position of an analysis
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisQueuePositionWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<QueuePositionResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisQueuePositionWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the queue position of an analysis
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisQueuePosition(analysisId: number, _options?: PromiseConfigurationOptions): Promise<QueuePositionResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisQueuePosition(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-
-}
-
-
-
 import { ObservableAnalysesBulkActionsApi } from './ObservableAPI';
 
 import { AnalysesBulkActionsApiRequestFactory, AnalysesBulkActionsApiResponseProcessor} from "../apis/AnalysesBulkActionsApi";
@@ -1022,6 +981,28 @@ export class PromiseAnalysesCoreApi {
     public getAnalysisParams(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseParams> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getAnalysisParams(analysisId, endpointUrl, localCacheDir, localCacheMaxSizeMb, customerSamplesBucket, firmwareSamplesBucket, maxRetryAttempts, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the queue position of an analysis
+     * @param analysisId Analysis ID
+     */
+    public getAnalysisQueuePositionWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<QueuePositionResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAnalysisQueuePositionWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the queue position of an analysis
+     * @param analysisId Analysis ID
+     */
+    public getAnalysisQueuePosition(analysisId: number, _options?: PromiseConfigurationOptions): Promise<QueuePositionResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAnalysisQueuePosition(analysisId, observableOptions);
         return result.toPromise();
     }
 
