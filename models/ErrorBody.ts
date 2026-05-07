@@ -86,6 +86,7 @@ export enum ErrorBodyCodeEnum {
     ConversationNotFound = 'CONVERSATION_NOT_FOUND',
     DomainAlreadyClaimed = 'DOMAIN_ALREADY_CLAIMED',
     DomainVerificationPending = 'DOMAIN_VERIFICATION_PENDING',
+    DynamicExecutionIncomplete = 'DYNAMIC_EXECUTION_INCOMPLETE',
     EmailNotVerified = 'EMAIL_NOT_VERIFIED',
     ExternalUser = 'EXTERNAL_USER',
     Forbidden = 'FORBIDDEN',

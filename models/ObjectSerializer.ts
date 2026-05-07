@@ -17,6 +17,7 @@ export * from '../models/AnalysisFunctionMatchingRequest';
 export * from '../models/AnalysisFunctions';
 export * from '../models/AnalysisFunctionsList';
 export * from '../models/AnalysisRecord';
+export * from '../models/AnalysisReport';
 export * from '../models/AnalysisScope';
 export * from '../models/AnalysisStringInput';
 export * from '../models/AnalysisStringsResponse';
@@ -25,6 +26,7 @@ export * from '../models/AnalysisTags';
 export * from '../models/AnalysisUpdateRequest';
 export * from '../models/AnalysisUpdateTagsRequest';
 export * from '../models/AnalysisUpdateTagsResponse';
+export * from '../models/ApiCall';
 export * from '../models/AppApiRestV2AgentSchemaCapability';
 export * from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 export * from '../models/AppApiRestV2CollectionsEnumsOrderBy';
@@ -140,6 +142,7 @@ export * from '../models/CommentResponse';
 export * from '../models/CommentUpdateRequest';
 export * from '../models/ConfigResponse';
 export * from '../models/ConfirmToolInputBody';
+export * from '../models/Connection';
 export * from '../models/Context';
 export * from '../models/Conversation';
 export * from '../models/ConversationContext';
@@ -148,7 +151,10 @@ export * from '../models/CreateConversationRequest';
 export * from '../models/Created';
 export * from '../models/DecompilationCommentContext';
 export * from '../models/DieMatch';
+export * from '../models/DnsQuery';
+export * from '../models/DrakvufFileMetadata';
 export * from '../models/DynamicExecutionStatus';
+export * from '../models/DynamicExecutionStatusResponse';
 export * from '../models/ELFImportModel';
 export * from '../models/ELFModel';
 export * from '../models/ELFRelocation';
@@ -180,6 +186,8 @@ export * from '../models/EventTOOLCALLSTART';
 export * from '../models/EventTOOLCONFIRMATIONREQUIRED';
 export * from '../models/ExportModel';
 export * from '../models/ExternalResponse';
+export * from '../models/ExtractedURL';
+export * from '../models/FileActivityEntry';
 export * from '../models/FileFormat';
 export * from '../models/FileHashes';
 export * from '../models/FileMetadata';
@@ -229,6 +237,7 @@ export * from '../models/GetAiDecompilationTask';
 export * from '../models/GetMeResponse';
 export * from '../models/GetPublicUserResponse';
 export * from '../models/GlobalVariable';
+export * from '../models/HttpRequest';
 export * from '../models/IOC';
 export * from '../models/ISA';
 export * from '../models/IconModel';
@@ -242,33 +251,47 @@ export * from '../models/Logs';
 export * from '../models/MITRETechnique';
 export * from '../models/MatchedFunction';
 export * from '../models/MatchedFunctionSuggestion';
+export * from '../models/MemdumpEntry';
 export * from '../models/MetaModel';
 export * from '../models/ModelName';
 export * from '../models/ModelsResponse';
+export * from '../models/ModuleLoadEntry';
+export * from '../models/MutexEntry';
 export * from '../models/NameConfidence';
 export * from '../models/NameSourceType';
+export * from '../models/NetworkActivity';
 export * from '../models/Order';
 export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
 export * from '../models/PaginationModel';
 export * from '../models/Params';
 export * from '../models/Platform';
+export * from '../models/ProcessActivityEntry';
+export * from '../models/ProcessMemdumps';
+export * from '../models/ProcessNode';
+export * from '../models/ProcessTree';
 export * from '../models/PutAnalysisStringsRequest';
 export * from '../models/QueuePositionResponse';
 export * from '../models/QueuedWorkflowTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
 export * from '../models/RegenerateTarget';
+export * from '../models/RegistryOperation';
 export * from '../models/RelativeBinaryResponse';
 export * from '../models/ReportAnalysisResponse';
+export * from '../models/ReportEvent';
+export * from '../models/ReportInfo';
+export * from '../models/ReportOptions';
 export * from '../models/SBOM';
 export * from '../models/SBOMPackage';
 export * from '../models/SandboxOptions';
+export * from '../models/ScheduledTaskEntry';
 export * from '../models/ScrapeThirdPartyConfig';
 export * from '../models/SectionModel';
 export * from '../models/SecurityModel';
 export * from '../models/SegmentInfo';
 export * from '../models/SendMessageRequest';
+export * from '../models/ServiceEntry';
 export * from '../models/SingleCodeCertificateModel';
 export * from '../models/SingleCodeSignatureModel';
 export * from '../models/SinglePDBEntryModel';
@@ -290,6 +313,7 @@ export * from '../models/SseEventToolCallResultData';
 export * from '../models/SseEventToolCallStartData';
 export * from '../models/SseEventToolConfirmationRequiredData';
 export * from '../models/StackVariable';
+export * from '../models/StartupInfo';
 export * from '../models/StatusInput';
 export * from '../models/StatusOutput';
 export * from '../models/StatusResponse';
@@ -311,6 +335,7 @@ export * from '../models/TaskStatusResponse';
 export * from '../models/TimestampModel';
 export * from '../models/TriageFunctionResponse';
 export * from '../models/TriageReportResponse';
+export * from '../models/Ttp';
 export * from '../models/TypeDefinition';
 export * from '../models/UpdateFunctionDataTypes';
 export * from '../models/UploadFileType';
@@ -343,6 +368,7 @@ import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatch
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisRecord                  } from '../models/AnalysisRecord';
+import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringInput    } from '../models/AnalysisStringInput';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
@@ -351,6 +377,7 @@ import { AnalysisTags } from '../models/AnalysisTags';
 import { AnalysisUpdateRequest , AnalysisUpdateRequestAnalysisScopeEnum   } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
+import { ApiCall } from '../models/ApiCall';
 import { AppApiRestV2AgentSchemaCapability   , AppApiRestV2AgentSchemaCapabilityTypeEnum     } from '../models/AppApiRestV2AgentSchemaCapability';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
@@ -466,6 +493,7 @@ import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
+import { Connection } from '../models/Connection';
 import { Context } from '../models/Context';
 import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
@@ -474,7 +502,10 @@ import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DieMatch } from '../models/DieMatch';
+import { DnsQuery } from '../models/DnsQuery';
+import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
+import { DynamicExecutionStatusResponse } from '../models/DynamicExecutionStatusResponse';
 import { ELFImportModel } from '../models/ELFImportModel';
 import { ELFModel } from '../models/ELFModel';
 import { ELFRelocation } from '../models/ELFRelocation';
@@ -506,6 +537,8 @@ import { EventTOOLCALLSTART , EventTOOLCALLSTARTEventEnum     } from '../models/
 import { EventTOOLCONFIRMATIONREQUIRED , EventTOOLCONFIRMATIONREQUIREDEventEnum     } from '../models/EventTOOLCONFIRMATIONREQUIRED';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
+import { ExtractedURL } from '../models/ExtractedURL';
+import { FileActivityEntry } from '../models/FileActivityEntry';
 import { FileFormat } from '../models/FileFormat';
 import { FileHashes } from '../models/FileHashes';
 import { FileMetadata } from '../models/FileMetadata';
@@ -555,6 +588,7 @@ import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTas
 import { GetMeResponse       , GetMeResponseRoleEnum   } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
+import { HttpRequest } from '../models/HttpRequest';
 import { IOC, IOCTypeEnum        } from '../models/IOC';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
@@ -568,33 +602,47 @@ import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
+import { MemdumpEntry } from '../models/MemdumpEntry';
 import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
+import { ModuleLoadEntry } from '../models/ModuleLoadEntry';
+import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType, NameSourceTypeTypeEnum      } from '../models/NameSourceType';
+import { NetworkActivity } from '../models/NetworkActivity';
 import { Order } from '../models/Order';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
 import { Platform } from '../models/Platform';
+import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
+import { ProcessMemdumps } from '../models/ProcessMemdumps';
+import { ProcessNode } from '../models/ProcessNode';
+import { ProcessTree } from '../models/ProcessTree';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { RegenerateTarget } from '../models/RegenerateTarget';
+import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { ReportAnalysisResponse , ReportAnalysisResponseSoftwareTypeEnum         } from '../models/ReportAnalysisResponse';
+import { ReportEvent } from '../models/ReportEvent';
+import { ReportInfo } from '../models/ReportInfo';
+import { ReportOptions } from '../models/ReportOptions';
 import { SBOM } from '../models/SBOM';
 import { SBOMPackage } from '../models/SBOMPackage';
 import { SandboxOptions } from '../models/SandboxOptions';
+import { ScheduledTaskEntry } from '../models/ScheduledTaskEntry';
 import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
 import { SectionModel } from '../models/SectionModel';
 import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
 import { SendMessageRequest } from '../models/SendMessageRequest';
+import { ServiceEntry } from '../models/ServiceEntry';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -616,6 +664,7 @@ import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData
 import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
 import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
 import { StackVariable } from '../models/StackVariable';
+import { StartupInfo } from '../models/StartupInfo';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StatusResponse } from '../models/StatusResponse';
@@ -637,6 +686,7 @@ import { TaskStatusResponse   } from '../models/TaskStatusResponse';
 import { TimestampModel } from '../models/TimestampModel';
 import { TriageFunctionResponse    , TriageFunctionResponseCapabilitiesEnum   } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
+import { Ttp } from '../models/Ttp';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
 import { UploadFileType } from '../models/UploadFileType';
@@ -734,6 +784,7 @@ let typeMap: {[index: string]: any} = {
     "AnalysisFunctions": AnalysisFunctions,
     "AnalysisFunctionsList": AnalysisFunctionsList,
     "AnalysisRecord": AnalysisRecord,
+    "AnalysisReport": AnalysisReport,
     "AnalysisStringInput": AnalysisStringInput,
     "AnalysisStringsResponse": AnalysisStringsResponse,
     "AnalysisStringsStatusResponse": AnalysisStringsStatusResponse,
@@ -741,6 +792,7 @@ let typeMap: {[index: string]: any} = {
     "AnalysisUpdateRequest": AnalysisUpdateRequest,
     "AnalysisUpdateTagsRequest": AnalysisUpdateTagsRequest,
     "AnalysisUpdateTagsResponse": AnalysisUpdateTagsResponse,
+    "ApiCall": ApiCall,
     "AppApiRestV2AgentSchemaCapability": AppApiRestV2AgentSchemaCapability,
     "AppApiRestV2FunctionsResponsesFunction": AppApiRestV2FunctionsResponsesFunction,
     "AppApiRestV2FunctionsTypesFunction": AppApiRestV2FunctionsTypesFunction,
@@ -851,6 +903,7 @@ let typeMap: {[index: string]: any} = {
     "CommentUpdateRequest": CommentUpdateRequest,
     "ConfigResponse": ConfigResponse,
     "ConfirmToolInputBody": ConfirmToolInputBody,
+    "Connection": Connection,
     "Context": Context,
     "Conversation": Conversation,
     "ConversationContext": ConversationContext,
@@ -859,6 +912,9 @@ let typeMap: {[index: string]: any} = {
     "Created": Created,
     "DecompilationCommentContext": DecompilationCommentContext,
     "DieMatch": DieMatch,
+    "DnsQuery": DnsQuery,
+    "DrakvufFileMetadata": DrakvufFileMetadata,
+    "DynamicExecutionStatusResponse": DynamicExecutionStatusResponse,
     "ELFImportModel": ELFImportModel,
     "ELFModel": ELFModel,
     "ELFRelocation": ELFRelocation,
@@ -890,6 +946,8 @@ let typeMap: {[index: string]: any} = {
     "EventTOOLCONFIRMATIONREQUIRED": EventTOOLCONFIRMATIONREQUIRED,
     "ExportModel": ExportModel,
     "ExternalResponse": ExternalResponse,
+    "ExtractedURL": ExtractedURL,
+    "FileActivityEntry": FileActivityEntry,
     "FileHashes": FileHashes,
     "FileMetadata": FileMetadata,
     "FunctionBlockDestinationResponse": FunctionBlockDestinationResponse,
@@ -935,6 +993,7 @@ let typeMap: {[index: string]: any} = {
     "GetMeResponse": GetMeResponse,
     "GetPublicUserResponse": GetPublicUserResponse,
     "GlobalVariable": GlobalVariable,
+    "HttpRequest": HttpRequest,
     "IOC": IOC,
     "IconModel": IconModel,
     "ImportModel": ImportModel,
@@ -947,29 +1006,43 @@ let typeMap: {[index: string]: any} = {
     "MITRETechnique": MITRETechnique,
     "MatchedFunction": MatchedFunction,
     "MatchedFunctionSuggestion": MatchedFunctionSuggestion,
+    "MemdumpEntry": MemdumpEntry,
     "MetaModel": MetaModel,
     "ModelsResponse": ModelsResponse,
+    "ModuleLoadEntry": ModuleLoadEntry,
+    "MutexEntry": MutexEntry,
     "NameConfidence": NameConfidence,
     "NameSourceType": NameSourceType,
+    "NetworkActivity": NetworkActivity,
     "PDBDebugModel": PDBDebugModel,
     "PEModel": PEModel,
     "PaginationModel": PaginationModel,
     "Params": Params,
+    "ProcessActivityEntry": ProcessActivityEntry,
+    "ProcessMemdumps": ProcessMemdumps,
+    "ProcessNode": ProcessNode,
+    "ProcessTree": ProcessTree,
     "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
     "QueuePositionResponse": QueuePositionResponse,
     "QueuedWorkflowTaskResponse": QueuedWorkflowTaskResponse,
     "ReAnalysisForm": ReAnalysisForm,
     "Recent": Recent,
+    "RegistryOperation": RegistryOperation,
     "RelativeBinaryResponse": RelativeBinaryResponse,
     "ReportAnalysisResponse": ReportAnalysisResponse,
+    "ReportEvent": ReportEvent,
+    "ReportInfo": ReportInfo,
+    "ReportOptions": ReportOptions,
     "SBOM": SBOM,
     "SBOMPackage": SBOMPackage,
     "SandboxOptions": SandboxOptions,
+    "ScheduledTaskEntry": ScheduledTaskEntry,
     "ScrapeThirdPartyConfig": ScrapeThirdPartyConfig,
     "SectionModel": SectionModel,
     "SecurityModel": SecurityModel,
     "SegmentInfo": SegmentInfo,
     "SendMessageRequest": SendMessageRequest,
+    "ServiceEntry": ServiceEntry,
     "SingleCodeCertificateModel": SingleCodeCertificateModel,
     "SingleCodeSignatureModel": SingleCodeSignatureModel,
     "SinglePDBEntryModel": SinglePDBEntryModel,
@@ -991,6 +1064,7 @@ let typeMap: {[index: string]: any} = {
     "SseEventToolCallStartData": SseEventToolCallStartData,
     "SseEventToolConfirmationRequiredData": SseEventToolConfirmationRequiredData,
     "StackVariable": StackVariable,
+    "StartupInfo": StartupInfo,
     "StatusOutput": StatusOutput,
     "StatusResponse": StatusResponse,
     "StreamEvents200ResponseInner": StreamEvents200ResponseInnerClass,
@@ -1009,6 +1083,7 @@ let typeMap: {[index: string]: any} = {
     "TimestampModel": TimestampModel,
     "TriageFunctionResponse": TriageFunctionResponse,
     "TriageReportResponse": TriageReportResponse,
+    "Ttp": Ttp,
     "TypeDefinition": TypeDefinition,
     "UpdateFunctionDataTypes": UpdateFunctionDataTypes,
     "UploadResponse": UploadResponse,
