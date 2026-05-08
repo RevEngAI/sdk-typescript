@@ -9,21 +9,15 @@
  * Do not edit the class manually.
  */
 
-import { SandboxStartMethod } from '../models/SandboxStartMethod';
-import { SandboxTimeout } from '../models/SandboxTimeout';
 import { HttpFile } from '../http/http';
 
-export class SandboxOptions {
-    'enabled'?: boolean;
-    /**
-    * The command line parameters to pass to the dynamic execution sandbox. Requires `sandbox` to be True.
-    */
-    'commandLineArgs'?: string;
-    'startMethod'?: SandboxStartMethod | null;
-    /**
-    * Maximum execution time for the sandbox run, in seconds. Allowed values: 120 (2m), 180 (3m), 300 (5m), 600 (10m).
-    */
-    'timeout'?: SandboxTimeout;
+export class Ttp {
+    'attck'?: Array<string> | null;
+    'mbc'?: Array<any> | null;
+    'name'?: string | null;
+    'namespace'?: string | null;
+    'processSeqids'?: Array<number> | null;
+    'score': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,36 +25,46 @@ export class SandboxOptions {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "enabled",
-            "baseName": "enabled",
-            "type": "boolean",
+            "name": "attck",
+            "baseName": "att&amp;ck",
+            "type": "Array<string>",
             "format": ""
         },
         {
-            "name": "commandLineArgs",
-            "baseName": "command_line_args",
+            "name": "mbc",
+            "baseName": "mbc",
+            "type": "Array<any>",
+            "format": ""
+        },
+        {
+            "name": "name",
+            "baseName": "name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "startMethod",
-            "baseName": "start_method",
-            "type": "SandboxStartMethod",
+            "name": "namespace",
+            "baseName": "namespace",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "timeout",
-            "baseName": "timeout",
-            "type": "SandboxTimeout",
-            "format": ""
+            "name": "processSeqids",
+            "baseName": "process_seqids",
+            "type": "Array<number>",
+            "format": "int64"
+        },
+        {
+            "name": "score",
+            "baseName": "score",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return SandboxOptions.attributeTypeMap;
+        return Ttp.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-
