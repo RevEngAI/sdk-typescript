@@ -9,21 +9,17 @@
  * Do not edit the class manually.
  */
 
-import { SandboxStartMethod } from '../models/SandboxStartMethod';
-import { SandboxTimeout } from '../models/SandboxTimeout';
+import { Connection } from '../models/Connection';
+import { DnsQuery } from '../models/DnsQuery';
+import { ExtractedURL } from '../models/ExtractedURL';
+import { HttpRequest } from '../models/HttpRequest';
 import { HttpFile } from '../http/http';
 
-export class SandboxOptions {
-    'enabled'?: boolean;
-    /**
-    * The command line parameters to pass to the dynamic execution sandbox. Requires `sandbox` to be True.
-    */
-    'commandLineArgs'?: string;
-    'startMethod'?: SandboxStartMethod | null;
-    /**
-    * Maximum execution time for the sandbox run, in seconds. Allowed values: 120 (2m), 180 (3m), 300 (5m), 600 (10m).
-    */
-    'timeout'?: SandboxTimeout;
+export class NetworkActivity {
+    'connections'?: Array<Connection> | null;
+    'dnsQueries'?: Array<DnsQuery> | null;
+    'extractedUrls'?: Array<ExtractedURL> | null;
+    'httpRequests'?: Array<HttpRequest> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,36 +27,34 @@ export class SandboxOptions {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "enabled",
-            "baseName": "enabled",
-            "type": "boolean",
+            "name": "connections",
+            "baseName": "connections",
+            "type": "Array<Connection>",
             "format": ""
         },
         {
-            "name": "commandLineArgs",
-            "baseName": "command_line_args",
-            "type": "string",
+            "name": "dnsQueries",
+            "baseName": "dns_queries",
+            "type": "Array<DnsQuery>",
             "format": ""
         },
         {
-            "name": "startMethod",
-            "baseName": "start_method",
-            "type": "SandboxStartMethod",
+            "name": "extractedUrls",
+            "baseName": "extracted_urls",
+            "type": "Array<ExtractedURL>",
             "format": ""
         },
         {
-            "name": "timeout",
-            "baseName": "timeout",
-            "type": "SandboxTimeout",
+            "name": "httpRequests",
+            "baseName": "http_requests",
+            "type": "Array<HttpRequest>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return SandboxOptions.attributeTypeMap;
+        return NetworkActivity.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-

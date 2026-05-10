@@ -9,21 +9,16 @@
  * Do not edit the class manually.
  */
 
-import { SandboxStartMethod } from '../models/SandboxStartMethod';
-import { SandboxTimeout } from '../models/SandboxTimeout';
+import { ReportEvent } from '../models/ReportEvent';
 import { HttpFile } from '../http/http';
 
-export class SandboxOptions {
-    'enabled'?: boolean;
-    /**
-    * The command line parameters to pass to the dynamic execution sandbox. Requires `sandbox` to be True.
-    */
-    'commandLineArgs'?: string;
-    'startMethod'?: SandboxStartMethod | null;
-    /**
-    * Maximum execution time for the sandbox run, in seconds. Allowed values: 120 (2m), 180 (3m), 300 (5m), 600 (10m).
-    */
-    'timeout'?: SandboxTimeout;
+export class Connection {
+    'events'?: Array<ReportEvent> | null;
+    'localIp': string | null;
+    'localPort': any | null;
+    'protocol': string | null;
+    'remoteIp': string | null;
+    'remotePort': any | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,36 +26,46 @@ export class SandboxOptions {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "enabled",
-            "baseName": "enabled",
-            "type": "boolean",
+            "name": "events",
+            "baseName": "events",
+            "type": "Array<ReportEvent>",
             "format": ""
         },
         {
-            "name": "commandLineArgs",
-            "baseName": "command_line_args",
+            "name": "localIp",
+            "baseName": "local_ip",
             "type": "string",
             "format": ""
         },
         {
-            "name": "startMethod",
-            "baseName": "start_method",
-            "type": "SandboxStartMethod",
+            "name": "localPort",
+            "baseName": "local_port",
+            "type": "any",
             "format": ""
         },
         {
-            "name": "timeout",
-            "baseName": "timeout",
-            "type": "SandboxTimeout",
+            "name": "protocol",
+            "baseName": "protocol",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "remoteIp",
+            "baseName": "remote_ip",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "remotePort",
+            "baseName": "remote_port",
+            "type": "any",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return SandboxOptions.attributeTypeMap;
+        return Connection.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-

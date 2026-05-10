@@ -9,21 +9,16 @@
  * Do not edit the class manually.
  */
 
-import { SandboxStartMethod } from '../models/SandboxStartMethod';
-import { SandboxTimeout } from '../models/SandboxTimeout';
+import { ReportEvent } from '../models/ReportEvent';
 import { HttpFile } from '../http/http';
 
-export class SandboxOptions {
-    'enabled'?: boolean;
-    /**
-    * The command line parameters to pass to the dynamic execution sandbox. Requires `sandbox` to be True.
-    */
-    'commandLineArgs'?: string;
-    'startMethod'?: SandboxStartMethod | null;
-    /**
-    * Maximum execution time for the sandbox run, in seconds. Allowed values: 120 (2m), 180 (3m), 300 (5m), 600 (10m).
-    */
-    'timeout'?: SandboxTimeout;
+export class ServiceEntry {
+    'binaryPath'?: string | null;
+    'displayName'?: string | null;
+    'events'?: Array<ReportEvent> | null;
+    'name'?: string | null;
+    'serviceType'?: string | null;
+    'startType'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,36 +26,46 @@ export class SandboxOptions {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "enabled",
-            "baseName": "enabled",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "commandLineArgs",
-            "baseName": "command_line_args",
+            "name": "binaryPath",
+            "baseName": "binary_path",
             "type": "string",
             "format": ""
         },
         {
-            "name": "startMethod",
-            "baseName": "start_method",
-            "type": "SandboxStartMethod",
+            "name": "displayName",
+            "baseName": "display_name",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "timeout",
-            "baseName": "timeout",
-            "type": "SandboxTimeout",
+            "name": "events",
+            "baseName": "events",
+            "type": "Array<ReportEvent>",
+            "format": ""
+        },
+        {
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "serviceType",
+            "baseName": "service_type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "startType",
+            "baseName": "start_type",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return SandboxOptions.attributeTypeMap;
+        return ServiceEntry.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-

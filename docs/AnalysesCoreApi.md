@@ -72,6 +72,8 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
       sandboxConfig: {
         enabled: false,
         commandLineArgs: "",
+        startMethod: "standard_user_process",
+        timeout: 120,
       },
     },
     binaryConfig: {

@@ -9,21 +9,13 @@
  * Do not edit the class manually.
  */
 
-import { SandboxStartMethod } from '../models/SandboxStartMethod';
-import { SandboxTimeout } from '../models/SandboxTimeout';
 import { HttpFile } from '../http/http';
 
-export class SandboxOptions {
-    'enabled'?: boolean;
-    /**
-    * The command line parameters to pass to the dynamic execution sandbox. Requires `sandbox` to be True.
-    */
-    'commandLineArgs'?: string;
-    'startMethod'?: SandboxStartMethod | null;
-    /**
-    * Maximum execution time for the sandbox run, in seconds. Allowed values: 120 (2m), 180 (3m), 300 (5m), 600 (10m).
-    */
-    'timeout'?: SandboxTimeout;
+export class ApiCall {
+    'calledFrom'?: string | null;
+    'calledFromRva'?: string | null;
+    'fromModule'?: string | null;
+    'method': string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,36 +23,34 @@ export class SandboxOptions {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "enabled",
-            "baseName": "enabled",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "commandLineArgs",
-            "baseName": "command_line_args",
+            "name": "calledFrom",
+            "baseName": "called_from",
             "type": "string",
             "format": ""
         },
         {
-            "name": "startMethod",
-            "baseName": "start_method",
-            "type": "SandboxStartMethod",
+            "name": "calledFromRva",
+            "baseName": "called_from_rva",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "timeout",
-            "baseName": "timeout",
-            "type": "SandboxTimeout",
+            "name": "fromModule",
+            "baseName": "from_module",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "method",
+            "baseName": "method",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return SandboxOptions.attributeTypeMap;
+        return ApiCall.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-
