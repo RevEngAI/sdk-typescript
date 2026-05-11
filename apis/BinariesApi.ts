@@ -25,26 +25,14 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Downloads a zipped binary with password protection
      * @param binaryId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async downloadZippedBinary(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async downloadZippedBinary(binaryId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "downloadZippedBinary", "binaryId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -54,36 +42,6 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -104,26 +62,14 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the additional details of a binary
      * @param binaryId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getBinaryAdditionalDetails(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryAdditionalDetails(binaryId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryAdditionalDetails", "binaryId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -133,36 +79,6 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -183,26 +99,14 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the status of the additional details task for a binary
      * @param binaryId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getBinaryAdditionalDetailsStatus(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryAdditionalDetailsStatus(binaryId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryAdditionalDetailsStatus", "binaryId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -212,36 +116,6 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -262,26 +136,14 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the details of a binary
      * @param binaryId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getBinaryDetails(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryDetails(binaryId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryDetails", "binaryId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -291,36 +153,6 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -341,26 +173,14 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the die info of a binary
      * @param binaryId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getBinaryDieInfo(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryDieInfo(binaryId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryDieInfo", "binaryId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -370,36 +190,6 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -420,26 +210,14 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the external details of a binary
      * @param binaryId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getBinaryExternals(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryExternals(binaryId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryExternals", "binaryId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -449,36 +227,6 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -499,26 +247,14 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the status of the unpack binary task for a binary
      * @param binaryId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getBinaryRelatedStatus(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryRelatedStatus(binaryId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryRelatedStatus", "binaryId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -528,36 +264,6 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -578,26 +284,14 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * Gets the related binaries of a binary.
      * @param binaryId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getRelatedBinaries(binaryId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getRelatedBinaries(binaryId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getRelatedBinaries", "binaryId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -607,36 +301,6 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;

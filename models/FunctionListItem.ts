@@ -113,6 +113,7 @@ export enum FunctionListItemNameSourceTypeEnum {
     User = 'USER',
     AutoUnstrip = 'AUTO_UNSTRIP',
     External = 'EXTERNAL',
-    AiUnstrip = 'AI_UNSTRIP'
+    AiUnstrip = 'AI_UNSTRIP',
+    AiAgent = 'AI_AGENT'
 }
 

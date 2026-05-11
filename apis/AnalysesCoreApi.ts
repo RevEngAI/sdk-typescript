@@ -46,15 +46,9 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      * @param xRevEngApplication 
      */
-    public async createAnalysis(analysisCreateRequest: AnalysisCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, xRevEngApplication?: string, _options?: Configuration): Promise<RequestContext> {
+    public async createAnalysis(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisCreateRequest' is not null or undefined
@@ -64,48 +58,12 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
 
 
 
-
-
-
-
-
-
         // Path Params
         const localVarPath = '/v2/analyses';
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
         // Header Params
         requestContext.setHeaderParam("X-RevEng-Application", ObjectSerializer.serialize(xRevEngApplication, "string", ""));
@@ -141,26 +99,14 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Deletes an analysis based on the provided analysis ID.
      * Delete Analysis
      * @param analysisId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async deleteAnalysis(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async deleteAnalysis(analysisId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "deleteAnalysis", "analysisId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -170,36 +116,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -259,26 +175,14 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
      * Get Analysis Function Map
      * @param analysisId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getAnalysisFunctionMap(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisFunctionMap(analysisId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "getAnalysisFunctionMap", "analysisId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -288,36 +192,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -339,26 +213,14 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param analysisId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getAnalysisLogs(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisLogs(analysisId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "getAnalysisLogs", "analysisId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -368,36 +230,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -419,26 +251,14 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Gets the params that the analysis was run with
      * Gets analysis param information
      * @param analysisId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getAnalysisParams(analysisId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisParams(analysisId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "getAnalysisParams", "analysisId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -448,36 +268,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -576,14 +366,8 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Insert a log entry for an analysis
      * @param analysisId 
      * @param insertAnalysisLogRequest 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async insertAnalysisLog(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async insertAnalysisLog(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -598,12 +382,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-
-
-
-
-
-
         // Path Params
         const localVarPath = '/v2/analyses/{analysis_id}/logs'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
@@ -611,36 +389,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         // Body Params
@@ -887,15 +635,9 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Requeue Analysis
      * @param analysisId 
      * @param reAnalysisForm 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      * @param xRevEngApplication 
      */
-    public async requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, xRevEngApplication?: string, _options?: Configuration): Promise<RequestContext> {
+    public async requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -911,12 +653,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
 
 
 
-
-
-
-
-
-
         // Path Params
         const localVarPath = '/v2/analyses/{analysis_id}/requeue'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
@@ -924,36 +660,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
         // Header Params
         requestContext.setHeaderParam("X-RevEng-Application", ObjectSerializer.serialize(xRevEngApplication, "string", ""));
@@ -990,14 +696,8 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Update Analysis
      * @param analysisId 
      * @param analysisUpdateRequest 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -1012,12 +712,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-
-
-
-
-
-
         // Path Params
         const localVarPath = '/v2/analyses/{analysis_id}'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
@@ -1025,36 +719,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         // Body Params
@@ -1088,14 +752,8 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * Update Analysis Tags
      * @param analysisId 
      * @param analysisUpdateTagsRequest 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -1110,12 +768,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-
-
-
-
-
-
         // Path Params
         const localVarPath = '/v2/analyses/{analysis_id}/tags'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
@@ -1123,36 +775,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         // Body Params
@@ -1186,15 +808,9 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param uploadFileType 
      * @param file 
      * @param packedPassword 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      * @param forceOverwrite 
      */
-    public async uploadFile(uploadFileType: UploadFileType, file: string, packedPassword?: string, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, forceOverwrite?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async uploadFile(uploadFileType: UploadFileType, file: string, packedPassword?: string, forceOverwrite?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'uploadFileType' is not null or undefined
@@ -1211,12 +827,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
 
 
 
-
-
-
-
-
-
         // Path Params
         const localVarPath = '/v2/upload';
 
@@ -1227,36 +837,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (packedPassword !== undefined) {
             requestContext.setQueryParam("packed_password", ObjectSerializer.serialize(packedPassword, "string", ""));
-        }
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
         }
 
         // Form Params

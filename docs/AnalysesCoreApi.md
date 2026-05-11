@@ -86,18 +86,6 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
     },
   },
   
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
-  
   xRevEngApplication: "X-RevEng-Application_example",
 };
 
@@ -111,12 +99,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisCreateRequest** | **AnalysisCreateRequest**|  |
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
  **xRevEngApplication** | [**string**] |  | (optional) defaults to undefined
 
 
@@ -162,18 +144,6 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiDeleteAnalysisRequest = {
   
   analysisId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.deleteAnalysis(request);
@@ -186,12 +156,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -290,18 +254,6 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiGetAnalysisFunctionMapRequest = {
   
   analysisId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getAnalysisFunctionMap(request);
@@ -314,12 +266,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -362,18 +308,6 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiGetAnalysisLogsRequest = {
   
   analysisId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getAnalysisLogs(request);
@@ -386,12 +320,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -434,18 +362,6 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiGetAnalysisParamsRequest = {
   
   analysisId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getAnalysisParams(request);
@@ -458,12 +374,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -621,18 +531,6 @@ const request: AnalysesCoreApiInsertAnalysisLogRequest = {
   insertAnalysisLogRequest: {
     log: "log_example",
   },
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.insertAnalysisLog(request);
@@ -646,12 +544,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **insertAnalysisLogRequest** | **InsertAnalysisLogRequest**|  |
  **analysisId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -913,18 +805,6 @@ const request: AnalysesCoreApiRequeueAnalysisRequest = {
     noCache: false,
   },
   
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
-  
   xRevEngApplication: "X-RevEng-Application_example",
 };
 
@@ -939,12 +819,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **reAnalysisForm** | **ReAnalysisForm**|  |
  **analysisId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
  **xRevEngApplication** | [**string**] |  | (optional) defaults to undefined
 
 
@@ -995,18 +869,6 @@ const request: AnalysesCoreApiUpdateAnalysisRequest = {
     binaryName: "binaryName_example",
     analysisScope: "PUBLIC",
   },
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.updateAnalysis(request);
@@ -1020,12 +882,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisUpdateRequest** | **AnalysisUpdateRequest**|  |
  **analysisId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -1074,18 +930,6 @@ const request: AnalysesCoreApiUpdateAnalysisTagsRequest = {
       "tags_example",
     ],
   },
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.updateAnalysisTags(request);
@@ -1099,12 +943,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisUpdateTagsRequest** | **AnalysisUpdateTagsRequest**|  |
  **analysisId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -1151,18 +989,6 @@ const request: AnalysesCoreApiUploadFileRequest = {
   
   packedPassword: "packed_password_example",
   
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
-  
   forceOverwrite: false,
 };
 
@@ -1178,12 +1004,6 @@ Name | Type | Description  | Notes
  **uploadFileType** | **UploadFileType** |  | defaults to undefined
  **file** | [**string**] |  | defaults to undefined
  **packedPassword** | [**string**] |  | (optional) defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
  **forceOverwrite** | [**boolean**] |  | (optional) defaults to false
 
 

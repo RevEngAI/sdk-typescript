@@ -30,14 +30,8 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * Create a comment for this function
      * @param functionId 
      * @param functionCommentCreateRequest 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
@@ -52,12 +46,6 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         }
 
 
-
-
-
-
-
-
         // Path Params
         const localVarPath = '/v2/functions/{function_id}/ai-decompilation/comments'
             .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
@@ -65,36 +53,6 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         // Body Params
@@ -166,14 +124,8 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * Delete a comment
      * @param commentId 
      * @param functionId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async deleteAiDecompilationComment(commentId: number, functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async deleteAiDecompilationComment(commentId: number, functionId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commentId' is not null or undefined
@@ -188,12 +140,6 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         }
 
 
-
-
-
-
-
-
         // Path Params
         const localVarPath = '/v2/functions/{function_id}/ai-decompilation/comments/{comment_id}'
             .replace('{' + 'comment_id' + '}', encodeURIComponent(String(commentId)))
@@ -202,36 +148,6 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -253,26 +169,14 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async getAiDecompilationComments(functionId: number, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAiDecompilationComments(functionId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationComments", "functionId");
         }
-
-
-
-
-
-
 
 
         // Path Params
@@ -282,36 +186,6 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -471,14 +345,8 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * @param commentId 
      * @param functionId 
      * @param commentUpdateRequest 
-     * @param endpointUrl 
-     * @param localCacheDir 
-     * @param localCacheMaxSizeMb 
-     * @param customerSamplesBucket 
-     * @param firmwareSamplesBucket 
-     * @param maxRetryAttempts 
      */
-    public async updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, endpointUrl?: string, localCacheDir?: string, localCacheMaxSizeMb?: number, customerSamplesBucket?: string, firmwareSamplesBucket?: string, maxRetryAttempts?: number, _options?: Configuration): Promise<RequestContext> {
+    public async updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'commentId' is not null or undefined
@@ -499,12 +367,6 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         }
 
 
-
-
-
-
-
-
         // Path Params
         const localVarPath = '/v2/functions/{function_id}/ai-decompilation/comments/{comment_id}'
             .replace('{' + 'comment_id' + '}', encodeURIComponent(String(commentId)))
@@ -513,36 +375,6 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (endpointUrl !== undefined) {
-            requestContext.setQueryParam("endpoint_url", ObjectSerializer.serialize(endpointUrl, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheDir !== undefined) {
-            requestContext.setQueryParam("local_cache_dir", ObjectSerializer.serialize(localCacheDir, "string", ""));
-        }
-
-        // Query Params
-        if (localCacheMaxSizeMb !== undefined) {
-            requestContext.setQueryParam("local_cache_max_size_mb", ObjectSerializer.serialize(localCacheMaxSizeMb, "number", ""));
-        }
-
-        // Query Params
-        if (customerSamplesBucket !== undefined) {
-            requestContext.setQueryParam("customer_samples_bucket", ObjectSerializer.serialize(customerSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (firmwareSamplesBucket !== undefined) {
-            requestContext.setQueryParam("firmware_samples_bucket", ObjectSerializer.serialize(firmwareSamplesBucket, "string", ""));
-        }
-
-        // Query Params
-        if (maxRetryAttempts !== undefined) {
-            requestContext.setQueryParam("max_retry_attempts", ObjectSerializer.serialize(maxRetryAttempts, "number", ""));
-        }
 
 
         // Body Params
