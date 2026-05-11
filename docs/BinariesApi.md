@@ -31,18 +31,6 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiDownloadZippedBinaryRequest = {
   
   binaryId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.downloadZippedBinary(request);
@@ -55,12 +43,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -102,18 +84,6 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetBinaryAdditionalDetailsRequest = {
   
   binaryId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getBinaryAdditionalDetails(request);
@@ -126,12 +96,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -173,18 +137,6 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetBinaryAdditionalDetailsStatusRequest = {
   
   binaryId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getBinaryAdditionalDetailsStatus(request);
@@ -197,12 +149,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -244,18 +190,6 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetBinaryDetailsRequest = {
   
   binaryId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getBinaryDetails(request);
@@ -268,12 +202,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -315,18 +243,6 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetBinaryDieInfoRequest = {
   
   binaryId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getBinaryDieInfo(request);
@@ -339,12 +255,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -386,18 +296,6 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetBinaryExternalsRequest = {
   
   binaryId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getBinaryExternals(request);
@@ -410,12 +308,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -457,18 +349,6 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetBinaryRelatedStatusRequest = {
   
   binaryId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getBinaryRelatedStatus(request);
@@ -481,12 +361,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -528,18 +402,6 @@ const apiInstance = new BinariesApi(configuration);
 const request: BinariesApiGetRelatedBinariesRequest = {
   
   binaryId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getRelatedBinaries(request);
@@ -552,12 +414,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **binaryId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type

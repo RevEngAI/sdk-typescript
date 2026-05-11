@@ -166,25 +166,11 @@ Retrieves all comments created by a specific user. Only returns comments for res
 
 ```typescript
 import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
-import type { AuthenticationUsersApiGetUserCommentsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AuthenticationUsersApi(configuration);
 
-const request: AuthenticationUsersApiGetUserCommentsRequest = {
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
-};
+const request = {};
 
 const data = await apiInstance.getUserComments(request);
 console.log('API called successfully. Returned data:', data);
@@ -192,15 +178,7 @@ console.log('API called successfully. Returned data:', data);
 
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
+This endpoint does not need any parameter.
 
 
 ### Return type

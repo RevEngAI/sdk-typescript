@@ -41,18 +41,6 @@ const request: FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest = 
       endLine: 1,
     },
   },
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.createAiDecompilationComment(request);
@@ -66,12 +54,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionCommentCreateRequest** | **FunctionCommentCreateRequest**|  |
  **functionId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -175,18 +157,6 @@ const request: FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest = 
   commentId: 1,
   
   functionId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.deleteAiDecompilationComment(request);
@@ -200,12 +170,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **commentId** | [**number**] |  | defaults to undefined
  **functionId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -250,18 +214,6 @@ const apiInstance = new FunctionsAIDecompilationApi(configuration);
 const request: FunctionsAIDecompilationApiGetAiDecompilationCommentsRequest = {
   
   functionId: 1,
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.getAiDecompilationComments(request);
@@ -274,12 +226,6 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
@@ -500,18 +446,6 @@ const request: FunctionsAIDecompilationApiUpdateAiDecompilationCommentRequest = 
   commentUpdateRequest: {
     content: "content_example",
   },
-  
-  endpointUrl: "endpoint_url_example",
-  
-  localCacheDir: "local_cache_dir_example",
-  
-  localCacheMaxSizeMb: 1,
-  
-  customerSamplesBucket: "customer_samples_bucket_example",
-  
-  firmwareSamplesBucket: "firmware_samples_bucket_example",
-  
-  maxRetryAttempts: 5,
 };
 
 const data = await apiInstance.updateAiDecompilationComment(request);
@@ -526,12 +460,6 @@ Name | Type | Description  | Notes
  **commentUpdateRequest** | **CommentUpdateRequest**|  |
  **commentId** | [**number**] |  | defaults to undefined
  **functionId** | [**number**] |  | defaults to undefined
- **endpointUrl** | [**string**] |  | (optional) defaults to undefined
- **localCacheDir** | [**string**] |  | (optional) defaults to undefined
- **localCacheMaxSizeMb** | [**number**] |  | (optional) defaults to undefined
- **customerSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **firmwareSamplesBucket** | [**string**] |  | (optional) defaults to undefined
- **maxRetryAttempts** | [**number**] |  | (optional) defaults to 5
 
 
 ### Return type
