@@ -15,5 +15,6 @@ export enum SandboxTimeout {
     NUMBER_120 = 120,
     NUMBER_180 = 180,
     NUMBER_300 = 300,
-    NUMBER_600 = 600
+    NUMBER_600 = 600,
+    NUMBER_unknown_default_open_api = 11184809
 }
