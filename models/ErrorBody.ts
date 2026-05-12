@@ -107,6 +107,7 @@ export enum ErrorBodyCodeEnum {
     OidcDiscoveryFailed = 'OIDC_DISCOVERY_FAILED',
     PasswordResetRequired = 'PASSWORD_RESET_REQUIRED',
     PaymentRequired = 'PAYMENT_REQUIRED',
+    ReportRenderFailed = 'REPORT_RENDER_FAILED',
     RequestEntityTooLarge = 'REQUEST_ENTITY_TOO_LARGE',
     RunAlreadyActive = 'RUN_ALREADY_ACTIVE',
     SelfDeletionNotAllowed = 'SELF_DELETION_NOT_ALLOWED',

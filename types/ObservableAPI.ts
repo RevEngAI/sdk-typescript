@@ -145,6 +145,7 @@ import { CollectionUpdateRequest } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
+import { CommentsData } from '../models/CommentsData';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
@@ -152,9 +153,11 @@ import { Context } from '../models/Context';
 import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
+import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
+import { DecompilationData } from '../models/DecompilationData';
 import { DieMatch } from '../models/DieMatch';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
@@ -236,6 +239,7 @@ import { FunctionTypeOutput } from '../models/FunctionTypeOutput';
 import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
 import { FunctionsListRename } from '../models/FunctionsListRename';
 import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
+import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
@@ -247,6 +251,7 @@ import { IOC } from '../models/IOC';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
+import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
@@ -265,6 +270,7 @@ import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType } from '../models/NameSourceType';
 import { NetworkActivity } from '../models/NetworkActivity';
+import { NumericAddr } from '../models/NumericAddr';
 import { Order } from '../models/Order';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
@@ -275,14 +281,17 @@ import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
 import { ProcessTree } from '../models/ProcessTree';
+import { ProgressMessage } from '../models/ProgressMessage';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
+import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { ReplacementValue } from '../models/ReplacementValue';
 import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
@@ -330,6 +339,7 @@ import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
+import { SummaryData } from '../models/SummaryData';
 import { Symbols } from '../models/Symbols';
 import { Tag } from '../models/Tag';
 import { TagItem } from '../models/TagItem';
@@ -340,6 +350,7 @@ import { TaskResponse } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse } from '../models/TaskStatusResponse';
 import { TimestampModel } from '../models/TimestampModel';
+import { TokenisedData } from '../models/TokenisedData';
 import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
 import { Ttp } from '../models/Ttp';
@@ -348,9 +359,12 @@ import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
 import { UploadFileType } from '../models/UploadFileType';
 import { UploadResponse } from '../models/UploadResponse';
 import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
+import { UpsertOverridesData } from '../models/UpsertOverridesData';
+import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
+import { WorkflowProgress } from '../models/WorkflowProgress';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
 import { XrefResponse } from '../models/XrefResponse';
@@ -3089,6 +3103,42 @@ export class ObservableFunctionsAIDecompilationApi {
     }
 
     /**
+     * Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Start AI decompilation
+     * @param functionId Function ID
+     * @param [contextAware] Use context-aware decompilation
+     */
+    public createAiDecompilationWithHttpInfo(functionId: number, contextAware?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<CreateAIDecompOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createAiDecompilation(functionId, contextAware, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createAiDecompilationWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Start AI decompilation
+     * @param functionId Function ID
+     * @param [contextAware] Use context-aware decompilation
+     */
+    public createAiDecompilation(functionId: number, contextAware?: boolean, _options?: ConfigurationOptions): Observable<CreateAIDecompOutputBody> {
+        return this.createAiDecompilationWithHttpInfo(functionId, contextAware, _options).pipe(map((apiResponse: HttpInfo<CreateAIDecompOutputBody>) => apiResponse.data));
+    }
+
+    /**
      * Creates a comment associated with a specified function).
      * Create a comment for this function
      * @param functionId
@@ -3195,6 +3245,40 @@ export class ObservableFunctionsAIDecompilationApi {
     }
 
     /**
+     * Returns the decompilation source code.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation result
+     * @param functionId Function ID
+     */
+    public getAiDecompilationWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<DecompilationData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAiDecompilation(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAiDecompilationWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the decompilation source code.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation result
+     * @param functionId Function ID
+     */
+    public getAiDecompilation(functionId: number, _options?: ConfigurationOptions): Observable<DecompilationData> {
+        return this.getAiDecompilationWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<DecompilationData>) => apiResponse.data));
+    }
+
+    /**
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
@@ -3229,6 +3313,74 @@ export class ObservableFunctionsAIDecompilationApi {
     }
 
     /**
+     * Returns the commented source if available. Returns pending status if comments are still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation inline comments
+     * @param functionId Function ID
+     */
+    public getAiDecompilationInlineCommentsWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<CommentsData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAiDecompilationInlineComments(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAiDecompilationInlineCommentsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the commented source if available. Returns pending status if comments are still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation inline comments
+     * @param functionId Function ID
+     */
+    public getAiDecompilationInlineComments(functionId: number, _options?: ConfigurationOptions): Observable<CommentsData> {
+        return this.getAiDecompilationInlineCommentsWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<CommentsData>) => apiResponse.data));
+    }
+
+    /**
+     * Returns fine-grained progress of the inline comments generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get inline comments generation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationInlineCommentsStatusWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<WorkflowProgress>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAiDecompilationInlineCommentsStatus(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAiDecompilationInlineCommentsStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns fine-grained progress of the inline comments generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get inline comments generation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationInlineCommentsStatus(functionId: number, _options?: ConfigurationOptions): Observable<WorkflowProgress> {
+        return this.getAiDecompilationInlineCommentsStatusWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<WorkflowProgress>) => apiResponse.data));
+    }
+
+    /**
      * Get rating for AI decompilation
      * @param functionId The ID of the function for which to get the rating
      */
@@ -3258,6 +3410,108 @@ export class ObservableFunctionsAIDecompilationApi {
      */
     public getAiDecompilationRating(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseUnionGetAiDecompilationRatingResponseNoneType> {
         return this.getAiDecompilationRatingWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUnionGetAiDecompilationRatingResponseNoneType>) => apiResponse.data));
+    }
+
+    /**
+     * Returns fine-grained progress of the running workflow including current step, total steps, and messages. Falls back to the database task status when no workflow is running.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationStatusWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<WorkflowProgress>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAiDecompilationStatus(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAiDecompilationStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns fine-grained progress of the running workflow including current step, total steps, and messages. Falls back to the database task status when no workflow is running.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationStatus(functionId: number, _options?: ConfigurationOptions): Observable<WorkflowProgress> {
+        return this.getAiDecompilationStatusWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<WorkflowProgress>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the summary if available. Returns pending status if summary is still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation summary
+     * @param functionId Function ID
+     */
+    public getAiDecompilationSummaryWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<SummaryData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAiDecompilationSummary(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAiDecompilationSummaryWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the summary if available. Returns pending status if summary is still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation summary
+     * @param functionId Function ID
+     */
+    public getAiDecompilationSummary(functionId: number, _options?: ConfigurationOptions): Observable<SummaryData> {
+        return this.getAiDecompilationSummaryWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<SummaryData>) => apiResponse.data));
+    }
+
+    /**
+     * Returns fine-grained progress of the summary generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get summary generation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationSummaryStatusWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<WorkflowProgress>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAiDecompilationSummaryStatus(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAiDecompilationSummaryStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns fine-grained progress of the summary generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get summary generation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationSummaryStatus(functionId: number, _options?: ConfigurationOptions): Observable<WorkflowProgress> {
+        return this.getAiDecompilationSummaryStatusWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<WorkflowProgress>) => apiResponse.data));
     }
 
     /**
@@ -3333,6 +3587,108 @@ export class ObservableFunctionsAIDecompilationApi {
     }
 
     /**
+     * Returns the decompilation with placeholder tokens, the function mapping for token resolution, and the predicted function name.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get tokenised AI decompilation with function mapping
+     * @param functionId Function ID
+     */
+    public getAiDecompilationTokenisedWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<TokenisedData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAiDecompilationTokenised(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAiDecompilationTokenisedWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the decompilation with placeholder tokens, the function mapping for token resolution, and the predicted function name.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get tokenised AI decompilation with function mapping
+     * @param functionId Function ID
+     */
+    public getAiDecompilationTokenised(functionId: number, _options?: ConfigurationOptions): Observable<TokenisedData> {
+        return this.getAiDecompilationTokenisedWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<TokenisedData>) => apiResponse.data));
+    }
+
+    /**
+     * Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Regenerate AI decompilation inline comments
+     * @param functionId Function ID
+     */
+    public regenerateAiDecompilationInlineCommentsWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<RegenerateOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.regenerateAiDecompilationInlineComments(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.regenerateAiDecompilationInlineCommentsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Regenerate AI decompilation inline comments
+     * @param functionId Function ID
+     */
+    public regenerateAiDecompilationInlineComments(functionId: number, _options?: ConfigurationOptions): Observable<RegenerateOutputBody> {
+        return this.regenerateAiDecompilationInlineCommentsWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<RegenerateOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Starts a new summary generation workflow for the function. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Regenerate AI decompilation summary
+     * @param functionId Function ID
+     */
+    public regenerateAiDecompilationSummaryWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<RegenerateOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.regenerateAiDecompilationSummary(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.regenerateAiDecompilationSummaryWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Starts a new summary generation workflow for the function. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Regenerate AI decompilation summary
+     * @param functionId Function ID
+     */
+    public regenerateAiDecompilationSummary(functionId: number, _options?: ConfigurationOptions): Observable<RegenerateOutputBody> {
+        return this.regenerateAiDecompilationSummaryWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<RegenerateOutputBody>) => apiResponse.data));
+    }
+
+    /**
      * Updates the content of an existing comment. Users can only update their own comments.
      * Update a comment
      * @param commentId
@@ -3368,6 +3724,42 @@ export class ObservableFunctionsAIDecompilationApi {
      */
     public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
         return this.updateAiDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Upsert variable/function name overrides
+     * @param functionId Function ID
+     * @param upsertOverridesInputBody
+     */
+    public upsertAiDecompilationOverridesWithHttpInfo(functionId: number, upsertOverridesInputBody: UpsertOverridesInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<UpsertOverridesData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.upsertAiDecompilationOverrides(functionId, upsertOverridesInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.upsertAiDecompilationOverridesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Upsert variable/function name overrides
+     * @param functionId Function ID
+     * @param upsertOverridesInputBody
+     */
+    public upsertAiDecompilationOverrides(functionId: number, upsertOverridesInputBody: UpsertOverridesInputBody, _options?: ConfigurationOptions): Observable<UpsertOverridesData> {
+        return this.upsertAiDecompilationOverridesWithHttpInfo(functionId, upsertOverridesInputBody, _options).pipe(map((apiResponse: HttpInfo<UpsertOverridesData>) => apiResponse.data));
     }
 
     /**
@@ -4352,6 +4744,130 @@ export class ObservableModelsApi {
      */
     public getModels(_options?: ConfigurationOptions): Observable<BaseResponseModelsResponse> {
         return this.getModelsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseModelsResponse>) => apiResponse.data));
+    }
+
+}
+
+import { ReportsApiRequestFactory, ReportsApiResponseProcessor} from "../apis/ReportsApi";
+export class ObservableReportsApi {
+    private requestFactory: ReportsApiRequestFactory;
+    private responseProcessor: ReportsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ReportsApiRequestFactory,
+        responseProcessor?: ReportsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new ReportsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new ReportsApiResponseProcessor();
+    }
+
+    /**
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Start PDF report generation
+     * @param analysisId Analysis ID
+     */
+    public createPdfReportWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GeneratePDFOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createPdfReport(analysisId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createPdfReportWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Start PDF report generation
+     * @param analysisId Analysis ID
+     */
+    public createPdfReport(analysisId: number, _options?: ConfigurationOptions): Observable<GeneratePDFOutputBody> {
+        return this.createPdfReportWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<GeneratePDFOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Download generated PDF report
+     * @param analysisId Analysis ID
+     * @param taskId Task ID returned by the create endpoint
+     */
+    public downloadPdfReportWithHttpInfo(analysisId: number, taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.downloadPdfReport(analysisId, taskId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.downloadPdfReportWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Download generated PDF report
+     * @param analysisId Analysis ID
+     * @param taskId Task ID returned by the create endpoint
+     */
+    public downloadPdfReport(analysisId: number, taskId: string, _options?: ConfigurationOptions): Observable<void> {
+        return this.downloadPdfReportWithHttpInfo(analysisId, taskId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    }
+
+    /**
+     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get PDF report workflow status
+     * @param analysisId Analysis ID
+     * @param taskId Task ID returned by the create endpoint
+     */
+    public getPdfReportStatusWithHttpInfo(analysisId: number, taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<WorkflowProgress>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getPdfReportStatus(analysisId, taskId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getPdfReportStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get PDF report workflow status
+     * @param analysisId Analysis ID
+     * @param taskId Task ID returned by the create endpoint
+     */
+    public getPdfReportStatus(analysisId: number, taskId: string, _options?: ConfigurationOptions): Observable<WorkflowProgress> {
+        return this.getPdfReportStatusWithHttpInfo(analysisId, taskId, _options).pipe(map((apiResponse: HttpInfo<WorkflowProgress>) => apiResponse.data));
     }
 
 }

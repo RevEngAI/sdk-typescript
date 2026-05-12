@@ -140,6 +140,7 @@ export * from '../models/CollectionUpdateRequest';
 export * from '../models/CommentBase';
 export * from '../models/CommentResponse';
 export * from '../models/CommentUpdateRequest';
+export * from '../models/CommentsData';
 export * from '../models/ConfigResponse';
 export * from '../models/ConfirmToolInputBody';
 export * from '../models/Connection';
@@ -147,9 +148,11 @@ export * from '../models/Context';
 export * from '../models/Conversation';
 export * from '../models/ConversationContext';
 export * from '../models/ConversationWithEvents';
+export * from '../models/CreateAIDecompOutputBody';
 export * from '../models/CreateConversationRequest';
 export * from '../models/Created';
 export * from '../models/DecompilationCommentContext';
+export * from '../models/DecompilationData';
 export * from '../models/DieMatch';
 export * from '../models/DnsQuery';
 export * from '../models/DrakvufFileMetadata';
@@ -231,6 +234,7 @@ export * from '../models/FunctionTypeOutput';
 export * from '../models/FunctionsDetailResponse';
 export * from '../models/FunctionsListRename';
 export * from '../models/GenerateFunctionDataTypes';
+export * from '../models/GeneratePDFOutputBody';
 export * from '../models/GenerationStatusList';
 export * from '../models/GetAiDecompilationRatingResponse';
 export * from '../models/GetAiDecompilationTask';
@@ -242,6 +246,7 @@ export * from '../models/IOC';
 export * from '../models/ISA';
 export * from '../models/IconModel';
 export * from '../models/ImportModel';
+export * from '../models/InlineComment';
 export * from '../models/InsertAnalysisLogRequest';
 export * from '../models/InverseFunctionMapItem';
 export * from '../models/InverseStringMapItem';
@@ -260,6 +265,7 @@ export * from '../models/MutexEntry';
 export * from '../models/NameConfidence';
 export * from '../models/NameSourceType';
 export * from '../models/NetworkActivity';
+export * from '../models/NumericAddr';
 export * from '../models/Order';
 export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
@@ -270,14 +276,17 @@ export * from '../models/ProcessActivityEntry';
 export * from '../models/ProcessMemdumps';
 export * from '../models/ProcessNode';
 export * from '../models/ProcessTree';
+export * from '../models/ProgressMessage';
 export * from '../models/PutAnalysisStringsRequest';
 export * from '../models/QueuePositionResponse';
 export * from '../models/QueuedWorkflowTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
+export * from '../models/RegenerateOutputBody';
 export * from '../models/RegenerateTarget';
 export * from '../models/RegistryOperation';
 export * from '../models/RelativeBinaryResponse';
+export * from '../models/ReplacementValue';
 export * from '../models/ReportAnalysisResponse';
 export * from '../models/ReportEvent';
 export * from '../models/ReportInfo';
@@ -325,6 +334,7 @@ export * from '../models/StringSource';
 export * from '../models/Structure';
 export * from '../models/StructureMember';
 export * from '../models/SubmitUserFeedbackRequest';
+export * from '../models/SummaryData';
 export * from '../models/Symbols';
 export * from '../models/Tag';
 export * from '../models/TagItem';
@@ -335,6 +345,7 @@ export * from '../models/TaskResponse';
 export * from '../models/TaskStatus';
 export * from '../models/TaskStatusResponse';
 export * from '../models/TimestampModel';
+export * from '../models/TokenisedData';
 export * from '../models/TriageFunctionResponse';
 export * from '../models/TriageReportResponse';
 export * from '../models/Ttp';
@@ -343,9 +354,12 @@ export * from '../models/UpdateFunctionDataTypes';
 export * from '../models/UploadFileType';
 export * from '../models/UploadResponse';
 export * from '../models/UpsertAiDecomplationRatingRequest';
+export * from '../models/UpsertOverridesData';
+export * from '../models/UpsertOverridesInputBody';
 export * from '../models/UserActivityResponse';
 export * from '../models/Vulnerabilities';
 export * from '../models/Vulnerability';
+export * from '../models/WorkflowProgress';
 export * from '../models/Workspace';
 export * from '../models/XrefFromResponse';
 export * from '../models/XrefResponse';
@@ -493,6 +507,7 @@ import { CollectionUpdateRequest    } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
+import { CommentsData  , CommentsDataTaskStatusEnum   } from '../models/CommentsData';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
@@ -500,9 +515,11 @@ import { Context } from '../models/Context';
 import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
+import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
+import { DecompilationData  , DecompilationDataStatusEnum   } from '../models/DecompilationData';
 import { DieMatch } from '../models/DieMatch';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
@@ -584,6 +601,7 @@ import { FunctionTypeOutput } from '../models/FunctionTypeOutput';
 import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
 import { FunctionsListRename } from '../models/FunctionsListRename';
 import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
+import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTask';
@@ -595,6 +613,7 @@ import { IOC, IOCTypeEnum        } from '../models/IOC';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
+import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
@@ -613,6 +632,7 @@ import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType, NameSourceTypeTypeEnum      } from '../models/NameSourceType';
 import { NetworkActivity } from '../models/NetworkActivity';
+import { NumericAddr } from '../models/NumericAddr';
 import { Order } from '../models/Order';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
@@ -623,14 +643,17 @@ import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
 import { ProcessTree } from '../models/ProcessTree';
+import { ProgressMessage, ProgressMessageLevelEnum      } from '../models/ProgressMessage';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
+import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { ReplacementValue } from '../models/ReplacementValue';
 import { ReportAnalysisResponse , ReportAnalysisResponseSoftwareTypeEnum         } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
@@ -678,6 +701,7 @@ import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
+import { SummaryData   , SummaryDataTaskStatusEnum   } from '../models/SummaryData';
 import { Symbols } from '../models/Symbols';
 import { Tag } from '../models/Tag';
 import { TagItem } from '../models/TagItem';
@@ -688,6 +712,7 @@ import { TaskResponse   } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse   } from '../models/TaskStatusResponse';
 import { TimestampModel } from '../models/TimestampModel';
+import { TokenisedData   , TokenisedDataStatusEnum    } from '../models/TokenisedData';
 import { TriageFunctionResponse    , TriageFunctionResponseCapabilitiesEnum   } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
 import { Ttp } from '../models/Ttp';
@@ -696,9 +721,12 @@ import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
 import { UploadFileType } from '../models/UploadFileType';
 import { UploadResponse    } from '../models/UploadResponse';
 import { UpsertAiDecomplationRatingRequest   } from '../models/UpsertAiDecomplationRatingRequest';
+import { UpsertOverridesData } from '../models/UpsertOverridesData';
+import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
+import { WorkflowProgress  , WorkflowProgressStatusEnum      } from '../models/WorkflowProgress';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
 import { XrefResponse } from '../models/XrefResponse';
@@ -727,6 +755,8 @@ let enumsMap: Set<string> = new Set<string>([
     "BinariesTaskStatus",
     "BinaryTaskStatus",
     "CollectionScope",
+    "CommentsDataTaskStatusEnum",
+    "DecompilationDataStatusEnum",
     "DynamicExecutionStatus",
     "ErrorBodyCodeEnum",
     "EventCONTEXTCOMPACTEDEventEnum",
@@ -758,6 +788,7 @@ let enumsMap: Set<string> = new Set<string>([
     "NameSourceTypeTypeEnum",
     "Order",
     "Platform",
+    "ProgressMessageLevelEnum",
     "RegenerateTarget",
     "ReportAnalysisResponseSoftwareTypeEnum",
     "SandboxStartMethod",
@@ -765,10 +796,13 @@ let enumsMap: Set<string> = new Set<string>([
     "StatusInput",
     "StreamEvents200ResponseInnerEventEnum",
     "StringSource",
+    "SummaryDataTaskStatusEnum",
     "TaskStatus",
+    "TokenisedDataStatusEnum",
     "TriageFunctionResponseCapabilitiesEnum",
     "UploadFileType",
     "VulnerabilitySeverityEnum",
+    "WorkflowProgressStatusEnum",
     "Workspace",
 ]);
 
@@ -907,6 +941,7 @@ let typeMap: {[index: string]: any} = {
     "CommentBase": CommentBase,
     "CommentResponse": CommentResponse,
     "CommentUpdateRequest": CommentUpdateRequest,
+    "CommentsData": CommentsData,
     "ConfigResponse": ConfigResponse,
     "ConfirmToolInputBody": ConfirmToolInputBody,
     "Connection": Connection,
@@ -914,9 +949,11 @@ let typeMap: {[index: string]: any} = {
     "Conversation": Conversation,
     "ConversationContext": ConversationContext,
     "ConversationWithEvents": ConversationWithEvents,
+    "CreateAIDecompOutputBody": CreateAIDecompOutputBody,
     "CreateConversationRequest": CreateConversationRequest,
     "Created": Created,
     "DecompilationCommentContext": DecompilationCommentContext,
+    "DecompilationData": DecompilationData,
     "DieMatch": DieMatch,
     "DnsQuery": DnsQuery,
     "DrakvufFileMetadata": DrakvufFileMetadata,
@@ -993,6 +1030,7 @@ let typeMap: {[index: string]: any} = {
     "FunctionsDetailResponse": FunctionsDetailResponse,
     "FunctionsListRename": FunctionsListRename,
     "GenerateFunctionDataTypes": GenerateFunctionDataTypes,
+    "GeneratePDFOutputBody": GeneratePDFOutputBody,
     "GenerationStatusList": GenerationStatusList,
     "GetAiDecompilationRatingResponse": GetAiDecompilationRatingResponse,
     "GetAiDecompilationTask": GetAiDecompilationTask,
@@ -1003,6 +1041,7 @@ let typeMap: {[index: string]: any} = {
     "IOC": IOC,
     "IconModel": IconModel,
     "ImportModel": ImportModel,
+    "InlineComment": InlineComment,
     "InsertAnalysisLogRequest": InsertAnalysisLogRequest,
     "InverseFunctionMapItem": InverseFunctionMapItem,
     "InverseStringMapItem": InverseStringMapItem,
@@ -1020,6 +1059,7 @@ let typeMap: {[index: string]: any} = {
     "NameConfidence": NameConfidence,
     "NameSourceType": NameSourceType,
     "NetworkActivity": NetworkActivity,
+    "NumericAddr": NumericAddr,
     "PDBDebugModel": PDBDebugModel,
     "PEModel": PEModel,
     "PaginationModel": PaginationModel,
@@ -1028,13 +1068,16 @@ let typeMap: {[index: string]: any} = {
     "ProcessMemdumps": ProcessMemdumps,
     "ProcessNode": ProcessNode,
     "ProcessTree": ProcessTree,
+    "ProgressMessage": ProgressMessage,
     "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
     "QueuePositionResponse": QueuePositionResponse,
     "QueuedWorkflowTaskResponse": QueuedWorkflowTaskResponse,
     "ReAnalysisForm": ReAnalysisForm,
     "Recent": Recent,
+    "RegenerateOutputBody": RegenerateOutputBody,
     "RegistryOperation": RegistryOperation,
     "RelativeBinaryResponse": RelativeBinaryResponse,
+    "ReplacementValue": ReplacementValue,
     "ReportAnalysisResponse": ReportAnalysisResponse,
     "ReportEvent": ReportEvent,
     "ReportInfo": ReportInfo,
@@ -1078,6 +1121,7 @@ let typeMap: {[index: string]: any} = {
     "Structure": Structure,
     "StructureMember": StructureMember,
     "SubmitUserFeedbackRequest": SubmitUserFeedbackRequest,
+    "SummaryData": SummaryData,
     "Symbols": Symbols,
     "Tag": Tag,
     "TagItem": TagItem,
@@ -1087,6 +1131,7 @@ let typeMap: {[index: string]: any} = {
     "TaskResponse": TaskResponse,
     "TaskStatusResponse": TaskStatusResponse,
     "TimestampModel": TimestampModel,
+    "TokenisedData": TokenisedData,
     "TriageFunctionResponse": TriageFunctionResponse,
     "TriageReportResponse": TriageReportResponse,
     "Ttp": Ttp,
@@ -1094,9 +1139,12 @@ let typeMap: {[index: string]: any} = {
     "UpdateFunctionDataTypes": UpdateFunctionDataTypes,
     "UploadResponse": UploadResponse,
     "UpsertAiDecomplationRatingRequest": UpsertAiDecomplationRatingRequest,
+    "UpsertOverridesData": UpsertOverridesData,
+    "UpsertOverridesInputBody": UpsertOverridesInputBody,
     "UserActivityResponse": UserActivityResponse,
     "Vulnerabilities": Vulnerabilities,
     "Vulnerability": Vulnerability,
+    "WorkflowProgress": WorkflowProgress,
     "XrefFromResponse": XrefFromResponse,
     "XrefResponse": XrefResponse,
     "XrefToResponse": XrefToResponse,

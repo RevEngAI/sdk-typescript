@@ -4,16 +4,88 @@ All URIs are relative to *https://api.reveng.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createAiDecompilation**](FunctionsAIDecompilationApi.md#createAiDecompilation) | **POST** /v3/functions/{function_id}/ai-decompilation | Start AI decompilation
 [**createAiDecompilationComment**](FunctionsAIDecompilationApi.md#createAiDecompilationComment) | **POST** /v2/functions/{function_id}/ai-decompilation/comments | Create a comment for this function
 [**createAiDecompilationTask**](FunctionsAIDecompilationApi.md#createAiDecompilationTask) | **POST** /v2/functions/{function_id}/ai-decompilation | Begins AI Decompilation Process
 [**deleteAiDecompilationComment**](FunctionsAIDecompilationApi.md#deleteAiDecompilationComment) | **DELETE** /v2/functions/{function_id}/ai-decompilation/comments/{comment_id} | Delete a comment
+[**getAiDecompilation**](FunctionsAIDecompilationApi.md#getAiDecompilation) | **GET** /v3/functions/{function_id}/ai-decompilation | Get AI decompilation result
 [**getAiDecompilationComments**](FunctionsAIDecompilationApi.md#getAiDecompilationComments) | **GET** /v2/functions/{function_id}/ai-decompilation/comments | Get comments for this function
+[**getAiDecompilationInlineComments**](FunctionsAIDecompilationApi.md#getAiDecompilationInlineComments) | **GET** /v3/functions/{function_id}/ai-decompilation/inline-comments | Get AI decompilation inline comments
+[**getAiDecompilationInlineCommentsStatus**](FunctionsAIDecompilationApi.md#getAiDecompilationInlineCommentsStatus) | **GET** /v3/functions/{function_id}/ai-decompilation/inline-comments/status | Get inline comments generation workflow status
 [**getAiDecompilationRating**](FunctionsAIDecompilationApi.md#getAiDecompilationRating) | **GET** /v2/functions/{function_id}/ai-decompilation/rating | Get rating for AI decompilation
+[**getAiDecompilationStatus**](FunctionsAIDecompilationApi.md#getAiDecompilationStatus) | **GET** /v3/functions/{function_id}/ai-decompilation/status | Get AI decompilation workflow status
+[**getAiDecompilationSummary**](FunctionsAIDecompilationApi.md#getAiDecompilationSummary) | **GET** /v3/functions/{function_id}/ai-decompilation/summary | Get AI decompilation summary
+[**getAiDecompilationSummaryStatus**](FunctionsAIDecompilationApi.md#getAiDecompilationSummaryStatus) | **GET** /v3/functions/{function_id}/ai-decompilation/summary/status | Get summary generation workflow status
 [**getAiDecompilationTaskResult**](FunctionsAIDecompilationApi.md#getAiDecompilationTaskResult) | **GET** /v2/functions/{function_id}/ai-decompilation | Polls AI Decompilation Process
 [**getAiDecompilationTaskStatus**](FunctionsAIDecompilationApi.md#getAiDecompilationTaskStatus) | **GET** /v2/functions/{function_id}/ai-decompilation/status | Check the status of a function ai decompilation
+[**getAiDecompilationTokenised**](FunctionsAIDecompilationApi.md#getAiDecompilationTokenised) | **GET** /v3/functions/{function_id}/ai-decompilation/tokenised | Get tokenised AI decompilation with function mapping
+[**regenerateAiDecompilationInlineComments**](FunctionsAIDecompilationApi.md#regenerateAiDecompilationInlineComments) | **POST** /v3/functions/{function_id}/ai-decompilation/inline-comments | Regenerate AI decompilation inline comments
+[**regenerateAiDecompilationSummary**](FunctionsAIDecompilationApi.md#regenerateAiDecompilationSummary) | **POST** /v3/functions/{function_id}/ai-decompilation/summary | Regenerate AI decompilation summary
 [**updateAiDecompilationComment**](FunctionsAIDecompilationApi.md#updateAiDecompilationComment) | **PATCH** /v2/functions/{function_id}/ai-decompilation/comments/{comment_id} | Update a comment
+[**upsertAiDecompilationOverrides**](FunctionsAIDecompilationApi.md#upsertAiDecompilationOverrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 [**upsertAiDecompilationRating**](FunctionsAIDecompilationApi.md#upsertAiDecompilationRating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
 
+
+# **createAiDecompilation**
+> CreateAIDecompOutputBody createAiDecompilation()
+
+Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiCreateAiDecompilationRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiCreateAiDecompilationRequest = {
+    // Function ID
+  functionId: 1,
+    // Use context-aware decompilation (optional)
+  contextAware: false,
+};
+
+const data = await apiInstance.createAiDecompilation(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+ **contextAware** | [**boolean**] | Use context-aware decompilation | (optional) defaults to false
+
+
+### Return type
+
+**CreateAIDecompOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **createAiDecompilationComment**
 > BaseResponseCommentResponse createAiDecompilationComment(functionCommentCreateRequest)
@@ -196,6 +268,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getAiDecompilation**
+> DecompilationData getAiDecompilation()
+
+Returns the decompilation source code.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiGetAiDecompilationRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getAiDecompilation(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**DecompilationData**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **getAiDecompilationComments**
 > BaseResponseListCommentResponse getAiDecompilationComments()
 
@@ -250,6 +379,120 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getAiDecompilationInlineComments**
+> CommentsData getAiDecompilationInlineComments()
+
+Returns the commented source if available. Returns pending status if comments are still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationInlineCommentsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiGetAiDecompilationInlineCommentsRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getAiDecompilationInlineComments(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**CommentsData**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getAiDecompilationInlineCommentsStatus**
+> WorkflowProgress getAiDecompilationInlineCommentsStatus()
+
+Returns fine-grained progress of the inline comments generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationInlineCommentsStatusRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiGetAiDecompilationInlineCommentsStatusRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getAiDecompilationInlineCommentsStatus(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**WorkflowProgress**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **getAiDecompilationRating**
 > BaseResponseUnionGetAiDecompilationRatingResponseNoneType getAiDecompilationRating()
 
@@ -300,6 +543,177 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getAiDecompilationStatus**
+> WorkflowProgress getAiDecompilationStatus()
+
+Returns fine-grained progress of the running workflow including current step, total steps, and messages. Falls back to the database task status when no workflow is running.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationStatusRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiGetAiDecompilationStatusRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getAiDecompilationStatus(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**WorkflowProgress**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getAiDecompilationSummary**
+> SummaryData getAiDecompilationSummary()
+
+Returns the summary if available. Returns pending status if summary is still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationSummaryRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiGetAiDecompilationSummaryRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getAiDecompilationSummary(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**SummaryData**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getAiDecompilationSummaryStatus**
+> WorkflowProgress getAiDecompilationSummaryStatus()
+
+Returns fine-grained progress of the summary generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationSummaryStatusRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiGetAiDecompilationSummaryStatusRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getAiDecompilationSummaryStatus(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**WorkflowProgress**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -422,6 +836,177 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getAiDecompilationTokenised**
+> TokenisedData getAiDecompilationTokenised()
+
+Returns the decompilation with placeholder tokens, the function mapping for token resolution, and the predicted function name.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiGetAiDecompilationTokenisedRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiGetAiDecompilationTokenisedRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getAiDecompilationTokenised(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**TokenisedData**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **regenerateAiDecompilationInlineComments**
+> RegenerateOutputBody regenerateAiDecompilationInlineComments()
+
+Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiRegenerateAiDecompilationInlineCommentsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiRegenerateAiDecompilationInlineCommentsRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.regenerateAiDecompilationInlineComments(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**RegenerateOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **regenerateAiDecompilationSummary**
+> RegenerateOutputBody regenerateAiDecompilationSummary()
+
+Starts a new summary generation workflow for the function. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiRegenerateAiDecompilationSummaryRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiRegenerateAiDecompilationSummaryRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.regenerateAiDecompilationSummary(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**RegenerateOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **updateAiDecompilationComment**
 > BaseResponseCommentResponse updateAiDecompilationComment(commentUpdateRequest)
 
@@ -483,6 +1068,67 @@ Name | Type | Description  | Notes
 **422** | Invalid request parameters |  -  |
 **403** | You can only update your own comments |  -  |
 **400** | Bad Request |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **upsertAiDecompilationOverrides**
+> UpsertOverridesData upsertAiDecompilationOverrides(upsertOverridesInputBody)
+
+Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiUpsertAiDecompilationOverridesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiUpsertAiDecompilationOverridesRequest = {
+    // Function ID
+  functionId: 1,
+  
+  upsertOverridesInputBody: ,
+};
+
+const data = await apiInstance.upsertAiDecompilationOverrides(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **upsertOverridesInputBody** | **UpsertOverridesInputBody**|  |
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**UpsertOverridesData**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

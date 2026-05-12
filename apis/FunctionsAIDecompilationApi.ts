@@ -8,6 +8,7 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { APIError } from '../models/APIError';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
 import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
@@ -16,14 +17,68 @@ import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiD
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
+import { CommentsData } from '../models/CommentsData';
+import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
+import { DecompilationData } from '../models/DecompilationData';
 import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateRequest';
+import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
+import { SummaryData } from '../models/SummaryData';
+import { TokenisedData } from '../models/TokenisedData';
 import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
+import { UpsertOverridesData } from '../models/UpsertOverridesData';
+import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
+import { WorkflowProgress } from '../models/WorkflowProgress';
 
 /**
  * no description
  */
 export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFactory {
+
+    /**
+     * Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Start AI decompilation
+     * @param functionId Function ID
+     * @param contextAware Use context-aware decompilation
+     */
+    public async createAiDecompilation(functionId: number, contextAware?: boolean, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "createAiDecompilation", "functionId");
+        }
+
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (contextAware !== undefined) {
+            requestContext.setQueryParam("context_aware", ObjectSerializer.serialize(contextAware, "boolean", ""));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
 
     /**
      * Creates a comment associated with a specified function).
@@ -166,6 +221,44 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
+     * Returns the decompilation source code.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation result
+     * @param functionId Function ID
+     */
+    public async getAiDecompilation(functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilation", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId 
@@ -204,6 +297,82 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
+     * Returns the commented source if available. Returns pending status if comments are still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation inline comments
+     * @param functionId Function ID
+     */
+    public async getAiDecompilationInlineComments(functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationInlineComments", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation/inline-comments'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns fine-grained progress of the inline comments generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get inline comments generation workflow status
+     * @param functionId Function ID
+     */
+    public async getAiDecompilationInlineCommentsStatus(functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationInlineCommentsStatus", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation/inline-comments/status'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Get rating for AI decompilation
      * @param functionId The ID of the function for which to get the rating
      */
@@ -218,6 +387,120 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
 
         // Path Params
         const localVarPath = '/v2/functions/{function_id}/ai-decompilation/rating'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns fine-grained progress of the running workflow including current step, total steps, and messages. Falls back to the database task status when no workflow is running.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation workflow status
+     * @param functionId Function ID
+     */
+    public async getAiDecompilationStatus(functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationStatus", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation/status'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns the summary if available. Returns pending status if summary is still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation summary
+     * @param functionId Function ID
+     */
+    public async getAiDecompilationSummary(functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationSummary", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation/summary'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns fine-grained progress of the summary generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get summary generation workflow status
+     * @param functionId Function ID
+     */
+    public async getAiDecompilationSummaryStatus(functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationSummaryStatus", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation/summary/status'
             .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
 
         // Make Request Context
@@ -340,6 +623,120 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
+     * Returns the decompilation with placeholder tokens, the function mapping for token resolution, and the predicted function name.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get tokenised AI decompilation with function mapping
+     * @param functionId Function ID
+     */
+    public async getAiDecompilationTokenised(functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationTokenised", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation/tokenised'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Regenerate AI decompilation inline comments
+     * @param functionId Function ID
+     */
+    public async regenerateAiDecompilationInlineComments(functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "regenerateAiDecompilationInlineComments", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation/inline-comments'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Starts a new summary generation workflow for the function. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Regenerate AI decompilation summary
+     * @param functionId Function ID
+     */
+    public async regenerateAiDecompilationSummary(functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "regenerateAiDecompilationSummary", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation/summary'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Updates the content of an existing comment. Users can only update their own comments.
      * Update a comment
      * @param commentId 
@@ -384,6 +781,62 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(commentUpdateRequest, "CommentUpdateRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Upsert variable/function name overrides
+     * @param functionId Function ID
+     * @param upsertOverridesInputBody 
+     */
+    public async upsertAiDecompilationOverrides(functionId: number, upsertOverridesInputBody: UpsertOverridesInputBody, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "upsertAiDecompilationOverrides", "functionId");
+        }
+
+
+        // verify required parameter 'upsertOverridesInputBody' is not null or undefined
+        if (upsertOverridesInputBody === null || upsertOverridesInputBody === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "upsertAiDecompilationOverrides", "upsertOverridesInputBody");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation/overrides'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(upsertOverridesInputBody, "UpsertOverridesInputBody", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -461,6 +914,70 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
 }
 
 export class FunctionsAIDecompilationApiResponseProcessor {
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to createAiDecompilation
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async createAiDecompilationWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateAIDecompOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: CreateAIDecompOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateAIDecompOutputBody", ""
+            ) as CreateAIDecompOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CreateAIDecompOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateAIDecompOutputBody", ""
+            ) as CreateAIDecompOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
 
     /**
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
@@ -623,6 +1140,63 @@ export class FunctionsAIDecompilationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to getAiDecompilation
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getAiDecompilationWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DecompilationData >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: DecompilationData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DecompilationData", ""
+            ) as DecompilationData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: DecompilationData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DecompilationData", ""
+            ) as DecompilationData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to getAiDecompilationComments
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -659,6 +1233,120 @@ export class FunctionsAIDecompilationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to getAiDecompilationInlineComments
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getAiDecompilationInlineCommentsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CommentsData >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: CommentsData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CommentsData", ""
+            ) as CommentsData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CommentsData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CommentsData", ""
+            ) as CommentsData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getAiDecompilationInlineCommentsStatus
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getAiDecompilationInlineCommentsStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<WorkflowProgress >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: WorkflowProgress = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "WorkflowProgress", ""
+            ) as WorkflowProgress;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: WorkflowProgress = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "WorkflowProgress", ""
+            ) as WorkflowProgress;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to getAiDecompilationRating
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -685,6 +1373,177 @@ export class FunctionsAIDecompilationApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseUnionGetAiDecompilationRatingResponseNoneType", ""
             ) as BaseResponseUnionGetAiDecompilationRatingResponseNoneType;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getAiDecompilationStatus
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getAiDecompilationStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<WorkflowProgress >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: WorkflowProgress = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "WorkflowProgress", ""
+            ) as WorkflowProgress;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: WorkflowProgress = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "WorkflowProgress", ""
+            ) as WorkflowProgress;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getAiDecompilationSummary
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getAiDecompilationSummaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SummaryData >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: SummaryData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SummaryData", ""
+            ) as SummaryData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: SummaryData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SummaryData", ""
+            ) as SummaryData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getAiDecompilationSummaryStatus
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getAiDecompilationSummaryStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<WorkflowProgress >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: WorkflowProgress = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "WorkflowProgress", ""
+            ) as WorkflowProgress;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: WorkflowProgress = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "WorkflowProgress", ""
+            ) as WorkflowProgress;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -774,6 +1633,177 @@ export class FunctionsAIDecompilationApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to getAiDecompilationTokenised
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getAiDecompilationTokenisedWithHttpInfo(response: ResponseContext): Promise<HttpInfo<TokenisedData >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: TokenisedData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "TokenisedData", ""
+            ) as TokenisedData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: TokenisedData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "TokenisedData", ""
+            ) as TokenisedData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to regenerateAiDecompilationInlineComments
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async regenerateAiDecompilationInlineCommentsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RegenerateOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("202", response.httpStatusCode)) {
+            const body: RegenerateOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RegenerateOutputBody", ""
+            ) as RegenerateOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: RegenerateOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RegenerateOutputBody", ""
+            ) as RegenerateOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to regenerateAiDecompilationSummary
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async regenerateAiDecompilationSummaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RegenerateOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("202", response.httpStatusCode)) {
+            const body: RegenerateOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RegenerateOutputBody", ""
+            ) as RegenerateOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: RegenerateOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RegenerateOutputBody", ""
+            ) as RegenerateOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to updateAiDecompilationComment
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -814,6 +1844,70 @@ export class FunctionsAIDecompilationApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseCommentResponse", ""
             ) as BaseResponseCommentResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to upsertAiDecompilationOverrides
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async upsertAiDecompilationOverridesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<UpsertOverridesData >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: UpsertOverridesData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "UpsertOverridesData", ""
+            ) as UpsertOverridesData;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: UpsertOverridesData = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "UpsertOverridesData", ""
+            ) as UpsertOverridesData;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

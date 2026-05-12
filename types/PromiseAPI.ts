@@ -144,6 +144,7 @@ import { CollectionUpdateRequest } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
+import { CommentsData } from '../models/CommentsData';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
@@ -151,9 +152,11 @@ import { Context } from '../models/Context';
 import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
+import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
+import { DecompilationData } from '../models/DecompilationData';
 import { DieMatch } from '../models/DieMatch';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
@@ -235,6 +238,7 @@ import { FunctionTypeOutput } from '../models/FunctionTypeOutput';
 import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
 import { FunctionsListRename } from '../models/FunctionsListRename';
 import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
+import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
@@ -246,6 +250,7 @@ import { IOC } from '../models/IOC';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
+import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
@@ -264,6 +269,7 @@ import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType } from '../models/NameSourceType';
 import { NetworkActivity } from '../models/NetworkActivity';
+import { NumericAddr } from '../models/NumericAddr';
 import { Order } from '../models/Order';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
@@ -274,14 +280,17 @@ import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
 import { ProcessTree } from '../models/ProcessTree';
+import { ProgressMessage } from '../models/ProgressMessage';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
+import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { ReplacementValue } from '../models/ReplacementValue';
 import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
@@ -329,6 +338,7 @@ import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
+import { SummaryData } from '../models/SummaryData';
 import { Symbols } from '../models/Symbols';
 import { Tag } from '../models/Tag';
 import { TagItem } from '../models/TagItem';
@@ -339,6 +349,7 @@ import { TaskResponse } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse } from '../models/TaskStatusResponse';
 import { TimestampModel } from '../models/TimestampModel';
+import { TokenisedData } from '../models/TokenisedData';
 import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
 import { Ttp } from '../models/Ttp';
@@ -347,9 +358,12 @@ import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
 import { UploadFileType } from '../models/UploadFileType';
 import { UploadResponse } from '../models/UploadResponse';
 import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
+import { UpsertOverridesData } from '../models/UpsertOverridesData';
+import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
+import { WorkflowProgress } from '../models/WorkflowProgress';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
 import { XrefResponse } from '../models/XrefResponse';
@@ -2234,6 +2248,30 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
+     * Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Start AI decompilation
+     * @param functionId Function ID
+     * @param [contextAware] Use context-aware decompilation
+     */
+    public createAiDecompilationWithHttpInfo(functionId: number, contextAware?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createAiDecompilationWithHttpInfo(functionId, contextAware, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Start AI decompilation
+     * @param functionId Function ID
+     * @param [contextAware] Use context-aware decompilation
+     */
+    public createAiDecompilation(functionId: number, contextAware?: boolean, _options?: PromiseConfigurationOptions): Promise<CreateAIDecompOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createAiDecompilation(functionId, contextAware, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Creates a comment associated with a specified function).
      * Create a comment for this function
      * @param functionId
@@ -2304,6 +2342,28 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
+     * Returns the decompilation source code.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation result
+     * @param functionId Function ID
+     */
+    public getAiDecompilationWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DecompilationData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the decompilation source code.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation result
+     * @param functionId Function ID
+     */
+    public getAiDecompilation(functionId: number, _options?: PromiseConfigurationOptions): Promise<DecompilationData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilation(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
      * Get comments for this function
      * @param functionId
@@ -2326,6 +2386,50 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
+     * Returns the commented source if available. Returns pending status if comments are still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation inline comments
+     * @param functionId Function ID
+     */
+    public getAiDecompilationInlineCommentsWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CommentsData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationInlineCommentsWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the commented source if available. Returns pending status if comments are still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation inline comments
+     * @param functionId Function ID
+     */
+    public getAiDecompilationInlineComments(functionId: number, _options?: PromiseConfigurationOptions): Promise<CommentsData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationInlineComments(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns fine-grained progress of the inline comments generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get inline comments generation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationInlineCommentsStatusWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<WorkflowProgress>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationInlineCommentsStatusWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns fine-grained progress of the inline comments generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get inline comments generation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationInlineCommentsStatus(functionId: number, _options?: PromiseConfigurationOptions): Promise<WorkflowProgress> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationInlineCommentsStatus(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Get rating for AI decompilation
      * @param functionId The ID of the function for which to get the rating
      */
@@ -2342,6 +2446,72 @@ export class PromiseFunctionsAIDecompilationApi {
     public getAiDecompilationRating(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseUnionGetAiDecompilationRatingResponseNoneType> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getAiDecompilationRating(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns fine-grained progress of the running workflow including current step, total steps, and messages. Falls back to the database task status when no workflow is running.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationStatusWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<WorkflowProgress>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationStatusWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns fine-grained progress of the running workflow including current step, total steps, and messages. Falls back to the database task status when no workflow is running.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationStatus(functionId: number, _options?: PromiseConfigurationOptions): Promise<WorkflowProgress> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationStatus(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the summary if available. Returns pending status if summary is still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation summary
+     * @param functionId Function ID
+     */
+    public getAiDecompilationSummaryWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SummaryData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationSummaryWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the summary if available. Returns pending status if summary is still being generated.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get AI decompilation summary
+     * @param functionId Function ID
+     */
+    public getAiDecompilationSummary(functionId: number, _options?: PromiseConfigurationOptions): Promise<SummaryData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationSummary(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns fine-grained progress of the summary generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get summary generation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationSummaryStatusWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<WorkflowProgress>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationSummaryStatusWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns fine-grained progress of the summary generation workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get summary generation workflow status
+     * @param functionId Function ID
+     */
+    public getAiDecompilationSummaryStatus(functionId: number, _options?: PromiseConfigurationOptions): Promise<WorkflowProgress> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationSummaryStatus(functionId, observableOptions);
         return result.toPromise();
     }
 
@@ -2394,6 +2564,72 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
+     * Returns the decompilation with placeholder tokens, the function mapping for token resolution, and the predicted function name.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get tokenised AI decompilation with function mapping
+     * @param functionId Function ID
+     */
+    public getAiDecompilationTokenisedWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TokenisedData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationTokenisedWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the decompilation with placeholder tokens, the function mapping for token resolution, and the predicted function name.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get tokenised AI decompilation with function mapping
+     * @param functionId Function ID
+     */
+    public getAiDecompilationTokenised(functionId: number, _options?: PromiseConfigurationOptions): Promise<TokenisedData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAiDecompilationTokenised(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Regenerate AI decompilation inline comments
+     * @param functionId Function ID
+     */
+    public regenerateAiDecompilationInlineCommentsWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RegenerateOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.regenerateAiDecompilationInlineCommentsWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Regenerate AI decompilation inline comments
+     * @param functionId Function ID
+     */
+    public regenerateAiDecompilationInlineComments(functionId: number, _options?: PromiseConfigurationOptions): Promise<RegenerateOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.regenerateAiDecompilationInlineComments(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts a new summary generation workflow for the function. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Regenerate AI decompilation summary
+     * @param functionId Function ID
+     */
+    public regenerateAiDecompilationSummaryWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RegenerateOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.regenerateAiDecompilationSummaryWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts a new summary generation workflow for the function. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Regenerate AI decompilation summary
+     * @param functionId Function ID
+     */
+    public regenerateAiDecompilationSummary(functionId: number, _options?: PromiseConfigurationOptions): Promise<RegenerateOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.regenerateAiDecompilationSummary(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Updates the content of an existing comment. Users can only update their own comments.
      * Update a comment
      * @param commentId
@@ -2416,6 +2652,30 @@ export class PromiseFunctionsAIDecompilationApi {
     public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.updateAiDecompilationComment(commentId, functionId, commentUpdateRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Upsert variable/function name overrides
+     * @param functionId Function ID
+     * @param upsertOverridesInputBody
+     */
+    public upsertAiDecompilationOverridesWithHttpInfo(functionId: number, upsertOverridesInputBody: UpsertOverridesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpsertOverridesData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.upsertAiDecompilationOverridesWithHttpInfo(functionId, upsertOverridesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Upsert variable/function name overrides
+     * @param functionId Function ID
+     * @param upsertOverridesInputBody
+     */
+    public upsertAiDecompilationOverrides(functionId: number, upsertOverridesInputBody: UpsertOverridesInputBody, _options?: PromiseConfigurationOptions): Promise<UpsertOverridesData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.upsertAiDecompilationOverrides(functionId, upsertOverridesInputBody, observableOptions);
         return result.toPromise();
     }
 
@@ -3092,6 +3352,95 @@ export class PromiseModelsApi {
     public getModels(_options?: PromiseConfigurationOptions): Promise<BaseResponseModelsResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getModels(observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableReportsApi } from './ObservableAPI';
+
+import { ReportsApiRequestFactory, ReportsApiResponseProcessor} from "../apis/ReportsApi";
+export class PromiseReportsApi {
+    private api: ObservableReportsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: ReportsApiRequestFactory,
+        responseProcessor?: ReportsApiResponseProcessor
+    ) {
+        this.api = new ObservableReportsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Start PDF report generation
+     * @param analysisId Analysis ID
+     */
+    public createPdfReportWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GeneratePDFOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createPdfReportWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Start PDF report generation
+     * @param analysisId Analysis ID
+     */
+    public createPdfReport(analysisId: number, _options?: PromiseConfigurationOptions): Promise<GeneratePDFOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createPdfReport(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Download generated PDF report
+     * @param analysisId Analysis ID
+     * @param taskId Task ID returned by the create endpoint
+     */
+    public downloadPdfReportWithHttpInfo(analysisId: number, taskId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.downloadPdfReportWithHttpInfo(analysisId, taskId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Download generated PDF report
+     * @param analysisId Analysis ID
+     * @param taskId Task ID returned by the create endpoint
+     */
+    public downloadPdfReport(analysisId: number, taskId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.downloadPdfReport(analysisId, taskId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get PDF report workflow status
+     * @param analysisId Analysis ID
+     * @param taskId Task ID returned by the create endpoint
+     */
+    public getPdfReportStatusWithHttpInfo(analysisId: number, taskId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<WorkflowProgress>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getPdfReportStatusWithHttpInfo(analysisId, taskId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get PDF report workflow status
+     * @param analysisId Analysis ID
+     * @param taskId Task ID returned by the create endpoint
+     */
+    public getPdfReportStatus(analysisId: number, taskId: string, _options?: PromiseConfigurationOptions): Promise<WorkflowProgress> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getPdfReportStatus(analysisId, taskId, observableOptions);
         return result.toPromise();
     }
 
