@@ -2252,10 +2252,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Start AI decompilation
      * @param functionId Function ID
      * @param [contextAware] Use context-aware decompilation
+     * @param [temperature] LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
      */
-    public createAiDecompilationWithHttpInfo(functionId: number, contextAware?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
+    public createAiDecompilationWithHttpInfo(functionId: number, contextAware?: boolean, temperature?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationWithHttpInfo(functionId, contextAware, observableOptions);
+        const result = this.api.createAiDecompilationWithHttpInfo(functionId, contextAware, temperature, observableOptions);
         return result.toPromise();
     }
 
@@ -2264,10 +2265,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * Start AI decompilation
      * @param functionId Function ID
      * @param [contextAware] Use context-aware decompilation
+     * @param [temperature] LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
      */
-    public createAiDecompilation(functionId: number, contextAware?: boolean, _options?: PromiseConfigurationOptions): Promise<CreateAIDecompOutputBody> {
+    public createAiDecompilation(functionId: number, contextAware?: boolean, temperature?: number, _options?: PromiseConfigurationOptions): Promise<CreateAIDecompOutputBody> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilation(functionId, contextAware, observableOptions);
+        const result = this.api.createAiDecompilation(functionId, contextAware, temperature, observableOptions);
         return result.toPromise();
     }
 

@@ -66,6 +66,7 @@ export class EventTEXTMESSAGESTART {
 }
 
 export enum EventTEXTMESSAGESTARTEventEnum {
-    TextMessageStart = 'TEXT_MESSAGE_START'
+    TextMessageStart = 'TEXT_MESSAGE_START',
+    UnknownDefaultOpenApi = '11184809'
 }
 

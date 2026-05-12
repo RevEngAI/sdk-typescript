@@ -66,6 +66,7 @@ export class EventSTEPSTARTED {
 }
 
 export enum EventSTEPSTARTEDEventEnum {
-    StepStarted = 'STEP_STARTED'
+    StepStarted = 'STEP_STARTED',
+    UnknownDefaultOpenApi = '11184809'
 }
 

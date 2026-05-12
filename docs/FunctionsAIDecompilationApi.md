@@ -46,6 +46,8 @@ const request: FunctionsAIDecompilationApiCreateAiDecompilationRequest = {
   functionId: 1,
     // Use context-aware decompilation (optional)
   contextAware: false,
+    // LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. (optional)
+  temperature: -1,
 };
 
 const data = await apiInstance.createAiDecompilation(request);
@@ -59,6 +61,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] | Function ID | defaults to undefined
  **contextAware** | [**boolean**] | Use context-aware decompilation | (optional) defaults to false
+ **temperature** | [**number**] | LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. | (optional) defaults to -1
 
 
 ### Return type

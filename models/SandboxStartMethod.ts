@@ -13,5 +13,6 @@ import { HttpFile } from '../http/http';
 
 export enum SandboxStartMethod {
     StandardUserProcess = 'standard_user_process',
-    AdministratorProcess = 'administrator_process'
+    AdministratorProcess = 'administrator_process',
+    UnknownDefaultOpenApi = '11184809'
 }

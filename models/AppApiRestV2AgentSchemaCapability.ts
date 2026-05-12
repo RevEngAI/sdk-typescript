@@ -96,6 +96,7 @@ export enum AppApiRestV2AgentSchemaCapabilityTypeEnum {
     String = 'String',
     Environment = 'Environment',
     FileHeader = 'File Header',
-    Other = 'Other'
+    Other = 'Other',
+    UnknownDefaultOpenApi = '11184809'
 }
 

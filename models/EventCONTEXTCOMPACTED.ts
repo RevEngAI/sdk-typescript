@@ -66,6 +66,7 @@ export class EventCONTEXTCOMPACTED {
 }
 
 export enum EventCONTEXTCOMPACTEDEventEnum {
-    ContextCompacted = 'CONTEXT_COMPACTED'
+    ContextCompacted = 'CONTEXT_COMPACTED',
+    UnknownDefaultOpenApi = '11184809'
 }
 

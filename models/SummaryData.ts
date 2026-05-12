@@ -70,6 +70,7 @@ export class SummaryData {
 export enum SummaryDataTaskStatusEnum {
     Uninitialised = 'UNINITIALISED',
     Pending = 'PENDING',
-    Completed = 'COMPLETED'
+    Completed = 'COMPLETED',
+    UnknownDefaultOpenApi = '11184809'
 }
 

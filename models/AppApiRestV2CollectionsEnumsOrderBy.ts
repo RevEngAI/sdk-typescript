@@ -17,5 +17,6 @@ export enum AppApiRestV2CollectionsEnumsOrderBy {
     Model = 'model',
     Owner = 'owner',
     CollectionSize = 'collection_size',
-    Updated = 'updated'
+    Updated = 'updated',
+    UnknownDefaultOpenApi = '11184809'
 }

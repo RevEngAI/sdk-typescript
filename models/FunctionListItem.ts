@@ -114,6 +114,7 @@ export enum FunctionListItemNameSourceTypeEnum {
     AutoUnstrip = 'AUTO_UNSTRIP',
     External = 'EXTERNAL',
     AiUnstrip = 'AI_UNSTRIP',
-    AiAgent = 'AI_AGENT'
+    AiAgent = 'AI_AGENT',
+    UnknownDefaultOpenApi = '11184809'
 }
 

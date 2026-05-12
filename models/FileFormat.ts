@@ -14,5 +14,6 @@ import { HttpFile } from '../http/http';
 export enum FileFormat {
     Pe = 'pe',
     Elf = 'elf',
-    Blob = 'blob'
+    Blob = 'blob',
+    UnknownDefaultOpenApi = '11184809'
 }

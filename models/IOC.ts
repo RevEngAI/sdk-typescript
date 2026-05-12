@@ -101,6 +101,7 @@ export enum IOCTypeEnum {
     ScheduledTask = 'scheduled_task',
     PeHeader = 'pe_header',
     Entropy = 'entropy',
-    Other = 'other'
+    Other = 'other',
+    UnknownDefaultOpenApi = '11184809'
 }
 

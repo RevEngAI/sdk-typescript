@@ -16,5 +16,7 @@ export enum FunctionSourceType {
     User = 'USER',
     External = 'EXTERNAL',
     AutoUnstrip = 'AUTO_UNSTRIP',
-    AiUnstrip = 'AI_UNSTRIP'
+    AiUnstrip = 'AI_UNSTRIP',
+    AiAgent = 'AI_AGENT',
+    UnknownDefaultOpenApi = '11184809'
 }

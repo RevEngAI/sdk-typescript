@@ -40,14 +40,16 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * Start AI decompilation
      * @param functionId Function ID
      * @param contextAware Use context-aware decompilation
+     * @param temperature LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
      */
-    public async createAiDecompilation(functionId: number, contextAware?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async createAiDecompilation(functionId: number, contextAware?: boolean, temperature?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "createAiDecompilation", "functionId");
         }
+
 
 
 
@@ -62,6 +64,11 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         // Query Params
         if (contextAware !== undefined) {
             requestContext.setQueryParam("context_aware", ObjectSerializer.serialize(contextAware, "boolean", ""));
+        }
+
+        // Query Params
+        if (temperature !== undefined) {
+            requestContext.setQueryParam("temperature", ObjectSerializer.serialize(temperature, "number", "double"));
         }
 
 

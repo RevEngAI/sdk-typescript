@@ -13,5 +13,6 @@ import { HttpFile } from '../http/http';
 
 export enum Order {
     Asc = 'ASC',
-    Desc = 'DESC'
+    Desc = 'DESC',
+    UnknownDefaultOpenApi = '11184809'
 }

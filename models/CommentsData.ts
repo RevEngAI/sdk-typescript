@@ -61,6 +61,7 @@ export class CommentsData {
 export enum CommentsDataTaskStatusEnum {
     Uninitialised = 'UNINITIALISED',
     Pending = 'PENDING',
-    Completed = 'COMPLETED'
+    Completed = 'COMPLETED',
+    UnknownDefaultOpenApi = '11184809'
 }
 

@@ -66,6 +66,7 @@ export class EventTOOLCALLARGSDELTA {
 }
 
 export enum EventTOOLCALLARGSDELTAEventEnum {
-    ToolCallArgsDelta = 'TOOL_CALL_ARGS_DELTA'
+    ToolCallArgsDelta = 'TOOL_CALL_ARGS_DELTA',
+    UnknownDefaultOpenApi = '11184809'
 }
 

@@ -66,6 +66,7 @@ export class EventRUNERROR {
 }
 
 export enum EventRUNERROREventEnum {
-    RunError = 'RUN_ERROR'
+    RunError = 'RUN_ERROR',
+    UnknownDefaultOpenApi = '11184809'
 }
 

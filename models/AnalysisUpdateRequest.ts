@@ -43,6 +43,7 @@ export class AnalysisUpdateRequest {
 
 export enum AnalysisUpdateRequestAnalysisScopeEnum {
     Public = 'PUBLIC',
-    Private = 'PRIVATE'
+    Private = 'PRIVATE',
+    UnknownDefaultOpenApi = '11184809'
 }
 

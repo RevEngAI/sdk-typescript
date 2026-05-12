@@ -66,6 +66,7 @@ export class EventSTEPFINISHED {
 }
 
 export enum EventSTEPFINISHEDEventEnum {
-    StepFinished = 'STEP_FINISHED'
+    StepFinished = 'STEP_FINISHED',
+    UnknownDefaultOpenApi = '11184809'
 }
 

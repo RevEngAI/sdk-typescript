@@ -13,5 +13,6 @@ import { HttpFile } from '../http/http';
 
 export enum RegenerateTarget {
     Summary = 'summary',
-    Comments = 'comments'
+    Comments = 'comments',
+    UnknownDefaultOpenApi = '11184809'
 }
