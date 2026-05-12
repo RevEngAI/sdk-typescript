@@ -14,5 +14,6 @@ import { HttpFile } from '../http/http';
 export enum AppApiRestV2AnalysesEnumsOrderBy {
     Created = 'created',
     Name = 'name',
-    Size = 'size'
+    Size = 'size',
+    UnknownDefaultOpenApi = '11184809'
 }

@@ -13,5 +13,6 @@ import { HttpFile } from '../http/http';
 
 export enum AnalysisScope {
     Private = 'PRIVATE',
-    Public = 'PUBLIC'
+    Public = 'PUBLIC',
+    UnknownDefaultOpenApi = '11184809'
 }

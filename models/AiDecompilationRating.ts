@@ -14,5 +14,6 @@ import { HttpFile } from '../http/http';
 export enum AiDecompilationRating {
     Positive = 'POSITIVE',
     Negative = 'NEGATIVE',
-    Neutral = 'NEUTRAL'
+    Neutral = 'NEUTRAL',
+    UnknownDefaultOpenApi = '11184809'
 }

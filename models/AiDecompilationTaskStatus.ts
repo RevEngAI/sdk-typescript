@@ -15,5 +15,6 @@ export enum AiDecompilationTaskStatus {
     Uninitialised = 'uninitialised',
     Error = 'error',
     Pending = 'pending',
-    Success = 'success'
+    Success = 'success',
+    UnknownDefaultOpenApi = '11184809'
 }
