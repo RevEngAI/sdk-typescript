@@ -15,5 +15,6 @@ export enum UploadFileType {
     Binary = 'BINARY',
     Debug = 'DEBUG',
     Packed = 'PACKED',
-    Firmware = 'FIRMWARE'
+    Firmware = 'FIRMWARE',
+    UnknownDefaultOpenApi = '11184809'
 }

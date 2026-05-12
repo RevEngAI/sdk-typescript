@@ -2819,6 +2819,15 @@ export interface FunctionsAIDecompilationApiCreateAiDecompilationRequest {
      * @memberof FunctionsAIDecompilationApicreateAiDecompilation
      */
     contextAware?: boolean
+    /**
+     * LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
+     * Minimum: -1
+     * Maximum: 1
+     * Defaults to: -1
+     * @type number
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilation
+     */
+    temperature?: number
 }
 
 export interface FunctionsAIDecompilationApiCreateAiDecompilationCommentRequest {
@@ -3095,7 +3104,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public createAiDecompilationWithHttpInfo(param: FunctionsAIDecompilationApiCreateAiDecompilationRequest, options?: ConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
-        return this.api.createAiDecompilationWithHttpInfo(param.functionId, param.contextAware,  options).toPromise();
+        return this.api.createAiDecompilationWithHttpInfo(param.functionId, param.contextAware, param.temperature,  options).toPromise();
     }
 
     /**
@@ -3104,7 +3113,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public createAiDecompilation(param: FunctionsAIDecompilationApiCreateAiDecompilationRequest, options?: ConfigurationOptions): Promise<CreateAIDecompOutputBody> {
-        return this.api.createAiDecompilation(param.functionId, param.contextAware,  options).toPromise();
+        return this.api.createAiDecompilation(param.functionId, param.contextAware, param.temperature,  options).toPromise();
     }
 
     /**

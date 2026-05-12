@@ -66,6 +66,7 @@ export class EventTITLEUPDATED {
 }
 
 export enum EventTITLEUPDATEDEventEnum {
-    TitleUpdated = 'TITLE_UPDATED'
+    TitleUpdated = 'TITLE_UPDATED',
+    UnknownDefaultOpenApi = '11184809'
 }
 

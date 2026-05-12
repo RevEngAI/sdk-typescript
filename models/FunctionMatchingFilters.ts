@@ -80,6 +80,7 @@ export class FunctionMatchingFilters {
 export enum FunctionMatchingFiltersDebugTypesEnum {
     User = 'USER',
     System = 'SYSTEM',
-    External = 'EXTERNAL'
+    External = 'EXTERNAL',
+    UnknownDefaultOpenApi = '11184809'
 }
 

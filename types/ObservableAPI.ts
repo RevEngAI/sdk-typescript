@@ -3107,11 +3107,12 @@ export class ObservableFunctionsAIDecompilationApi {
      * Start AI decompilation
      * @param functionId Function ID
      * @param [contextAware] Use context-aware decompilation
+     * @param [temperature] LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
      */
-    public createAiDecompilationWithHttpInfo(functionId: number, contextAware?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<CreateAIDecompOutputBody>> {
+    public createAiDecompilationWithHttpInfo(functionId: number, contextAware?: boolean, temperature?: number, _options?: ConfigurationOptions): Observable<HttpInfo<CreateAIDecompOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.createAiDecompilation(functionId, contextAware, _config);
+        const requestContextPromise = this.requestFactory.createAiDecompilation(functionId, contextAware, temperature, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -3133,9 +3134,10 @@ export class ObservableFunctionsAIDecompilationApi {
      * Start AI decompilation
      * @param functionId Function ID
      * @param [contextAware] Use context-aware decompilation
+     * @param [temperature] LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
      */
-    public createAiDecompilation(functionId: number, contextAware?: boolean, _options?: ConfigurationOptions): Observable<CreateAIDecompOutputBody> {
-        return this.createAiDecompilationWithHttpInfo(functionId, contextAware, _options).pipe(map((apiResponse: HttpInfo<CreateAIDecompOutputBody>) => apiResponse.data));
+    public createAiDecompilation(functionId: number, contextAware?: boolean, temperature?: number, _options?: ConfigurationOptions): Observable<CreateAIDecompOutputBody> {
+        return this.createAiDecompilationWithHttpInfo(functionId, contextAware, temperature, _options).pipe(map((apiResponse: HttpInfo<CreateAIDecompOutputBody>) => apiResponse.data));
     }
 
     /**

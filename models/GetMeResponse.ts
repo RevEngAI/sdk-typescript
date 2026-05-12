@@ -87,6 +87,7 @@ export enum GetMeResponseRoleEnum {
     User = 'USER',
     Admin = 'ADMIN',
     Superadmin = 'SUPERADMIN',
-    System = 'SYSTEM'
+    System = 'SYSTEM',
+    UnknownDefaultOpenApi = '11184809'
 }
 

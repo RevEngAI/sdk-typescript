@@ -14,5 +14,6 @@ import { HttpFile } from '../http/http';
 export enum ISA {
     X86 = 'x86',
     X8664 = 'x86_64',
-    Arm = 'arm'
+    Arm = 'arm',
+    UnknownDefaultOpenApi = '11184809'
 }

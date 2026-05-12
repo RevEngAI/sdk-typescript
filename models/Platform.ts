@@ -14,5 +14,6 @@ import { HttpFile } from '../http/http';
 export enum Platform {
     Linux = 'linux',
     Windows = 'windows',
-    Android = 'android'
+    Android = 'android',
+    UnknownDefaultOpenApi = '11184809'
 }

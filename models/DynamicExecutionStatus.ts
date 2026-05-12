@@ -18,5 +18,6 @@ export enum DynamicExecutionStatus {
     Pending = 'PENDING',
     Error = 'ERROR',
     Success = 'SUCCESS',
-    All = 'ALL'
+    All = 'ALL',
+    UnknownDefaultOpenApi = '11184809'
 }

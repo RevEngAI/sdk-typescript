@@ -66,6 +66,7 @@ export class EventTOOLCONFIRMATIONREQUIRED {
 }
 
 export enum EventTOOLCONFIRMATIONREQUIREDEventEnum {
-    ToolConfirmationRequired = 'TOOL_CONFIRMATION_REQUIRED'
+    ToolConfirmationRequired = 'TOOL_CONFIRMATION_REQUIRED',
+    UnknownDefaultOpenApi = '11184809'
 }
 

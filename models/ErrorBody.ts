@@ -119,6 +119,7 @@ export enum ErrorBodyCodeEnum {
     UnsupportedMediaType = 'UNSUPPORTED_MEDIA_TYPE',
     ValidationFailed = 'VALIDATION_FAILED',
     VerificationExpired = 'VERIFICATION_EXPIRED',
-    VerificationNotFound = 'VERIFICATION_NOT_FOUND'
+    VerificationNotFound = 'VERIFICATION_NOT_FOUND',
+    UnknownDefaultOpenApi = '11184809'
 }
 

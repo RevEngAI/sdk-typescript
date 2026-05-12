@@ -14,5 +14,6 @@ import { HttpFile } from '../http/http';
 export enum StringSource {
     System = 'SYSTEM',
     User = 'USER',
-    AiAgent = 'AI_AGENT'
+    AiAgent = 'AI_AGENT',
+    UnknownDefaultOpenApi = '11184809'
 }

@@ -66,6 +66,7 @@ export class EventTEXTMESSAGECONTENT {
 }
 
 export enum EventTEXTMESSAGECONTENTEventEnum {
-    TextMessageContent = 'TEXT_MESSAGE_CONTENT'
+    TextMessageContent = 'TEXT_MESSAGE_CONTENT',
+    UnknownDefaultOpenApi = '11184809'
 }
 

@@ -66,6 +66,7 @@ export class EventTEXTMESSAGEEND {
 }
 
 export enum EventTEXTMESSAGEENDEventEnum {
-    TextMessageEnd = 'TEXT_MESSAGE_END'
+    TextMessageEnd = 'TEXT_MESSAGE_END',
+    UnknownDefaultOpenApi = '11184809'
 }
 

@@ -70,6 +70,7 @@ export class ProgressMessage {
 export enum ProgressMessageLevelEnum {
     Info = 'INFO',
     Warn = 'WARN',
-    Error = 'ERROR'
+    Error = 'ERROR',
+    UnknownDefaultOpenApi = '11184809'
 }
 

@@ -114,6 +114,7 @@ export enum ReportAnalysisResponseSoftwareTypeEnum {
     Benign = 'Benign',
     PotentiallyUnwantedApplicationPua = 'Potentially Unwanted Application (PUA)',
     Legitimate = 'Legitimate',
-    BackdooredLegitimateSoftware = 'Backdoored Legitimate Software'
+    BackdooredLegitimateSoftware = 'Backdoored Legitimate Software',
+    UnknownDefaultOpenApi = '11184809'
 }
 

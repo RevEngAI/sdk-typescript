@@ -88,6 +88,7 @@ export enum TriageFunctionResponseCapabilitiesEnum {
     CryptographicOperations = 'cryptographic_operations',
     ProcessAndMemoryManipulation = 'process_and_memory_manipulation',
     ProcessAndCommandExecution = 'process_and_command_execution',
-    FileActivity = 'file_activity'
+    FileActivity = 'file_activity',
+    UnknownDefaultOpenApi = '11184809'
 }
 

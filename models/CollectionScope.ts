@@ -15,5 +15,6 @@ export enum CollectionScope {
     Private = 'PRIVATE',
     Public = 'PUBLIC',
     Protected = 'PROTECTED',
-    Team = 'TEAM'
+    Team = 'TEAM',
+    UnknownDefaultOpenApi = '11184809'
 }

@@ -20,5 +20,6 @@ export enum StatusInput {
     Complete = 'Complete',
     Error = 'Error',
     Processing = 'Processing',
-    All = 'All'
+    All = 'All',
+    UnknownDefaultOpenApi = '11184809'
 }

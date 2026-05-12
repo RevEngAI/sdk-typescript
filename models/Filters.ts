@@ -16,5 +16,6 @@ export enum Filters {
     UserOnly = 'user_only',
     TeamOnly = 'team_only',
     PublicOnly = 'public_only',
-    HideEmpty = 'hide_empty'
+    HideEmpty = 'hide_empty',
+    UnknownDefaultOpenApi = '11184809'
 }

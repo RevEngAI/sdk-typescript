@@ -14,5 +14,6 @@ import { HttpFile } from '../http/http';
 export enum Workspace {
     Personal = 'personal',
     Team = 'team',
-    Public = 'public'
+    Public = 'public',
+    UnknownDefaultOpenApi = '11184809'
 }

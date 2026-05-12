@@ -66,6 +66,7 @@ export class EventTOOLCALLRESULT {
 }
 
 export enum EventTOOLCALLRESULTEventEnum {
-    ToolCallResult = 'TOOL_CALL_RESULT'
+    ToolCallResult = 'TOOL_CALL_RESULT',
+    UnknownDefaultOpenApi = '11184809'
 }
 
