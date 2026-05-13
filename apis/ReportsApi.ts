@@ -18,7 +18,7 @@ import { WorkflowProgress } from '../models/WorkflowProgress';
 export class ReportsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Start PDF report generation
      * @param analysisId Analysis ID
      */
@@ -180,13 +180,6 @@ export class ReportsApiResponseProcessor {
                 "APIError", ""
             ) as APIError;
             throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("409", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
             const body: APIError = ObjectSerializer.deserialize(

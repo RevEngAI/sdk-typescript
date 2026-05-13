@@ -91,6 +91,7 @@ export enum ErrorBodyCodeEnum {
     ExternalUser = 'EXTERNAL_USER',
     Forbidden = 'FORBIDDEN',
     GatewayTimeout = 'GATEWAY_TIMEOUT',
+    GroupHasMembers = 'GROUP_HAS_MEMBERS',
     InsufficientCredits = 'INSUFFICIENT_CREDITS',
     InternalError = 'INTERNAL_ERROR',
     InternalIssuer = 'INTERNAL_ISSUER',
