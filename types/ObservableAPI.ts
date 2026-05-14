@@ -111,6 +111,9 @@ import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
+import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
+import { BatchRenameItem } from '../models/BatchRenameItem';
+import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
@@ -246,6 +249,7 @@ import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
 import { GetMeResponse } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
+import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
 import { IOC } from '../models/IOC';
 import { ISA } from '../models/ISA';
@@ -291,6 +295,8 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RenameInputBody } from '../models/RenameInputBody';
+import { RenameOutputBody } from '../models/RenameOutputBody';
 import { ReplacementValue } from '../models/ReplacementValue';
 import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
@@ -4593,6 +4599,74 @@ export class ObservableFunctionsRenamingHistoryApi {
     }
 
     /**
+     * Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Batch rename functions
+     * @param batchRenameInputBody
+     */
+    public batchRenameFunctionsWithHttpInfo(batchRenameInputBody: BatchRenameInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<BatchRenameOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.batchRenameFunctions(batchRenameInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.batchRenameFunctionsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Batch rename functions
+     * @param batchRenameInputBody
+     */
+    public batchRenameFunctions(batchRenameInputBody: BatchRenameInputBody, _options?: ConfigurationOptions): Observable<BatchRenameOutputBody> {
+        return this.batchRenameFunctionsWithHttpInfo(batchRenameInputBody, _options).pipe(map((apiResponse: HttpInfo<BatchRenameOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the name change history for a function, newest first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function name history
+     * @param functionId Function ID
+     */
+    public getFunctionHistoryWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<Array<HistoryEntry>>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getFunctionHistory(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionHistoryWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the name change history for a function, newest first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function name history
+     * @param functionId Function ID
+     */
+    public getFunctionHistory(functionId: number, _options?: ConfigurationOptions): Observable<Array<HistoryEntry>> {
+        return this.getFunctionHistoryWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<Array<HistoryEntry>>) => apiResponse.data));
+    }
+
+    /**
      * Gets the name history of a function using the function ID
      * Get Function Name History
      * @param functionId
@@ -4624,6 +4698,42 @@ export class ObservableFunctionsRenamingHistoryApi {
      */
     public getFunctionNameHistory(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseListFunctionNameHistory> {
         return this.getFunctionNameHistoryWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListFunctionNameHistory>) => apiResponse.data));
+    }
+
+    /**
+     * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Rename a function
+     * @param functionId Function ID
+     * @param renameInputBody
+     */
+    public renameFunctionWithHttpInfo(functionId: number, renameInputBody: RenameInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<RenameOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.renameFunction(functionId, renameInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.renameFunctionWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Rename a function
+     * @param functionId Function ID
+     * @param renameInputBody
+     */
+    public renameFunction(functionId: number, renameInputBody: RenameInputBody, _options?: ConfigurationOptions): Observable<RenameOutputBody> {
+        return this.renameFunctionWithHttpInfo(functionId, renameInputBody, _options).pipe(map((apiResponse: HttpInfo<RenameOutputBody>) => apiResponse.data));
     }
 
     /**
@@ -4696,6 +4806,42 @@ export class ObservableFunctionsRenamingHistoryApi {
      */
     public revertFunctionName(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<BaseResponse> {
         return this.revertFunctionNameWithHttpInfo(functionId, historyId, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Revert function name
+     * @param functionId Function ID
+     * @param historyId History ID to revert to
+     */
+    public revertFunctionName_1WithHttpInfo(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.revertFunctionName_1(functionId, historyId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.revertFunctionName_1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Revert function name
+     * @param functionId Function ID
+     * @param historyId History ID to revert to
+     */
+    public revertFunctionName_1(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
+        return this.revertFunctionName_1WithHttpInfo(functionId, historyId, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
     }
 
 }

@@ -13,10 +13,6 @@ import { HttpFile } from '../http/http';
 
 export class DecompilationData {
     /**
-    * A URL to the JSON Schema for this object.
-    */
-    'schema'?: string;
-    /**
     * Source code with placeholders replaced
     */
     'decompilation'?: string;
@@ -30,12 +26,6 @@ export class DecompilationData {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "schema",
-            "baseName": "$schema",
-            "type": "string",
-            "format": "uri"
-        },
         {
             "name": "decompilation",
             "baseName": "decompilation",

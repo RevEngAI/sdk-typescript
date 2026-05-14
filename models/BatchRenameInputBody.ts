@@ -9,12 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { ConversationContext } from '../models/ConversationContext';
+import { BatchRenameItem } from '../models/BatchRenameItem';
 import { HttpFile } from '../http/http';
 
-export class CreateConversationRequest {
-    'context'?: ConversationContext;
-    'title'?: string;
+export class BatchRenameInputBody {
+    /**
+    * List of functions to rename
+    */
+    'functions': Array<BatchRenameItem> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,20 +24,14 @@ export class CreateConversationRequest {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "context",
-            "baseName": "context",
-            "type": "ConversationContext",
-            "format": ""
-        },
-        {
-            "name": "title",
-            "baseName": "title",
-            "type": "string",
+            "name": "functions",
+            "baseName": "functions",
+            "type": "Array<BatchRenameItem>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return CreateConversationRequest.attributeTypeMap;
+        return BatchRenameInputBody.attributeTypeMap;
     }
 
     public constructor() {

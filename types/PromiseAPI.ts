@@ -110,6 +110,9 @@ import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
+import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
+import { BatchRenameItem } from '../models/BatchRenameItem';
+import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
@@ -245,6 +248,7 @@ import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
 import { GetMeResponse } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
+import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
 import { IOC } from '../models/IOC';
 import { ISA } from '../models/ISA';
@@ -290,6 +294,8 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RenameInputBody } from '../models/RenameInputBody';
+import { RenameOutputBody } from '../models/RenameOutputBody';
 import { ReplacementValue } from '../models/ReplacementValue';
 import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
@@ -3249,6 +3255,50 @@ export class PromiseFunctionsRenamingHistoryApi {
     }
 
     /**
+     * Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Batch rename functions
+     * @param batchRenameInputBody
+     */
+    public batchRenameFunctionsWithHttpInfo(batchRenameInputBody: BatchRenameInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BatchRenameOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.batchRenameFunctionsWithHttpInfo(batchRenameInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Batch rename functions
+     * @param batchRenameInputBody
+     */
+    public batchRenameFunctions(batchRenameInputBody: BatchRenameInputBody, _options?: PromiseConfigurationOptions): Promise<BatchRenameOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.batchRenameFunctions(batchRenameInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the name change history for a function, newest first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function name history
+     * @param functionId Function ID
+     */
+    public getFunctionHistoryWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<HistoryEntry>>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getFunctionHistoryWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the name change history for a function, newest first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function name history
+     * @param functionId Function ID
+     */
+    public getFunctionHistory(functionId: number, _options?: PromiseConfigurationOptions): Promise<Array<HistoryEntry>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getFunctionHistory(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Gets the name history of a function using the function ID
      * Get Function Name History
      * @param functionId
@@ -3267,6 +3317,30 @@ export class PromiseFunctionsRenamingHistoryApi {
     public getFunctionNameHistory(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListFunctionNameHistory> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getFunctionNameHistory(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Rename a function
+     * @param functionId Function ID
+     * @param renameInputBody
+     */
+    public renameFunctionWithHttpInfo(functionId: number, renameInputBody: RenameInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RenameOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.renameFunctionWithHttpInfo(functionId, renameInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Rename a function
+     * @param functionId Function ID
+     * @param renameInputBody
+     */
+    public renameFunction(functionId: number, renameInputBody: RenameInputBody, _options?: PromiseConfigurationOptions): Promise<RenameOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.renameFunction(functionId, renameInputBody, observableOptions);
         return result.toPromise();
     }
 
@@ -3315,6 +3389,30 @@ export class PromiseFunctionsRenamingHistoryApi {
     public revertFunctionName(functionId: number, historyId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.revertFunctionName(functionId, historyId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Revert function name
+     * @param functionId Function ID
+     * @param historyId History ID to revert to
+     */
+    public revertFunctionName_1WithHttpInfo(functionId: number, historyId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.revertFunctionName_1WithHttpInfo(functionId, historyId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Revert function name
+     * @param functionId Function ID
+     * @param historyId History ID to revert to
+     */
+    public revertFunctionName_1(functionId: number, historyId: number, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: any; }> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.revertFunctionName_1(functionId, historyId, observableOptions);
         return result.toPromise();
     }
 

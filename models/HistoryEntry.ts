@@ -11,13 +11,35 @@
 
 import { HttpFile } from '../http/http';
 
-export class Conversation {
-    'context'?: any | null;
-    'conversationUuid': string;
+export class HistoryEntry {
+    /**
+    * Username of the user who made the change
+    */
+    'changeMadeBy': string;
+    /**
+    * When this name change was recorded
+    */
     'createdAt': Date;
-    'title': string;
-    'updatedAt': Date;
-    'userId': number;
+    /**
+    * Function name at this point in history
+    */
+    'functionName': string;
+    /**
+    * History record ID
+    */
+    'historyId': number;
+    /**
+    * Whether the function had debug info
+    */
+    'isDebug': boolean;
+    /**
+    * Mangled function name
+    */
+    'mangledName'?: string;
+    /**
+    * Source of the rename (USER, SYSTEM, AI_UNSTRIP, etc.)
+    */
+    'sourceType': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -25,14 +47,8 @@ export class Conversation {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "context",
-            "baseName": "context",
-            "type": "any",
-            "format": ""
-        },
-        {
-            "name": "conversationUuid",
-            "baseName": "conversation_uuid",
+            "name": "changeMadeBy",
+            "baseName": "change_made_by",
             "type": "string",
             "format": ""
         },
@@ -43,26 +59,38 @@ export class Conversation {
             "format": "date-time"
         },
         {
-            "name": "title",
-            "baseName": "title",
+            "name": "functionName",
+            "baseName": "function_name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "updatedAt",
-            "baseName": "updated_at",
-            "type": "Date",
-            "format": "date-time"
-        },
-        {
-            "name": "userId",
-            "baseName": "user_id",
+            "name": "historyId",
+            "baseName": "history_id",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "isDebug",
+            "baseName": "is_debug",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "mangledName",
+            "baseName": "mangled_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "sourceType",
+            "baseName": "source_type",
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return Conversation.attributeTypeMap;
+        return HistoryEntry.attributeTypeMap;
     }
 
     public constructor() {

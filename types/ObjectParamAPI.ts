@@ -110,6 +110,9 @@ import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
+import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
+import { BatchRenameItem } from '../models/BatchRenameItem';
+import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
@@ -245,6 +248,7 @@ import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
 import { GetMeResponse } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
+import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
 import { IOC } from '../models/IOC';
 import { ISA } from '../models/ISA';
@@ -290,6 +294,8 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RenameInputBody } from '../models/RenameInputBody';
+import { RenameOutputBody } from '../models/RenameOutputBody';
 import { ReplacementValue } from '../models/ReplacementValue';
 import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
@@ -4160,6 +4166,26 @@ export interface FunctionsRenamingHistoryApiBatchRenameFunctionRequest {
     functionsListRename: FunctionsListRename
 }
 
+export interface FunctionsRenamingHistoryApiBatchRenameFunctionsRequest {
+    /**
+     * 
+     * @type BatchRenameInputBody
+     * @memberof FunctionsRenamingHistoryApibatchRenameFunctions
+     */
+    batchRenameInputBody: BatchRenameInputBody
+}
+
+export interface FunctionsRenamingHistoryApiGetFunctionHistoryRequest {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsRenamingHistoryApigetFunctionHistory
+     */
+    functionId: number
+}
+
 export interface FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest {
     /**
      * 
@@ -4168,6 +4194,23 @@ export interface FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest {
      * @memberof FunctionsRenamingHistoryApigetFunctionNameHistory
      */
     functionId: number
+}
+
+export interface FunctionsRenamingHistoryApiRenameFunctionRequest {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsRenamingHistoryApirenameFunction
+     */
+    functionId: number
+    /**
+     * 
+     * @type RenameInputBody
+     * @memberof FunctionsRenamingHistoryApirenameFunction
+     */
+    renameInputBody: RenameInputBody
 }
 
 export interface FunctionsRenamingHistoryApiRenameFunctionIdRequest {
@@ -4203,6 +4246,25 @@ export interface FunctionsRenamingHistoryApiRevertFunctionNameRequest {
     historyId: number
 }
 
+export interface FunctionsRenamingHistoryApiRevertFunctionName0Request {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsRenamingHistoryApirevertFunctionName_1
+     */
+    functionId: number
+    /**
+     * History ID to revert to
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsRenamingHistoryApirevertFunctionName_1
+     */
+    historyId: number
+}
+
 export class ObjectFunctionsRenamingHistoryApi {
     private api: ObservableFunctionsRenamingHistoryApi
 
@@ -4229,6 +4291,42 @@ export class ObjectFunctionsRenamingHistoryApi {
     }
 
     /**
+     * Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Batch rename functions
+     * @param param the request object
+     */
+    public batchRenameFunctionsWithHttpInfo(param: FunctionsRenamingHistoryApiBatchRenameFunctionsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BatchRenameOutputBody>> {
+        return this.api.batchRenameFunctionsWithHttpInfo(param.batchRenameInputBody,  options).toPromise();
+    }
+
+    /**
+     * Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Batch rename functions
+     * @param param the request object
+     */
+    public batchRenameFunctions(param: FunctionsRenamingHistoryApiBatchRenameFunctionsRequest, options?: ConfigurationOptions): Promise<BatchRenameOutputBody> {
+        return this.api.batchRenameFunctions(param.batchRenameInputBody,  options).toPromise();
+    }
+
+    /**
+     * Returns the name change history for a function, newest first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function name history
+     * @param param the request object
+     */
+    public getFunctionHistoryWithHttpInfo(param: FunctionsRenamingHistoryApiGetFunctionHistoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<Array<HistoryEntry>>> {
+        return this.api.getFunctionHistoryWithHttpInfo(param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Returns the name change history for a function, newest first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function name history
+     * @param param the request object
+     */
+    public getFunctionHistory(param: FunctionsRenamingHistoryApiGetFunctionHistoryRequest, options?: ConfigurationOptions): Promise<Array<HistoryEntry>> {
+        return this.api.getFunctionHistory(param.functionId,  options).toPromise();
+    }
+
+    /**
      * Gets the name history of a function using the function ID
      * Get Function Name History
      * @param param the request object
@@ -4244,6 +4342,24 @@ export class ObjectFunctionsRenamingHistoryApi {
      */
     public getFunctionNameHistory(param: FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest, options?: ConfigurationOptions): Promise<BaseResponseListFunctionNameHistory> {
         return this.api.getFunctionNameHistory(param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Rename a function
+     * @param param the request object
+     */
+    public renameFunctionWithHttpInfo(param: FunctionsRenamingHistoryApiRenameFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<RenameOutputBody>> {
+        return this.api.renameFunctionWithHttpInfo(param.functionId, param.renameInputBody,  options).toPromise();
+    }
+
+    /**
+     * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Rename a function
+     * @param param the request object
+     */
+    public renameFunction(param: FunctionsRenamingHistoryApiRenameFunctionRequest, options?: ConfigurationOptions): Promise<RenameOutputBody> {
+        return this.api.renameFunction(param.functionId, param.renameInputBody,  options).toPromise();
     }
 
     /**
@@ -4280,6 +4396,24 @@ export class ObjectFunctionsRenamingHistoryApi {
      */
     public revertFunctionName(param: FunctionsRenamingHistoryApiRevertFunctionNameRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
         return this.api.revertFunctionName(param.functionId, param.historyId,  options).toPromise();
+    }
+
+    /**
+     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Revert function name
+     * @param param the request object
+     */
+    public revertFunctionName_1WithHttpInfo(param: FunctionsRenamingHistoryApiRevertFunctionName0Request, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+        return this.api.revertFunctionName_1WithHttpInfo(param.functionId, param.historyId,  options).toPromise();
+    }
+
+    /**
+     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Revert function name
+     * @param param the request object
+     */
+    public revertFunctionName_1(param: FunctionsRenamingHistoryApiRevertFunctionName0Request, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
+        return this.api.revertFunctionName_1(param.functionId, param.historyId,  options).toPromise();
     }
 
 }
