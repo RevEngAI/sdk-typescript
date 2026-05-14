@@ -13,10 +13,6 @@ import { HttpFile } from '../http/http';
 
 export class GeneratePDFOutputBody {
     /**
-    * A URL to the JSON Schema for this object.
-    */
-    'schema'?: string;
-    /**
     * True when an existing PDF generation is in progress for this analysis and user
     */
     'alreadyRunning'?: boolean;
@@ -30,12 +26,6 @@ export class GeneratePDFOutputBody {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "schema",
-            "baseName": "$schema",
-            "type": "string",
-            "format": "uri"
-        },
         {
             "name": "alreadyRunning",
             "baseName": "already_running",

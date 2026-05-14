@@ -14,10 +14,6 @@ import { HttpFile } from '../http/http';
 
 export class TokenisedData {
     /**
-    * A URL to the JSON Schema for this object.
-    */
-    'schema'?: string;
-    /**
     * Complete mapping data for token resolution
     */
     'functionMapping'?: FunctionMapping;
@@ -39,12 +35,6 @@ export class TokenisedData {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "schema",
-            "baseName": "$schema",
-            "type": "string",
-            "format": "uri"
-        },
         {
             "name": "functionMapping",
             "baseName": "function_mapping",

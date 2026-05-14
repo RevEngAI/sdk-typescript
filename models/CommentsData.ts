@@ -14,10 +14,6 @@ import { HttpFile } from '../http/http';
 
 export class CommentsData {
     /**
-    * A URL to the JSON Schema for this object.
-    */
-    'schema'?: string;
-    /**
     * Structured inline comments with line numbers
     */
     'inlineComments': Array<InlineComment> | null;
@@ -31,12 +27,6 @@ export class CommentsData {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "schema",
-            "baseName": "$schema",
-            "type": "string",
-            "format": "uri"
-        },
         {
             "name": "inlineComments",
             "baseName": "inline_comments",

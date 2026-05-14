@@ -12,10 +12,6 @@
 import { HttpFile } from '../http/http';
 
 export class StatusResponse {
-    /**
-    * A URL to the JSON Schema for this object.
-    */
-    'schema'?: string;
     'conversationUuid': string;
     'status': string;
     /**
@@ -28,12 +24,6 @@ export class StatusResponse {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "schema",
-            "baseName": "$schema",
-            "type": "string",
-            "format": "uri"
-        },
         {
             "name": "conversationUuid",
             "baseName": "conversation_uuid",

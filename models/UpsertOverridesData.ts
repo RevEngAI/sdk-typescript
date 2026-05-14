@@ -13,10 +13,6 @@ import { HttpFile } from '../http/http';
 
 export class UpsertOverridesData {
     /**
-    * A URL to the JSON Schema for this object.
-    */
-    'schema'?: string;
-    /**
     * Merged override mappings after applying changes
     */
     'userOverrideMappings': { [key: string]: string; };
@@ -26,12 +22,6 @@ export class UpsertOverridesData {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
-        {
-            "name": "schema",
-            "baseName": "$schema",
-            "type": "string",
-            "format": "uri"
-        },
         {
             "name": "userOverrideMappings",
             "baseName": "user_override_mappings",

@@ -9,12 +9,13 @@
  * Do not edit the class manually.
  */
 
-import { ConversationContext } from '../models/ConversationContext';
 import { HttpFile } from '../http/http';
 
-export class CreateConversationRequest {
-    'context'?: ConversationContext;
-    'title'?: string;
+export class RenameOutputBody {
+    /**
+    * Number of functions renamed
+    */
+    'renamedCount': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,20 +23,14 @@ export class CreateConversationRequest {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "context",
-            "baseName": "context",
-            "type": "ConversationContext",
-            "format": ""
-        },
-        {
-            "name": "title",
-            "baseName": "title",
-            "type": "string",
-            "format": ""
+            "name": "renamedCount",
+            "baseName": "renamed_count",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return CreateConversationRequest.attributeTypeMap;
+        return RenameOutputBody.attributeTypeMap;
     }
 
     public constructor() {

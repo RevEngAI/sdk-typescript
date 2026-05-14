@@ -106,6 +106,9 @@ export * from '../models/BaseResponseUploadResponse';
 export * from '../models/BaseResponseVulnerabilities';
 export * from '../models/BaseResponseXrefResponse';
 export * from '../models/Basic';
+export * from '../models/BatchRenameInputBody';
+export * from '../models/BatchRenameItem';
+export * from '../models/BatchRenameOutputBody';
 export * from '../models/BinariesRelatedStatusResponse';
 export * from '../models/BinariesTaskStatus';
 export * from '../models/BinaryAdditionalDetailsDataResponse';
@@ -241,6 +244,7 @@ export * from '../models/GetAiDecompilationTask';
 export * from '../models/GetMeResponse';
 export * from '../models/GetPublicUserResponse';
 export * from '../models/GlobalVariable';
+export * from '../models/HistoryEntry';
 export * from '../models/HttpRequest';
 export * from '../models/IOC';
 export * from '../models/ISA';
@@ -286,6 +290,8 @@ export * from '../models/RegenerateOutputBody';
 export * from '../models/RegenerateTarget';
 export * from '../models/RegistryOperation';
 export * from '../models/RelativeBinaryResponse';
+export * from '../models/RenameInputBody';
+export * from '../models/RenameOutputBody';
 export * from '../models/ReplacementValue';
 export * from '../models/ReportAnalysisResponse';
 export * from '../models/ReportEvent';
@@ -473,6 +479,9 @@ import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
+import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
+import { BatchRenameItem } from '../models/BatchRenameItem';
+import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
@@ -507,7 +516,7 @@ import { CollectionUpdateRequest    } from '../models/CollectionUpdateRequest';
 import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
-import { CommentsData  , CommentsDataTaskStatusEnum   } from '../models/CommentsData';
+import { CommentsData , CommentsDataTaskStatusEnum   } from '../models/CommentsData';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
@@ -519,7 +528,7 @@ import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
-import { DecompilationData  , DecompilationDataStatusEnum   } from '../models/DecompilationData';
+import { DecompilationData , DecompilationDataStatusEnum   } from '../models/DecompilationData';
 import { DieMatch } from '../models/DieMatch';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
@@ -608,6 +617,7 @@ import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTas
 import { GetMeResponse       , GetMeResponseRoleEnum   } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
+import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
 import { IOC, IOCTypeEnum        } from '../models/IOC';
 import { ISA } from '../models/ISA';
@@ -653,6 +663,8 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RenameInputBody } from '../models/RenameInputBody';
+import { RenameOutputBody } from '../models/RenameOutputBody';
 import { ReplacementValue } from '../models/ReplacementValue';
 import { ReportAnalysisResponse , ReportAnalysisResponseSoftwareTypeEnum         } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
@@ -701,7 +713,7 @@ import { StringSource } from '../models/StringSource';
 import { Structure } from '../models/Structure';
 import { StructureMember } from '../models/StructureMember';
 import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
-import { SummaryData   , SummaryDataTaskStatusEnum   } from '../models/SummaryData';
+import { SummaryData  , SummaryDataTaskStatusEnum   } from '../models/SummaryData';
 import { Symbols } from '../models/Symbols';
 import { Tag } from '../models/Tag';
 import { TagItem } from '../models/TagItem';
@@ -712,7 +724,7 @@ import { TaskResponse   } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse   } from '../models/TaskStatusResponse';
 import { TimestampModel } from '../models/TimestampModel';
-import { TokenisedData   , TokenisedDataStatusEnum    } from '../models/TokenisedData';
+import { TokenisedData  , TokenisedDataStatusEnum    } from '../models/TokenisedData';
 import { TriageFunctionResponse    , TriageFunctionResponseCapabilitiesEnum   } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
 import { Ttp } from '../models/Ttp';
@@ -726,7 +738,7 @@ import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
-import { WorkflowProgress  , WorkflowProgressStatusEnum      } from '../models/WorkflowProgress';
+import { WorkflowProgress , WorkflowProgressStatusEnum      } from '../models/WorkflowProgress';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
 import { XrefResponse } from '../models/XrefResponse';
@@ -910,6 +922,9 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseVulnerabilities": BaseResponseVulnerabilities,
     "BaseResponseXrefResponse": BaseResponseXrefResponse,
     "Basic": Basic,
+    "BatchRenameInputBody": BatchRenameInputBody,
+    "BatchRenameItem": BatchRenameItem,
+    "BatchRenameOutputBody": BatchRenameOutputBody,
     "BinariesRelatedStatusResponse": BinariesRelatedStatusResponse,
     "BinaryAdditionalDetailsDataResponse": BinaryAdditionalDetailsDataResponse,
     "BinaryAdditionalResponse": BinaryAdditionalResponse,
@@ -1037,6 +1052,7 @@ let typeMap: {[index: string]: any} = {
     "GetMeResponse": GetMeResponse,
     "GetPublicUserResponse": GetPublicUserResponse,
     "GlobalVariable": GlobalVariable,
+    "HistoryEntry": HistoryEntry,
     "HttpRequest": HttpRequest,
     "IOC": IOC,
     "IconModel": IconModel,
@@ -1077,6 +1093,8 @@ let typeMap: {[index: string]: any} = {
     "RegenerateOutputBody": RegenerateOutputBody,
     "RegistryOperation": RegistryOperation,
     "RelativeBinaryResponse": RelativeBinaryResponse,
+    "RenameInputBody": RenameInputBody,
+    "RenameOutputBody": RenameOutputBody,
     "ReplacementValue": ReplacementValue,
     "ReportAnalysisResponse": ReportAnalysisResponse,
     "ReportEvent": ReportEvent,
