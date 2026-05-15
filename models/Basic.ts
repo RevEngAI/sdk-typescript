@@ -71,6 +71,10 @@ export class Basic {
     'baseAddress': number | null;
     'binaryUuid'?: string | null;
     'sequencerVersion'?: string | null;
+    /**
+    * The team ID of the analysis
+    */
+    'teamId': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -177,6 +181,12 @@ export class Basic {
             "name": "sequencerVersion",
             "baseName": "sequencer_version",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "teamId",
+            "baseName": "team_id",
+            "type": "number",
             "format": ""
         }    ];
 
