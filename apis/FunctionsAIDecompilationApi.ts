@@ -144,6 +144,8 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
+     * @deprecated
+     *
      * Begins the AI Decompilation Process
      * Begins AI Decompilation Process
      * @param functionId The ID of the function for which we are creating the decompilation task
@@ -531,6 +533,8 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
+     * @deprecated
+     *
      * Polls the AI Decompilation Process
      * Polls AI Decompilation Process
      * @param functionId The ID of the function being decompiled
@@ -593,6 +597,8 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
+     * @deprecated
+     *
      * Check the status of a function ai decompilation
      * @param functionId The ID of the function being checked
      */

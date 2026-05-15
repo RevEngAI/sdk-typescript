@@ -1257,26 +1257,6 @@ export class PromiseAnalysesResultsMetadataApi {
     }
 
     /**
-     * Gets the PDF found in the analysis
-     * @param analysisId
-     */
-    public getPdfWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getPdfWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Gets the PDF found in the analysis
-     * @param analysisId
-     */
-    public getPdf(analysisId: number, _options?: PromiseConfigurationOptions): Promise<any> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getPdf(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Gets the software-bill-of-materials (SBOM) found in the analysis
      * @param analysisId
      */

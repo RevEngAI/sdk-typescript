@@ -1533,16 +1533,6 @@ export interface AnalysesResultsMetadataApiGetFunctionsListRequest {
     pageSize?: number
 }
 
-export interface AnalysesResultsMetadataApiGetPdfRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetPdf
-     */
-    analysisId: number
-}
-
 export interface AnalysesResultsMetadataApiGetSbomRequest {
     /**
      * 
@@ -1630,22 +1620,6 @@ export class ObjectAnalysesResultsMetadataApi {
      */
     public getFunctionsList(param: AnalysesResultsMetadataApiGetFunctionsListRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisFunctions> {
         return this.api.getFunctionsList(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr, param.includeEmbeddings, param.page, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Gets the PDF found in the analysis
-     * @param param the request object
-     */
-    public getPdfWithHttpInfo(param: AnalysesResultsMetadataApiGetPdfRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.getPdfWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the PDF found in the analysis
-     * @param param the request object
-     */
-    public getPdf(param: AnalysesResultsMetadataApiGetPdfRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.getPdf(param.analysisId,  options).toPromise();
     }
 
     /**

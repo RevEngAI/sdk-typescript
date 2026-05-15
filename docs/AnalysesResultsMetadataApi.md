@@ -7,7 +7,6 @@ Method | HTTP request | Description
 [**getAnalysisFunctionsPaginated**](AnalysesResultsMetadataApi.md#getAnalysisFunctionsPaginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 [**getCapabilities**](AnalysesResultsMetadataApi.md#getCapabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 [**getFunctionsList**](AnalysesResultsMetadataApi.md#getFunctionsList) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
-[**getPdf**](AnalysesResultsMetadataApi.md#getPdf) | **GET** /v2/analyses/{analysis_id}/pdf | Gets the PDF found in the analysis
 [**getSbom**](AnalysesResultsMetadataApi.md#getSbom) | **GET** /v2/analyses/{analysis_id}/sbom | Gets the software-bill-of-materials (SBOM) found in the analysis
 [**getTags**](AnalysesResultsMetadataApi.md#getTags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
 [**getVulnerabilities**](AnalysesResultsMetadataApi.md#getVulnerabilities) | **GET** /v2/analyses/{analysis_id}/vulnerabilities | Gets the vulnerabilities found in the analysis
@@ -179,59 +178,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BaseResponseAnalysisFunctions**
-
-### Authorization
-
-[APIKey](README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getPdf**
-> any getPdf()
-
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
-import type { AnalysesResultsMetadataApiGetPdfRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesResultsMetadataApi(configuration);
-
-const request: AnalysesResultsMetadataApiGetPdfRequest = {
-  
-  analysisId: 1,
-};
-
-const data = await apiInstance.getPdf(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**any**
 
 ### Authorization
 
