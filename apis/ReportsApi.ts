@@ -32,7 +32,7 @@ export class ReportsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v3/analysis/{analysis_id}/pdf'
+        const localVarPath = '/v3/analyses/{analysis_id}/pdf'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
 
         // Make Request Context
@@ -77,7 +77,7 @@ export class ReportsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v3/analysis/{analysis_id}/pdf/{task_id}'
+        const localVarPath = '/v3/analyses/{analysis_id}/pdf/{task_id}'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
             .replace('{' + 'task_id' + '}', encodeURIComponent(String(taskId)));
 
@@ -123,7 +123,7 @@ export class ReportsApiRequestFactory extends BaseAPIRequestFactory {
 
 
         // Path Params
-        const localVarPath = '/v3/analysis/{analysis_id}/pdf/{task_id}/status'
+        const localVarPath = '/v3/analyses/{analysis_id}/pdf/{task_id}/status'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
             .replace('{' + 'task_id' + '}', encodeURIComponent(String(taskId)));
 

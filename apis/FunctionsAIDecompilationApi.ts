@@ -36,7 +36,7 @@ import { WorkflowProgress } from '../models/WorkflowProgress';
 export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
      * Start AI decompilation
      * @param functionId Function ID
      * @param contextAware Use context-aware decompilation
@@ -950,6 +950,13 @@ export class FunctionsAIDecompilationApiResponseProcessor {
                 "APIError", ""
             ) as APIError;
             throw new ApiException<APIError>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("402", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Payment Required", body, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
             const body: APIError = ObjectSerializer.deserialize(
