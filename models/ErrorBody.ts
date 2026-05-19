@@ -97,6 +97,7 @@ export enum ErrorBodyCodeEnum {
     InternalIssuer = 'INTERNAL_ISSUER',
     InvalidConversationId = 'INVALID_CONVERSATION_ID',
     InvalidCredentials = 'INVALID_CREDENTIALS',
+    InvalidInviteCode = 'INVALID_INVITE_CODE',
     InvalidResetCode = 'INVALID_RESET_CODE',
     LastOrgOwner = 'LAST_ORG_OWNER',
     LinkedToOrg = 'LINKED_TO_ORG',

@@ -279,6 +279,7 @@ import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
@@ -832,6 +833,30 @@ export class PromiseAnalysesCoreApi {
     public getAnalysisBasicInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBasic> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getAnalysisBasicInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a 64kb byte page from the binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get the bytes of a binary
+     * @param analysisId Analysis ID
+     * @param [page] 64kb page of binary data
+     */
+    public getAnalysisBytesWithHttpInfo(analysisId: number, page?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAnalysisBytesWithHttpInfo(analysisId, page, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a 64kb byte page from the binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get the bytes of a binary
+     * @param analysisId Analysis ID
+     * @param [page] 64kb page of binary data
+     */
+    public getAnalysisBytes(analysisId: number, page?: number, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getAnalysisBytes(analysisId, page, observableOptions);
         return result.toPromise();
     }
 
@@ -2330,6 +2355,30 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
+     * Removes the comment for the given line number. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Delete a single inline comment
+     * @param functionId Function ID
+     * @param line Line number of the comment to delete
+     */
+    public deleteAiDecompilationInlineCommentWithHttpInfo(functionId: number, line: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CommentsData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAiDecompilationInlineCommentWithHttpInfo(functionId, line, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Removes the comment for the given line number. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Delete a single inline comment
+     * @param functionId Function ID
+     * @param line Line number of the comment to delete
+     */
+    public deleteAiDecompilationInlineComment(functionId: number, line: number, _options?: PromiseConfigurationOptions): Promise<CommentsData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.deleteAiDecompilationInlineComment(functionId, line, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Returns the decompilation source code.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
      * Get AI decompilation result
      * @param functionId Function ID
@@ -2570,6 +2619,30 @@ export class PromiseFunctionsAIDecompilationApi {
     public getAiDecompilationTokenised(functionId: number, _options?: PromiseConfigurationOptions): Promise<TokenisedData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getAiDecompilationTokenised(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Merges a single line comment into the existing AI-generated inline comments. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Update a single inline comment
+     * @param functionId Function ID
+     * @param patchCommentBody
+     */
+    public patchAiDecompilationInlineCommentWithHttpInfo(functionId: number, patchCommentBody: PatchCommentBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CommentsData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.patchAiDecompilationInlineCommentWithHttpInfo(functionId, patchCommentBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Merges a single line comment into the existing AI-generated inline comments. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Update a single inline comment
+     * @param functionId Function ID
+     * @param patchCommentBody
+     */
+    public patchAiDecompilationInlineComment(functionId: number, patchCommentBody: PatchCommentBody, _options?: PromiseConfigurationOptions): Promise<CommentsData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.patchAiDecompilationInlineComment(functionId, patchCommentBody, observableOptions);
         return result.toPromise();
     }
 
@@ -3455,7 +3528,7 @@ export class PromiseReportsApi {
     }
 
     /**
-     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Start PDF report generation
      * @param analysisId Analysis ID
      */
@@ -3466,7 +3539,7 @@ export class PromiseReportsApi {
     }
 
     /**
-     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Start PDF report generation
      * @param analysisId Analysis ID
      */
@@ -3477,50 +3550,46 @@ export class PromiseReportsApi {
     }
 
     /**
-     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
      * Download generated PDF report
      * @param analysisId Analysis ID
-     * @param taskId Task ID returned by the create endpoint
      */
-    public downloadPdfReportWithHttpInfo(analysisId: number, taskId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public downloadPdfReportWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.downloadPdfReportWithHttpInfo(analysisId, taskId, observableOptions);
+        const result = this.api.downloadPdfReportWithHttpInfo(analysisId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
      * Download generated PDF report
      * @param analysisId Analysis ID
-     * @param taskId Task ID returned by the create endpoint
      */
-    public downloadPdfReport(analysisId: number, taskId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+    public downloadPdfReport(analysisId: number, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.downloadPdfReport(analysisId, taskId, observableOptions);
+        const result = this.api.downloadPdfReport(analysisId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get PDF report workflow status
      * @param analysisId Analysis ID
-     * @param taskId Task ID returned by the create endpoint
      */
-    public getPdfReportStatusWithHttpInfo(analysisId: number, taskId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<WorkflowProgress>> {
+    public getPdfReportStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<WorkflowProgress>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getPdfReportStatusWithHttpInfo(analysisId, taskId, observableOptions);
+        const result = this.api.getPdfReportStatusWithHttpInfo(analysisId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get PDF report workflow status
      * @param analysisId Analysis ID
-     * @param taskId Task ID returned by the create endpoint
      */
-    public getPdfReportStatus(analysisId: number, taskId: string, _options?: PromiseConfigurationOptions): Promise<WorkflowProgress> {
+    public getPdfReportStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<WorkflowProgress> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getPdfReportStatus(analysisId, taskId, observableOptions);
+        const result = this.api.getPdfReportStatus(analysisId, observableOptions);
         return result.toPromise();
     }
 

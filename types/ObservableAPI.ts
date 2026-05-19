@@ -280,6 +280,7 @@ import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
@@ -1050,6 +1051,42 @@ export class ObservableAnalysesCoreApi {
      */
     public getAnalysisBasicInfo(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseBasic> {
         return this.getAnalysisBasicInfoWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBasic>) => apiResponse.data));
+    }
+
+    /**
+     * Returns a 64kb byte page from the binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get the bytes of a binary
+     * @param analysisId Analysis ID
+     * @param [page] 64kb page of binary data
+     */
+    public getAnalysisBytesWithHttpInfo(analysisId: number, page?: number, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAnalysisBytes(analysisId, page, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisBytesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns a 64kb byte page from the binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get the bytes of a binary
+     * @param analysisId Analysis ID
+     * @param [page] 64kb page of binary data
+     */
+    public getAnalysisBytes(analysisId: number, page?: number, _options?: ConfigurationOptions): Observable<void> {
+        return this.getAnalysisBytesWithHttpInfo(analysisId, page, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
@@ -3221,6 +3258,42 @@ export class ObservableFunctionsAIDecompilationApi {
     }
 
     /**
+     * Removes the comment for the given line number. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Delete a single inline comment
+     * @param functionId Function ID
+     * @param line Line number of the comment to delete
+     */
+    public deleteAiDecompilationInlineCommentWithHttpInfo(functionId: number, line: number, _options?: ConfigurationOptions): Observable<HttpInfo<CommentsData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.deleteAiDecompilationInlineComment(functionId, line, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteAiDecompilationInlineCommentWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Removes the comment for the given line number. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Delete a single inline comment
+     * @param functionId Function ID
+     * @param line Line number of the comment to delete
+     */
+    public deleteAiDecompilationInlineComment(functionId: number, line: number, _options?: ConfigurationOptions): Observable<CommentsData> {
+        return this.deleteAiDecompilationInlineCommentWithHttpInfo(functionId, line, _options).pipe(map((apiResponse: HttpInfo<CommentsData>) => apiResponse.data));
+    }
+
+    /**
      * Returns the decompilation source code.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
      * Get AI decompilation result
      * @param functionId Function ID
@@ -3594,6 +3667,42 @@ export class ObservableFunctionsAIDecompilationApi {
      */
     public getAiDecompilationTokenised(functionId: number, _options?: ConfigurationOptions): Observable<TokenisedData> {
         return this.getAiDecompilationTokenisedWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<TokenisedData>) => apiResponse.data));
+    }
+
+    /**
+     * Merges a single line comment into the existing AI-generated inline comments. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Update a single inline comment
+     * @param functionId Function ID
+     * @param patchCommentBody
+     */
+    public patchAiDecompilationInlineCommentWithHttpInfo(functionId: number, patchCommentBody: PatchCommentBody, _options?: ConfigurationOptions): Observable<HttpInfo<CommentsData>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.patchAiDecompilationInlineComment(functionId, patchCommentBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.patchAiDecompilationInlineCommentWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Merges a single line comment into the existing AI-generated inline comments. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Update a single inline comment
+     * @param functionId Function ID
+     * @param patchCommentBody
+     */
+    public patchAiDecompilationInlineComment(functionId: number, patchCommentBody: PatchCommentBody, _options?: ConfigurationOptions): Observable<CommentsData> {
+        return this.patchAiDecompilationInlineCommentWithHttpInfo(functionId, patchCommentBody, _options).pipe(map((apiResponse: HttpInfo<CommentsData>) => apiResponse.data));
     }
 
     /**
@@ -4881,7 +4990,7 @@ export class ObservableReportsApi {
     }
 
     /**
-     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Start PDF report generation
      * @param analysisId Analysis ID
      */
@@ -4906,7 +5015,7 @@ export class ObservableReportsApi {
     }
 
     /**
-     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Start PDF report generation
      * @param analysisId Analysis ID
      */
@@ -4915,15 +5024,14 @@ export class ObservableReportsApi {
     }
 
     /**
-     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
      * Download generated PDF report
      * @param analysisId Analysis ID
-     * @param taskId Task ID returned by the create endpoint
      */
-    public downloadPdfReportWithHttpInfo(analysisId: number, taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
+    public downloadPdfReportWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<void>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.downloadPdfReport(analysisId, taskId, _config);
+        const requestContextPromise = this.requestFactory.downloadPdfReport(analysisId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4941,25 +5049,23 @@ export class ObservableReportsApi {
     }
 
     /**
-     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
      * Download generated PDF report
      * @param analysisId Analysis ID
-     * @param taskId Task ID returned by the create endpoint
      */
-    public downloadPdfReport(analysisId: number, taskId: string, _options?: ConfigurationOptions): Observable<void> {
-        return this.downloadPdfReportWithHttpInfo(analysisId, taskId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
+    public downloadPdfReport(analysisId: number, _options?: ConfigurationOptions): Observable<void> {
+        return this.downloadPdfReportWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
     }
 
     /**
-     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get PDF report workflow status
      * @param analysisId Analysis ID
-     * @param taskId Task ID returned by the create endpoint
      */
-    public getPdfReportStatusWithHttpInfo(analysisId: number, taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<WorkflowProgress>> {
+    public getPdfReportStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<WorkflowProgress>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getPdfReportStatus(analysisId, taskId, _config);
+        const requestContextPromise = this.requestFactory.getPdfReportStatus(analysisId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -4977,13 +5083,12 @@ export class ObservableReportsApi {
     }
 
     /**
-     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get PDF report workflow status
      * @param analysisId Analysis ID
-     * @param taskId Task ID returned by the create endpoint
      */
-    public getPdfReportStatus(analysisId: number, taskId: string, _options?: ConfigurationOptions): Observable<WorkflowProgress> {
-        return this.getPdfReportStatusWithHttpInfo(analysisId, taskId, _options).pipe(map((apiResponse: HttpInfo<WorkflowProgress>) => apiResponse.data));
+    public getPdfReportStatus(analysisId: number, _options?: ConfigurationOptions): Observable<WorkflowProgress> {
+        return this.getPdfReportStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<WorkflowProgress>) => apiResponse.data));
     }
 
 }

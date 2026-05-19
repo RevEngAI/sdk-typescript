@@ -275,6 +275,7 @@ export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
 export * from '../models/PaginationModel';
 export * from '../models/Params';
+export * from '../models/PatchCommentBody';
 export * from '../models/Platform';
 export * from '../models/ProcessActivityEntry';
 export * from '../models/ProcessMemdumps';
@@ -648,6 +649,7 @@ import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
@@ -1080,6 +1082,7 @@ let typeMap: {[index: string]: any} = {
     "PEModel": PEModel,
     "PaginationModel": PaginationModel,
     "Params": Params,
+    "PatchCommentBody": PatchCommentBody,
     "ProcessActivityEntry": ProcessActivityEntry,
     "ProcessMemdumps": ProcessMemdumps,
     "ProcessNode": ProcessNode,

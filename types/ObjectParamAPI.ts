@@ -279,6 +279,7 @@ import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
@@ -880,6 +881,26 @@ export interface AnalysesCoreApiGetAnalysisBasicInfoRequest {
     analysisId: number
 }
 
+export interface AnalysesCoreApiGetAnalysisBytesRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisBytes
+     */
+    analysisId: number
+    /**
+     * 64kb page of binary data
+     * Minimum: 0
+     * Maximum: 16777216
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisBytes
+     */
+    page?: number
+}
+
 export interface AnalysesCoreApiGetAnalysisFunctionMapRequest {
     /**
      * 
@@ -1200,6 +1221,24 @@ export class ObjectAnalysesCoreApi {
      */
     public getAnalysisBasicInfo(param: AnalysesCoreApiGetAnalysisBasicInfoRequest, options?: ConfigurationOptions): Promise<BaseResponseBasic> {
         return this.api.getAnalysisBasicInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns a 64kb byte page from the binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get the bytes of a binary
+     * @param param the request object
+     */
+    public getAnalysisBytesWithHttpInfo(param: AnalysesCoreApiGetAnalysisBytesRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.getAnalysisBytesWithHttpInfo(param.analysisId, param.page,  options).toPromise();
+    }
+
+    /**
+     * Returns a 64kb byte page from the binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get the bytes of a binary
+     * @param param the request object
+     */
+    public getAnalysisBytes(param: AnalysesCoreApiGetAnalysisBytesRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.getAnalysisBytes(param.analysisId, param.page,  options).toPromise();
     }
 
     /**
@@ -2854,6 +2893,25 @@ export interface FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest 
     functionId: number
 }
 
+export interface FunctionsAIDecompilationApiDeleteAiDecompilationInlineCommentRequest {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsAIDecompilationApideleteAiDecompilationInlineComment
+     */
+    functionId: number
+    /**
+     * Line number of the comment to delete
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsAIDecompilationApideleteAiDecompilationInlineComment
+     */
+    line: number
+}
+
 export interface FunctionsAIDecompilationApiGetAiDecompilationRequest {
     /**
      * Function ID
@@ -2990,6 +3048,23 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationTokenisedRequest {
      * @memberof FunctionsAIDecompilationApigetAiDecompilationTokenised
      */
     functionId: number
+}
+
+export interface FunctionsAIDecompilationApiPatchAiDecompilationInlineCommentRequest {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsAIDecompilationApipatchAiDecompilationInlineComment
+     */
+    functionId: number
+    /**
+     * 
+     * @type PatchCommentBody
+     * @memberof FunctionsAIDecompilationApipatchAiDecompilationInlineComment
+     */
+    patchCommentBody: PatchCommentBody
 }
 
 export interface FunctionsAIDecompilationApiRegenerateAiDecompilationInlineCommentsRequest {
@@ -3148,6 +3223,24 @@ export class ObjectFunctionsAIDecompilationApi {
      */
     public deleteAiDecompilationComment(param: FunctionsAIDecompilationApiDeleteAiDecompilationCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
         return this.api.deleteAiDecompilationComment(param.commentId, param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Removes the comment for the given line number. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Delete a single inline comment
+     * @param param the request object
+     */
+    public deleteAiDecompilationInlineCommentWithHttpInfo(param: FunctionsAIDecompilationApiDeleteAiDecompilationInlineCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<CommentsData>> {
+        return this.api.deleteAiDecompilationInlineCommentWithHttpInfo(param.functionId, param.line,  options).toPromise();
+    }
+
+    /**
+     * Removes the comment for the given line number. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Delete a single inline comment
+     * @param param the request object
+     */
+    public deleteAiDecompilationInlineComment(param: FunctionsAIDecompilationApiDeleteAiDecompilationInlineCommentRequest, options?: ConfigurationOptions): Promise<CommentsData> {
+        return this.api.deleteAiDecompilationInlineComment(param.functionId, param.line,  options).toPromise();
     }
 
     /**
@@ -3342,6 +3435,24 @@ export class ObjectFunctionsAIDecompilationApi {
      */
     public getAiDecompilationTokenised(param: FunctionsAIDecompilationApiGetAiDecompilationTokenisedRequest, options?: ConfigurationOptions): Promise<TokenisedData> {
         return this.api.getAiDecompilationTokenised(param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Merges a single line comment into the existing AI-generated inline comments. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Update a single inline comment
+     * @param param the request object
+     */
+    public patchAiDecompilationInlineCommentWithHttpInfo(param: FunctionsAIDecompilationApiPatchAiDecompilationInlineCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<CommentsData>> {
+        return this.api.patchAiDecompilationInlineCommentWithHttpInfo(param.functionId, param.patchCommentBody,  options).toPromise();
+    }
+
+    /**
+     * Merges a single line comment into the existing AI-generated inline comments. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Update a single inline comment
+     * @param param the request object
+     */
+    public patchAiDecompilationInlineComment(param: FunctionsAIDecompilationApiPatchAiDecompilationInlineCommentRequest, options?: ConfigurationOptions): Promise<CommentsData> {
+        return this.api.patchAiDecompilationInlineComment(param.functionId, param.patchCommentBody,  options).toPromise();
     }
 
     /**
@@ -4448,13 +4559,6 @@ export interface ReportsApiDownloadPdfReportRequest {
      * @memberof ReportsApidownloadPdfReport
      */
     analysisId: number
-    /**
-     * Task ID returned by the create endpoint
-     * Defaults to: undefined
-     * @type string
-     * @memberof ReportsApidownloadPdfReport
-     */
-    taskId: string
 }
 
 export interface ReportsApiGetPdfReportStatusRequest {
@@ -4466,13 +4570,6 @@ export interface ReportsApiGetPdfReportStatusRequest {
      * @memberof ReportsApigetPdfReportStatus
      */
     analysisId: number
-    /**
-     * Task ID returned by the create endpoint
-     * Defaults to: undefined
-     * @type string
-     * @memberof ReportsApigetPdfReportStatus
-     */
-    taskId: string
 }
 
 export class ObjectReportsApi {
@@ -4483,7 +4580,7 @@ export class ObjectReportsApi {
     }
 
     /**
-     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Start PDF report generation
      * @param param the request object
      */
@@ -4492,7 +4589,7 @@ export class ObjectReportsApi {
     }
 
     /**
-     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Start PDF report generation
      * @param param the request object
      */
@@ -4501,39 +4598,39 @@ export class ObjectReportsApi {
     }
 
     /**
-     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
      * Download generated PDF report
      * @param param the request object
      */
     public downloadPdfReportWithHttpInfo(param: ReportsApiDownloadPdfReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
-        return this.api.downloadPdfReportWithHttpInfo(param.analysisId, param.taskId,  options).toPromise();
+        return this.api.downloadPdfReportWithHttpInfo(param.analysisId,  options).toPromise();
     }
 
     /**
-     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
      * Download generated PDF report
      * @param param the request object
      */
     public downloadPdfReport(param: ReportsApiDownloadPdfReportRequest, options?: ConfigurationOptions): Promise<void> {
-        return this.api.downloadPdfReport(param.analysisId, param.taskId,  options).toPromise();
+        return this.api.downloadPdfReport(param.analysisId,  options).toPromise();
     }
 
     /**
-     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get PDF report workflow status
      * @param param the request object
      */
     public getPdfReportStatusWithHttpInfo(param: ReportsApiGetPdfReportStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<WorkflowProgress>> {
-        return this.api.getPdfReportStatusWithHttpInfo(param.analysisId, param.taskId,  options).toPromise();
+        return this.api.getPdfReportStatusWithHttpInfo(param.analysisId,  options).toPromise();
     }
 
     /**
-     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get PDF report workflow status
      * @param param the request object
      */
     public getPdfReportStatus(param: ReportsApiGetPdfReportStatusRequest, options?: ConfigurationOptions): Promise<WorkflowProgress> {
-        return this.api.getPdfReportStatus(param.analysisId, param.taskId,  options).toPromise();
+        return this.api.getPdfReportStatus(param.analysisId,  options).toPromise();
     }
 
 }

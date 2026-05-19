@@ -18,7 +18,7 @@ import { WorkflowProgress } from '../models/WorkflowProgress';
 export class ReportsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Starts an asynchronous PDF report generation workflow for the given analysis. Returns a deterministic task_id used to poll status and download the resulting PDF. Idempotent: if a workflow is already running for this analysis and user, the same task_id is returned with `already_running: true` so the caller can rejoin the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts an asynchronous PDF report generation workflow for the given analysis. Poll status and download the resulting PDF using the same analysis ID. Idempotent: if a workflow is already running for this analysis and user, the response sets `already_running: true` and the caller rejoins the in-flight workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Start PDF report generation
      * @param analysisId Analysis ID
      */
@@ -56,12 +56,11 @@ export class ReportsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
+     * Streams the rendered PDF report. Returns 409 when the workflow is still running and 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready - `500` [`REPORT_RENDER_FAILED`](/errors/REPORT_RENDER_FAILED) — Report Render Failed
      * Download generated PDF report
      * @param analysisId Analysis ID
-     * @param taskId Task ID returned by the create endpoint
      */
-    public async downloadPdfReport(analysisId: number, taskId: string, _options?: Configuration): Promise<RequestContext> {
+    public async downloadPdfReport(analysisId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -70,16 +69,9 @@ export class ReportsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'taskId' is not null or undefined
-        if (taskId === null || taskId === undefined) {
-            throw new RequiredError("ReportsApi", "downloadPdfReport", "taskId");
-        }
-
-
         // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/pdf/{task_id}'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
-            .replace('{' + 'task_id' + '}', encodeURIComponent(String(taskId)));
+        const localVarPath = '/v3/analyses/{analysis_id}/pdf'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -102,12 +94,11 @@ export class ReportsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns live workflow progress for the given task. Returns 404 when the task does not exist or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns live workflow progress for the given analysis. Returns 404 when no report generation exists for this analysis or the caller is not authorised to see it.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get PDF report workflow status
      * @param analysisId Analysis ID
-     * @param taskId Task ID returned by the create endpoint
      */
-    public async getPdfReportStatus(analysisId: number, taskId: string, _options?: Configuration): Promise<RequestContext> {
+    public async getPdfReportStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
@@ -116,16 +107,9 @@ export class ReportsApiRequestFactory extends BaseAPIRequestFactory {
         }
 
 
-        // verify required parameter 'taskId' is not null or undefined
-        if (taskId === null || taskId === undefined) {
-            throw new RequiredError("ReportsApi", "getPdfReportStatus", "taskId");
-        }
-
-
         // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/pdf/{task_id}/status'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
-            .replace('{' + 'task_id' + '}', encodeURIComponent(String(taskId)));
+        const localVarPath = '/v3/analyses/{analysis_id}/pdf/status'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);

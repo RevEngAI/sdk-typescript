@@ -11,11 +11,15 @@
 
 import { HttpFile } from '../http/http';
 
-export class GeneratePDFOutputBody {
+export class PatchCommentBody {
     /**
-    * True when an existing PDF generation is in progress for this analysis and user
+    * Comment text
     */
-    'alreadyRunning'?: boolean;
+    'comment': string;
+    /**
+    * Line number to set the comment on
+    */
+    'line': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,14 +27,20 @@ export class GeneratePDFOutputBody {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "alreadyRunning",
-            "baseName": "already_running",
-            "type": "boolean",
+            "name": "comment",
+            "baseName": "comment",
+            "type": "string",
             "format": ""
+        },
+        {
+            "name": "line",
+            "baseName": "line",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return GeneratePDFOutputBody.attributeTypeMap;
+        return PatchCommentBody.attributeTypeMap;
     }
 
     public constructor() {
