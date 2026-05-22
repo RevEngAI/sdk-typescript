@@ -38,6 +38,8 @@ import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2Fu
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
 import { Argument } from '../models/Argument';
+import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
+import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
@@ -158,6 +160,9 @@ import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
+import { DebugPromptEvent } from '../models/DebugPromptEvent';
+import { DecompFailedEvent } from '../models/DecompFailedEvent';
+import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DecompilationData } from '../models/DecompilationData';
 import { DieMatch } from '../models/DieMatch';
@@ -178,13 +183,22 @@ import { Enumeration } from '../models/Enumeration';
 import { ErrorBody } from '../models/ErrorBody';
 import { ErrorModel } from '../models/ErrorModel';
 import { Event } from '../models/Event';
+import { EventAttemptFailed } from '../models/EventAttemptFailed';
+import { EventAttemptStarted } from '../models/EventAttemptStarted';
 import { EventCONTEXTCOMPACTED } from '../models/EventCONTEXTCOMPACTED';
+import { EventDebugPrompt } from '../models/EventDebugPrompt';
+import { EventDecompFailed } from '../models/EventDecompFailed';
+import { EventDecompFinished } from '../models/EventDecompFinished';
+import { EventProse } from '../models/EventProse';
 import { EventRUNCANCELLED } from '../models/EventRUNCANCELLED';
 import { EventRUNERROR } from '../models/EventRUNERROR';
 import { EventRUNFINISHED } from '../models/EventRUNFINISHED';
 import { EventRUNSTARTED } from '../models/EventRUNSTARTED';
+import { EventRenameApplied } from '../models/EventRenameApplied';
 import { EventSTEPFINISHED } from '../models/EventSTEPFINISHED';
 import { EventSTEPSTARTED } from '../models/EventSTEPSTARTED';
+import { EventSourceDelta } from '../models/EventSourceDelta';
+import { EventSourceReset } from '../models/EventSourceReset';
 import { EventTEXTMESSAGECONTENT } from '../models/EventTEXTMESSAGECONTENT';
 import { EventTEXTMESSAGEEND } from '../models/EventTEXTMESSAGEEND';
 import { EventTEXTMESSAGESTART } from '../models/EventTEXTMESSAGESTART';
@@ -194,6 +208,7 @@ import { EventTOOLCALLEND } from '../models/EventTOOLCALLEND';
 import { EventTOOLCALLRESULT } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
+import { EventWarning } from '../models/EventWarning';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedURL } from '../models/ExtractedURL';
@@ -286,6 +301,7 @@ import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
 import { ProcessTree } from '../models/ProcessTree';
 import { ProgressMessage } from '../models/ProgressMessage';
+import { ProseEvent } from '../models/ProseEvent';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
@@ -295,6 +311,7 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
 import { RenameOutputBody } from '../models/RenameOutputBody';
 import { ReplacementValue } from '../models/ReplacementValue';
@@ -318,6 +335,8 @@ import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
 import { SingleSectionModel } from '../models/SingleSectionModel';
+import { SourceDeltaEvent } from '../models/SourceDeltaEvent';
+import { SourceResetEvent } from '../models/SourceResetEvent';
 import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
 import { SseEventRunCancelledData } from '../models/SseEventRunCancelledData';
 import { SseEventRunErrorData } from '../models/SseEventRunErrorData';
@@ -339,6 +358,7 @@ import { StartupInfo } from '../models/StartupInfo';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StatusResponse } from '../models/StatusResponse';
+import { StreamAiDecompilation200ResponseInner } from '../models/StreamAiDecompilation200ResponseInner';
 import { StreamEvents200ResponseInner } from '../models/StreamEvents200ResponseInner';
 import { StringFunctions } from '../models/StringFunctions';
 import { StringSource } from '../models/StringSource';
@@ -370,6 +390,7 @@ import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
+import { WarningEvent } from '../models/WarningEvent';
 import { WorkflowProgress } from '../models/WorkflowProgress';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
@@ -2687,6 +2708,28 @@ export class PromiseFunctionsAIDecompilationApi {
     public regenerateAiDecompilationSummary(functionId: number, _options?: PromiseConfigurationOptions): Promise<RegenerateOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.regenerateAiDecompilationSummary(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`. Terminal events: `decomp_finished` (success) or `decomp_failed` (all retries exhausted). `attempt_failed` is per-attempt and non-terminal — Temporal may retry the activity. Clients should treat `attempt` changes as a reset signal. `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
+     * Stream live AI decompilation output (SSE)
+     * @param functionId Function ID
+     */
+    public streamAiDecompilationWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<Array<StreamAiDecompilation200ResponseInner>>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.streamAiDecompilationWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`. Terminal events: `decomp_finished` (success) or `decomp_failed` (all retries exhausted). `attempt_failed` is per-attempt and non-terminal — Temporal may retry the activity. Clients should treat `attempt` changes as a reset signal. `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
+     * Stream live AI decompilation output (SSE)
+     * @param functionId Function ID
+     */
+    public streamAiDecompilation(functionId: number, _options?: PromiseConfigurationOptions): Promise<Array<StreamAiDecompilation200ResponseInner>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.streamAiDecompilation(functionId, observableOptions);
         return result.toPromise();
     }
 

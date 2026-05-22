@@ -24,6 +24,7 @@ import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateReq
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
+import { StreamAiDecompilation200ResponseInner } from '../models/StreamAiDecompilation200ResponseInner';
 import { SummaryData } from '../models/SummaryData';
 import { TokenisedData } from '../models/TokenisedData';
 import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
@@ -834,6 +835,44 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`. Terminal events: `decomp_finished` (success) or `decomp_failed` (all retries exhausted). `attempt_failed` is per-attempt and non-terminal — Temporal may retry the activity. Clients should treat `attempt` changes as a reset signal. `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
+     * Stream live AI decompilation output (SSE)
+     * @param functionId Function ID
+     */
+    public async streamAiDecompilation(functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsAIDecompilationApi", "streamAiDecompilation", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/ai-decompilation/events'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
 
 
@@ -2031,6 +2070,42 @@ export class FunctionsAIDecompilationApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "RegenerateOutputBody", ""
             ) as RegenerateOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to streamAiDecompilation
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async streamAiDecompilationWithHttpInfo(response: ResponseContext): Promise<HttpInfo<Array<StreamAiDecompilation200ResponseInner> >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: Array<StreamAiDecompilation200ResponseInner> = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Array<StreamAiDecompilation200ResponseInner>", ""
+            ) as Array<StreamAiDecompilation200ResponseInner>;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: Array<StreamAiDecompilation200ResponseInner> = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "Array<StreamAiDecompilation200ResponseInner>", ""
+            ) as Array<StreamAiDecompilation200ResponseInner>;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

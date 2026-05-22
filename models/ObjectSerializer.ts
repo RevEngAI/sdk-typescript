@@ -34,6 +34,8 @@ export * from '../models/AppApiRestV2FunctionsResponsesFunction';
 export * from '../models/AppApiRestV2FunctionsTypesFunction';
 export * from '../models/AppApiRestV2InfoTypesCapability';
 export * from '../models/Argument';
+export * from '../models/AttemptFailedEvent';
+export * from '../models/AttemptStartedEvent';
 export * from '../models/AutoRunAgents';
 export * from '../models/AutoUnstripRequest';
 export * from '../models/AutoUnstripResponse';
@@ -154,6 +156,9 @@ export * from '../models/ConversationWithEvents';
 export * from '../models/CreateAIDecompOutputBody';
 export * from '../models/CreateConversationRequest';
 export * from '../models/Created';
+export * from '../models/DebugPromptEvent';
+export * from '../models/DecompFailedEvent';
+export * from '../models/DecompFinishedEvent';
 export * from '../models/DecompilationCommentContext';
 export * from '../models/DecompilationData';
 export * from '../models/DieMatch';
@@ -174,13 +179,22 @@ export * from '../models/Enumeration';
 export * from '../models/ErrorBody';
 export * from '../models/ErrorModel';
 export * from '../models/Event';
+export * from '../models/EventAttemptFailed';
+export * from '../models/EventAttemptStarted';
 export * from '../models/EventCONTEXTCOMPACTED';
+export * from '../models/EventDebugPrompt';
+export * from '../models/EventDecompFailed';
+export * from '../models/EventDecompFinished';
+export * from '../models/EventProse';
 export * from '../models/EventRUNCANCELLED';
 export * from '../models/EventRUNERROR';
 export * from '../models/EventRUNFINISHED';
 export * from '../models/EventRUNSTARTED';
+export * from '../models/EventRenameApplied';
 export * from '../models/EventSTEPFINISHED';
 export * from '../models/EventSTEPSTARTED';
+export * from '../models/EventSourceDelta';
+export * from '../models/EventSourceReset';
 export * from '../models/EventTEXTMESSAGECONTENT';
 export * from '../models/EventTEXTMESSAGEEND';
 export * from '../models/EventTEXTMESSAGESTART';
@@ -190,6 +204,7 @@ export * from '../models/EventTOOLCALLEND';
 export * from '../models/EventTOOLCALLRESULT';
 export * from '../models/EventTOOLCALLSTART';
 export * from '../models/EventTOOLCONFIRMATIONREQUIRED';
+export * from '../models/EventWarning';
 export * from '../models/ExportModel';
 export * from '../models/ExternalResponse';
 export * from '../models/ExtractedURL';
@@ -282,6 +297,7 @@ export * from '../models/ProcessMemdumps';
 export * from '../models/ProcessNode';
 export * from '../models/ProcessTree';
 export * from '../models/ProgressMessage';
+export * from '../models/ProseEvent';
 export * from '../models/PutAnalysisStringsRequest';
 export * from '../models/QueuePositionResponse';
 export * from '../models/QueuedWorkflowTaskResponse';
@@ -291,6 +307,7 @@ export * from '../models/RegenerateOutputBody';
 export * from '../models/RegenerateTarget';
 export * from '../models/RegistryOperation';
 export * from '../models/RelativeBinaryResponse';
+export * from '../models/RenameAppliedEvent';
 export * from '../models/RenameInputBody';
 export * from '../models/RenameOutputBody';
 export * from '../models/ReplacementValue';
@@ -314,6 +331,8 @@ export * from '../models/SingleCodeCertificateModel';
 export * from '../models/SingleCodeSignatureModel';
 export * from '../models/SinglePDBEntryModel';
 export * from '../models/SingleSectionModel';
+export * from '../models/SourceDeltaEvent';
+export * from '../models/SourceResetEvent';
 export * from '../models/SseEventContextCompactedData';
 export * from '../models/SseEventRunCancelledData';
 export * from '../models/SseEventRunErrorData';
@@ -335,6 +354,7 @@ export * from '../models/StartupInfo';
 export * from '../models/StatusInput';
 export * from '../models/StatusOutput';
 export * from '../models/StatusResponse';
+export * from '../models/StreamAiDecompilation200ResponseInner';
 export * from '../models/StreamEvents200ResponseInner';
 export * from '../models/StringFunctions';
 export * from '../models/StringSource';
@@ -366,6 +386,7 @@ export * from '../models/UpsertOverridesInputBody';
 export * from '../models/UserActivityResponse';
 export * from '../models/Vulnerabilities';
 export * from '../models/Vulnerability';
+export * from '../models/WarningEvent';
 export * from '../models/WorkflowProgress';
 export * from '../models/Workspace';
 export * from '../models/XrefFromResponse';
@@ -408,6 +429,8 @@ import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2Fu
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
 import { Argument } from '../models/Argument';
+import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
+import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
@@ -528,6 +551,9 @@ import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
+import { DebugPromptEvent } from '../models/DebugPromptEvent';
+import { DecompFailedEvent } from '../models/DecompFailedEvent';
+import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DecompilationData , DecompilationDataStatusEnum   } from '../models/DecompilationData';
 import { DieMatch } from '../models/DieMatch';
@@ -548,13 +574,22 @@ import { Enumeration } from '../models/Enumeration';
 import { ErrorBody, ErrorBodyCodeEnum       } from '../models/ErrorBody';
 import { ErrorModel } from '../models/ErrorModel';
 import { Event } from '../models/Event';
+import { EventAttemptFailed , EventAttemptFailedEventEnum     } from '../models/EventAttemptFailed';
+import { EventAttemptStarted , EventAttemptStartedEventEnum     } from '../models/EventAttemptStarted';
 import { EventCONTEXTCOMPACTED , EventCONTEXTCOMPACTEDEventEnum     } from '../models/EventCONTEXTCOMPACTED';
+import { EventDebugPrompt , EventDebugPromptEventEnum     } from '../models/EventDebugPrompt';
+import { EventDecompFailed , EventDecompFailedEventEnum     } from '../models/EventDecompFailed';
+import { EventDecompFinished , EventDecompFinishedEventEnum     } from '../models/EventDecompFinished';
+import { EventProse , EventProseEventEnum     } from '../models/EventProse';
 import { EventRUNCANCELLED , EventRUNCANCELLEDEventEnum     } from '../models/EventRUNCANCELLED';
 import { EventRUNERROR , EventRUNERROREventEnum     } from '../models/EventRUNERROR';
 import { EventRUNFINISHED , EventRUNFINISHEDEventEnum     } from '../models/EventRUNFINISHED';
 import { EventRUNSTARTED , EventRUNSTARTEDEventEnum     } from '../models/EventRUNSTARTED';
+import { EventRenameApplied , EventRenameAppliedEventEnum     } from '../models/EventRenameApplied';
 import { EventSTEPFINISHED , EventSTEPFINISHEDEventEnum     } from '../models/EventSTEPFINISHED';
 import { EventSTEPSTARTED , EventSTEPSTARTEDEventEnum     } from '../models/EventSTEPSTARTED';
+import { EventSourceDelta , EventSourceDeltaEventEnum     } from '../models/EventSourceDelta';
+import { EventSourceReset , EventSourceResetEventEnum     } from '../models/EventSourceReset';
 import { EventTEXTMESSAGECONTENT , EventTEXTMESSAGECONTENTEventEnum     } from '../models/EventTEXTMESSAGECONTENT';
 import { EventTEXTMESSAGEEND , EventTEXTMESSAGEENDEventEnum     } from '../models/EventTEXTMESSAGEEND';
 import { EventTEXTMESSAGESTART , EventTEXTMESSAGESTARTEventEnum     } from '../models/EventTEXTMESSAGESTART';
@@ -564,6 +599,7 @@ import { EventTOOLCALLEND , EventTOOLCALLENDEventEnum     } from '../models/Even
 import { EventTOOLCALLRESULT , EventTOOLCALLRESULTEventEnum     } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART , EventTOOLCALLSTARTEventEnum     } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED , EventTOOLCONFIRMATIONREQUIREDEventEnum     } from '../models/EventTOOLCONFIRMATIONREQUIRED';
+import { EventWarning , EventWarningEventEnum     } from '../models/EventWarning';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedURL } from '../models/ExtractedURL';
@@ -656,6 +692,7 @@ import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
 import { ProcessTree } from '../models/ProcessTree';
 import { ProgressMessage, ProgressMessageLevelEnum      } from '../models/ProgressMessage';
+import { ProseEvent } from '../models/ProseEvent';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
@@ -665,6 +702,7 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
 import { RenameOutputBody } from '../models/RenameOutputBody';
 import { ReplacementValue } from '../models/ReplacementValue';
@@ -688,6 +726,8 @@ import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
 import { SingleSectionModel } from '../models/SingleSectionModel';
+import { SourceDeltaEvent } from '../models/SourceDeltaEvent';
+import { SourceResetEvent } from '../models/SourceResetEvent';
 import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
 import { SseEventRunCancelledData } from '../models/SseEventRunCancelledData';
 import { SseEventRunErrorData } from '../models/SseEventRunErrorData';
@@ -709,6 +749,7 @@ import { StartupInfo } from '../models/StartupInfo';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StatusResponse } from '../models/StatusResponse';
+import { StreamAiDecompilation200ResponseInnerClass } from '../models/StreamAiDecompilation200ResponseInner';
 import { StreamEvents200ResponseInnerClass } from '../models/StreamEvents200ResponseInner';
 import { StringFunctions    } from '../models/StringFunctions';
 import { StringSource } from '../models/StringSource';
@@ -740,6 +781,7 @@ import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
+import { WarningEvent } from '../models/WarningEvent';
 import { WorkflowProgress , WorkflowProgressStatusEnum      } from '../models/WorkflowProgress';
 import { Workspace } from '../models/Workspace';
 import { XrefFromResponse } from '../models/XrefFromResponse';
@@ -773,13 +815,22 @@ let enumsMap: Set<string> = new Set<string>([
     "DecompilationDataStatusEnum",
     "DynamicExecutionStatus",
     "ErrorBodyCodeEnum",
+    "EventAttemptFailedEventEnum",
+    "EventAttemptStartedEventEnum",
     "EventCONTEXTCOMPACTEDEventEnum",
+    "EventDebugPromptEventEnum",
+    "EventDecompFailedEventEnum",
+    "EventDecompFinishedEventEnum",
+    "EventProseEventEnum",
     "EventRUNCANCELLEDEventEnum",
     "EventRUNERROREventEnum",
     "EventRUNFINISHEDEventEnum",
     "EventRUNSTARTEDEventEnum",
+    "EventRenameAppliedEventEnum",
     "EventSTEPFINISHEDEventEnum",
     "EventSTEPSTARTEDEventEnum",
+    "EventSourceDeltaEventEnum",
+    "EventSourceResetEventEnum",
     "EventTEXTMESSAGECONTENTEventEnum",
     "EventTEXTMESSAGEENDEventEnum",
     "EventTEXTMESSAGESTARTEventEnum",
@@ -789,6 +840,7 @@ let enumsMap: Set<string> = new Set<string>([
     "EventTOOLCALLRESULTEventEnum",
     "EventTOOLCALLSTARTEventEnum",
     "EventTOOLCONFIRMATIONREQUIREDEventEnum",
+    "EventWarningEventEnum",
     "FileFormat",
     "Filters",
     "FunctionListItemNameSourceTypeEnum",
@@ -808,6 +860,7 @@ let enumsMap: Set<string> = new Set<string>([
     "SandboxStartMethod",
     "SandboxTimeout",
     "StatusInput",
+    "StreamAiDecompilation200ResponseInnerEventEnum",
     "StreamEvents200ResponseInnerEventEnum",
     "StringSource",
     "SummaryDataTaskStatusEnum",
@@ -852,6 +905,8 @@ let typeMap: {[index: string]: any} = {
     "AppApiRestV2FunctionsTypesFunction": AppApiRestV2FunctionsTypesFunction,
     "AppApiRestV2InfoTypesCapability": AppApiRestV2InfoTypesCapability,
     "Argument": Argument,
+    "AttemptFailedEvent": AttemptFailedEvent,
+    "AttemptStartedEvent": AttemptStartedEvent,
     "AutoRunAgents": AutoRunAgents,
     "AutoUnstripRequest": AutoUnstripRequest,
     "AutoUnstripResponse": AutoUnstripResponse,
@@ -969,6 +1024,9 @@ let typeMap: {[index: string]: any} = {
     "CreateAIDecompOutputBody": CreateAIDecompOutputBody,
     "CreateConversationRequest": CreateConversationRequest,
     "Created": Created,
+    "DebugPromptEvent": DebugPromptEvent,
+    "DecompFailedEvent": DecompFailedEvent,
+    "DecompFinishedEvent": DecompFinishedEvent,
     "DecompilationCommentContext": DecompilationCommentContext,
     "DecompilationData": DecompilationData,
     "DieMatch": DieMatch,
@@ -988,13 +1046,22 @@ let typeMap: {[index: string]: any} = {
     "ErrorBody": ErrorBody,
     "ErrorModel": ErrorModel,
     "Event": Event,
+    "EventAttemptFailed": EventAttemptFailed,
+    "EventAttemptStarted": EventAttemptStarted,
     "EventCONTEXTCOMPACTED": EventCONTEXTCOMPACTED,
+    "EventDebugPrompt": EventDebugPrompt,
+    "EventDecompFailed": EventDecompFailed,
+    "EventDecompFinished": EventDecompFinished,
+    "EventProse": EventProse,
     "EventRUNCANCELLED": EventRUNCANCELLED,
     "EventRUNERROR": EventRUNERROR,
     "EventRUNFINISHED": EventRUNFINISHED,
     "EventRUNSTARTED": EventRUNSTARTED,
+    "EventRenameApplied": EventRenameApplied,
     "EventSTEPFINISHED": EventSTEPFINISHED,
     "EventSTEPSTARTED": EventSTEPSTARTED,
+    "EventSourceDelta": EventSourceDelta,
+    "EventSourceReset": EventSourceReset,
     "EventTEXTMESSAGECONTENT": EventTEXTMESSAGECONTENT,
     "EventTEXTMESSAGEEND": EventTEXTMESSAGEEND,
     "EventTEXTMESSAGESTART": EventTEXTMESSAGESTART,
@@ -1004,6 +1071,7 @@ let typeMap: {[index: string]: any} = {
     "EventTOOLCALLRESULT": EventTOOLCALLRESULT,
     "EventTOOLCALLSTART": EventTOOLCALLSTART,
     "EventTOOLCONFIRMATIONREQUIRED": EventTOOLCONFIRMATIONREQUIRED,
+    "EventWarning": EventWarning,
     "ExportModel": ExportModel,
     "ExternalResponse": ExternalResponse,
     "ExtractedURL": ExtractedURL,
@@ -1088,6 +1156,7 @@ let typeMap: {[index: string]: any} = {
     "ProcessNode": ProcessNode,
     "ProcessTree": ProcessTree,
     "ProgressMessage": ProgressMessage,
+    "ProseEvent": ProseEvent,
     "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
     "QueuePositionResponse": QueuePositionResponse,
     "QueuedWorkflowTaskResponse": QueuedWorkflowTaskResponse,
@@ -1096,6 +1165,7 @@ let typeMap: {[index: string]: any} = {
     "RegenerateOutputBody": RegenerateOutputBody,
     "RegistryOperation": RegistryOperation,
     "RelativeBinaryResponse": RelativeBinaryResponse,
+    "RenameAppliedEvent": RenameAppliedEvent,
     "RenameInputBody": RenameInputBody,
     "RenameOutputBody": RenameOutputBody,
     "ReplacementValue": ReplacementValue,
@@ -1117,6 +1187,8 @@ let typeMap: {[index: string]: any} = {
     "SingleCodeSignatureModel": SingleCodeSignatureModel,
     "SinglePDBEntryModel": SinglePDBEntryModel,
     "SingleSectionModel": SingleSectionModel,
+    "SourceDeltaEvent": SourceDeltaEvent,
+    "SourceResetEvent": SourceResetEvent,
     "SseEventContextCompactedData": SseEventContextCompactedData,
     "SseEventRunCancelledData": SseEventRunCancelledData,
     "SseEventRunErrorData": SseEventRunErrorData,
@@ -1137,6 +1209,7 @@ let typeMap: {[index: string]: any} = {
     "StartupInfo": StartupInfo,
     "StatusOutput": StatusOutput,
     "StatusResponse": StatusResponse,
+    "StreamAiDecompilation200ResponseInner": StreamAiDecompilation200ResponseInnerClass,
     "StreamEvents200ResponseInner": StreamEvents200ResponseInnerClass,
     "StringFunctions": StringFunctions,
     "Structure": Structure,
@@ -1165,6 +1238,7 @@ let typeMap: {[index: string]: any} = {
     "UserActivityResponse": UserActivityResponse,
     "Vulnerabilities": Vulnerabilities,
     "Vulnerability": Vulnerability,
+    "WarningEvent": WarningEvent,
     "WorkflowProgress": WorkflowProgress,
     "XrefFromResponse": XrefFromResponse,
     "XrefResponse": XrefResponse,

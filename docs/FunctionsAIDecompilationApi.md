@@ -23,6 +23,7 @@ Method | HTTP request | Description
 [**patchAiDecompilationInlineComment**](FunctionsAIDecompilationApi.md#patchAiDecompilationInlineComment) | **PATCH** /v3/functions/{function_id}/ai-decompilation/inline-comments | Update a single inline comment
 [**regenerateAiDecompilationInlineComments**](FunctionsAIDecompilationApi.md#regenerateAiDecompilationInlineComments) | **POST** /v3/functions/{function_id}/ai-decompilation/inline-comments | Regenerate AI decompilation inline comments
 [**regenerateAiDecompilationSummary**](FunctionsAIDecompilationApi.md#regenerateAiDecompilationSummary) | **POST** /v3/functions/{function_id}/ai-decompilation/summary | Regenerate AI decompilation summary
+[**streamAiDecompilation**](FunctionsAIDecompilationApi.md#streamAiDecompilation) | **GET** /v3/functions/{function_id}/ai-decompilation/events | Stream live AI decompilation output (SSE)
 [**updateAiDecompilationComment**](FunctionsAIDecompilationApi.md#updateAiDecompilationComment) | **PATCH** /v2/functions/{function_id}/ai-decompilation/comments/{comment_id} | Update a comment
 [**upsertAiDecompilationOverrides**](FunctionsAIDecompilationApi.md#upsertAiDecompilationOverrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 [**upsertAiDecompilationRating**](FunctionsAIDecompilationApi.md#upsertAiDecompilationRating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
@@ -1130,6 +1131,60 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **streamAiDecompilation**
+> Array<StreamAiDecompilation200ResponseInner> streamAiDecompilation()
+
+Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`. Terminal events: `decomp_finished` (success) or `decomp_failed` (all retries exhausted). `attempt_failed` is per-attempt and non-terminal — Temporal may retry the activity. Clients should treat `attempt` changes as a reset signal. `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiStreamAiDecompilationRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiStreamAiDecompilationRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.streamAiDecompilation(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**Array<StreamAiDecompilation200ResponseInner>**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/event-stream, application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
