@@ -86,7 +86,6 @@ import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunct
 import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
-import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
 import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
@@ -160,7 +159,6 @@ import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
-import { DebugPromptEvent } from '../models/DebugPromptEvent';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
@@ -186,7 +184,6 @@ import { Event } from '../models/Event';
 import { EventAttemptFailed } from '../models/EventAttemptFailed';
 import { EventAttemptStarted } from '../models/EventAttemptStarted';
 import { EventCONTEXTCOMPACTED } from '../models/EventCONTEXTCOMPACTED';
-import { EventDebugPrompt } from '../models/EventDebugPrompt';
 import { EventDecompFailed } from '../models/EventDecompFailed';
 import { EventDecompFinished } from '../models/EventDecompFinished';
 import { EventProse } from '../models/EventProse';
@@ -260,7 +257,6 @@ import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
-import { GetMeResponse } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
@@ -1782,9 +1778,6 @@ export class ObjectAnalysesXRefsApi {
 import { ObservableAuthenticationUsersApi } from "./ObservableAPI";
 import { AuthenticationUsersApiRequestFactory, AuthenticationUsersApiResponseProcessor} from "../apis/AuthenticationUsersApi";
 
-export interface AuthenticationUsersApiGetRequesterUserInfoRequest {
-}
-
 export interface AuthenticationUsersApiGetUserRequest {
     /**
      * 
@@ -1796,9 +1789,6 @@ export interface AuthenticationUsersApiGetUserRequest {
 }
 
 export interface AuthenticationUsersApiGetUserActivityRequest {
-}
-
-export interface AuthenticationUsersApiGetUserCommentsRequest {
 }
 
 export interface AuthenticationUsersApiSubmitUserFeedbackRequest {
@@ -1815,22 +1805,6 @@ export class ObjectAuthenticationUsersApi {
 
     public constructor(configuration: Configuration, requestFactory?: AuthenticationUsersApiRequestFactory, responseProcessor?: AuthenticationUsersApiResponseProcessor) {
         this.api = new ObservableAuthenticationUsersApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Get the requesters user information
-     * @param param the request object
-     */
-    public getRequesterUserInfoWithHttpInfo(param: AuthenticationUsersApiGetRequesterUserInfoRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGetMeResponse>> {
-        return this.api.getRequesterUserInfoWithHttpInfo( options).toPromise();
-    }
-
-    /**
-     * Get the requesters user information
-     * @param param the request object
-     */
-    public getRequesterUserInfo(param: AuthenticationUsersApiGetRequesterUserInfoRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseGetMeResponse> {
-        return this.api.getRequesterUserInfo( options).toPromise();
     }
 
     /**
@@ -1863,24 +1837,6 @@ export class ObjectAuthenticationUsersApi {
      */
     public getUserActivity(param: AuthenticationUsersApiGetUserActivityRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseListUserActivityResponse> {
         return this.api.getUserActivity( options).toPromise();
-    }
-
-    /**
-     * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
-     * Get comments by user
-     * @param param the request object
-     */
-    public getUserCommentsWithHttpInfo(param: AuthenticationUsersApiGetUserCommentsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getUserCommentsWithHttpInfo( options).toPromise();
-    }
-
-    /**
-     * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
-     * Get comments by user
-     * @param param the request object
-     */
-    public getUserComments(param: AuthenticationUsersApiGetUserCommentsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getUserComments( options).toPromise();
     }
 
     /**

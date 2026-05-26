@@ -82,7 +82,6 @@ export * from '../models/BaseResponseFunctionsDetailResponse';
 export * from '../models/BaseResponseGenerateFunctionDataTypes';
 export * from '../models/BaseResponseGenerationStatusList';
 export * from '../models/BaseResponseGetAiDecompilationTask';
-export * from '../models/BaseResponseGetMeResponse';
 export * from '../models/BaseResponseGetPublicUserResponse';
 export * from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 export * from '../models/BaseResponseListCollectionResults';
@@ -156,7 +155,6 @@ export * from '../models/ConversationWithEvents';
 export * from '../models/CreateAIDecompOutputBody';
 export * from '../models/CreateConversationRequest';
 export * from '../models/Created';
-export * from '../models/DebugPromptEvent';
 export * from '../models/DecompFailedEvent';
 export * from '../models/DecompFinishedEvent';
 export * from '../models/DecompilationCommentContext';
@@ -182,7 +180,6 @@ export * from '../models/Event';
 export * from '../models/EventAttemptFailed';
 export * from '../models/EventAttemptStarted';
 export * from '../models/EventCONTEXTCOMPACTED';
-export * from '../models/EventDebugPrompt';
 export * from '../models/EventDecompFailed';
 export * from '../models/EventDecompFinished';
 export * from '../models/EventProse';
@@ -256,7 +253,6 @@ export * from '../models/GeneratePDFOutputBody';
 export * from '../models/GenerationStatusList';
 export * from '../models/GetAiDecompilationRatingResponse';
 export * from '../models/GetAiDecompilationTask';
-export * from '../models/GetMeResponse';
 export * from '../models/GetPublicUserResponse';
 export * from '../models/GlobalVariable';
 export * from '../models/HistoryEntry';
@@ -477,7 +473,6 @@ import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunct
 import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
-import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
 import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
@@ -551,7 +546,6 @@ import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
-import { DebugPromptEvent } from '../models/DebugPromptEvent';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
@@ -577,7 +571,6 @@ import { Event } from '../models/Event';
 import { EventAttemptFailed , EventAttemptFailedEventEnum     } from '../models/EventAttemptFailed';
 import { EventAttemptStarted , EventAttemptStartedEventEnum     } from '../models/EventAttemptStarted';
 import { EventCONTEXTCOMPACTED , EventCONTEXTCOMPACTEDEventEnum     } from '../models/EventCONTEXTCOMPACTED';
-import { EventDebugPrompt , EventDebugPromptEventEnum     } from '../models/EventDebugPrompt';
 import { EventDecompFailed , EventDecompFailedEventEnum     } from '../models/EventDecompFailed';
 import { EventDecompFinished , EventDecompFinishedEventEnum     } from '../models/EventDecompFinished';
 import { EventProse , EventProseEventEnum     } from '../models/EventProse';
@@ -651,7 +644,6 @@ import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTask';
-import { GetMeResponse       , GetMeResponseRoleEnum   } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
@@ -818,7 +810,6 @@ let enumsMap: Set<string> = new Set<string>([
     "EventAttemptFailedEventEnum",
     "EventAttemptStartedEventEnum",
     "EventCONTEXTCOMPACTEDEventEnum",
-    "EventDebugPromptEventEnum",
     "EventDecompFailedEventEnum",
     "EventDecompFinishedEventEnum",
     "EventProseEventEnum",
@@ -847,7 +838,6 @@ let enumsMap: Set<string> = new Set<string>([
     "FunctionMatchingFiltersDebugTypesEnum",
     "FunctionSourceType",
     "FunctionTaskStatus",
-    "GetMeResponseRoleEnum",
     "IOCTypeEnum",
     "ISA",
     "ModelName",
@@ -953,7 +943,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseGenerateFunctionDataTypes": BaseResponseGenerateFunctionDataTypes,
     "BaseResponseGenerationStatusList": BaseResponseGenerationStatusList,
     "BaseResponseGetAiDecompilationTask": BaseResponseGetAiDecompilationTask,
-    "BaseResponseGetMeResponse": BaseResponseGetMeResponse,
     "BaseResponseGetPublicUserResponse": BaseResponseGetPublicUserResponse,
     "BaseResponseListCalleesCallerFunctionsResponse": BaseResponseListCalleesCallerFunctionsResponse,
     "BaseResponseListCollectionResults": BaseResponseListCollectionResults,
@@ -1024,7 +1013,6 @@ let typeMap: {[index: string]: any} = {
     "CreateAIDecompOutputBody": CreateAIDecompOutputBody,
     "CreateConversationRequest": CreateConversationRequest,
     "Created": Created,
-    "DebugPromptEvent": DebugPromptEvent,
     "DecompFailedEvent": DecompFailedEvent,
     "DecompFinishedEvent": DecompFinishedEvent,
     "DecompilationCommentContext": DecompilationCommentContext,
@@ -1049,7 +1037,6 @@ let typeMap: {[index: string]: any} = {
     "EventAttemptFailed": EventAttemptFailed,
     "EventAttemptStarted": EventAttemptStarted,
     "EventCONTEXTCOMPACTED": EventCONTEXTCOMPACTED,
-    "EventDebugPrompt": EventDebugPrompt,
     "EventDecompFailed": EventDecompFailed,
     "EventDecompFinished": EventDecompFinished,
     "EventProse": EventProse,
@@ -1119,7 +1106,6 @@ let typeMap: {[index: string]: any} = {
     "GenerationStatusList": GenerationStatusList,
     "GetAiDecompilationRatingResponse": GetAiDecompilationRatingResponse,
     "GetAiDecompilationTask": GetAiDecompilationTask,
-    "GetMeResponse": GetMeResponse,
     "GetPublicUserResponse": GetPublicUserResponse,
     "GlobalVariable": GlobalVariable,
     "HistoryEntry": HistoryEntry,

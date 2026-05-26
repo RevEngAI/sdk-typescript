@@ -87,7 +87,6 @@ import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunct
 import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
 import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
-import { BaseResponseGetMeResponse } from '../models/BaseResponseGetMeResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
 import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
@@ -161,7 +160,6 @@ import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { Created } from '../models/Created';
-import { DebugPromptEvent } from '../models/DebugPromptEvent';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
@@ -187,7 +185,6 @@ import { Event } from '../models/Event';
 import { EventAttemptFailed } from '../models/EventAttemptFailed';
 import { EventAttemptStarted } from '../models/EventAttemptStarted';
 import { EventCONTEXTCOMPACTED } from '../models/EventCONTEXTCOMPACTED';
-import { EventDebugPrompt } from '../models/EventDebugPrompt';
 import { EventDecompFailed } from '../models/EventDecompFailed';
 import { EventDecompFinished } from '../models/EventDecompFinished';
 import { EventProse } from '../models/EventProse';
@@ -261,7 +258,6 @@ import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
-import { GetMeResponse } from '../models/GetMeResponse';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
@@ -1891,36 +1887,6 @@ export class ObservableAuthenticationUsersApi {
     }
 
     /**
-     * Get the requesters user information
-     */
-    public getRequesterUserInfoWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetMeResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getRequesterUserInfo(_config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getRequesterUserInfoWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get the requesters user information
-     */
-    public getRequesterUserInfo(_options?: ConfigurationOptions): Observable<BaseResponseGetMeResponse> {
-        return this.getRequesterUserInfoWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseGetMeResponse>) => apiResponse.data));
-    }
-
-    /**
      * Get a user\'s public information
      * @param userId
      */
@@ -1980,38 +1946,6 @@ export class ObservableAuthenticationUsersApi {
      */
     public getUserActivity(_options?: ConfigurationOptions): Observable<BaseResponseListUserActivityResponse> {
         return this.getUserActivityWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseListUserActivityResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
-     * Get comments by user
-     */
-    public getUserCommentsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getUserComments(_config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getUserCommentsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves all comments created by a specific user. Only returns comments for resources the requesting user has access to.
-     * Get comments by user
-     */
-    public getUserComments(_options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getUserCommentsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
     }
 
     /**
