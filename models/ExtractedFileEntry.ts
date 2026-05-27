@@ -11,15 +11,17 @@
 
 import { HttpFile } from '../http/http';
 
-export class GetMeResponse {
-    'username': string;
-    'userId': number;
-    'firstName': string;
-    'lastName': string;
-    'email': string;
-    'creation': Date;
-    'tutorialSeen': boolean;
-    'role': GetMeResponseRoleEnum;
+export class ExtractedFileEntry {
+    'fileHash'?: string | null;
+    'fileSize': number;
+    'fileType'?: string | null;
+    'filename': string | null;
+    'isPe'?: boolean;
+    'mimeType'?: string | null;
+    'reason'?: string | null;
+    'seqNum': number;
+    'sha256'?: string | null;
+    'zipFilename': string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -27,67 +29,70 @@ export class GetMeResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "username",
-            "baseName": "username",
+            "name": "fileHash",
+            "baseName": "file_hash",
             "type": "string",
             "format": ""
         },
         {
-            "name": "userId",
-            "baseName": "user_id",
+            "name": "fileSize",
+            "baseName": "file_size",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
-            "name": "firstName",
-            "baseName": "first_name",
+            "name": "fileType",
+            "baseName": "file_type",
             "type": "string",
             "format": ""
         },
         {
-            "name": "lastName",
-            "baseName": "last_name",
+            "name": "filename",
+            "baseName": "filename",
             "type": "string",
             "format": ""
         },
         {
-            "name": "email",
-            "baseName": "email",
-            "type": "string",
-            "format": "email"
-        },
-        {
-            "name": "creation",
-            "baseName": "creation",
-            "type": "Date",
-            "format": "date-time"
-        },
-        {
-            "name": "tutorialSeen",
-            "baseName": "tutorial_seen",
+            "name": "isPe",
+            "baseName": "is_pe",
             "type": "boolean",
             "format": ""
         },
         {
-            "name": "role",
-            "baseName": "role",
-            "type": "GetMeResponseRoleEnum",
+            "name": "mimeType",
+            "baseName": "mime_type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "reason",
+            "baseName": "reason",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "seqNum",
+            "baseName": "seq_num",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "sha256",
+            "baseName": "sha256",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "zipFilename",
+            "baseName": "zip_filename",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return GetMeResponse.attributeTypeMap;
+        return ExtractedFileEntry.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-export enum GetMeResponseRoleEnum {
-    User = 'USER',
-    Admin = 'ADMIN',
-    Superadmin = 'SUPERADMIN',
-    System = 'SYSTEM',
-    UnknownDefaultOpenApi = '11184809'
-}
-

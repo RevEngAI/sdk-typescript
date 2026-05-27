@@ -86,10 +86,8 @@ Class | Method | HTTP request | Description
 *AnalysesResultsMetadataApi* | [**getTags**](docs/AnalysesResultsMetadataApi.md#getTags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
 *AnalysesResultsMetadataApi* | [**getVulnerabilities**](docs/AnalysesResultsMetadataApi.md#getVulnerabilities) | **GET** /v2/analyses/{analysis_id}/vulnerabilities | Gets the vulnerabilities found in the analysis
 *AnalysesXRefsApi* | [**getXrefByVaddr**](docs/AnalysesXRefsApi.md#getXrefByVaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up xrefs by virtual address
-*AuthenticationUsersApi* | [**getRequesterUserInfo**](docs/AuthenticationUsersApi.md#getRequesterUserInfo) | **GET** /v2/users/me | Get the requesters user information
 *AuthenticationUsersApi* | [**getUser**](docs/AuthenticationUsersApi.md#getUser) | **GET** /v2/users/{user_id} | Get a user\&#39;s public information
 *AuthenticationUsersApi* | [**getUserActivity**](docs/AuthenticationUsersApi.md#getUserActivity) | **GET** /v2/users/activity | Get auth user activity
-*AuthenticationUsersApi* | [**getUserComments**](docs/AuthenticationUsersApi.md#getUserComments) | **GET** /v2/users/me/comments | Get comments by user
 *AuthenticationUsersApi* | [**submitUserFeedback**](docs/AuthenticationUsersApi.md#submitUserFeedback) | **POST** /v2/users/feedback | Submit feedback about the application
 *BinariesApi* | [**downloadZippedBinary**](docs/BinariesApi.md#downloadZippedBinary) | **GET** /v2/binaries/{binary_id}/download-zipped | Downloads a zipped binary with password protection
 *BinariesApi* | [**getBinaryAdditionalDetails**](docs/BinariesApi.md#getBinaryAdditionalDetails) | **GET** /v2/binaries/{binary_id}/additional-details | Gets the additional details of a binary
@@ -266,7 +264,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseGenerateFunctionDataTypes](BaseResponseGenerateFunctionDataTypes.md)
  - [BaseResponseGenerationStatusList](BaseResponseGenerationStatusList.md)
  - [BaseResponseGetAiDecompilationTask](BaseResponseGetAiDecompilationTask.md)
- - [BaseResponseGetMeResponse](BaseResponseGetMeResponse.md)
  - [BaseResponseGetPublicUserResponse](BaseResponseGetPublicUserResponse.md)
  - [BaseResponseListCalleesCallerFunctionsResponse](BaseResponseListCalleesCallerFunctionsResponse.md)
  - [BaseResponseListCollectionResults](BaseResponseListCollectionResults.md)
@@ -340,7 +337,6 @@ Class | Method | HTTP request | Description
  - [CreateAIDecompOutputBody](CreateAIDecompOutputBody.md)
  - [CreateConversationRequest](CreateConversationRequest.md)
  - [Created](Created.md)
- - [DebugPromptEvent](DebugPromptEvent.md)
  - [DecompFailedEvent](DecompFailedEvent.md)
  - [DecompFinishedEvent](DecompFinishedEvent.md)
  - [DecompilationCommentContext](DecompilationCommentContext.md)
@@ -366,7 +362,6 @@ Class | Method | HTTP request | Description
  - [EventAttemptFailed](EventAttemptFailed.md)
  - [EventAttemptStarted](EventAttemptStarted.md)
  - [EventCONTEXTCOMPACTED](EventCONTEXTCOMPACTED.md)
- - [EventDebugPrompt](EventDebugPrompt.md)
  - [EventDecompFailed](EventDecompFailed.md)
  - [EventDecompFinished](EventDecompFinished.md)
  - [EventProse](EventProse.md)
@@ -391,6 +386,7 @@ Class | Method | HTTP request | Description
  - [EventWarning](EventWarning.md)
  - [ExportModel](ExportModel.md)
  - [ExternalResponse](ExternalResponse.md)
+ - [ExtractedFileEntry](ExtractedFileEntry.md)
  - [ExtractedURL](ExtractedURL.md)
  - [FileActivityEntry](FileActivityEntry.md)
  - [FileFormat](FileFormat.md)
@@ -440,7 +436,6 @@ Class | Method | HTTP request | Description
  - [GenerationStatusList](GenerationStatusList.md)
  - [GetAiDecompilationRatingResponse](GetAiDecompilationRatingResponse.md)
  - [GetAiDecompilationTask](GetAiDecompilationTask.md)
- - [GetMeResponse](GetMeResponse.md)
  - [GetPublicUserResponse](GetPublicUserResponse.md)
  - [GlobalVariable](GlobalVariable.md)
  - [HistoryEntry](HistoryEntry.md)
@@ -477,6 +472,7 @@ Class | Method | HTTP request | Description
  - [PatchCommentBody](PatchCommentBody.md)
  - [Platform](Platform.md)
  - [ProcessActivityEntry](ProcessActivityEntry.md)
+ - [ProcessExtractedFiles](ProcessExtractedFiles.md)
  - [ProcessMemdumps](ProcessMemdumps.md)
  - [ProcessNode](ProcessNode.md)
  - [ProcessTree](ProcessTree.md)
