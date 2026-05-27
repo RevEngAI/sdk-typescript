@@ -9,14 +9,12 @@
  * Do not edit the class manually.
  */
 
+import { ExtractedFileEntry } from '../models/ExtractedFileEntry';
 import { HttpFile } from '../http/http';
 
-export class DebugPromptEvent {
-    'activity': string;
-    'attempt': number;
-    'seq': number;
-    'type': string;
-    'userPrompt': string;
+export class ProcessExtractedFiles {
+    'files'?: Array<ExtractedFileEntry> | null;
+    'processSeqid': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,38 +22,20 @@ export class DebugPromptEvent {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "activity",
-            "baseName": "activity",
-            "type": "string",
+            "name": "files",
+            "baseName": "files",
+            "type": "Array<ExtractedFileEntry>",
             "format": ""
         },
         {
-            "name": "attempt",
-            "baseName": "attempt",
+            "name": "processSeqid",
+            "baseName": "process_seqid",
             "type": "number",
-            "format": "int32"
-        },
-        {
-            "name": "seq",
-            "baseName": "seq",
-            "type": "number",
-            "format": "int32"
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "userPrompt",
-            "baseName": "user_prompt",
-            "type": "string",
-            "format": ""
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return DebugPromptEvent.attributeTypeMap;
+        return ProcessExtractedFiles.attributeTypeMap;
     }
 
     public constructor() {

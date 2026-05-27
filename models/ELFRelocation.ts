@@ -19,6 +19,7 @@ export class ELFRelocation {
     'symbolName': string;
     'isDynamic': boolean;
     'isPltgot': boolean;
+    'isUnicodeSymbolName'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -64,6 +65,12 @@ export class ELFRelocation {
         {
             "name": "isPltgot",
             "baseName": "is_pltgot",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "isUnicodeSymbolName",
+            "baseName": "is_unicode_symbol_name",
             "type": "boolean",
             "format": ""
         }    ];

@@ -14,6 +14,7 @@ import { ModuleLoadEntry } from '../models/ModuleLoadEntry';
 import { MutexEntry } from '../models/MutexEntry';
 import { NetworkActivity } from '../models/NetworkActivity';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
+import { ProcessExtractedFiles } from '../models/ProcessExtractedFiles';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessTree } from '../models/ProcessTree';
 import { RegistryOperation } from '../models/RegistryOperation';
@@ -25,6 +26,7 @@ import { Ttp } from '../models/Ttp';
 import { HttpFile } from '../http/http';
 
 export class AnalysisReport {
+    'extractedFiles'?: Array<ProcessExtractedFiles> | null;
     'fileActivity'?: Array<FileActivityEntry> | null;
     'info': ReportInfo;
     'memdumps'?: Array<ProcessMemdumps> | null;
@@ -45,6 +47,12 @@ export class AnalysisReport {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "extractedFiles",
+            "baseName": "extracted_files",
+            "type": "Array<ProcessExtractedFiles>",
+            "format": ""
+        },
         {
             "name": "fileActivity",
             "baseName": "file_activity",

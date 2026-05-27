@@ -19,6 +19,7 @@ export class ELFSymbol {
     'binding': string;
     'visibility': string;
     'sectionIndex': number;
+    'isUnicodeName'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -65,6 +66,12 @@ export class ELFSymbol {
             "name": "sectionIndex",
             "baseName": "section_index",
             "type": "number",
+            "format": ""
+        },
+        {
+            "name": "isUnicodeName",
+            "baseName": "is_unicode_name",
+            "type": "boolean",
             "format": ""
         }    ];
 
