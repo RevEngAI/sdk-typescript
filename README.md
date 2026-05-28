@@ -176,11 +176,15 @@ Class | Method | HTTP request | Description
 *SearchApi* | [**searchCollections**](docs/SearchApi.md#searchCollections) | **GET** /v2/search/collections | Collections search
 *SearchApi* | [**searchFunctions**](docs/SearchApi.md#searchFunctions) | **GET** /v2/search/functions | Functions search
 *SearchApi* | [**searchTags**](docs/SearchApi.md#searchTags) | **GET** /v2/search/tags | Tags search
+*StringsApi* | [**addUserStringToAnalysis**](docs/StringsApi.md#addUserStringToAnalysis) | **POST** /v3/analyses/{analysis_id}/user-provided-strings | Add a user-provided string to an analysis.
+*StringsApi* | [**addUserStringToFunction**](docs/StringsApi.md#addUserStringToFunction) | **POST** /v3/functions/{function_id}/user-provided-strings | Add a user-provided string to a function.
 
 
 ## Documentation for Models
 
  - [APIError](APIError.md)
+ - [AddUserStringInputBody](AddUserStringInputBody.md)
+ - [AddUserStringToFunctionInputBody](AddUserStringToFunctionInputBody.md)
  - [AdditionalDetailsStatusResponse](AdditionalDetailsStatusResponse.md)
  - [Addr](Addr.md)
  - [AiDecompilationRating](AiDecompilationRating.md)

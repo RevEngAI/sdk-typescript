@@ -855,7 +855,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param packedPassword 
      * @param forceOverwrite 
      */
-    public async uploadFile(uploadFileType: UploadFileType, file: string, packedPassword?: string, forceOverwrite?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'uploadFileType' is not null or undefined
@@ -902,7 +902,9 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         }
         if (file !== undefined) {
              // TODO: replace .append with .set
-             localVarFormParams.append('file', file as any);
+             if (localVarFormParams instanceof FormData) {
+                 localVarFormParams.append('file', file, file.name);
+             }
         }
         if (forceOverwrite !== undefined) {
              // TODO: replace .append with .set
