@@ -3,6 +3,8 @@ import { Configuration, ConfigurationOptions } from '../configuration'
 import type { Middleware } from '../middleware';
 
 import { APIError } from '../models/APIError';
+import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
+import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
@@ -1161,10 +1163,10 @@ export interface AnalysesCoreApiUploadFileRequest {
     /**
      * 
      * Defaults to: undefined
-     * @type string
+     * @type HttpFile
      * @memberof AnalysesCoreApiuploadFile
      */
-    file: string
+    file: HttpFile
     /**
      * 
      * Defaults to: undefined
@@ -4915,6 +4917,88 @@ export class ObjectSearchApi {
      */
     public searchTags(param: SearchApiSearchTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseTagSearchResponse> {
         return this.api.searchTags(param.partialName, param.page, param.pageSize,  options).toPromise();
+    }
+
+}
+
+import { ObservableStringsApi } from "./ObservableAPI";
+import { StringsApiRequestFactory, StringsApiResponseProcessor} from "../apis/StringsApi";
+
+export interface StringsApiAddUserStringToAnalysisRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof StringsApiaddUserStringToAnalysis
+     */
+    analysisId: number
+    /**
+     * 
+     * @type AddUserStringInputBody
+     * @memberof StringsApiaddUserStringToAnalysis
+     */
+    addUserStringInputBody: AddUserStringInputBody
+}
+
+export interface StringsApiAddUserStringToFunctionRequest {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof StringsApiaddUserStringToFunction
+     */
+    functionId: number
+    /**
+     * 
+     * @type AddUserStringToFunctionInputBody
+     * @memberof StringsApiaddUserStringToFunction
+     */
+    addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody
+}
+
+export class ObjectStringsApi {
+    private api: ObservableStringsApi
+
+    public constructor(configuration: Configuration, requestFactory?: StringsApiRequestFactory, responseProcessor?: StringsApiResponseProcessor) {
+        this.api = new ObservableStringsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to an analysis.
+     * @param param the request object
+     */
+    public addUserStringToAnalysisWithHttpInfo(param: StringsApiAddUserStringToAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+        return this.api.addUserStringToAnalysisWithHttpInfo(param.analysisId, param.addUserStringInputBody,  options).toPromise();
+    }
+
+    /**
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to an analysis.
+     * @param param the request object
+     */
+    public addUserStringToAnalysis(param: StringsApiAddUserStringToAnalysisRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
+        return this.api.addUserStringToAnalysis(param.analysisId, param.addUserStringInputBody,  options).toPromise();
+    }
+
+    /**
+     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to a function.
+     * @param param the request object
+     */
+    public addUserStringToFunctionWithHttpInfo(param: StringsApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+        return this.api.addUserStringToFunctionWithHttpInfo(param.functionId, param.addUserStringToFunctionInputBody,  options).toPromise();
+    }
+
+    /**
+     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to a function.
+     * @param param the request object
+     */
+    public addUserStringToFunction(param: StringsApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
+        return this.api.addUserStringToFunction(param.functionId, param.addUserStringToFunctionInputBody,  options).toPromise();
     }
 
 }

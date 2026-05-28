@@ -1,4 +1,6 @@
 export * from '../models/APIError';
+export * from '../models/AddUserStringInputBody';
+export * from '../models/AddUserStringToFunctionInputBody';
 export * from '../models/AdditionalDetailsStatusResponse';
 export * from '../models/Addr';
 export * from '../models/AiDecompilationRating';
@@ -392,6 +394,8 @@ export * from '../models/XrefResponse';
 export * from '../models/XrefToResponse';
 
 import { APIError } from '../models/APIError';
+import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
+import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
@@ -869,6 +873,8 @@ let enumsMap: Set<string> = new Set<string>([
 
 let typeMap: {[index: string]: any} = {
     "APIError": APIError,
+    "AddUserStringInputBody": AddUserStringInputBody,
+    "AddUserStringToFunctionInputBody": AddUserStringToFunctionInputBody,
     "AdditionalDetailsStatusResponse": AdditionalDetailsStatusResponse,
     "Addr": Addr,
     "AiUnstripRequest": AiUnstripRequest,

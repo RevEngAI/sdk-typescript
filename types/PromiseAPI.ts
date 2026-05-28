@@ -3,6 +3,8 @@ import { Configuration, PromiseConfigurationOptions, wrapOptions } from '../conf
 import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../middleware';
 
 import { APIError } from '../models/APIError';
+import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
+import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
@@ -1182,7 +1184,7 @@ export class PromiseAnalysesCoreApi {
      * @param [packedPassword]
      * @param [forceOverwrite]
      */
-    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: string, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
+    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, forceOverwrite, observableOptions);
         return result.toPromise();
@@ -1195,7 +1197,7 @@ export class PromiseAnalysesCoreApi {
      * @param [packedPassword]
      * @param [forceOverwrite]
      */
-    public uploadFile(uploadFileType: UploadFileType, file: string, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
+    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.uploadFile(uploadFileType, file, packedPassword, forceOverwrite, observableOptions);
         return result.toPromise();
@@ -3740,6 +3742,73 @@ export class PromiseSearchApi {
     public searchTags(partialName: string, page?: number, pageSize?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseTagSearchResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.searchTags(partialName, page, pageSize, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableStringsApi } from './ObservableAPI';
+
+import { StringsApiRequestFactory, StringsApiResponseProcessor} from "../apis/StringsApi";
+export class PromiseStringsApi {
+    private api: ObservableStringsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: StringsApiRequestFactory,
+        responseProcessor?: StringsApiResponseProcessor
+    ) {
+        this.api = new ObservableStringsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to an analysis.
+     * @param analysisId Analysis ID
+     * @param addUserStringInputBody
+     */
+    public addUserStringToAnalysisWithHttpInfo(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addUserStringToAnalysisWithHttpInfo(analysisId, addUserStringInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to an analysis.
+     * @param analysisId Analysis ID
+     * @param addUserStringInputBody
+     */
+    public addUserStringToAnalysis(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: any; }> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addUserStringToAnalysis(analysisId, addUserStringInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to a function.
+     * @param functionId Function ID
+     * @param addUserStringToFunctionInputBody
+     */
+    public addUserStringToFunctionWithHttpInfo(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addUserStringToFunctionWithHttpInfo(functionId, addUserStringToFunctionInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to a function.
+     * @param functionId Function ID
+     * @param addUserStringToFunctionInputBody
+     */
+    public addUserStringToFunction(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: any; }> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.addUserStringToFunction(functionId, addUserStringToFunctionInputBody, observableOptions);
         return result.toPromise();
     }
 

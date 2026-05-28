@@ -1,4 +1,6 @@
 export * from '../models/APIError'
+export * from '../models/AddUserStringInputBody'
+export * from '../models/AddUserStringToFunctionInputBody'
 export * from '../models/AdditionalDetailsStatusResponse'
 export * from '../models/Addr'
 export * from '../models/AiDecompilationRating'

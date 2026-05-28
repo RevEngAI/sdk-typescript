@@ -4,6 +4,8 @@ import type { Middleware } from '../middleware';
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
 import { APIError } from '../models/APIError';
+import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
+import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
@@ -1555,7 +1557,7 @@ export class ObservableAnalysesCoreApi {
      * @param [packedPassword]
      * @param [forceOverwrite]
      */
-    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: string, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUploadResponse>> {
+    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUploadResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.uploadFile(uploadFileType, file, packedPassword, forceOverwrite, _config);
@@ -1582,7 +1584,7 @@ export class ObservableAnalysesCoreApi {
      * @param [packedPassword]
      * @param [forceOverwrite]
      */
-    public uploadFile(uploadFileType: UploadFileType, file: string, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
+    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
         return this.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, forceOverwrite, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUploadResponse>) => apiResponse.data));
     }
 
@@ -5274,6 +5276,96 @@ export class ObservableSearchApi {
      */
     public searchTags(partialName: string, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<BaseResponseTagSearchResponse> {
         return this.searchTagsWithHttpInfo(partialName, page, pageSize, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTagSearchResponse>) => apiResponse.data));
+    }
+
+}
+
+import { StringsApiRequestFactory, StringsApiResponseProcessor} from "../apis/StringsApi";
+export class ObservableStringsApi {
+    private requestFactory: StringsApiRequestFactory;
+    private responseProcessor: StringsApiResponseProcessor;
+    private configuration: Configuration;
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: StringsApiRequestFactory,
+        responseProcessor?: StringsApiResponseProcessor
+    ) {
+        this.configuration = configuration;
+        this.requestFactory = requestFactory || new StringsApiRequestFactory(configuration);
+        this.responseProcessor = responseProcessor || new StringsApiResponseProcessor();
+    }
+
+    /**
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to an analysis.
+     * @param analysisId Analysis ID
+     * @param addUserStringInputBody
+     */
+    public addUserStringToAnalysisWithHttpInfo(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.addUserStringToAnalysis(analysisId, addUserStringInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addUserStringToAnalysisWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to an analysis.
+     * @param analysisId Analysis ID
+     * @param addUserStringInputBody
+     */
+    public addUserStringToAnalysis(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
+        return this.addUserStringToAnalysisWithHttpInfo(analysisId, addUserStringInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
+    }
+
+    /**
+     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to a function.
+     * @param functionId Function ID
+     * @param addUserStringToFunctionInputBody
+     */
+    public addUserStringToFunctionWithHttpInfo(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.addUserStringToFunction(functionId, addUserStringToFunctionInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addUserStringToFunctionWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to a function.
+     * @param functionId Function ID
+     * @param addUserStringToFunctionInputBody
+     */
+    public addUserStringToFunction(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
+        return this.addUserStringToFunctionWithHttpInfo(functionId, addUserStringToFunctionInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
     }
 
 }
