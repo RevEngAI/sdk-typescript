@@ -51,17 +51,25 @@ jobs:
                 return None
 
         def check_existing_prs():
-            """Check if there are existing open PRs from the bot"""
+            """Check if there are existing open SDK-update PRs.
+
+            Matches by branch prefix `sdk-update-`, which this workflow owns.
+            Author-based filtering is unreliable: PRs are created via a GitHub
+            App token (app/reveng-github), not the default github-actions bot.
+            """
             try:
                 result = subprocess.run([
                     'gh', 'pr', 'list', '--state', 'open',
-                    '--author', 'app/github-actions', '--json', 'title'
+                    '--search', 'head:sdk-update-',
+                    '--json', 'number,title,headRefName'
                 ], capture_output=True, text=True, check=True)
 
                 prs = json.loads(result.stdout)
-                for pr in prs:
-                    if 'SDK update' in pr.get('title', '') or 'OpenAPI' in pr.get('title', ''):
-                        return True
+                matching = [pr for pr in prs if pr.get('headRefName', '').startswith('sdk-update-')]
+                if matching:
+                    for pr in matching:
+                        print(f"  - #{pr['number']} {pr['title']} ({pr['headRefName']})")
+                    return True
                 return False
             except Exception as e:
                 print(f"Error checking existing PRs: {e}")
