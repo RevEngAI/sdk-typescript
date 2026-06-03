@@ -4,6 +4,8 @@ All URIs are relative to *https://api.reveng.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**addFunctionCallee**](FunctionsCoreApi.md#addFunctionCallee) | **POST** /v3/functions/{function_id}/callees | Add a callee to a function
+[**addUserStringToFunction**](FunctionsCoreApi.md#addUserStringToFunction) | **POST** /v3/functions/{function_id}/user-provided-strings | Add a user-provided string to a function.
 [**aiUnstrip**](FunctionsCoreApi.md#aiUnstrip) | **POST** /v2/analyses/{analysis_id}/functions/ai-unstrip | Performs matching and auto-unstrip for an analysis and its functions
 [**analysisFunctionMatching**](FunctionsCoreApi.md#analysisFunctionMatching) | **POST** /v2/analyses/{analysis_id}/functions/matches | Perform matching for the functions of an analysis
 [**autoUnstrip**](FunctionsCoreApi.md#autoUnstrip) | **POST** /v2/analyses/{analysis_id}/functions/auto-unstrip | Performs matching and auto-unstrip for an analysis and its functions
@@ -18,7 +20,129 @@ Method | HTTP request | Description
 [**getFunctionCapabilities**](FunctionsCoreApi.md#getFunctionCapabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
 [**getFunctionDetails**](FunctionsCoreApi.md#getFunctionDetails) | **GET** /v2/functions/{function_id} | Get function details
 [**getFunctionStrings**](FunctionsCoreApi.md#getFunctionStrings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
+[**getFunctionStrings_0**](FunctionsCoreApi.md#getFunctionStrings_0) | **GET** /v3/functions/{function_id}/strings | List strings for a function.
 
+
+# **addFunctionCallee**
+> { [key: string]: any; } addFunctionCallee(addCalleeInputBody)
+
+Records an outgoing call edge from the given function to a callee.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiAddFunctionCalleeRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiAddFunctionCalleeRequest = {
+    // Function ID
+  functionId: 1,
+  
+  addCalleeInputBody: ,
+};
+
+const data = await apiInstance.addFunctionCallee(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addCalleeInputBody** | **AddCalleeInputBody**|  |
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**{ [key: string]: any; }**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **addUserStringToFunction**
+> { [key: string]: any; } addUserStringToFunction(addUserStringToFunctionInputBody)
+
+Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiAddUserStringToFunctionRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiAddUserStringToFunctionRequest = {
+    // Function ID
+  functionId: 1,
+  
+  addUserStringToFunctionInputBody: ,
+};
+
+const data = await apiInstance.addUserStringToFunction(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addUserStringToFunctionInputBody** | **AddUserStringToFunctionInputBody**|  |
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**{ [key: string]: any; }**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **aiUnstrip**
 > AutoUnstripResponse aiUnstrip(aiUnstripRequest)
@@ -853,6 +977,72 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getFunctionStrings_0**
+> ListFunctionStringsOutputBody getFunctionStrings_0()
+
+Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionStrings0Request } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiGetFunctionStrings0Request = {
+    // Function ID
+  functionId: 1,
+    // Page number (1-indexed). (optional)
+  page: 1,
+    // Number of results per page. (optional)
+  pageSize: 100,
+    // Filter by string value (case-insensitive substring match). (optional)
+  search: "search_example",
+};
+
+const data = await apiInstance.getFunctionStrings_0(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+ **page** | [**number**] | Page number (1-indexed). | (optional) defaults to 1
+ **pageSize** | [**number**] | Number of results per page. | (optional) defaults to 100
+ **search** | [**string**] | Filter by string value (case-insensitive substring match). | (optional) defaults to undefined
+
+
+### Return type
+
+**ListFunctionStringsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

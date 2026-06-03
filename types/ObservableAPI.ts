@@ -4,6 +4,7 @@ import type { Middleware } from '../middleware';
 import { Observable, of, from } from '../rxjsStub';
 import {mergeMap, map} from  '../rxjsStub';
 import { APIError } from '../models/APIError';
+import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
@@ -23,10 +24,14 @@ import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
+import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
+import { AnalysisLogs } from '../models/AnalysisLogs';
 import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisScope } from '../models/AnalysisScope';
+import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
 import { AnalysisStringInput } from '../models/AnalysisStringInput';
+import { AnalysisStringItem } from '../models/AnalysisStringItem';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
@@ -249,6 +254,7 @@ import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
 import { FunctionSearchResult } from '../models/FunctionSearchResult';
 import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionString } from '../models/FunctionString';
+import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionTaskResponse } from '../models/FunctionTaskResponse';
 import { FunctionTaskStatus } from '../models/FunctionTaskStatus';
@@ -261,6 +267,7 @@ import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
+import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
@@ -274,7 +281,9 @@ import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
+import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
+import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchedFunction } from '../models/MatchedFunction';
@@ -971,6 +980,42 @@ export class ObservableAnalysesCoreApi {
     }
 
     /**
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to an analysis.
+     * @param analysisId Analysis ID
+     * @param addUserStringInputBody
+     */
+    public addUserStringToAnalysisWithHttpInfo(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.addUserStringToAnalysis(analysisId, addUserStringInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addUserStringToAnalysisWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to an analysis.
+     * @param analysisId Analysis ID
+     * @param addUserStringInputBody
+     */
+    public addUserStringToAnalysis(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
+        return this.addUserStringToAnalysisWithHttpInfo(analysisId, addUserStringInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
+    }
+
+    /**
      * Begins an analysis
      * Create Analysis
      * @param analysisCreateRequest
@@ -1278,6 +1323,86 @@ export class ObservableAnalysesCoreApi {
      */
     public getAnalysisStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseStatus> {
         return this.getAnalysisStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStatus>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param analysisId Analysis ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
+     * @param [functionSearch] Filter by function name (case-insensitive substring match).
+     * @param [orderBy] Field to order results by.
+     * @param [sortOrder] Sort direction.
+     */
+    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<HttpInfo<ListAnalysisStringsOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisStringsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param analysisId Analysis ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
+     * @param [functionSearch] Filter by function name (case-insensitive substring match).
+     * @param [orderBy] Field to order results by.
+     * @param [sortOrder] Sort direction.
+     */
+    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<ListAnalysisStringsOutputBody> {
+        return this.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _options).pipe(map((apiResponse: HttpInfo<ListAnalysisStringsOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public getAnalysisStringsStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAnalysisStringsStatusOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAnalysisStringsStatus(analysisId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisStringsStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public getAnalysisStringsStatus(analysisId: number, _options?: ConfigurationOptions): Observable<GetAnalysisStringsStatusOutputBody> {
+        return this.getAnalysisStringsStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<GetAnalysisStringsStatusOutputBody>) => apiResponse.data));
     }
 
     /**
@@ -3893,6 +4018,78 @@ export class ObservableFunctionsCoreApi {
     }
 
     /**
+     * Records an outgoing call edge from the given function to a callee.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Add a callee to a function
+     * @param functionId Function ID
+     * @param addCalleeInputBody
+     */
+    public addFunctionCalleeWithHttpInfo(functionId: number, addCalleeInputBody: AddCalleeInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.addFunctionCallee(functionId, addCalleeInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addFunctionCalleeWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Records an outgoing call edge from the given function to a callee.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Add a callee to a function
+     * @param functionId Function ID
+     * @param addCalleeInputBody
+     */
+    public addFunctionCallee(functionId: number, addCalleeInputBody: AddCalleeInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
+        return this.addFunctionCalleeWithHttpInfo(functionId, addCalleeInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
+    }
+
+    /**
+     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to a function.
+     * @param functionId Function ID
+     * @param addUserStringToFunctionInputBody
+     */
+    public addUserStringToFunctionWithHttpInfo(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.addUserStringToFunction(functionId, addUserStringToFunctionInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addUserStringToFunctionWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to a function.
+     * @param functionId Function ID
+     * @param addUserStringToFunctionInputBody
+     */
+    public addUserStringToFunction(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
+        return this.addUserStringToFunctionWithHttpInfo(functionId, addUserStringToFunctionInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
+    }
+
+    /**
      * Takes in the analysis ID, uses the functions ID\'s from it and settings to find the nearest function groups for each function that\'s within the system
      * Performs matching and auto-unstrip for an analysis and its functions
      * @param analysisId
@@ -4382,6 +4579,46 @@ export class ObservableFunctionsCoreApi {
      */
     public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionStringsResponse> {
         return this.getFunctionStringsWithHttpInfo(functionId, page, pageSize, search, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionStringsResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for a function.
+     * @param functionId Function ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
+     */
+    public getFunctionStrings_1WithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListFunctionStringsOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getFunctionStrings_1(functionId, page, pageSize, search, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionStrings_1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for a function.
+     * @param functionId Function ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
+     */
+    public getFunctionStrings_1(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<ListFunctionStringsOutputBody> {
+        return this.getFunctionStrings_1WithHttpInfo(functionId, page, pageSize, search, _options).pipe(map((apiResponse: HttpInfo<ListFunctionStringsOutputBody>) => apiResponse.data));
     }
 
 }
@@ -5276,96 +5513,6 @@ export class ObservableSearchApi {
      */
     public searchTags(partialName: string, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<BaseResponseTagSearchResponse> {
         return this.searchTagsWithHttpInfo(partialName, page, pageSize, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTagSearchResponse>) => apiResponse.data));
-    }
-
-}
-
-import { StringsApiRequestFactory, StringsApiResponseProcessor} from "../apis/StringsApi";
-export class ObservableStringsApi {
-    private requestFactory: StringsApiRequestFactory;
-    private responseProcessor: StringsApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: StringsApiRequestFactory,
-        responseProcessor?: StringsApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new StringsApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new StringsApiResponseProcessor();
-    }
-
-    /**
-     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Add a user-provided string to an analysis.
-     * @param analysisId Analysis ID
-     * @param addUserStringInputBody
-     */
-    public addUserStringToAnalysisWithHttpInfo(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.addUserStringToAnalysis(analysisId, addUserStringInputBody, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addUserStringToAnalysisWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Add a user-provided string to an analysis.
-     * @param analysisId Analysis ID
-     * @param addUserStringInputBody
-     */
-    public addUserStringToAnalysis(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
-        return this.addUserStringToAnalysisWithHttpInfo(analysisId, addUserStringInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
-    }
-
-    /**
-     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Add a user-provided string to a function.
-     * @param functionId Function ID
-     * @param addUserStringToFunctionInputBody
-     */
-    public addUserStringToFunctionWithHttpInfo(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.addUserStringToFunction(functionId, addUserStringToFunctionInputBody, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.addUserStringToFunctionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Add a user-provided string to a function.
-     * @param functionId Function ID
-     * @param addUserStringToFunctionInputBody
-     */
-    public addUserStringToFunction(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
-        return this.addUserStringToFunctionWithHttpInfo(functionId, addUserStringToFunctionInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
     }
 
 }

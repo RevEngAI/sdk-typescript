@@ -3,6 +3,7 @@ import { Configuration, ConfigurationOptions } from '../configuration'
 import type { Middleware } from '../middleware';
 
 import { APIError } from '../models/APIError';
+import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
@@ -22,10 +23,14 @@ import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
+import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
+import { AnalysisLogs } from '../models/AnalysisLogs';
 import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisScope } from '../models/AnalysisScope';
+import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
 import { AnalysisStringInput } from '../models/AnalysisStringInput';
+import { AnalysisStringItem } from '../models/AnalysisStringItem';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
@@ -248,6 +253,7 @@ import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
 import { FunctionSearchResult } from '../models/FunctionSearchResult';
 import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionString } from '../models/FunctionString';
+import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionTaskResponse } from '../models/FunctionTaskResponse';
 import { FunctionTaskStatus } from '../models/FunctionTaskStatus';
@@ -260,6 +266,7 @@ import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
+import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
@@ -273,7 +280,9 @@ import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
+import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
+import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchedFunction } from '../models/MatchedFunction';
@@ -866,6 +875,23 @@ export class ObjectAnalysesCommentsApi {
 import { ObservableAnalysesCoreApi } from "./ObservableAPI";
 import { AnalysesCoreApiRequestFactory, AnalysesCoreApiResponseProcessor} from "../apis/AnalysesCoreApi";
 
+export interface AnalysesCoreApiAddUserStringToAnalysisRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiaddUserStringToAnalysis
+     */
+    analysisId: number
+    /**
+     * 
+     * @type AddUserStringInputBody
+     * @memberof AnalysesCoreApiaddUserStringToAnalysis
+     */
+    addUserStringInputBody: AddUserStringInputBody
+}
+
 export interface AnalysesCoreApiCreateAnalysisRequest {
     /**
      * 
@@ -969,6 +995,73 @@ export interface AnalysesCoreApiGetAnalysisStatusRequest {
      * Defaults to: undefined
      * @type number
      * @memberof AnalysesCoreApigetAnalysisStatus
+     */
+    analysisId: number
+}
+
+export interface AnalysesCoreApiGetAnalysisStringsRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisStrings
+     */
+    analysisId: number
+    /**
+     * Page number (1-indexed).
+     * Minimum: 1
+     * Defaults to: 1
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisStrings
+     */
+    page?: number
+    /**
+     * Number of results per page.
+     * Minimum: 1
+     * Maximum: 500
+     * Defaults to: 100
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisStrings
+     */
+    pageSize?: number
+    /**
+     * Filter by string value (case-insensitive substring match).
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisStrings
+     */
+    search?: string
+    /**
+     * Filter by function name (case-insensitive substring match).
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisStrings
+     */
+    functionSearch?: string
+    /**
+     * Field to order results by.
+     * Defaults to: &#39;value&#39;
+     * @type &#39;value&#39; | &#39;length&#39;
+     * @memberof AnalysesCoreApigetAnalysisStrings
+     */
+    orderBy?: 'value' | 'length'
+    /**
+     * Sort direction.
+     * Defaults to: &#39;ASC&#39;
+     * @type &#39;ASC&#39; | &#39;DESC&#39;
+     * @memberof AnalysesCoreApigetAnalysisStrings
+     */
+    sortOrder?: 'ASC' | 'DESC'
+}
+
+export interface AnalysesCoreApiGetAnalysisStringsStatusRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisStringsStatus
      */
     analysisId: number
 }
@@ -1191,6 +1284,24 @@ export class ObjectAnalysesCoreApi {
     }
 
     /**
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to an analysis.
+     * @param param the request object
+     */
+    public addUserStringToAnalysisWithHttpInfo(param: AnalysesCoreApiAddUserStringToAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+        return this.api.addUserStringToAnalysisWithHttpInfo(param.analysisId, param.addUserStringInputBody,  options).toPromise();
+    }
+
+    /**
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to an analysis.
+     * @param param the request object
+     */
+    public addUserStringToAnalysis(param: AnalysesCoreApiAddUserStringToAnalysisRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
+        return this.api.addUserStringToAnalysis(param.analysisId, param.addUserStringInputBody,  options).toPromise();
+    }
+
+    /**
      * Begins an analysis
      * Create Analysis
      * @param param the request object
@@ -1350,6 +1461,42 @@ export class ObjectAnalysesCoreApi {
      */
     public getAnalysisStatus(param: AnalysesCoreApiGetAnalysisStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseStatus> {
         return this.api.getAnalysisStatus(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param param the request object
+     */
+    public getAnalysisStringsWithHttpInfo(param: AnalysesCoreApiGetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAnalysisStringsOutputBody>> {
+        return this.api.getAnalysisStringsWithHttpInfo(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param param the request object
+     */
+    public getAnalysisStrings(param: AnalysesCoreApiGetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<ListAnalysisStringsOutputBody> {
+        return this.api.getAnalysisStrings(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param param the request object
+     */
+    public getAnalysisStringsStatusWithHttpInfo(param: AnalysesCoreApiGetAnalysisStringsStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetAnalysisStringsStatusOutputBody>> {
+        return this.api.getAnalysisStringsStatusWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param param the request object
+     */
+    public getAnalysisStringsStatus(param: AnalysesCoreApiGetAnalysisStringsStatusRequest, options?: ConfigurationOptions): Promise<GetAnalysisStringsStatusOutputBody> {
+        return this.api.getAnalysisStringsStatus(param.analysisId,  options).toPromise();
     }
 
     /**
@@ -3558,6 +3705,40 @@ export class ObjectFunctionsAIDecompilationApi {
 import { ObservableFunctionsCoreApi } from "./ObservableAPI";
 import { FunctionsCoreApiRequestFactory, FunctionsCoreApiResponseProcessor} from "../apis/FunctionsCoreApi";
 
+export interface FunctionsCoreApiAddFunctionCalleeRequest {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApiaddFunctionCallee
+     */
+    functionId: number
+    /**
+     * 
+     * @type AddCalleeInputBody
+     * @memberof FunctionsCoreApiaddFunctionCallee
+     */
+    addCalleeInputBody: AddCalleeInputBody
+}
+
+export interface FunctionsCoreApiAddUserStringToFunctionRequest {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApiaddUserStringToFunction
+     */
+    functionId: number
+    /**
+     * 
+     * @type AddUserStringToFunctionInputBody
+     * @memberof FunctionsCoreApiaddUserStringToFunction
+     */
+    addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody
+}
+
 export interface FunctionsCoreApiAiUnstripRequest {
     /**
      * 
@@ -3784,11 +3965,82 @@ export interface FunctionsCoreApiGetFunctionStringsRequest {
     search?: string
 }
 
+export interface FunctionsCoreApiGetFunctionStrings0Request {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApigetFunctionStrings_1
+     */
+    functionId: number
+    /**
+     * Page number (1-indexed).
+     * Minimum: 1
+     * Defaults to: 1
+     * @type number
+     * @memberof FunctionsCoreApigetFunctionStrings_1
+     */
+    page?: number
+    /**
+     * Number of results per page.
+     * Minimum: 1
+     * Maximum: 500
+     * Defaults to: 100
+     * @type number
+     * @memberof FunctionsCoreApigetFunctionStrings_1
+     */
+    pageSize?: number
+    /**
+     * Filter by string value (case-insensitive substring match).
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApigetFunctionStrings_1
+     */
+    search?: string
+}
+
 export class ObjectFunctionsCoreApi {
     private api: ObservableFunctionsCoreApi
 
     public constructor(configuration: Configuration, requestFactory?: FunctionsCoreApiRequestFactory, responseProcessor?: FunctionsCoreApiResponseProcessor) {
         this.api = new ObservableFunctionsCoreApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Records an outgoing call edge from the given function to a callee.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Add a callee to a function
+     * @param param the request object
+     */
+    public addFunctionCalleeWithHttpInfo(param: FunctionsCoreApiAddFunctionCalleeRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+        return this.api.addFunctionCalleeWithHttpInfo(param.functionId, param.addCalleeInputBody,  options).toPromise();
+    }
+
+    /**
+     * Records an outgoing call edge from the given function to a callee.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Add a callee to a function
+     * @param param the request object
+     */
+    public addFunctionCallee(param: FunctionsCoreApiAddFunctionCalleeRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
+        return this.api.addFunctionCallee(param.functionId, param.addCalleeInputBody,  options).toPromise();
+    }
+
+    /**
+     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to a function.
+     * @param param the request object
+     */
+    public addUserStringToFunctionWithHttpInfo(param: FunctionsCoreApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+        return this.api.addUserStringToFunctionWithHttpInfo(param.functionId, param.addUserStringToFunctionInputBody,  options).toPromise();
+    }
+
+    /**
+     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add a user-provided string to a function.
+     * @param param the request object
+     */
+    public addUserStringToFunction(param: FunctionsCoreApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
+        return this.api.addUserStringToFunction(param.functionId, param.addUserStringToFunctionInputBody,  options).toPromise();
     }
 
     /**
@@ -4033,6 +4285,24 @@ export class ObjectFunctionsCoreApi {
      */
     public getFunctionStrings(param: FunctionsCoreApiGetFunctionStringsRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionStringsResponse> {
         return this.api.getFunctionStrings(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
+    }
+
+    /**
+     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for a function.
+     * @param param the request object
+     */
+    public getFunctionStrings_1WithHttpInfo(param: FunctionsCoreApiGetFunctionStrings0Request, options?: ConfigurationOptions): Promise<HttpInfo<ListFunctionStringsOutputBody>> {
+        return this.api.getFunctionStrings_1WithHttpInfo(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
+    }
+
+    /**
+     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for a function.
+     * @param param the request object
+     */
+    public getFunctionStrings_1(param: FunctionsCoreApiGetFunctionStrings0Request, options?: ConfigurationOptions): Promise<ListFunctionStringsOutputBody> {
+        return this.api.getFunctionStrings_1(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
     }
 
 }
@@ -4917,88 +5187,6 @@ export class ObjectSearchApi {
      */
     public searchTags(param: SearchApiSearchTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseTagSearchResponse> {
         return this.api.searchTags(param.partialName, param.page, param.pageSize,  options).toPromise();
-    }
-
-}
-
-import { ObservableStringsApi } from "./ObservableAPI";
-import { StringsApiRequestFactory, StringsApiResponseProcessor} from "../apis/StringsApi";
-
-export interface StringsApiAddUserStringToAnalysisRequest {
-    /**
-     * Analysis ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof StringsApiaddUserStringToAnalysis
-     */
-    analysisId: number
-    /**
-     * 
-     * @type AddUserStringInputBody
-     * @memberof StringsApiaddUserStringToAnalysis
-     */
-    addUserStringInputBody: AddUserStringInputBody
-}
-
-export interface StringsApiAddUserStringToFunctionRequest {
-    /**
-     * Function ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof StringsApiaddUserStringToFunction
-     */
-    functionId: number
-    /**
-     * 
-     * @type AddUserStringToFunctionInputBody
-     * @memberof StringsApiaddUserStringToFunction
-     */
-    addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody
-}
-
-export class ObjectStringsApi {
-    private api: ObservableStringsApi
-
-    public constructor(configuration: Configuration, requestFactory?: StringsApiRequestFactory, responseProcessor?: StringsApiResponseProcessor) {
-        this.api = new ObservableStringsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Add a user-provided string to an analysis.
-     * @param param the request object
-     */
-    public addUserStringToAnalysisWithHttpInfo(param: StringsApiAddUserStringToAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
-        return this.api.addUserStringToAnalysisWithHttpInfo(param.analysisId, param.addUserStringInputBody,  options).toPromise();
-    }
-
-    /**
-     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Add a user-provided string to an analysis.
-     * @param param the request object
-     */
-    public addUserStringToAnalysis(param: StringsApiAddUserStringToAnalysisRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
-        return this.api.addUserStringToAnalysis(param.analysisId, param.addUserStringInputBody,  options).toPromise();
-    }
-
-    /**
-     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Add a user-provided string to a function.
-     * @param param the request object
-     */
-    public addUserStringToFunctionWithHttpInfo(param: StringsApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
-        return this.api.addUserStringToFunctionWithHttpInfo(param.functionId, param.addUserStringToFunctionInputBody,  options).toPromise();
-    }
-
-    /**
-     * Attaches a user-provided string to a function at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Add a user-provided string to a function.
-     * @param param the request object
-     */
-    public addUserStringToFunction(param: StringsApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
-        return this.api.addUserStringToFunction(param.functionId, param.addUserStringToFunctionInputBody,  options).toPromise();
     }
 
 }
