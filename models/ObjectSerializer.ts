@@ -1,4 +1,5 @@
 export * from '../models/APIError';
+export * from '../models/AddCalleeInputBody';
 export * from '../models/AddUserStringInputBody';
 export * from '../models/AddUserStringToFunctionInputBody';
 export * from '../models/AdditionalDetailsStatusResponse';
@@ -18,10 +19,14 @@ export * from '../models/AnalysisFunctionMapping';
 export * from '../models/AnalysisFunctionMatchingRequest';
 export * from '../models/AnalysisFunctions';
 export * from '../models/AnalysisFunctionsList';
+export * from '../models/AnalysisLogMessage';
+export * from '../models/AnalysisLogs';
 export * from '../models/AnalysisRecord';
 export * from '../models/AnalysisReport';
 export * from '../models/AnalysisScope';
+export * from '../models/AnalysisStringFunction';
 export * from '../models/AnalysisStringInput';
+export * from '../models/AnalysisStringItem';
 export * from '../models/AnalysisStringsResponse';
 export * from '../models/AnalysisStringsStatusResponse';
 export * from '../models/AnalysisTags';
@@ -244,6 +249,7 @@ export * from '../models/FunctionSearchResponse';
 export * from '../models/FunctionSearchResult';
 export * from '../models/FunctionSourceType';
 export * from '../models/FunctionString';
+export * from '../models/FunctionStringItem';
 export * from '../models/FunctionStringsResponse';
 export * from '../models/FunctionTaskResponse';
 export * from '../models/FunctionTaskStatus';
@@ -256,6 +262,7 @@ export * from '../models/GeneratePDFOutputBody';
 export * from '../models/GenerationStatusList';
 export * from '../models/GetAiDecompilationRatingResponse';
 export * from '../models/GetAiDecompilationTask';
+export * from '../models/GetAnalysisStringsStatusOutputBody';
 export * from '../models/GetPublicUserResponse';
 export * from '../models/GlobalVariable';
 export * from '../models/HistoryEntry';
@@ -269,7 +276,9 @@ export * from '../models/InsertAnalysisLogRequest';
 export * from '../models/InverseFunctionMapItem';
 export * from '../models/InverseStringMapItem';
 export * from '../models/InverseValue';
+export * from '../models/ListAnalysisStringsOutputBody';
 export * from '../models/ListCollectionResults';
+export * from '../models/ListFunctionStringsOutputBody';
 export * from '../models/Logs';
 export * from '../models/MITRETechnique';
 export * from '../models/MatchedFunction';
@@ -394,6 +403,7 @@ export * from '../models/XrefResponse';
 export * from '../models/XrefToResponse';
 
 import { APIError } from '../models/APIError';
+import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
@@ -413,10 +423,14 @@ import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
+import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
+import { AnalysisLogs } from '../models/AnalysisLogs';
 import { AnalysisRecord                  } from '../models/AnalysisRecord';
 import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisScope } from '../models/AnalysisScope';
+import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
 import { AnalysisStringInput    } from '../models/AnalysisStringInput';
+import { AnalysisStringItem } from '../models/AnalysisStringItem';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse  } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTags } from '../models/AnalysisTags';
@@ -639,6 +653,7 @@ import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
 import { FunctionSearchResult } from '../models/FunctionSearchResult';
 import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionString    } from '../models/FunctionString';
+import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionTaskResponse   } from '../models/FunctionTaskResponse';
 import { FunctionTaskStatus } from '../models/FunctionTaskStatus';
@@ -651,6 +666,7 @@ import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTask';
+import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
@@ -664,7 +680,9 @@ import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
 import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
+import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
+import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchedFunction } from '../models/MatchedFunction';
@@ -873,6 +891,7 @@ let enumsMap: Set<string> = new Set<string>([
 
 let typeMap: {[index: string]: any} = {
     "APIError": APIError,
+    "AddCalleeInputBody": AddCalleeInputBody,
     "AddUserStringInputBody": AddUserStringInputBody,
     "AddUserStringToFunctionInputBody": AddUserStringToFunctionInputBody,
     "AdditionalDetailsStatusResponse": AdditionalDetailsStatusResponse,
@@ -890,9 +909,13 @@ let typeMap: {[index: string]: any} = {
     "AnalysisFunctionMatchingRequest": AnalysisFunctionMatchingRequest,
     "AnalysisFunctions": AnalysisFunctions,
     "AnalysisFunctionsList": AnalysisFunctionsList,
+    "AnalysisLogMessage": AnalysisLogMessage,
+    "AnalysisLogs": AnalysisLogs,
     "AnalysisRecord": AnalysisRecord,
     "AnalysisReport": AnalysisReport,
+    "AnalysisStringFunction": AnalysisStringFunction,
     "AnalysisStringInput": AnalysisStringInput,
+    "AnalysisStringItem": AnalysisStringItem,
     "AnalysisStringsResponse": AnalysisStringsResponse,
     "AnalysisStringsStatusResponse": AnalysisStringsStatusResponse,
     "AnalysisTags": AnalysisTags,
@@ -1106,6 +1129,7 @@ let typeMap: {[index: string]: any} = {
     "FunctionSearchResponse": FunctionSearchResponse,
     "FunctionSearchResult": FunctionSearchResult,
     "FunctionString": FunctionString,
+    "FunctionStringItem": FunctionStringItem,
     "FunctionStringsResponse": FunctionStringsResponse,
     "FunctionTaskResponse": FunctionTaskResponse,
     "FunctionTypeInput": FunctionTypeInput,
@@ -1117,6 +1141,7 @@ let typeMap: {[index: string]: any} = {
     "GenerationStatusList": GenerationStatusList,
     "GetAiDecompilationRatingResponse": GetAiDecompilationRatingResponse,
     "GetAiDecompilationTask": GetAiDecompilationTask,
+    "GetAnalysisStringsStatusOutputBody": GetAnalysisStringsStatusOutputBody,
     "GetPublicUserResponse": GetPublicUserResponse,
     "GlobalVariable": GlobalVariable,
     "HistoryEntry": HistoryEntry,
@@ -1129,7 +1154,9 @@ let typeMap: {[index: string]: any} = {
     "InverseFunctionMapItem": InverseFunctionMapItem,
     "InverseStringMapItem": InverseStringMapItem,
     "InverseValue": InverseValue,
+    "ListAnalysisStringsOutputBody": ListAnalysisStringsOutputBody,
     "ListCollectionResults": ListCollectionResults,
+    "ListFunctionStringsOutputBody": ListFunctionStringsOutputBody,
     "Logs": Logs,
     "MITRETechnique": MITRETechnique,
     "MatchedFunction": MatchedFunction,

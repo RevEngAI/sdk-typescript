@@ -9,22 +9,12 @@
  * Do not edit the class manually.
  */
 
-import { AnalysisLogs } from '../models/AnalysisLogs';
+import { AnalysisStringItem } from '../models/AnalysisStringItem';
 import { HttpFile } from '../http/http';
 
-export class DynamicExecutionStatusResponse {
-    /**
-    * Error detail, set when status is ERROR
-    */
-    'errorMessage'?: string;
-    /**
-    * Sandbox status log messages captured during the run. Contains a single \"No logs available\" message when none have been captured yet.
-    */
-    'logs': AnalysisLogs;
-    /**
-    * Task status: UNINITIALISED, PENDING, RUNNING, COMPLETED, or ERROR
-    */
-    'status': string;
+export class ListAnalysisStringsOutputBody {
+    'strings': Array<AnalysisStringItem> | null;
+    'totalStrings': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -32,26 +22,20 @@ export class DynamicExecutionStatusResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "errorMessage",
-            "baseName": "error_message",
-            "type": "string",
+            "name": "strings",
+            "baseName": "strings",
+            "type": "Array<AnalysisStringItem>",
             "format": ""
         },
         {
-            "name": "logs",
-            "baseName": "logs",
-            "type": "AnalysisLogs",
-            "format": ""
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "string",
-            "format": ""
+            "name": "totalStrings",
+            "baseName": "total_strings",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return DynamicExecutionStatusResponse.attributeTypeMap;
+        return ListAnalysisStringsOutputBody.attributeTypeMap;
     }
 
     public constructor() {
