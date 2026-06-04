@@ -264,6 +264,8 @@ import { FunctionsListRename } from '../models/FunctionsListRename';
 import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
 import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
+import { GetAdditionalDetailsOutputBody } from '../models/GetAdditionalDetailsOutputBody';
+import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDetailsStatusOutputBody';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
@@ -1749,6 +1751,69 @@ export class PromiseBinariesApi {
     public getRelatedBinaries(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseChildBinariesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getRelatedBinaries(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableBinariesCoreApi } from './ObservableAPI';
+
+import { BinariesCoreApiRequestFactory, BinariesCoreApiResponseProcessor} from "../apis/BinariesCoreApi";
+export class PromiseBinariesCoreApi {
+    private api: ObservableBinariesCoreApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: BinariesCoreApiRequestFactory,
+        responseProcessor?: BinariesCoreApiResponseProcessor
+    ) {
+        this.api = new ObservableBinariesCoreApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
+     * @param binaryId Binary ID
+     */
+    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetAdditionalDetailsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getBinaryAdditionalDetailsWithHttpInfo(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
+     * @param binaryId Binary ID
+     */
+    public getBinaryAdditionalDetails(binaryId: number, _options?: PromiseConfigurationOptions): Promise<GetAdditionalDetailsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getBinaryAdditionalDetails(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the additional-details extraction status for a binary.
+     * @param binaryId Binary ID
+     */
+    public getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetAdditionalDetailsStatusOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the additional-details extraction status for a binary.
+     * @param binaryId Binary ID
+     */
+    public getBinaryAdditionalDetailsStatus(binaryId: number, _options?: PromiseConfigurationOptions): Promise<GetAdditionalDetailsStatusOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getBinaryAdditionalDetailsStatus(binaryId, observableOptions);
         return result.toPromise();
     }
 

@@ -100,6 +100,8 @@ Class | Method | HTTP request | Description
 *BinariesApi* | [**getBinaryExternals**](docs/BinariesApi.md#getBinaryExternals) | **GET** /v2/binaries/{binary_id}/externals | Gets the external details of a binary
 *BinariesApi* | [**getBinaryRelatedStatus**](docs/BinariesApi.md#getBinaryRelatedStatus) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 *BinariesApi* | [**getRelatedBinaries**](docs/BinariesApi.md#getRelatedBinaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
+*BinariesCoreApi* | [**getBinaryAdditionalDetails**](docs/BinariesCoreApi.md#getBinaryAdditionalDetails) | **GET** /v3/binaries/{binary_id}/additional-details | Get additional details for a binary.
+*BinariesCoreApi* | [**getBinaryAdditionalDetailsStatus**](docs/BinariesCoreApi.md#getBinaryAdditionalDetailsStatus) | **GET** /v3/binaries/{binary_id}/additional-details/status | Get the additional-details extraction status for a binary.
 *CollectionsApi* | [**createCollection**](docs/CollectionsApi.md#createCollection) | **POST** /v2/collections | Creates new collection information
 *CollectionsApi* | [**deleteCollection**](docs/CollectionsApi.md#deleteCollection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
 *CollectionsApi* | [**getCollection**](docs/CollectionsApi.md#getCollection) | **GET** /v2/collections/{collection_id} | Returns a collection
@@ -448,6 +450,8 @@ Class | Method | HTTP request | Description
  - [GenerateFunctionDataTypes](GenerateFunctionDataTypes.md)
  - [GeneratePDFOutputBody](GeneratePDFOutputBody.md)
  - [GenerationStatusList](GenerationStatusList.md)
+ - [GetAdditionalDetailsOutputBody](GetAdditionalDetailsOutputBody.md)
+ - [GetAdditionalDetailsStatusOutputBody](GetAdditionalDetailsStatusOutputBody.md)
  - [GetAiDecompilationRatingResponse](GetAiDecompilationRatingResponse.md)
  - [GetAiDecompilationTask](GetAiDecompilationTask.md)
  - [GetAnalysisStringsStatusOutputBody](GetAnalysisStringsStatusOutputBody.md)
