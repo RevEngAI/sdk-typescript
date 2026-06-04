@@ -260,6 +260,8 @@ export * from '../models/FunctionsListRename';
 export * from '../models/GenerateFunctionDataTypes';
 export * from '../models/GeneratePDFOutputBody';
 export * from '../models/GenerationStatusList';
+export * from '../models/GetAdditionalDetailsOutputBody';
+export * from '../models/GetAdditionalDetailsStatusOutputBody';
 export * from '../models/GetAiDecompilationRatingResponse';
 export * from '../models/GetAiDecompilationTask';
 export * from '../models/GetAnalysisStringsStatusOutputBody';
@@ -664,6 +666,8 @@ import { FunctionsListRename } from '../models/FunctionsListRename';
 import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
 import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
 import { GenerationStatusList } from '../models/GenerationStatusList';
+import { GetAdditionalDetailsOutputBody } from '../models/GetAdditionalDetailsOutputBody';
+import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDetailsStatusOutputBody';
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTask';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
@@ -1139,6 +1143,8 @@ let typeMap: {[index: string]: any} = {
     "GenerateFunctionDataTypes": GenerateFunctionDataTypes,
     "GeneratePDFOutputBody": GeneratePDFOutputBody,
     "GenerationStatusList": GenerationStatusList,
+    "GetAdditionalDetailsOutputBody": GetAdditionalDetailsOutputBody,
+    "GetAdditionalDetailsStatusOutputBody": GetAdditionalDetailsStatusOutputBody,
     "GetAiDecompilationRatingResponse": GetAiDecompilationRatingResponse,
     "GetAiDecompilationTask": GetAiDecompilationTask,
     "GetAnalysisStringsStatusOutputBody": GetAnalysisStringsStatusOutputBody,
