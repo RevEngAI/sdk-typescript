@@ -11,11 +11,23 @@
 
 import { HttpFile } from '../http/http';
 
-export class SseEventContextCompactedData {
-    'data': any | null;
-    'eventId': number;
-    'sourceRunId'?: string;
-    'type': string;
+export class PriceOutput {
+    /**
+    * Lowercase ISO 4217 currency code (e.g. \"usd\", \"gbp\").
+    */
+    'currency': string;
+    /**
+    * Price ID.
+    */
+    'id': string;
+    /**
+    * Billing interval at which the price recurs.
+    */
+    'interval': PriceOutputIntervalEnum;
+    /**
+    * Price per billing interval, expressed in the smallest unit of the currency (e.g. cents for USD, pence for GBP).
+    */
+    'unitAmount': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,34 +35,41 @@ export class SseEventContextCompactedData {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "any",
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "eventId",
-            "baseName": "event_id",
+            "name": "id",
+            "baseName": "id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "interval",
+            "baseName": "interval",
+            "type": "PriceOutputIntervalEnum",
+            "format": ""
+        },
+        {
+            "name": "unitAmount",
+            "baseName": "unit_amount",
             "type": "number",
             "format": "int64"
-        },
-        {
-            "name": "sourceRunId",
-            "baseName": "source_run_id",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return SseEventContextCompactedData.attributeTypeMap;
+        return PriceOutput.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+export enum PriceOutputIntervalEnum {
+    Month = 'month',
+    Year = 'year',
+    UnknownDefaultOpenApi = '11184809'
+}
+

@@ -11,11 +11,11 @@
 
 import { HttpFile } from '../http/http';
 
-export class SseEventContextCompactedData {
-    'data': any | null;
-    'eventId': number;
-    'sourceRunId'?: string;
-    'type': string;
+export class SessionOutputBody {
+    /**
+    * Hosted session URL to redirect the user to.
+    */
+    'url': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,32 +23,14 @@ export class SseEventContextCompactedData {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "any",
-            "format": ""
-        },
-        {
-            "name": "eventId",
-            "baseName": "event_id",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "sourceRunId",
-            "baseName": "source_run_id",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "type",
-            "baseName": "type",
+            "name": "url",
+            "baseName": "url",
             "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return SseEventContextCompactedData.attributeTypeMap;
+        return SessionOutputBody.attributeTypeMap;
     }
 
     public constructor() {

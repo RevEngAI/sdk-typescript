@@ -9,13 +9,14 @@
  * Do not edit the class manually.
  */
 
+import { ProductOutput } from '../models/ProductOutput';
 import { HttpFile } from '../http/http';
 
-export class SseEventContextCompactedData {
-    'data': any | null;
-    'eventId': number;
-    'sourceRunId'?: string;
-    'type': string;
+export class GetProductsOutputBody {
+    /**
+    * List of available products
+    */
+    'products': Array<ProductOutput> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,32 +24,14 @@ export class SseEventContextCompactedData {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "any",
-            "format": ""
-        },
-        {
-            "name": "eventId",
-            "baseName": "event_id",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "sourceRunId",
-            "baseName": "source_run_id",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
+            "name": "products",
+            "baseName": "products",
+            "type": "Array<ProductOutput>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return SseEventContextCompactedData.attributeTypeMap;
+        return GetProductsOutputBody.attributeTypeMap;
     }
 
     public constructor() {

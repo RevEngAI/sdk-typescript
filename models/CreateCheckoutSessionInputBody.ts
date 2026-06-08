@@ -11,11 +11,19 @@
 
 import { HttpFile } from '../http/http';
 
-export class SseEventContextCompactedData {
-    'data': any | null;
-    'eventId': number;
-    'sourceRunId'?: string;
-    'type': string;
+export class CreateCheckoutSessionInputBody {
+    /**
+    * URL to redirect to on cancel.
+    */
+    'cancelUrl': string;
+    /**
+    * Price ID from /v3/billing/products.
+    */
+    'priceId': string;
+    /**
+    * URL to redirect to on success.
+    */
+    'successUrl': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,32 +31,26 @@ export class SseEventContextCompactedData {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "any",
-            "format": ""
-        },
-        {
-            "name": "eventId",
-            "baseName": "event_id",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "sourceRunId",
-            "baseName": "source_run_id",
+            "name": "cancelUrl",
+            "baseName": "cancel_url",
             "type": "string",
             "format": ""
         },
         {
-            "name": "type",
-            "baseName": "type",
+            "name": "priceId",
+            "baseName": "price_id",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "successUrl",
+            "baseName": "success_url",
             "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return SseEventContextCompactedData.attributeTypeMap;
+        return CreateCheckoutSessionInputBody.attributeTypeMap;
     }
 
     public constructor() {

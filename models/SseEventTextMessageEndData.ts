@@ -14,6 +14,7 @@ import { HttpFile } from '../http/http';
 export class SseEventTextMessageEndData {
     'data': any | null;
     'eventId': number;
+    'sourceRunId'?: string;
     'type': string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -32,6 +33,12 @@ export class SseEventTextMessageEndData {
             "baseName": "event_id",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "sourceRunId",
+            "baseName": "source_run_id",
+            "type": "string",
+            "format": ""
         },
         {
             "name": "type",
