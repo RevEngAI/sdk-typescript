@@ -66,6 +66,7 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**createAnalysis**](docs/AnalysesCoreApi.md#createAnalysis) | **POST** /v2/analyses | Create Analysis
 *AnalysesCoreApi* | [**deleteAnalysis**](docs/AnalysesCoreApi.md#deleteAnalysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
 *AnalysesCoreApi* | [**getAnalysisBasicInfo**](docs/AnalysesCoreApi.md#getAnalysisBasicInfo) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
+*AnalysesCoreApi* | [**getAnalysisBasicInfo_0**](docs/AnalysesCoreApi.md#getAnalysisBasicInfo_0) | **GET** /v3/analyses/{analysis_id}/basic | Get basic analysis information
 *AnalysesCoreApi* | [**getAnalysisBytes**](docs/AnalysesCoreApi.md#getAnalysisBytes) | **GET** /v3/analyses/{analysis_id}/bytes | Get the bytes of a binary
 *AnalysesCoreApi* | [**getAnalysisFunctionMap**](docs/AnalysesCoreApi.md#getAnalysisFunctionMap) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
 *AnalysesCoreApi* | [**getAnalysisLogs**](docs/AnalysesCoreApi.md#getAnalysisLogs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
@@ -95,13 +96,13 @@ Class | Method | HTTP request | Description
 *BinariesApi* | [**downloadZippedBinary**](docs/BinariesApi.md#downloadZippedBinary) | **GET** /v2/binaries/{binary_id}/download-zipped | Downloads a zipped binary with password protection
 *BinariesApi* | [**getBinaryAdditionalDetails**](docs/BinariesApi.md#getBinaryAdditionalDetails) | **GET** /v2/binaries/{binary_id}/additional-details | Gets the additional details of a binary
 *BinariesApi* | [**getBinaryAdditionalDetailsStatus**](docs/BinariesApi.md#getBinaryAdditionalDetailsStatus) | **GET** /v2/binaries/{binary_id}/additional-details/status | Gets the status of the additional details task for a binary
+*BinariesApi* | [**getBinaryAdditionalDetailsStatus_0**](docs/BinariesApi.md#getBinaryAdditionalDetailsStatus_0) | **GET** /v3/binaries/{binary_id}/additional-details/status | Get the additional-details extraction status for a binary.
+*BinariesApi* | [**getBinaryAdditionalDetails_0**](docs/BinariesApi.md#getBinaryAdditionalDetails_0) | **GET** /v3/binaries/{binary_id}/additional-details | Get additional details for a binary.
 *BinariesApi* | [**getBinaryDetails**](docs/BinariesApi.md#getBinaryDetails) | **GET** /v2/binaries/{binary_id}/details | Gets the details of a binary
 *BinariesApi* | [**getBinaryDieInfo**](docs/BinariesApi.md#getBinaryDieInfo) | **GET** /v2/binaries/{binary_id}/die-info | Gets the die info of a binary
 *BinariesApi* | [**getBinaryExternals**](docs/BinariesApi.md#getBinaryExternals) | **GET** /v2/binaries/{binary_id}/externals | Gets the external details of a binary
 *BinariesApi* | [**getBinaryRelatedStatus**](docs/BinariesApi.md#getBinaryRelatedStatus) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 *BinariesApi* | [**getRelatedBinaries**](docs/BinariesApi.md#getRelatedBinaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
-*BinariesCoreApi* | [**getBinaryAdditionalDetails**](docs/BinariesCoreApi.md#getBinaryAdditionalDetails) | **GET** /v3/binaries/{binary_id}/additional-details | Get additional details for a binary.
-*BinariesCoreApi* | [**getBinaryAdditionalDetailsStatus**](docs/BinariesCoreApi.md#getBinaryAdditionalDetailsStatus) | **GET** /v3/binaries/{binary_id}/additional-details/status | Get the additional-details extraction status for a binary.
 *CollectionsApi* | [**createCollection**](docs/CollectionsApi.md#createCollection) | **POST** /v2/collections | Creates new collection information
 *CollectionsApi* | [**deleteCollection**](docs/CollectionsApi.md#deleteCollection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
 *CollectionsApi* | [**getCollection**](docs/CollectionsApi.md#getCollection) | **GET** /v2/collections/{collection_id} | Returns a collection
@@ -198,6 +199,7 @@ Class | Method | HTTP request | Description
  - [AiDecompilationTaskStatus](AiDecompilationTaskStatus.md)
  - [AiUnstripRequest](AiUnstripRequest.md)
  - [AnalysisAccessInfo](AnalysisAccessInfo.md)
+ - [AnalysisBasicInfoOutputBody](AnalysisBasicInfoOutputBody.md)
  - [AnalysisBulkAddTagsRequest](AnalysisBulkAddTagsRequest.md)
  - [AnalysisBulkAddTagsResponse](AnalysisBulkAddTagsResponse.md)
  - [AnalysisBulkAddTagsResponseItem](AnalysisBulkAddTagsResponseItem.md)
@@ -350,7 +352,9 @@ Class | Method | HTTP request | Description
  - [ConversationContext](ConversationContext.md)
  - [ConversationWithEvents](ConversationWithEvents.md)
  - [CreateAIDecompOutputBody](CreateAIDecompOutputBody.md)
+ - [CreateCheckoutSessionInputBody](CreateCheckoutSessionInputBody.md)
  - [CreateConversationRequest](CreateConversationRequest.md)
+ - [CreatePortalSessionInputBody](CreatePortalSessionInputBody.md)
  - [Created](Created.md)
  - [DecompFailedEvent](DecompFailedEvent.md)
  - [DecompFinishedEvent](DecompFinishedEvent.md)
@@ -455,7 +459,9 @@ Class | Method | HTTP request | Description
  - [GetAiDecompilationRatingResponse](GetAiDecompilationRatingResponse.md)
  - [GetAiDecompilationTask](GetAiDecompilationTask.md)
  - [GetAnalysisStringsStatusOutputBody](GetAnalysisStringsStatusOutputBody.md)
+ - [GetProductsOutputBody](GetProductsOutputBody.md)
  - [GetPublicUserResponse](GetPublicUserResponse.md)
+ - [GetSubscriptionOutputBody](GetSubscriptionOutputBody.md)
  - [GlobalVariable](GlobalVariable.md)
  - [HistoryEntry](HistoryEntry.md)
  - [HttpRequest](HttpRequest.md)
@@ -492,11 +498,15 @@ Class | Method | HTTP request | Description
  - [Params](Params.md)
  - [PatchCommentBody](PatchCommentBody.md)
  - [Platform](Platform.md)
+ - [PriceOutput](PriceOutput.md)
+ - [PriceSummary](PriceSummary.md)
  - [ProcessActivityEntry](ProcessActivityEntry.md)
  - [ProcessExtractedFiles](ProcessExtractedFiles.md)
  - [ProcessMemdumps](ProcessMemdumps.md)
  - [ProcessNode](ProcessNode.md)
  - [ProcessTree](ProcessTree.md)
+ - [ProductOutput](ProductOutput.md)
+ - [ProductSummary](ProductSummary.md)
  - [ProgressMessage](ProgressMessage.md)
  - [ProseEvent](ProseEvent.md)
  - [PutAnalysisStringsRequest](PutAnalysisStringsRequest.md)
@@ -528,6 +538,7 @@ Class | Method | HTTP request | Description
  - [SegmentInfo](SegmentInfo.md)
  - [SendMessageRequest](SendMessageRequest.md)
  - [ServiceEntry](ServiceEntry.md)
+ - [SessionOutputBody](SessionOutputBody.md)
  - [SingleCodeCertificateModel](SingleCodeCertificateModel.md)
  - [SingleCodeSignatureModel](SingleCodeSignatureModel.md)
  - [SinglePDBEntryModel](SinglePDBEntryModel.md)

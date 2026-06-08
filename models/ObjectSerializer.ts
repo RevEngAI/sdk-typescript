@@ -8,6 +8,7 @@ export * from '../models/AiDecompilationRating';
 export * from '../models/AiDecompilationTaskStatus';
 export * from '../models/AiUnstripRequest';
 export * from '../models/AnalysisAccessInfo';
+export * from '../models/AnalysisBasicInfoOutputBody';
 export * from '../models/AnalysisBulkAddTagsRequest';
 export * from '../models/AnalysisBulkAddTagsResponse';
 export * from '../models/AnalysisBulkAddTagsResponseItem';
@@ -160,7 +161,9 @@ export * from '../models/Conversation';
 export * from '../models/ConversationContext';
 export * from '../models/ConversationWithEvents';
 export * from '../models/CreateAIDecompOutputBody';
+export * from '../models/CreateCheckoutSessionInputBody';
 export * from '../models/CreateConversationRequest';
+export * from '../models/CreatePortalSessionInputBody';
 export * from '../models/Created';
 export * from '../models/DecompFailedEvent';
 export * from '../models/DecompFinishedEvent';
@@ -265,7 +268,9 @@ export * from '../models/GetAdditionalDetailsStatusOutputBody';
 export * from '../models/GetAiDecompilationRatingResponse';
 export * from '../models/GetAiDecompilationTask';
 export * from '../models/GetAnalysisStringsStatusOutputBody';
+export * from '../models/GetProductsOutputBody';
 export * from '../models/GetPublicUserResponse';
+export * from '../models/GetSubscriptionOutputBody';
 export * from '../models/GlobalVariable';
 export * from '../models/HistoryEntry';
 export * from '../models/HttpRequest';
@@ -302,11 +307,15 @@ export * from '../models/PaginationModel';
 export * from '../models/Params';
 export * from '../models/PatchCommentBody';
 export * from '../models/Platform';
+export * from '../models/PriceOutput';
+export * from '../models/PriceSummary';
 export * from '../models/ProcessActivityEntry';
 export * from '../models/ProcessExtractedFiles';
 export * from '../models/ProcessMemdumps';
 export * from '../models/ProcessNode';
 export * from '../models/ProcessTree';
+export * from '../models/ProductOutput';
+export * from '../models/ProductSummary';
 export * from '../models/ProgressMessage';
 export * from '../models/ProseEvent';
 export * from '../models/PutAnalysisStringsRequest';
@@ -338,6 +347,7 @@ export * from '../models/SecurityModel';
 export * from '../models/SegmentInfo';
 export * from '../models/SendMessageRequest';
 export * from '../models/ServiceEntry';
+export * from '../models/SessionOutputBody';
 export * from '../models/SingleCodeCertificateModel';
 export * from '../models/SingleCodeSignatureModel';
 export * from '../models/SinglePDBEntryModel';
@@ -414,6 +424,7 @@ import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AiDecompilationTaskStatus } from '../models/AiDecompilationTaskStatus';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
+import { AnalysisBasicInfoOutputBody, AnalysisBasicInfoOutputBodyAnalysisScopeEnum                    } from '../models/AnalysisBasicInfoOutputBody';
 import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
 import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
 import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
@@ -566,7 +577,9 @@ import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
+import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
+import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { Created } from '../models/Created';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
@@ -671,7 +684,9 @@ import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDet
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTask';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
+import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
+import { GetSubscriptionOutputBody    , GetSubscriptionOutputBodyStatusEnum  , GetSubscriptionOutputBodyTierEnum   } from '../models/GetSubscriptionOutputBody';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
@@ -708,11 +723,15 @@ import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
+import { PriceOutput  , PriceOutputIntervalEnum    } from '../models/PriceOutput';
+import { PriceSummary , PriceSummaryIntervalEnum    } from '../models/PriceSummary';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessExtractedFiles } from '../models/ProcessExtractedFiles';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
 import { ProcessTree } from '../models/ProcessTree';
+import { ProductOutput } from '../models/ProductOutput';
+import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage, ProgressMessageLevelEnum      } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
@@ -744,6 +763,7 @@ import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
 import { SendMessageRequest } from '../models/SendMessageRequest';
 import { ServiceEntry } from '../models/ServiceEntry';
+import { SessionOutputBody } from '../models/SessionOutputBody';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -825,6 +845,7 @@ let primitives = [
 let enumsMap: Set<string> = new Set<string>([
     "AiDecompilationRating",
     "AiDecompilationTaskStatus",
+    "AnalysisBasicInfoOutputBodyAnalysisScopeEnum",
     "AnalysisScope",
     "AnalysisUpdateRequestAnalysisScopeEnum",
     "AppApiRestV2AgentSchemaCapabilityTypeEnum",
@@ -868,12 +889,16 @@ let enumsMap: Set<string> = new Set<string>([
     "FunctionMatchingFiltersDebugTypesEnum",
     "FunctionSourceType",
     "FunctionTaskStatus",
+    "GetSubscriptionOutputBodyStatusEnum",
+    "GetSubscriptionOutputBodyTierEnum",
     "IOCTypeEnum",
     "ISA",
     "ModelName",
     "NameSourceTypeTypeEnum",
     "Order",
     "Platform",
+    "PriceOutputIntervalEnum",
+    "PriceSummaryIntervalEnum",
     "ProgressMessageLevelEnum",
     "RegenerateTarget",
     "ReportAnalysisResponseSoftwareTypeEnum",
@@ -902,6 +927,7 @@ let typeMap: {[index: string]: any} = {
     "Addr": Addr,
     "AiUnstripRequest": AiUnstripRequest,
     "AnalysisAccessInfo": AnalysisAccessInfo,
+    "AnalysisBasicInfoOutputBody": AnalysisBasicInfoOutputBody,
     "AnalysisBulkAddTagsRequest": AnalysisBulkAddTagsRequest,
     "AnalysisBulkAddTagsResponse": AnalysisBulkAddTagsResponse,
     "AnalysisBulkAddTagsResponseItem": AnalysisBulkAddTagsResponseItem,
@@ -1048,7 +1074,9 @@ let typeMap: {[index: string]: any} = {
     "ConversationContext": ConversationContext,
     "ConversationWithEvents": ConversationWithEvents,
     "CreateAIDecompOutputBody": CreateAIDecompOutputBody,
+    "CreateCheckoutSessionInputBody": CreateCheckoutSessionInputBody,
     "CreateConversationRequest": CreateConversationRequest,
+    "CreatePortalSessionInputBody": CreatePortalSessionInputBody,
     "Created": Created,
     "DecompFailedEvent": DecompFailedEvent,
     "DecompFinishedEvent": DecompFinishedEvent,
@@ -1148,7 +1176,9 @@ let typeMap: {[index: string]: any} = {
     "GetAiDecompilationRatingResponse": GetAiDecompilationRatingResponse,
     "GetAiDecompilationTask": GetAiDecompilationTask,
     "GetAnalysisStringsStatusOutputBody": GetAnalysisStringsStatusOutputBody,
+    "GetProductsOutputBody": GetProductsOutputBody,
     "GetPublicUserResponse": GetPublicUserResponse,
+    "GetSubscriptionOutputBody": GetSubscriptionOutputBody,
     "GlobalVariable": GlobalVariable,
     "HistoryEntry": HistoryEntry,
     "HttpRequest": HttpRequest,
@@ -1181,11 +1211,15 @@ let typeMap: {[index: string]: any} = {
     "PaginationModel": PaginationModel,
     "Params": Params,
     "PatchCommentBody": PatchCommentBody,
+    "PriceOutput": PriceOutput,
+    "PriceSummary": PriceSummary,
     "ProcessActivityEntry": ProcessActivityEntry,
     "ProcessExtractedFiles": ProcessExtractedFiles,
     "ProcessMemdumps": ProcessMemdumps,
     "ProcessNode": ProcessNode,
     "ProcessTree": ProcessTree,
+    "ProductOutput": ProductOutput,
+    "ProductSummary": ProductSummary,
     "ProgressMessage": ProgressMessage,
     "ProseEvent": ProseEvent,
     "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
@@ -1214,6 +1248,7 @@ let typeMap: {[index: string]: any} = {
     "SegmentInfo": SegmentInfo,
     "SendMessageRequest": SendMessageRequest,
     "ServiceEntry": ServiceEntry,
+    "SessionOutputBody": SessionOutputBody,
     "SingleCodeCertificateModel": SingleCodeCertificateModel,
     "SingleCodeSignatureModel": SingleCodeSignatureModel,
     "SinglePDBEntryModel": SinglePDBEntryModel,

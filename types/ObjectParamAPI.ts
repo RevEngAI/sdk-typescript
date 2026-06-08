@@ -12,6 +12,7 @@ import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AiDecompilationTaskStatus } from '../models/AiDecompilationTaskStatus';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
+import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
 import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
 import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
 import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
@@ -164,7 +165,9 @@ import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
+import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
+import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { Created } from '../models/Created';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
@@ -269,7 +272,9 @@ import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDet
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
+import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
+import { GetSubscriptionOutputBody } from '../models/GetSubscriptionOutputBody';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
@@ -306,11 +311,15 @@ import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
+import { PriceOutput } from '../models/PriceOutput';
+import { PriceSummary } from '../models/PriceSummary';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessExtractedFiles } from '../models/ProcessExtractedFiles';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
 import { ProcessTree } from '../models/ProcessTree';
+import { ProductOutput } from '../models/ProductOutput';
+import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
@@ -342,6 +351,7 @@ import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
 import { SendMessageRequest } from '../models/SendMessageRequest';
 import { ServiceEntry } from '../models/ServiceEntry';
+import { SessionOutputBody } from '../models/SessionOutputBody';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -930,6 +940,17 @@ export interface AnalysesCoreApiGetAnalysisBasicInfoRequest {
     analysisId: number
 }
 
+export interface AnalysesCoreApiGetAnalysisBasicInfo0Request {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisBasicInfo_1
+     */
+    analysisId: number
+}
+
 export interface AnalysesCoreApiGetAnalysisBytesRequest {
     /**
      * Analysis ID
@@ -1355,6 +1376,24 @@ export class ObjectAnalysesCoreApi {
      */
     public getAnalysisBasicInfo(param: AnalysesCoreApiGetAnalysisBasicInfoRequest, options?: ConfigurationOptions): Promise<BaseResponseBasic> {
         return this.api.getAnalysisBasicInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get basic analysis information
+     * @param param the request object
+     */
+    public getAnalysisBasicInfo_1WithHttpInfo(param: AnalysesCoreApiGetAnalysisBasicInfo0Request, options?: ConfigurationOptions): Promise<HttpInfo<AnalysisBasicInfoOutputBody>> {
+        return this.api.getAnalysisBasicInfo_1WithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get basic analysis information
+     * @param param the request object
+     */
+    public getAnalysisBasicInfo_1(param: AnalysesCoreApiGetAnalysisBasicInfo0Request, options?: ConfigurationOptions): Promise<AnalysisBasicInfoOutputBody> {
+        return this.api.getAnalysisBasicInfo_1(param.analysisId,  options).toPromise();
     }
 
     /**
@@ -2045,6 +2084,28 @@ export interface BinariesApiGetBinaryAdditionalDetailsStatusRequest {
     binaryId: number
 }
 
+export interface BinariesApiGetBinaryAdditionalDetailsStatus0Request {
+    /**
+     * Binary ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetBinaryAdditionalDetailsStatus_1
+     */
+    binaryId: number
+}
+
+export interface BinariesApiGetBinaryAdditionalDetails0Request {
+    /**
+     * Binary ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof BinariesApigetBinaryAdditionalDetails_2
+     */
+    binaryId: number
+}
+
 export interface BinariesApiGetBinaryDetailsRequest {
     /**
      * 
@@ -2151,6 +2212,42 @@ export class ObjectBinariesApi {
     }
 
     /**
+     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the additional-details extraction status for a binary.
+     * @param param the request object
+     */
+    public getBinaryAdditionalDetailsStatus_1WithHttpInfo(param: BinariesApiGetBinaryAdditionalDetailsStatus0Request, options?: ConfigurationOptions): Promise<HttpInfo<GetAdditionalDetailsStatusOutputBody>> {
+        return this.api.getBinaryAdditionalDetailsStatus_1WithHttpInfo(param.binaryId,  options).toPromise();
+    }
+
+    /**
+     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the additional-details extraction status for a binary.
+     * @param param the request object
+     */
+    public getBinaryAdditionalDetailsStatus_1(param: BinariesApiGetBinaryAdditionalDetailsStatus0Request, options?: ConfigurationOptions): Promise<GetAdditionalDetailsStatusOutputBody> {
+        return this.api.getBinaryAdditionalDetailsStatus_1(param.binaryId,  options).toPromise();
+    }
+
+    /**
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
+     * @param param the request object
+     */
+    public getBinaryAdditionalDetails_2WithHttpInfo(param: BinariesApiGetBinaryAdditionalDetails0Request, options?: ConfigurationOptions): Promise<HttpInfo<GetAdditionalDetailsOutputBody>> {
+        return this.api.getBinaryAdditionalDetails_2WithHttpInfo(param.binaryId,  options).toPromise();
+    }
+
+    /**
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
+     * @param param the request object
+     */
+    public getBinaryAdditionalDetails_2(param: BinariesApiGetBinaryAdditionalDetails0Request, options?: ConfigurationOptions): Promise<GetAdditionalDetailsOutputBody> {
+        return this.api.getBinaryAdditionalDetails_2(param.binaryId,  options).toPromise();
+    }
+
+    /**
      * Gets the details of a binary
      * @param param the request object
      */
@@ -2228,76 +2325,6 @@ export class ObjectBinariesApi {
      */
     public getRelatedBinaries(param: BinariesApiGetRelatedBinariesRequest, options?: ConfigurationOptions): Promise<BaseResponseChildBinariesResponse> {
         return this.api.getRelatedBinaries(param.binaryId,  options).toPromise();
-    }
-
-}
-
-import { ObservableBinariesCoreApi } from "./ObservableAPI";
-import { BinariesCoreApiRequestFactory, BinariesCoreApiResponseProcessor} from "../apis/BinariesCoreApi";
-
-export interface BinariesCoreApiGetBinaryAdditionalDetailsRequest {
-    /**
-     * Binary ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof BinariesCoreApigetBinaryAdditionalDetails
-     */
-    binaryId: number
-}
-
-export interface BinariesCoreApiGetBinaryAdditionalDetailsStatusRequest {
-    /**
-     * Binary ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof BinariesCoreApigetBinaryAdditionalDetailsStatus
-     */
-    binaryId: number
-}
-
-export class ObjectBinariesCoreApi {
-    private api: ObservableBinariesCoreApi
-
-    public constructor(configuration: Configuration, requestFactory?: BinariesCoreApiRequestFactory, responseProcessor?: BinariesCoreApiResponseProcessor) {
-        this.api = new ObservableBinariesCoreApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get additional details for a binary.
-     * @param param the request object
-     */
-    public getBinaryAdditionalDetailsWithHttpInfo(param: BinariesCoreApiGetBinaryAdditionalDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetAdditionalDetailsOutputBody>> {
-        return this.api.getBinaryAdditionalDetailsWithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get additional details for a binary.
-     * @param param the request object
-     */
-    public getBinaryAdditionalDetails(param: BinariesCoreApiGetBinaryAdditionalDetailsRequest, options?: ConfigurationOptions): Promise<GetAdditionalDetailsOutputBody> {
-        return this.api.getBinaryAdditionalDetails(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the additional-details extraction status for a binary.
-     * @param param the request object
-     */
-    public getBinaryAdditionalDetailsStatusWithHttpInfo(param: BinariesCoreApiGetBinaryAdditionalDetailsStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetAdditionalDetailsStatusOutputBody>> {
-        return this.api.getBinaryAdditionalDetailsStatusWithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the additional-details extraction status for a binary.
-     * @param param the request object
-     */
-    public getBinaryAdditionalDetailsStatus(param: BinariesCoreApiGetBinaryAdditionalDetailsStatusRequest, options?: ConfigurationOptions): Promise<GetAdditionalDetailsStatusOutputBody> {
-        return this.api.getBinaryAdditionalDetailsStatus(param.binaryId,  options).toPromise();
     }
 
 }

@@ -11,11 +11,19 @@
 
 import { HttpFile } from '../http/http';
 
-export class SseEventContextCompactedData {
-    'data': any | null;
-    'eventId': number;
-    'sourceRunId'?: string;
-    'type': string;
+export class PriceSummary {
+    /**
+    * Lowercase ISO 4217 currency code.
+    */
+    'currency': string;
+    /**
+    * Billing interval at which the price recurs.
+    */
+    'interval': PriceSummaryIntervalEnum;
+    /**
+    * Price per billing interval, in the smallest unit of the currency.
+    */
+    'unitAmount': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,34 +31,35 @@ export class SseEventContextCompactedData {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "any",
+            "name": "currency",
+            "baseName": "currency",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "eventId",
-            "baseName": "event_id",
+            "name": "interval",
+            "baseName": "interval",
+            "type": "PriceSummaryIntervalEnum",
+            "format": ""
+        },
+        {
+            "name": "unitAmount",
+            "baseName": "unit_amount",
             "type": "number",
             "format": "int64"
-        },
-        {
-            "name": "sourceRunId",
-            "baseName": "source_run_id",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
-            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return SseEventContextCompactedData.attributeTypeMap;
+        return PriceSummary.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+export enum PriceSummaryIntervalEnum {
+    Month = 'month',
+    Year = 'year',
+    UnknownDefaultOpenApi = '11184809'
+}
+

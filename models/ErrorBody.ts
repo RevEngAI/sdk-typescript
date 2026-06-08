@@ -79,6 +79,14 @@ export class ErrorBody {
 
 export enum ErrorBodyCodeEnum {
     AccessDenied = 'ACCESS_DENIED',
+    AgentBudgetExceeded = 'AGENT_BUDGET_EXCEEDED',
+    AgentDefinitionNotFound = 'AGENT_DEFINITION_NOT_FOUND',
+    AgentInvalidStartingInput = 'AGENT_INVALID_STARTING_INPUT',
+    AgentMemoryInvalidScope = 'AGENT_MEMORY_INVALID_SCOPE',
+    AgentMemoryNotFound = 'AGENT_MEMORY_NOT_FOUND',
+    AgentMemoryVersionConflict = 'AGENT_MEMORY_VERSION_CONFLICT',
+    AgentNoPendingQuestion = 'AGENT_NO_PENDING_QUESTION',
+    AgentRunNotFound = 'AGENT_RUN_NOT_FOUND',
     AlreadyExists = 'ALREADY_EXISTS',
     AnalysisNotReady = 'ANALYSIS_NOT_READY',
     BadRequest = 'BAD_REQUEST',

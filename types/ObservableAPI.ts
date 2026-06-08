@@ -13,6 +13,7 @@ import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AiDecompilationTaskStatus } from '../models/AiDecompilationTaskStatus';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
+import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
 import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
 import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
 import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
@@ -165,7 +166,9 @@ import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
+import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
+import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { Created } from '../models/Created';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
@@ -270,7 +273,9 @@ import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDet
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
+import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
+import { GetSubscriptionOutputBody } from '../models/GetSubscriptionOutputBody';
 import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
@@ -307,11 +312,15 @@ import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
+import { PriceOutput } from '../models/PriceOutput';
+import { PriceSummary } from '../models/PriceSummary';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessExtractedFiles } from '../models/ProcessExtractedFiles';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
 import { ProcessTree } from '../models/ProcessTree';
+import { ProductOutput } from '../models/ProductOutput';
+import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
@@ -343,6 +352,7 @@ import { SecurityModel } from '../models/SecurityModel';
 import { SegmentInfo } from '../models/SegmentInfo';
 import { SendMessageRequest } from '../models/SendMessageRequest';
 import { ServiceEntry } from '../models/ServiceEntry';
+import { SessionOutputBody } from '../models/SessionOutputBody';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
@@ -1119,6 +1129,40 @@ export class ObservableAnalysesCoreApi {
      */
     public getAnalysisBasicInfo(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseBasic> {
         return this.getAnalysisBasicInfoWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBasic>) => apiResponse.data));
+    }
+
+    /**
+     * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get basic analysis information
+     * @param analysisId Analysis ID
+     */
+    public getAnalysisBasicInfo_1WithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<AnalysisBasicInfoOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getAnalysisBasicInfo_1(analysisId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisBasicInfo_1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get basic analysis information
+     * @param analysisId Analysis ID
+     */
+    public getAnalysisBasicInfo_1(analysisId: number, _options?: ConfigurationOptions): Observable<AnalysisBasicInfoOutputBody> {
+        return this.getAnalysisBasicInfo_1WithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<AnalysisBasicInfoOutputBody>) => apiResponse.data));
     }
 
     /**
@@ -2228,6 +2272,74 @@ export class ObservableBinariesApi {
     }
 
     /**
+     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the additional-details extraction status for a binary.
+     * @param binaryId Binary ID
+     */
+    public getBinaryAdditionalDetailsStatus_1WithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAdditionalDetailsStatusOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetailsStatus_1(binaryId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryAdditionalDetailsStatus_1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the additional-details extraction status for a binary.
+     * @param binaryId Binary ID
+     */
+    public getBinaryAdditionalDetailsStatus_1(binaryId: number, _options?: ConfigurationOptions): Observable<GetAdditionalDetailsStatusOutputBody> {
+        return this.getBinaryAdditionalDetailsStatus_1WithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<GetAdditionalDetailsStatusOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
+     * @param binaryId Binary ID
+     */
+    public getBinaryAdditionalDetails_2WithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAdditionalDetailsOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetails_2(binaryId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryAdditionalDetails_2WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
+     * @param binaryId Binary ID
+     */
+    public getBinaryAdditionalDetails_2(binaryId: number, _options?: ConfigurationOptions): Observable<GetAdditionalDetailsOutputBody> {
+        return this.getBinaryAdditionalDetails_2WithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<GetAdditionalDetailsOutputBody>) => apiResponse.data));
+    }
+
+    /**
      * Gets the details of a binary
      * @param binaryId
      */
@@ -2385,92 +2497,6 @@ export class ObservableBinariesApi {
      */
     public getRelatedBinaries(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseChildBinariesResponse> {
         return this.getRelatedBinariesWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseChildBinariesResponse>) => apiResponse.data));
-    }
-
-}
-
-import { BinariesCoreApiRequestFactory, BinariesCoreApiResponseProcessor} from "../apis/BinariesCoreApi";
-export class ObservableBinariesCoreApi {
-    private requestFactory: BinariesCoreApiRequestFactory;
-    private responseProcessor: BinariesCoreApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: BinariesCoreApiRequestFactory,
-        responseProcessor?: BinariesCoreApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new BinariesCoreApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new BinariesCoreApiResponseProcessor();
-    }
-
-    /**
-     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get additional details for a binary.
-     * @param binaryId Binary ID
-     */
-    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAdditionalDetailsOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetails(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryAdditionalDetailsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get additional details for a binary.
-     * @param binaryId Binary ID
-     */
-    public getBinaryAdditionalDetails(binaryId: number, _options?: ConfigurationOptions): Observable<GetAdditionalDetailsOutputBody> {
-        return this.getBinaryAdditionalDetailsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<GetAdditionalDetailsOutputBody>) => apiResponse.data));
-    }
-
-    /**
-     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the additional-details extraction status for a binary.
-     * @param binaryId Binary ID
-     */
-    public getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAdditionalDetailsStatusOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetailsStatus(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryAdditionalDetailsStatusWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the additional-details extraction status for a binary.
-     * @param binaryId Binary ID
-     */
-    public getBinaryAdditionalDetailsStatus(binaryId: number, _options?: ConfigurationOptions): Observable<GetAdditionalDetailsStatusOutputBody> {
-        return this.getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<GetAdditionalDetailsStatusOutputBody>) => apiResponse.data));
     }
 
 }

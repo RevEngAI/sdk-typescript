@@ -438,6 +438,8 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Get string information found in the analysis
      * Get string information found in the Analysis
      * @param analysisId 
@@ -518,6 +520,8 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Get string processing state for the Analysis
      * Get string processing state for the Analysis
      * @param analysisId 
@@ -749,6 +753,8 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Get string information found in the function
      * Get string information found in the function
      * @param functionId 
