@@ -99,7 +99,7 @@ export enum GetSubscriptionOutputBodyStatusEnum {
 export enum GetSubscriptionOutputBodyTierEnum {
     Enthusiast = 'ENTHUSIAST',
     Reverser = 'REVERSER',
-    VulnerabilityHunter = 'VULNERABILITY_HUNTER',
+    BugHunter = 'BUG_HUNTER',
     MalwareAnalyst = 'MALWARE_ANALYST',
     SecurityResearcher = 'SECURITY_RESEARCHER',
     UnknownDefaultOpenApi = '11184809'
