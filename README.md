@@ -73,8 +73,6 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**getAnalysisParams**](docs/AnalysesCoreApi.md#getAnalysisParams) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 *AnalysesCoreApi* | [**getAnalysisQueuePosition**](docs/AnalysesCoreApi.md#getAnalysisQueuePosition) | **GET** /v2/analyses/{analysis_id}/queue-position | Get the queue position of an analysis
 *AnalysesCoreApi* | [**getAnalysisStatus**](docs/AnalysesCoreApi.md#getAnalysisStatus) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
-*AnalysesCoreApi* | [**getAnalysisStrings**](docs/AnalysesCoreApi.md#getAnalysisStrings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
-*AnalysesCoreApi* | [**getAnalysisStringsStatus**](docs/AnalysesCoreApi.md#getAnalysisStringsStatus) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
 *AnalysesCoreApi* | [**insertAnalysisLog**](docs/AnalysesCoreApi.md#insertAnalysisLog) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 *AnalysesCoreApi* | [**listAnalyses**](docs/AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 *AnalysesCoreApi* | [**lookupBinaryId**](docs/AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
@@ -83,6 +81,8 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**updateAnalysis**](docs/AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 *AnalysesCoreApi* | [**updateAnalysisTags**](docs/AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 *AnalysesCoreApi* | [**uploadFile**](docs/AnalysesCoreApi.md#uploadFile) | **POST** /v2/upload | Upload File
+*AnalysesCoreApi* | [**v3GetAnalysisStrings**](docs/AnalysesCoreApi.md#v3GetAnalysisStrings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
+*AnalysesCoreApi* | [**v3GetAnalysisStringsStatus**](docs/AnalysesCoreApi.md#v3GetAnalysisStringsStatus) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
 *AnalysesResultsMetadataApi* | [**getAnalysisFunctionsPaginated**](docs/AnalysesResultsMetadataApi.md#getAnalysisFunctionsPaginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 *AnalysesResultsMetadataApi* | [**getCapabilities**](docs/AnalysesResultsMetadataApi.md#getCapabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 *AnalysesResultsMetadataApi* | [**getFunctionsList**](docs/AnalysesResultsMetadataApi.md#getFunctionsList) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
@@ -104,6 +104,7 @@ Class | Method | HTTP request | Description
 *BinariesApi* | [**getBinaryRelatedStatus**](docs/BinariesApi.md#getBinaryRelatedStatus) | **GET** /v2/binaries/{binary_id}/related/status | Gets the status of the unpack binary task for a binary
 *BinariesApi* | [**getRelatedBinaries**](docs/BinariesApi.md#getRelatedBinaries) | **GET** /v2/binaries/{binary_id}/related | Gets the related binaries of a binary.
 *CollectionsApi* | [**createCollection**](docs/CollectionsApi.md#createCollection) | **POST** /v2/collections | Creates new collection information
+*CollectionsApi* | [**createCollection_0**](docs/CollectionsApi.md#createCollection_0) | **POST** /v3/collections | Create a collection.
 *CollectionsApi* | [**deleteCollection**](docs/CollectionsApi.md#deleteCollection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
 *CollectionsApi* | [**getCollection**](docs/CollectionsApi.md#getCollection) | **GET** /v2/collections/{collection_id} | Returns a collection
 *CollectionsApi* | [**listCollections**](docs/CollectionsApi.md#listCollections) | **GET** /v2/collections | Gets basic collections information
@@ -311,6 +312,7 @@ Class | Method | HTTP request | Description
  - [BatchRenameOutputBody](BatchRenameOutputBody.md)
  - [BinariesRelatedStatusResponse](BinariesRelatedStatusResponse.md)
  - [BinariesTaskStatus](BinariesTaskStatus.md)
+ - [Binary](Binary.md)
  - [BinaryAdditionalDetailsDataResponse](BinaryAdditionalDetailsDataResponse.md)
  - [BinaryAdditionalResponse](BinaryAdditionalResponse.md)
  - [BinaryConfig](BinaryConfig.md)
@@ -353,6 +355,8 @@ Class | Method | HTTP request | Description
  - [ConversationWithEvents](ConversationWithEvents.md)
  - [CreateAIDecompOutputBody](CreateAIDecompOutputBody.md)
  - [CreateCheckoutSessionInputBody](CreateCheckoutSessionInputBody.md)
+ - [CreateCollectionInputBody](CreateCollectionInputBody.md)
+ - [CreateCollectionOutputBody](CreateCollectionOutputBody.md)
  - [CreateConversationRequest](CreateConversationRequest.md)
  - [CreatePortalSessionInputBody](CreatePortalSessionInputBody.md)
  - [Created](Created.md)

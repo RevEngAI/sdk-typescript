@@ -5,6 +5,7 @@ All URIs are relative to *https://api.reveng.ai*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createCollection**](CollectionsApi.md#createCollection) | **POST** /v2/collections | Creates new collection information
+[**createCollection_0**](CollectionsApi.md#createCollection_0) | **POST** /v3/collections | Create a collection.
 [**deleteCollection**](CollectionsApi.md#deleteCollection) | **DELETE** /v2/collections/{collection_id} | Deletes a collection
 [**getCollection**](CollectionsApi.md#getCollection) | **GET** /v2/collections/{collection_id} | Returns a collection
 [**listCollections**](CollectionsApi.md#listCollections) | **GET** /v2/collections | Gets basic collections information
@@ -75,6 +76,62 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **createCollection_0**
+> CreateCollectionOutputBody createCollection_0(createCollectionInputBody)
+
+Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+
+```typescript
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiCreateCollection0Request } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new CollectionsApi(configuration);
+
+const request: CollectionsApiCreateCollection0Request = {
+  
+  createCollectionInputBody: ,
+};
+
+const data = await apiInstance.createCollection_0(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createCollectionInputBody** | **CreateCollectionInputBody**|  |
+
+
+### Return type
+
+**CreateCollectionOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

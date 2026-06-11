@@ -8,6 +8,7 @@ import {canConsumeForm, isCodeInRange} from '../util';
 import {SecurityAuthentication} from '../auth/auth';
 
 
+import { APIError } from '../models/APIError';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
@@ -19,6 +20,8 @@ import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpd
 import { CollectionCreateRequest } from '../models/CollectionCreateRequest';
 import { CollectionTagsUpdateRequest } from '../models/CollectionTagsUpdateRequest';
 import { CollectionUpdateRequest } from '../models/CollectionUpdateRequest';
+import { CreateCollectionInputBody } from '../models/CreateCollectionInputBody';
+import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
 import { Filters } from '../models/Filters';
 import { Order } from '../models/Order';
 
@@ -56,6 +59,54 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(collectionCreateRequest, "CollectionCreateRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param createCollectionInputBody 
+     */
+    public async createCollection_1(createCollectionInputBody: CreateCollectionInputBody, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'createCollectionInputBody' is not null or undefined
+        if (createCollectionInputBody === null || createCollectionInputBody === undefined) {
+            throw new RequiredError("CollectionsApi", "createCollection_1", "createCollectionInputBody");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/collections';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(createCollectionInputBody, "CreateCollectionInputBody", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -463,6 +514,56 @@ export class CollectionsApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseCollectionResponse", ""
             ) as BaseResponseCollectionResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to createCollection_1
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async createCollection_1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<CreateCollectionOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("201", response.httpStatusCode)) {
+            const body: CreateCollectionOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateCollectionOutputBody", ""
+            ) as CreateCollectionOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: CreateCollectionOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "CreateCollectionOutputBody", ""
+            ) as CreateCollectionOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

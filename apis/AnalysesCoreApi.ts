@@ -507,124 +507,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for an analysis.
-     * @param analysisId Analysis ID
-     * @param page Page number (1-indexed).
-     * @param pageSize Number of results per page.
-     * @param search Filter by string value (case-insensitive substring match).
-     * @param functionSearch Filter by function name (case-insensitive substring match).
-     * @param orderBy Field to order results by.
-     * @param sortOrder Sort direction.
-     */
-    public async getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "getAnalysisStrings", "analysisId");
-        }
-
-
-
-
-
-
-
-
-        // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/functions/strings'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (page !== undefined) {
-            requestContext.setQueryParam("page", ObjectSerializer.serialize(page, "number", "int64"));
-        }
-
-        // Query Params
-        if (pageSize !== undefined) {
-            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", "int64"));
-        }
-
-        // Query Params
-        if (search !== undefined) {
-            requestContext.setQueryParam("search", ObjectSerializer.serialize(search, "string", ""));
-        }
-
-        // Query Params
-        if (functionSearch !== undefined) {
-            requestContext.setQueryParam("function_search", ObjectSerializer.serialize(functionSearch, "string", ""));
-        }
-
-        // Query Params
-        if (orderBy !== undefined) {
-            requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "'value' | 'length'", ""));
-        }
-
-        // Query Params
-        if (sortOrder !== undefined) {
-            requestContext.setQueryParam("sort_order", ObjectSerializer.serialize(sortOrder, "'ASC' | 'DESC'", ""));
-        }
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the string-extraction status for an analysis.
-     * @param analysisId Analysis ID
-     */
-    public async getAnalysisStringsStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "getAnalysisStringsStatus", "analysisId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/functions/strings/status'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Inserts a log record for an analysis. Only the analysis owner can insert logs.
      * Insert a log entry for an analysis
      * @param analysisId 
@@ -1137,6 +1019,124 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
             ]);
             requestContext.setHeaderParam("Content-Type", contentType);
         }
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param analysisId Analysis ID
+     * @param page Page number (1-indexed).
+     * @param pageSize Number of results per page.
+     * @param search Filter by string value (case-insensitive substring match).
+     * @param functionSearch Filter by function name (case-insensitive substring match).
+     * @param orderBy Field to order results by.
+     * @param sortOrder Sort direction.
+     */
+    public async v3GetAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetAnalysisStrings", "analysisId");
+        }
+
+
+
+
+
+
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/functions/strings'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (page !== undefined) {
+            requestContext.setQueryParam("page", ObjectSerializer.serialize(page, "number", "int64"));
+        }
+
+        // Query Params
+        if (pageSize !== undefined) {
+            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", "int64"));
+        }
+
+        // Query Params
+        if (search !== undefined) {
+            requestContext.setQueryParam("search", ObjectSerializer.serialize(search, "string", ""));
+        }
+
+        // Query Params
+        if (functionSearch !== undefined) {
+            requestContext.setQueryParam("function_search", ObjectSerializer.serialize(functionSearch, "string", ""));
+        }
+
+        // Query Params
+        if (orderBy !== undefined) {
+            requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "'value' | 'length'", ""));
+        }
+
+        // Query Params
+        if (sortOrder !== undefined) {
+            requestContext.setQueryParam("sort_order", ObjectSerializer.serialize(sortOrder, "'ASC' | 'DESC'", ""));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public async v3GetAnalysisStringsStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetAnalysisStringsStatus", "analysisId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/functions/strings/status'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -1672,120 +1672,6 @@ export class AnalysesCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to getAnalysisStrings
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getAnalysisStringsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAnalysisStringsOutputBody >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: ListAnalysisStringsOutputBody = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ListAnalysisStringsOutputBody", ""
-            ) as ListAnalysisStringsOutputBody;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: ListAnalysisStringsOutputBody = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "ListAnalysisStringsOutputBody", ""
-            ) as ListAnalysisStringsOutputBody;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getAnalysisStringsStatus
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getAnalysisStringsStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetAnalysisStringsStatusOutputBody >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: GetAnalysisStringsStatusOutputBody = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "GetAnalysisStringsStatusOutputBody", ""
-            ) as GetAnalysisStringsStatusOutputBody;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: GetAnalysisStringsStatusOutputBody = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "GetAnalysisStringsStatusOutputBody", ""
-            ) as GetAnalysisStringsStatusOutputBody;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
      * @params response Response returned by the server for a request to insertAnalysisLog
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -2078,6 +1964,120 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseUploadResponse", ""
             ) as BaseResponseUploadResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3GetAnalysisStrings
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3GetAnalysisStringsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAnalysisStringsOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListAnalysisStringsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListAnalysisStringsOutputBody", ""
+            ) as ListAnalysisStringsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListAnalysisStringsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListAnalysisStringsOutputBody", ""
+            ) as ListAnalysisStringsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3GetAnalysisStringsStatus
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3GetAnalysisStringsStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetAnalysisStringsStatusOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: GetAnalysisStringsStatusOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "GetAnalysisStringsStatusOutputBody", ""
+            ) as GetAnalysisStringsStatusOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: GetAnalysisStringsStatusOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "GetAnalysisStringsStatusOutputBody", ""
+            ) as GetAnalysisStringsStatusOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

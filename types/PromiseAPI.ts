@@ -124,6 +124,7 @@ import { BatchRenameItem } from '../models/BatchRenameItem';
 import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
+import { Binary } from '../models/Binary';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
 import { BinaryConfig } from '../models/BinaryConfig';
@@ -166,6 +167,8 @@ import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
+import { CreateCollectionInputBody } from '../models/CreateCollectionInputBody';
+import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { Created } from '../models/Created';
@@ -1059,62 +1062,6 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for an analysis.
-     * @param analysisId Analysis ID
-     * @param [page] Page number (1-indexed).
-     * @param [pageSize] Number of results per page.
-     * @param [search] Filter by string value (case-insensitive substring match).
-     * @param [functionSearch] Filter by function name (case-insensitive substring match).
-     * @param [orderBy] Field to order results by.
-     * @param [sortOrder] Sort direction.
-     */
-    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAnalysisStringsOutputBody>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for an analysis.
-     * @param analysisId Analysis ID
-     * @param [page] Page number (1-indexed).
-     * @param [pageSize] Number of results per page.
-     * @param [search] Filter by string value (case-insensitive substring match).
-     * @param [functionSearch] Filter by function name (case-insensitive substring match).
-     * @param [orderBy] Field to order results by.
-     * @param [sortOrder] Sort direction.
-     */
-    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListAnalysisStringsOutputBody> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the string-extraction status for an analysis.
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisStringsStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetAnalysisStringsStatusOutputBody>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStringsStatusWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the string-extraction status for an analysis.
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisStringsStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<GetAnalysisStringsStatusOutputBody> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStringsStatus(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Inserts a log record for an analysis. Only the analysis owner can insert logs.
      * Insert a log entry for an analysis
      * @param analysisId
@@ -1323,6 +1270,62 @@ export class PromiseAnalysesCoreApi {
     public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.uploadFile(uploadFileType, file, packedPassword, forceOverwrite, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param analysisId Analysis ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
+     * @param [functionSearch] Filter by function name (case-insensitive substring match).
+     * @param [orderBy] Field to order results by.
+     * @param [sortOrder] Sort direction.
+     */
+    public v3GetAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAnalysisStringsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param analysisId Analysis ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
+     * @param [functionSearch] Filter by function name (case-insensitive substring match).
+     * @param [orderBy] Field to order results by.
+     * @param [sortOrder] Sort direction.
+     */
+    public v3GetAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListAnalysisStringsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisStrings(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisStringsStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetAnalysisStringsStatusOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisStringsStatusWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisStringsStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<GetAnalysisStringsStatusOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisStringsStatus(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -1868,6 +1871,28 @@ export class PromiseCollectionsApi {
     public createCollection(collectionCreateRequest: CollectionCreateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createCollection(collectionCreateRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param createCollectionInputBody
+     */
+    public createCollection_1WithHttpInfo(createCollectionInputBody: CreateCollectionInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateCollectionOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCollection_1WithHttpInfo(createCollectionInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param createCollectionInputBody
+     */
+    public createCollection_1(createCollectionInputBody: CreateCollectionInputBody, _options?: PromiseConfigurationOptions): Promise<CreateCollectionOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createCollection_1(createCollectionInputBody, observableOptions);
         return result.toPromise();
     }
 

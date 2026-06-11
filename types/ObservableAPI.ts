@@ -125,6 +125,7 @@ import { BatchRenameItem } from '../models/BatchRenameItem';
 import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
+import { Binary } from '../models/Binary';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
 import { BinaryConfig } from '../models/BinaryConfig';
@@ -167,6 +168,8 @@ import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
+import { CreateCollectionInputBody } from '../models/CreateCollectionInputBody';
+import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { Created } from '../models/Created';
@@ -1372,86 +1375,6 @@ export class ObservableAnalysesCoreApi {
     }
 
     /**
-     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for an analysis.
-     * @param analysisId Analysis ID
-     * @param [page] Page number (1-indexed).
-     * @param [pageSize] Number of results per page.
-     * @param [search] Filter by string value (case-insensitive substring match).
-     * @param [functionSearch] Filter by function name (case-insensitive substring match).
-     * @param [orderBy] Field to order results by.
-     * @param [sortOrder] Sort direction.
-     */
-    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<HttpInfo<ListAnalysisStringsOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisStringsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for an analysis.
-     * @param analysisId Analysis ID
-     * @param [page] Page number (1-indexed).
-     * @param [pageSize] Number of results per page.
-     * @param [search] Filter by string value (case-insensitive substring match).
-     * @param [functionSearch] Filter by function name (case-insensitive substring match).
-     * @param [orderBy] Field to order results by.
-     * @param [sortOrder] Sort direction.
-     */
-    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<ListAnalysisStringsOutputBody> {
-        return this.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _options).pipe(map((apiResponse: HttpInfo<ListAnalysisStringsOutputBody>) => apiResponse.data));
-    }
-
-    /**
-     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the string-extraction status for an analysis.
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisStringsStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAnalysisStringsStatusOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisStringsStatus(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisStringsStatusWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the string-extraction status for an analysis.
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisStringsStatus(analysisId: number, _options?: ConfigurationOptions): Observable<GetAnalysisStringsStatusOutputBody> {
-        return this.getAnalysisStringsStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<GetAnalysisStringsStatusOutputBody>) => apiResponse.data));
-    }
-
-    /**
      * Inserts a log record for an analysis. Only the analysis owner can insert logs.
      * Insert a log entry for an analysis
      * @param analysisId
@@ -1757,6 +1680,86 @@ export class ObservableAnalysesCoreApi {
      */
     public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
         return this.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, forceOverwrite, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUploadResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param analysisId Analysis ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
+     * @param [functionSearch] Filter by function name (case-insensitive substring match).
+     * @param [orderBy] Field to order results by.
+     * @param [sortOrder] Sort direction.
+     */
+    public v3GetAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<HttpInfo<ListAnalysisStringsOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3GetAnalysisStrings(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3GetAnalysisStringsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param analysisId Analysis ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
+     * @param [functionSearch] Filter by function name (case-insensitive substring match).
+     * @param [orderBy] Field to order results by.
+     * @param [sortOrder] Sort direction.
+     */
+    public v3GetAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<ListAnalysisStringsOutputBody> {
+        return this.v3GetAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _options).pipe(map((apiResponse: HttpInfo<ListAnalysisStringsOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisStringsStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAnalysisStringsStatusOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3GetAnalysisStringsStatus(analysisId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3GetAnalysisStringsStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisStringsStatus(analysisId: number, _options?: ConfigurationOptions): Observable<GetAnalysisStringsStatusOutputBody> {
+        return this.v3GetAnalysisStringsStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<GetAnalysisStringsStatusOutputBody>) => apiResponse.data));
     }
 
 }
@@ -2549,6 +2552,40 @@ export class ObservableCollectionsApi {
      */
     public createCollection(collectionCreateRequest: CollectionCreateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
         return this.createCollectionWithHttpInfo(collectionCreateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param createCollectionInputBody
+     */
+    public createCollection_1WithHttpInfo(createCollectionInputBody: CreateCollectionInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<CreateCollectionOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createCollection_1(createCollectionInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createCollection_1WithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param createCollectionInputBody
+     */
+    public createCollection_1(createCollectionInputBody: CreateCollectionInputBody, _options?: ConfigurationOptions): Observable<CreateCollectionOutputBody> {
+        return this.createCollection_1WithHttpInfo(createCollectionInputBody, _options).pipe(map((apiResponse: HttpInfo<CreateCollectionOutputBody>) => apiResponse.data));
     }
 
     /**

@@ -15,8 +15,6 @@ Method | HTTP request | Description
 [**getAnalysisParams**](AnalysesCoreApi.md#getAnalysisParams) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 [**getAnalysisQueuePosition**](AnalysesCoreApi.md#getAnalysisQueuePosition) | **GET** /v2/analyses/{analysis_id}/queue-position | Get the queue position of an analysis
 [**getAnalysisStatus**](AnalysesCoreApi.md#getAnalysisStatus) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
-[**getAnalysisStrings**](AnalysesCoreApi.md#getAnalysisStrings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
-[**getAnalysisStringsStatus**](AnalysesCoreApi.md#getAnalysisStringsStatus) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
 [**insertAnalysisLog**](AnalysesCoreApi.md#insertAnalysisLog) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 [**listAnalyses**](AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 [**lookupBinaryId**](AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
@@ -25,6 +23,8 @@ Method | HTTP request | Description
 [**updateAnalysis**](AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**updateAnalysisTags**](AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**uploadFile**](AnalysesCoreApi.md#uploadFile) | **POST** /v2/upload | Upload File
+[**v3GetAnalysisStrings**](AnalysesCoreApi.md#v3GetAnalysisStrings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
+[**v3GetAnalysisStringsStatus**](AnalysesCoreApi.md#v3GetAnalysisStringsStatus) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
 
 
 # **addUserStringToAnalysis**
@@ -692,138 +692,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getAnalysisStrings**
-> ListAnalysisStringsOutputBody getAnalysisStrings()
-
-Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiGetAnalysisStringsRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiGetAnalysisStringsRequest = {
-    // Analysis ID
-  analysisId: 1,
-    // Page number (1-indexed). (optional)
-  page: 1,
-    // Number of results per page. (optional)
-  pageSize: 100,
-    // Filter by string value (case-insensitive substring match). (optional)
-  search: "search_example",
-    // Filter by function name (case-insensitive substring match). (optional)
-  functionSearch: "function_search_example",
-    // Field to order results by. (optional)
-  orderBy: "value",
-    // Sort direction. (optional)
-  sortOrder: "ASC",
-};
-
-const data = await apiInstance.getAnalysisStrings(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] | Analysis ID | defaults to undefined
- **page** | [**number**] | Page number (1-indexed). | (optional) defaults to 1
- **pageSize** | [**number**] | Number of results per page. | (optional) defaults to 100
- **search** | [**string**] | Filter by string value (case-insensitive substring match). | (optional) defaults to undefined
- **functionSearch** | [**string**] | Filter by function name (case-insensitive substring match). | (optional) defaults to undefined
- **orderBy** | [**&#39;value&#39; | &#39;length&#39;**]**Array<&#39;value&#39; &#124; &#39;length&#39; &#124; &#39;11184809&#39;>** | Field to order results by. | (optional) defaults to 'value'
- **sortOrder** | [**&#39;ASC&#39; | &#39;DESC&#39;**]**Array<&#39;ASC&#39; &#124; &#39;DESC&#39; &#124; &#39;11184809&#39;>** | Sort direction. | (optional) defaults to 'ASC'
-
-
-### Return type
-
-**ListAnalysisStringsOutputBody**
-
-### Authorization
-
-[APIKey](README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getAnalysisStringsStatus**
-> GetAnalysisStringsStatusOutputBody getAnalysisStringsStatus()
-
-Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiGetAnalysisStringsStatusRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiGetAnalysisStringsStatusRequest = {
-    // Analysis ID
-  analysisId: 1,
-};
-
-const data = await apiInstance.getAnalysisStringsStatus(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] | Analysis ID | defaults to undefined
-
-
-### Return type
-
-**GetAnalysisStringsStatusOutputBody**
-
-### Authorization
-
-[APIKey](README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **insertAnalysisLog**
 > BaseResponse insertAnalysisLog(insertAnalysisLogRequest)
 
@@ -1341,6 +1209,138 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetAnalysisStrings**
+> ListAnalysisStringsOutputBody v3GetAnalysisStrings()
+
+Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetAnalysisStringsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetAnalysisStringsRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Page number (1-indexed). (optional)
+  page: 1,
+    // Number of results per page. (optional)
+  pageSize: 100,
+    // Filter by string value (case-insensitive substring match). (optional)
+  search: "search_example",
+    // Filter by function name (case-insensitive substring match). (optional)
+  functionSearch: "function_search_example",
+    // Field to order results by. (optional)
+  orderBy: "value",
+    // Sort direction. (optional)
+  sortOrder: "ASC",
+};
+
+const data = await apiInstance.v3GetAnalysisStrings(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **page** | [**number**] | Page number (1-indexed). | (optional) defaults to 1
+ **pageSize** | [**number**] | Number of results per page. | (optional) defaults to 100
+ **search** | [**string**] | Filter by string value (case-insensitive substring match). | (optional) defaults to undefined
+ **functionSearch** | [**string**] | Filter by function name (case-insensitive substring match). | (optional) defaults to undefined
+ **orderBy** | [**&#39;value&#39; | &#39;length&#39;**]**Array<&#39;value&#39; &#124; &#39;length&#39; &#124; &#39;11184809&#39;>** | Field to order results by. | (optional) defaults to 'value'
+ **sortOrder** | [**&#39;ASC&#39; | &#39;DESC&#39;**]**Array<&#39;ASC&#39; &#124; &#39;DESC&#39; &#124; &#39;11184809&#39;>** | Sort direction. | (optional) defaults to 'ASC'
+
+
+### Return type
+
+**ListAnalysisStringsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetAnalysisStringsStatus**
+> GetAnalysisStringsStatusOutputBody v3GetAnalysisStringsStatus()
+
+Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetAnalysisStringsStatusRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetAnalysisStringsStatusRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3GetAnalysisStringsStatus(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**GetAnalysisStringsStatusOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
