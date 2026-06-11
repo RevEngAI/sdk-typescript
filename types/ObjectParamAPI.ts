@@ -124,6 +124,7 @@ import { BatchRenameItem } from '../models/BatchRenameItem';
 import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
+import { Binary } from '../models/Binary';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
 import { BinaryConfig } from '../models/BinaryConfig';
@@ -166,6 +167,8 @@ import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
+import { CreateCollectionInputBody } from '../models/CreateCollectionInputBody';
+import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { Created } from '../models/Created';
@@ -1022,73 +1025,6 @@ export interface AnalysesCoreApiGetAnalysisStatusRequest {
     analysisId: number
 }
 
-export interface AnalysesCoreApiGetAnalysisStringsRequest {
-    /**
-     * Analysis ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetAnalysisStrings
-     */
-    analysisId: number
-    /**
-     * Page number (1-indexed).
-     * Minimum: 1
-     * Defaults to: 1
-     * @type number
-     * @memberof AnalysesCoreApigetAnalysisStrings
-     */
-    page?: number
-    /**
-     * Number of results per page.
-     * Minimum: 1
-     * Maximum: 500
-     * Defaults to: 100
-     * @type number
-     * @memberof AnalysesCoreApigetAnalysisStrings
-     */
-    pageSize?: number
-    /**
-     * Filter by string value (case-insensitive substring match).
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApigetAnalysisStrings
-     */
-    search?: string
-    /**
-     * Filter by function name (case-insensitive substring match).
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApigetAnalysisStrings
-     */
-    functionSearch?: string
-    /**
-     * Field to order results by.
-     * Defaults to: &#39;value&#39;
-     * @type &#39;value&#39; | &#39;length&#39;
-     * @memberof AnalysesCoreApigetAnalysisStrings
-     */
-    orderBy?: 'value' | 'length'
-    /**
-     * Sort direction.
-     * Defaults to: &#39;ASC&#39;
-     * @type &#39;ASC&#39; | &#39;DESC&#39;
-     * @memberof AnalysesCoreApigetAnalysisStrings
-     */
-    sortOrder?: 'ASC' | 'DESC'
-}
-
-export interface AnalysesCoreApiGetAnalysisStringsStatusRequest {
-    /**
-     * Analysis ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetAnalysisStringsStatus
-     */
-    analysisId: number
-}
-
 export interface AnalysesCoreApiInsertAnalysisLogRequest {
     /**
      * 
@@ -1299,6 +1235,73 @@ export interface AnalysesCoreApiUploadFileRequest {
     forceOverwrite?: boolean
 }
 
+export interface AnalysesCoreApiV3GetAnalysisStringsRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiv3GetAnalysisStrings
+     */
+    analysisId: number
+    /**
+     * Page number (1-indexed).
+     * Minimum: 1
+     * Defaults to: 1
+     * @type number
+     * @memberof AnalysesCoreApiv3GetAnalysisStrings
+     */
+    page?: number
+    /**
+     * Number of results per page.
+     * Minimum: 1
+     * Maximum: 500
+     * Defaults to: 100
+     * @type number
+     * @memberof AnalysesCoreApiv3GetAnalysisStrings
+     */
+    pageSize?: number
+    /**
+     * Filter by string value (case-insensitive substring match).
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiv3GetAnalysisStrings
+     */
+    search?: string
+    /**
+     * Filter by function name (case-insensitive substring match).
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiv3GetAnalysisStrings
+     */
+    functionSearch?: string
+    /**
+     * Field to order results by.
+     * Defaults to: &#39;value&#39;
+     * @type &#39;value&#39; | &#39;length&#39;
+     * @memberof AnalysesCoreApiv3GetAnalysisStrings
+     */
+    orderBy?: 'value' | 'length'
+    /**
+     * Sort direction.
+     * Defaults to: &#39;ASC&#39;
+     * @type &#39;ASC&#39; | &#39;DESC&#39;
+     * @memberof AnalysesCoreApiv3GetAnalysisStrings
+     */
+    sortOrder?: 'ASC' | 'DESC'
+}
+
+export interface AnalysesCoreApiV3GetAnalysisStringsStatusRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiv3GetAnalysisStringsStatus
+     */
+    analysisId: number
+}
+
 export class ObjectAnalysesCoreApi {
     private api: ObservableAnalysesCoreApi
 
@@ -1505,42 +1508,6 @@ export class ObjectAnalysesCoreApi {
     }
 
     /**
-     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for an analysis.
-     * @param param the request object
-     */
-    public getAnalysisStringsWithHttpInfo(param: AnalysesCoreApiGetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAnalysisStringsOutputBody>> {
-        return this.api.getAnalysisStringsWithHttpInfo(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
-    }
-
-    /**
-     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for an analysis.
-     * @param param the request object
-     */
-    public getAnalysisStrings(param: AnalysesCoreApiGetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<ListAnalysisStringsOutputBody> {
-        return this.api.getAnalysisStrings(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
-    }
-
-    /**
-     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the string-extraction status for an analysis.
-     * @param param the request object
-     */
-    public getAnalysisStringsStatusWithHttpInfo(param: AnalysesCoreApiGetAnalysisStringsStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetAnalysisStringsStatusOutputBody>> {
-        return this.api.getAnalysisStringsStatusWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the string-extraction status for an analysis.
-     * @param param the request object
-     */
-    public getAnalysisStringsStatus(param: AnalysesCoreApiGetAnalysisStringsStatusRequest, options?: ConfigurationOptions): Promise<GetAnalysisStringsStatusOutputBody> {
-        return this.api.getAnalysisStringsStatus(param.analysisId,  options).toPromise();
-    }
-
-    /**
      * Inserts a log record for an analysis. Only the analysis owner can insert logs.
      * Insert a log entry for an analysis
      * @param param the request object
@@ -1680,6 +1647,42 @@ export class ObjectAnalysesCoreApi {
      */
     public uploadFile(param: AnalysesCoreApiUploadFileRequest, options?: ConfigurationOptions): Promise<BaseResponseUploadResponse> {
         return this.api.uploadFile(param.uploadFileType, param.file, param.packedPassword, param.forceOverwrite,  options).toPromise();
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param param the request object
+     */
+    public v3GetAnalysisStringsWithHttpInfo(param: AnalysesCoreApiV3GetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAnalysisStringsOutputBody>> {
+        return this.api.v3GetAnalysisStringsWithHttpInfo(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
+    }
+
+    /**
+     * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for an analysis.
+     * @param param the request object
+     */
+    public v3GetAnalysisStrings(param: AnalysesCoreApiV3GetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<ListAnalysisStringsOutputBody> {
+        return this.api.v3GetAnalysisStrings(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param param the request object
+     */
+    public v3GetAnalysisStringsStatusWithHttpInfo(param: AnalysesCoreApiV3GetAnalysisStringsStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetAnalysisStringsStatusOutputBody>> {
+        return this.api.v3GetAnalysisStringsStatusWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the status of the string-extraction task for the binary backing the analysis. One of UNINITIALISED, PENDING, RUNNING, COMPLETED, FAILED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the string-extraction status for an analysis.
+     * @param param the request object
+     */
+    public v3GetAnalysisStringsStatus(param: AnalysesCoreApiV3GetAnalysisStringsStatusRequest, options?: ConfigurationOptions): Promise<GetAnalysisStringsStatusOutputBody> {
+        return this.api.v3GetAnalysisStringsStatus(param.analysisId,  options).toPromise();
     }
 
 }
@@ -2341,6 +2344,15 @@ export interface CollectionsApiCreateCollectionRequest {
     collectionCreateRequest: CollectionCreateRequest
 }
 
+export interface CollectionsApiCreateCollection0Request {
+    /**
+     * 
+     * @type CreateCollectionInputBody
+     * @memberof CollectionsApicreateCollection_1
+     */
+    createCollectionInputBody: CreateCollectionInputBody
+}
+
 export interface CollectionsApiDeleteCollectionRequest {
     /**
      * 
@@ -2517,6 +2529,24 @@ export class ObjectCollectionsApi {
      */
     public createCollection(param: CollectionsApiCreateCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionResponse> {
         return this.api.createCollection(param.collectionCreateRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param param the request object
+     */
+    public createCollection_1WithHttpInfo(param: CollectionsApiCreateCollection0Request, options?: ConfigurationOptions): Promise<HttpInfo<CreateCollectionOutputBody>> {
+        return this.api.createCollection_1WithHttpInfo(param.createCollectionInputBody,  options).toPromise();
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param param the request object
+     */
+    public createCollection_1(param: CollectionsApiCreateCollection0Request, options?: ConfigurationOptions): Promise<CreateCollectionOutputBody> {
+        return this.api.createCollection_1(param.createCollectionInputBody,  options).toPromise();
     }
 
     /**

@@ -120,6 +120,7 @@ export * from '../models/BatchRenameItem';
 export * from '../models/BatchRenameOutputBody';
 export * from '../models/BinariesRelatedStatusResponse';
 export * from '../models/BinariesTaskStatus';
+export * from '../models/Binary';
 export * from '../models/BinaryAdditionalDetailsDataResponse';
 export * from '../models/BinaryAdditionalResponse';
 export * from '../models/BinaryConfig';
@@ -162,6 +163,8 @@ export * from '../models/ConversationContext';
 export * from '../models/ConversationWithEvents';
 export * from '../models/CreateAIDecompOutputBody';
 export * from '../models/CreateCheckoutSessionInputBody';
+export * from '../models/CreateCollectionInputBody';
+export * from '../models/CreateCollectionOutputBody';
 export * from '../models/CreateConversationRequest';
 export * from '../models/CreatePortalSessionInputBody';
 export * from '../models/Created';
@@ -536,6 +539,7 @@ import { BatchRenameItem } from '../models/BatchRenameItem';
 import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
+import { Binary } from '../models/Binary';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
 import { BinaryConfig    } from '../models/BinaryConfig';
@@ -578,6 +582,8 @@ import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
+import { CreateCollectionInputBody  , CreateCollectionInputBodyCollectionScopeEnum      } from '../models/CreateCollectionInputBody';
+import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { Created } from '../models/Created';
@@ -855,6 +861,7 @@ let enumsMap: Set<string> = new Set<string>([
     "BinaryTaskStatus",
     "CollectionScope",
     "CommentsDataTaskStatusEnum",
+    "CreateCollectionInputBodyCollectionScopeEnum",
     "DecompilationDataStatusEnum",
     "DynamicExecutionStatus",
     "ErrorBodyCodeEnum",
@@ -1035,6 +1042,7 @@ let typeMap: {[index: string]: any} = {
     "BatchRenameItem": BatchRenameItem,
     "BatchRenameOutputBody": BatchRenameOutputBody,
     "BinariesRelatedStatusResponse": BinariesRelatedStatusResponse,
+    "Binary": Binary,
     "BinaryAdditionalDetailsDataResponse": BinaryAdditionalDetailsDataResponse,
     "BinaryAdditionalResponse": BinaryAdditionalResponse,
     "BinaryConfig": BinaryConfig,
@@ -1075,6 +1083,8 @@ let typeMap: {[index: string]: any} = {
     "ConversationWithEvents": ConversationWithEvents,
     "CreateAIDecompOutputBody": CreateAIDecompOutputBody,
     "CreateCheckoutSessionInputBody": CreateCheckoutSessionInputBody,
+    "CreateCollectionInputBody": CreateCollectionInputBody,
+    "CreateCollectionOutputBody": CreateCollectionOutputBody,
     "CreateConversationRequest": CreateConversationRequest,
     "CreatePortalSessionInputBody": CreatePortalSessionInputBody,
     "Created": Created,
