@@ -146,6 +146,7 @@ import { CollectionBinariesUpdateResponse } from '../models/CollectionBinariesUp
 import { CollectionBinaryResponse } from '../models/CollectionBinaryResponse';
 import { CollectionCreateRequest } from '../models/CollectionCreateRequest';
 import { CollectionListItem } from '../models/CollectionListItem';
+import { CollectionListItemBody } from '../models/CollectionListItemBody';
 import { CollectionResponse } from '../models/CollectionResponse';
 import { CollectionResponseBinariesInner } from '../models/CollectionResponseBinariesInner';
 import { CollectionScope } from '../models/CollectionScope';
@@ -275,6 +276,7 @@ import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDet
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
+import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GetSubscriptionOutputBody } from '../models/GetSubscriptionOutputBody';
@@ -292,6 +294,7 @@ import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
+import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
@@ -326,7 +329,6 @@ import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
-import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
@@ -1004,17 +1006,6 @@ export interface AnalysesCoreApiGetAnalysisParamsRequest {
     analysisId: number
 }
 
-export interface AnalysesCoreApiGetAnalysisQueuePositionRequest {
-    /**
-     * Analysis ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetAnalysisQueuePosition
-     */
-    analysisId: number
-}
-
 export interface AnalysesCoreApiGetAnalysisStatusRequest {
     /**
      * 
@@ -1469,24 +1460,6 @@ export class ObjectAnalysesCoreApi {
      */
     public getAnalysisParams(param: AnalysesCoreApiGetAnalysisParamsRequest, options?: ConfigurationOptions): Promise<BaseResponseParams> {
         return this.api.getAnalysisParams(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the queue position of an analysis
-     * @param param the request object
-     */
-    public getAnalysisQueuePositionWithHttpInfo(param: AnalysesCoreApiGetAnalysisQueuePositionRequest, options?: ConfigurationOptions): Promise<HttpInfo<QueuePositionResponse>> {
-        return this.api.getAnalysisQueuePositionWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the queue position of an analysis
-     * @param param the request object
-     */
-    public getAnalysisQueuePosition(param: AnalysesCoreApiGetAnalysisQueuePositionRequest, options?: ConfigurationOptions): Promise<QueuePositionResponse> {
-        return this.api.getAnalysisQueuePosition(param.analysisId,  options).toPromise();
     }
 
     /**
@@ -2344,15 +2317,6 @@ export interface CollectionsApiCreateCollectionRequest {
     collectionCreateRequest: CollectionCreateRequest
 }
 
-export interface CollectionsApiCreateCollection0Request {
-    /**
-     * 
-     * @type CreateCollectionInputBody
-     * @memberof CollectionsApicreateCollection_1
-     */
-    createCollectionInputBody: CreateCollectionInputBody
-}
-
 export interface CollectionsApiDeleteCollectionRequest {
     /**
      * 
@@ -2506,6 +2470,112 @@ export interface CollectionsApiUpdateCollectionTagsRequest {
     collectionTagsUpdateRequest: CollectionTagsUpdateRequest
 }
 
+export interface CollectionsApiV3CreateCollectionRequest {
+    /**
+     * 
+     * @type CreateCollectionInputBody
+     * @memberof CollectionsApiv3CreateCollection
+     */
+    createCollectionInputBody: CreateCollectionInputBody
+}
+
+export interface CollectionsApiV3GetCollectionRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof CollectionsApiv3GetCollection
+     */
+    collectionId: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type boolean
+     * @memberof CollectionsApiv3GetCollection
+     */
+    includeTags?: boolean
+    /**
+     * 
+     * Defaults to: undefined
+     * @type boolean
+     * @memberof CollectionsApiv3GetCollection
+     */
+    includeBinaries?: boolean
+    /**
+     * 
+     * Minimum: 1
+     * Maximum: 100
+     * Defaults to: 10
+     * @type number
+     * @memberof CollectionsApiv3GetCollection
+     */
+    pageSize?: number
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: 1
+     * @type number
+     * @memberof CollectionsApiv3GetCollection
+     */
+    pageNumber?: number
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CollectionsApiv3GetCollection
+     */
+    binarySearchStr?: string
+}
+
+export interface CollectionsApiV3ListCollectionsRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof CollectionsApiv3ListCollections
+     */
+    searchTerm?: string
+    /**
+     * 
+     * Defaults to: undefined
+     * @type Array&lt;&#39;official_only&#39; | &#39;user_only&#39; | &#39;team_only&#39; | &#39;public_only&#39; | &#39;hide_empty&#39;&gt;
+     * @memberof CollectionsApiv3ListCollections
+     */
+    filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>
+    /**
+     * 
+     * Minimum: 1
+     * Maximum: 50
+     * Defaults to: 20
+     * @type number
+     * @memberof CollectionsApiv3ListCollections
+     */
+    limit?: number
+    /**
+     * 
+     * Minimum: 0
+     * Defaults to: 0
+     * @type number
+     * @memberof CollectionsApiv3ListCollections
+     */
+    offset?: number
+    /**
+     * 
+     * Defaults to: &#39;collection&#39;
+     * @type &#39;created&#39; | &#39;collection&#39; | &#39;model&#39; | &#39;collection_size&#39; | &#39;updated&#39;
+     * @memberof CollectionsApiv3ListCollections
+     */
+    orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated'
+    /**
+     * 
+     * Defaults to: &#39;ASC&#39;
+     * @type &#39;ASC&#39; | &#39;DESC&#39;
+     * @memberof CollectionsApiv3ListCollections
+     */
+    order?: 'ASC' | 'DESC'
+}
+
 export class ObjectCollectionsApi {
     private api: ObservableCollectionsApi
 
@@ -2529,24 +2599,6 @@ export class ObjectCollectionsApi {
      */
     public createCollection(param: CollectionsApiCreateCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionResponse> {
         return this.api.createCollection(param.collectionCreateRequest,  options).toPromise();
-    }
-
-    /**
-     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
-     * Create a collection.
-     * @param param the request object
-     */
-    public createCollection_1WithHttpInfo(param: CollectionsApiCreateCollection0Request, options?: ConfigurationOptions): Promise<HttpInfo<CreateCollectionOutputBody>> {
-        return this.api.createCollection_1WithHttpInfo(param.createCollectionInputBody,  options).toPromise();
-    }
-
-    /**
-     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
-     * Create a collection.
-     * @param param the request object
-     */
-    public createCollection_1(param: CollectionsApiCreateCollection0Request, options?: ConfigurationOptions): Promise<CreateCollectionOutputBody> {
-        return this.api.createCollection_1(param.createCollectionInputBody,  options).toPromise();
     }
 
     /**
@@ -2655,6 +2707,60 @@ export class ObjectCollectionsApi {
      */
     public updateCollectionTags(param: CollectionsApiUpdateCollectionTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionTagsUpdateResponse> {
         return this.api.updateCollectionTags(param.collectionId, param.collectionTagsUpdateRequest,  options).toPromise();
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param param the request object
+     */
+    public v3CreateCollectionWithHttpInfo(param: CollectionsApiV3CreateCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<CreateCollectionOutputBody>> {
+        return this.api.v3CreateCollectionWithHttpInfo(param.createCollectionInputBody,  options).toPromise();
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param param the request object
+     */
+    public v3CreateCollection(param: CollectionsApiV3CreateCollectionRequest, options?: ConfigurationOptions): Promise<CreateCollectionOutputBody> {
+        return this.api.v3CreateCollection(param.createCollectionInputBody,  options).toPromise();
+    }
+
+    /**
+     * Gets a single collection by ID. Optionally include tags and paginated binaries.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a collection.
+     * @param param the request object
+     */
+    public v3GetCollectionWithHttpInfo(param: CollectionsApiV3GetCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetCollectionOutputBody>> {
+        return this.api.v3GetCollectionWithHttpInfo(param.collectionId, param.includeTags, param.includeBinaries, param.pageSize, param.pageNumber, param.binarySearchStr,  options).toPromise();
+    }
+
+    /**
+     * Gets a single collection by ID. Optionally include tags and paginated binaries.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a collection.
+     * @param param the request object
+     */
+    public v3GetCollection(param: CollectionsApiV3GetCollectionRequest, options?: ConfigurationOptions): Promise<GetCollectionOutputBody> {
+        return this.api.v3GetCollection(param.collectionId, param.includeTags, param.includeBinaries, param.pageSize, param.pageNumber, param.binarySearchStr,  options).toPromise();
+    }
+
+    /**
+     * Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List collections.
+     * @param param the request object
+     */
+    public v3ListCollectionsWithHttpInfo(param: CollectionsApiV3ListCollectionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListCollectionsOutputBody>> {
+        return this.api.v3ListCollectionsWithHttpInfo(param.searchTerm, param.filters, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
+    }
+
+    /**
+     * Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List collections.
+     * @param param the request object
+     */
+    public v3ListCollections(param: CollectionsApiV3ListCollectionsRequest = {}, options?: ConfigurationOptions): Promise<ListCollectionsOutputBody> {
+        return this.api.v3ListCollections(param.searchTerm, param.filters, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
     }
 
 }

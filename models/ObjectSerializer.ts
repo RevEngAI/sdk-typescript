@@ -142,6 +142,7 @@ export * from '../models/CollectionBinariesUpdateResponse';
 export * from '../models/CollectionBinaryResponse';
 export * from '../models/CollectionCreateRequest';
 export * from '../models/CollectionListItem';
+export * from '../models/CollectionListItemBody';
 export * from '../models/CollectionResponse';
 export * from '../models/CollectionResponseBinariesInner';
 export * from '../models/CollectionScope';
@@ -271,6 +272,7 @@ export * from '../models/GetAdditionalDetailsStatusOutputBody';
 export * from '../models/GetAiDecompilationRatingResponse';
 export * from '../models/GetAiDecompilationTask';
 export * from '../models/GetAnalysisStringsStatusOutputBody';
+export * from '../models/GetCollectionOutputBody';
 export * from '../models/GetProductsOutputBody';
 export * from '../models/GetPublicUserResponse';
 export * from '../models/GetSubscriptionOutputBody';
@@ -288,6 +290,7 @@ export * from '../models/InverseStringMapItem';
 export * from '../models/InverseValue';
 export * from '../models/ListAnalysisStringsOutputBody';
 export * from '../models/ListCollectionResults';
+export * from '../models/ListCollectionsOutputBody';
 export * from '../models/ListFunctionStringsOutputBody';
 export * from '../models/Logs';
 export * from '../models/MITRETechnique';
@@ -322,7 +325,6 @@ export * from '../models/ProductSummary';
 export * from '../models/ProgressMessage';
 export * from '../models/ProseEvent';
 export * from '../models/PutAnalysisStringsRequest';
-export * from '../models/QueuePositionResponse';
 export * from '../models/QueuedWorkflowTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
@@ -561,6 +563,7 @@ import { CollectionBinariesUpdateResponse } from '../models/CollectionBinariesUp
 import { CollectionBinaryResponse } from '../models/CollectionBinaryResponse';
 import { CollectionCreateRequest       } from '../models/CollectionCreateRequest';
 import { CollectionListItem } from '../models/CollectionListItem';
+import { CollectionListItemBody } from '../models/CollectionListItemBody';
 import { CollectionResponse            } from '../models/CollectionResponse';
 import { CollectionResponseBinariesInner } from '../models/CollectionResponseBinariesInner';
 import { CollectionScope } from '../models/CollectionScope';
@@ -690,6 +693,7 @@ import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDet
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTask';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
+import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GetSubscriptionOutputBody    , GetSubscriptionOutputBodyStatusEnum  , GetSubscriptionOutputBodyTierEnum   } from '../models/GetSubscriptionOutputBody';
@@ -707,6 +711,7 @@ import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
+import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
@@ -741,7 +746,6 @@ import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage, ProgressMessageLevelEnum      } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
-import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
@@ -1063,6 +1067,7 @@ let typeMap: {[index: string]: any} = {
     "CollectionBinaryResponse": CollectionBinaryResponse,
     "CollectionCreateRequest": CollectionCreateRequest,
     "CollectionListItem": CollectionListItem,
+    "CollectionListItemBody": CollectionListItemBody,
     "CollectionResponse": CollectionResponse,
     "CollectionResponseBinariesInner": CollectionResponseBinariesInner,
     "CollectionSearchResponse": CollectionSearchResponse,
@@ -1186,6 +1191,7 @@ let typeMap: {[index: string]: any} = {
     "GetAiDecompilationRatingResponse": GetAiDecompilationRatingResponse,
     "GetAiDecompilationTask": GetAiDecompilationTask,
     "GetAnalysisStringsStatusOutputBody": GetAnalysisStringsStatusOutputBody,
+    "GetCollectionOutputBody": GetCollectionOutputBody,
     "GetProductsOutputBody": GetProductsOutputBody,
     "GetPublicUserResponse": GetPublicUserResponse,
     "GetSubscriptionOutputBody": GetSubscriptionOutputBody,
@@ -1202,6 +1208,7 @@ let typeMap: {[index: string]: any} = {
     "InverseValue": InverseValue,
     "ListAnalysisStringsOutputBody": ListAnalysisStringsOutputBody,
     "ListCollectionResults": ListCollectionResults,
+    "ListCollectionsOutputBody": ListCollectionsOutputBody,
     "ListFunctionStringsOutputBody": ListFunctionStringsOutputBody,
     "Logs": Logs,
     "MITRETechnique": MITRETechnique,
@@ -1233,7 +1240,6 @@ let typeMap: {[index: string]: any} = {
     "ProgressMessage": ProgressMessage,
     "ProseEvent": ProseEvent,
     "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
-    "QueuePositionResponse": QueuePositionResponse,
     "QueuedWorkflowTaskResponse": QueuedWorkflowTaskResponse,
     "ReAnalysisForm": ReAnalysisForm,
     "Recent": Recent,
