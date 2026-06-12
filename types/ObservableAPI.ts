@@ -147,6 +147,7 @@ import { CollectionBinariesUpdateResponse } from '../models/CollectionBinariesUp
 import { CollectionBinaryResponse } from '../models/CollectionBinaryResponse';
 import { CollectionCreateRequest } from '../models/CollectionCreateRequest';
 import { CollectionListItem } from '../models/CollectionListItem';
+import { CollectionListItemBody } from '../models/CollectionListItemBody';
 import { CollectionResponse } from '../models/CollectionResponse';
 import { CollectionResponseBinariesInner } from '../models/CollectionResponseBinariesInner';
 import { CollectionScope } from '../models/CollectionScope';
@@ -276,6 +277,7 @@ import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDet
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
+import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GetSubscriptionOutputBody } from '../models/GetSubscriptionOutputBody';
@@ -293,6 +295,7 @@ import { InverseStringMapItem } from '../models/InverseStringMapItem';
 import { InverseValue } from '../models/InverseValue';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
+import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
@@ -327,7 +330,6 @@ import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
-import { QueuePositionResponse } from '../models/QueuePositionResponse';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
@@ -1304,40 +1306,6 @@ export class ObservableAnalysesCoreApi {
      */
     public getAnalysisParams(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseParams> {
         return this.getAnalysisParamsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseParams>) => apiResponse.data));
-    }
-
-    /**
-     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the queue position of an analysis
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisQueuePositionWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<QueuePositionResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisQueuePosition(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisQueuePositionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns the number of Processing analyses with a lower analysis_id than the given one. Useful for showing the user where they sit in the processing queue while waiting for their analysis to start.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the queue position of an analysis
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisQueuePosition(analysisId: number, _options?: ConfigurationOptions): Observable<QueuePositionResponse> {
-        return this.getAnalysisQueuePositionWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<QueuePositionResponse>) => apiResponse.data));
     }
 
     /**
@@ -2555,40 +2523,6 @@ export class ObservableCollectionsApi {
     }
 
     /**
-     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
-     * Create a collection.
-     * @param createCollectionInputBody
-     */
-    public createCollection_1WithHttpInfo(createCollectionInputBody: CreateCollectionInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<CreateCollectionOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createCollection_1(createCollectionInputBody, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createCollection_1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
-     * Create a collection.
-     * @param createCollectionInputBody
-     */
-    public createCollection_1(createCollectionInputBody: CreateCollectionInputBody, _options?: ConfigurationOptions): Observable<CreateCollectionOutputBody> {
-        return this.createCollection_1WithHttpInfo(createCollectionInputBody, _options).pipe(map((apiResponse: HttpInfo<CreateCollectionOutputBody>) => apiResponse.data));
-    }
-
-    /**
      * Deletes a collection
      * Deletes a collection
      * @param collectionId
@@ -2816,6 +2750,128 @@ export class ObservableCollectionsApi {
      */
     public updateCollectionTags(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionTagsUpdateResponse> {
         return this.updateCollectionTagsWithHttpInfo(collectionId, collectionTagsUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionTagsUpdateResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param createCollectionInputBody
+     */
+    public v3CreateCollectionWithHttpInfo(createCollectionInputBody: CreateCollectionInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<CreateCollectionOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3CreateCollection(createCollectionInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3CreateCollectionWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create a collection.
+     * @param createCollectionInputBody
+     */
+    public v3CreateCollection(createCollectionInputBody: CreateCollectionInputBody, _options?: ConfigurationOptions): Observable<CreateCollectionOutputBody> {
+        return this.v3CreateCollectionWithHttpInfo(createCollectionInputBody, _options).pipe(map((apiResponse: HttpInfo<CreateCollectionOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Gets a single collection by ID. Optionally include tags and paginated binaries.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a collection.
+     * @param collectionId
+     * @param [includeTags]
+     * @param [includeBinaries]
+     * @param [pageSize]
+     * @param [pageNumber]
+     * @param [binarySearchStr]
+     */
+    public v3GetCollectionWithHttpInfo(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, pageSize?: number, pageNumber?: number, binarySearchStr?: string, _options?: ConfigurationOptions): Observable<HttpInfo<GetCollectionOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3GetCollection(collectionId, includeTags, includeBinaries, pageSize, pageNumber, binarySearchStr, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3GetCollectionWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Gets a single collection by ID. Optionally include tags and paginated binaries.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a collection.
+     * @param collectionId
+     * @param [includeTags]
+     * @param [includeBinaries]
+     * @param [pageSize]
+     * @param [pageNumber]
+     * @param [binarySearchStr]
+     */
+    public v3GetCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, pageSize?: number, pageNumber?: number, binarySearchStr?: string, _options?: ConfigurationOptions): Observable<GetCollectionOutputBody> {
+        return this.v3GetCollectionWithHttpInfo(collectionId, includeTags, includeBinaries, pageSize, pageNumber, binarySearchStr, _options).pipe(map((apiResponse: HttpInfo<GetCollectionOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List collections.
+     * @param [searchTerm]
+     * @param [filters]
+     * @param [limit]
+     * @param [offset]
+     * @param [orderBy]
+     * @param [order]
+     */
+    public v3ListCollectionsWithHttpInfo(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated', order?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<HttpInfo<ListCollectionsOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3ListCollections(searchTerm, filters, limit, offset, orderBy, order, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3ListCollectionsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List collections.
+     * @param [searchTerm]
+     * @param [filters]
+     * @param [limit]
+     * @param [offset]
+     * @param [orderBy]
+     * @param [order]
+     */
+    public v3ListCollections(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated', order?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<ListCollectionsOutputBody> {
+        return this.v3ListCollectionsWithHttpInfo(searchTerm, filters, limit, offset, orderBy, order, _options).pipe(map((apiResponse: HttpInfo<ListCollectionsOutputBody>) => apiResponse.data));
     }
 
 }

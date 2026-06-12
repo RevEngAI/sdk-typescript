@@ -9,13 +9,14 @@
  * Do not edit the class manually.
  */
 
+import { CollectionListItemBody } from '../models/CollectionListItemBody';
 import { HttpFile } from '../http/http';
 
-export class QueuePositionResponse {
-    /**
-    * Number of Processing analyses ahead of this one in the queue. 0 if this analysis is not Processing or has no analyses ahead of it.
-    */
-    'queuePosition': number;
+export class ListCollectionsOutputBody {
+    'hasNextPage': boolean;
+    'pageNumber': number;
+    'pageSize': number;
+    'results': Array<CollectionListItemBody> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,14 +24,32 @@ export class QueuePositionResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "queuePosition",
-            "baseName": "queue_position",
+            "name": "hasNextPage",
+            "baseName": "has_next_page",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "pageNumber",
+            "baseName": "page_number",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "pageSize",
+            "baseName": "page_size",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "results",
+            "baseName": "results",
+            "type": "Array<CollectionListItemBody>",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return QueuePositionResponse.attributeTypeMap;
+        return ListCollectionsOutputBody.attributeTypeMap;
     }
 
     public constructor() {
