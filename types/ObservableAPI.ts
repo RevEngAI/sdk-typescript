@@ -316,6 +316,10 @@ import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
+import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
+import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
+import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
 import { PriceOutput } from '../models/PriceOutput';
@@ -2872,6 +2876,78 @@ export class ObservableCollectionsApi {
      */
     public v3ListCollections(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated', order?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<ListCollectionsOutputBody> {
         return this.v3ListCollectionsWithHttpInfo(searchTerm, filters, limit, offset, orderBy, order, _options).pipe(map((apiResponse: HttpInfo<ListCollectionsOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Replaces the binaries linked to a collection with the supplied list. Binaries not present in the request are removed. All supplied binary IDs must belong to the same model as the collection.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replace the binaries in a collection.
+     * @param collectionId
+     * @param patchCollectionBinariesInputBody
+     */
+    public v3PatchCollectionBinariesWithHttpInfo(collectionId: number, patchCollectionBinariesInputBody: PatchCollectionBinariesInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<PatchCollectionBinariesOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3PatchCollectionBinaries(collectionId, patchCollectionBinariesInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3PatchCollectionBinariesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Replaces the binaries linked to a collection with the supplied list. Binaries not present in the request are removed. All supplied binary IDs must belong to the same model as the collection.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replace the binaries in a collection.
+     * @param collectionId
+     * @param patchCollectionBinariesInputBody
+     */
+    public v3PatchCollectionBinaries(collectionId: number, patchCollectionBinariesInputBody: PatchCollectionBinariesInputBody, _options?: ConfigurationOptions): Observable<PatchCollectionBinariesOutputBody> {
+        return this.v3PatchCollectionBinariesWithHttpInfo(collectionId, patchCollectionBinariesInputBody, _options).pipe(map((apiResponse: HttpInfo<PatchCollectionBinariesOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Replaces the tags on a collection with the supplied list. Tags not present in the request are removed. Empty or whitespace-only tags are filtered; duplicates are deduplicated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Replace the tags on a collection.
+     * @param collectionId
+     * @param patchCollectionTagsInputBody
+     */
+    public v3PatchCollectionTagsWithHttpInfo(collectionId: number, patchCollectionTagsInputBody: PatchCollectionTagsInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<PatchCollectionTagsOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3PatchCollectionTags(collectionId, patchCollectionTagsInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3PatchCollectionTagsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Replaces the tags on a collection with the supplied list. Tags not present in the request are removed. Empty or whitespace-only tags are filtered; duplicates are deduplicated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Replace the tags on a collection.
+     * @param collectionId
+     * @param patchCollectionTagsInputBody
+     */
+    public v3PatchCollectionTags(collectionId: number, patchCollectionTagsInputBody: PatchCollectionTagsInputBody, _options?: ConfigurationOptions): Observable<PatchCollectionTagsOutputBody> {
+        return this.v3PatchCollectionTagsWithHttpInfo(collectionId, patchCollectionTagsInputBody, _options).pipe(map((apiResponse: HttpInfo<PatchCollectionTagsOutputBody>) => apiResponse.data));
     }
 
 }
@@ -5556,11 +5632,12 @@ export class ObservableSearchApi {
      * @param [tags] The tags to be searched for
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
+     * @param [excludeBinaryId] A binary ID to exclude from the results
      */
-    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinarySearchResponse>> {
+    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinarySearchResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, _config);
+        const requestContextPromise = this.requestFactory.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5587,9 +5664,10 @@ export class ObservableSearchApi {
      * @param [tags] The tags to be searched for
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
+     * @param [excludeBinaryId] A binary ID to exclude from the results
      */
-    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseBinarySearchResponse> {
-        return this.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinarySearchResponse>) => apiResponse.data));
+    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, _options?: ConfigurationOptions): Observable<BaseResponseBinarySearchResponse> {
+        return this.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinarySearchResponse>) => apiResponse.data));
     }
 
     /**

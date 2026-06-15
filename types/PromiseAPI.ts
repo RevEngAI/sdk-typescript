@@ -315,6 +315,10 @@ import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
+import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
+import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
+import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
 import { PriceOutput } from '../models/PriceOutput';
@@ -2095,6 +2099,54 @@ export class PromiseCollectionsApi {
     public v3ListCollections(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListCollectionsOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3ListCollections(searchTerm, filters, limit, offset, orderBy, order, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces the binaries linked to a collection with the supplied list. Binaries not present in the request are removed. All supplied binary IDs must belong to the same model as the collection.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replace the binaries in a collection.
+     * @param collectionId
+     * @param patchCollectionBinariesInputBody
+     */
+    public v3PatchCollectionBinariesWithHttpInfo(collectionId: number, patchCollectionBinariesInputBody: PatchCollectionBinariesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PatchCollectionBinariesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3PatchCollectionBinariesWithHttpInfo(collectionId, patchCollectionBinariesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces the binaries linked to a collection with the supplied list. Binaries not present in the request are removed. All supplied binary IDs must belong to the same model as the collection.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replace the binaries in a collection.
+     * @param collectionId
+     * @param patchCollectionBinariesInputBody
+     */
+    public v3PatchCollectionBinaries(collectionId: number, patchCollectionBinariesInputBody: PatchCollectionBinariesInputBody, _options?: PromiseConfigurationOptions): Promise<PatchCollectionBinariesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3PatchCollectionBinaries(collectionId, patchCollectionBinariesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces the tags on a collection with the supplied list. Tags not present in the request are removed. Empty or whitespace-only tags are filtered; duplicates are deduplicated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Replace the tags on a collection.
+     * @param collectionId
+     * @param patchCollectionTagsInputBody
+     */
+    public v3PatchCollectionTagsWithHttpInfo(collectionId: number, patchCollectionTagsInputBody: PatchCollectionTagsInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PatchCollectionTagsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3PatchCollectionTagsWithHttpInfo(collectionId, patchCollectionTagsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces the tags on a collection with the supplied list. Tags not present in the request are removed. Empty or whitespace-only tags are filtered; duplicates are deduplicated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Replace the tags on a collection.
+     * @param collectionId
+     * @param patchCollectionTagsInputBody
+     */
+    public v3PatchCollectionTags(collectionId: number, patchCollectionTagsInputBody: PatchCollectionTagsInputBody, _options?: PromiseConfigurationOptions): Promise<PatchCollectionTagsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3PatchCollectionTags(collectionId, patchCollectionTagsInputBody, observableOptions);
         return result.toPromise();
     }
 
@@ -3939,10 +3991,11 @@ export class PromiseSearchApi {
      * @param [tags] The tags to be searched for
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
+     * @param [excludeBinaryId] A binary ID to exclude from the results
      */
-    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinarySearchResponse>> {
+    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinarySearchResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, observableOptions);
+        const result = this.api.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, observableOptions);
         return result.toPromise();
     }
 
@@ -3956,10 +4009,11 @@ export class PromiseSearchApi {
      * @param [tags] The tags to be searched for
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
+     * @param [excludeBinaryId] A binary ID to exclude from the results
      */
-    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinarySearchResponse> {
+    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinarySearchResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, observableOptions);
+        const result = this.api.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, observableOptions);
         return result.toPromise();
     }
 
