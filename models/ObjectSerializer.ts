@@ -311,6 +311,10 @@ export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
 export * from '../models/PaginationModel';
 export * from '../models/Params';
+export * from '../models/PatchCollectionBinariesInputBody';
+export * from '../models/PatchCollectionBinariesOutputBody';
+export * from '../models/PatchCollectionTagsInputBody';
+export * from '../models/PatchCollectionTagsOutputBody';
 export * from '../models/PatchCommentBody';
 export * from '../models/Platform';
 export * from '../models/PriceOutput';
@@ -732,6 +736,10 @@ import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
+import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
+import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
+import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
 import { PriceOutput  , PriceOutputIntervalEnum    } from '../models/PriceOutput';
@@ -1227,6 +1235,10 @@ let typeMap: {[index: string]: any} = {
     "PEModel": PEModel,
     "PaginationModel": PaginationModel,
     "Params": Params,
+    "PatchCollectionBinariesInputBody": PatchCollectionBinariesInputBody,
+    "PatchCollectionBinariesOutputBody": PatchCollectionBinariesOutputBody,
+    "PatchCollectionTagsInputBody": PatchCollectionTagsInputBody,
+    "PatchCollectionTagsOutputBody": PatchCollectionTagsOutputBody,
     "PatchCommentBody": PatchCommentBody,
     "PriceOutput": PriceOutput,
     "PriceSummary": PriceSummary,

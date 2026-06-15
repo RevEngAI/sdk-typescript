@@ -32,9 +32,11 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
      * @param tags The tags to be searched for
      * @param modelName The name of the model used to analyze the binary the function belongs to
      * @param userFilesOnly Whether to only search user\&#39;s uploaded files
+     * @param excludeBinaryId A binary ID to exclude from the results
      */
-    public async searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
 
@@ -86,6 +88,11 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (userFilesOnly !== undefined) {
             requestContext.setQueryParam("user_files_only", ObjectSerializer.serialize(userFilesOnly, "boolean", ""));
+        }
+
+        // Query Params
+        if (excludeBinaryId !== undefined) {
+            requestContext.setQueryParam("exclude_binary_id", ObjectSerializer.serialize(excludeBinaryId, "number", ""));
         }
 
 

@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**v3CreateCollection**](CollectionsApi.md#v3CreateCollection) | **POST** /v3/collections | Create a collection.
 [**v3GetCollection**](CollectionsApi.md#v3GetCollection) | **GET** /v3/collections/{collection_id} | Get a collection.
 [**v3ListCollections**](CollectionsApi.md#v3ListCollections) | **GET** /v3/collections | List collections.
+[**v3PatchCollectionBinaries**](CollectionsApi.md#v3PatchCollectionBinaries) | **PATCH** /v3/collections/{collection_id}/binaries | Replace the binaries in a collection.
+[**v3PatchCollectionTags**](CollectionsApi.md#v3PatchCollectionTags) | **PATCH** /v3/collections/{collection_id}/tags | Replace the tags on a collection.
 
 
 # **createCollection**
@@ -652,6 +654,126 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3PatchCollectionBinaries**
+> PatchCollectionBinariesOutputBody v3PatchCollectionBinaries(patchCollectionBinariesInputBody)
+
+Replaces the binaries linked to a collection with the supplied list. Binaries not present in the request are removed. All supplied binary IDs must belong to the same model as the collection.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+
+```typescript
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiV3PatchCollectionBinariesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new CollectionsApi(configuration);
+
+const request: CollectionsApiV3PatchCollectionBinariesRequest = {
+  
+  collectionId: 1,
+  
+  patchCollectionBinariesInputBody: ,
+};
+
+const data = await apiInstance.v3PatchCollectionBinaries(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **patchCollectionBinariesInputBody** | **PatchCollectionBinariesInputBody**|  |
+ **collectionId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**PatchCollectionBinariesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3PatchCollectionTags**
+> PatchCollectionTagsOutputBody v3PatchCollectionTags(patchCollectionTagsInputBody)
+
+Replaces the tags on a collection with the supplied list. Tags not present in the request are removed. Empty or whitespace-only tags are filtered; duplicates are deduplicated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiV3PatchCollectionTagsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new CollectionsApi(configuration);
+
+const request: CollectionsApiV3PatchCollectionTagsRequest = {
+  
+  collectionId: 1,
+  
+  patchCollectionTagsInputBody: ,
+};
+
+const data = await apiInstance.v3PatchCollectionTags(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **patchCollectionTagsInputBody** | **PatchCollectionTagsInputBody**|  |
+ **collectionId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**PatchCollectionTagsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 

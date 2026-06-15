@@ -42,6 +42,8 @@ const request: SearchApiSearchBinariesRequest = {
   modelName: "model_name_example",
     // Whether to only search user\'s uploaded files (optional)
   userFilesOnly: false,
+    // A binary ID to exclude from the results (optional)
+  excludeBinaryId: 1,
 };
 
 const data = await apiInstance.searchBinaries(request);
@@ -60,6 +62,7 @@ Name | Type | Description  | Notes
  **tags** | **Array&lt;string&gt;** | The tags to be searched for | (optional) defaults to undefined
  **modelName** | [**string**] | The name of the model used to analyze the binary the function belongs to | (optional) defaults to undefined
  **userFilesOnly** | [**boolean**] | Whether to only search user\&#39;s uploaded files | (optional) defaults to false
+ **excludeBinaryId** | [**number**] | A binary ID to exclude from the results | (optional) defaults to undefined
 
 
 ### Return type

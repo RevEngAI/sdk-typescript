@@ -315,6 +315,10 @@ import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
+import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
+import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
+import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { Platform } from '../models/Platform';
 import { PriceOutput } from '../models/PriceOutput';
@@ -2576,6 +2580,40 @@ export interface CollectionsApiV3ListCollectionsRequest {
     order?: 'ASC' | 'DESC'
 }
 
+export interface CollectionsApiV3PatchCollectionBinariesRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof CollectionsApiv3PatchCollectionBinaries
+     */
+    collectionId: number
+    /**
+     * 
+     * @type PatchCollectionBinariesInputBody
+     * @memberof CollectionsApiv3PatchCollectionBinaries
+     */
+    patchCollectionBinariesInputBody: PatchCollectionBinariesInputBody
+}
+
+export interface CollectionsApiV3PatchCollectionTagsRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof CollectionsApiv3PatchCollectionTags
+     */
+    collectionId: number
+    /**
+     * 
+     * @type PatchCollectionTagsInputBody
+     * @memberof CollectionsApiv3PatchCollectionTags
+     */
+    patchCollectionTagsInputBody: PatchCollectionTagsInputBody
+}
+
 export class ObjectCollectionsApi {
     private api: ObservableCollectionsApi
 
@@ -2761,6 +2799,42 @@ export class ObjectCollectionsApi {
      */
     public v3ListCollections(param: CollectionsApiV3ListCollectionsRequest = {}, options?: ConfigurationOptions): Promise<ListCollectionsOutputBody> {
         return this.api.v3ListCollections(param.searchTerm, param.filters, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
+    }
+
+    /**
+     * Replaces the binaries linked to a collection with the supplied list. Binaries not present in the request are removed. All supplied binary IDs must belong to the same model as the collection.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replace the binaries in a collection.
+     * @param param the request object
+     */
+    public v3PatchCollectionBinariesWithHttpInfo(param: CollectionsApiV3PatchCollectionBinariesRequest, options?: ConfigurationOptions): Promise<HttpInfo<PatchCollectionBinariesOutputBody>> {
+        return this.api.v3PatchCollectionBinariesWithHttpInfo(param.collectionId, param.patchCollectionBinariesInputBody,  options).toPromise();
+    }
+
+    /**
+     * Replaces the binaries linked to a collection with the supplied list. Binaries not present in the request are removed. All supplied binary IDs must belong to the same model as the collection.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replace the binaries in a collection.
+     * @param param the request object
+     */
+    public v3PatchCollectionBinaries(param: CollectionsApiV3PatchCollectionBinariesRequest, options?: ConfigurationOptions): Promise<PatchCollectionBinariesOutputBody> {
+        return this.api.v3PatchCollectionBinaries(param.collectionId, param.patchCollectionBinariesInputBody,  options).toPromise();
+    }
+
+    /**
+     * Replaces the tags on a collection with the supplied list. Tags not present in the request are removed. Empty or whitespace-only tags are filtered; duplicates are deduplicated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Replace the tags on a collection.
+     * @param param the request object
+     */
+    public v3PatchCollectionTagsWithHttpInfo(param: CollectionsApiV3PatchCollectionTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<PatchCollectionTagsOutputBody>> {
+        return this.api.v3PatchCollectionTagsWithHttpInfo(param.collectionId, param.patchCollectionTagsInputBody,  options).toPromise();
+    }
+
+    /**
+     * Replaces the tags on a collection with the supplied list. Tags not present in the request are removed. Empty or whitespace-only tags are filtered; duplicates are deduplicated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Replace the tags on a collection.
+     * @param param the request object
+     */
+    public v3PatchCollectionTags(param: CollectionsApiV3PatchCollectionTagsRequest, options?: ConfigurationOptions): Promise<PatchCollectionTagsOutputBody> {
+        return this.api.v3PatchCollectionTags(param.collectionId, param.patchCollectionTagsInputBody,  options).toPromise();
     }
 
 }
@@ -5206,6 +5280,13 @@ export interface SearchApiSearchBinariesRequest {
      * @memberof SearchApisearchBinaries
      */
     userFilesOnly?: boolean
+    /**
+     * A binary ID to exclude from the results
+     * Defaults to: undefined
+     * @type number
+     * @memberof SearchApisearchBinaries
+     */
+    excludeBinaryId?: number
 }
 
 export interface SearchApiSearchCollectionsRequest {
@@ -5358,7 +5439,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchBinariesWithHttpInfo(param: SearchApiSearchBinariesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinarySearchResponse>> {
-        return this.api.searchBinariesWithHttpInfo(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly,  options).toPromise();
+        return this.api.searchBinariesWithHttpInfo(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly, param.excludeBinaryId,  options).toPromise();
     }
 
     /**
@@ -5367,7 +5448,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchBinaries(param: SearchApiSearchBinariesRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseBinarySearchResponse> {
-        return this.api.searchBinaries(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly,  options).toPromise();
+        return this.api.searchBinaries(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly, param.excludeBinaryId,  options).toPromise();
     }
 
     /**
