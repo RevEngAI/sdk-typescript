@@ -11,8 +11,10 @@
 
 import { HttpFile } from '../http/http';
 
-export class ReplacementValue {
-    'value': string;
+export class AIDecompInverseFunctionMapItem {
+    'addr': number | null;
+    'isExternal': boolean;
+    'name': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -20,14 +22,26 @@ export class ReplacementValue {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "value",
-            "baseName": "value",
+            "name": "addr",
+            "baseName": "addr",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "isExternal",
+            "baseName": "is_external",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "name",
+            "baseName": "name",
             "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return ReplacementValue.attributeTypeMap;
+        return AIDecompInverseFunctionMapItem.attributeTypeMap;
     }
 
     public constructor() {

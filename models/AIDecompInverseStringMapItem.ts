@@ -11,8 +11,9 @@
 
 import { HttpFile } from '../http/http';
 
-export class NumericAddr {
-    'value': number | null;
+export class AIDecompInverseStringMapItem {
+    'addr': number | null;
+    'string': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -20,14 +21,20 @@ export class NumericAddr {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "value",
-            "baseName": "Value",
+            "name": "addr",
+            "baseName": "addr",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "string",
+            "baseName": "string",
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return NumericAddr.attributeTypeMap;
+        return AIDecompInverseStringMapItem.attributeTypeMap;
     }
 
     public constructor() {

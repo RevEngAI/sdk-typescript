@@ -1,3 +1,6 @@
+export * from '../models/AIDecompFunctionMapping';
+export * from '../models/AIDecompInverseFunctionMapItem';
+export * from '../models/AIDecompInverseStringMapItem';
 export * from '../models/APIError';
 export * from '../models/AddCalleeInputBody';
 export * from '../models/AddUserStringInputBody';
@@ -305,7 +308,6 @@ export * from '../models/MutexEntry';
 export * from '../models/NameConfidence';
 export * from '../models/NameSourceType';
 export * from '../models/NetworkActivity';
-export * from '../models/NumericAddr';
 export * from '../models/Order';
 export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
@@ -313,6 +315,8 @@ export * from '../models/PaginationModel';
 export * from '../models/Params';
 export * from '../models/PatchCollectionBinariesInputBody';
 export * from '../models/PatchCollectionBinariesOutputBody';
+export * from '../models/PatchCollectionInputBody';
+export * from '../models/PatchCollectionOutputBody';
 export * from '../models/PatchCollectionTagsInputBody';
 export * from '../models/PatchCollectionTagsOutputBody';
 export * from '../models/PatchCommentBody';
@@ -423,6 +427,9 @@ export * from '../models/XrefFromResponse';
 export * from '../models/XrefResponse';
 export * from '../models/XrefToResponse';
 
+import { AIDecompFunctionMapping } from '../models/AIDecompFunctionMapping';
+import { AIDecompInverseFunctionMapItem } from '../models/AIDecompInverseFunctionMapItem';
+import { AIDecompInverseStringMapItem } from '../models/AIDecompInverseStringMapItem';
 import { APIError } from '../models/APIError';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
@@ -730,7 +737,6 @@ import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType, NameSourceTypeTypeEnum      } from '../models/NameSourceType';
 import { NetworkActivity } from '../models/NetworkActivity';
-import { NumericAddr } from '../models/NumericAddr';
 import { Order } from '../models/Order';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
@@ -738,6 +744,8 @@ import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
 import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
 import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
+import { PatchCollectionInputBody } from '../models/PatchCollectionInputBody';
+import { PatchCollectionOutputBody } from '../models/PatchCollectionOutputBody';
 import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
 import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
@@ -938,6 +946,9 @@ let enumsMap: Set<string> = new Set<string>([
 ]);
 
 let typeMap: {[index: string]: any} = {
+    "AIDecompFunctionMapping": AIDecompFunctionMapping,
+    "AIDecompInverseFunctionMapItem": AIDecompInverseFunctionMapItem,
+    "AIDecompInverseStringMapItem": AIDecompInverseStringMapItem,
     "APIError": APIError,
     "AddCalleeInputBody": AddCalleeInputBody,
     "AddUserStringInputBody": AddUserStringInputBody,
@@ -1230,13 +1241,14 @@ let typeMap: {[index: string]: any} = {
     "NameConfidence": NameConfidence,
     "NameSourceType": NameSourceType,
     "NetworkActivity": NetworkActivity,
-    "NumericAddr": NumericAddr,
     "PDBDebugModel": PDBDebugModel,
     "PEModel": PEModel,
     "PaginationModel": PaginationModel,
     "Params": Params,
     "PatchCollectionBinariesInputBody": PatchCollectionBinariesInputBody,
     "PatchCollectionBinariesOutputBody": PatchCollectionBinariesOutputBody,
+    "PatchCollectionInputBody": PatchCollectionInputBody,
+    "PatchCollectionOutputBody": PatchCollectionOutputBody,
     "PatchCollectionTagsInputBody": PatchCollectionTagsInputBody,
     "PatchCollectionTagsOutputBody": PatchCollectionTagsOutputBody,
     "PatchCommentBody": PatchCommentBody,

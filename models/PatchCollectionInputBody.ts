@@ -11,8 +11,19 @@
 
 import { HttpFile } from '../http/http';
 
-export class ReplacementValue {
-    'value': string;
+export class PatchCollectionInputBody {
+    /**
+    * New collection name. Omit, null, or empty string to keep existing.
+    */
+    'collectionName'?: string;
+    /**
+    * New scope (PUBLIC, PRIVATE, PROTECTED, TEAM). Omit or send null to keep existing. Empty string returns 422 UNPROCESSABLE ENTITY.
+    */
+    'collectionScope'?: string;
+    /**
+    * New description. Omit, null, or empty string to keep existing.
+    */
+    'description'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -20,14 +31,26 @@ export class ReplacementValue {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "value",
-            "baseName": "value",
+            "name": "collectionName",
+            "baseName": "collection_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "collectionScope",
+            "baseName": "collection_scope",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "description",
+            "baseName": "description",
             "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return ReplacementValue.attributeTypeMap;
+        return PatchCollectionInputBody.attributeTypeMap;
     }
 
     public constructor() {

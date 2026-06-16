@@ -2,6 +2,9 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration, ConfigurationOptions } from '../configuration'
 import type { Middleware } from '../middleware';
 
+import { AIDecompFunctionMapping } from '../models/AIDecompFunctionMapping';
+import { AIDecompInverseFunctionMapItem } from '../models/AIDecompInverseFunctionMapItem';
+import { AIDecompInverseStringMapItem } from '../models/AIDecompInverseStringMapItem';
 import { APIError } from '../models/APIError';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
@@ -309,7 +312,6 @@ import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType } from '../models/NameSourceType';
 import { NetworkActivity } from '../models/NetworkActivity';
-import { NumericAddr } from '../models/NumericAddr';
 import { Order } from '../models/Order';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
@@ -317,6 +319,8 @@ import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
 import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
 import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
+import { PatchCollectionInputBody } from '../models/PatchCollectionInputBody';
+import { PatchCollectionOutputBody } from '../models/PatchCollectionOutputBody';
 import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
 import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
@@ -2483,6 +2487,17 @@ export interface CollectionsApiV3CreateCollectionRequest {
     createCollectionInputBody: CreateCollectionInputBody
 }
 
+export interface CollectionsApiV3DeleteCollectionRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof CollectionsApiv3DeleteCollection
+     */
+    collectionId: number
+}
+
 export interface CollectionsApiV3GetCollectionRequest {
     /**
      * 
@@ -2578,6 +2593,23 @@ export interface CollectionsApiV3ListCollectionsRequest {
      * @memberof CollectionsApiv3ListCollections
      */
     order?: 'ASC' | 'DESC'
+}
+
+export interface CollectionsApiV3PatchCollectionRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof CollectionsApiv3PatchCollection
+     */
+    collectionId: number
+    /**
+     * 
+     * @type PatchCollectionInputBody
+     * @memberof CollectionsApiv3PatchCollection
+     */
+    patchCollectionInputBody: PatchCollectionInputBody
 }
 
 export interface CollectionsApiV3PatchCollectionBinariesRequest {
@@ -2766,6 +2798,24 @@ export class ObjectCollectionsApi {
     }
 
     /**
+     * Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Delete a collection.
+     * @param param the request object
+     */
+    public v3DeleteCollectionWithHttpInfo(param: CollectionsApiV3DeleteCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.v3DeleteCollectionWithHttpInfo(param.collectionId,  options).toPromise();
+    }
+
+    /**
+     * Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Delete a collection.
+     * @param param the request object
+     */
+    public v3DeleteCollection(param: CollectionsApiV3DeleteCollectionRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.v3DeleteCollection(param.collectionId,  options).toPromise();
+    }
+
+    /**
      * Gets a single collection by ID. Optionally include tags and paginated binaries.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get a collection.
      * @param param the request object
@@ -2799,6 +2849,24 @@ export class ObjectCollectionsApi {
      */
     public v3ListCollections(param: CollectionsApiV3ListCollectionsRequest = {}, options?: ConfigurationOptions): Promise<ListCollectionsOutputBody> {
         return this.api.v3ListCollections(param.searchTerm, param.filters, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
+    }
+
+    /**
+     * Updates a collection\'s name, description, and/or scope. Omitted fields keep their existing values.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update a collection.
+     * @param param the request object
+     */
+    public v3PatchCollectionWithHttpInfo(param: CollectionsApiV3PatchCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<PatchCollectionOutputBody>> {
+        return this.api.v3PatchCollectionWithHttpInfo(param.collectionId, param.patchCollectionInputBody,  options).toPromise();
+    }
+
+    /**
+     * Updates a collection\'s name, description, and/or scope. Omitted fields keep their existing values.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update a collection.
+     * @param param the request object
+     */
+    public v3PatchCollection(param: CollectionsApiV3PatchCollectionRequest, options?: ConfigurationOptions): Promise<PatchCollectionOutputBody> {
+        return this.api.v3PatchCollection(param.collectionId, param.patchCollectionInputBody,  options).toPromise();
     }
 
     /**

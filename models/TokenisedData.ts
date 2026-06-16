@@ -9,14 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { FunctionMapping } from '../models/FunctionMapping';
+import { AIDecompFunctionMapping } from '../models/AIDecompFunctionMapping';
 import { HttpFile } from '../http/http';
 
 export class TokenisedData {
     /**
     * Complete mapping data for token resolution
     */
-    'functionMapping'?: FunctionMapping;
+    'functionMapping'?: AIDecompFunctionMapping;
     /**
     * Predicted function name from the AI model
     */
@@ -38,7 +38,7 @@ export class TokenisedData {
         {
             "name": "functionMapping",
             "baseName": "function_mapping",
-            "type": "FunctionMapping",
+            "type": "AIDecompFunctionMapping",
             "format": ""
         },
         {
