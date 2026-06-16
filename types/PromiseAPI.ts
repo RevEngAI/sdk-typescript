@@ -2,6 +2,9 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration, PromiseConfigurationOptions, wrapOptions } from '../configuration'
 import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../middleware';
 
+import { AIDecompFunctionMapping } from '../models/AIDecompFunctionMapping';
+import { AIDecompInverseFunctionMapItem } from '../models/AIDecompInverseFunctionMapItem';
+import { AIDecompInverseStringMapItem } from '../models/AIDecompInverseStringMapItem';
 import { APIError } from '../models/APIError';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
@@ -309,7 +312,6 @@ import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType } from '../models/NameSourceType';
 import { NetworkActivity } from '../models/NetworkActivity';
-import { NumericAddr } from '../models/NumericAddr';
 import { Order } from '../models/Order';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
@@ -317,6 +319,8 @@ import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
 import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
 import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
+import { PatchCollectionInputBody } from '../models/PatchCollectionInputBody';
+import { PatchCollectionOutputBody } from '../models/PatchCollectionOutputBody';
 import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
 import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
@@ -2039,6 +2043,28 @@ export class PromiseCollectionsApi {
     }
 
     /**
+     * Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Delete a collection.
+     * @param collectionId
+     */
+    public v3DeleteCollectionWithHttpInfo(collectionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3DeleteCollectionWithHttpInfo(collectionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Delete a collection.
+     * @param collectionId
+     */
+    public v3DeleteCollection(collectionId: number, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3DeleteCollection(collectionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Gets a single collection by ID. Optionally include tags and paginated binaries.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get a collection.
      * @param collectionId
@@ -2099,6 +2125,30 @@ export class PromiseCollectionsApi {
     public v3ListCollections(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListCollectionsOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3ListCollections(searchTerm, filters, limit, offset, orderBy, order, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a collection\'s name, description, and/or scope. Omitted fields keep their existing values.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update a collection.
+     * @param collectionId
+     * @param patchCollectionInputBody
+     */
+    public v3PatchCollectionWithHttpInfo(collectionId: number, patchCollectionInputBody: PatchCollectionInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<PatchCollectionOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3PatchCollectionWithHttpInfo(collectionId, patchCollectionInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates a collection\'s name, description, and/or scope. Omitted fields keep their existing values.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update a collection.
+     * @param collectionId
+     * @param patchCollectionInputBody
+     */
+    public v3PatchCollection(collectionId: number, patchCollectionInputBody: PatchCollectionInputBody, _options?: PromiseConfigurationOptions): Promise<PatchCollectionOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3PatchCollection(collectionId, patchCollectionInputBody, observableOptions);
         return result.toPromise();
     }
 

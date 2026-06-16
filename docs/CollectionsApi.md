@@ -12,8 +12,10 @@ Method | HTTP request | Description
 [**updateCollectionBinaries**](CollectionsApi.md#updateCollectionBinaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 [**updateCollectionTags**](CollectionsApi.md#updateCollectionTags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
 [**v3CreateCollection**](CollectionsApi.md#v3CreateCollection) | **POST** /v3/collections | Create a collection.
+[**v3DeleteCollection**](CollectionsApi.md#v3DeleteCollection) | **DELETE** /v3/collections/{collection_id} | Delete a collection.
 [**v3GetCollection**](CollectionsApi.md#v3GetCollection) | **GET** /v3/collections/{collection_id} | Get a collection.
 [**v3ListCollections**](CollectionsApi.md#v3ListCollections) | **GET** /v3/collections | List collections.
+[**v3PatchCollection**](CollectionsApi.md#v3PatchCollection) | **PATCH** /v3/collections/{collection_id} | Update a collection.
 [**v3PatchCollectionBinaries**](CollectionsApi.md#v3PatchCollectionBinaries) | **PATCH** /v3/collections/{collection_id}/binaries | Replace the binaries in a collection.
 [**v3PatchCollectionTags**](CollectionsApi.md#v3PatchCollectionTags) | **PATCH** /v3/collections/{collection_id}/tags | Replace the tags on a collection.
 
@@ -516,6 +518,64 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **v3DeleteCollection**
+> void v3DeleteCollection()
+
+Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+
+### Example
+
+
+```typescript
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiV3DeleteCollectionRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new CollectionsApi(configuration);
+
+const request: CollectionsApiV3DeleteCollectionRequest = {
+  
+  collectionId: 1,
+};
+
+const data = await apiInstance.v3DeleteCollection(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **collectionId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **v3GetCollection**
 > GetCollectionOutputBody v3GetCollection()
 
@@ -654,6 +714,66 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3PatchCollection**
+> PatchCollectionOutputBody v3PatchCollection(patchCollectionInputBody)
+
+Updates a collection\'s name, description, and/or scope. Omitted fields keep their existing values.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+
+```typescript
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiV3PatchCollectionRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new CollectionsApi(configuration);
+
+const request: CollectionsApiV3PatchCollectionRequest = {
+  
+  collectionId: 1,
+  
+  patchCollectionInputBody: ,
+};
+
+const data = await apiInstance.v3PatchCollection(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **patchCollectionInputBody** | **PatchCollectionInputBody**|  |
+ **collectionId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**PatchCollectionOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
