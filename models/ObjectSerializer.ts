@@ -45,6 +45,7 @@ export * from '../models/AppApiRestV2FunctionsResponsesFunction';
 export * from '../models/AppApiRestV2FunctionsTypesFunction';
 export * from '../models/AppApiRestV2InfoTypesCapability';
 export * from '../models/Argument';
+export * from '../models/Artifact';
 export * from '../models/AttemptFailedEvent';
 export * from '../models/AttemptStartedEvent';
 export * from '../models/AutoRunAgents';
@@ -161,6 +162,7 @@ export * from '../models/CommentsData';
 export * from '../models/ConfigResponse';
 export * from '../models/ConfirmToolInputBody';
 export * from '../models/Connection';
+export * from '../models/ConsoleOutputEntry';
 export * from '../models/Context';
 export * from '../models/Conversation';
 export * from '../models/ConversationContext';
@@ -221,7 +223,6 @@ export * from '../models/EventTOOLCONFIRMATIONREQUIRED';
 export * from '../models/EventWarning';
 export * from '../models/ExportModel';
 export * from '../models/ExternalResponse';
-export * from '../models/ExtractedFileEntry';
 export * from '../models/ExtractedURL';
 export * from '../models/FileActivityEntry';
 export * from '../models/FileFormat';
@@ -320,11 +321,11 @@ export * from '../models/PatchCollectionOutputBody';
 export * from '../models/PatchCollectionTagsInputBody';
 export * from '../models/PatchCollectionTagsOutputBody';
 export * from '../models/PatchCommentBody';
+export * from '../models/PcapBodyInfo';
 export * from '../models/Platform';
 export * from '../models/PriceOutput';
 export * from '../models/PriceSummary';
 export * from '../models/ProcessActivityEntry';
-export * from '../models/ProcessExtractedFiles';
 export * from '../models/ProcessMemdumps';
 export * from '../models/ProcessNode';
 export * from '../models/ProcessTree';
@@ -405,6 +406,7 @@ export * from '../models/TagSearchResult';
 export * from '../models/TaskResponse';
 export * from '../models/TaskStatus';
 export * from '../models/TaskStatusResponse';
+export * from '../models/TcpCarvedFile';
 export * from '../models/TimestampModel';
 export * from '../models/TokenisedData';
 export * from '../models/TriageFunctionResponse';
@@ -474,6 +476,7 @@ import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2Fu
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
 import { Argument } from '../models/Argument';
+import { Artifact            , ArtifactReasonEnum          } from '../models/Artifact';
 import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
 import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
@@ -590,6 +593,7 @@ import { CommentsData , CommentsDataTaskStatusEnum   } from '../models/CommentsD
 import { ConfigResponse } from '../models/ConfigResponse';
 import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
+import { ConsoleOutputEntry } from '../models/ConsoleOutputEntry';
 import { Context } from '../models/Context';
 import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
@@ -650,7 +654,6 @@ import { EventTOOLCONFIRMATIONREQUIRED , EventTOOLCONFIRMATIONREQUIREDEventEnum 
 import { EventWarning , EventWarningEventEnum     } from '../models/EventWarning';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
-import { ExtractedFileEntry } from '../models/ExtractedFileEntry';
 import { ExtractedURL } from '../models/ExtractedURL';
 import { FileActivityEntry } from '../models/FileActivityEntry';
 import { FileFormat } from '../models/FileFormat';
@@ -749,11 +752,11 @@ import { PatchCollectionOutputBody } from '../models/PatchCollectionOutputBody';
 import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
 import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
+import { PcapBodyInfo } from '../models/PcapBodyInfo';
 import { Platform } from '../models/Platform';
 import { PriceOutput  , PriceOutputIntervalEnum    } from '../models/PriceOutput';
 import { PriceSummary , PriceSummaryIntervalEnum    } from '../models/PriceSummary';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
-import { ProcessExtractedFiles } from '../models/ProcessExtractedFiles';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
 import { ProcessTree } from '../models/ProcessTree';
@@ -834,6 +837,7 @@ import { TagSearchResult } from '../models/TagSearchResult';
 import { TaskResponse   } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse   } from '../models/TaskStatusResponse';
+import { TcpCarvedFile } from '../models/TcpCarvedFile';
 import { TimestampModel } from '../models/TimestampModel';
 import { TokenisedData  , TokenisedDataStatusEnum    } from '../models/TokenisedData';
 import { TriageFunctionResponse    , TriageFunctionResponseCapabilitiesEnum   } from '../models/TriageFunctionResponse';
@@ -877,6 +881,7 @@ let enumsMap: Set<string> = new Set<string>([
     "AppApiRestV2AgentSchemaCapabilityTypeEnum",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
+    "ArtifactReasonEnum",
     "BinariesTaskStatus",
     "BinaryTaskStatus",
     "CollectionScope",
@@ -988,6 +993,7 @@ let typeMap: {[index: string]: any} = {
     "AppApiRestV2FunctionsTypesFunction": AppApiRestV2FunctionsTypesFunction,
     "AppApiRestV2InfoTypesCapability": AppApiRestV2InfoTypesCapability,
     "Argument": Argument,
+    "Artifact": Artifact,
     "AttemptFailedEvent": AttemptFailedEvent,
     "AttemptStartedEvent": AttemptStartedEvent,
     "AutoRunAgents": AutoRunAgents,
@@ -1101,6 +1107,7 @@ let typeMap: {[index: string]: any} = {
     "ConfigResponse": ConfigResponse,
     "ConfirmToolInputBody": ConfirmToolInputBody,
     "Connection": Connection,
+    "ConsoleOutputEntry": ConsoleOutputEntry,
     "Context": Context,
     "Conversation": Conversation,
     "ConversationContext": ConversationContext,
@@ -1160,7 +1167,6 @@ let typeMap: {[index: string]: any} = {
     "EventWarning": EventWarning,
     "ExportModel": ExportModel,
     "ExternalResponse": ExternalResponse,
-    "ExtractedFileEntry": ExtractedFileEntry,
     "ExtractedURL": ExtractedURL,
     "FileActivityEntry": FileActivityEntry,
     "FileHashes": FileHashes,
@@ -1252,10 +1258,10 @@ let typeMap: {[index: string]: any} = {
     "PatchCollectionTagsInputBody": PatchCollectionTagsInputBody,
     "PatchCollectionTagsOutputBody": PatchCollectionTagsOutputBody,
     "PatchCommentBody": PatchCommentBody,
+    "PcapBodyInfo": PcapBodyInfo,
     "PriceOutput": PriceOutput,
     "PriceSummary": PriceSummary,
     "ProcessActivityEntry": ProcessActivityEntry,
-    "ProcessExtractedFiles": ProcessExtractedFiles,
     "ProcessMemdumps": ProcessMemdumps,
     "ProcessNode": ProcessNode,
     "ProcessTree": ProcessTree,
@@ -1330,6 +1336,7 @@ let typeMap: {[index: string]: any} = {
     "TagSearchResult": TagSearchResult,
     "TaskResponse": TaskResponse,
     "TaskStatusResponse": TaskStatusResponse,
+    "TcpCarvedFile": TcpCarvedFile,
     "TimestampModel": TimestampModel,
     "TokenisedData": TokenisedData,
     "TriageFunctionResponse": TriageFunctionResponse,

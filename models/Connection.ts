@@ -10,15 +10,21 @@
  */
 
 import { ReportEvent } from '../models/ReportEvent';
+import { TcpCarvedFile } from '../models/TcpCarvedFile';
 import { HttpFile } from '../http/http';
 
 export class Connection {
+    'bytesReceived'?: number;
+    'bytesSent'?: number;
     'events'?: Array<ReportEvent> | null;
+    'ja3'?: string | null;
+    'ja3s'?: string | null;
     'localIp': string | null;
     'localPort': any | null;
     'protocol': string | null;
     'remoteIp': string | null;
     'remotePort': any | null;
+    'tcpCarvedFiles'?: Array<TcpCarvedFile> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,9 +32,33 @@ export class Connection {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "bytesReceived",
+            "baseName": "bytes_received",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "bytesSent",
+            "baseName": "bytes_sent",
+            "type": "number",
+            "format": "int64"
+        },
+        {
             "name": "events",
             "baseName": "events",
             "type": "Array<ReportEvent>",
+            "format": ""
+        },
+        {
+            "name": "ja3",
+            "baseName": "ja3",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "ja3s",
+            "baseName": "ja3s",
+            "type": "string",
             "format": ""
         },
         {
@@ -59,6 +89,12 @@ export class Connection {
             "name": "remotePort",
             "baseName": "remote_port",
             "type": "any",
+            "format": ""
+        },
+        {
+            "name": "tcpCarvedFiles",
+            "baseName": "tcp_carved_files",
+            "type": "Array<TcpCarvedFile>",
             "format": ""
         }    ];
 

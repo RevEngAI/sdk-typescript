@@ -11,17 +11,15 @@
 
 import { HttpFile } from '../http/http';
 
-export class ExtractedFileEntry {
-    'fileHash'?: string | null;
-    'fileSize': number;
-    'fileType'?: string | null;
-    'filename': string | null;
-    'isPe'?: boolean;
+export class TcpCarvedFile {
+    'direction': string | null;
+    'filename'?: string | null;
+    'isPe': boolean;
     'mimeType'?: string | null;
-    'reason'?: string | null;
-    'seqNum': number;
-    'sha256'?: string | null;
-    'zipFilename': string | null;
+    'offset': number;
+    'sha256': string | null;
+    'size': number;
+    'yaraHits'?: Array<string> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -29,20 +27,8 @@ export class ExtractedFileEntry {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "fileHash",
-            "baseName": "file_hash",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "fileSize",
-            "baseName": "file_size",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "fileType",
-            "baseName": "file_type",
+            "name": "direction",
+            "baseName": "direction",
             "type": "string",
             "format": ""
         },
@@ -65,14 +51,8 @@ export class ExtractedFileEntry {
             "format": ""
         },
         {
-            "name": "reason",
-            "baseName": "reason",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "seqNum",
-            "baseName": "seq_num",
+            "name": "offset",
+            "baseName": "offset",
             "type": "number",
             "format": "int64"
         },
@@ -83,14 +63,20 @@ export class ExtractedFileEntry {
             "format": ""
         },
         {
-            "name": "zipFilename",
-            "baseName": "zip_filename",
-            "type": "string",
+            "name": "size",
+            "baseName": "size",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "yaraHits",
+            "baseName": "yara_hits",
+            "type": "Array<string>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return ExtractedFileEntry.attributeTypeMap;
+        return TcpCarvedFile.attributeTypeMap;
     }
 
     public constructor() {

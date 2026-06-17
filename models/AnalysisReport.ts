@@ -9,12 +9,13 @@
  * Do not edit the class manually.
  */
 
+import { Artifact } from '../models/Artifact';
+import { ConsoleOutputEntry } from '../models/ConsoleOutputEntry';
 import { FileActivityEntry } from '../models/FileActivityEntry';
 import { ModuleLoadEntry } from '../models/ModuleLoadEntry';
 import { MutexEntry } from '../models/MutexEntry';
 import { NetworkActivity } from '../models/NetworkActivity';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
-import { ProcessExtractedFiles } from '../models/ProcessExtractedFiles';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessTree } from '../models/ProcessTree';
 import { RegistryOperation } from '../models/RegistryOperation';
@@ -26,7 +27,8 @@ import { Ttp } from '../models/Ttp';
 import { HttpFile } from '../http/http';
 
 export class AnalysisReport {
-    'extractedFiles'?: Array<ProcessExtractedFiles> | null;
+    'artifacts'?: Array<Artifact> | null;
+    'consoleOutput'?: Array<ConsoleOutputEntry> | null;
     'fileActivity'?: Array<FileActivityEntry> | null;
     'info': ReportInfo;
     'memdumps'?: Array<ProcessMemdumps> | null;
@@ -39,7 +41,6 @@ export class AnalysisReport {
     'scheduledTasks'?: Array<ScheduledTaskEntry> | null;
     'services'?: Array<ServiceEntry> | null;
     'startup'?: StartupInfo;
-    'threatScore': number;
     'ttps'?: Array<Ttp> | null;
 
     static readonly discriminator: string | undefined = undefined;
@@ -48,9 +49,15 @@ export class AnalysisReport {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "extractedFiles",
-            "baseName": "extracted_files",
-            "type": "Array<ProcessExtractedFiles>",
+            "name": "artifacts",
+            "baseName": "artifacts",
+            "type": "Array<Artifact>",
+            "format": ""
+        },
+        {
+            "name": "consoleOutput",
+            "baseName": "console_output",
+            "type": "Array<ConsoleOutputEntry>",
             "format": ""
         },
         {
@@ -124,12 +131,6 @@ export class AnalysisReport {
             "baseName": "startup",
             "type": "StartupInfo",
             "format": ""
-        },
-        {
-            "name": "threatScore",
-            "baseName": "threat_score",
-            "type": "number",
-            "format": "int64"
         },
         {
             "name": "ttps",
