@@ -9,11 +9,10 @@
  * Do not edit the class manually.
  */
 
-import { ExtractedFileEntry } from '../models/ExtractedFileEntry';
 import { HttpFile } from '../http/http';
 
-export class ProcessExtractedFiles {
-    'files'?: Array<ExtractedFileEntry> | null;
+export class ConsoleOutputEntry {
+    'output': string | null;
     'processSeqid': number;
 
     static readonly discriminator: string | undefined = undefined;
@@ -22,9 +21,9 @@ export class ProcessExtractedFiles {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "files",
-            "baseName": "files",
-            "type": "Array<ExtractedFileEntry>",
+            "name": "output",
+            "baseName": "output",
+            "type": "string",
             "format": ""
         },
         {
@@ -35,7 +34,7 @@ export class ProcessExtractedFiles {
         }    ];
 
     static getAttributeTypeMap() {
-        return ProcessExtractedFiles.attributeTypeMap;
+        return ConsoleOutputEntry.attributeTypeMap;
     }
 
     public constructor() {

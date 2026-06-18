@@ -11,19 +11,14 @@
 
 import { HttpFile } from '../http/http';
 
-export class RenameInputBody {
-    /**
-    * New mangled function name
-    */
-    'newMangledName'?: string;
-    /**
-    * New function name
-    */
-    'newName': string;
-    /**
-    * Keep the cached AI decompilation, summary and inline comments. Set when the new name comes from the model\'s own prediction (e.g. Transfer Name) so existing AI output is not discarded and regenerated.
-    */
-    'preserveAiDecompilation'?: boolean;
+export class PcapBodyInfo {
+    'filename'?: string | null;
+    'isPe': boolean;
+    'mimeType'?: string | null;
+    'preview'?: string | null;
+    'sha256'?: string | null;
+    'size': number;
+    'yaraHits'?: Array<string> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,26 +26,50 @@ export class RenameInputBody {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "newMangledName",
-            "baseName": "new_mangled_name",
+            "name": "filename",
+            "baseName": "filename",
             "type": "string",
             "format": ""
         },
         {
-            "name": "newName",
-            "baseName": "new_name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "preserveAiDecompilation",
-            "baseName": "preserve_ai_decompilation",
+            "name": "isPe",
+            "baseName": "is_pe",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "mimeType",
+            "baseName": "mime_type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "preview",
+            "baseName": "preview",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "sha256",
+            "baseName": "sha256",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "size",
+            "baseName": "size",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "yaraHits",
+            "baseName": "yara_hits",
+            "type": "Array<string>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return RenameInputBody.attributeTypeMap;
+        return PcapBodyInfo.attributeTypeMap;
     }
 
     public constructor() {

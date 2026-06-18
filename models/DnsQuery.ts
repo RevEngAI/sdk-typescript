@@ -13,14 +13,23 @@ import { ReportEvent } from '../models/ReportEvent';
 import { HttpFile } from '../http/http';
 
 export class DnsQuery {
+    'cnameChain'?: Array<string> | null;
     'domain': string | null;
     'events'?: Array<ReportEvent> | null;
+    'minTtl'?: number;
+    'resolvedIps'?: Array<string> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "cnameChain",
+            "baseName": "cname_chain",
+            "type": "Array<string>",
+            "format": ""
+        },
         {
             "name": "domain",
             "baseName": "domain",
@@ -31,6 +40,18 @@ export class DnsQuery {
             "name": "events",
             "baseName": "events",
             "type": "Array<ReportEvent>",
+            "format": ""
+        },
+        {
+            "name": "minTtl",
+            "baseName": "min_ttl",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "resolvedIps",
+            "baseName": "resolved_ips",
+            "type": "Array<string>",
             "format": ""
         }    ];
 

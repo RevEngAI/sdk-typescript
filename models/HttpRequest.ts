@@ -9,19 +9,27 @@
  * Do not edit the class manually.
  */
 
+import { PcapBodyInfo } from '../models/PcapBodyInfo';
 import { ReportEvent } from '../models/ReportEvent';
 import { HttpFile } from '../http/http';
 
 export class HttpRequest {
+    'bytesReceived'?: number;
+    'bytesSent'?: number;
     'events'?: Array<ReportEvent> | null;
     'extraHeaders'?: Array<string> | null;
     'flags'?: number;
     'password'?: string | null;
     'path'?: string | null;
+    'pcapStreamId'?: number;
     'postData'?: string | null;
     'proxy'?: string | null;
     'proxyBypass'?: string | null;
     'referer'?: string | null;
+    'requestBody'?: PcapBodyInfo;
+    'responseBody'?: PcapBodyInfo;
+    'responseStatus'?: number;
+    'serverIp'?: string | null;
     'serverName'?: string | null;
     'serverPort'?: number;
     'service'?: number;
@@ -35,6 +43,18 @@ export class HttpRequest {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "bytesReceived",
+            "baseName": "bytes_received",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "bytesSent",
+            "baseName": "bytes_sent",
+            "type": "number",
+            "format": "int64"
+        },
         {
             "name": "events",
             "baseName": "events",
@@ -66,6 +86,12 @@ export class HttpRequest {
             "format": ""
         },
         {
+            "name": "pcapStreamId",
+            "baseName": "pcap_stream_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
             "name": "postData",
             "baseName": "post_data",
             "type": "string",
@@ -86,6 +112,30 @@ export class HttpRequest {
         {
             "name": "referer",
             "baseName": "referer",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "requestBody",
+            "baseName": "request_body",
+            "type": "PcapBodyInfo",
+            "format": ""
+        },
+        {
+            "name": "responseBody",
+            "baseName": "response_body",
+            "type": "PcapBodyInfo",
+            "format": ""
+        },
+        {
+            "name": "responseStatus",
+            "baseName": "response_status",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "serverIp",
+            "baseName": "server_ip",
             "type": "string",
             "format": ""
         },

@@ -14,12 +14,13 @@ import { HttpFile } from '../http/http';
 
 export class ReportEvent {
     'apiCalls'?: Array<ApiCall> | null;
+    'count'?: number;
+    'desiredAccess'?: Array<string> | null;
     'processSeqid'?: number;
-    'totalBytesRequested'?: number;
+    'totalBytes'?: number;
     'type': string | null;
     'value'?: string | null;
     'valueName'?: string | null;
-    'writeCount'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,14 +34,26 @@ export class ReportEvent {
             "format": ""
         },
         {
+            "name": "count",
+            "baseName": "count",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "desiredAccess",
+            "baseName": "desired_access",
+            "type": "Array<string>",
+            "format": ""
+        },
+        {
             "name": "processSeqid",
             "baseName": "process_seqid",
             "type": "number",
             "format": "int64"
         },
         {
-            "name": "totalBytesRequested",
-            "baseName": "total_bytes_requested",
+            "name": "totalBytes",
+            "baseName": "total_bytes",
             "type": "number",
             "format": "int64"
         },
@@ -61,12 +74,6 @@ export class ReportEvent {
             "baseName": "value_name",
             "type": "string",
             "format": ""
-        },
-        {
-            "name": "writeCount",
-            "baseName": "write_count",
-            "type": "number",
-            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
