@@ -12,17 +12,17 @@
 import { HttpFile } from '../http/http';
 
 export class MemdumpEntry {
-    'address': string | null;
-    'dumpReason': string | null;
-    'fileType'?: string | null;
-    'filename': string | null;
+    'address': string;
+    'dumpReason': string;
+    'fileType'?: string;
+    'filename': string;
     'index': number;
     'isPe'?: boolean;
-    'method': string | null;
-    'mimeType'?: string | null;
-    'sha256'?: string | null;
+    'method': string;
+    'mimeType'?: string;
+    'sha256'?: string;
     'size': number;
-    'targetAddr'?: string | null;
+    'targetAddr'?: string;
     'targetProcess'?: number;
 
     static readonly discriminator: string | undefined = undefined;

@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class FileActivityEntry {
     'events'?: Array<ReportEvent> | null;
-    'path': string | null;
+    'path': string;
 
     static readonly discriminator: string | undefined = undefined;
 

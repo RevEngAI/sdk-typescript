@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class ExtractedURL {
     'events'?: Array<ReportEvent> | null;
-    'url': string | null;
+    'url': string;
 
     static readonly discriminator: string | undefined = undefined;
 

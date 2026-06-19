@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class AnalysisLogMessage {
-    'message': string | null;
-    'time': string | null;
+    'message': string;
+    'time': string;
 
     static readonly discriminator: string | undefined = undefined;
 

@@ -12,17 +12,17 @@
 import { HttpFile } from '../http/http';
 
 export class ReportOptions {
-    'archiveEntryPath'?: string | null;
+    'archiveEntryPath'?: string;
     'extractArchive'?: boolean;
-    'guestTargetDirectory'?: string | null;
-    'guestWorkingDirectory'?: string | null;
+    'guestTargetDirectory'?: string;
+    'guestWorkingDirectory'?: string;
     'netEnable'?: boolean;
-    'osProfile'?: string | null;
+    'osProfile'?: string;
     'plugins'?: Array<string> | null;
-    'preset'?: string | null;
-    'sampleFilename'?: string | null;
-    'startCommand'?: string | null;
-    'startMethod'?: string | null;
+    'preset'?: string;
+    'sampleFilename'?: string;
+    'startCommand'?: string;
+    'startMethod'?: string;
     'timeout'?: number;
 
     static readonly discriminator: string | undefined = undefined;

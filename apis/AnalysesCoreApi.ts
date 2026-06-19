@@ -12,6 +12,7 @@ import { APIError } from '../models/APIError';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
 import { AnalysisCreateRequest } from '../models/AnalysisCreateRequest';
+import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
@@ -29,6 +30,7 @@ import { BaseResponseRecent } from '../models/BaseResponseRecent';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
+import { DynamicExecutionStatusResponse } from '../models/DynamicExecutionStatusResponse';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
@@ -445,6 +447,82 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
 
         // Path Params
         const localVarPath = '/v2/analyses/{analysis_id}/status'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Get dynamic execution report
+     * @param analysisId Analysis ID
+     */
+    public async getDynamicExecutionReport(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "getDynamicExecutionReport", "analysisId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/analyses/{analysis_id}/dynamic-execution/report'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get dynamic execution status
+     * @param analysisId Analysis ID
+     */
+    public async getDynamicExecutionStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "getDynamicExecutionStatus", "analysisId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v2/analyses/{analysis_id}/dynamic-execution/status'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
 
         // Make Request Context
@@ -1566,6 +1644,113 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseStatus", ""
             ) as BaseResponseStatus;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getDynamicExecutionReport
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getDynamicExecutionReportWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AnalysisReport >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: AnalysisReport = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "AnalysisReport", ""
+            ) as AnalysisReport;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: AnalysisReport = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "AnalysisReport", ""
+            ) as AnalysisReport;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to getDynamicExecutionStatus
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getDynamicExecutionStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DynamicExecutionStatusResponse >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: DynamicExecutionStatusResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DynamicExecutionStatusResponse", ""
+            ) as DynamicExecutionStatusResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: DynamicExecutionStatusResponse = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DynamicExecutionStatusResponse", ""
+            ) as DynamicExecutionStatusResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

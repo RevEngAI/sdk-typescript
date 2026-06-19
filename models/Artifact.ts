@@ -12,24 +12,24 @@
 import { HttpFile } from '../http/http';
 
 export class Artifact {
-    'direction'?: string | null;
-    'dumpAddr'?: string | null;
+    'direction'?: string;
+    'dumpAddr'?: string;
     'dumpPid'?: number;
-    'fileType'?: string | null;
-    'host'?: string | null;
+    'fileType'?: string;
+    'host'?: string;
     'isPe': boolean;
-    'mimeType'?: string | null;
-    'name': string | null;
-    'networkSource'?: string | null;
-    'originalFilename'?: string | null;
-    'path': string | null;
+    'mimeType'?: string;
+    'name': string;
+    'networkSource'?: string;
+    'originalFilename'?: string;
+    'path': string;
     'processSeqid'?: number;
     'reason': ArtifactReasonEnum;
     'responseStatus'?: number;
-    'sha256'?: string | null;
+    'sha256'?: string;
     'size': number;
-    'source': string | null;
-    'uri'?: string | null;
+    'source': string;
+    'uri'?: string;
     'wasMapped'?: boolean;
     'yaraHits'?: Array<string> | null;
 

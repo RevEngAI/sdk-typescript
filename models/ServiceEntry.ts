@@ -13,12 +13,12 @@ import { ReportEvent } from '../models/ReportEvent';
 import { HttpFile } from '../http/http';
 
 export class ServiceEntry {
-    'binaryPath'?: string | null;
-    'displayName'?: string | null;
+    'binaryPath'?: string;
+    'displayName'?: string;
     'events'?: Array<ReportEvent> | null;
-    'name'?: string | null;
-    'serviceType'?: string | null;
-    'startType'?: string | null;
+    'name'?: string;
+    'serviceType'?: string;
+    'startType'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 

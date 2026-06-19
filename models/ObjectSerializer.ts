@@ -6,9 +6,7 @@ export * from '../models/AddCalleeInputBody';
 export * from '../models/AddUserStringInputBody';
 export * from '../models/AddUserStringToFunctionInputBody';
 export * from '../models/AdditionalDetailsStatusResponse';
-export * from '../models/Addr';
 export * from '../models/AiDecompilationRating';
-export * from '../models/AiDecompilationTaskStatus';
 export * from '../models/AiUnstripRequest';
 export * from '../models/AnalysisAccessInfo';
 export * from '../models/AnalysisBasicInfoOutputBody';
@@ -89,11 +87,9 @@ export * from '../models/BaseResponseFunctionDataTypes';
 export * from '../models/BaseResponseFunctionDataTypesList';
 export * from '../models/BaseResponseFunctionSearchResponse';
 export * from '../models/BaseResponseFunctionStringsResponse';
-export * from '../models/BaseResponseFunctionTaskResponse';
 export * from '../models/BaseResponseFunctionsDetailResponse';
 export * from '../models/BaseResponseGenerateFunctionDataTypes';
 export * from '../models/BaseResponseGenerationStatusList';
-export * from '../models/BaseResponseGetAiDecompilationTask';
 export * from '../models/BaseResponseGetPublicUserResponse';
 export * from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 export * from '../models/BaseResponseListCollectionResults';
@@ -234,7 +230,6 @@ export * from '../models/FunctionBlockResponse';
 export * from '../models/FunctionBlocksResponse';
 export * from '../models/FunctionBoundary';
 export * from '../models/FunctionCapabilityResponse';
-export * from '../models/FunctionCommentCreateRequest';
 export * from '../models/FunctionDataTypes';
 export * from '../models/FunctionDataTypesList';
 export * from '../models/FunctionDataTypesListItem';
@@ -247,7 +242,6 @@ export * from '../models/FunctionInfoOutput';
 export * from '../models/FunctionListItem';
 export * from '../models/FunctionLocalVariableResponse';
 export * from '../models/FunctionMapping';
-export * from '../models/FunctionMappingFull';
 export * from '../models/FunctionMatch';
 export * from '../models/FunctionMatchingFilters';
 export * from '../models/FunctionMatchingRequest';
@@ -262,8 +256,6 @@ export * from '../models/FunctionSourceType';
 export * from '../models/FunctionString';
 export * from '../models/FunctionStringItem';
 export * from '../models/FunctionStringsResponse';
-export * from '../models/FunctionTaskResponse';
-export * from '../models/FunctionTaskStatus';
 export * from '../models/FunctionTypeInput';
 export * from '../models/FunctionTypeOutput';
 export * from '../models/FunctionsDetailResponse';
@@ -274,7 +266,6 @@ export * from '../models/GenerationStatusList';
 export * from '../models/GetAdditionalDetailsOutputBody';
 export * from '../models/GetAdditionalDetailsStatusOutputBody';
 export * from '../models/GetAiDecompilationRatingResponse';
-export * from '../models/GetAiDecompilationTask';
 export * from '../models/GetAnalysisStringsStatusOutputBody';
 export * from '../models/GetCollectionOutputBody';
 export * from '../models/GetProductsOutputBody';
@@ -289,9 +280,6 @@ export * from '../models/IconModel';
 export * from '../models/ImportModel';
 export * from '../models/InlineComment';
 export * from '../models/InsertAnalysisLogRequest';
-export * from '../models/InverseFunctionMapItem';
-export * from '../models/InverseStringMapItem';
-export * from '../models/InverseValue';
 export * from '../models/ListAnalysisStringsOutputBody';
 export * from '../models/ListCollectionResults';
 export * from '../models/ListCollectionsOutputBody';
@@ -338,7 +326,6 @@ export * from '../models/QueuedWorkflowTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
 export * from '../models/RegenerateOutputBody';
-export * from '../models/RegenerateTarget';
 export * from '../models/RegistryOperation';
 export * from '../models/RelativeBinaryResponse';
 export * from '../models/RenameAppliedEvent';
@@ -411,6 +398,7 @@ export * from '../models/TimestampModel';
 export * from '../models/TokenisedData';
 export * from '../models/TriageFunctionResponse';
 export * from '../models/TriageReportResponse';
+export * from '../models/TriggerDynamicExecutionInputBody';
 export * from '../models/Ttp';
 export * from '../models/TypeDefinition';
 export * from '../models/UpdateFunctionDataTypes';
@@ -437,9 +425,7 @@ import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
-import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
-import { AiDecompilationTaskStatus } from '../models/AiDecompilationTaskStatus';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody, AnalysisBasicInfoOutputBodyAnalysisScopeEnum                    } from '../models/AnalysisBasicInfoOutputBody';
@@ -520,11 +506,9 @@ import { BaseResponseFunctionDataTypes } from '../models/BaseResponseFunctionDat
 import { BaseResponseFunctionDataTypesList } from '../models/BaseResponseFunctionDataTypesList';
 import { BaseResponseFunctionSearchResponse } from '../models/BaseResponseFunctionSearchResponse';
 import { BaseResponseFunctionStringsResponse } from '../models/BaseResponseFunctionStringsResponse';
-import { BaseResponseFunctionTaskResponse } from '../models/BaseResponseFunctionTaskResponse';
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
 import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
-import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
 import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
@@ -665,7 +649,6 @@ import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
 import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
 import { FunctionBoundary } from '../models/FunctionBoundary';
 import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
-import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateRequest';
 import { FunctionDataTypes } from '../models/FunctionDataTypes';
 import { FunctionDataTypesList } from '../models/FunctionDataTypesList';
 import { FunctionDataTypesListItem } from '../models/FunctionDataTypesListItem';
@@ -678,7 +661,6 @@ import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
 import { FunctionListItem  , FunctionListItemNameSourceTypeEnum        } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
-import { FunctionMappingFull } from '../models/FunctionMappingFull';
 import { FunctionMatch } from '../models/FunctionMatch';
 import { FunctionMatchingFilters    , FunctionMatchingFiltersDebugTypesEnum   } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
@@ -693,8 +675,6 @@ import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionString    } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
-import { FunctionTaskResponse   } from '../models/FunctionTaskResponse';
-import { FunctionTaskStatus } from '../models/FunctionTaskStatus';
 import { FunctionTypeInput } from '../models/FunctionTypeInput';
 import { FunctionTypeOutput } from '../models/FunctionTypeOutput';
 import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
@@ -705,7 +685,6 @@ import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAdditionalDetailsOutputBody } from '../models/GetAdditionalDetailsOutputBody';
 import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDetailsStatusOutputBody';
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
-import { GetAiDecompilationTask          } from '../models/GetAiDecompilationTask';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
 import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
@@ -720,9 +699,6 @@ import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
-import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
-import { InverseStringMapItem } from '../models/InverseStringMapItem';
-import { InverseValue } from '../models/InverseValue';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
@@ -769,7 +745,6 @@ import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
-import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
@@ -842,6 +817,7 @@ import { TimestampModel } from '../models/TimestampModel';
 import { TokenisedData  , TokenisedDataStatusEnum    } from '../models/TokenisedData';
 import { TriageFunctionResponse    , TriageFunctionResponseCapabilitiesEnum   } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
+import { TriggerDynamicExecutionInputBody , TriggerDynamicExecutionInputBodyStartMethodEnum  , TriggerDynamicExecutionInputBodyTimeoutEnum   } from '../models/TriggerDynamicExecutionInputBody';
 import { Ttp } from '../models/Ttp';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
@@ -874,7 +850,6 @@ let primitives = [
 
 let enumsMap: Set<string> = new Set<string>([
     "AiDecompilationRating",
-    "AiDecompilationTaskStatus",
     "AnalysisBasicInfoOutputBodyAnalysisScopeEnum",
     "AnalysisScope",
     "AnalysisUpdateRequestAnalysisScopeEnum",
@@ -920,7 +895,6 @@ let enumsMap: Set<string> = new Set<string>([
     "FunctionListItemNameSourceTypeEnum",
     "FunctionMatchingFiltersDebugTypesEnum",
     "FunctionSourceType",
-    "FunctionTaskStatus",
     "GetSubscriptionOutputBodyStatusEnum",
     "GetSubscriptionOutputBodyTierEnum",
     "IOCTypeEnum",
@@ -932,7 +906,6 @@ let enumsMap: Set<string> = new Set<string>([
     "PriceOutputIntervalEnum",
     "PriceSummaryIntervalEnum",
     "ProgressMessageLevelEnum",
-    "RegenerateTarget",
     "ReportAnalysisResponseSoftwareTypeEnum",
     "SandboxStartMethod",
     "SandboxTimeout",
@@ -944,6 +917,8 @@ let enumsMap: Set<string> = new Set<string>([
     "TaskStatus",
     "TokenisedDataStatusEnum",
     "TriageFunctionResponseCapabilitiesEnum",
+    "TriggerDynamicExecutionInputBodyStartMethodEnum",
+    "TriggerDynamicExecutionInputBodyTimeoutEnum",
     "UploadFileType",
     "VulnerabilitySeverityEnum",
     "WorkflowProgressStatusEnum",
@@ -959,7 +934,6 @@ let typeMap: {[index: string]: any} = {
     "AddUserStringInputBody": AddUserStringInputBody,
     "AddUserStringToFunctionInputBody": AddUserStringToFunctionInputBody,
     "AdditionalDetailsStatusResponse": AdditionalDetailsStatusResponse,
-    "Addr": Addr,
     "AiUnstripRequest": AiUnstripRequest,
     "AnalysisAccessInfo": AnalysisAccessInfo,
     "AnalysisBasicInfoOutputBody": AnalysisBasicInfoOutputBody,
@@ -1037,11 +1011,9 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseFunctionDataTypesList": BaseResponseFunctionDataTypesList,
     "BaseResponseFunctionSearchResponse": BaseResponseFunctionSearchResponse,
     "BaseResponseFunctionStringsResponse": BaseResponseFunctionStringsResponse,
-    "BaseResponseFunctionTaskResponse": BaseResponseFunctionTaskResponse,
     "BaseResponseFunctionsDetailResponse": BaseResponseFunctionsDetailResponse,
     "BaseResponseGenerateFunctionDataTypes": BaseResponseGenerateFunctionDataTypes,
     "BaseResponseGenerationStatusList": BaseResponseGenerationStatusList,
-    "BaseResponseGetAiDecompilationTask": BaseResponseGetAiDecompilationTask,
     "BaseResponseGetPublicUserResponse": BaseResponseGetPublicUserResponse,
     "BaseResponseListCalleesCallerFunctionsResponse": BaseResponseListCalleesCallerFunctionsResponse,
     "BaseResponseListCollectionResults": BaseResponseListCollectionResults,
@@ -1176,7 +1148,6 @@ let typeMap: {[index: string]: any} = {
     "FunctionBlocksResponse": FunctionBlocksResponse,
     "FunctionBoundary": FunctionBoundary,
     "FunctionCapabilityResponse": FunctionCapabilityResponse,
-    "FunctionCommentCreateRequest": FunctionCommentCreateRequest,
     "FunctionDataTypes": FunctionDataTypes,
     "FunctionDataTypesList": FunctionDataTypesList,
     "FunctionDataTypesListItem": FunctionDataTypesListItem,
@@ -1189,7 +1160,6 @@ let typeMap: {[index: string]: any} = {
     "FunctionListItem": FunctionListItem,
     "FunctionLocalVariableResponse": FunctionLocalVariableResponse,
     "FunctionMapping": FunctionMapping,
-    "FunctionMappingFull": FunctionMappingFull,
     "FunctionMatch": FunctionMatch,
     "FunctionMatchingFilters": FunctionMatchingFilters,
     "FunctionMatchingRequest": FunctionMatchingRequest,
@@ -1203,7 +1173,6 @@ let typeMap: {[index: string]: any} = {
     "FunctionString": FunctionString,
     "FunctionStringItem": FunctionStringItem,
     "FunctionStringsResponse": FunctionStringsResponse,
-    "FunctionTaskResponse": FunctionTaskResponse,
     "FunctionTypeInput": FunctionTypeInput,
     "FunctionTypeOutput": FunctionTypeOutput,
     "FunctionsDetailResponse": FunctionsDetailResponse,
@@ -1214,7 +1183,6 @@ let typeMap: {[index: string]: any} = {
     "GetAdditionalDetailsOutputBody": GetAdditionalDetailsOutputBody,
     "GetAdditionalDetailsStatusOutputBody": GetAdditionalDetailsStatusOutputBody,
     "GetAiDecompilationRatingResponse": GetAiDecompilationRatingResponse,
-    "GetAiDecompilationTask": GetAiDecompilationTask,
     "GetAnalysisStringsStatusOutputBody": GetAnalysisStringsStatusOutputBody,
     "GetCollectionOutputBody": GetCollectionOutputBody,
     "GetProductsOutputBody": GetProductsOutputBody,
@@ -1228,9 +1196,6 @@ let typeMap: {[index: string]: any} = {
     "ImportModel": ImportModel,
     "InlineComment": InlineComment,
     "InsertAnalysisLogRequest": InsertAnalysisLogRequest,
-    "InverseFunctionMapItem": InverseFunctionMapItem,
-    "InverseStringMapItem": InverseStringMapItem,
-    "InverseValue": InverseValue,
     "ListAnalysisStringsOutputBody": ListAnalysisStringsOutputBody,
     "ListCollectionResults": ListCollectionResults,
     "ListCollectionsOutputBody": ListCollectionsOutputBody,
@@ -1341,6 +1306,7 @@ let typeMap: {[index: string]: any} = {
     "TokenisedData": TokenisedData,
     "TriageFunctionResponse": TriageFunctionResponse,
     "TriageReportResponse": TriageReportResponse,
+    "TriggerDynamicExecutionInputBody": TriggerDynamicExecutionInputBody,
     "Ttp": Ttp,
     "TypeDefinition": TypeDefinition,
     "UpdateFunctionDataTypes": UpdateFunctionDataTypes,

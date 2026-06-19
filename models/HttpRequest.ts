@@ -19,24 +19,24 @@ export class HttpRequest {
     'events'?: Array<ReportEvent> | null;
     'extraHeaders'?: Array<string> | null;
     'flags'?: number;
-    'password'?: string | null;
-    'path'?: string | null;
+    'password'?: string;
+    'path'?: string;
     'pcapStreamId'?: number;
-    'postData'?: string | null;
-    'proxy'?: string | null;
-    'proxyBypass'?: string | null;
-    'referer'?: string | null;
+    'postData'?: string;
+    'proxy'?: string;
+    'proxyBypass'?: string;
+    'referer'?: string;
     'requestBody'?: PcapBodyInfo;
     'responseBody'?: PcapBodyInfo;
     'responseStatus'?: number;
-    'serverIp'?: string | null;
-    'serverName'?: string | null;
+    'serverIp'?: string;
+    'serverName'?: string;
     'serverPort'?: number;
     'service'?: number;
-    'userAgent'?: string | null;
-    'username'?: string | null;
-    'verb'?: string | null;
-    'version'?: string | null;
+    'userAgent'?: string;
+    'username'?: string;
+    'verb'?: string;
+    'version'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 

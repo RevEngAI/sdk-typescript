@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class RegistryOperation {
     'events'?: Array<ReportEvent> | null;
-    'key': string | null;
+    'key': string;
 
     static readonly discriminator: string | undefined = undefined;
 

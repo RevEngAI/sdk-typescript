@@ -12,10 +12,10 @@
 import { HttpFile } from '../http/http';
 
 export class ApiCall {
-    'calledFrom'?: string | null;
-    'calledFromRva'?: string | null;
-    'fromModule'?: string | null;
-    'method': string | null;
+    'calledFrom'?: string;
+    'calledFromRva'?: string;
+    'fromModule'?: string;
+    'method': string;
 
     static readonly discriminator: string | undefined = undefined;
 

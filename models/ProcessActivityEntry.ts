@@ -17,8 +17,8 @@ export class ProcessActivityEntry {
     'childSeqid': number;
     'events'?: Array<ReportEvent> | null;
     'exitCode'?: number;
-    'exitCodeStr'?: string | null;
-    'name': string | null;
+    'exitCodeStr'?: string;
+    'name': string;
     'pid': number;
 
     static readonly discriminator: string | undefined = undefined;

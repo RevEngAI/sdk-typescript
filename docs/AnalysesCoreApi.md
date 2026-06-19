@@ -14,6 +14,8 @@ Method | HTTP request | Description
 [**getAnalysisLogs**](AnalysesCoreApi.md#getAnalysisLogs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
 [**getAnalysisParams**](AnalysesCoreApi.md#getAnalysisParams) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 [**getAnalysisStatus**](AnalysesCoreApi.md#getAnalysisStatus) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
+[**getDynamicExecutionReport**](AnalysesCoreApi.md#getDynamicExecutionReport) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/report | Get dynamic execution report
+[**getDynamicExecutionStatus**](AnalysesCoreApi.md#getDynamicExecutionStatus) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/status | Get dynamic execution status
 [**insertAnalysisLog**](AnalysesCoreApi.md#insertAnalysisLog) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 [**listAnalyses**](AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 [**lookupBinaryId**](AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
@@ -631,6 +633,119 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getDynamicExecutionReport**
+> AnalysisReport getDynamicExecutionReport()
+
+Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiGetDynamicExecutionReportRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiGetDynamicExecutionReportRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.getDynamicExecutionReport(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**AnalysisReport**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getDynamicExecutionStatus**
+> DynamicExecutionStatusResponse getDynamicExecutionStatus()
+
+Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiGetDynamicExecutionStatusRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiGetDynamicExecutionStatusRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.getDynamicExecutionStatus(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**DynamicExecutionStatusResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

@@ -18,9 +18,9 @@ export class ReportEvent {
     'desiredAccess'?: Array<string> | null;
     'processSeqid'?: number;
     'totalBytes'?: number;
-    'type': string | null;
-    'value'?: string | null;
-    'valueName'?: string | null;
+    'type': string;
+    'value'?: string;
+    'valueName'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 

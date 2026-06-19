@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 export class ModuleLoadEntry {
     'modules'?: { [key: string]: string; };
     'pid': number;
-    'processName'?: string | null;
+    'processName'?: string;
     'processSeqid'?: number;
 
     static readonly discriminator: string | undefined = undefined;

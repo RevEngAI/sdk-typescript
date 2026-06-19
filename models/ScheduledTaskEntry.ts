@@ -13,17 +13,17 @@ import { ReportEvent } from '../models/ReportEvent';
 import { HttpFile } from '../http/http';
 
 export class ScheduledTaskEntry {
-    'command'?: string | null;
-    'day'?: string | null;
-    'endDate'?: string | null;
+    'command'?: string;
+    'day'?: string;
+    'endDate'?: string;
     'events'?: Array<ReportEvent> | null;
-    'executable'?: string | null;
-    'modifier'?: string | null;
-    'runAs'?: string | null;
-    'scheduleType'?: string | null;
-    'startDate'?: string | null;
-    'startTime'?: string | null;
-    'taskName'?: string | null;
+    'executable'?: string;
+    'modifier'?: string;
+    'runAs'?: string;
+    'scheduleType'?: string;
+    'startDate'?: string;
+    'startTime'?: string;
+    'taskName'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 

@@ -12,11 +12,11 @@
 import { HttpFile } from '../http/http';
 
 export class PcapBodyInfo {
-    'filename'?: string | null;
+    'filename'?: string;
     'isPe': boolean;
-    'mimeType'?: string | null;
-    'preview'?: string | null;
-    'sha256'?: string | null;
+    'mimeType'?: string;
+    'preview'?: string;
+    'sha256'?: string;
     'size': number;
     'yaraHits'?: Array<string> | null;
 

@@ -12,13 +12,13 @@
 import { HttpFile } from '../http/http';
 
 export class StartupInfo {
-    'arguments'?: string | null;
-    'error'?: string | null;
-    'errorCode'?: string | null;
+    'arguments'?: string;
+    'error'?: string;
+    'errorCode'?: string;
     'pid'?: number;
     'process'?: number;
-    'processName'?: string | null;
-    'status'?: string | null;
+    'processName'?: string;
+    'status'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 

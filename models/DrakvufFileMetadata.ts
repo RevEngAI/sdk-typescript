@@ -12,11 +12,11 @@
 import { HttpFile } from '../http/http';
 
 export class DrakvufFileMetadata {
-    'mimeType'?: string | null;
-    'name': string | null;
-    'sha256': string | null;
-    'type'?: string | null;
-    'typeId'?: string | null;
+    'mimeType'?: string;
+    'name': string;
+    'sha256': string;
+    'type'?: string;
+    'typeId'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 

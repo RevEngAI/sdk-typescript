@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class MutexEntry {
     'events'?: Array<ReportEvent> | null;
-    'name': string | null;
+    'name': string;
 
     static readonly discriminator: string | undefined = undefined;
 

@@ -17,12 +17,12 @@ export class Connection {
     'bytesReceived'?: number;
     'bytesSent'?: number;
     'events'?: Array<ReportEvent> | null;
-    'ja3'?: string | null;
-    'ja3s'?: string | null;
-    'localIp': string | null;
+    'ja3'?: string;
+    'ja3s'?: string;
+    'localIp': string;
     'localPort': any | null;
-    'protocol': string | null;
-    'remoteIp': string | null;
+    'protocol': string;
+    'remoteIp': string;
     'remotePort': any | null;
     'tcpCarvedFiles'?: Array<TcpCarvedFile> | null;
 
