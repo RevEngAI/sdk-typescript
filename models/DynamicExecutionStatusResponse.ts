@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class DynamicExecutionStatusResponse {
     /**
-    * Error detail, set when status is ERROR
+    * Error detail, set when status is FAILED
     */
     'errorMessage'?: string;
     /**
@@ -22,7 +22,7 @@ export class DynamicExecutionStatusResponse {
     */
     'logs': AnalysisLogs;
     /**
-    * Task status: UNINITIALISED, PENDING, RUNNING, COMPLETED, or ERROR
+    * Task status: UNINITIALISED, PENDING, RUNNING, COMPLETED, or FAILED
     */
     'status': string;
 

@@ -14,8 +14,8 @@ import { HttpFile } from '../http/http';
 export class Ttp {
     'attck'?: Array<string> | null;
     'mbc'?: Array<any> | null;
-    'name'?: string | null;
-    'namespace'?: string | null;
+    'name'?: string;
+    'namespace'?: string;
     'processSeqids'?: Array<number> | null;
     'score': number;
 

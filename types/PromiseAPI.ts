@@ -10,9 +10,7 @@ import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
-import { Addr } from '../models/Addr';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
-import { AiDecompilationTaskStatus } from '../models/AiDecompilationTaskStatus';
 import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
@@ -93,11 +91,9 @@ import { BaseResponseFunctionDataTypes } from '../models/BaseResponseFunctionDat
 import { BaseResponseFunctionDataTypesList } from '../models/BaseResponseFunctionDataTypesList';
 import { BaseResponseFunctionSearchResponse } from '../models/BaseResponseFunctionSearchResponse';
 import { BaseResponseFunctionStringsResponse } from '../models/BaseResponseFunctionStringsResponse';
-import { BaseResponseFunctionTaskResponse } from '../models/BaseResponseFunctionTaskResponse';
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
 import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
-import { BaseResponseGetAiDecompilationTask } from '../models/BaseResponseGetAiDecompilationTask';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
 import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
@@ -238,7 +234,6 @@ import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
 import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
 import { FunctionBoundary } from '../models/FunctionBoundary';
 import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
-import { FunctionCommentCreateRequest } from '../models/FunctionCommentCreateRequest';
 import { FunctionDataTypes } from '../models/FunctionDataTypes';
 import { FunctionDataTypesList } from '../models/FunctionDataTypesList';
 import { FunctionDataTypesListItem } from '../models/FunctionDataTypesListItem';
@@ -251,7 +246,6 @@ import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
 import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
-import { FunctionMappingFull } from '../models/FunctionMappingFull';
 import { FunctionMatch } from '../models/FunctionMatch';
 import { FunctionMatchingFilters } from '../models/FunctionMatchingFilters';
 import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
@@ -266,8 +260,6 @@ import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionString } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
-import { FunctionTaskResponse } from '../models/FunctionTaskResponse';
-import { FunctionTaskStatus } from '../models/FunctionTaskStatus';
 import { FunctionTypeInput } from '../models/FunctionTypeInput';
 import { FunctionTypeOutput } from '../models/FunctionTypeOutput';
 import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
@@ -278,7 +270,6 @@ import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAdditionalDetailsOutputBody } from '../models/GetAdditionalDetailsOutputBody';
 import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDetailsStatusOutputBody';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
-import { GetAiDecompilationTask } from '../models/GetAiDecompilationTask';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
 import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
@@ -293,9 +284,6 @@ import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
-import { InverseFunctionMapItem } from '../models/InverseFunctionMapItem';
-import { InverseStringMapItem } from '../models/InverseStringMapItem';
-import { InverseValue } from '../models/InverseValue';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
@@ -342,7 +330,6 @@ import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
-import { RegenerateTarget } from '../models/RegenerateTarget';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
@@ -415,6 +402,7 @@ import { TimestampModel } from '../models/TimestampModel';
 import { TokenisedData } from '../models/TokenisedData';
 import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
+import { TriggerDynamicExecutionInputBody } from '../models/TriggerDynamicExecutionInputBody';
 import { Ttp } from '../models/Ttp';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
@@ -1048,6 +1036,50 @@ export class PromiseAnalysesCoreApi {
     public getAnalysisStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseStatus> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getAnalysisStatus(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Get dynamic execution report
+     * @param analysisId Analysis ID
+     */
+    public getDynamicExecutionReportWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisReport>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDynamicExecutionReportWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Get dynamic execution report
+     * @param analysisId Analysis ID
+     */
+    public getDynamicExecutionReport(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AnalysisReport> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDynamicExecutionReport(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get dynamic execution status
+     * @param analysisId Analysis ID
+     */
+    public getDynamicExecutionStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DynamicExecutionStatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDynamicExecutionStatusWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get dynamic execution status
+     * @param analysisId Analysis ID
+     */
+    public getDynamicExecutionStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<DynamicExecutionStatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getDynamicExecutionStatus(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -2608,76 +2640,6 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Creates a comment associated with a specified function).
-     * Create a comment for this function
-     * @param functionId
-     * @param functionCommentCreateRequest
-     */
-    public createAiDecompilationCommentWithHttpInfo(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationCommentWithHttpInfo(functionId, functionCommentCreateRequest, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Creates a comment associated with a specified function).
-     * Create a comment for this function
-     * @param functionId
-     * @param functionCommentCreateRequest
-     */
-    public createAiDecompilationComment(functionId: number, functionCommentCreateRequest: FunctionCommentCreateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationComment(functionId, functionCommentCreateRequest, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Begins the AI Decompilation Process
-     * Begins AI Decompilation Process
-     * @param functionId The ID of the function for which we are creating the decompilation task
-     */
-    public createAiDecompilationTaskWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationTaskWithHttpInfo(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Begins the AI Decompilation Process
-     * Begins AI Decompilation Process
-     * @param functionId The ID of the function for which we are creating the decompilation task
-     */
-    public createAiDecompilationTask(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationTask(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param commentId
-     * @param functionId
-     */
-    public deleteAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAiDecompilationCommentWithHttpInfo(commentId, functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param commentId
-     * @param functionId
-     */
-    public deleteAiDecompilationComment(commentId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBool> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.deleteAiDecompilationComment(commentId, functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Removes the comment for the given line number. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Delete a single inline comment
      * @param functionId Function ID
@@ -2720,28 +2682,6 @@ export class PromiseFunctionsAIDecompilationApi {
     public getAiDecompilation(functionId: number, _options?: PromiseConfigurationOptions): Promise<DecompilationData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getAiDecompilation(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
-     * Get comments for this function
-     * @param functionId
-     */
-    public getAiDecompilationCommentsWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationCommentsWithHttpInfo(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Retrieves all comments created for a specific function. Only returns comments for resources the requesting user has access to.
-     * Get comments for this function
-     * @param functionId
-     */
-    public getAiDecompilationComments(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationComments(functionId, observableOptions);
         return result.toPromise();
     }
 
@@ -2876,54 +2816,6 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Polls the AI Decompilation Process
-     * Polls AI Decompilation Process
-     * @param functionId The ID of the function being decompiled
-     * @param [summarise] Generate a summary for the decompilation
-     * @param [generateInlineComments] Generate inline comments for the decompilation
-     * @param [forceRegenerate] Force regeneration of summary and/or comments.
-     */
-    public getAiDecompilationTaskResultWithHttpInfo(functionId: number, summarise?: boolean, generateInlineComments?: boolean, forceRegenerate?: Array<RegenerateTarget>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGetAiDecompilationTask>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTaskResultWithHttpInfo(functionId, summarise, generateInlineComments, forceRegenerate, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Polls the AI Decompilation Process
-     * Polls AI Decompilation Process
-     * @param functionId The ID of the function being decompiled
-     * @param [summarise] Generate a summary for the decompilation
-     * @param [generateInlineComments] Generate inline comments for the decompilation
-     * @param [forceRegenerate] Force regeneration of summary and/or comments.
-     */
-    public getAiDecompilationTaskResult(functionId: number, summarise?: boolean, generateInlineComments?: boolean, forceRegenerate?: Array<RegenerateTarget>, _options?: PromiseConfigurationOptions): Promise<BaseResponseGetAiDecompilationTask> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTaskResult(functionId, summarise, generateInlineComments, forceRegenerate, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Check the status of a function ai decompilation
-     * @param functionId The ID of the function being checked
-     */
-    public getAiDecompilationTaskStatusWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionTaskResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTaskStatusWithHttpInfo(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Check the status of a function ai decompilation
-     * @param functionId The ID of the function being checked
-     */
-    public getAiDecompilationTaskStatus(functionId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionTaskResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTaskStatus(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Returns the decompilation with placeholder tokens, the function mapping for token resolution, and the predicted function name.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
      * Get tokenised AI decompilation with function mapping
      * @param functionId Function ID
@@ -3032,32 +2924,6 @@ export class PromiseFunctionsAIDecompilationApi {
     public streamAiDecompilation(functionId: number, _options?: PromiseConfigurationOptions): Promise<Array<StreamAiDecompilation200ResponseInner>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.streamAiDecompilation(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param commentId
-     * @param functionId
-     * @param commentUpdateRequest
-     */
-    public updateAiDecompilationCommentWithHttpInfo(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAiDecompilationCommentWithHttpInfo(commentId, functionId, commentUpdateRequest, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param commentId
-     * @param functionId
-     * @param commentUpdateRequest
-     */
-    public updateAiDecompilationComment(commentId: number, functionId: number, commentUpdateRequest: CommentUpdateRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.updateAiDecompilationComment(commentId, functionId, commentUpdateRequest, observableOptions);
         return result.toPromise();
     }
 

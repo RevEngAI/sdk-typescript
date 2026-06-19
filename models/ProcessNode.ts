@@ -16,10 +16,10 @@ export class ProcessNode {
     'attributed': boolean;
     'children'?: Array<ProcessNode> | null;
     'exitCode'?: number;
-    'exitCodeStr'?: string | null;
+    'exitCodeStr'?: string;
     'exitedAt'?: number;
     'killedBy'?: number;
-    'name': string | null;
+    'name': string;
     'pid': number;
     'seqid': number;
     'startedAt'?: number;

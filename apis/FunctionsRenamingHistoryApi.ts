@@ -25,6 +25,8 @@ import { RenameOutputBody } from '../models/RenameOutputBody';
 export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
+     * @deprecated
+     *
      * Renames a list of functions using the function IDs   Will record name changes in history
      * Batch Rename Functions
      * @param functionsListRename 
@@ -159,6 +161,8 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
+     * @deprecated
+     *
      * Gets the name history of a function using the function ID
      * Get Function Name History
      * @param functionId 
@@ -253,6 +257,8 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
+     * @deprecated
+     *
      * Renames a function using the function ID   Will record name change history
      * Rename Function
      * @param functionId 
@@ -309,6 +315,8 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
+     * @deprecated
+     *
      * Reverts the function name to a previous name using the function ID and history ID
      * Revert the function name
      * @param functionId 

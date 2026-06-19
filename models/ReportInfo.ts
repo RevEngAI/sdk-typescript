@@ -15,13 +15,13 @@ import { HttpFile } from '../http/http';
 
 export class ReportInfo {
     'file'?: DrakvufFileMetadata;
-    'id': string | null;
+    'id': string;
     'options'?: ReportOptions;
-    'osProfile'?: string | null;
-    'status'?: string | null;
-    'timeAnalysisFinished'?: string | null;
-    'timeExecutionStarted'?: string | null;
-    'timeStarted'?: string | null;
+    'osProfile'?: string;
+    'status'?: string;
+    'timeAnalysisFinished'?: string;
+    'timeExecutionStarted'?: string;
+    'timeStarted'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 

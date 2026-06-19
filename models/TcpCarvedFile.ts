@@ -12,12 +12,12 @@
 import { HttpFile } from '../http/http';
 
 export class TcpCarvedFile {
-    'direction': string | null;
-    'filename'?: string | null;
+    'direction': string;
+    'filename'?: string;
     'isPe': boolean;
-    'mimeType'?: string | null;
+    'mimeType'?: string;
     'offset': number;
-    'sha256': string | null;
+    'sha256': string;
     'size': number;
     'yaraHits'?: Array<string> | null;
 

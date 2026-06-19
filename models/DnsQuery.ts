@@ -14,7 +14,7 @@ import { HttpFile } from '../http/http';
 
 export class DnsQuery {
     'cnameChain'?: Array<string> | null;
-    'domain': string | null;
+    'domain': string;
     'events'?: Array<ReportEvent> | null;
     'minTtl'?: number;
     'resolvedIps'?: Array<string> | null;

@@ -12,7 +12,7 @@
 import { HttpFile } from '../http/http';
 
 export class ConsoleOutputEntry {
-    'output': string | null;
+    'output': string;
     'processSeqid': number;
 
     static readonly discriminator: string | undefined = undefined;
