@@ -9,20 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { FunctionInfo } from '../models/FunctionInfo';
+import { BatchUpdateDataTypesItem } from '../models/BatchUpdateDataTypesItem';
 import { HttpFile } from '../http/http';
 
-export class FunctionDataTypes {
+export class BatchUpdateDataTypesInputBody {
     /**
-    * Whether the service has completed data types generation
+    * List of functions to update. All function IDs must belong to the analysis in the URL.
     */
-    'completed': boolean;
-    /**
-    * The current status of the data types service
-    */
-    'status': string;
-    'dataTypes'?: FunctionInfo | null;
-    'dataTypesVersion'?: number | null;
+    'functions': Array<BatchUpdateDataTypesItem> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -30,32 +24,14 @@ export class FunctionDataTypes {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "completed",
-            "baseName": "completed",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "dataTypes",
-            "baseName": "data_types",
-            "type": "FunctionInfo",
-            "format": ""
-        },
-        {
-            "name": "dataTypesVersion",
-            "baseName": "data_types_version",
-            "type": "number",
+            "name": "functions",
+            "baseName": "functions",
+            "type": "Array<BatchUpdateDataTypesItem>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionDataTypes.attributeTypeMap;
+        return BatchUpdateDataTypesInputBody.attributeTypeMap;
     }
 
     public constructor() {

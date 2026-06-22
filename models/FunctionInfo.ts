@@ -9,20 +9,16 @@
  * Do not edit the class manually.
  */
 
-import { FunctionInfo } from '../models/FunctionInfo';
+import { FunctionInfoFuncDepsInner } from '../models/FunctionInfoFuncDepsInner';
+import { FunctionType } from '../models/FunctionType';
 import { HttpFile } from '../http/http';
 
-export class FunctionDataTypes {
+export class FunctionInfo {
+    'funcTypes'?: FunctionType | null;
     /**
-    * Whether the service has completed data types generation
+    * List of function dependencies
     */
-    'completed': boolean;
-    /**
-    * The current status of the data types service
-    */
-    'status': string;
-    'dataTypes'?: FunctionInfo | null;
-    'dataTypesVersion'?: number | null;
+    'funcDeps': Array<FunctionInfoFuncDepsInner>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -30,32 +26,20 @@ export class FunctionDataTypes {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "completed",
-            "baseName": "completed",
-            "type": "boolean",
+            "name": "funcTypes",
+            "baseName": "func_types",
+            "type": "FunctionType",
             "format": ""
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "dataTypes",
-            "baseName": "data_types",
-            "type": "FunctionInfo",
-            "format": ""
-        },
-        {
-            "name": "dataTypesVersion",
-            "baseName": "data_types_version",
-            "type": "number",
+            "name": "funcDeps",
+            "baseName": "func_deps",
+            "type": "Array<FunctionInfoFuncDepsInner>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionDataTypes.attributeTypeMap;
+        return FunctionInfo.attributeTypeMap;
     }
 
     public constructor() {

@@ -9,24 +9,26 @@
  * Do not edit the class manually.
  */
 
-import { FunctionInfo } from '../models/FunctionInfo';
 import { HttpFile } from '../http/http';
 
-export class FunctionDataTypesListItem {
+export class BatchUpdateDataTypesResult {
+    'dataTypes'?: any | null;
     /**
-    * Whether the service has completed data types generation
+    * Version after update (present when status is \'updated\')
     */
-    'completed': boolean;
+    'dataTypesVersion'?: number;
     /**
-    * The current status of the data types service
+    * Error message (present when status is \'error\')
     */
-    'status': string;
-    'dataTypes'?: FunctionInfo | null;
-    'dataTypesVersion'?: number | null;
+    'error'?: string;
     /**
-    * Function id
+    * Function ID
     */
     'functionId': number;
+    /**
+    * Outcome for this function
+    */
+    'status': BatchUpdateDataTypesResultStatusEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -34,27 +36,21 @@ export class FunctionDataTypesListItem {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "completed",
-            "baseName": "completed",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "dataTypes",
             "baseName": "data_types",
-            "type": "FunctionInfo",
+            "type": "any",
             "format": ""
         },
         {
             "name": "dataTypesVersion",
             "baseName": "data_types_version",
             "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "error",
+            "baseName": "error",
+            "type": "string",
             "format": ""
         },
         {
@@ -62,12 +58,26 @@ export class FunctionDataTypesListItem {
             "baseName": "function_id",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "status",
+            "baseName": "status",
+            "type": "BatchUpdateDataTypesResultStatusEnum",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionDataTypesListItem.attributeTypeMap;
+        return BatchUpdateDataTypesResult.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+export enum BatchUpdateDataTypesResultStatusEnum {
+    Updated = 'updated',
+    VersionConflict = 'version_conflict',
+    Error = 'error',
+    UnknownDefaultOpenApi = '11184809'
+}
+

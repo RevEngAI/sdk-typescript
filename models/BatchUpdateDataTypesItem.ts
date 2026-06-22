@@ -9,16 +9,18 @@
  * Do not edit the class manually.
  */
 
-import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
-import { FunctionTypeInput } from '../models/FunctionTypeInput';
 import { HttpFile } from '../http/http';
 
-export class FunctionInfoInput {
-    'funcTypes'?: FunctionTypeInput | null;
+export class BatchUpdateDataTypesItem {
+    'dataTypes': any | null;
     /**
-    * List of function dependencies
+    * Current stored version. Pass 0 on the first write.
     */
-    'funcDeps': Array<FunctionInfoInputFuncDepsInner>;
+    'dataTypesVersion': number;
+    /**
+    * Function ID
+    */
+    'functionId': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,20 +28,26 @@ export class FunctionInfoInput {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "funcTypes",
-            "baseName": "func_types",
-            "type": "FunctionTypeInput",
+            "name": "dataTypes",
+            "baseName": "data_types",
+            "type": "any",
             "format": ""
         },
         {
-            "name": "funcDeps",
-            "baseName": "func_deps",
-            "type": "Array<FunctionInfoInputFuncDepsInner>",
-            "format": ""
+            "name": "dataTypesVersion",
+            "baseName": "data_types_version",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionInfoInput.attributeTypeMap;
+        return BatchUpdateDataTypesItem.attributeTypeMap;
     }
 
     public constructor() {

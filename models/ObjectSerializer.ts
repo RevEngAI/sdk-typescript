@@ -118,6 +118,10 @@ export * from '../models/Basic';
 export * from '../models/BatchRenameInputBody';
 export * from '../models/BatchRenameItem';
 export * from '../models/BatchRenameOutputBody';
+export * from '../models/BatchUpdateDataTypesInputBody';
+export * from '../models/BatchUpdateDataTypesItem';
+export * from '../models/BatchUpdateDataTypesOutputBody';
+export * from '../models/BatchUpdateDataTypesResult';
 export * from '../models/BinariesRelatedStatusResponse';
 export * from '../models/BinariesTaskStatus';
 export * from '../models/Binary';
@@ -236,9 +240,8 @@ export * from '../models/FunctionDataTypesListItem';
 export * from '../models/FunctionDataTypesParams';
 export * from '../models/FunctionDataTypesStatus';
 export * from '../models/FunctionHeader';
-export * from '../models/FunctionInfoInput';
-export * from '../models/FunctionInfoInputFuncDepsInner';
-export * from '../models/FunctionInfoOutput';
+export * from '../models/FunctionInfo';
+export * from '../models/FunctionInfoFuncDepsInner';
 export * from '../models/FunctionListItem';
 export * from '../models/FunctionLocalVariableResponse';
 export * from '../models/FunctionMapping';
@@ -256,8 +259,7 @@ export * from '../models/FunctionSourceType';
 export * from '../models/FunctionString';
 export * from '../models/FunctionStringItem';
 export * from '../models/FunctionStringsResponse';
-export * from '../models/FunctionTypeInput';
-export * from '../models/FunctionTypeOutput';
+export * from '../models/FunctionType';
 export * from '../models/FunctionsDetailResponse';
 export * from '../models/FunctionsListRename';
 export * from '../models/GenerateFunctionDataTypes';
@@ -401,7 +403,8 @@ export * from '../models/TriageReportResponse';
 export * from '../models/TriggerDynamicExecutionInputBody';
 export * from '../models/Ttp';
 export * from '../models/TypeDefinition';
-export * from '../models/UpdateFunctionDataTypes';
+export * from '../models/UpdateDataTypesInputBody';
+export * from '../models/UpdateDataTypesOutputBody';
 export * from '../models/UploadFileType';
 export * from '../models/UploadResponse';
 export * from '../models/UpsertAiDecomplationRatingRequest';
@@ -537,6 +540,10 @@ import { Basic } from '../models/Basic';
 import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
 import { BatchRenameItem } from '../models/BatchRenameItem';
 import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
+import { BatchUpdateDataTypesInputBody } from '../models/BatchUpdateDataTypesInputBody';
+import { BatchUpdateDataTypesItem } from '../models/BatchUpdateDataTypesItem';
+import { BatchUpdateDataTypesOutputBody } from '../models/BatchUpdateDataTypesOutputBody';
+import { BatchUpdateDataTypesResult    , BatchUpdateDataTypesResultStatusEnum   } from '../models/BatchUpdateDataTypesResult';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { Binary } from '../models/Binary';
@@ -655,9 +662,8 @@ import { FunctionDataTypesListItem } from '../models/FunctionDataTypesListItem';
 import { FunctionDataTypesParams } from '../models/FunctionDataTypesParams';
 import { FunctionDataTypesStatus } from '../models/FunctionDataTypesStatus';
 import { FunctionHeader } from '../models/FunctionHeader';
-import { FunctionInfoInput } from '../models/FunctionInfoInput';
-import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
-import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
+import { FunctionInfo } from '../models/FunctionInfo';
+import { FunctionInfoFuncDepsInner } from '../models/FunctionInfoFuncDepsInner';
 import { FunctionListItem  , FunctionListItemNameSourceTypeEnum        } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
@@ -675,8 +681,7 @@ import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionString    } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
-import { FunctionTypeInput } from '../models/FunctionTypeInput';
-import { FunctionTypeOutput } from '../models/FunctionTypeOutput';
+import { FunctionType } from '../models/FunctionType';
 import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
 import { FunctionsListRename } from '../models/FunctionsListRename';
 import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
@@ -820,7 +825,8 @@ import { TriageReportResponse } from '../models/TriageReportResponse';
 import { TriggerDynamicExecutionInputBody , TriggerDynamicExecutionInputBodyStartMethodEnum  , TriggerDynamicExecutionInputBodyTimeoutEnum   } from '../models/TriggerDynamicExecutionInputBody';
 import { Ttp } from '../models/Ttp';
 import { TypeDefinition } from '../models/TypeDefinition';
-import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
+import { UpdateDataTypesInputBody } from '../models/UpdateDataTypesInputBody';
+import { UpdateDataTypesOutputBody } from '../models/UpdateDataTypesOutputBody';
 import { UploadFileType } from '../models/UploadFileType';
 import { UploadResponse    } from '../models/UploadResponse';
 import { UpsertAiDecomplationRatingRequest   } from '../models/UpsertAiDecomplationRatingRequest';
@@ -857,6 +863,7 @@ let enumsMap: Set<string> = new Set<string>([
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
     "ArtifactReasonEnum",
+    "BatchUpdateDataTypesResultStatusEnum",
     "BinariesTaskStatus",
     "BinaryTaskStatus",
     "CollectionScope",
@@ -1042,6 +1049,10 @@ let typeMap: {[index: string]: any} = {
     "BatchRenameInputBody": BatchRenameInputBody,
     "BatchRenameItem": BatchRenameItem,
     "BatchRenameOutputBody": BatchRenameOutputBody,
+    "BatchUpdateDataTypesInputBody": BatchUpdateDataTypesInputBody,
+    "BatchUpdateDataTypesItem": BatchUpdateDataTypesItem,
+    "BatchUpdateDataTypesOutputBody": BatchUpdateDataTypesOutputBody,
+    "BatchUpdateDataTypesResult": BatchUpdateDataTypesResult,
     "BinariesRelatedStatusResponse": BinariesRelatedStatusResponse,
     "Binary": Binary,
     "BinaryAdditionalDetailsDataResponse": BinaryAdditionalDetailsDataResponse,
@@ -1154,9 +1165,8 @@ let typeMap: {[index: string]: any} = {
     "FunctionDataTypesParams": FunctionDataTypesParams,
     "FunctionDataTypesStatus": FunctionDataTypesStatus,
     "FunctionHeader": FunctionHeader,
-    "FunctionInfoInput": FunctionInfoInput,
-    "FunctionInfoInputFuncDepsInner": FunctionInfoInputFuncDepsInner,
-    "FunctionInfoOutput": FunctionInfoOutput,
+    "FunctionInfo": FunctionInfo,
+    "FunctionInfoFuncDepsInner": FunctionInfoFuncDepsInner,
     "FunctionListItem": FunctionListItem,
     "FunctionLocalVariableResponse": FunctionLocalVariableResponse,
     "FunctionMapping": FunctionMapping,
@@ -1173,8 +1183,7 @@ let typeMap: {[index: string]: any} = {
     "FunctionString": FunctionString,
     "FunctionStringItem": FunctionStringItem,
     "FunctionStringsResponse": FunctionStringsResponse,
-    "FunctionTypeInput": FunctionTypeInput,
-    "FunctionTypeOutput": FunctionTypeOutput,
+    "FunctionType": FunctionType,
     "FunctionsDetailResponse": FunctionsDetailResponse,
     "FunctionsListRename": FunctionsListRename,
     "GenerateFunctionDataTypes": GenerateFunctionDataTypes,
@@ -1309,7 +1318,8 @@ let typeMap: {[index: string]: any} = {
     "TriggerDynamicExecutionInputBody": TriggerDynamicExecutionInputBody,
     "Ttp": Ttp,
     "TypeDefinition": TypeDefinition,
-    "UpdateFunctionDataTypes": UpdateFunctionDataTypes,
+    "UpdateDataTypesInputBody": UpdateDataTypesInputBody,
+    "UpdateDataTypesOutputBody": UpdateDataTypesOutputBody,
     "UploadResponse": UploadResponse,
     "UpsertAiDecomplationRatingRequest": UpsertAiDecomplationRatingRequest,
     "UpsertOverridesData": UpsertOverridesData,

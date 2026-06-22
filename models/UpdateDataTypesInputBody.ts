@@ -9,18 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { FunctionInfoInput } from '../models/FunctionInfoInput';
 import { HttpFile } from '../http/http';
 
-export class UpdateFunctionDataTypes {
+export class UpdateDataTypesInputBody {
+    'dataTypes': any | null;
     /**
-    * Version of the function data types, used to check this update is not overwriting a newer one
+    * Current version of the function data types. The update is rejected if the stored version has moved on. Pass 0 on the first write.
     */
     'dataTypesVersion': number;
-    /**
-    * Function data types information to update
-    */
-    'dataTypes': FunctionInfoInput;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -28,20 +24,20 @@ export class UpdateFunctionDataTypes {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "dataTypesVersion",
-            "baseName": "data_types_version",
-            "type": "number",
+            "name": "dataTypes",
+            "baseName": "data_types",
+            "type": "any",
             "format": ""
         },
         {
-            "name": "dataTypes",
-            "baseName": "data_types",
-            "type": "FunctionInfoInput",
-            "format": ""
+            "name": "dataTypesVersion",
+            "baseName": "data_types_version",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return UpdateFunctionDataTypes.attributeTypeMap;
+        return UpdateDataTypesInputBody.attributeTypeMap;
     }
 
     public constructor() {
