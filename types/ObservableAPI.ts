@@ -123,6 +123,10 @@ import { Basic } from '../models/Basic';
 import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
 import { BatchRenameItem } from '../models/BatchRenameItem';
 import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
+import { BatchUpdateDataTypesInputBody } from '../models/BatchUpdateDataTypesInputBody';
+import { BatchUpdateDataTypesItem } from '../models/BatchUpdateDataTypesItem';
+import { BatchUpdateDataTypesOutputBody } from '../models/BatchUpdateDataTypesOutputBody';
+import { BatchUpdateDataTypesResult } from '../models/BatchUpdateDataTypesResult';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { Binary } from '../models/Binary';
@@ -241,9 +245,8 @@ import { FunctionDataTypesListItem } from '../models/FunctionDataTypesListItem';
 import { FunctionDataTypesParams } from '../models/FunctionDataTypesParams';
 import { FunctionDataTypesStatus } from '../models/FunctionDataTypesStatus';
 import { FunctionHeader } from '../models/FunctionHeader';
-import { FunctionInfoInput } from '../models/FunctionInfoInput';
-import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
-import { FunctionInfoOutput } from '../models/FunctionInfoOutput';
+import { FunctionInfo } from '../models/FunctionInfo';
+import { FunctionInfoFuncDepsInner } from '../models/FunctionInfoFuncDepsInner';
 import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
@@ -261,8 +264,7 @@ import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionString } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
-import { FunctionTypeInput } from '../models/FunctionTypeInput';
-import { FunctionTypeOutput } from '../models/FunctionTypeOutput';
+import { FunctionType } from '../models/FunctionType';
 import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
 import { FunctionsListRename } from '../models/FunctionsListRename';
 import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
@@ -406,7 +408,8 @@ import { TriageReportResponse } from '../models/TriageReportResponse';
 import { TriggerDynamicExecutionInputBody } from '../models/TriggerDynamicExecutionInputBody';
 import { Ttp } from '../models/Ttp';
 import { TypeDefinition } from '../models/TypeDefinition';
-import { UpdateFunctionDataTypes } from '../models/UpdateFunctionDataTypes';
+import { UpdateDataTypesInputBody } from '../models/UpdateDataTypesInputBody';
+import { UpdateDataTypesOutputBody } from '../models/UpdateDataTypesOutputBody';
 import { UploadFileType } from '../models/UploadFileType';
 import { UploadResponse } from '../models/UploadResponse';
 import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
@@ -4805,6 +4808,42 @@ export class ObservableFunctionsDataTypesApi {
     }
 
     /**
+     * Updates data types for multiple functions in one analysis. All function IDs in the body must belong to the analysis. Each item is processed independently and reports its own outcome: a stale `data_types_version` yields `version_conflict` for that item without affecting the rest of the batch.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Batch update function data types
+     * @param analysisId Analysis ID
+     * @param batchUpdateDataTypesInputBody
+     */
+    public batchUpdateFunctionDataTypesWithHttpInfo(analysisId: number, batchUpdateDataTypesInputBody: BatchUpdateDataTypesInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<BatchUpdateDataTypesOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.batchUpdateFunctionDataTypes(analysisId, batchUpdateDataTypesInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.batchUpdateFunctionDataTypesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Updates data types for multiple functions in one analysis. All function IDs in the body must belong to the analysis. Each item is processed independently and reports its own outcome: a stale `data_types_version` yields `version_conflict` for that item without affecting the rest of the batch.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Batch update function data types
+     * @param analysisId Analysis ID
+     * @param batchUpdateDataTypesInputBody
+     */
+    public batchUpdateFunctionDataTypes(analysisId: number, batchUpdateDataTypesInputBody: BatchUpdateDataTypesInputBody, _options?: ConfigurationOptions): Observable<BatchUpdateDataTypesOutputBody> {
+        return this.batchUpdateFunctionDataTypesWithHttpInfo(analysisId, batchUpdateDataTypesInputBody, _options).pipe(map((apiResponse: HttpInfo<BatchUpdateDataTypesOutputBody>) => apiResponse.data));
+    }
+
+    /**
      * Submits a request to generate the function data types
      * Generate Function Data Types
      * @param analysisId
@@ -4978,44 +5017,6 @@ export class ObservableFunctionsDataTypesApi {
      */
     public listFunctionDataTypesForFunctions(functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypesList> {
         return this.listFunctionDataTypesForFunctionsWithHttpInfo(functionIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypesList>) => apiResponse.data));
-    }
-
-    /**
-     * Updates the function data types for a given function
-     * Update Function Data Types
-     * @param analysisId
-     * @param functionId
-     * @param updateFunctionDataTypes
-     */
-    public updateFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypes>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateFunctionDataTypes(analysisId, functionId, updateFunctionDataTypes, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateFunctionDataTypesWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates the function data types for a given function
-     * Update Function Data Types
-     * @param analysisId
-     * @param functionId
-     * @param updateFunctionDataTypes
-     */
-    public updateFunctionDataTypes(analysisId: number, functionId: number, updateFunctionDataTypes: UpdateFunctionDataTypes, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypes> {
-        return this.updateFunctionDataTypesWithHttpInfo(analysisId, functionId, updateFunctionDataTypes, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypes>) => apiResponse.data));
     }
 
 }

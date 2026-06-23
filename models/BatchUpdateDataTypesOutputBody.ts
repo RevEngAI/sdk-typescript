@@ -9,16 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { FunctionInfoInputFuncDepsInner } from '../models/FunctionInfoInputFuncDepsInner';
-import { FunctionTypeOutput } from '../models/FunctionTypeOutput';
+import { BatchUpdateDataTypesResult } from '../models/BatchUpdateDataTypesResult';
 import { HttpFile } from '../http/http';
 
-export class FunctionInfoOutput {
-    'funcTypes'?: FunctionTypeOutput | null;
+export class BatchUpdateDataTypesOutputBody {
     /**
-    * List of function dependencies
+    * Per-function outcomes in the same order as the input
     */
-    'funcDeps': Array<FunctionInfoInputFuncDepsInner>;
+    'results': Array<BatchUpdateDataTypesResult> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,20 +24,14 @@ export class FunctionInfoOutput {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "funcTypes",
-            "baseName": "func_types",
-            "type": "FunctionTypeOutput",
-            "format": ""
-        },
-        {
-            "name": "funcDeps",
-            "baseName": "func_deps",
-            "type": "Array<FunctionInfoInputFuncDepsInner>",
+            "name": "results",
+            "baseName": "results",
+            "type": "Array<BatchUpdateDataTypesResult>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionInfoOutput.attributeTypeMap;
+        return BatchUpdateDataTypesOutputBody.attributeTypeMap;
     }
 
     public constructor() {

@@ -9,37 +9,38 @@
  * Do not edit the class manually.
  */
 
-import { FunctionHeader } from '../models/FunctionHeader';
-import { StackVariable } from '../models/StackVariable';
+import { Enumeration } from '../models/Enumeration';
+import { GlobalVariable } from '../models/GlobalVariable';
+import { Structure } from '../models/Structure';
+import { TypeDefinition } from '../models/TypeDefinition';
 import { HttpFile } from '../http/http';
 
-export class FunctionTypeInput {
-    'lastChange'?: string | null;
+export class FunctionInfoFuncDepsInner {
+    'lastChange'?: string;
     /**
-    * Memory address of the function
-    */
-    'addr': number;
-    /**
-    * Size of the function in bytes
-    */
-    'size': number;
-    /**
-    * Function header information
-    */
-    'header': FunctionHeader;
-    'stackVars'?: { [key: string]: StackVariable; } | null;
-    /**
-    * Name of the function
+    * Name of the global variable
     */
     'name': string;
     /**
-    * Return type of the function
+    * Size of the global variable in bytes
+    */
+    'size': number;
+    /**
+    * Dictionary of enumeration members and their values
+    */
+    'members': { [key: string]: number; };
+    /**
+    * Type of artifact that the global variable is associated with
+    */
+    'artifactType'?: string;
+    /**
+    * Data type of the global variable
     */
     'type': string;
     /**
-    * Type of artifact that the structure is associated with
+    * Memory address of the global variable
     */
-    'artifactType'?: string;
+    'addr': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -53,9 +54,9 @@ export class FunctionTypeInput {
             "format": ""
         },
         {
-            "name": "addr",
-            "baseName": "addr",
-            "type": "number",
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
             "format": ""
         },
         {
@@ -65,20 +66,14 @@ export class FunctionTypeInput {
             "format": ""
         },
         {
-            "name": "header",
-            "baseName": "header",
-            "type": "FunctionHeader",
+            "name": "members",
+            "baseName": "members",
+            "type": "{ [key: string]: number; }",
             "format": ""
         },
         {
-            "name": "stackVars",
-            "baseName": "stack_vars",
-            "type": "{ [key: string]: StackVariable; }",
-            "format": ""
-        },
-        {
-            "name": "name",
-            "baseName": "name",
+            "name": "artifactType",
+            "baseName": "artifact_type",
             "type": "string",
             "format": ""
         },
@@ -89,14 +84,14 @@ export class FunctionTypeInput {
             "format": ""
         },
         {
-            "name": "artifactType",
-            "baseName": "artifact_type",
-            "type": "string",
+            "name": "addr",
+            "baseName": "addr",
+            "type": "number",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionTypeInput.attributeTypeMap;
+        return FunctionInfoFuncDepsInner.attributeTypeMap;
     }
 
     public constructor() {

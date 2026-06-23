@@ -9,22 +9,16 @@
  * Do not edit the class manually.
  */
 
-import { FunctionInfo } from '../models/FunctionInfo';
 import { HttpFile } from '../http/http';
 
-export class FunctionDataTypesListItem {
+export class UpdateDataTypesOutputBody {
+    'dataTypes': any | null;
     /**
-    * Whether the service has completed data types generation
+    * Version of the stored function data types after the update
     */
-    'completed': boolean;
+    'dataTypesVersion': number;
     /**
-    * The current status of the data types service
-    */
-    'status': string;
-    'dataTypes'?: FunctionInfo | null;
-    'dataTypesVersion'?: number | null;
-    /**
-    * Function id
+    * Function ID
     */
     'functionId': number;
 
@@ -34,28 +28,16 @@ export class FunctionDataTypesListItem {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "completed",
-            "baseName": "completed",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "status",
-            "baseName": "status",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "dataTypes",
             "baseName": "data_types",
-            "type": "FunctionInfo",
+            "type": "any",
             "format": ""
         },
         {
             "name": "dataTypesVersion",
             "baseName": "data_types_version",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
             "name": "functionId",
@@ -65,7 +47,7 @@ export class FunctionDataTypesListItem {
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionDataTypesListItem.attributeTypeMap;
+        return UpdateDataTypesOutputBody.attributeTypeMap;
     }
 
     public constructor() {
