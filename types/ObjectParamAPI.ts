@@ -21,6 +21,7 @@ import { AnalysisConfig } from '../models/AnalysisConfig';
 import { AnalysisCreateRequest } from '../models/AnalysisCreateRequest';
 import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
 import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
+import { AnalysisFunctionEntry } from '../models/AnalysisFunctionEntry';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
@@ -119,6 +120,8 @@ import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
+import { BatchBinaryMatchResult } from '../models/BatchBinaryMatchResult';
+import { BatchMatchingOutputBody } from '../models/BatchMatchingOutputBody';
 import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
 import { BatchRenameItem } from '../models/BatchRenameItem';
 import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
@@ -138,11 +141,15 @@ import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
+import { CallEdge } from '../models/CallEdge';
+import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
 import { Capabilities } from '../models/Capabilities';
 import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
+import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
+import { CapabilityEntry } from '../models/CapabilityEntry';
 import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
 import { CodeSignatureModel } from '../models/CodeSignatureModel';
 import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
@@ -178,11 +185,13 @@ import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { Created } from '../models/Created';
+import { DataTypesEntry } from '../models/DataTypesEntry';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DecompilationData } from '../models/DecompilationData';
 import { DieMatch } from '../models/DieMatch';
+import { DisassemblyOutputBody } from '../models/DisassemblyOutputBody';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
@@ -233,16 +242,20 @@ import { FileFormat } from '../models/FileFormat';
 import { FileHashes } from '../models/FileHashes';
 import { FileMetadata } from '../models/FileMetadata';
 import { Filters } from '../models/Filters';
+import { FunctionArgument } from '../models/FunctionArgument';
 import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
 import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
 import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
 import { FunctionBoundary } from '../models/FunctionBoundary';
+import { FunctionCallEdges } from '../models/FunctionCallEdges';
 import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
 import { FunctionDataTypes } from '../models/FunctionDataTypes';
 import { FunctionDataTypesList } from '../models/FunctionDataTypesList';
 import { FunctionDataTypesListItem } from '../models/FunctionDataTypesListItem';
 import { FunctionDataTypesParams } from '../models/FunctionDataTypesParams';
 import { FunctionDataTypesStatus } from '../models/FunctionDataTypesStatus';
+import { FunctionDependency } from '../models/FunctionDependency';
+import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
 import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfo } from '../models/FunctionInfo';
 import { FunctionInfoFuncDepsInner } from '../models/FunctionInfoFuncDepsInner';
@@ -260,6 +273,7 @@ import { FunctionRenameMap } from '../models/FunctionRenameMap';
 import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
 import { FunctionSearchResult } from '../models/FunctionSearchResult';
 import { FunctionSourceType } from '../models/FunctionSourceType';
+import { FunctionStackVariable } from '../models/FunctionStackVariable';
 import { FunctionString } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
@@ -274,6 +288,8 @@ import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDet
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
 import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
+import { GetMatchesOutputBody } from '../models/GetMatchesOutputBody';
+import { GetMatchesStatusOutputBody } from '../models/GetMatchesStatusOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GetSubscriptionOutputBody } from '../models/GetSubscriptionOutputBody';
@@ -286,12 +302,16 @@ import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
+import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
+import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
+import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
+import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
 import { MemdumpEntry } from '../models/MemdumpEntry';
@@ -378,6 +398,10 @@ import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData
 import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
 import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
 import { StackVariable } from '../models/StackVariable';
+import { StartBatchMatchingInputBody } from '../models/StartBatchMatchingInputBody';
+import { StartMatchingForAnalysisInputBody } from '../models/StartMatchingForAnalysisInputBody';
+import { StartMatchingForFunctionsInputBody } from '../models/StartMatchingForFunctionsInputBody';
+import { StartMatchingOutputBody } from '../models/StartMatchingOutputBody';
 import { StartupInfo } from '../models/StartupInfo';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
@@ -987,6 +1011,28 @@ export interface AnalysesCoreApiGetAnalysisFunctionMapRequest {
     analysisId: number
 }
 
+export interface AnalysesCoreApiGetAnalysisFunctionMatchesRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisFunctionMatches
+     */
+    analysisId: number
+}
+
+export interface AnalysesCoreApiGetAnalysisFunctionMatchingStatusRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApigetAnalysisFunctionMatchingStatus
+     */
+    analysisId: number
+}
+
 export interface AnalysesCoreApiGetAnalysisLogsRequest {
     /**
      * 
@@ -1184,6 +1230,23 @@ export interface AnalysesCoreApiRequeueAnalysisRequest {
      * @memberof AnalysesCoreApirequeueAnalysis
      */
     xRevEngApplication?: string
+}
+
+export interface AnalysesCoreApiStartAnalysisFunctionMatchingRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApistartAnalysisFunctionMatching
+     */
+    analysisId: number
+    /**
+     * 
+     * @type StartMatchingForAnalysisInputBody
+     * @memberof AnalysesCoreApistartAnalysisFunctionMatching
+     */
+    startMatchingForAnalysisInputBody: StartMatchingForAnalysisInputBody
 }
 
 export interface AnalysesCoreApiUpdateAnalysisRequest {
@@ -1450,6 +1513,42 @@ export class ObjectAnalysesCoreApi {
     }
 
     /**
+     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get function-matching results for an analysis
+     * @param param the request object
+     */
+    public getAnalysisFunctionMatchesWithHttpInfo(param: AnalysesCoreApiGetAnalysisFunctionMatchesRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetMatchesOutputBody>> {
+        return this.api.getAnalysisFunctionMatchesWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get function-matching results for an analysis
+     * @param param the request object
+     */
+    public getAnalysisFunctionMatches(param: AnalysesCoreApiGetAnalysisFunctionMatchesRequest, options?: ConfigurationOptions): Promise<GetMatchesOutputBody> {
+        return this.api.getAnalysisFunctionMatches(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get function-matching status for an analysis
+     * @param param the request object
+     */
+    public getAnalysisFunctionMatchingStatusWithHttpInfo(param: AnalysesCoreApiGetAnalysisFunctionMatchingStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetMatchesStatusOutputBody>> {
+        return this.api.getAnalysisFunctionMatchingStatusWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get function-matching status for an analysis
+     * @param param the request object
+     */
+    public getAnalysisFunctionMatchingStatus(param: AnalysesCoreApiGetAnalysisFunctionMatchingStatusRequest, options?: ConfigurationOptions): Promise<GetMatchesStatusOutputBody> {
+        return this.api.getAnalysisFunctionMatchingStatus(param.analysisId,  options).toPromise();
+    }
+
+    /**
      * Given an analysis ID gets the current logs of an analysis
      * Gets the logs of an analysis
      * @param param the request object
@@ -1627,6 +1726,24 @@ export class ObjectAnalysesCoreApi {
      */
     public requeueAnalysis(param: AnalysesCoreApiRequeueAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseCreated> {
         return this.api.requeueAnalysis(param.analysisId, param.reAnalysisForm, param.xRevEngApplication,  options).toPromise();
+    }
+
+    /**
+     * Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Start function matching for an analysis
+     * @param param the request object
+     */
+    public startAnalysisFunctionMatchingWithHttpInfo(param: AnalysesCoreApiStartAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<HttpInfo<StartMatchingOutputBody>> {
+        return this.api.startAnalysisFunctionMatchingWithHttpInfo(param.analysisId, param.startMatchingForAnalysisInputBody,  options).toPromise();
+    }
+
+    /**
+     * Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Start function matching for an analysis
+     * @param param the request object
+     */
+    public startAnalysisFunctionMatching(param: AnalysesCoreApiStartAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<StartMatchingOutputBody> {
+        return this.api.startAnalysisFunctionMatching(param.analysisId, param.startMatchingForAnalysisInputBody,  options).toPromise();
     }
 
     /**
@@ -4076,6 +4193,17 @@ export interface FunctionsCoreApiGetFunctionBlocksRequest {
     functionId: number
 }
 
+export interface FunctionsCoreApiGetFunctionBlocks0Request {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApigetFunctionBlocks_1
+     */
+    functionId: number
+}
+
 export interface FunctionsCoreApiGetFunctionCalleesCallersRequest {
     /**
      * 
@@ -4096,6 +4224,17 @@ export interface FunctionsCoreApiGetFunctionCalleesCallersBulkRequest {
     functionIds: Array<number>
 }
 
+export interface FunctionsCoreApiGetFunctionCalleesCallers0Request {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApigetFunctionCalleesCallers_2
+     */
+    functionId: number
+}
+
 export interface FunctionsCoreApiGetFunctionCapabilitiesRequest {
     /**
      * 
@@ -4106,12 +4245,34 @@ export interface FunctionsCoreApiGetFunctionCapabilitiesRequest {
     functionId: number
 }
 
+export interface FunctionsCoreApiGetFunctionCapabilities0Request {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApigetFunctionCapabilities_3
+     */
+    functionId: number
+}
+
 export interface FunctionsCoreApiGetFunctionDetailsRequest {
     /**
      * 
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsCoreApigetFunctionDetails
+     */
+    functionId: number
+}
+
+export interface FunctionsCoreApiGetFunctionDetails0Request {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApigetFunctionDetails_4
      */
     functionId: number
 }
@@ -4156,7 +4317,7 @@ export interface FunctionsCoreApiGetFunctionStrings0Request {
      * Minimum: 1
      * Defaults to: undefined
      * @type number
-     * @memberof FunctionsCoreApigetFunctionStrings_1
+     * @memberof FunctionsCoreApigetFunctionStrings_5
      */
     functionId: number
     /**
@@ -4164,7 +4325,7 @@ export interface FunctionsCoreApiGetFunctionStrings0Request {
      * Minimum: 1
      * Defaults to: 1
      * @type number
-     * @memberof FunctionsCoreApigetFunctionStrings_1
+     * @memberof FunctionsCoreApigetFunctionStrings_5
      */
     page?: number
     /**
@@ -4173,16 +4334,83 @@ export interface FunctionsCoreApiGetFunctionStrings0Request {
      * Maximum: 500
      * Defaults to: 100
      * @type number
-     * @memberof FunctionsCoreApigetFunctionStrings_1
+     * @memberof FunctionsCoreApigetFunctionStrings_5
      */
     pageSize?: number
     /**
      * Filter by string value (case-insensitive substring match).
      * Defaults to: undefined
      * @type string
-     * @memberof FunctionsCoreApigetFunctionStrings_1
+     * @memberof FunctionsCoreApigetFunctionStrings_5
      */
     search?: string
+}
+
+export interface FunctionsCoreApiGetFunctionsCalleesCallersRequest {
+    /**
+     * Function IDs to fetch edges for.
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof FunctionsCoreApigetFunctionsCalleesCallers
+     */
+    functionIds: Array<number>
+}
+
+export interface FunctionsCoreApiGetFunctionsMatchesRequest {
+    /**
+     * Source function IDs whose matches to fetch.
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof FunctionsCoreApigetFunctionsMatches
+     */
+    functionIds: Array<number>
+}
+
+export interface FunctionsCoreApiGetFunctionsMatchingStatusRequest {
+    /**
+     * Source function IDs whose matches to fetch.
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof FunctionsCoreApigetFunctionsMatchingStatus
+     */
+    functionIds: Array<number>
+}
+
+export interface FunctionsCoreApiListAnalysisFunctionsRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApilistAnalysisFunctions
+     */
+    analysisId: number
+    /**
+     * Pagination offset. Defaults to 0.
+     * Minimum: 0
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApilistAnalysisFunctions
+     */
+    offset?: number
+    /**
+     * Page size. Defaults to 100.
+     * Minimum: 1
+     * Maximum: 500
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApilistAnalysisFunctions
+     */
+    limit?: number
+}
+
+export interface FunctionsCoreApiStartFunctionsMatchingRequest {
+    /**
+     * 
+     * @type StartMatchingForFunctionsInputBody
+     * @memberof FunctionsCoreApistartFunctionsMatching
+     */
+    startMatchingForFunctionsInputBody: StartMatchingForFunctionsInputBody
 }
 
 export class ObjectFunctionsCoreApi {
@@ -4391,6 +4619,24 @@ export class ObjectFunctionsCoreApi {
     }
 
     /**
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function disassembly
+     * @param param the request object
+     */
+    public getFunctionBlocks_1WithHttpInfo(param: FunctionsCoreApiGetFunctionBlocks0Request, options?: ConfigurationOptions): Promise<HttpInfo<DisassemblyOutputBody>> {
+        return this.api.getFunctionBlocks_1WithHttpInfo(param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function disassembly
+     * @param param the request object
+     */
+    public getFunctionBlocks_1(param: FunctionsCoreApiGetFunctionBlocks0Request, options?: ConfigurationOptions): Promise<DisassemblyOutputBody> {
+        return this.api.getFunctionBlocks_1(param.functionId,  options).toPromise();
+    }
+
+    /**
      * Get list of functions that call or are called by the specified function
      * @param param the request object
      */
@@ -4423,6 +4669,24 @@ export class ObjectFunctionsCoreApi {
     }
 
     /**
+     * Returns both the outgoing call edges (callees) and incoming call edges (callers) for a single function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get callees and callers for a function
+     * @param param the request object
+     */
+    public getFunctionCalleesCallers_2WithHttpInfo(param: FunctionsCoreApiGetFunctionCalleesCallers0Request, options?: ConfigurationOptions): Promise<HttpInfo<CallEdgesOutputBody>> {
+        return this.api.getFunctionCalleesCallers_2WithHttpInfo(param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Returns both the outgoing call edges (callees) and incoming call edges (callers) for a single function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get callees and callers for a function
+     * @param param the request object
+     */
+    public getFunctionCalleesCallers_2(param: FunctionsCoreApiGetFunctionCalleesCallers0Request, options?: ConfigurationOptions): Promise<CallEdgesOutputBody> {
+        return this.api.getFunctionCalleesCallers_2(param.functionId,  options).toPromise();
+    }
+
+    /**
      * Retrieve a functions capabilities
      * @param param the request object
      */
@@ -4439,6 +4703,24 @@ export class ObjectFunctionsCoreApi {
     }
 
     /**
+     * Returns the capability findings (CAPA-style behaviour matches) associated with the given function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get capabilities for a function
+     * @param param the request object
+     */
+    public getFunctionCapabilities_3WithHttpInfo(param: FunctionsCoreApiGetFunctionCapabilities0Request, options?: ConfigurationOptions): Promise<HttpInfo<CapabilitiesOutputBody>> {
+        return this.api.getFunctionCapabilities_3WithHttpInfo(param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Returns the capability findings (CAPA-style behaviour matches) associated with the given function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get capabilities for a function
+     * @param param the request object
+     */
+    public getFunctionCapabilities_3(param: FunctionsCoreApiGetFunctionCapabilities0Request, options?: ConfigurationOptions): Promise<CapabilitiesOutputBody> {
+        return this.api.getFunctionCapabilities_3(param.functionId,  options).toPromise();
+    }
+
+    /**
      * Get function details
      * @param param the request object
      */
@@ -4452,6 +4734,24 @@ export class ObjectFunctionsCoreApi {
      */
     public getFunctionDetails(param: FunctionsCoreApiGetFunctionDetailsRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionsDetailResponse> {
         return this.api.getFunctionDetails(param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Returns metadata for a single function — name, virtual address, size, debug status, binary it belongs to.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function details
+     * @param param the request object
+     */
+    public getFunctionDetails_4WithHttpInfo(param: FunctionsCoreApiGetFunctionDetails0Request, options?: ConfigurationOptions): Promise<HttpInfo<FunctionDetailsOutputBody>> {
+        return this.api.getFunctionDetails_4WithHttpInfo(param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Returns metadata for a single function — name, virtual address, size, debug status, binary it belongs to.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function details
+     * @param param the request object
+     */
+    public getFunctionDetails_4(param: FunctionsCoreApiGetFunctionDetails0Request, options?: ConfigurationOptions): Promise<FunctionDetailsOutputBody> {
+        return this.api.getFunctionDetails_4(param.functionId,  options).toPromise();
     }
 
     /**
@@ -4477,8 +4777,8 @@ export class ObjectFunctionsCoreApi {
      * List strings for a function.
      * @param param the request object
      */
-    public getFunctionStrings_1WithHttpInfo(param: FunctionsCoreApiGetFunctionStrings0Request, options?: ConfigurationOptions): Promise<HttpInfo<ListFunctionStringsOutputBody>> {
-        return this.api.getFunctionStrings_1WithHttpInfo(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
+    public getFunctionStrings_5WithHttpInfo(param: FunctionsCoreApiGetFunctionStrings0Request, options?: ConfigurationOptions): Promise<HttpInfo<ListFunctionStringsOutputBody>> {
+        return this.api.getFunctionStrings_5WithHttpInfo(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
     }
 
     /**
@@ -4486,8 +4786,98 @@ export class ObjectFunctionsCoreApi {
      * List strings for a function.
      * @param param the request object
      */
-    public getFunctionStrings_1(param: FunctionsCoreApiGetFunctionStrings0Request, options?: ConfigurationOptions): Promise<ListFunctionStringsOutputBody> {
-        return this.api.getFunctionStrings_1(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
+    public getFunctionStrings_5(param: FunctionsCoreApiGetFunctionStrings0Request, options?: ConfigurationOptions): Promise<ListFunctionStringsOutputBody> {
+        return this.api.getFunctionStrings_5(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
+    }
+
+    /**
+     * Bulk variant — pass `function_ids` as a query parameter (comma-separated or repeated). Caller must have access to every supplied function or the whole request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get callees and callers for many functions
+     * @param param the request object
+     */
+    public getFunctionsCalleesCallersWithHttpInfo(param: FunctionsCoreApiGetFunctionsCalleesCallersRequest, options?: ConfigurationOptions): Promise<HttpInfo<CallEdgesOutputBody>> {
+        return this.api.getFunctionsCalleesCallersWithHttpInfo(param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Bulk variant — pass `function_ids` as a query parameter (comma-separated or repeated). Caller must have access to every supplied function or the whole request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get callees and callers for many functions
+     * @param param the request object
+     */
+    public getFunctionsCalleesCallers(param: FunctionsCoreApiGetFunctionsCalleesCallersRequest, options?: ConfigurationOptions): Promise<CallEdgesOutputBody> {
+        return this.api.getFunctionsCalleesCallers(param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get function-matching results for an explicit set of functions
+     * @param param the request object
+     */
+    public getFunctionsMatchesWithHttpInfo(param: FunctionsCoreApiGetFunctionsMatchesRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetMatchesOutputBody>> {
+        return this.api.getFunctionsMatchesWithHttpInfo(param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get function-matching results for an explicit set of functions
+     * @param param the request object
+     */
+    public getFunctionsMatches(param: FunctionsCoreApiGetFunctionsMatchesRequest, options?: ConfigurationOptions): Promise<GetMatchesOutputBody> {
+        return this.api.getFunctionsMatches(param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Returns the matching workflow\'s current status for the supplied function IDs. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get function-matching status for an explicit set of functions
+     * @param param the request object
+     */
+    public getFunctionsMatchingStatusWithHttpInfo(param: FunctionsCoreApiGetFunctionsMatchingStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetMatchesStatusOutputBody>> {
+        return this.api.getFunctionsMatchingStatusWithHttpInfo(param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Returns the matching workflow\'s current status for the supplied function IDs. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get function-matching status for an explicit set of functions
+     * @param param the request object
+     */
+    public getFunctionsMatchingStatus(param: FunctionsCoreApiGetFunctionsMatchingStatusRequest, options?: ConfigurationOptions): Promise<GetMatchesStatusOutputBody> {
+        return this.api.getFunctionsMatchingStatus(param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Returns a paginated list of functions belonging to the analysis. `total_count` is the full population size, ignoring pagination.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List functions in an analysis
+     * @param param the request object
+     */
+    public listAnalysisFunctionsWithHttpInfo(param: FunctionsCoreApiListAnalysisFunctionsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAnalysisFunctionsOutputBody>> {
+        return this.api.listAnalysisFunctionsWithHttpInfo(param.analysisId, param.offset, param.limit,  options).toPromise();
+    }
+
+    /**
+     * Returns a paginated list of functions belonging to the analysis. `total_count` is the full population size, ignoring pagination.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List functions in an analysis
+     * @param param the request object
+     */
+    public listAnalysisFunctions(param: FunctionsCoreApiListAnalysisFunctionsRequest, options?: ConfigurationOptions): Promise<ListAnalysisFunctionsOutputBody> {
+        return this.api.listAnalysisFunctions(param.analysisId, param.offset, param.limit,  options).toPromise();
+    }
+
+    /**
+     * Dispatches the function-matching workflow against the provided function IDs. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Start function matching for an explicit set of functions
+     * @param param the request object
+     */
+    public startFunctionsMatchingWithHttpInfo(param: FunctionsCoreApiStartFunctionsMatchingRequest, options?: ConfigurationOptions): Promise<HttpInfo<StartMatchingOutputBody>> {
+        return this.api.startFunctionsMatchingWithHttpInfo(param.startMatchingForFunctionsInputBody,  options).toPromise();
+    }
+
+    /**
+     * Dispatches the function-matching workflow against the provided function IDs. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Start function matching for an explicit set of functions
+     * @param param the request object
+     */
+    public startFunctionsMatching(param: FunctionsCoreApiStartFunctionsMatchingRequest, options?: ConfigurationOptions): Promise<StartMatchingOutputBody> {
+        return this.api.startFunctionsMatching(param.startMatchingForFunctionsInputBody,  options).toPromise();
     }
 
 }
@@ -4554,6 +4944,53 @@ export interface FunctionsDataTypesApiGetFunctionDataTypesRequest {
     functionId: number
 }
 
+export interface FunctionsDataTypesApiGetFunctionDataTypes0Request {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDataTypesApigetFunctionDataTypes_1
+     */
+    analysisId: number
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDataTypesApigetFunctionDataTypes_1
+     */
+    functionId: number
+}
+
+export interface FunctionsDataTypesApiListAnalysisFunctionsDataTypesRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDataTypesApilistAnalysisFunctionsDataTypes
+     */
+    analysisId: number
+    /**
+     * Pagination offset. Defaults to 0.
+     * Minimum: 0
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDataTypesApilistAnalysisFunctionsDataTypes
+     */
+    offset?: number
+    /**
+     * Page size. Defaults to 100.
+     * Minimum: 1
+     * Maximum: 500
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDataTypesApilistAnalysisFunctionsDataTypes
+     */
+    limit?: number
+}
+
 export interface FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest {
     /**
      * 
@@ -4579,6 +5016,16 @@ export interface FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest {
      * @memberof FunctionsDataTypesApilistFunctionDataTypesForFunctions
      */
     functionIds?: Array<number>
+}
+
+export interface FunctionsDataTypesApiListFunctionsDataTypesRequest {
+    /**
+     * Function IDs to fetch data-types for.
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof FunctionsDataTypesApilistFunctionsDataTypes
+     */
+    functionIds: Array<number>
 }
 
 export class ObjectFunctionsDataTypesApi {
@@ -4661,6 +5108,42 @@ export class ObjectFunctionsDataTypesApi {
     }
 
     /**
+     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get data types for a single function
+     * @param param the request object
+     */
+    public getFunctionDataTypes_1WithHttpInfo(param: FunctionsDataTypesApiGetFunctionDataTypes0Request, options?: ConfigurationOptions): Promise<HttpInfo<DataTypesEntry>> {
+        return this.api.getFunctionDataTypes_1WithHttpInfo(param.analysisId, param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get data types for a single function
+     * @param param the request object
+     */
+    public getFunctionDataTypes_1(param: FunctionsDataTypesApiGetFunctionDataTypes0Request, options?: ConfigurationOptions): Promise<DataTypesEntry> {
+        return this.api.getFunctionDataTypes_1(param.analysisId, param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Paginated read of the stored data-types blob for each function in the analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List data types for all functions in an analysis
+     * @param param the request object
+     */
+    public listAnalysisFunctionsDataTypesWithHttpInfo(param: FunctionsDataTypesApiListAnalysisFunctionsDataTypesRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAnalysisFunctionsDataTypesOutputBody>> {
+        return this.api.listAnalysisFunctionsDataTypesWithHttpInfo(param.analysisId, param.offset, param.limit,  options).toPromise();
+    }
+
+    /**
+     * Paginated read of the stored data-types blob for each function in the analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List data types for all functions in an analysis
+     * @param param the request object
+     */
+    public listAnalysisFunctionsDataTypes(param: FunctionsDataTypesApiListAnalysisFunctionsDataTypesRequest, options?: ConfigurationOptions): Promise<ListAnalysisFunctionsDataTypesOutputBody> {
+        return this.api.listAnalysisFunctionsDataTypes(param.analysisId, param.offset, param.limit,  options).toPromise();
+    }
+
+    /**
      * Returns data types for multiple functions with optional function ID filtering
      * List Function Data Types
      * @param param the request object
@@ -4694,6 +5177,24 @@ export class ObjectFunctionsDataTypesApi {
      */
     public listFunctionDataTypesForFunctions(param: FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
         return this.api.listFunctionDataTypesForFunctions(param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Returns the stored data-types blob for each supplied function ID. Caller must have read access to every function or the request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get data types for many functions
+     * @param param the request object
+     */
+    public listFunctionsDataTypesWithHttpInfo(param: FunctionsDataTypesApiListFunctionsDataTypesRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListFunctionsDataTypesOutputBody>> {
+        return this.api.listFunctionsDataTypesWithHttpInfo(param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Returns the stored data-types blob for each supplied function ID. Caller must have read access to every function or the request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get data types for many functions
+     * @param param the request object
+     */
+    public listFunctionsDataTypes(param: FunctionsDataTypesApiListFunctionsDataTypesRequest, options?: ConfigurationOptions): Promise<ListFunctionsDataTypesOutputBody> {
+        return this.api.listFunctionsDataTypes(param.functionIds,  options).toPromise();
     }
 
 }

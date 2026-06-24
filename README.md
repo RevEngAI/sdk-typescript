@@ -69,6 +69,8 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**getAnalysisBasicInfo_0**](docs/AnalysesCoreApi.md#getAnalysisBasicInfo_0) | **GET** /v3/analyses/{analysis_id}/basic | Get basic analysis information
 *AnalysesCoreApi* | [**getAnalysisBytes**](docs/AnalysesCoreApi.md#getAnalysisBytes) | **GET** /v3/analyses/{analysis_id}/bytes | Get the bytes of a binary
 *AnalysesCoreApi* | [**getAnalysisFunctionMap**](docs/AnalysesCoreApi.md#getAnalysisFunctionMap) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
+*AnalysesCoreApi* | [**getAnalysisFunctionMatches**](docs/AnalysesCoreApi.md#getAnalysisFunctionMatches) | **GET** /v3/analyses/{analysis_id}/functions/matches | Get function-matching results for an analysis
+*AnalysesCoreApi* | [**getAnalysisFunctionMatchingStatus**](docs/AnalysesCoreApi.md#getAnalysisFunctionMatchingStatus) | **GET** /v3/analyses/{analysis_id}/functions/matches/status | Get function-matching status for an analysis
 *AnalysesCoreApi* | [**getAnalysisLogs**](docs/AnalysesCoreApi.md#getAnalysisLogs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
 *AnalysesCoreApi* | [**getAnalysisParams**](docs/AnalysesCoreApi.md#getAnalysisParams) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 *AnalysesCoreApi* | [**getAnalysisStatus**](docs/AnalysesCoreApi.md#getAnalysisStatus) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
@@ -79,6 +81,7 @@ Class | Method | HTTP request | Description
 *AnalysesCoreApi* | [**lookupBinaryId**](docs/AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
 *AnalysesCoreApi* | [**putAnalysisStrings**](docs/AnalysesCoreApi.md#putAnalysisStrings) | **PUT** /v2/analyses/{analysis_id}/strings | Add strings to the analysis
 *AnalysesCoreApi* | [**requeueAnalysis**](docs/AnalysesCoreApi.md#requeueAnalysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
+*AnalysesCoreApi* | [**startAnalysisFunctionMatching**](docs/AnalysesCoreApi.md#startAnalysisFunctionMatching) | **POST** /v3/analyses/{analysis_id}/functions/matches | Start function matching for an analysis
 *AnalysesCoreApi* | [**updateAnalysis**](docs/AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 *AnalysesCoreApi* | [**updateAnalysisTags**](docs/AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 *AnalysesCoreApi* | [**uploadFile**](docs/AnalysesCoreApi.md#uploadFile) | **POST** /v2/upload | Upload File
@@ -158,18 +161,30 @@ Class | Method | HTTP request | Description
 *FunctionsCoreApi* | [**getAnalysisStrings**](docs/FunctionsCoreApi.md#getAnalysisStrings) | **GET** /v2/analyses/{analysis_id}/functions/strings | Get string information found in the Analysis
 *FunctionsCoreApi* | [**getAnalysisStringsStatus**](docs/FunctionsCoreApi.md#getAnalysisStringsStatus) | **GET** /v2/analyses/{analysis_id}/functions/strings/status | Get string processing state for the Analysis
 *FunctionsCoreApi* | [**getFunctionBlocks**](docs/FunctionsCoreApi.md#getFunctionBlocks) | **GET** /v2/functions/{function_id}/blocks | Get disassembly blocks related to the function
+*FunctionsCoreApi* | [**getFunctionBlocks_0**](docs/FunctionsCoreApi.md#getFunctionBlocks_0) | **GET** /v3/functions/{function_id}/blocks | Get function disassembly
 *FunctionsCoreApi* | [**getFunctionCalleesCallers**](docs/FunctionsCoreApi.md#getFunctionCalleesCallers) | **GET** /v2/functions/{function_id}/callees_callers | Get list of functions that call or are called by the specified function
 *FunctionsCoreApi* | [**getFunctionCalleesCallersBulk**](docs/FunctionsCoreApi.md#getFunctionCalleesCallersBulk) | **GET** /v2/functions/callees_callers | Get list of functions that call or are called for a list of functions
+*FunctionsCoreApi* | [**getFunctionCalleesCallers_0**](docs/FunctionsCoreApi.md#getFunctionCalleesCallers_0) | **GET** /v3/functions/{function_id}/callees-callers | Get callees and callers for a function
 *FunctionsCoreApi* | [**getFunctionCapabilities**](docs/FunctionsCoreApi.md#getFunctionCapabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
+*FunctionsCoreApi* | [**getFunctionCapabilities_0**](docs/FunctionsCoreApi.md#getFunctionCapabilities_0) | **GET** /v3/functions/{function_id}/capabilities | Get capabilities for a function
 *FunctionsCoreApi* | [**getFunctionDetails**](docs/FunctionsCoreApi.md#getFunctionDetails) | **GET** /v2/functions/{function_id} | Get function details
+*FunctionsCoreApi* | [**getFunctionDetails_0**](docs/FunctionsCoreApi.md#getFunctionDetails_0) | **GET** /v3/functions/{function_id} | Get function details
 *FunctionsCoreApi* | [**getFunctionStrings**](docs/FunctionsCoreApi.md#getFunctionStrings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
 *FunctionsCoreApi* | [**getFunctionStrings_0**](docs/FunctionsCoreApi.md#getFunctionStrings_0) | **GET** /v3/functions/{function_id}/strings | List strings for a function.
+*FunctionsCoreApi* | [**getFunctionsCalleesCallers**](docs/FunctionsCoreApi.md#getFunctionsCalleesCallers) | **GET** /v3/functions/callees-callers | Get callees and callers for many functions
+*FunctionsCoreApi* | [**getFunctionsMatches**](docs/FunctionsCoreApi.md#getFunctionsMatches) | **GET** /v3/functions/matches | Get function-matching results for an explicit set of functions
+*FunctionsCoreApi* | [**getFunctionsMatchingStatus**](docs/FunctionsCoreApi.md#getFunctionsMatchingStatus) | **GET** /v3/functions/matches/status | Get function-matching status for an explicit set of functions
+*FunctionsCoreApi* | [**listAnalysisFunctions**](docs/FunctionsCoreApi.md#listAnalysisFunctions) | **GET** /v3/analyses/{analysis_id}/functions | List functions in an analysis
+*FunctionsCoreApi* | [**startFunctionsMatching**](docs/FunctionsCoreApi.md#startFunctionsMatching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 *FunctionsDataTypesApi* | [**batchUpdateFunctionDataTypes**](docs/FunctionsDataTypesApi.md#batchUpdateFunctionDataTypes) | **PUT** /v3/analyses/{analysis_id}/functions/data-types | Batch update function data types
 *FunctionsDataTypesApi* | [**generateFunctionDataTypesForAnalysis**](docs/FunctionsDataTypesApi.md#generateFunctionDataTypesForAnalysis) | **POST** /v2/analyses/{analysis_id}/functions/data_types | Generate Function Data Types
 *FunctionsDataTypesApi* | [**generateFunctionDataTypesForFunctions**](docs/FunctionsDataTypesApi.md#generateFunctionDataTypesForFunctions) | **POST** /v2/functions/data_types | Generate Function Data Types for an arbitrary list of functions
 *FunctionsDataTypesApi* | [**getFunctionDataTypes**](docs/FunctionsDataTypesApi.md#getFunctionDataTypes) | **GET** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Get Function Data Types
+*FunctionsDataTypesApi* | [**getFunctionDataTypes_0**](docs/FunctionsDataTypesApi.md#getFunctionDataTypes_0) | **GET** /v3/analyses/{analysis_id}/functions/{function_id}/data-types | Get data types for a single function
+*FunctionsDataTypesApi* | [**listAnalysisFunctionsDataTypes**](docs/FunctionsDataTypesApi.md#listAnalysisFunctionsDataTypes) | **GET** /v3/analyses/{analysis_id}/functions/data-types | List data types for all functions in an analysis
 *FunctionsDataTypesApi* | [**listFunctionDataTypesForAnalysis**](docs/FunctionsDataTypesApi.md#listFunctionDataTypesForAnalysis) | **GET** /v2/analyses/{analysis_id}/functions/data_types | List Function Data Types
 *FunctionsDataTypesApi* | [**listFunctionDataTypesForFunctions**](docs/FunctionsDataTypesApi.md#listFunctionDataTypesForFunctions) | **GET** /v2/functions/data_types | List Function Data Types
+*FunctionsDataTypesApi* | [**listFunctionsDataTypes**](docs/FunctionsDataTypesApi.md#listFunctionsDataTypes) | **GET** /v3/functions/data-types | Get data types for many functions
 *FunctionsRenamingHistoryApi* | [**batchRenameFunction**](docs/FunctionsRenamingHistoryApi.md#batchRenameFunction) | **POST** /v2/functions/rename/batch | Batch Rename Functions
 *FunctionsRenamingHistoryApi* | [**batchRenameFunctions**](docs/FunctionsRenamingHistoryApi.md#batchRenameFunctions) | **POST** /v3/functions/rename | Batch rename functions
 *FunctionsRenamingHistoryApi* | [**getFunctionHistory**](docs/FunctionsRenamingHistoryApi.md#getFunctionHistory) | **GET** /v3/functions/{function_id}/history | Get function name history
@@ -209,6 +224,7 @@ Class | Method | HTTP request | Description
  - [AnalysisCreateRequest](AnalysisCreateRequest.md)
  - [AnalysisCreateResponse](AnalysisCreateResponse.md)
  - [AnalysisDetailResponse](AnalysisDetailResponse.md)
+ - [AnalysisFunctionEntry](AnalysisFunctionEntry.md)
  - [AnalysisFunctionMapping](AnalysisFunctionMapping.md)
  - [AnalysisFunctionMatchingRequest](AnalysisFunctionMatchingRequest.md)
  - [AnalysisFunctions](AnalysisFunctions.md)
@@ -307,6 +323,8 @@ Class | Method | HTTP request | Description
  - [BaseResponseVulnerabilities](BaseResponseVulnerabilities.md)
  - [BaseResponseXrefResponse](BaseResponseXrefResponse.md)
  - [Basic](Basic.md)
+ - [BatchBinaryMatchResult](BatchBinaryMatchResult.md)
+ - [BatchMatchingOutputBody](BatchMatchingOutputBody.md)
  - [BatchRenameInputBody](BatchRenameInputBody.md)
  - [BatchRenameItem](BatchRenameItem.md)
  - [BatchRenameOutputBody](BatchRenameOutputBody.md)
@@ -326,11 +344,15 @@ Class | Method | HTTP request | Description
  - [BinarySearchResult](BinarySearchResult.md)
  - [BinaryTaskStatus](BinaryTaskStatus.md)
  - [BulkDeleteAnalysesRequest](BulkDeleteAnalysesRequest.md)
+ - [CallEdge](CallEdge.md)
+ - [CallEdgesOutputBody](CallEdgesOutputBody.md)
  - [CalleeFunctionInfo](CalleeFunctionInfo.md)
  - [CalleesCallerFunctionsResponse](CalleesCallerFunctionsResponse.md)
  - [CallerFunctionInfo](CallerFunctionInfo.md)
  - [Capabilities](Capabilities.md)
  - [CapabilitiesAgentResponse](CapabilitiesAgentResponse.md)
+ - [CapabilitiesOutputBody](CapabilitiesOutputBody.md)
+ - [CapabilityEntry](CapabilityEntry.md)
  - [ChildBinariesResponse](ChildBinariesResponse.md)
  - [CodeSignatureModel](CodeSignatureModel.md)
  - [CollectionBinariesUpdateRequest](CollectionBinariesUpdateRequest.md)
@@ -366,11 +388,13 @@ Class | Method | HTTP request | Description
  - [CreateConversationRequest](CreateConversationRequest.md)
  - [CreatePortalSessionInputBody](CreatePortalSessionInputBody.md)
  - [Created](Created.md)
+ - [DataTypesEntry](DataTypesEntry.md)
  - [DecompFailedEvent](DecompFailedEvent.md)
  - [DecompFinishedEvent](DecompFinishedEvent.md)
  - [DecompilationCommentContext](DecompilationCommentContext.md)
  - [DecompilationData](DecompilationData.md)
  - [DieMatch](DieMatch.md)
+ - [DisassemblyOutputBody](DisassemblyOutputBody.md)
  - [DnsQuery](DnsQuery.md)
  - [DrakvufFileMetadata](DrakvufFileMetadata.md)
  - [DynamicExecutionStatus](DynamicExecutionStatus.md)
@@ -421,16 +445,20 @@ Class | Method | HTTP request | Description
  - [FileHashes](FileHashes.md)
  - [FileMetadata](FileMetadata.md)
  - [Filters](Filters.md)
+ - [FunctionArgument](FunctionArgument.md)
  - [FunctionBlockDestinationResponse](FunctionBlockDestinationResponse.md)
  - [FunctionBlockResponse](FunctionBlockResponse.md)
  - [FunctionBlocksResponse](FunctionBlocksResponse.md)
  - [FunctionBoundary](FunctionBoundary.md)
+ - [FunctionCallEdges](FunctionCallEdges.md)
  - [FunctionCapabilityResponse](FunctionCapabilityResponse.md)
  - [FunctionDataTypes](FunctionDataTypes.md)
  - [FunctionDataTypesList](FunctionDataTypesList.md)
  - [FunctionDataTypesListItem](FunctionDataTypesListItem.md)
  - [FunctionDataTypesParams](FunctionDataTypesParams.md)
  - [FunctionDataTypesStatus](FunctionDataTypesStatus.md)
+ - [FunctionDependency](FunctionDependency.md)
+ - [FunctionDetailsOutputBody](FunctionDetailsOutputBody.md)
  - [FunctionHeader](FunctionHeader.md)
  - [FunctionInfo](FunctionInfo.md)
  - [FunctionInfoFuncDepsInner](FunctionInfoFuncDepsInner.md)
@@ -448,6 +476,7 @@ Class | Method | HTTP request | Description
  - [FunctionSearchResponse](FunctionSearchResponse.md)
  - [FunctionSearchResult](FunctionSearchResult.md)
  - [FunctionSourceType](FunctionSourceType.md)
+ - [FunctionStackVariable](FunctionStackVariable.md)
  - [FunctionString](FunctionString.md)
  - [FunctionStringItem](FunctionStringItem.md)
  - [FunctionStringsResponse](FunctionStringsResponse.md)
@@ -462,6 +491,8 @@ Class | Method | HTTP request | Description
  - [GetAiDecompilationRatingResponse](GetAiDecompilationRatingResponse.md)
  - [GetAnalysisStringsStatusOutputBody](GetAnalysisStringsStatusOutputBody.md)
  - [GetCollectionOutputBody](GetCollectionOutputBody.md)
+ - [GetMatchesOutputBody](GetMatchesOutputBody.md)
+ - [GetMatchesStatusOutputBody](GetMatchesStatusOutputBody.md)
  - [GetProductsOutputBody](GetProductsOutputBody.md)
  - [GetPublicUserResponse](GetPublicUserResponse.md)
  - [GetSubscriptionOutputBody](GetSubscriptionOutputBody.md)
@@ -474,12 +505,16 @@ Class | Method | HTTP request | Description
  - [ImportModel](ImportModel.md)
  - [InlineComment](InlineComment.md)
  - [InsertAnalysisLogRequest](InsertAnalysisLogRequest.md)
+ - [ListAnalysisFunctionsDataTypesOutputBody](ListAnalysisFunctionsDataTypesOutputBody.md)
+ - [ListAnalysisFunctionsOutputBody](ListAnalysisFunctionsOutputBody.md)
  - [ListAnalysisStringsOutputBody](ListAnalysisStringsOutputBody.md)
  - [ListCollectionResults](ListCollectionResults.md)
  - [ListCollectionsOutputBody](ListCollectionsOutputBody.md)
  - [ListFunctionStringsOutputBody](ListFunctionStringsOutputBody.md)
+ - [ListFunctionsDataTypesOutputBody](ListFunctionsDataTypesOutputBody.md)
  - [Logs](Logs.md)
  - [MITRETechnique](MITRETechnique.md)
+ - [MatchFilters](MatchFilters.md)
  - [MatchedFunction](MatchedFunction.md)
  - [MatchedFunctionSuggestion](MatchedFunctionSuggestion.md)
  - [MemdumpEntry](MemdumpEntry.md)
@@ -566,6 +601,10 @@ Class | Method | HTTP request | Description
  - [SseEventToolCallStartData](SseEventToolCallStartData.md)
  - [SseEventToolConfirmationRequiredData](SseEventToolConfirmationRequiredData.md)
  - [StackVariable](StackVariable.md)
+ - [StartBatchMatchingInputBody](StartBatchMatchingInputBody.md)
+ - [StartMatchingForAnalysisInputBody](StartMatchingForAnalysisInputBody.md)
+ - [StartMatchingForFunctionsInputBody](StartMatchingForFunctionsInputBody.md)
+ - [StartMatchingOutputBody](StartMatchingOutputBody.md)
  - [StartupInfo](StartupInfo.md)
  - [StatusInput](StatusInput.md)
  - [StatusOutput](StatusOutput.md)
