@@ -17,6 +17,7 @@ export * from '../models/AnalysisConfig';
 export * from '../models/AnalysisCreateRequest';
 export * from '../models/AnalysisCreateResponse';
 export * from '../models/AnalysisDetailResponse';
+export * from '../models/AnalysisFunctionEntry';
 export * from '../models/AnalysisFunctionMapping';
 export * from '../models/AnalysisFunctionMatchingRequest';
 export * from '../models/AnalysisFunctions';
@@ -115,6 +116,8 @@ export * from '../models/BaseResponseUploadResponse';
 export * from '../models/BaseResponseVulnerabilities';
 export * from '../models/BaseResponseXrefResponse';
 export * from '../models/Basic';
+export * from '../models/BatchBinaryMatchResult';
+export * from '../models/BatchMatchingOutputBody';
 export * from '../models/BatchRenameInputBody';
 export * from '../models/BatchRenameItem';
 export * from '../models/BatchRenameOutputBody';
@@ -134,11 +137,15 @@ export * from '../models/BinarySearchResponse';
 export * from '../models/BinarySearchResult';
 export * from '../models/BinaryTaskStatus';
 export * from '../models/BulkDeleteAnalysesRequest';
+export * from '../models/CallEdge';
+export * from '../models/CallEdgesOutputBody';
 export * from '../models/CalleeFunctionInfo';
 export * from '../models/CalleesCallerFunctionsResponse';
 export * from '../models/CallerFunctionInfo';
 export * from '../models/Capabilities';
 export * from '../models/CapabilitiesAgentResponse';
+export * from '../models/CapabilitiesOutputBody';
+export * from '../models/CapabilityEntry';
 export * from '../models/ChildBinariesResponse';
 export * from '../models/CodeSignatureModel';
 export * from '../models/CollectionBinariesUpdateRequest';
@@ -174,11 +181,13 @@ export * from '../models/CreateCollectionOutputBody';
 export * from '../models/CreateConversationRequest';
 export * from '../models/CreatePortalSessionInputBody';
 export * from '../models/Created';
+export * from '../models/DataTypesEntry';
 export * from '../models/DecompFailedEvent';
 export * from '../models/DecompFinishedEvent';
 export * from '../models/DecompilationCommentContext';
 export * from '../models/DecompilationData';
 export * from '../models/DieMatch';
+export * from '../models/DisassemblyOutputBody';
 export * from '../models/DnsQuery';
 export * from '../models/DrakvufFileMetadata';
 export * from '../models/DynamicExecutionStatus';
@@ -229,16 +238,20 @@ export * from '../models/FileFormat';
 export * from '../models/FileHashes';
 export * from '../models/FileMetadata';
 export * from '../models/Filters';
+export * from '../models/FunctionArgument';
 export * from '../models/FunctionBlockDestinationResponse';
 export * from '../models/FunctionBlockResponse';
 export * from '../models/FunctionBlocksResponse';
 export * from '../models/FunctionBoundary';
+export * from '../models/FunctionCallEdges';
 export * from '../models/FunctionCapabilityResponse';
 export * from '../models/FunctionDataTypes';
 export * from '../models/FunctionDataTypesList';
 export * from '../models/FunctionDataTypesListItem';
 export * from '../models/FunctionDataTypesParams';
 export * from '../models/FunctionDataTypesStatus';
+export * from '../models/FunctionDependency';
+export * from '../models/FunctionDetailsOutputBody';
 export * from '../models/FunctionHeader';
 export * from '../models/FunctionInfo';
 export * from '../models/FunctionInfoFuncDepsInner';
@@ -256,6 +269,7 @@ export * from '../models/FunctionRenameMap';
 export * from '../models/FunctionSearchResponse';
 export * from '../models/FunctionSearchResult';
 export * from '../models/FunctionSourceType';
+export * from '../models/FunctionStackVariable';
 export * from '../models/FunctionString';
 export * from '../models/FunctionStringItem';
 export * from '../models/FunctionStringsResponse';
@@ -270,6 +284,8 @@ export * from '../models/GetAdditionalDetailsStatusOutputBody';
 export * from '../models/GetAiDecompilationRatingResponse';
 export * from '../models/GetAnalysisStringsStatusOutputBody';
 export * from '../models/GetCollectionOutputBody';
+export * from '../models/GetMatchesOutputBody';
+export * from '../models/GetMatchesStatusOutputBody';
 export * from '../models/GetProductsOutputBody';
 export * from '../models/GetPublicUserResponse';
 export * from '../models/GetSubscriptionOutputBody';
@@ -282,12 +298,16 @@ export * from '../models/IconModel';
 export * from '../models/ImportModel';
 export * from '../models/InlineComment';
 export * from '../models/InsertAnalysisLogRequest';
+export * from '../models/ListAnalysisFunctionsDataTypesOutputBody';
+export * from '../models/ListAnalysisFunctionsOutputBody';
 export * from '../models/ListAnalysisStringsOutputBody';
 export * from '../models/ListCollectionResults';
 export * from '../models/ListCollectionsOutputBody';
 export * from '../models/ListFunctionStringsOutputBody';
+export * from '../models/ListFunctionsDataTypesOutputBody';
 export * from '../models/Logs';
 export * from '../models/MITRETechnique';
+export * from '../models/MatchFilters';
 export * from '../models/MatchedFunction';
 export * from '../models/MatchedFunctionSuggestion';
 export * from '../models/MemdumpEntry';
@@ -374,6 +394,10 @@ export * from '../models/SseEventToolCallResultData';
 export * from '../models/SseEventToolCallStartData';
 export * from '../models/SseEventToolConfirmationRequiredData';
 export * from '../models/StackVariable';
+export * from '../models/StartBatchMatchingInputBody';
+export * from '../models/StartMatchingForAnalysisInputBody';
+export * from '../models/StartMatchingForFunctionsInputBody';
+export * from '../models/StartMatchingOutputBody';
 export * from '../models/StartupInfo';
 export * from '../models/StatusInput';
 export * from '../models/StatusOutput';
@@ -439,6 +463,7 @@ import { AnalysisConfig } from '../models/AnalysisConfig';
 import { AnalysisCreateRequest          } from '../models/AnalysisCreateRequest';
 import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
 import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
+import { AnalysisFunctionEntry } from '../models/AnalysisFunctionEntry';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
@@ -537,6 +562,8 @@ import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
+import { BatchBinaryMatchResult   , BatchBinaryMatchResultStatusEnum   } from '../models/BatchBinaryMatchResult';
+import { BatchMatchingOutputBody , BatchMatchingOutputBodyStatusEnum   } from '../models/BatchMatchingOutputBody';
 import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
 import { BatchRenameItem } from '../models/BatchRenameItem';
 import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
@@ -556,11 +583,15 @@ import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
+import { CallEdge } from '../models/CallEdge';
+import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
 import { Capabilities } from '../models/Capabilities';
 import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
+import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
+import { CapabilityEntry } from '../models/CapabilityEntry';
 import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
 import { CodeSignatureModel } from '../models/CodeSignatureModel';
 import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
@@ -596,11 +627,13 @@ import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { Created } from '../models/Created';
+import { DataTypesEntry } from '../models/DataTypesEntry';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DecompilationData , DecompilationDataStatusEnum   } from '../models/DecompilationData';
 import { DieMatch } from '../models/DieMatch';
+import { DisassemblyOutputBody } from '../models/DisassemblyOutputBody';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
@@ -651,16 +684,20 @@ import { FileFormat } from '../models/FileFormat';
 import { FileHashes } from '../models/FileHashes';
 import { FileMetadata } from '../models/FileMetadata';
 import { Filters } from '../models/Filters';
+import { FunctionArgument } from '../models/FunctionArgument';
 import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
 import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
 import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
 import { FunctionBoundary } from '../models/FunctionBoundary';
+import { FunctionCallEdges } from '../models/FunctionCallEdges';
 import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
 import { FunctionDataTypes } from '../models/FunctionDataTypes';
 import { FunctionDataTypesList } from '../models/FunctionDataTypesList';
 import { FunctionDataTypesListItem } from '../models/FunctionDataTypesListItem';
 import { FunctionDataTypesParams } from '../models/FunctionDataTypesParams';
 import { FunctionDataTypesStatus } from '../models/FunctionDataTypesStatus';
+import { FunctionDependency } from '../models/FunctionDependency';
+import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
 import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfo } from '../models/FunctionInfo';
 import { FunctionInfoFuncDepsInner } from '../models/FunctionInfoFuncDepsInner';
@@ -678,6 +715,7 @@ import { FunctionRenameMap } from '../models/FunctionRenameMap';
 import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
 import { FunctionSearchResult } from '../models/FunctionSearchResult';
 import { FunctionSourceType } from '../models/FunctionSourceType';
+import { FunctionStackVariable } from '../models/FunctionStackVariable';
 import { FunctionString    } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
@@ -692,6 +730,8 @@ import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDet
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
 import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
+import { GetMatchesOutputBody , GetMatchesOutputBodyStatusEnum   } from '../models/GetMatchesOutputBody';
+import { GetMatchesStatusOutputBody , GetMatchesStatusOutputBodyStatusEnum      } from '../models/GetMatchesStatusOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GetSubscriptionOutputBody    , GetSubscriptionOutputBodyStatusEnum  , GetSubscriptionOutputBodyTierEnum   } from '../models/GetSubscriptionOutputBody';
@@ -704,12 +744,16 @@ import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
+import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
+import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
+import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
+import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
 import { MemdumpEntry } from '../models/MemdumpEntry';
@@ -796,6 +840,10 @@ import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData
 import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
 import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
 import { StackVariable } from '../models/StackVariable';
+import { StartBatchMatchingInputBody } from '../models/StartBatchMatchingInputBody';
+import { StartMatchingForAnalysisInputBody } from '../models/StartMatchingForAnalysisInputBody';
+import { StartMatchingForFunctionsInputBody } from '../models/StartMatchingForFunctionsInputBody';
+import { StartMatchingOutputBody , StartMatchingOutputBodyStatusEnum      } from '../models/StartMatchingOutputBody';
 import { StartupInfo } from '../models/StartupInfo';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
@@ -863,6 +911,8 @@ let enumsMap: Set<string> = new Set<string>([
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
     "ArtifactReasonEnum",
+    "BatchBinaryMatchResultStatusEnum",
+    "BatchMatchingOutputBodyStatusEnum",
     "BatchUpdateDataTypesResultStatusEnum",
     "BinariesTaskStatus",
     "BinaryTaskStatus",
@@ -902,6 +952,8 @@ let enumsMap: Set<string> = new Set<string>([
     "FunctionListItemNameSourceTypeEnum",
     "FunctionMatchingFiltersDebugTypesEnum",
     "FunctionSourceType",
+    "GetMatchesOutputBodyStatusEnum",
+    "GetMatchesStatusOutputBodyStatusEnum",
     "GetSubscriptionOutputBodyStatusEnum",
     "GetSubscriptionOutputBodyTierEnum",
     "IOCTypeEnum",
@@ -916,6 +968,7 @@ let enumsMap: Set<string> = new Set<string>([
     "ReportAnalysisResponseSoftwareTypeEnum",
     "SandboxStartMethod",
     "SandboxTimeout",
+    "StartMatchingOutputBodyStatusEnum",
     "StatusInput",
     "StreamAiDecompilation200ResponseInnerEventEnum",
     "StreamEvents200ResponseInnerEventEnum",
@@ -951,6 +1004,7 @@ let typeMap: {[index: string]: any} = {
     "AnalysisCreateRequest": AnalysisCreateRequest,
     "AnalysisCreateResponse": AnalysisCreateResponse,
     "AnalysisDetailResponse": AnalysisDetailResponse,
+    "AnalysisFunctionEntry": AnalysisFunctionEntry,
     "AnalysisFunctionMapping": AnalysisFunctionMapping,
     "AnalysisFunctionMatchingRequest": AnalysisFunctionMatchingRequest,
     "AnalysisFunctions": AnalysisFunctions,
@@ -1046,6 +1100,8 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseVulnerabilities": BaseResponseVulnerabilities,
     "BaseResponseXrefResponse": BaseResponseXrefResponse,
     "Basic": Basic,
+    "BatchBinaryMatchResult": BatchBinaryMatchResult,
+    "BatchMatchingOutputBody": BatchMatchingOutputBody,
     "BatchRenameInputBody": BatchRenameInputBody,
     "BatchRenameItem": BatchRenameItem,
     "BatchRenameOutputBody": BatchRenameOutputBody,
@@ -1063,11 +1119,15 @@ let typeMap: {[index: string]: any} = {
     "BinarySearchResponse": BinarySearchResponse,
     "BinarySearchResult": BinarySearchResult,
     "BulkDeleteAnalysesRequest": BulkDeleteAnalysesRequest,
+    "CallEdge": CallEdge,
+    "CallEdgesOutputBody": CallEdgesOutputBody,
     "CalleeFunctionInfo": CalleeFunctionInfo,
     "CalleesCallerFunctionsResponse": CalleesCallerFunctionsResponse,
     "CallerFunctionInfo": CallerFunctionInfo,
     "Capabilities": Capabilities,
     "CapabilitiesAgentResponse": CapabilitiesAgentResponse,
+    "CapabilitiesOutputBody": CapabilitiesOutputBody,
+    "CapabilityEntry": CapabilityEntry,
     "ChildBinariesResponse": ChildBinariesResponse,
     "CodeSignatureModel": CodeSignatureModel,
     "CollectionBinariesUpdateRequest": CollectionBinariesUpdateRequest,
@@ -1102,11 +1162,13 @@ let typeMap: {[index: string]: any} = {
     "CreateConversationRequest": CreateConversationRequest,
     "CreatePortalSessionInputBody": CreatePortalSessionInputBody,
     "Created": Created,
+    "DataTypesEntry": DataTypesEntry,
     "DecompFailedEvent": DecompFailedEvent,
     "DecompFinishedEvent": DecompFinishedEvent,
     "DecompilationCommentContext": DecompilationCommentContext,
     "DecompilationData": DecompilationData,
     "DieMatch": DieMatch,
+    "DisassemblyOutputBody": DisassemblyOutputBody,
     "DnsQuery": DnsQuery,
     "DrakvufFileMetadata": DrakvufFileMetadata,
     "DynamicExecutionStatusResponse": DynamicExecutionStatusResponse,
@@ -1154,16 +1216,20 @@ let typeMap: {[index: string]: any} = {
     "FileActivityEntry": FileActivityEntry,
     "FileHashes": FileHashes,
     "FileMetadata": FileMetadata,
+    "FunctionArgument": FunctionArgument,
     "FunctionBlockDestinationResponse": FunctionBlockDestinationResponse,
     "FunctionBlockResponse": FunctionBlockResponse,
     "FunctionBlocksResponse": FunctionBlocksResponse,
     "FunctionBoundary": FunctionBoundary,
+    "FunctionCallEdges": FunctionCallEdges,
     "FunctionCapabilityResponse": FunctionCapabilityResponse,
     "FunctionDataTypes": FunctionDataTypes,
     "FunctionDataTypesList": FunctionDataTypesList,
     "FunctionDataTypesListItem": FunctionDataTypesListItem,
     "FunctionDataTypesParams": FunctionDataTypesParams,
     "FunctionDataTypesStatus": FunctionDataTypesStatus,
+    "FunctionDependency": FunctionDependency,
+    "FunctionDetailsOutputBody": FunctionDetailsOutputBody,
     "FunctionHeader": FunctionHeader,
     "FunctionInfo": FunctionInfo,
     "FunctionInfoFuncDepsInner": FunctionInfoFuncDepsInner,
@@ -1180,6 +1246,7 @@ let typeMap: {[index: string]: any} = {
     "FunctionRenameMap": FunctionRenameMap,
     "FunctionSearchResponse": FunctionSearchResponse,
     "FunctionSearchResult": FunctionSearchResult,
+    "FunctionStackVariable": FunctionStackVariable,
     "FunctionString": FunctionString,
     "FunctionStringItem": FunctionStringItem,
     "FunctionStringsResponse": FunctionStringsResponse,
@@ -1194,6 +1261,8 @@ let typeMap: {[index: string]: any} = {
     "GetAiDecompilationRatingResponse": GetAiDecompilationRatingResponse,
     "GetAnalysisStringsStatusOutputBody": GetAnalysisStringsStatusOutputBody,
     "GetCollectionOutputBody": GetCollectionOutputBody,
+    "GetMatchesOutputBody": GetMatchesOutputBody,
+    "GetMatchesStatusOutputBody": GetMatchesStatusOutputBody,
     "GetProductsOutputBody": GetProductsOutputBody,
     "GetPublicUserResponse": GetPublicUserResponse,
     "GetSubscriptionOutputBody": GetSubscriptionOutputBody,
@@ -1205,12 +1274,16 @@ let typeMap: {[index: string]: any} = {
     "ImportModel": ImportModel,
     "InlineComment": InlineComment,
     "InsertAnalysisLogRequest": InsertAnalysisLogRequest,
+    "ListAnalysisFunctionsDataTypesOutputBody": ListAnalysisFunctionsDataTypesOutputBody,
+    "ListAnalysisFunctionsOutputBody": ListAnalysisFunctionsOutputBody,
     "ListAnalysisStringsOutputBody": ListAnalysisStringsOutputBody,
     "ListCollectionResults": ListCollectionResults,
     "ListCollectionsOutputBody": ListCollectionsOutputBody,
     "ListFunctionStringsOutputBody": ListFunctionStringsOutputBody,
+    "ListFunctionsDataTypesOutputBody": ListFunctionsDataTypesOutputBody,
     "Logs": Logs,
     "MITRETechnique": MITRETechnique,
+    "MatchFilters": MatchFilters,
     "MatchedFunction": MatchedFunction,
     "MatchedFunctionSuggestion": MatchedFunctionSuggestion,
     "MemdumpEntry": MemdumpEntry,
@@ -1292,6 +1365,10 @@ let typeMap: {[index: string]: any} = {
     "SseEventToolCallStartData": SseEventToolCallStartData,
     "SseEventToolConfirmationRequiredData": SseEventToolConfirmationRequiredData,
     "StackVariable": StackVariable,
+    "StartBatchMatchingInputBody": StartBatchMatchingInputBody,
+    "StartMatchingForAnalysisInputBody": StartMatchingForAnalysisInputBody,
+    "StartMatchingForFunctionsInputBody": StartMatchingForFunctionsInputBody,
+    "StartMatchingOutputBody": StartMatchingOutputBody,
     "StartupInfo": StartupInfo,
     "StatusOutput": StatusOutput,
     "StatusResponse": StatusResponse,

@@ -8,8 +8,11 @@ Method | HTTP request | Description
 [**generateFunctionDataTypesForAnalysis**](FunctionsDataTypesApi.md#generateFunctionDataTypesForAnalysis) | **POST** /v2/analyses/{analysis_id}/functions/data_types | Generate Function Data Types
 [**generateFunctionDataTypesForFunctions**](FunctionsDataTypesApi.md#generateFunctionDataTypesForFunctions) | **POST** /v2/functions/data_types | Generate Function Data Types for an arbitrary list of functions
 [**getFunctionDataTypes**](FunctionsDataTypesApi.md#getFunctionDataTypes) | **GET** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Get Function Data Types
+[**getFunctionDataTypes_0**](FunctionsDataTypesApi.md#getFunctionDataTypes_0) | **GET** /v3/analyses/{analysis_id}/functions/{function_id}/data-types | Get data types for a single function
+[**listAnalysisFunctionsDataTypes**](FunctionsDataTypesApi.md#listAnalysisFunctionsDataTypes) | **GET** /v3/analyses/{analysis_id}/functions/data-types | List data types for all functions in an analysis
 [**listFunctionDataTypesForAnalysis**](FunctionsDataTypesApi.md#listFunctionDataTypesForAnalysis) | **GET** /v2/analyses/{analysis_id}/functions/data_types | List Function Data Types
 [**listFunctionDataTypesForFunctions**](FunctionsDataTypesApi.md#listFunctionDataTypesForFunctions) | **GET** /v2/functions/data_types | List Function Data Types
+[**listFunctionsDataTypes**](FunctionsDataTypesApi.md#listFunctionsDataTypes) | **GET** /v3/functions/data-types | Get data types for many functions
 
 
 # **batchUpdateFunctionDataTypes**
@@ -249,6 +252,129 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getFunctionDataTypes_0**
+> DataTypesEntry getFunctionDataTypes_0()
+
+Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
+import type { FunctionsDataTypesApiGetFunctionDataTypes0Request } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsDataTypesApi(configuration);
+
+const request: FunctionsDataTypesApiGetFunctionDataTypes0Request = {
+    // Analysis ID
+  analysisId: 1,
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getFunctionDataTypes_0(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**DataTypesEntry**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listAnalysisFunctionsDataTypes**
+> ListAnalysisFunctionsDataTypesOutputBody listAnalysisFunctionsDataTypes()
+
+Paginated read of the stored data-types blob for each function in the analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
+import type { FunctionsDataTypesApiListAnalysisFunctionsDataTypesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsDataTypesApi(configuration);
+
+const request: FunctionsDataTypesApiListAnalysisFunctionsDataTypesRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Pagination offset. Defaults to 0. (optional)
+  offset: 0,
+    // Page size. Defaults to 100. (optional)
+  limit: 1,
+};
+
+const data = await apiInstance.listAnalysisFunctionsDataTypes(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **offset** | [**number**] | Pagination offset. Defaults to 0. | (optional) defaults to undefined
+ **limit** | [**number**] | Page size. Defaults to 100. | (optional) defaults to undefined
+
+
+### Return type
+
+**ListAnalysisFunctionsDataTypesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **listFunctionDataTypesForAnalysis**
 > BaseResponseFunctionDataTypesList listFunctionDataTypesForAnalysis()
 
@@ -361,6 +487,66 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listFunctionsDataTypes**
+> ListFunctionsDataTypesOutputBody listFunctionsDataTypes()
+
+Returns the stored data-types blob for each supplied function ID. Caller must have read access to every function or the request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
+import type { FunctionsDataTypesApiListFunctionsDataTypesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsDataTypesApi(configuration);
+
+const request: FunctionsDataTypesApiListFunctionsDataTypesRequest = {
+    // Function IDs to fetch data-types for.
+  functionIds: [
+    1,
+  ],
+};
+
+const data = await apiInstance.listFunctionsDataTypes(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionIds** | **Array&lt;number&gt;** | Function IDs to fetch data-types for. | defaults to undefined
+
+
+### Return type
+
+**ListFunctionsDataTypesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

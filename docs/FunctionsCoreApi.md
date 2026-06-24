@@ -15,12 +15,21 @@ Method | HTTP request | Description
 [**getAnalysisStrings**](FunctionsCoreApi.md#getAnalysisStrings) | **GET** /v2/analyses/{analysis_id}/functions/strings | Get string information found in the Analysis
 [**getAnalysisStringsStatus**](FunctionsCoreApi.md#getAnalysisStringsStatus) | **GET** /v2/analyses/{analysis_id}/functions/strings/status | Get string processing state for the Analysis
 [**getFunctionBlocks**](FunctionsCoreApi.md#getFunctionBlocks) | **GET** /v2/functions/{function_id}/blocks | Get disassembly blocks related to the function
+[**getFunctionBlocks_0**](FunctionsCoreApi.md#getFunctionBlocks_0) | **GET** /v3/functions/{function_id}/blocks | Get function disassembly
 [**getFunctionCalleesCallers**](FunctionsCoreApi.md#getFunctionCalleesCallers) | **GET** /v2/functions/{function_id}/callees_callers | Get list of functions that call or are called by the specified function
 [**getFunctionCalleesCallersBulk**](FunctionsCoreApi.md#getFunctionCalleesCallersBulk) | **GET** /v2/functions/callees_callers | Get list of functions that call or are called for a list of functions
+[**getFunctionCalleesCallers_0**](FunctionsCoreApi.md#getFunctionCalleesCallers_0) | **GET** /v3/functions/{function_id}/callees-callers | Get callees and callers for a function
 [**getFunctionCapabilities**](FunctionsCoreApi.md#getFunctionCapabilities) | **GET** /v2/functions/{function_id}/capabilities | Retrieve a functions capabilities
+[**getFunctionCapabilities_0**](FunctionsCoreApi.md#getFunctionCapabilities_0) | **GET** /v3/functions/{function_id}/capabilities | Get capabilities for a function
 [**getFunctionDetails**](FunctionsCoreApi.md#getFunctionDetails) | **GET** /v2/functions/{function_id} | Get function details
+[**getFunctionDetails_0**](FunctionsCoreApi.md#getFunctionDetails_0) | **GET** /v3/functions/{function_id} | Get function details
 [**getFunctionStrings**](FunctionsCoreApi.md#getFunctionStrings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
 [**getFunctionStrings_0**](FunctionsCoreApi.md#getFunctionStrings_0) | **GET** /v3/functions/{function_id}/strings | List strings for a function.
+[**getFunctionsCalleesCallers**](FunctionsCoreApi.md#getFunctionsCalleesCallers) | **GET** /v3/functions/callees-callers | Get callees and callers for many functions
+[**getFunctionsMatches**](FunctionsCoreApi.md#getFunctionsMatches) | **GET** /v3/functions/matches | Get function-matching results for an explicit set of functions
+[**getFunctionsMatchingStatus**](FunctionsCoreApi.md#getFunctionsMatchingStatus) | **GET** /v3/functions/matches/status | Get function-matching status for an explicit set of functions
+[**listAnalysisFunctions**](FunctionsCoreApi.md#listAnalysisFunctions) | **GET** /v3/analyses/{analysis_id}/functions | List functions in an analysis
+[**startFunctionsMatching**](FunctionsCoreApi.md#startFunctionsMatching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 
 
 # **addFunctionCallee**
@@ -702,6 +711,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getFunctionBlocks_0**
+> DisassemblyOutputBody getFunctionBlocks_0()
+
+Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionBlocks0Request } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiGetFunctionBlocks0Request = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getFunctionBlocks_0(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**DisassemblyOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **getFunctionCalleesCallers**
 > BaseResponseCalleesCallerFunctionsResponse getFunctionCalleesCallers()
 
@@ -810,6 +876,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getFunctionCalleesCallers_0**
+> CallEdgesOutputBody getFunctionCalleesCallers_0()
+
+Returns both the outgoing call edges (callees) and incoming call edges (callers) for a single function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionCalleesCallers0Request } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiGetFunctionCalleesCallers0Request = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getFunctionCalleesCallers_0(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**CallEdgesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **getFunctionCapabilities**
 > BaseResponseFunctionCapabilityResponse getFunctionCapabilities()
 
@@ -864,6 +987,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **getFunctionCapabilities_0**
+> CapabilitiesOutputBody getFunctionCapabilities_0()
+
+Returns the capability findings (CAPA-style behaviour matches) associated with the given function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionCapabilities0Request } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiGetFunctionCapabilities0Request = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getFunctionCapabilities_0(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**CapabilitiesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **getFunctionDetails**
 > BaseResponseFunctionsDetailResponse getFunctionDetails()
 
@@ -914,6 +1094,63 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getFunctionDetails_0**
+> FunctionDetailsOutputBody getFunctionDetails_0()
+
+Returns metadata for a single function — name, virtual address, size, debug status, binary it belongs to.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionDetails0Request } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiGetFunctionDetails0Request = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.getFunctionDetails_0(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**FunctionDetailsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1039,6 +1276,307 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getFunctionsCalleesCallers**
+> CallEdgesOutputBody getFunctionsCalleesCallers()
+
+Bulk variant — pass `function_ids` as a query parameter (comma-separated or repeated). Caller must have access to every supplied function or the whole request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionsCalleesCallersRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiGetFunctionsCalleesCallersRequest = {
+    // Function IDs to fetch edges for.
+  functionIds: [
+    1,
+  ],
+};
+
+const data = await apiInstance.getFunctionsCalleesCallers(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionIds** | **Array&lt;number&gt;** | Function IDs to fetch edges for. | defaults to undefined
+
+
+### Return type
+
+**CallEdgesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getFunctionsMatches**
+> GetMatchesOutputBody getFunctionsMatches()
+
+Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionsMatchesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiGetFunctionsMatchesRequest = {
+    // Source function IDs whose matches to fetch.
+  functionIds: [
+    1,
+  ],
+};
+
+const data = await apiInstance.getFunctionsMatches(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionIds** | **Array&lt;number&gt;** | Source function IDs whose matches to fetch. | defaults to undefined
+
+
+### Return type
+
+**GetMatchesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getFunctionsMatchingStatus**
+> GetMatchesStatusOutputBody getFunctionsMatchingStatus()
+
+Returns the matching workflow\'s current status for the supplied function IDs. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetFunctionsMatchingStatusRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiGetFunctionsMatchingStatusRequest = {
+    // Source function IDs whose matches to fetch.
+  functionIds: [
+    1,
+  ],
+};
+
+const data = await apiInstance.getFunctionsMatchingStatus(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionIds** | **Array&lt;number&gt;** | Source function IDs whose matches to fetch. | defaults to undefined
+
+
+### Return type
+
+**GetMatchesStatusOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listAnalysisFunctions**
+> ListAnalysisFunctionsOutputBody listAnalysisFunctions()
+
+Returns a paginated list of functions belonging to the analysis. `total_count` is the full population size, ignoring pagination.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiListAnalysisFunctionsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiListAnalysisFunctionsRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Pagination offset. Defaults to 0. (optional)
+  offset: 0,
+    // Page size. Defaults to 100. (optional)
+  limit: 1,
+};
+
+const data = await apiInstance.listAnalysisFunctions(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **offset** | [**number**] | Pagination offset. Defaults to 0. | (optional) defaults to undefined
+ **limit** | [**number**] | Page size. Defaults to 100. | (optional) defaults to undefined
+
+
+### Return type
+
+**ListAnalysisFunctionsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **startFunctionsMatching**
+> StartMatchingOutputBody startFunctionsMatching(startMatchingForFunctionsInputBody)
+
+Dispatches the function-matching workflow against the provided function IDs. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiStartFunctionsMatchingRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiStartFunctionsMatchingRequest = {
+  
+  startMatchingForFunctionsInputBody: ,
+};
+
+const data = await apiInstance.startFunctionsMatching(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **startMatchingForFunctionsInputBody** | **StartMatchingForFunctionsInputBody**|  |
+
+
+### Return type
+
+**StartMatchingOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |

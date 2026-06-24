@@ -16,7 +16,10 @@ import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGen
 import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
 import { BatchUpdateDataTypesInputBody } from '../models/BatchUpdateDataTypesInputBody';
 import { BatchUpdateDataTypesOutputBody } from '../models/BatchUpdateDataTypesOutputBody';
+import { DataTypesEntry } from '../models/DataTypesEntry';
 import { FunctionDataTypesParams } from '../models/FunctionDataTypesParams';
+import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
+import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
 
 /**
  * no description
@@ -184,6 +187,8 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Polling endpoint which returns the current status of function generation and once completed the data type information
      * Get Function Data Types
      * @param analysisId 
@@ -230,6 +235,106 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get data types for a single function
+     * @param analysisId Analysis ID
+     * @param functionId Function ID
+     */
+    public async getFunctionDataTypes_1(analysisId: number, functionId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("FunctionsDataTypesApi", "getFunctionDataTypes_1", "analysisId");
+        }
+
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsDataTypesApi", "getFunctionDataTypes_1", "functionId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/functions/{function_id}/data-types'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Paginated read of the stored data-types blob for each function in the analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List data types for all functions in an analysis
+     * @param analysisId Analysis ID
+     * @param offset Pagination offset. Defaults to 0.
+     * @param limit Page size. Defaults to 100.
+     */
+    public async listAnalysisFunctionsDataTypes(analysisId: number, offset?: number, limit?: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("FunctionsDataTypesApi", "listAnalysisFunctionsDataTypes", "analysisId");
+        }
+
+
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/functions/data-types'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (offset !== undefined) {
+            requestContext.setQueryParam("offset", ObjectSerializer.serialize(offset, "number", "int64"));
+        }
+
+        // Query Params
+        if (limit !== undefined) {
+            requestContext.setQueryParam("limit", ObjectSerializer.serialize(limit, "number", "int64"));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * @deprecated
+     *
      * Returns data types for multiple functions with optional function ID filtering
      * List Function Data Types
      * @param analysisId 
@@ -278,6 +383,8 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Returns data types for multiple function IDs
      * List Function Data Types
      * @param functionIds 
@@ -299,6 +406,48 @@ export class FunctionsDataTypesApiRequestFactory extends BaseAPIRequestFactory {
             for (const serializedParam of serializedParams) {
                 requestContext.appendQueryParam("function_ids", serializedParam);
             }
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns the stored data-types blob for each supplied function ID. Caller must have read access to every function or the request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Get data types for many functions
+     * @param functionIds Function IDs to fetch data-types for.
+     */
+    public async listFunctionsDataTypes(functionIds: Array<number>, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionIds' is not null or undefined
+        if (functionIds === null || functionIds === undefined) {
+            throw new RequiredError("FunctionsDataTypesApi", "listFunctionsDataTypes", "functionIds");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/data-types';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (functionIds !== undefined) {
+            requestContext.setQueryParam("function_ids", ObjectSerializer.serialize(functionIds, "Array<number>", "int64"));
         }
 
 
@@ -497,6 +646,120 @@ export class FunctionsDataTypesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to getFunctionDataTypes_1
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async getFunctionDataTypes_1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<DataTypesEntry >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: DataTypesEntry = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DataTypesEntry", ""
+            ) as DataTypesEntry;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: DataTypesEntry = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DataTypesEntry", ""
+            ) as DataTypesEntry;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to listAnalysisFunctionsDataTypes
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async listAnalysisFunctionsDataTypesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAnalysisFunctionsDataTypesOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListAnalysisFunctionsDataTypesOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListAnalysisFunctionsDataTypesOutputBody", ""
+            ) as ListAnalysisFunctionsDataTypesOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListAnalysisFunctionsDataTypesOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListAnalysisFunctionsDataTypesOutputBody", ""
+            ) as ListAnalysisFunctionsDataTypesOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to listFunctionDataTypesForAnalysis
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -559,6 +822,70 @@ export class FunctionsDataTypesApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseFunctionDataTypesList", ""
             ) as BaseResponseFunctionDataTypesList;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to listFunctionsDataTypes
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async listFunctionsDataTypesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListFunctionsDataTypesOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListFunctionsDataTypesOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListFunctionsDataTypesOutputBody", ""
+            ) as ListFunctionsDataTypesOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListFunctionsDataTypesOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListFunctionsDataTypesOutputBody", ""
+            ) as ListFunctionsDataTypesOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

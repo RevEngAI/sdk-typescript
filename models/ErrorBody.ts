@@ -90,6 +90,7 @@ export enum ErrorBodyCodeEnum {
     AlreadyExists = 'ALREADY_EXISTS',
     AnalysisNotReady = 'ANALYSIS_NOT_READY',
     BadRequest = 'BAD_REQUEST',
+    ClientClosedRequest = 'CLIENT_CLOSED_REQUEST',
     Conflict = 'CONFLICT',
     ConversationNotFound = 'CONVERSATION_NOT_FOUND',
     DomainAlreadyClaimed = 'DOMAIN_ALREADY_CLAIMED',

@@ -22,6 +22,8 @@ import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabiliti
 export class AnalysesResultsMetadataApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
+     * @deprecated
+     *
      * Returns a paginated list of functions identified during analysis
      * Get functions from analysis
      * @param analysisId 
