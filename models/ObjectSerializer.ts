@@ -3,6 +3,9 @@ export * from '../models/AIDecompInverseFunctionMapItem';
 export * from '../models/AIDecompInverseStringMapItem';
 export * from '../models/APIError';
 export * from '../models/AddCalleeInputBody';
+export * from '../models/AddIssuerDomainInputBody';
+export * from '../models/AddOwnerInputBody';
+export * from '../models/AddTeamMemberInputBody';
 export * from '../models/AddUserStringInputBody';
 export * from '../models/AddUserStringToFunctionInputBody';
 export * from '../models/AdditionalDetailsStatusResponse';
@@ -136,6 +139,8 @@ export * from '../models/BinaryExternalsResponse';
 export * from '../models/BinarySearchResponse';
 export * from '../models/BinarySearchResult';
 export * from '../models/BinaryTaskStatus';
+export * from '../models/BulkCreateUserResult';
+export * from '../models/BulkCreateUsersOutputBody';
 export * from '../models/BulkDeleteAnalysesRequest';
 export * from '../models/CallEdge';
 export * from '../models/CallEdgesOutputBody';
@@ -179,7 +184,13 @@ export * from '../models/CreateCheckoutSessionInputBody';
 export * from '../models/CreateCollectionInputBody';
 export * from '../models/CreateCollectionOutputBody';
 export * from '../models/CreateConversationRequest';
+export * from '../models/CreateGroupInputBody';
+export * from '../models/CreateIdentityInputBody';
+export * from '../models/CreateIssuerInputBody';
+export * from '../models/CreateOrganisationInputBody';
 export * from '../models/CreatePortalSessionInputBody';
+export * from '../models/CreateTeamInputBody';
+export * from '../models/CreateUserInputBody';
 export * from '../models/Created';
 export * from '../models/DataTypesEntry';
 export * from '../models/DecompFailedEvent';
@@ -238,6 +249,7 @@ export * from '../models/FileFormat';
 export * from '../models/FileHashes';
 export * from '../models/FileMetadata';
 export * from '../models/Filters';
+export * from '../models/FormFile';
 export * from '../models/FunctionArgument';
 export * from '../models/FunctionBlockDestinationResponse';
 export * from '../models/FunctionBlockResponse';
@@ -298,6 +310,8 @@ export * from '../models/IconModel';
 export * from '../models/ImportModel';
 export * from '../models/InlineComment';
 export * from '../models/InsertAnalysisLogRequest';
+export * from '../models/InviteUserInputBody';
+export * from '../models/IssuerAllowedDomain';
 export * from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 export * from '../models/ListAnalysisFunctionsOutputBody';
 export * from '../models/ListAnalysisStringsOutputBody';
@@ -305,12 +319,16 @@ export * from '../models/ListCollectionResults';
 export * from '../models/ListCollectionsOutputBody';
 export * from '../models/ListFunctionStringsOutputBody';
 export * from '../models/ListFunctionsDataTypesOutputBody';
+export * from '../models/ListTeamsOutputBody';
+export * from '../models/ListUsersOutputBody';
+export * from '../models/LocationOutputBody';
 export * from '../models/Logs';
 export * from '../models/MITRETechnique';
 export * from '../models/MatchFilters';
 export * from '../models/MatchedFunction';
 export * from '../models/MatchedFunctionSuggestion';
 export * from '../models/MemdumpEntry';
+export * from '../models/MessageBody';
 export * from '../models/MetaModel';
 export * from '../models/ModelName';
 export * from '../models/ModelsResponse';
@@ -319,11 +337,17 @@ export * from '../models/MutexEntry';
 export * from '../models/NameConfidence';
 export * from '../models/NameSourceType';
 export * from '../models/NetworkActivity';
+export * from '../models/OIDCCallbackInputBody';
 export * from '../models/Order';
+export * from '../models/Organisation';
+export * from '../models/OrganisationGroup';
+export * from '../models/OrganisationIssuer';
+export * from '../models/OrganisationOwner';
 export * from '../models/PDBDebugModel';
 export * from '../models/PEModel';
 export * from '../models/PaginationModel';
 export * from '../models/Params';
+export * from '../models/PasswordResetInputBody';
 export * from '../models/PatchCollectionBinariesInputBody';
 export * from '../models/PatchCollectionBinariesOutputBody';
 export * from '../models/PatchCollectionInputBody';
@@ -332,6 +356,7 @@ export * from '../models/PatchCollectionTagsInputBody';
 export * from '../models/PatchCollectionTagsOutputBody';
 export * from '../models/PatchCommentBody';
 export * from '../models/PcapBodyInfo';
+export * from '../models/Permissions';
 export * from '../models/Platform';
 export * from '../models/PriceOutput';
 export * from '../models/PriceSummary';
@@ -347,7 +372,9 @@ export * from '../models/PutAnalysisStringsRequest';
 export * from '../models/QueuedWorkflowTaskResponse';
 export * from '../models/ReAnalysisForm';
 export * from '../models/Recent';
+export * from '../models/RefreshBody';
 export * from '../models/RegenerateOutputBody';
+export * from '../models/RegisterUserInputBody';
 export * from '../models/RegistryOperation';
 export * from '../models/RelativeBinaryResponse';
 export * from '../models/RenameAppliedEvent';
@@ -358,8 +385,11 @@ export * from '../models/ReportAnalysisResponse';
 export * from '../models/ReportEvent';
 export * from '../models/ReportInfo';
 export * from '../models/ReportOptions';
+export * from '../models/RevokeBody';
 export * from '../models/SBOM';
 export * from '../models/SBOMPackage';
+export * from '../models/SSOProvider';
+export * from '../models/SSOProvidersOutputBody';
 export * from '../models/SandboxOptions';
 export * from '../models/SandboxStartMethod';
 export * from '../models/SandboxTimeout';
@@ -420,7 +450,11 @@ export * from '../models/TaskResponse';
 export * from '../models/TaskStatus';
 export * from '../models/TaskStatusResponse';
 export * from '../models/TcpCarvedFile';
+export * from '../models/Team';
+export * from '../models/TeamMember';
 export * from '../models/TimestampModel';
+export * from '../models/TokenInputBody';
+export * from '../models/TokenResponse';
 export * from '../models/TokenisedData';
 export * from '../models/TriageFunctionResponse';
 export * from '../models/TriageReportResponse';
@@ -429,12 +463,24 @@ export * from '../models/Ttp';
 export * from '../models/TypeDefinition';
 export * from '../models/UpdateDataTypesInputBody';
 export * from '../models/UpdateDataTypesOutputBody';
+export * from '../models/UpdateIssuerInputBody';
+export * from '../models/UpdateOrganisationInputBody';
+export * from '../models/UpdatePasswordInputBody';
+export * from '../models/UpdateProfileInputBody';
+export * from '../models/UpdateTeamInputBody';
+export * from '../models/UpdateUserCreditsInputBody';
+export * from '../models/UpdateUserInputBody';
+export * from '../models/UpdateUserPasswordInputBody';
 export * from '../models/UploadFileType';
 export * from '../models/UploadResponse';
 export * from '../models/UpsertAiDecomplationRatingRequest';
 export * from '../models/UpsertOverridesData';
 export * from '../models/UpsertOverridesInputBody';
+export * from '../models/User';
 export * from '../models/UserActivityResponse';
+export * from '../models/UserCredits';
+export * from '../models/UserIdentity';
+export * from '../models/UserProfile';
 export * from '../models/Vulnerabilities';
 export * from '../models/Vulnerability';
 export * from '../models/WarningEvent';
@@ -449,6 +495,9 @@ import { AIDecompInverseFunctionMapItem } from '../models/AIDecompInverseFunctio
 import { AIDecompInverseStringMapItem } from '../models/AIDecompInverseStringMapItem';
 import { APIError } from '../models/APIError';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
+import { AddIssuerDomainInputBody } from '../models/AddIssuerDomainInputBody';
+import { AddOwnerInputBody } from '../models/AddOwnerInputBody';
+import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
@@ -582,6 +631,8 @@ import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
 import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
+import { BulkCreateUserResult } from '../models/BulkCreateUserResult';
+import { BulkCreateUsersOutputBody } from '../models/BulkCreateUsersOutputBody';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CallEdge } from '../models/CallEdge';
 import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
@@ -625,7 +676,13 @@ import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionI
 import { CreateCollectionInputBody  , CreateCollectionInputBodyCollectionScopeEnum      } from '../models/CreateCollectionInputBody';
 import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
+import { CreateGroupInputBody } from '../models/CreateGroupInputBody';
+import { CreateIdentityInputBody } from '../models/CreateIdentityInputBody';
+import { CreateIssuerInputBody } from '../models/CreateIssuerInputBody';
+import { CreateOrganisationInputBody } from '../models/CreateOrganisationInputBody';
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
+import { CreateTeamInputBody } from '../models/CreateTeamInputBody';
+import { CreateUserInputBody     , CreateUserInputBodyRoleEnum  , CreateUserInputBodyTierEnum     } from '../models/CreateUserInputBody';
 import { Created } from '../models/Created';
 import { DataTypesEntry } from '../models/DataTypesEntry';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
@@ -684,6 +741,7 @@ import { FileFormat } from '../models/FileFormat';
 import { FileHashes } from '../models/FileHashes';
 import { FileMetadata } from '../models/FileMetadata';
 import { Filters } from '../models/Filters';
+import { FormFile } from '../models/FormFile';
 import { FunctionArgument } from '../models/FunctionArgument';
 import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
 import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
@@ -744,6 +802,8 @@ import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
+import { InviteUserInputBody } from '../models/InviteUserInputBody';
+import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
 import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
@@ -751,12 +811,16 @@ import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
+import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
+import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
+import { LocationOutputBody  , LocationOutputBodyCurrencyEnum   } from '../models/LocationOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
 import { MemdumpEntry } from '../models/MemdumpEntry';
+import { MessageBody } from '../models/MessageBody';
 import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
@@ -765,11 +829,17 @@ import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType, NameSourceTypeTypeEnum      } from '../models/NameSourceType';
 import { NetworkActivity } from '../models/NetworkActivity';
+import { OIDCCallbackInputBody } from '../models/OIDCCallbackInputBody';
 import { Order } from '../models/Order';
+import { Organisation } from '../models/Organisation';
+import { OrganisationGroup } from '../models/OrganisationGroup';
+import { OrganisationIssuer } from '../models/OrganisationIssuer';
+import { OrganisationOwner } from '../models/OrganisationOwner';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PasswordResetInputBody } from '../models/PasswordResetInputBody';
 import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
 import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
 import { PatchCollectionInputBody } from '../models/PatchCollectionInputBody';
@@ -778,6 +848,7 @@ import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInput
 import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { PcapBodyInfo } from '../models/PcapBodyInfo';
+import { Permissions } from '../models/Permissions';
 import { Platform } from '../models/Platform';
 import { PriceOutput  , PriceOutputIntervalEnum    } from '../models/PriceOutput';
 import { PriceSummary , PriceSummaryIntervalEnum    } from '../models/PriceSummary';
@@ -793,7 +864,9 @@ import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
+import { RefreshBody } from '../models/RefreshBody';
 import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
+import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
@@ -804,8 +877,11 @@ import { ReportAnalysisResponse , ReportAnalysisResponseSoftwareTypeEnum        
 import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
 import { ReportOptions } from '../models/ReportOptions';
+import { RevokeBody } from '../models/RevokeBody';
 import { SBOM } from '../models/SBOM';
 import { SBOMPackage } from '../models/SBOMPackage';
+import { SSOProvider } from '../models/SSOProvider';
+import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
 import { SandboxOptions     } from '../models/SandboxOptions';
 import { SandboxStartMethod } from '../models/SandboxStartMethod';
 import { SandboxTimeout } from '../models/SandboxTimeout';
@@ -866,7 +942,11 @@ import { TaskResponse   } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse   } from '../models/TaskStatusResponse';
 import { TcpCarvedFile } from '../models/TcpCarvedFile';
+import { Team , TeamPlanEnum     } from '../models/Team';
+import { TeamMember  , TeamMemberRoleEnum     } from '../models/TeamMember';
 import { TimestampModel } from '../models/TimestampModel';
+import { TokenInputBody } from '../models/TokenInputBody';
+import { TokenResponse } from '../models/TokenResponse';
 import { TokenisedData  , TokenisedDataStatusEnum    } from '../models/TokenisedData';
 import { TriageFunctionResponse    , TriageFunctionResponseCapabilitiesEnum   } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
@@ -875,12 +955,24 @@ import { Ttp } from '../models/Ttp';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateDataTypesInputBody } from '../models/UpdateDataTypesInputBody';
 import { UpdateDataTypesOutputBody } from '../models/UpdateDataTypesOutputBody';
+import { UpdateIssuerInputBody } from '../models/UpdateIssuerInputBody';
+import { UpdateOrganisationInputBody } from '../models/UpdateOrganisationInputBody';
+import { UpdatePasswordInputBody } from '../models/UpdatePasswordInputBody';
+import { UpdateProfileInputBody } from '../models/UpdateProfileInputBody';
+import { UpdateTeamInputBody } from '../models/UpdateTeamInputBody';
+import { UpdateUserCreditsInputBody } from '../models/UpdateUserCreditsInputBody';
+import { UpdateUserInputBody   , UpdateUserInputBodyRoleEnum  , UpdateUserInputBodyTierEnum     } from '../models/UpdateUserInputBody';
+import { UpdateUserPasswordInputBody } from '../models/UpdateUserPasswordInputBody';
 import { UploadFileType } from '../models/UploadFileType';
 import { UploadResponse    } from '../models/UploadResponse';
 import { UpsertAiDecomplationRatingRequest   } from '../models/UpsertAiDecomplationRatingRequest';
 import { UpsertOverridesData } from '../models/UpsertOverridesData';
 import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
+import { User   , UserRoleEnum  , UserTierEnum    } from '../models/User';
 import { UserActivityResponse } from '../models/UserActivityResponse';
+import { UserCredits } from '../models/UserCredits';
+import { UserIdentity } from '../models/UserIdentity';
+import { UserProfile } from '../models/UserProfile';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
@@ -919,6 +1011,8 @@ let enumsMap: Set<string> = new Set<string>([
     "CollectionScope",
     "CommentsDataTaskStatusEnum",
     "CreateCollectionInputBodyCollectionScopeEnum",
+    "CreateUserInputBodyRoleEnum",
+    "CreateUserInputBodyTierEnum",
     "DecompilationDataStatusEnum",
     "DynamicExecutionStatus",
     "ErrorBodyCodeEnum",
@@ -958,6 +1052,7 @@ let enumsMap: Set<string> = new Set<string>([
     "GetSubscriptionOutputBodyTierEnum",
     "IOCTypeEnum",
     "ISA",
+    "LocationOutputBodyCurrencyEnum",
     "ModelName",
     "NameSourceTypeTypeEnum",
     "Order",
@@ -975,11 +1070,17 @@ let enumsMap: Set<string> = new Set<string>([
     "StringSource",
     "SummaryDataTaskStatusEnum",
     "TaskStatus",
+    "TeamPlanEnum",
+    "TeamMemberRoleEnum",
     "TokenisedDataStatusEnum",
     "TriageFunctionResponseCapabilitiesEnum",
     "TriggerDynamicExecutionInputBodyStartMethodEnum",
     "TriggerDynamicExecutionInputBodyTimeoutEnum",
+    "UpdateUserInputBodyRoleEnum",
+    "UpdateUserInputBodyTierEnum",
     "UploadFileType",
+    "UserRoleEnum",
+    "UserTierEnum",
     "VulnerabilitySeverityEnum",
     "WorkflowProgressStatusEnum",
     "Workspace",
@@ -991,6 +1092,9 @@ let typeMap: {[index: string]: any} = {
     "AIDecompInverseStringMapItem": AIDecompInverseStringMapItem,
     "APIError": APIError,
     "AddCalleeInputBody": AddCalleeInputBody,
+    "AddIssuerDomainInputBody": AddIssuerDomainInputBody,
+    "AddOwnerInputBody": AddOwnerInputBody,
+    "AddTeamMemberInputBody": AddTeamMemberInputBody,
     "AddUserStringInputBody": AddUserStringInputBody,
     "AddUserStringToFunctionInputBody": AddUserStringToFunctionInputBody,
     "AdditionalDetailsStatusResponse": AdditionalDetailsStatusResponse,
@@ -1118,6 +1222,8 @@ let typeMap: {[index: string]: any} = {
     "BinaryExternalsResponse": BinaryExternalsResponse,
     "BinarySearchResponse": BinarySearchResponse,
     "BinarySearchResult": BinarySearchResult,
+    "BulkCreateUserResult": BulkCreateUserResult,
+    "BulkCreateUsersOutputBody": BulkCreateUsersOutputBody,
     "BulkDeleteAnalysesRequest": BulkDeleteAnalysesRequest,
     "CallEdge": CallEdge,
     "CallEdgesOutputBody": CallEdgesOutputBody,
@@ -1160,7 +1266,13 @@ let typeMap: {[index: string]: any} = {
     "CreateCollectionInputBody": CreateCollectionInputBody,
     "CreateCollectionOutputBody": CreateCollectionOutputBody,
     "CreateConversationRequest": CreateConversationRequest,
+    "CreateGroupInputBody": CreateGroupInputBody,
+    "CreateIdentityInputBody": CreateIdentityInputBody,
+    "CreateIssuerInputBody": CreateIssuerInputBody,
+    "CreateOrganisationInputBody": CreateOrganisationInputBody,
     "CreatePortalSessionInputBody": CreatePortalSessionInputBody,
+    "CreateTeamInputBody": CreateTeamInputBody,
+    "CreateUserInputBody": CreateUserInputBody,
     "Created": Created,
     "DataTypesEntry": DataTypesEntry,
     "DecompFailedEvent": DecompFailedEvent,
@@ -1216,6 +1328,7 @@ let typeMap: {[index: string]: any} = {
     "FileActivityEntry": FileActivityEntry,
     "FileHashes": FileHashes,
     "FileMetadata": FileMetadata,
+    "FormFile": FormFile,
     "FunctionArgument": FunctionArgument,
     "FunctionBlockDestinationResponse": FunctionBlockDestinationResponse,
     "FunctionBlockResponse": FunctionBlockResponse,
@@ -1274,6 +1387,8 @@ let typeMap: {[index: string]: any} = {
     "ImportModel": ImportModel,
     "InlineComment": InlineComment,
     "InsertAnalysisLogRequest": InsertAnalysisLogRequest,
+    "InviteUserInputBody": InviteUserInputBody,
+    "IssuerAllowedDomain": IssuerAllowedDomain,
     "ListAnalysisFunctionsDataTypesOutputBody": ListAnalysisFunctionsDataTypesOutputBody,
     "ListAnalysisFunctionsOutputBody": ListAnalysisFunctionsOutputBody,
     "ListAnalysisStringsOutputBody": ListAnalysisStringsOutputBody,
@@ -1281,12 +1396,16 @@ let typeMap: {[index: string]: any} = {
     "ListCollectionsOutputBody": ListCollectionsOutputBody,
     "ListFunctionStringsOutputBody": ListFunctionStringsOutputBody,
     "ListFunctionsDataTypesOutputBody": ListFunctionsDataTypesOutputBody,
+    "ListTeamsOutputBody": ListTeamsOutputBody,
+    "ListUsersOutputBody": ListUsersOutputBody,
+    "LocationOutputBody": LocationOutputBody,
     "Logs": Logs,
     "MITRETechnique": MITRETechnique,
     "MatchFilters": MatchFilters,
     "MatchedFunction": MatchedFunction,
     "MatchedFunctionSuggestion": MatchedFunctionSuggestion,
     "MemdumpEntry": MemdumpEntry,
+    "MessageBody": MessageBody,
     "MetaModel": MetaModel,
     "ModelsResponse": ModelsResponse,
     "ModuleLoadEntry": ModuleLoadEntry,
@@ -1294,10 +1413,16 @@ let typeMap: {[index: string]: any} = {
     "NameConfidence": NameConfidence,
     "NameSourceType": NameSourceType,
     "NetworkActivity": NetworkActivity,
+    "OIDCCallbackInputBody": OIDCCallbackInputBody,
+    "Organisation": Organisation,
+    "OrganisationGroup": OrganisationGroup,
+    "OrganisationIssuer": OrganisationIssuer,
+    "OrganisationOwner": OrganisationOwner,
     "PDBDebugModel": PDBDebugModel,
     "PEModel": PEModel,
     "PaginationModel": PaginationModel,
     "Params": Params,
+    "PasswordResetInputBody": PasswordResetInputBody,
     "PatchCollectionBinariesInputBody": PatchCollectionBinariesInputBody,
     "PatchCollectionBinariesOutputBody": PatchCollectionBinariesOutputBody,
     "PatchCollectionInputBody": PatchCollectionInputBody,
@@ -1306,6 +1431,7 @@ let typeMap: {[index: string]: any} = {
     "PatchCollectionTagsOutputBody": PatchCollectionTagsOutputBody,
     "PatchCommentBody": PatchCommentBody,
     "PcapBodyInfo": PcapBodyInfo,
+    "Permissions": Permissions,
     "PriceOutput": PriceOutput,
     "PriceSummary": PriceSummary,
     "ProcessActivityEntry": ProcessActivityEntry,
@@ -1320,7 +1446,9 @@ let typeMap: {[index: string]: any} = {
     "QueuedWorkflowTaskResponse": QueuedWorkflowTaskResponse,
     "ReAnalysisForm": ReAnalysisForm,
     "Recent": Recent,
+    "RefreshBody": RefreshBody,
     "RegenerateOutputBody": RegenerateOutputBody,
+    "RegisterUserInputBody": RegisterUserInputBody,
     "RegistryOperation": RegistryOperation,
     "RelativeBinaryResponse": RelativeBinaryResponse,
     "RenameAppliedEvent": RenameAppliedEvent,
@@ -1331,8 +1459,11 @@ let typeMap: {[index: string]: any} = {
     "ReportEvent": ReportEvent,
     "ReportInfo": ReportInfo,
     "ReportOptions": ReportOptions,
+    "RevokeBody": RevokeBody,
     "SBOM": SBOM,
     "SBOMPackage": SBOMPackage,
+    "SSOProvider": SSOProvider,
+    "SSOProvidersOutputBody": SSOProvidersOutputBody,
     "SandboxOptions": SandboxOptions,
     "ScheduledTaskEntry": ScheduledTaskEntry,
     "ScrapeThirdPartyConfig": ScrapeThirdPartyConfig,
@@ -1388,7 +1519,11 @@ let typeMap: {[index: string]: any} = {
     "TaskResponse": TaskResponse,
     "TaskStatusResponse": TaskStatusResponse,
     "TcpCarvedFile": TcpCarvedFile,
+    "Team": Team,
+    "TeamMember": TeamMember,
     "TimestampModel": TimestampModel,
+    "TokenInputBody": TokenInputBody,
+    "TokenResponse": TokenResponse,
     "TokenisedData": TokenisedData,
     "TriageFunctionResponse": TriageFunctionResponse,
     "TriageReportResponse": TriageReportResponse,
@@ -1397,11 +1532,23 @@ let typeMap: {[index: string]: any} = {
     "TypeDefinition": TypeDefinition,
     "UpdateDataTypesInputBody": UpdateDataTypesInputBody,
     "UpdateDataTypesOutputBody": UpdateDataTypesOutputBody,
+    "UpdateIssuerInputBody": UpdateIssuerInputBody,
+    "UpdateOrganisationInputBody": UpdateOrganisationInputBody,
+    "UpdatePasswordInputBody": UpdatePasswordInputBody,
+    "UpdateProfileInputBody": UpdateProfileInputBody,
+    "UpdateTeamInputBody": UpdateTeamInputBody,
+    "UpdateUserCreditsInputBody": UpdateUserCreditsInputBody,
+    "UpdateUserInputBody": UpdateUserInputBody,
+    "UpdateUserPasswordInputBody": UpdateUserPasswordInputBody,
     "UploadResponse": UploadResponse,
     "UpsertAiDecomplationRatingRequest": UpsertAiDecomplationRatingRequest,
     "UpsertOverridesData": UpsertOverridesData,
     "UpsertOverridesInputBody": UpsertOverridesInputBody,
+    "User": User,
     "UserActivityResponse": UserActivityResponse,
+    "UserCredits": UserCredits,
+    "UserIdentity": UserIdentity,
+    "UserProfile": UserProfile,
     "Vulnerabilities": Vulnerabilities,
     "Vulnerability": Vulnerability,
     "WarningEvent": WarningEvent,

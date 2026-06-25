@@ -7,6 +7,9 @@ import { AIDecompInverseFunctionMapItem } from '../models/AIDecompInverseFunctio
 import { AIDecompInverseStringMapItem } from '../models/AIDecompInverseStringMapItem';
 import { APIError } from '../models/APIError';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
+import { AddIssuerDomainInputBody } from '../models/AddIssuerDomainInputBody';
+import { AddOwnerInputBody } from '../models/AddOwnerInputBody';
+import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
@@ -140,6 +143,8 @@ import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
 import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
+import { BulkCreateUserResult } from '../models/BulkCreateUserResult';
+import { BulkCreateUsersOutputBody } from '../models/BulkCreateUsersOutputBody';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CallEdge } from '../models/CallEdge';
 import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
@@ -183,7 +188,13 @@ import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionI
 import { CreateCollectionInputBody } from '../models/CreateCollectionInputBody';
 import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
+import { CreateGroupInputBody } from '../models/CreateGroupInputBody';
+import { CreateIdentityInputBody } from '../models/CreateIdentityInputBody';
+import { CreateIssuerInputBody } from '../models/CreateIssuerInputBody';
+import { CreateOrganisationInputBody } from '../models/CreateOrganisationInputBody';
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
+import { CreateTeamInputBody } from '../models/CreateTeamInputBody';
+import { CreateUserInputBody } from '../models/CreateUserInputBody';
 import { Created } from '../models/Created';
 import { DataTypesEntry } from '../models/DataTypesEntry';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
@@ -242,6 +253,7 @@ import { FileFormat } from '../models/FileFormat';
 import { FileHashes } from '../models/FileHashes';
 import { FileMetadata } from '../models/FileMetadata';
 import { Filters } from '../models/Filters';
+import { FormFile } from '../models/FormFile';
 import { FunctionArgument } from '../models/FunctionArgument';
 import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
 import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
@@ -302,6 +314,8 @@ import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
+import { InviteUserInputBody } from '../models/InviteUserInputBody';
+import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
 import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
@@ -309,12 +323,16 @@ import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
+import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
+import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
+import { LocationOutputBody } from '../models/LocationOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
 import { MemdumpEntry } from '../models/MemdumpEntry';
+import { MessageBody } from '../models/MessageBody';
 import { MetaModel } from '../models/MetaModel';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
@@ -323,11 +341,17 @@ import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType } from '../models/NameSourceType';
 import { NetworkActivity } from '../models/NetworkActivity';
+import { OIDCCallbackInputBody } from '../models/OIDCCallbackInputBody';
 import { Order } from '../models/Order';
+import { Organisation } from '../models/Organisation';
+import { OrganisationGroup } from '../models/OrganisationGroup';
+import { OrganisationIssuer } from '../models/OrganisationIssuer';
+import { OrganisationOwner } from '../models/OrganisationOwner';
 import { PDBDebugModel } from '../models/PDBDebugModel';
 import { PEModel } from '../models/PEModel';
 import { PaginationModel } from '../models/PaginationModel';
 import { Params } from '../models/Params';
+import { PasswordResetInputBody } from '../models/PasswordResetInputBody';
 import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
 import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
 import { PatchCollectionInputBody } from '../models/PatchCollectionInputBody';
@@ -336,6 +360,7 @@ import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInput
 import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { PcapBodyInfo } from '../models/PcapBodyInfo';
+import { Permissions } from '../models/Permissions';
 import { Platform } from '../models/Platform';
 import { PriceOutput } from '../models/PriceOutput';
 import { PriceSummary } from '../models/PriceSummary';
@@ -351,7 +376,9 @@ import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
+import { RefreshBody } from '../models/RefreshBody';
 import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
+import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
@@ -362,8 +389,11 @@ import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
 import { ReportOptions } from '../models/ReportOptions';
+import { RevokeBody } from '../models/RevokeBody';
 import { SBOM } from '../models/SBOM';
 import { SBOMPackage } from '../models/SBOMPackage';
+import { SSOProvider } from '../models/SSOProvider';
+import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
 import { SandboxOptions } from '../models/SandboxOptions';
 import { SandboxStartMethod } from '../models/SandboxStartMethod';
 import { SandboxTimeout } from '../models/SandboxTimeout';
@@ -424,7 +454,11 @@ import { TaskResponse } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse } from '../models/TaskStatusResponse';
 import { TcpCarvedFile } from '../models/TcpCarvedFile';
+import { Team } from '../models/Team';
+import { TeamMember } from '../models/TeamMember';
 import { TimestampModel } from '../models/TimestampModel';
+import { TokenInputBody } from '../models/TokenInputBody';
+import { TokenResponse } from '../models/TokenResponse';
 import { TokenisedData } from '../models/TokenisedData';
 import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
@@ -433,12 +467,24 @@ import { Ttp } from '../models/Ttp';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateDataTypesInputBody } from '../models/UpdateDataTypesInputBody';
 import { UpdateDataTypesOutputBody } from '../models/UpdateDataTypesOutputBody';
+import { UpdateIssuerInputBody } from '../models/UpdateIssuerInputBody';
+import { UpdateOrganisationInputBody } from '../models/UpdateOrganisationInputBody';
+import { UpdatePasswordInputBody } from '../models/UpdatePasswordInputBody';
+import { UpdateProfileInputBody } from '../models/UpdateProfileInputBody';
+import { UpdateTeamInputBody } from '../models/UpdateTeamInputBody';
+import { UpdateUserCreditsInputBody } from '../models/UpdateUserCreditsInputBody';
+import { UpdateUserInputBody } from '../models/UpdateUserInputBody';
+import { UpdateUserPasswordInputBody } from '../models/UpdateUserPasswordInputBody';
 import { UploadFileType } from '../models/UploadFileType';
 import { UploadResponse } from '../models/UploadResponse';
 import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
 import { UpsertOverridesData } from '../models/UpsertOverridesData';
 import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
+import { User } from '../models/User';
 import { UserActivityResponse } from '../models/UserActivityResponse';
+import { UserCredits } from '../models/UserCredits';
+import { UserIdentity } from '../models/UserIdentity';
+import { UserProfile } from '../models/UserProfile';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
@@ -5459,6 +5505,60 @@ export class ObjectFunctionsRenamingHistoryApi {
      */
     public revertFunctionName_1(param: FunctionsRenamingHistoryApiRevertFunctionName0Request, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
         return this.api.revertFunctionName_1(param.functionId, param.historyId,  options).toPromise();
+    }
+
+}
+
+import { ObservableIAMUsersApi } from "./ObservableAPI";
+import { IAMUsersApiRequestFactory, IAMUsersApiResponseProcessor} from "../apis/IAMUsersApi";
+
+export interface IAMUsersApiGetMeRequest {
+}
+
+export interface IAMUsersApiGetMyPermissionsRequest {
+}
+
+export class ObjectIAMUsersApi {
+    private api: ObservableIAMUsersApi
+
+    public constructor(configuration: Configuration, requestFactory?: IAMUsersApiRequestFactory, responseProcessor?: IAMUsersApiResponseProcessor) {
+        this.api = new ObservableIAMUsersApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Returns the authenticated user\'s own information.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get current user
+     * @param param the request object
+     */
+    public getMeWithHttpInfo(param: IAMUsersApiGetMeRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<User>> {
+        return this.api.getMeWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Returns the authenticated user\'s own information.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get current user
+     * @param param the request object
+     */
+    public getMe(param: IAMUsersApiGetMeRequest = {}, options?: ConfigurationOptions): Promise<User> {
+        return this.api.getMe( options).toPromise();
+    }
+
+    /**
+     * Returns the feature permissions granted to the authenticated user based on their subscription tier. Use this as the single source of truth for feature gating across web, CLI, and plugin clients.
+     * Get current user permissions
+     * @param param the request object
+     */
+    public getMyPermissionsWithHttpInfo(param: IAMUsersApiGetMyPermissionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<Permissions>> {
+        return this.api.getMyPermissionsWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Returns the feature permissions granted to the authenticated user based on their subscription tier. Use this as the single source of truth for feature gating across web, CLI, and plugin clients.
+     * Get current user permissions
+     * @param param the request object
+     */
+    public getMyPermissions(param: IAMUsersApiGetMyPermissionsRequest = {}, options?: ConfigurationOptions): Promise<Permissions> {
+        return this.api.getMyPermissions( options).toPromise();
     }
 
 }
