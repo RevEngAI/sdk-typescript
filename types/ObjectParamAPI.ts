@@ -245,6 +245,7 @@ import { EventTOOLCALLRESULT } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
 import { EventWarning } from '../models/EventWarning';
+import { Example } from '../models/Example';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedURL } from '../models/ExtractedURL';
@@ -321,6 +322,7 @@ import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctions
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
+import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
@@ -1425,6 +1427,9 @@ export interface AnalysesCoreApiV3GetAnalysisStringsStatusRequest {
     analysisId: number
 }
 
+export interface AnalysesCoreApiV3ListExampleAnalysesRequest {
+}
+
 export class ObjectAnalysesCoreApi {
     private api: ObservableAnalysesCoreApi
 
@@ -1878,6 +1883,24 @@ export class ObjectAnalysesCoreApi {
      */
     public v3GetAnalysisStringsStatus(param: AnalysesCoreApiV3GetAnalysisStringsStatusRequest, options?: ConfigurationOptions): Promise<GetAnalysisStringsStatusOutputBody> {
         return this.api.v3GetAnalysisStringsStatus(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the curated example Analyses.
+     * List example analyses
+     * @param param the request object
+     */
+    public v3ListExampleAnalysesWithHttpInfo(param: AnalysesCoreApiV3ListExampleAnalysesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListExampleAnalysesOutputBody>> {
+        return this.api.v3ListExampleAnalysesWithHttpInfo( options).toPromise();
+    }
+
+    /**
+     * Returns the curated example Analyses.
+     * List example analyses
+     * @param param the request object
+     */
+    public v3ListExampleAnalyses(param: AnalysesCoreApiV3ListExampleAnalysesRequest = {}, options?: ConfigurationOptions): Promise<ListExampleAnalysesOutputBody> {
+        return this.api.v3ListExampleAnalyses( options).toPromise();
     }
 
 }
