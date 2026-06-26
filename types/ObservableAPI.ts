@@ -246,6 +246,7 @@ import { EventTOOLCALLRESULT } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
 import { EventWarning } from '../models/EventWarning';
+import { Example } from '../models/Example';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedURL } from '../models/ExtractedURL';
@@ -322,6 +323,7 @@ import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctions
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
+import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
@@ -1971,6 +1973,38 @@ export class ObservableAnalysesCoreApi {
      */
     public v3GetAnalysisStringsStatus(analysisId: number, _options?: ConfigurationOptions): Observable<GetAnalysisStringsStatusOutputBody> {
         return this.v3GetAnalysisStringsStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<GetAnalysisStringsStatusOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Returns the curated example Analyses.
+     * List example analyses
+     */
+    public v3ListExampleAnalysesWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<ListExampleAnalysesOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3ListExampleAnalyses(_config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3ListExampleAnalysesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the curated example Analyses.
+     * List example analyses
+     */
+    public v3ListExampleAnalyses(_options?: ConfigurationOptions): Observable<ListExampleAnalysesOutputBody> {
+        return this.v3ListExampleAnalysesWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<ListExampleAnalysesOutputBody>) => apiResponse.data));
     }
 
 }

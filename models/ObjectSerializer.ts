@@ -241,6 +241,7 @@ export * from '../models/EventTOOLCALLRESULT';
 export * from '../models/EventTOOLCALLSTART';
 export * from '../models/EventTOOLCONFIRMATIONREQUIRED';
 export * from '../models/EventWarning';
+export * from '../models/Example';
 export * from '../models/ExportModel';
 export * from '../models/ExternalResponse';
 export * from '../models/ExtractedURL';
@@ -317,6 +318,7 @@ export * from '../models/ListAnalysisFunctionsOutputBody';
 export * from '../models/ListAnalysisStringsOutputBody';
 export * from '../models/ListCollectionResults';
 export * from '../models/ListCollectionsOutputBody';
+export * from '../models/ListExampleAnalysesOutputBody';
 export * from '../models/ListFunctionStringsOutputBody';
 export * from '../models/ListFunctionsDataTypesOutputBody';
 export * from '../models/ListTeamsOutputBody';
@@ -733,6 +735,7 @@ import { EventTOOLCALLRESULT , EventTOOLCALLRESULTEventEnum     } from '../model
 import { EventTOOLCALLSTART , EventTOOLCALLSTARTEventEnum     } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED , EventTOOLCONFIRMATIONREQUIREDEventEnum     } from '../models/EventTOOLCONFIRMATIONREQUIRED';
 import { EventWarning , EventWarningEventEnum     } from '../models/EventWarning';
+import { Example , ExampleAnalysisScopeEnum             } from '../models/Example';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedURL } from '../models/ExtractedURL';
@@ -809,6 +812,7 @@ import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctions
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
+import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
@@ -1041,6 +1045,7 @@ let enumsMap: Set<string> = new Set<string>([
     "EventTOOLCALLSTARTEventEnum",
     "EventTOOLCONFIRMATIONREQUIREDEventEnum",
     "EventWarningEventEnum",
+    "ExampleAnalysisScopeEnum",
     "FileFormat",
     "Filters",
     "FunctionListItemNameSourceTypeEnum",
@@ -1322,6 +1327,7 @@ let typeMap: {[index: string]: any} = {
     "EventTOOLCALLSTART": EventTOOLCALLSTART,
     "EventTOOLCONFIRMATIONREQUIRED": EventTOOLCONFIRMATIONREQUIRED,
     "EventWarning": EventWarning,
+    "Example": Example,
     "ExportModel": ExportModel,
     "ExternalResponse": ExternalResponse,
     "ExtractedURL": ExtractedURL,
@@ -1394,6 +1400,7 @@ let typeMap: {[index: string]: any} = {
     "ListAnalysisStringsOutputBody": ListAnalysisStringsOutputBody,
     "ListCollectionResults": ListCollectionResults,
     "ListCollectionsOutputBody": ListCollectionsOutputBody,
+    "ListExampleAnalysesOutputBody": ListExampleAnalysesOutputBody,
     "ListFunctionStringsOutputBody": ListFunctionStringsOutputBody,
     "ListFunctionsDataTypesOutputBody": ListFunctionsDataTypesOutputBody,
     "ListTeamsOutputBody": ListTeamsOutputBody,

@@ -245,6 +245,7 @@ import { EventTOOLCALLRESULT } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
 import { EventWarning } from '../models/EventWarning';
+import { Example } from '../models/Example';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedURL } from '../models/ExtractedURL';
@@ -321,6 +322,7 @@ import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctions
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
+import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
@@ -1489,6 +1491,26 @@ export class PromiseAnalysesCoreApi {
     public v3GetAnalysisStringsStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<GetAnalysisStringsStatusOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3GetAnalysisStringsStatus(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the curated example Analyses.
+     * List example analyses
+     */
+    public v3ListExampleAnalysesWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<ListExampleAnalysesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListExampleAnalysesWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the curated example Analyses.
+     * List example analyses
+     */
+    public v3ListExampleAnalyses(_options?: PromiseConfigurationOptions): Promise<ListExampleAnalysesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListExampleAnalyses(observableOptions);
         return result.toPromise();
     }
 
