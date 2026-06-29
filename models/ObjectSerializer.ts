@@ -17,6 +17,7 @@ export * from '../models/AnalysisBulkAddTagsRequest';
 export * from '../models/AnalysisBulkAddTagsResponse';
 export * from '../models/AnalysisBulkAddTagsResponseItem';
 export * from '../models/AnalysisConfig';
+export * from '../models/AnalysisConfigSnapshot';
 export * from '../models/AnalysisCreateRequest';
 export * from '../models/AnalysisCreateResponse';
 export * from '../models/AnalysisDetailResponse';
@@ -511,6 +512,7 @@ import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest
 import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
 import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
 import { AnalysisConfig } from '../models/AnalysisConfig';
+import { AnalysisConfigSnapshot } from '../models/AnalysisConfigSnapshot';
 import { AnalysisCreateRequest          } from '../models/AnalysisCreateRequest';
 import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
 import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
@@ -1110,6 +1112,7 @@ let typeMap: {[index: string]: any} = {
     "AnalysisBulkAddTagsResponse": AnalysisBulkAddTagsResponse,
     "AnalysisBulkAddTagsResponseItem": AnalysisBulkAddTagsResponseItem,
     "AnalysisConfig": AnalysisConfig,
+    "AnalysisConfigSnapshot": AnalysisConfigSnapshot,
     "AnalysisCreateRequest": AnalysisCreateRequest,
     "AnalysisCreateResponse": AnalysisCreateResponse,
     "AnalysisDetailResponse": AnalysisDetailResponse,

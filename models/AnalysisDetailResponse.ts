@@ -10,6 +10,7 @@
  */
 
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
+import { AnalysisConfigSnapshot } from '../models/AnalysisConfigSnapshot';
 import { AutoRunAgents } from '../models/AutoRunAgents';
 import { HttpFile } from '../http/http';
 
@@ -33,6 +34,10 @@ export class AnalysisDetailResponse {
     'sbom'?: { [key: string]: any; } | null;
     'sha256Hash': string;
     'autoRunAgents': AutoRunAgents;
+    /**
+    * Snapshot of the configuration the analysis was submitted with.
+    */
+    'requestedConfig': AnalysisConfigSnapshot;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -133,6 +138,12 @@ export class AnalysisDetailResponse {
             "name": "autoRunAgents",
             "baseName": "auto_run_agents",
             "type": "AutoRunAgents",
+            "format": ""
+        },
+        {
+            "name": "requestedConfig",
+            "baseName": "requested_config",
+            "type": "AnalysisConfigSnapshot",
             "format": ""
         }    ];
 
