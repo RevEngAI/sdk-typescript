@@ -227,6 +227,7 @@ Class | Method | HTTP request | Description
  - [AnalysisBulkAddTagsResponse](AnalysisBulkAddTagsResponse.md)
  - [AnalysisBulkAddTagsResponseItem](AnalysisBulkAddTagsResponseItem.md)
  - [AnalysisConfig](AnalysisConfig.md)
+ - [AnalysisConfigSnapshot](AnalysisConfigSnapshot.md)
  - [AnalysisCreateRequest](AnalysisCreateRequest.md)
  - [AnalysisCreateResponse](AnalysisCreateResponse.md)
  - [AnalysisDetailResponse](AnalysisDetailResponse.md)
