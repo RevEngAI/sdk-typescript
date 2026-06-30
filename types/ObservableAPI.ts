@@ -273,7 +273,6 @@ import { FunctionDependency } from '../models/FunctionDependency';
 import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
 import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfo } from '../models/FunctionInfo';
-import { FunctionInfoFuncDepsInner } from '../models/FunctionInfoFuncDepsInner';
 import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
@@ -489,6 +488,13 @@ import { UserActivityResponse } from '../models/UserActivityResponse';
 import { UserCredits } from '../models/UserCredits';
 import { UserIdentity } from '../models/UserIdentity';
 import { UserProfile } from '../models/UserProfile';
+import { V2FunctionHeader } from '../models/V2FunctionHeader';
+import { V2FunctionInfo } from '../models/V2FunctionInfo';
+import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
+import { V2FunctionMatch } from '../models/V2FunctionMatch';
+import { V2FunctionType } from '../models/V2FunctionType';
+import { V2MatchedFunction } from '../models/V2MatchedFunction';
+import { V2NameConfidence } from '../models/V2NameConfidence';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
@@ -5433,12 +5439,12 @@ export class ObservableFunctionsDataTypesApi {
     }
 
     /**
-     * Polling endpoint which returns the current status of function generation and once completed the data type information
-     * Get Function Data Types
-     * @param analysisId
-     * @param functionId
+     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get data types for a single function
+     * @param analysisId Analysis ID
+     * @param functionId Function ID
      */
-    public getFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypes>> {
+    public getFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<DataTypesEntry>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getFunctionDataTypes(analysisId, functionId, _config);
@@ -5459,49 +5465,13 @@ export class ObservableFunctionsDataTypesApi {
     }
 
     /**
-     * Polling endpoint which returns the current status of function generation and once completed the data type information
-     * Get Function Data Types
-     * @param analysisId
-     * @param functionId
-     */
-    public getFunctionDataTypes(analysisId: number, functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypes> {
-        return this.getFunctionDataTypesWithHttpInfo(analysisId, functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypes>) => apiResponse.data));
-    }
-
-    /**
      * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get data types for a single function
      * @param analysisId Analysis ID
      * @param functionId Function ID
      */
-    public getFunctionDataTypes_1WithHttpInfo(analysisId: number, functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<DataTypesEntry>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionDataTypes_1(analysisId, functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionDataTypes_1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get data types for a single function
-     * @param analysisId Analysis ID
-     * @param functionId Function ID
-     */
-    public getFunctionDataTypes_1(analysisId: number, functionId: number, _options?: ConfigurationOptions): Observable<DataTypesEntry> {
-        return this.getFunctionDataTypes_1WithHttpInfo(analysisId, functionId, _options).pipe(map((apiResponse: HttpInfo<DataTypesEntry>) => apiResponse.data));
+    public getFunctionDataTypes(analysisId: number, functionId: number, _options?: ConfigurationOptions): Observable<DataTypesEntry> {
+        return this.getFunctionDataTypesWithHttpInfo(analysisId, functionId, _options).pipe(map((apiResponse: HttpInfo<DataTypesEntry>) => apiResponse.data));
     }
 
     /**
@@ -5644,6 +5614,44 @@ export class ObservableFunctionsDataTypesApi {
      */
     public listFunctionsDataTypes(functionIds: Array<number>, _options?: ConfigurationOptions): Observable<ListFunctionsDataTypesOutputBody> {
         return this.listFunctionsDataTypesWithHttpInfo(functionIds, _options).pipe(map((apiResponse: HttpInfo<ListFunctionsDataTypesOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Stores user-specific overrides for a function\'s data types. Uses optimistic concurrency: if the stored version doesn\'t match `data_types_version`, the update is rejected with 409.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Update function data types
+     * @param analysisId Analysis ID
+     * @param functionId Function ID
+     * @param updateDataTypesInputBody
+     */
+    public updateFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, updateDataTypesInputBody: UpdateDataTypesInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<UpdateDataTypesOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.updateFunctionDataTypes(analysisId, functionId, updateDataTypesInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateFunctionDataTypesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Stores user-specific overrides for a function\'s data types. Uses optimistic concurrency: if the stored version doesn\'t match `data_types_version`, the update is rejected with 409.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Update function data types
+     * @param analysisId Analysis ID
+     * @param functionId Function ID
+     * @param updateDataTypesInputBody
+     */
+    public updateFunctionDataTypes(analysisId: number, functionId: number, updateDataTypesInputBody: UpdateDataTypesInputBody, _options?: ConfigurationOptions): Observable<UpdateDataTypesOutputBody> {
+        return this.updateFunctionDataTypesWithHttpInfo(analysisId, functionId, updateDataTypesInputBody, _options).pipe(map((apiResponse: HttpInfo<UpdateDataTypesOutputBody>) => apiResponse.data));
     }
 
 }

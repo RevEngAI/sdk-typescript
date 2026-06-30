@@ -272,7 +272,6 @@ import { FunctionDependency } from '../models/FunctionDependency';
 import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
 import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfo } from '../models/FunctionInfo';
-import { FunctionInfoFuncDepsInner } from '../models/FunctionInfoFuncDepsInner';
 import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
@@ -488,6 +487,13 @@ import { UserActivityResponse } from '../models/UserActivityResponse';
 import { UserCredits } from '../models/UserCredits';
 import { UserIdentity } from '../models/UserIdentity';
 import { UserProfile } from '../models/UserProfile';
+import { V2FunctionHeader } from '../models/V2FunctionHeader';
+import { V2FunctionInfo } from '../models/V2FunctionInfo';
+import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
+import { V2FunctionMatch } from '../models/V2FunctionMatch';
+import { V2FunctionType } from '../models/V2FunctionType';
+import { V2MatchedFunction } from '../models/V2MatchedFunction';
+import { V2NameConfidence } from '../models/V2NameConfidence';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
@@ -4999,28 +5005,11 @@ export interface FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsReque
 
 export interface FunctionsDataTypesApiGetFunctionDataTypesRequest {
     /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDataTypesApigetFunctionDataTypes
-     */
-    analysisId: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDataTypesApigetFunctionDataTypes
-     */
-    functionId: number
-}
-
-export interface FunctionsDataTypesApiGetFunctionDataTypes0Request {
-    /**
      * Analysis ID
      * Minimum: 1
      * Defaults to: undefined
      * @type number
-     * @memberof FunctionsDataTypesApigetFunctionDataTypes_1
+     * @memberof FunctionsDataTypesApigetFunctionDataTypes
      */
     analysisId: number
     /**
@@ -5028,7 +5017,7 @@ export interface FunctionsDataTypesApiGetFunctionDataTypes0Request {
      * Minimum: 1
      * Defaults to: undefined
      * @type number
-     * @memberof FunctionsDataTypesApigetFunctionDataTypes_1
+     * @memberof FunctionsDataTypesApigetFunctionDataTypes
      */
     functionId: number
 }
@@ -5098,6 +5087,31 @@ export interface FunctionsDataTypesApiListFunctionsDataTypesRequest {
     functionIds: Array<number>
 }
 
+export interface FunctionsDataTypesApiUpdateFunctionDataTypesRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDataTypesApiupdateFunctionDataTypes
+     */
+    analysisId: number
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsDataTypesApiupdateFunctionDataTypes
+     */
+    functionId: number
+    /**
+     * 
+     * @type UpdateDataTypesInputBody
+     * @memberof FunctionsDataTypesApiupdateFunctionDataTypes
+     */
+    updateDataTypesInputBody: UpdateDataTypesInputBody
+}
+
 export class ObjectFunctionsDataTypesApi {
     private api: ObservableFunctionsDataTypesApi
 
@@ -5160,39 +5174,21 @@ export class ObjectFunctionsDataTypesApi {
     }
 
     /**
-     * Polling endpoint which returns the current status of function generation and once completed the data type information
-     * Get Function Data Types
+     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get data types for a single function
      * @param param the request object
      */
-    public getFunctionDataTypesWithHttpInfo(param: FunctionsDataTypesApiGetFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypes>> {
+    public getFunctionDataTypesWithHttpInfo(param: FunctionsDataTypesApiGetFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<HttpInfo<DataTypesEntry>> {
         return this.api.getFunctionDataTypesWithHttpInfo(param.analysisId, param.functionId,  options).toPromise();
     }
 
     /**
-     * Polling endpoint which returns the current status of function generation and once completed the data type information
-     * Get Function Data Types
+     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get data types for a single function
      * @param param the request object
      */
-    public getFunctionDataTypes(param: FunctionsDataTypesApiGetFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionDataTypes> {
+    public getFunctionDataTypes(param: FunctionsDataTypesApiGetFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<DataTypesEntry> {
         return this.api.getFunctionDataTypes(param.analysisId, param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get data types for a single function
-     * @param param the request object
-     */
-    public getFunctionDataTypes_1WithHttpInfo(param: FunctionsDataTypesApiGetFunctionDataTypes0Request, options?: ConfigurationOptions): Promise<HttpInfo<DataTypesEntry>> {
-        return this.api.getFunctionDataTypes_1WithHttpInfo(param.analysisId, param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get data types for a single function
-     * @param param the request object
-     */
-    public getFunctionDataTypes_1(param: FunctionsDataTypesApiGetFunctionDataTypes0Request, options?: ConfigurationOptions): Promise<DataTypesEntry> {
-        return this.api.getFunctionDataTypes_1(param.analysisId, param.functionId,  options).toPromise();
     }
 
     /**
@@ -5265,6 +5261,24 @@ export class ObjectFunctionsDataTypesApi {
      */
     public listFunctionsDataTypes(param: FunctionsDataTypesApiListFunctionsDataTypesRequest, options?: ConfigurationOptions): Promise<ListFunctionsDataTypesOutputBody> {
         return this.api.listFunctionsDataTypes(param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Stores user-specific overrides for a function\'s data types. Uses optimistic concurrency: if the stored version doesn\'t match `data_types_version`, the update is rejected with 409.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Update function data types
+     * @param param the request object
+     */
+    public updateFunctionDataTypesWithHttpInfo(param: FunctionsDataTypesApiUpdateFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<HttpInfo<UpdateDataTypesOutputBody>> {
+        return this.api.updateFunctionDataTypesWithHttpInfo(param.analysisId, param.functionId, param.updateDataTypesInputBody,  options).toPromise();
+    }
+
+    /**
+     * Stores user-specific overrides for a function\'s data types. Uses optimistic concurrency: if the stored version doesn\'t match `data_types_version`, the update is rejected with 409.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Update function data types
+     * @param param the request object
+     */
+    public updateFunctionDataTypes(param: FunctionsDataTypesApiUpdateFunctionDataTypesRequest, options?: ConfigurationOptions): Promise<UpdateDataTypesOutputBody> {
+        return this.api.updateFunctionDataTypes(param.analysisId, param.functionId, param.updateDataTypesInputBody,  options).toPromise();
     }
 
 }

@@ -7,12 +7,12 @@ Method | HTTP request | Description
 [**batchUpdateFunctionDataTypes**](FunctionsDataTypesApi.md#batchUpdateFunctionDataTypes) | **PUT** /v3/analyses/{analysis_id}/functions/data-types | Batch update function data types
 [**generateFunctionDataTypesForAnalysis**](FunctionsDataTypesApi.md#generateFunctionDataTypesForAnalysis) | **POST** /v2/analyses/{analysis_id}/functions/data_types | Generate Function Data Types
 [**generateFunctionDataTypesForFunctions**](FunctionsDataTypesApi.md#generateFunctionDataTypesForFunctions) | **POST** /v2/functions/data_types | Generate Function Data Types for an arbitrary list of functions
-[**getFunctionDataTypes**](FunctionsDataTypesApi.md#getFunctionDataTypes) | **GET** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Get Function Data Types
-[**getFunctionDataTypes_0**](FunctionsDataTypesApi.md#getFunctionDataTypes_0) | **GET** /v3/analyses/{analysis_id}/functions/{function_id}/data-types | Get data types for a single function
+[**getFunctionDataTypes**](FunctionsDataTypesApi.md#getFunctionDataTypes) | **GET** /v3/analyses/{analysis_id}/functions/{function_id}/data-types | Get data types for a single function
 [**listAnalysisFunctionsDataTypes**](FunctionsDataTypesApi.md#listAnalysisFunctionsDataTypes) | **GET** /v3/analyses/{analysis_id}/functions/data-types | List data types for all functions in an analysis
 [**listFunctionDataTypesForAnalysis**](FunctionsDataTypesApi.md#listFunctionDataTypesForAnalysis) | **GET** /v2/analyses/{analysis_id}/functions/data_types | List Function Data Types
 [**listFunctionDataTypesForFunctions**](FunctionsDataTypesApi.md#listFunctionDataTypesForFunctions) | **GET** /v2/functions/data_types | List Function Data Types
 [**listFunctionsDataTypes**](FunctionsDataTypesApi.md#listFunctionsDataTypes) | **GET** /v3/functions/data-types | Get data types for many functions
+[**updateFunctionDataTypes**](FunctionsDataTypesApi.md#updateFunctionDataTypes) | **PUT** /v2/analyses/{analysis_id}/functions/{function_id}/data_types | Update function data types
 
 
 # **batchUpdateFunctionDataTypes**
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -179,7 +179,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -196,9 +196,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getFunctionDataTypes**
-> BaseResponseFunctionDataTypes getFunctionDataTypes()
+> DataTypesEntry getFunctionDataTypes()
 
-Polling endpoint which returns the current status of function generation and once completed the data type information
+Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
 ### Example
 
@@ -211,70 +211,13 @@ const configuration = createConfiguration();
 const apiInstance = new FunctionsDataTypesApi(configuration);
 
 const request: FunctionsDataTypesApiGetFunctionDataTypesRequest = {
-  
-  analysisId: 1,
-  
-  functionId: 1,
-};
-
-const data = await apiInstance.getFunctionDataTypes(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
- **functionId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseFunctionDataTypes**
-
-### Authorization
-
-[APIKey](README.md#APIKey)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getFunctionDataTypes_0**
-> DataTypesEntry getFunctionDataTypes_0()
-
-Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
-import type { FunctionsDataTypesApiGetFunctionDataTypes0Request } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsDataTypesApi(configuration);
-
-const request: FunctionsDataTypesApiGetFunctionDataTypes0Request = {
     // Analysis ID
   analysisId: 1,
     // Function ID
   functionId: 1,
 };
 
-const data = await apiInstance.getFunctionDataTypes_0(request);
+const data = await apiInstance.getFunctionDataTypes(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -293,7 +236,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -356,7 +299,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -418,7 +361,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -474,7 +417,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -530,7 +473,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -545,6 +488,71 @@ Name | Type | Description  | Notes
 **400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **updateFunctionDataTypes**
+> UpdateDataTypesOutputBody updateFunctionDataTypes(updateDataTypesInputBody)
+
+Stores user-specific overrides for a function\'s data types. Uses optimistic concurrency: if the stored version doesn\'t match `data_types_version`, the update is rejected with 409.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsDataTypesApi } from '@revengai/sdk';
+import type { FunctionsDataTypesApiUpdateFunctionDataTypesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsDataTypesApi(configuration);
+
+const request: FunctionsDataTypesApiUpdateFunctionDataTypesRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Function ID
+  functionId: 1,
+  
+  updateDataTypesInputBody: ,
+};
+
+const data = await apiInstance.updateFunctionDataTypes(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateDataTypesInputBody** | **UpdateDataTypesInputBody**|  |
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**UpdateDataTypesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 

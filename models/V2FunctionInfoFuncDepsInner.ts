@@ -9,15 +9,38 @@
  * Do not edit the class manually.
  */
 
+import { Enumeration } from '../models/Enumeration';
+import { GlobalVariable } from '../models/GlobalVariable';
+import { Structure } from '../models/Structure';
+import { TypeDefinition } from '../models/TypeDefinition';
 import { HttpFile } from '../http/http';
 
-export class FunctionArgument {
+export class V2FunctionInfoFuncDepsInner {
     'lastChange'?: string;
+    /**
+    * Name of the global variable
+    */
     'name': string;
-    'offset': number;
-    'scope'?: string;
+    /**
+    * Size of the global variable in bytes
+    */
     'size': number;
+    /**
+    * Dictionary of enumeration members and their values
+    */
+    'members': { [key: string]: number; };
+    /**
+    * Type of artifact that the global variable is associated with
+    */
+    'artifactType'?: string;
+    /**
+    * Data type of the global variable
+    */
     'type': string;
+    /**
+    * Memory address of the global variable
+    */
+    'addr': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -37,32 +60,38 @@ export class FunctionArgument {
             "format": ""
         },
         {
-            "name": "offset",
-            "baseName": "offset",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "scope",
-            "baseName": "scope",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "size",
             "baseName": "size",
             "type": "number",
-            "format": "int64"
+            "format": ""
+        },
+        {
+            "name": "members",
+            "baseName": "members",
+            "type": "{ [key: string]: number; }",
+            "format": ""
+        },
+        {
+            "name": "artifactType",
+            "baseName": "artifact_type",
+            "type": "string",
+            "format": ""
         },
         {
             "name": "type",
             "baseName": "type",
             "type": "string",
             "format": ""
+        },
+        {
+            "name": "addr",
+            "baseName": "addr",
+            "type": "number",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionArgument.attributeTypeMap;
+        return V2FunctionInfoFuncDepsInner.attributeTypeMap;
     }
 
     public constructor() {

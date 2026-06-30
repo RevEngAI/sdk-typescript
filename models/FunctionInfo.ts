@@ -9,16 +9,13 @@
  * Do not edit the class manually.
  */
 
-import { FunctionInfoFuncDepsInner } from '../models/FunctionInfoFuncDepsInner';
+import { FunctionDependency } from '../models/FunctionDependency';
 import { FunctionType } from '../models/FunctionType';
 import { HttpFile } from '../http/http';
 
 export class FunctionInfo {
-    'funcTypes'?: FunctionType | null;
-    /**
-    * List of function dependencies
-    */
-    'funcDeps': Array<FunctionInfoFuncDepsInner>;
+    'funcDeps': Array<FunctionDependency> | null;
+    'funcTypes'?: FunctionType;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,15 +23,15 @@ export class FunctionInfo {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "funcTypes",
-            "baseName": "func_types",
-            "type": "FunctionType",
+            "name": "funcDeps",
+            "baseName": "func_deps",
+            "type": "Array<FunctionDependency>",
             "format": ""
         },
         {
-            "name": "funcDeps",
-            "baseName": "func_deps",
-            "type": "Array<FunctionInfoFuncDepsInner>",
+            "name": "funcTypes",
+            "baseName": "func_types",
+            "type": "FunctionType",
             "format": ""
         }    ];
 

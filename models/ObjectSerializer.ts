@@ -268,7 +268,6 @@ export * from '../models/FunctionDependency';
 export * from '../models/FunctionDetailsOutputBody';
 export * from '../models/FunctionHeader';
 export * from '../models/FunctionInfo';
-export * from '../models/FunctionInfoFuncDepsInner';
 export * from '../models/FunctionListItem';
 export * from '../models/FunctionLocalVariableResponse';
 export * from '../models/FunctionMapping';
@@ -484,6 +483,13 @@ export * from '../models/UserActivityResponse';
 export * from '../models/UserCredits';
 export * from '../models/UserIdentity';
 export * from '../models/UserProfile';
+export * from '../models/V2FunctionHeader';
+export * from '../models/V2FunctionInfo';
+export * from '../models/V2FunctionInfoFuncDepsInner';
+export * from '../models/V2FunctionMatch';
+export * from '../models/V2FunctionType';
+export * from '../models/V2MatchedFunction';
+export * from '../models/V2NameConfidence';
 export * from '../models/Vulnerabilities';
 export * from '../models/Vulnerability';
 export * from '../models/WarningEvent';
@@ -763,7 +769,6 @@ import { FunctionDependency } from '../models/FunctionDependency';
 import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
 import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfo } from '../models/FunctionInfo';
-import { FunctionInfoFuncDepsInner } from '../models/FunctionInfoFuncDepsInner';
 import { FunctionListItem  , FunctionListItemNameSourceTypeEnum        } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
@@ -979,6 +984,13 @@ import { UserActivityResponse } from '../models/UserActivityResponse';
 import { UserCredits } from '../models/UserCredits';
 import { UserIdentity } from '../models/UserIdentity';
 import { UserProfile } from '../models/UserProfile';
+import { V2FunctionHeader } from '../models/V2FunctionHeader';
+import { V2FunctionInfo } from '../models/V2FunctionInfo';
+import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
+import { V2FunctionMatch } from '../models/V2FunctionMatch';
+import { V2FunctionType } from '../models/V2FunctionType';
+import { V2MatchedFunction } from '../models/V2MatchedFunction';
+import { V2NameConfidence } from '../models/V2NameConfidence';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
@@ -1354,7 +1366,6 @@ let typeMap: {[index: string]: any} = {
     "FunctionDetailsOutputBody": FunctionDetailsOutputBody,
     "FunctionHeader": FunctionHeader,
     "FunctionInfo": FunctionInfo,
-    "FunctionInfoFuncDepsInner": FunctionInfoFuncDepsInner,
     "FunctionListItem": FunctionListItem,
     "FunctionLocalVariableResponse": FunctionLocalVariableResponse,
     "FunctionMapping": FunctionMapping,
@@ -1559,6 +1570,13 @@ let typeMap: {[index: string]: any} = {
     "UserCredits": UserCredits,
     "UserIdentity": UserIdentity,
     "UserProfile": UserProfile,
+    "V2FunctionHeader": V2FunctionHeader,
+    "V2FunctionInfo": V2FunctionInfo,
+    "V2FunctionInfoFuncDepsInner": V2FunctionInfoFuncDepsInner,
+    "V2FunctionMatch": V2FunctionMatch,
+    "V2FunctionType": V2FunctionType,
+    "V2MatchedFunction": V2MatchedFunction,
+    "V2NameConfidence": V2NameConfidence,
     "Vulnerabilities": Vulnerabilities,
     "Vulnerability": Vulnerability,
     "WarningEvent": WarningEvent,

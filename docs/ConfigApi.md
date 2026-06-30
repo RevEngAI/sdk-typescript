@@ -38,7 +38,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 

@@ -9,33 +9,37 @@
  * Do not edit the class manually.
  */
 
-import { Argument } from '../models/Argument';
+import { FunctionArgument } from '../models/FunctionArgument';
 import { HttpFile } from '../http/http';
 
 export class FunctionHeader {
-    'lastChange'?: string | null;
-    /**
-    * Name of the function
-    */
-    'name': string;
-    /**
-    * Memory address of the function
-    */
     'addr': number;
     /**
-    * Return type of the function
+    * Argument map keyed by ordinal hex (e.g. \"0x0\", \"0x1\").
     */
+    'args': { [key: string]: FunctionArgument; };
+    'lastChange'?: string;
+    'name': string;
+    'scope'?: string;
     'type': string;
-    /**
-    * Dictionary of function arguments
-    */
-    'args': { [key: string]: Argument; };
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "addr",
+            "baseName": "addr",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "args",
+            "baseName": "args",
+            "type": "{ [key: string]: FunctionArgument; }",
+            "format": ""
+        },
         {
             "name": "lastChange",
             "baseName": "last_change",
@@ -49,21 +53,15 @@ export class FunctionHeader {
             "format": ""
         },
         {
-            "name": "addr",
-            "baseName": "addr",
-            "type": "number",
+            "name": "scope",
+            "baseName": "scope",
+            "type": "string",
             "format": ""
         },
         {
             "name": "type",
             "baseName": "type",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "args",
-            "baseName": "args",
-            "type": "{ [key: string]: Argument; }",
             "format": ""
         }    ];
 
