@@ -9,24 +9,17 @@
  * Do not edit the class manually.
  */
 
-import { V2FunctionInfo } from '../models/V2FunctionInfo';
 import { HttpFile } from '../http/http';
 
-export class FunctionDataTypesListItem {
+export class V2NameConfidence {
     /**
-    * Whether the service has completed data types generation
+    * The suggested function name
     */
-    'completed': boolean;
+    'name': string;
     /**
-    * The current status of the data types service
+    * Confidence score as a percentage
     */
-    'status': string;
-    'dataTypes'?: V2FunctionInfo | null;
-    'dataTypesVersion'?: number | null;
-    /**
-    * Function id
-    */
-    'functionId': number;
+    'confidence': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -34,38 +27,20 @@ export class FunctionDataTypesListItem {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "completed",
-            "baseName": "completed",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "status",
-            "baseName": "status",
+            "name": "name",
+            "baseName": "name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "dataTypes",
-            "baseName": "data_types",
-            "type": "V2FunctionInfo",
-            "format": ""
-        },
-        {
-            "name": "dataTypesVersion",
-            "baseName": "data_types_version",
+            "name": "confidence",
+            "baseName": "confidence",
             "type": "number",
             "format": ""
-        },
-        {
-            "name": "functionId",
-            "baseName": "function_id",
-            "type": "number",
-            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionDataTypesListItem.attributeTypeMap;
+        return V2NameConfidence.attributeTypeMap;
     }
 
     public constructor() {

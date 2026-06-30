@@ -9,24 +9,27 @@
  * Do not edit the class manually.
  */
 
-import { V2FunctionInfo } from '../models/V2FunctionInfo';
+import { Argument } from '../models/Argument';
 import { HttpFile } from '../http/http';
 
-export class FunctionDataTypesListItem {
+export class V2FunctionHeader {
+    'lastChange'?: string | null;
     /**
-    * Whether the service has completed data types generation
+    * Name of the function
     */
-    'completed': boolean;
+    'name': string;
     /**
-    * The current status of the data types service
+    * Memory address of the function
     */
-    'status': string;
-    'dataTypes'?: V2FunctionInfo | null;
-    'dataTypesVersion'?: number | null;
+    'addr': number;
     /**
-    * Function id
+    * Return type of the function
     */
-    'functionId': number;
+    'type': string;
+    /**
+    * Dictionary of function arguments
+    */
+    'args': { [key: string]: Argument; };
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -34,38 +37,38 @@ export class FunctionDataTypesListItem {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "completed",
-            "baseName": "completed",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "status",
-            "baseName": "status",
+            "name": "lastChange",
+            "baseName": "last_change",
             "type": "string",
             "format": ""
         },
         {
-            "name": "dataTypes",
-            "baseName": "data_types",
-            "type": "V2FunctionInfo",
+            "name": "name",
+            "baseName": "name",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "dataTypesVersion",
-            "baseName": "data_types_version",
+            "name": "addr",
+            "baseName": "addr",
             "type": "number",
             "format": ""
         },
         {
-            "name": "functionId",
-            "baseName": "function_id",
-            "type": "number",
-            "format": "int64"
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "args",
+            "baseName": "args",
+            "type": "{ [key: string]: Argument; }",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionDataTypesListItem.attributeTypeMap;
+        return V2FunctionHeader.attributeTypeMap;
     }
 
     public constructor() {

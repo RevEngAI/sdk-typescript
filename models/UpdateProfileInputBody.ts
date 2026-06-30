@@ -21,6 +21,10 @@ export class UpdateProfileInputBody {
     */
     'firstName'?: string;
     /**
+    * Hide the Examples tab in the analyses listing
+    */
+    'hideExampleBinaries'?: boolean;
+    /**
     * Last name
     */
     'lastName'?: string;
@@ -48,6 +52,12 @@ export class UpdateProfileInputBody {
             "name": "firstName",
             "baseName": "first_name",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "hideExampleBinaries",
+            "baseName": "hide_example_binaries",
+            "type": "boolean",
             "format": ""
         },
         {

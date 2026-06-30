@@ -41,9 +41,30 @@ export class APIKeyAuthentication implements SecurityAuthentication {
     }
 }
 
+/**
+ * Applies http authentication to the request context.
+ */
+export class BearerAuthAuthentication implements SecurityAuthentication {
+    /**
+     * Configures the http authentication with the required details.
+     *
+     * @param tokenProvider service that can provide the up-to-date token when needed
+     */
+    public constructor(private tokenProvider: TokenProvider) {}
+
+    public getName(): string {
+        return "bearerAuth";
+    }
+
+    public async applySecurityAuthentication(context: RequestContext) {
+        context.setHeaderParam("Authorization", "Bearer " + await this.tokenProvider.getToken());
+    }
+}
+
 export type AuthMethods = {
     "default"?: SecurityAuthentication,
-    "APIKey"?: SecurityAuthentication
+    "APIKey"?: SecurityAuthentication,
+    "bearerAuth"?: SecurityAuthentication
 }
 
 export type ApiKeyConfiguration = string;
@@ -54,7 +75,8 @@ export type HttpSignatureConfiguration = unknown; // TODO: Implement
 
 export type AuthMethodsConfiguration = {
     "default"?: SecurityAuthentication,
-    "APIKey"?: ApiKeyConfiguration
+    "APIKey"?: ApiKeyConfiguration,
+    "bearerAuth"?: HttpBearerConfiguration
 }
 
 /**
@@ -72,6 +94,12 @@ export function configureAuthMethods(config: AuthMethodsConfiguration | undefine
     if (config["APIKey"]) {
         authMethods["APIKey"] = new APIKeyAuthentication(
             config["APIKey"]
+        );
+    }
+
+    if (config["bearerAuth"]) {
+        authMethods["bearerAuth"] = new BearerAuthAuthentication(
+            config["bearerAuth"]["tokenProvider"]
         );
     }
 

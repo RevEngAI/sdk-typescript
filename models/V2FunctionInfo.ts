@@ -9,15 +9,16 @@
  * Do not edit the class manually.
  */
 
+import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
+import { V2FunctionType } from '../models/V2FunctionType';
 import { HttpFile } from '../http/http';
 
-export class FunctionArgument {
-    'lastChange'?: string;
-    'name': string;
-    'offset': number;
-    'scope'?: string;
-    'size': number;
-    'type': string;
+export class V2FunctionInfo {
+    'funcTypes'?: V2FunctionType | null;
+    /**
+    * List of function dependencies
+    */
+    'funcDeps': Array<V2FunctionInfoFuncDepsInner>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -25,44 +26,20 @@ export class FunctionArgument {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "lastChange",
-            "baseName": "last_change",
-            "type": "string",
+            "name": "funcTypes",
+            "baseName": "func_types",
+            "type": "V2FunctionType",
             "format": ""
         },
         {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "offset",
-            "baseName": "offset",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "scope",
-            "baseName": "scope",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "size",
-            "baseName": "size",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
+            "name": "funcDeps",
+            "baseName": "func_deps",
+            "type": "Array<V2FunctionInfoFuncDepsInner>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionArgument.attributeTypeMap;
+        return V2FunctionInfo.attributeTypeMap;
     }
 
     public constructor() {

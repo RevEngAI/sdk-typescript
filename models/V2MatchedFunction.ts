@@ -9,23 +9,23 @@
  * Do not edit the class manually.
  */
 
-import { V2FunctionMatch } from '../models/V2FunctionMatch';
 import { HttpFile } from '../http/http';
 
-export class FunctionMatchingResponse {
+export class V2MatchedFunction {
     /**
-    * Progress of the matching operation, represented as a percentage
+    * Unique identifier of the matched function
     */
-    'progress'?: number;
-    'status'?: string | null;
-    'totalTime'?: number | null;
-    'errorMessage'?: string | null;
-    'currentPage'?: number | null;
-    'totalPages'?: number | null;
-    'matches'?: Array<V2FunctionMatch> | null;
-    'numMatches'?: number | null;
-    'numDebugMatches'?: number | null;
-    'updatedAt'?: string | null;
+    'functionId': number;
+    'binaryId': number;
+    'functionName': string;
+    'functionVaddr': number;
+    'mangledName': string;
+    'debug': boolean;
+    'binaryName': string;
+    'sha256Hash': string;
+    'analysisId': number;
+    'similarity'?: number | null;
+    'confidence'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,68 +33,74 @@ export class FunctionMatchingResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "progress",
-            "baseName": "progress",
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "binaryId",
+            "baseName": "binary_id",
             "type": "number",
             "format": ""
         },
         {
-            "name": "status",
-            "baseName": "status",
+            "name": "functionName",
+            "baseName": "function_name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "totalTime",
-            "baseName": "total_time",
+            "name": "functionVaddr",
+            "baseName": "function_vaddr",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
-            "name": "errorMessage",
-            "baseName": "error_message",
+            "name": "mangledName",
+            "baseName": "mangled_name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "currentPage",
-            "baseName": "current_page",
-            "type": "number",
+            "name": "debug",
+            "baseName": "debug",
+            "type": "boolean",
             "format": ""
         },
         {
-            "name": "totalPages",
-            "baseName": "total_pages",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "matches",
-            "baseName": "matches",
-            "type": "Array<V2FunctionMatch>",
-            "format": ""
-        },
-        {
-            "name": "numMatches",
-            "baseName": "num_matches",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "numDebugMatches",
-            "baseName": "num_debug_matches",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "updatedAt",
-            "baseName": "updated_at",
+            "name": "binaryName",
+            "baseName": "binary_name",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "sha256Hash",
+            "baseName": "sha_256_hash",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "analysisId",
+            "baseName": "analysis_id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "similarity",
+            "baseName": "similarity",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "confidence",
+            "baseName": "confidence",
+            "type": "number",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionMatchingResponse.attributeTypeMap;
+        return V2MatchedFunction.attributeTypeMap;
     }
 
     public constructor() {

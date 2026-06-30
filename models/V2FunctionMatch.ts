@@ -9,15 +9,17 @@
  * Do not edit the class manually.
  */
 
+import { V2MatchedFunction } from '../models/V2MatchedFunction';
+import { V2NameConfidence } from '../models/V2NameConfidence';
 import { HttpFile } from '../http/http';
 
-export class FunctionArgument {
-    'lastChange'?: string;
-    'name': string;
-    'offset': number;
-    'scope'?: string;
-    'size': number;
-    'type': string;
+export class V2FunctionMatch {
+    /**
+    * Unique identifier of the function
+    */
+    'functionId': number;
+    'matchedFunctions': Array<V2MatchedFunction>;
+    'confidences'?: Array<V2NameConfidence> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -25,44 +27,26 @@ export class FunctionArgument {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "lastChange",
-            "baseName": "last_change",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "name",
-            "baseName": "name",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "offset",
-            "baseName": "offset",
+            "name": "functionId",
+            "baseName": "function_id",
             "type": "number",
             "format": "int64"
         },
         {
-            "name": "scope",
-            "baseName": "scope",
-            "type": "string",
+            "name": "matchedFunctions",
+            "baseName": "matched_functions",
+            "type": "Array<V2MatchedFunction>",
             "format": ""
         },
         {
-            "name": "size",
-            "baseName": "size",
-            "type": "number",
-            "format": "int64"
-        },
-        {
-            "name": "type",
-            "baseName": "type",
-            "type": "string",
+            "name": "confidences",
+            "baseName": "confidences",
+            "type": "Array<V2NameConfidence>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionArgument.attributeTypeMap;
+        return V2FunctionMatch.attributeTypeMap;
     }
 
     public constructor() {

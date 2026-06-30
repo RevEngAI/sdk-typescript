@@ -46,7 +46,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -92,7 +92,7 @@ This endpoint does not need any parameter.
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 
@@ -150,7 +150,7 @@ Name | Type | Description  | Notes
 
 ### Authorization
 
-[APIKey](README.md#APIKey)
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
 
 ### HTTP request headers
 

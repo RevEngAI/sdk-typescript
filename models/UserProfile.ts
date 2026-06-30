@@ -14,6 +14,7 @@ import { HttpFile } from '../http/http';
 export class UserProfile {
     'defaultTeamId'?: number;
     'firstName': string;
+    'hideExampleBinaries': boolean;
     'lastName': string;
     'timeZone': string;
     'username': string;
@@ -33,6 +34,12 @@ export class UserProfile {
             "name": "firstName",
             "baseName": "first_name",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "hideExampleBinaries",
+            "baseName": "hide_example_binaries",
+            "type": "boolean",
             "format": ""
         },
         {

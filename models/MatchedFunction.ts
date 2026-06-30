@@ -13,19 +13,49 @@ import { HttpFile } from '../http/http';
 
 export class MatchedFunction {
     /**
-    * Unique identifier of the matched function
+    * Analysis the candidate\'s binary belongs to
+    */
+    'analysisId': number;
+    /**
+    * Binary the candidate belongs to
+    */
+    'binaryId': number;
+    /**
+    * Binary name
+    */
+    'binaryName': string;
+    /**
+    * Softmax-normalised confidence over the candidate pool
+    */
+    'confidence': number;
+    /**
+    * Whether the candidate\'s name came from debug info
+    */
+    'debug': boolean;
+    /**
+    * Candidate function ID
     */
     'functionId': number;
-    'binaryId': number;
+    /**
+    * Candidate function name
+    */
     'functionName': string;
+    /**
+    * Candidate\'s virtual address inside its binary
+    */
     'functionVaddr': number;
+    /**
+    * Mangled name when available
+    */
     'mangledName': string;
-    'debug': boolean;
-    'binaryName': string;
+    /**
+    * SHA-256 of the candidate\'s binary
+    */
     'sha256Hash': string;
-    'analysisId': number;
-    'similarity'?: number | null;
-    'confidence'?: number | null;
+    /**
+    * Cosine similarity scaled to a percentage
+    */
+    'similarity': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,8 +63,8 @@ export class MatchedFunction {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "functionId",
-            "baseName": "function_id",
+            "name": "analysisId",
+            "baseName": "analysis_id",
             "type": "number",
             "format": "int64"
         },
@@ -42,7 +72,31 @@ export class MatchedFunction {
             "name": "binaryId",
             "baseName": "binary_id",
             "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "binaryName",
+            "baseName": "binary_name",
+            "type": "string",
             "format": ""
+        },
+        {
+            "name": "confidence",
+            "baseName": "confidence",
+            "type": "number",
+            "format": "double"
+        },
+        {
+            "name": "debug",
+            "baseName": "debug",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
         },
         {
             "name": "functionName",
@@ -63,40 +117,16 @@ export class MatchedFunction {
             "format": ""
         },
         {
-            "name": "debug",
-            "baseName": "debug",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "binaryName",
-            "baseName": "binary_name",
-            "type": "string",
-            "format": ""
-        },
-        {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
             "type": "string",
             "format": ""
         },
         {
-            "name": "analysisId",
-            "baseName": "analysis_id",
-            "type": "number",
-            "format": ""
-        },
-        {
             "name": "similarity",
             "baseName": "similarity",
             "type": "number",
-            "format": ""
-        },
-        {
-            "name": "confidence",
-            "baseName": "confidence",
-            "type": "number",
-            "format": ""
+            "format": "double"
         }    ];
 
     static getAttributeTypeMap() {

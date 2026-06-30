@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import { FunctionInfo } from '../models/FunctionInfo';
+import { V2FunctionInfo } from '../models/V2FunctionInfo';
 import { HttpFile } from '../http/http';
 
 export class FunctionDataTypes {
@@ -21,7 +21,7 @@ export class FunctionDataTypes {
     * The current status of the data types service
     */
     'status': string;
-    'dataTypes'?: FunctionInfo | null;
+    'dataTypes'?: V2FunctionInfo | null;
     'dataTypesVersion'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
@@ -44,7 +44,7 @@ export class FunctionDataTypes {
         {
             "name": "dataTypes",
             "baseName": "data_types",
-            "type": "FunctionInfo",
+            "type": "V2FunctionInfo",
             "format": ""
         },
         {

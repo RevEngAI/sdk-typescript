@@ -17,10 +17,10 @@ export class FunctionDependency {
     */
     'addr'?: number;
     'artifactType'?: string;
-    'lastChange'?: string | null;
+    'lastChange'?: string;
     'members'?: any | null;
-    'name': string | null;
-    'scope'?: string | null;
+    'name': string;
+    'scope'?: string;
     /**
     * Total byte size (Struct, GlobalVariable).
     */

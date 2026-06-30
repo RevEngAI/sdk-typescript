@@ -13,12 +13,12 @@ import { HttpFile } from '../http/http';
 
 export class FunctionStackVariable {
     'addr': number;
-    'lastChange'?: string | null;
-    'name': string | null;
+    'lastChange'?: string;
+    'name': string;
     'offset': number;
-    'scope'?: string | null;
+    'scope'?: string;
     'size': number;
-    'type': string | null;
+    'type': string;
 
     static readonly discriminator: string | undefined = undefined;
 
