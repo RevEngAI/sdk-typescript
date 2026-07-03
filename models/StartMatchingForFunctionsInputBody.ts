@@ -29,6 +29,10 @@ export class StartMatchingForFunctionsInputBody {
     * Max matches returned per source function. Defaults to 1.
     */
     'resultsPerFunction'?: number;
+    /**
+    * Collapse near-duplicate candidate names into canonical buckets and return per-name confidences (the response \'confidences\' array). Adds a canonicalisation step; defaults to false.
+    */
+    'useCanonicalNames'?: boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -58,6 +62,12 @@ export class StartMatchingForFunctionsInputBody {
             "baseName": "results_per_function",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "useCanonicalNames",
+            "baseName": "use_canonical_names",
+            "type": "boolean",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {

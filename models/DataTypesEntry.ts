@@ -14,6 +14,10 @@ import { HttpFile } from '../http/http';
 
 export class DataTypesEntry {
     'dataTypes'?: FunctionInfo;
+    /**
+    * Current version of the function data types. Pass this back on the next write to satisfy the CAS check.
+    */
+    'dataTypesVersion': number;
     'functionId': number;
 
     static readonly discriminator: string | undefined = undefined;
@@ -26,6 +30,12 @@ export class DataTypesEntry {
             "baseName": "data_types",
             "type": "FunctionInfo",
             "format": ""
+        },
+        {
+            "name": "dataTypesVersion",
+            "baseName": "data_types_version",
+            "type": "number",
+            "format": "int64"
         },
         {
             "name": "functionId",

@@ -1543,7 +1543,9 @@ const apiInstance = new FunctionsCoreApi(configuration);
 
 const request: FunctionsCoreApiStartFunctionsMatchingRequest = {
   
-  startMatchingForFunctionsInputBody: ,
+  startMatchingForFunctionsInputBody: 
+    key: null,
+  ,
 };
 
 const data = await apiInstance.startFunctionsMatching(request);

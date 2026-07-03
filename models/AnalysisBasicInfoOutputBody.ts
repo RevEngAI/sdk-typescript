@@ -35,7 +35,7 @@ export class AnalysisBasicInfoOutputBody {
     /**
     * UUID of the binary, omitted when not set
     */
-    'binaryUuid'?: string;
+    'binaryUuid': string;
     /**
     * When the binary was uploaded
     */

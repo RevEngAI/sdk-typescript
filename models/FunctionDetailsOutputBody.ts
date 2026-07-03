@@ -12,6 +12,7 @@
 import { HttpFile } from '../http/http';
 
 export class FunctionDetailsOutputBody {
+    'analysisId': number;
     'binaryId': number;
     'creation': Date;
     'debug': boolean;
@@ -27,6 +28,12 @@ export class FunctionDetailsOutputBody {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "analysisId",
+            "baseName": "analysis_id",
+            "type": "number",
+            "format": "int64"
+        },
         {
             "name": "binaryId",
             "baseName": "binary_id",
