@@ -144,6 +144,9 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
         commandLineArgs: "",
         startMethod: "standard_user_process",
         timeout: 120,
+        archiveSha256Hash: "archiveSha256Hash_example",
+        archiveEntryPath: "archiveEntryPath_example",
+        archivePassword: "archivePassword_example",
       },
     },
     binaryConfig: {

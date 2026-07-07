@@ -893,7 +893,7 @@ import { SBOM } from '../models/SBOM';
 import { SBOMPackage } from '../models/SBOMPackage';
 import { SSOProvider } from '../models/SSOProvider';
 import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
-import { SandboxOptions     } from '../models/SandboxOptions';
+import { SandboxOptions        } from '../models/SandboxOptions';
 import { SandboxStartMethod } from '../models/SandboxStartMethod';
 import { SandboxTimeout } from '../models/SandboxTimeout';
 import { ScheduledTaskEntry } from '../models/ScheduledTaskEntry';
@@ -975,7 +975,7 @@ import { UpdateUserCreditsInputBody } from '../models/UpdateUserCreditsInputBody
 import { UpdateUserInputBody   , UpdateUserInputBodyRoleEnum  , UpdateUserInputBodyTierEnum     } from '../models/UpdateUserInputBody';
 import { UpdateUserPasswordInputBody } from '../models/UpdateUserPasswordInputBody';
 import { UploadFileType } from '../models/UploadFileType';
-import { UploadResponse    } from '../models/UploadResponse';
+import { UploadResponse        } from '../models/UploadResponse';
 import { UpsertAiDecomplationRatingRequest   } from '../models/UpsertAiDecomplationRatingRequest';
 import { UpsertOverridesData } from '../models/UpsertOverridesData';
 import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';

@@ -13,7 +13,7 @@ import { UserProfile } from '../models/UserProfile';
 import { HttpFile } from '../http/http';
 
 export class User {
-    'createdAt'?: Date;
+    'createdAt': Date;
     'email': string;
     'profile': UserProfile;
     'role': UserRoleEnum;

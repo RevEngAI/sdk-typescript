@@ -24,6 +24,9 @@ export class SandboxOptions {
     * Maximum execution time for the sandbox run, in seconds. Allowed values: 120 (2m), 180 (3m), 300 (5m), 600 (10m).
     */
     'timeout'?: SandboxTimeout;
+    'archiveSha256Hash'?: string | null;
+    'archiveEntryPath'?: string | null;
+    'archivePassword'?: string | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -52,6 +55,24 @@ export class SandboxOptions {
             "name": "timeout",
             "baseName": "timeout",
             "type": "SandboxTimeout",
+            "format": ""
+        },
+        {
+            "name": "archiveSha256Hash",
+            "baseName": "archive_sha_256_hash",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "archiveEntryPath",
+            "baseName": "archive_entry_path",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "archivePassword",
+            "baseName": "archive_password",
+            "type": "string",
             "format": ""
         }    ];
 
