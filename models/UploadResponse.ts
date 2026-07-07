@@ -16,6 +16,10 @@ export class UploadResponse {
     'sha256Hash': string;
     'fileType': UploadFileType;
     'filename': string;
+    'mime': string;
+    'isArchive': boolean;
+    'canSandbox': boolean;
+    'canExtract': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -38,6 +42,30 @@ export class UploadResponse {
             "name": "filename",
             "baseName": "filename",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "mime",
+            "baseName": "mime",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "isArchive",
+            "baseName": "is_archive",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "canSandbox",
+            "baseName": "can_sandbox",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "canExtract",
+            "baseName": "can_extract",
+            "type": "boolean",
             "format": ""
         }    ];
 
