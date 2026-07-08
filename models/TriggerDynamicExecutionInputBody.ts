@@ -13,6 +13,18 @@ import { HttpFile } from '../http/http';
 
 export class TriggerDynamicExecutionInputBody {
     /**
+    * Relative path of the entry inside the archive to execute
+    */
+    'archiveEntryPath'?: string;
+    /**
+    * Password for an encrypted archive
+    */
+    'archivePassword'?: string;
+    /**
+    * SHA-256 of the archive object to send to the sandbox instead of the analysed binary
+    */
+    'archiveSha256Hash'?: string;
+    /**
     * Command-line arguments passed to the sample when the sandbox launches it
     */
     'commandLineArgs'?: string;
@@ -30,6 +42,24 @@ export class TriggerDynamicExecutionInputBody {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "archiveEntryPath",
+            "baseName": "archive_entry_path",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "archivePassword",
+            "baseName": "archive_password",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "archiveSha256Hash",
+            "baseName": "archive_sha_256_hash",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "commandLineArgs",
             "baseName": "command_line_args",

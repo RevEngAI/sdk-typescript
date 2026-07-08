@@ -21,6 +21,10 @@ export class BatchBinaryMatchResult {
     */
     'errorMessage'?: string;
     /**
+    * Opaque token for this binary\'s matching run. Present on dispatch and when statuses were fetched by token.
+    */
+    'matchId'?: string;
+    /**
     * Number of source functions that received at least one candidate match. Only meaningful when status=COMPLETED.
     */
     'matchedFunctionCount': number;
@@ -43,6 +47,12 @@ export class BatchBinaryMatchResult {
         {
             "name": "errorMessage",
             "baseName": "error_message",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "matchId",
+            "baseName": "match_id",
             "type": "string",
             "format": ""
         },

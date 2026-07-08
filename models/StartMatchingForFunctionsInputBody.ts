@@ -26,6 +26,10 @@ export class StartMatchingForFunctionsInputBody {
     */
     'minSimilarity'?: number;
     /**
+    * By default a completed matching run for the same request is reused (response status=COMPLETED, no new run). Set true to force a fresh run.
+    */
+    'noCache'?: boolean;
+    /**
     * Max matches returned per source function. Defaults to 1.
     */
     'resultsPerFunction'?: number;
@@ -56,6 +60,12 @@ export class StartMatchingForFunctionsInputBody {
             "baseName": "min_similarity",
             "type": "number",
             "format": "double"
+        },
+        {
+            "name": "noCache",
+            "baseName": "no_cache",
+            "type": "boolean",
+            "format": ""
         },
         {
             "name": "resultsPerFunction",

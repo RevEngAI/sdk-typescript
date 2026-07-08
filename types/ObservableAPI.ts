@@ -52,6 +52,7 @@ import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2Colle
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
+import { ArchiveContentEntry } from '../models/ArchiveContentEntry';
 import { Argument } from '../models/Argument';
 import { Artifact } from '../models/Artifact';
 import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
@@ -314,6 +315,9 @@ import { IOC } from '../models/IOC';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
+import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
+import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
+import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
@@ -321,11 +325,13 @@ import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
 import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
+import { ListArchiveContentsOutputBody } from '../models/ListArchiveContentsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
+import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
 import { LocationOutputBody } from '../models/LocationOutputBody';
@@ -1321,14 +1327,15 @@ export class ObservableAnalysesCoreApi {
     }
 
     /**
-     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching results for an analysis
      * @param analysisId Analysis ID
+     * @param [matchId] Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
      */
-    public getAnalysisFunctionMatchesWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetMatchesOutputBody>> {
+    public getAnalysisFunctionMatchesWithHttpInfo(analysisId: number, matchId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<GetMatchesOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisFunctionMatches(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisFunctionMatches(analysisId, matchId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1346,23 +1353,25 @@ export class ObservableAnalysesCoreApi {
     }
 
     /**
-     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching results for an analysis
      * @param analysisId Analysis ID
+     * @param [matchId] Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
      */
-    public getAnalysisFunctionMatches(analysisId: number, _options?: ConfigurationOptions): Observable<GetMatchesOutputBody> {
-        return this.getAnalysisFunctionMatchesWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<GetMatchesOutputBody>) => apiResponse.data));
+    public getAnalysisFunctionMatches(analysisId: number, matchId?: string, _options?: ConfigurationOptions): Observable<GetMatchesOutputBody> {
+        return this.getAnalysisFunctionMatchesWithHttpInfo(analysisId, matchId, _options).pipe(map((apiResponse: HttpInfo<GetMatchesOutputBody>) => apiResponse.data));
     }
 
     /**
-     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching status for an analysis
      * @param analysisId Analysis ID
+     * @param [matchId] Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
      */
-    public getAnalysisFunctionMatchingStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetMatchesStatusOutputBody>> {
+    public getAnalysisFunctionMatchingStatusWithHttpInfo(analysisId: number, matchId?: string, _options?: ConfigurationOptions): Observable<HttpInfo<GetMatchesStatusOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getAnalysisFunctionMatchingStatus(analysisId, _config);
+        const requestContextPromise = this.requestFactory.getAnalysisFunctionMatchingStatus(analysisId, matchId, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1380,12 +1389,13 @@ export class ObservableAnalysesCoreApi {
     }
 
     /**
-     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching status for an analysis
      * @param analysisId Analysis ID
+     * @param [matchId] Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
      */
-    public getAnalysisFunctionMatchingStatus(analysisId: number, _options?: ConfigurationOptions): Observable<GetMatchesStatusOutputBody> {
-        return this.getAnalysisFunctionMatchingStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<GetMatchesStatusOutputBody>) => apiResponse.data));
+    public getAnalysisFunctionMatchingStatus(analysisId: number, matchId?: string, _options?: ConfigurationOptions): Observable<GetMatchesStatusOutputBody> {
+        return this.getAnalysisFunctionMatchingStatusWithHttpInfo(analysisId, matchId, _options).pipe(map((apiResponse: HttpInfo<GetMatchesStatusOutputBody>) => apiResponse.data));
     }
 
     /**
@@ -5177,12 +5187,13 @@ export class ObservableFunctionsCoreApi {
     /**
      * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching results for an explicit set of functions
-     * @param functionIds Source function IDs whose matches to fetch.
+     * @param [matchId] Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+     * @param [functionIds] Source function IDs whose matches to fetch. Required unless match_id is supplied.
      */
-    public getFunctionsMatchesWithHttpInfo(functionIds: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<GetMatchesOutputBody>> {
+    public getFunctionsMatchesWithHttpInfo(matchId?: string, functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<GetMatchesOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionsMatches(functionIds, _config);
+        const requestContextPromise = this.requestFactory.getFunctionsMatches(matchId, functionIds, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5202,21 +5213,23 @@ export class ObservableFunctionsCoreApi {
     /**
      * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching results for an explicit set of functions
-     * @param functionIds Source function IDs whose matches to fetch.
+     * @param [matchId] Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+     * @param [functionIds] Source function IDs whose matches to fetch. Required unless match_id is supplied.
      */
-    public getFunctionsMatches(functionIds: Array<number>, _options?: ConfigurationOptions): Observable<GetMatchesOutputBody> {
-        return this.getFunctionsMatchesWithHttpInfo(functionIds, _options).pipe(map((apiResponse: HttpInfo<GetMatchesOutputBody>) => apiResponse.data));
+    public getFunctionsMatches(matchId?: string, functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<GetMatchesOutputBody> {
+        return this.getFunctionsMatchesWithHttpInfo(matchId, functionIds, _options).pipe(map((apiResponse: HttpInfo<GetMatchesOutputBody>) => apiResponse.data));
     }
 
     /**
      * Returns the matching workflow\'s current status for the supplied function IDs. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching status for an explicit set of functions
-     * @param functionIds Source function IDs whose matches to fetch.
+     * @param [matchId] Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+     * @param [functionIds] Source function IDs whose matches to fetch. Required unless match_id is supplied.
      */
-    public getFunctionsMatchingStatusWithHttpInfo(functionIds: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<GetMatchesStatusOutputBody>> {
+    public getFunctionsMatchingStatusWithHttpInfo(matchId?: string, functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<GetMatchesStatusOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.getFunctionsMatchingStatus(functionIds, _config);
+        const requestContextPromise = this.requestFactory.getFunctionsMatchingStatus(matchId, functionIds, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -5236,10 +5249,47 @@ export class ObservableFunctionsCoreApi {
     /**
      * Returns the matching workflow\'s current status for the supplied function IDs. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching status for an explicit set of functions
-     * @param functionIds Source function IDs whose matches to fetch.
+     * @param [matchId] Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+     * @param [functionIds] Source function IDs whose matches to fetch. Required unless match_id is supplied.
      */
-    public getFunctionsMatchingStatus(functionIds: Array<number>, _options?: ConfigurationOptions): Observable<GetMatchesStatusOutputBody> {
-        return this.getFunctionsMatchingStatusWithHttpInfo(functionIds, _options).pipe(map((apiResponse: HttpInfo<GetMatchesStatusOutputBody>) => apiResponse.data));
+    public getFunctionsMatchingStatus(matchId?: string, functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<GetMatchesStatusOutputBody> {
+        return this.getFunctionsMatchingStatusWithHttpInfo(matchId, functionIds, _options).pipe(map((apiResponse: HttpInfo<GetMatchesStatusOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Returns a single imported symbol plus the internal functions that call it, resolved via the import\'s PLT/stub addresses within the binary. Answers \"which functions call `free`?\" for binary navigation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get an imported function with its callers
+     * @param analysisId Analysis ID
+     * @param importedFunctionId Imported function ID
+     */
+    public getImportedFunctionWithHttpInfo(analysisId: number, importedFunctionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<ImportedFunctionDetailOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getImportedFunction(analysisId, importedFunctionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getImportedFunctionWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns a single imported symbol plus the internal functions that call it, resolved via the import\'s PLT/stub addresses within the binary. Answers \"which functions call `free`?\" for binary navigation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get an imported function with its callers
+     * @param analysisId Analysis ID
+     * @param importedFunctionId Imported function ID
+     */
+    public getImportedFunction(analysisId: number, importedFunctionId: number, _options?: ConfigurationOptions): Observable<ImportedFunctionDetailOutputBody> {
+        return this.getImportedFunctionWithHttpInfo(analysisId, importedFunctionId, _options).pipe(map((apiResponse: HttpInfo<ImportedFunctionDetailOutputBody>) => apiResponse.data));
     }
 
     /**
@@ -5278,6 +5328,44 @@ export class ObservableFunctionsCoreApi {
      */
     public listAnalysisFunctions(analysisId: number, offset?: number, limit?: number, _options?: ConfigurationOptions): Observable<ListAnalysisFunctionsOutputBody> {
         return this.listAnalysisFunctionsWithHttpInfo(analysisId, offset, limit, _options).pipe(map((apiResponse: HttpInfo<ListAnalysisFunctionsOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Returns a paginated list of external/imported symbols (e.g. libc\'s `free`) linked by the analysis\'s binary. These are display-only: they carry no embeddings, cannot be renamed, and never participate in match/diff. `total_count` is the full population size, ignoring pagination.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List imported functions in an analysis
+     * @param analysisId Analysis ID
+     * @param [offset] Pagination offset. Defaults to 0.
+     * @param [limit] Page size. Defaults to 100.
+     */
+    public listImportedFunctionsWithHttpInfo(analysisId: number, offset?: number, limit?: number, _options?: ConfigurationOptions): Observable<HttpInfo<ListImportedFunctionsOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.listImportedFunctions(analysisId, offset, limit, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listImportedFunctionsWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns a paginated list of external/imported symbols (e.g. libc\'s `free`) linked by the analysis\'s binary. These are display-only: they carry no embeddings, cannot be renamed, and never participate in match/diff. `total_count` is the full population size, ignoring pagination.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List imported functions in an analysis
+     * @param analysisId Analysis ID
+     * @param [offset] Pagination offset. Defaults to 0.
+     * @param [limit] Page size. Defaults to 100.
+     */
+    public listImportedFunctions(analysisId: number, offset?: number, limit?: number, _options?: ConfigurationOptions): Observable<ListImportedFunctionsOutputBody> {
+        return this.listImportedFunctionsWithHttpInfo(analysisId, offset, limit, _options).pipe(map((apiResponse: HttpInfo<ListImportedFunctionsOutputBody>) => apiResponse.data));
     }
 
     /**

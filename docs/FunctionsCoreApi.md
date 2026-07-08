@@ -28,7 +28,9 @@ Method | HTTP request | Description
 [**getFunctionsCalleesCallers**](FunctionsCoreApi.md#getFunctionsCalleesCallers) | **GET** /v3/functions/callees-callers | Get callees and callers for many functions
 [**getFunctionsMatches**](FunctionsCoreApi.md#getFunctionsMatches) | **GET** /v3/functions/matches | Get function-matching results for an explicit set of functions
 [**getFunctionsMatchingStatus**](FunctionsCoreApi.md#getFunctionsMatchingStatus) | **GET** /v3/functions/matches/status | Get function-matching status for an explicit set of functions
+[**getImportedFunction**](FunctionsCoreApi.md#getImportedFunction) | **GET** /v3/analyses/{analysis_id}/imported-functions/{imported_function_id} | Get an imported function with its callers
 [**listAnalysisFunctions**](FunctionsCoreApi.md#listAnalysisFunctions) | **GET** /v3/analyses/{analysis_id}/functions | List functions in an analysis
+[**listImportedFunctions**](FunctionsCoreApi.md#listImportedFunctions) | **GET** /v3/analyses/{analysis_id}/imported-functions | List imported functions in an analysis
 [**startFunctionsMatching**](FunctionsCoreApi.md#startFunctionsMatching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 
 
@@ -1359,7 +1361,9 @@ const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
 
 const request: FunctionsCoreApiGetFunctionsMatchesRequest = {
-    // Source function IDs whose matches to fetch.
+    // Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. (optional)
+  matchId: "match_id_example",
+    // Source function IDs whose matches to fetch. Required unless match_id is supplied. (optional)
   functionIds: [
     1,
   ],
@@ -1374,7 +1378,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **functionIds** | **Array&lt;number&gt;** | Source function IDs whose matches to fetch. | defaults to undefined
+ **matchId** | [**string**] | Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. | (optional) defaults to undefined
+ **functionIds** | **Array&lt;number&gt;** | Source function IDs whose matches to fetch. Required unless match_id is supplied. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1419,7 +1424,9 @@ const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
 
 const request: FunctionsCoreApiGetFunctionsMatchingStatusRequest = {
-    // Source function IDs whose matches to fetch.
+    // Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. (optional)
+  matchId: "match_id_example",
+    // Source function IDs whose matches to fetch. Required unless match_id is supplied. (optional)
   functionIds: [
     1,
   ],
@@ -1434,7 +1441,8 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **functionIds** | **Array&lt;number&gt;** | Source function IDs whose matches to fetch. | defaults to undefined
+ **matchId** | [**string**] | Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. | (optional) defaults to undefined
+ **functionIds** | **Array&lt;number&gt;** | Source function IDs whose matches to fetch. Required unless match_id is supplied. | (optional) defaults to undefined
 
 
 ### Return type
@@ -1456,6 +1464,66 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getImportedFunction**
+> ImportedFunctionDetailOutputBody getImportedFunction()
+
+Returns a single imported symbol plus the internal functions that call it, resolved via the import\'s PLT/stub addresses within the binary. Answers \"which functions call `free`?\" for binary navigation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiGetImportedFunctionRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiGetImportedFunctionRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Imported function ID
+  importedFunctionId: 1,
+};
+
+const data = await apiInstance.getImportedFunction(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **importedFunctionId** | [**number**] | Imported function ID | defaults to undefined
+
+
+### Return type
+
+**ImportedFunctionDetailOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
@@ -1504,6 +1572,69 @@ Name | Type | Description  | Notes
 ### Return type
 
 **ListAnalysisFunctionsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **listImportedFunctions**
+> ListImportedFunctionsOutputBody listImportedFunctions()
+
+Returns a paginated list of external/imported symbols (e.g. libc\'s `free`) linked by the analysis\'s binary. These are display-only: they carry no embeddings, cannot be renamed, and never participate in match/diff. `total_count` is the full population size, ignoring pagination.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiListImportedFunctionsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiListImportedFunctionsRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Pagination offset. Defaults to 0. (optional)
+  offset: 0,
+    // Page size. Defaults to 100. (optional)
+  limit: 1,
+};
+
+const data = await apiInstance.listImportedFunctions(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **offset** | [**number**] | Pagination offset. Defaults to 0. | (optional) defaults to undefined
+ **limit** | [**number**] | Page size. Defaults to 100. | (optional) defaults to undefined
+
+
+### Return type
+
+**ListImportedFunctionsOutputBody**
 
 ### Authorization
 
