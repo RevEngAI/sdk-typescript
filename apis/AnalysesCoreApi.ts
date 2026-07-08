@@ -396,17 +396,19 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching results for an analysis
      * @param analysisId Analysis ID
+     * @param matchId Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
      */
-    public async getAnalysisFunctionMatches(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisFunctionMatches(analysisId: number, matchId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "getAnalysisFunctionMatches", "analysisId");
         }
+
 
 
         // Path Params
@@ -416,6 +418,11 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (matchId !== undefined) {
+            requestContext.setQueryParam("match_id", ObjectSerializer.serialize(matchId, "string", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -439,17 +446,19 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching status for an analysis
      * @param analysisId Analysis ID
+     * @param matchId Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
      */
-    public async getAnalysisFunctionMatchingStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getAnalysisFunctionMatchingStatus(analysisId: number, matchId?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "getAnalysisFunctionMatchingStatus", "analysisId");
         }
+
 
 
         // Path Params
@@ -459,6 +468,11 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (matchId !== undefined) {
+            requestContext.setQueryParam("match_id", ObjectSerializer.serialize(matchId, "string", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1855,6 +1869,13 @@ export class AnalysesCoreApiResponseProcessor {
             ) as GetMatchesOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
         if (isCodeInRange("403", response.httpStatusCode)) {
             const body: APIError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
@@ -1911,6 +1932,13 @@ export class AnalysesCoreApiResponseProcessor {
                 "GetMatchesStatusOutputBody", ""
             ) as GetMatchesStatusOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
             const body: APIError = ObjectSerializer.deserialize(

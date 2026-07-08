@@ -484,7 +484,7 @@ Name | Type | Description  | Notes
 # **getAnalysisFunctionMatches**
 > GetMatchesOutputBody getAnalysisFunctionMatches()
 
-Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
 ### Example
 
@@ -499,6 +499,8 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiGetAnalysisFunctionMatchesRequest = {
     // Analysis ID
   analysisId: 1,
+    // Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. (optional)
+  matchId: "match_id_example",
 };
 
 const data = await apiInstance.getAnalysisFunctionMatches(request);
@@ -511,6 +513,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **matchId** | [**string**] | Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. | (optional) defaults to undefined
 
 
 ### Return type
@@ -531,6 +534,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
@@ -541,7 +545,7 @@ Name | Type | Description  | Notes
 # **getAnalysisFunctionMatchingStatus**
 > GetMatchesStatusOutputBody getAnalysisFunctionMatchingStatus()
 
-Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
 ### Example
 
@@ -556,6 +560,8 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiGetAnalysisFunctionMatchingStatusRequest = {
     // Analysis ID
   analysisId: 1,
+    // Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. (optional)
+  matchId: "match_id_example",
 };
 
 const data = await apiInstance.getAnalysisFunctionMatchingStatus(request);
@@ -568,6 +574,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **matchId** | [**string**] | Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest. | (optional) defaults to undefined
 
 
 ### Return type
@@ -588,6 +595,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
@@ -1226,7 +1234,9 @@ const request: AnalysesCoreApiStartAnalysisFunctionMatchingRequest = {
     // Analysis ID
   analysisId: 1,
   
-  startMatchingForAnalysisInputBody: ,
+  startMatchingForAnalysisInputBody: 
+    key: null,
+  ,
 };
 
 const data = await apiInstance.startAnalysisFunctionMatching(request);

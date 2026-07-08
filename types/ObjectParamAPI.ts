@@ -51,6 +51,7 @@ import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2Colle
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
+import { ArchiveContentEntry } from '../models/ArchiveContentEntry';
 import { Argument } from '../models/Argument';
 import { Artifact } from '../models/Artifact';
 import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
@@ -313,6 +314,9 @@ import { IOC } from '../models/IOC';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
+import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
+import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
+import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
@@ -320,11 +324,13 @@ import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
 import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
+import { ListArchiveContentsOutputBody } from '../models/ListArchiveContentsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
+import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
 import { LocationOutputBody } from '../models/LocationOutputBody';
@@ -1075,6 +1081,13 @@ export interface AnalysesCoreApiGetAnalysisFunctionMatchesRequest {
      * @memberof AnalysesCoreApigetAnalysisFunctionMatches
      */
     analysisId: number
+    /**
+     * Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisFunctionMatches
+     */
+    matchId?: string
 }
 
 export interface AnalysesCoreApiGetAnalysisFunctionMatchingStatusRequest {
@@ -1086,6 +1099,13 @@ export interface AnalysesCoreApiGetAnalysisFunctionMatchingStatusRequest {
      * @memberof AnalysesCoreApigetAnalysisFunctionMatchingStatus
      */
     analysisId: number
+    /**
+     * Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApigetAnalysisFunctionMatchingStatus
+     */
+    matchId?: string
 }
 
 export interface AnalysesCoreApiGetAnalysisLogsRequest {
@@ -1571,39 +1591,39 @@ export class ObjectAnalysesCoreApi {
     }
 
     /**
-     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching results for an analysis
      * @param param the request object
      */
     public getAnalysisFunctionMatchesWithHttpInfo(param: AnalysesCoreApiGetAnalysisFunctionMatchesRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetMatchesOutputBody>> {
-        return this.api.getAnalysisFunctionMatchesWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisFunctionMatchesWithHttpInfo(param.analysisId, param.matchId,  options).toPromise();
     }
 
     /**
-     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the matches blob when the matching workflow has completed. While the workflow is in progress this endpoint returns the current status with no matches; use /matches/status to poll progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching results for an analysis
      * @param param the request object
      */
     public getAnalysisFunctionMatches(param: AnalysesCoreApiGetAnalysisFunctionMatchesRequest, options?: ConfigurationOptions): Promise<GetMatchesOutputBody> {
-        return this.api.getAnalysisFunctionMatches(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisFunctionMatches(param.analysisId, param.matchId,  options).toPromise();
     }
 
     /**
-     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching status for an analysis
      * @param param the request object
      */
     public getAnalysisFunctionMatchingStatusWithHttpInfo(param: AnalysesCoreApiGetAnalysisFunctionMatchingStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetMatchesStatusOutputBody>> {
-        return this.api.getAnalysisFunctionMatchingStatusWithHttpInfo(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisFunctionMatchingStatusWithHttpInfo(param.analysisId, param.matchId,  options).toPromise();
     }
 
     /**
-     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the matching workflow\'s current status. Does not include the matches blob — use GET /matches for that.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Get function-matching status for an analysis
      * @param param the request object
      */
     public getAnalysisFunctionMatchingStatus(param: AnalysesCoreApiGetAnalysisFunctionMatchingStatusRequest, options?: ConfigurationOptions): Promise<GetMatchesStatusOutputBody> {
-        return this.api.getAnalysisFunctionMatchingStatus(param.analysisId,  options).toPromise();
+        return this.api.getAnalysisFunctionMatchingStatus(param.analysisId, param.matchId,  options).toPromise();
     }
 
     /**
@@ -4434,22 +4454,55 @@ export interface FunctionsCoreApiGetFunctionsCalleesCallersRequest {
 
 export interface FunctionsCoreApiGetFunctionsMatchesRequest {
     /**
-     * Source function IDs whose matches to fetch.
+     * Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApigetFunctionsMatches
+     */
+    matchId?: string
+    /**
+     * Source function IDs whose matches to fetch. Required unless match_id is supplied.
      * Defaults to: undefined
      * @type Array&lt;number&gt;
      * @memberof FunctionsCoreApigetFunctionsMatches
      */
-    functionIds: Array<number>
+    functionIds?: Array<number>
 }
 
 export interface FunctionsCoreApiGetFunctionsMatchingStatusRequest {
     /**
-     * Source function IDs whose matches to fetch.
+     * Opaque token from a start-matching response. When supplied, returns that specific run instead of the latest.
+     * Defaults to: undefined
+     * @type string
+     * @memberof FunctionsCoreApigetFunctionsMatchingStatus
+     */
+    matchId?: string
+    /**
+     * Source function IDs whose matches to fetch. Required unless match_id is supplied.
      * Defaults to: undefined
      * @type Array&lt;number&gt;
      * @memberof FunctionsCoreApigetFunctionsMatchingStatus
      */
-    functionIds: Array<number>
+    functionIds?: Array<number>
+}
+
+export interface FunctionsCoreApiGetImportedFunctionRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApigetImportedFunction
+     */
+    analysisId: number
+    /**
+     * Imported function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApigetImportedFunction
+     */
+    importedFunctionId: number
 }
 
 export interface FunctionsCoreApiListAnalysisFunctionsRequest {
@@ -4476,6 +4529,34 @@ export interface FunctionsCoreApiListAnalysisFunctionsRequest {
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsCoreApilistAnalysisFunctions
+     */
+    limit?: number
+}
+
+export interface FunctionsCoreApiListImportedFunctionsRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApilistImportedFunctions
+     */
+    analysisId: number
+    /**
+     * Pagination offset. Defaults to 0.
+     * Minimum: 0
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApilistImportedFunctions
+     */
+    offset?: number
+    /**
+     * Page size. Defaults to 100.
+     * Minimum: 1
+     * Maximum: 500
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApilistImportedFunctions
      */
     limit?: number
 }
@@ -4889,8 +4970,8 @@ export class ObjectFunctionsCoreApi {
      * Get function-matching results for an explicit set of functions
      * @param param the request object
      */
-    public getFunctionsMatchesWithHttpInfo(param: FunctionsCoreApiGetFunctionsMatchesRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetMatchesOutputBody>> {
-        return this.api.getFunctionsMatchesWithHttpInfo(param.functionIds,  options).toPromise();
+    public getFunctionsMatchesWithHttpInfo(param: FunctionsCoreApiGetFunctionsMatchesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetMatchesOutputBody>> {
+        return this.api.getFunctionsMatchesWithHttpInfo(param.matchId, param.functionIds,  options).toPromise();
     }
 
     /**
@@ -4898,8 +4979,8 @@ export class ObjectFunctionsCoreApi {
      * Get function-matching results for an explicit set of functions
      * @param param the request object
      */
-    public getFunctionsMatches(param: FunctionsCoreApiGetFunctionsMatchesRequest, options?: ConfigurationOptions): Promise<GetMatchesOutputBody> {
-        return this.api.getFunctionsMatches(param.functionIds,  options).toPromise();
+    public getFunctionsMatches(param: FunctionsCoreApiGetFunctionsMatchesRequest = {}, options?: ConfigurationOptions): Promise<GetMatchesOutputBody> {
+        return this.api.getFunctionsMatches(param.matchId, param.functionIds,  options).toPromise();
     }
 
     /**
@@ -4907,8 +4988,8 @@ export class ObjectFunctionsCoreApi {
      * Get function-matching status for an explicit set of functions
      * @param param the request object
      */
-    public getFunctionsMatchingStatusWithHttpInfo(param: FunctionsCoreApiGetFunctionsMatchingStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetMatchesStatusOutputBody>> {
-        return this.api.getFunctionsMatchingStatusWithHttpInfo(param.functionIds,  options).toPromise();
+    public getFunctionsMatchingStatusWithHttpInfo(param: FunctionsCoreApiGetFunctionsMatchingStatusRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<GetMatchesStatusOutputBody>> {
+        return this.api.getFunctionsMatchingStatusWithHttpInfo(param.matchId, param.functionIds,  options).toPromise();
     }
 
     /**
@@ -4916,8 +4997,26 @@ export class ObjectFunctionsCoreApi {
      * Get function-matching status for an explicit set of functions
      * @param param the request object
      */
-    public getFunctionsMatchingStatus(param: FunctionsCoreApiGetFunctionsMatchingStatusRequest, options?: ConfigurationOptions): Promise<GetMatchesStatusOutputBody> {
-        return this.api.getFunctionsMatchingStatus(param.functionIds,  options).toPromise();
+    public getFunctionsMatchingStatus(param: FunctionsCoreApiGetFunctionsMatchingStatusRequest = {}, options?: ConfigurationOptions): Promise<GetMatchesStatusOutputBody> {
+        return this.api.getFunctionsMatchingStatus(param.matchId, param.functionIds,  options).toPromise();
+    }
+
+    /**
+     * Returns a single imported symbol plus the internal functions that call it, resolved via the import\'s PLT/stub addresses within the binary. Answers \"which functions call `free`?\" for binary navigation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get an imported function with its callers
+     * @param param the request object
+     */
+    public getImportedFunctionWithHttpInfo(param: FunctionsCoreApiGetImportedFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<ImportedFunctionDetailOutputBody>> {
+        return this.api.getImportedFunctionWithHttpInfo(param.analysisId, param.importedFunctionId,  options).toPromise();
+    }
+
+    /**
+     * Returns a single imported symbol plus the internal functions that call it, resolved via the import\'s PLT/stub addresses within the binary. Answers \"which functions call `free`?\" for binary navigation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get an imported function with its callers
+     * @param param the request object
+     */
+    public getImportedFunction(param: FunctionsCoreApiGetImportedFunctionRequest, options?: ConfigurationOptions): Promise<ImportedFunctionDetailOutputBody> {
+        return this.api.getImportedFunction(param.analysisId, param.importedFunctionId,  options).toPromise();
     }
 
     /**
@@ -4936,6 +5035,24 @@ export class ObjectFunctionsCoreApi {
      */
     public listAnalysisFunctions(param: FunctionsCoreApiListAnalysisFunctionsRequest, options?: ConfigurationOptions): Promise<ListAnalysisFunctionsOutputBody> {
         return this.api.listAnalysisFunctions(param.analysisId, param.offset, param.limit,  options).toPromise();
+    }
+
+    /**
+     * Returns a paginated list of external/imported symbols (e.g. libc\'s `free`) linked by the analysis\'s binary. These are display-only: they carry no embeddings, cannot be renamed, and never participate in match/diff. `total_count` is the full population size, ignoring pagination.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List imported functions in an analysis
+     * @param param the request object
+     */
+    public listImportedFunctionsWithHttpInfo(param: FunctionsCoreApiListImportedFunctionsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListImportedFunctionsOutputBody>> {
+        return this.api.listImportedFunctionsWithHttpInfo(param.analysisId, param.offset, param.limit,  options).toPromise();
+    }
+
+    /**
+     * Returns a paginated list of external/imported symbols (e.g. libc\'s `free`) linked by the analysis\'s binary. These are display-only: they carry no embeddings, cannot be renamed, and never participate in match/diff. `total_count` is the full population size, ignoring pagination.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List imported functions in an analysis
+     * @param param the request object
+     */
+    public listImportedFunctions(param: FunctionsCoreApiListImportedFunctionsRequest, options?: ConfigurationOptions): Promise<ListImportedFunctionsOutputBody> {
+        return this.api.listImportedFunctions(param.analysisId, param.offset, param.limit,  options).toPromise();
     }
 
     /**

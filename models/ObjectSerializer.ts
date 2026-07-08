@@ -47,6 +47,7 @@ export * from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 export * from '../models/AppApiRestV2FunctionsResponsesFunction';
 export * from '../models/AppApiRestV2FunctionsTypesFunction';
 export * from '../models/AppApiRestV2InfoTypesCapability';
+export * from '../models/ArchiveContentEntry';
 export * from '../models/Argument';
 export * from '../models/Artifact';
 export * from '../models/AttemptFailedEvent';
@@ -309,6 +310,9 @@ export * from '../models/IOC';
 export * from '../models/ISA';
 export * from '../models/IconModel';
 export * from '../models/ImportModel';
+export * from '../models/ImportedFunctionCallerEntry';
+export * from '../models/ImportedFunctionDetailOutputBody';
+export * from '../models/ImportedFunctionEntry';
 export * from '../models/InlineComment';
 export * from '../models/InsertAnalysisLogRequest';
 export * from '../models/InviteUserInputBody';
@@ -316,11 +320,13 @@ export * from '../models/IssuerAllowedDomain';
 export * from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 export * from '../models/ListAnalysisFunctionsOutputBody';
 export * from '../models/ListAnalysisStringsOutputBody';
+export * from '../models/ListArchiveContentsOutputBody';
 export * from '../models/ListCollectionResults';
 export * from '../models/ListCollectionsOutputBody';
 export * from '../models/ListExampleAnalysesOutputBody';
 export * from '../models/ListFunctionStringsOutputBody';
 export * from '../models/ListFunctionsDataTypesOutputBody';
+export * from '../models/ListImportedFunctionsOutputBody';
 export * from '../models/ListTeamsOutputBody';
 export * from '../models/ListUsersOutputBody';
 export * from '../models/LocationOutputBody';
@@ -548,6 +554,7 @@ import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2Colle
 import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
+import { ArchiveContentEntry } from '../models/ArchiveContentEntry';
 import { Argument } from '../models/Argument';
 import { Artifact            , ArtifactReasonEnum          } from '../models/Artifact';
 import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
@@ -621,7 +628,7 @@ import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse
 import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
-import { BatchBinaryMatchResult   , BatchBinaryMatchResultStatusEnum   } from '../models/BatchBinaryMatchResult';
+import { BatchBinaryMatchResult    , BatchBinaryMatchResultStatusEnum   } from '../models/BatchBinaryMatchResult';
 import { BatchMatchingOutputBody , BatchMatchingOutputBodyStatusEnum   } from '../models/BatchMatchingOutputBody';
 import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
 import { BatchRenameItem } from '../models/BatchRenameItem';
@@ -810,6 +817,9 @@ import { IOC, IOCTypeEnum        } from '../models/IOC';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportModel } from '../models/ImportModel';
+import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
+import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
+import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
@@ -817,11 +827,13 @@ import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
 import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
+import { ListArchiveContentsOutputBody } from '../models/ListArchiveContentsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
+import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
 import { LocationOutputBody  , LocationOutputBodyCurrencyEnum   } from '../models/LocationOutputBody';
@@ -930,7 +942,7 @@ import { StackVariable } from '../models/StackVariable';
 import { StartBatchMatchingInputBody } from '../models/StartBatchMatchingInputBody';
 import { StartMatchingForAnalysisInputBody } from '../models/StartMatchingForAnalysisInputBody';
 import { StartMatchingForFunctionsInputBody } from '../models/StartMatchingForFunctionsInputBody';
-import { StartMatchingOutputBody , StartMatchingOutputBodyStatusEnum      } from '../models/StartMatchingOutputBody';
+import { StartMatchingOutputBody  , StartMatchingOutputBodyStatusEnum      } from '../models/StartMatchingOutputBody';
 import { StartupInfo } from '../models/StartupInfo';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
@@ -961,7 +973,7 @@ import { TokenResponse } from '../models/TokenResponse';
 import { TokenisedData  , TokenisedDataStatusEnum    } from '../models/TokenisedData';
 import { TriageFunctionResponse    , TriageFunctionResponseCapabilitiesEnum   } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
-import { TriggerDynamicExecutionInputBody , TriggerDynamicExecutionInputBodyStartMethodEnum  , TriggerDynamicExecutionInputBodyTimeoutEnum   } from '../models/TriggerDynamicExecutionInputBody';
+import { TriggerDynamicExecutionInputBody    , TriggerDynamicExecutionInputBodyStartMethodEnum  , TriggerDynamicExecutionInputBodyTimeoutEnum   } from '../models/TriggerDynamicExecutionInputBody';
 import { Ttp } from '../models/Ttp';
 import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateDataTypesInputBody } from '../models/UpdateDataTypesInputBody';
@@ -1151,6 +1163,7 @@ let typeMap: {[index: string]: any} = {
     "AppApiRestV2FunctionsResponsesFunction": AppApiRestV2FunctionsResponsesFunction,
     "AppApiRestV2FunctionsTypesFunction": AppApiRestV2FunctionsTypesFunction,
     "AppApiRestV2InfoTypesCapability": AppApiRestV2InfoTypesCapability,
+    "ArchiveContentEntry": ArchiveContentEntry,
     "Argument": Argument,
     "Artifact": Artifact,
     "AttemptFailedEvent": AttemptFailedEvent,
@@ -1405,6 +1418,9 @@ let typeMap: {[index: string]: any} = {
     "IOC": IOC,
     "IconModel": IconModel,
     "ImportModel": ImportModel,
+    "ImportedFunctionCallerEntry": ImportedFunctionCallerEntry,
+    "ImportedFunctionDetailOutputBody": ImportedFunctionDetailOutputBody,
+    "ImportedFunctionEntry": ImportedFunctionEntry,
     "InlineComment": InlineComment,
     "InsertAnalysisLogRequest": InsertAnalysisLogRequest,
     "InviteUserInputBody": InviteUserInputBody,
@@ -1412,11 +1428,13 @@ let typeMap: {[index: string]: any} = {
     "ListAnalysisFunctionsDataTypesOutputBody": ListAnalysisFunctionsDataTypesOutputBody,
     "ListAnalysisFunctionsOutputBody": ListAnalysisFunctionsOutputBody,
     "ListAnalysisStringsOutputBody": ListAnalysisStringsOutputBody,
+    "ListArchiveContentsOutputBody": ListArchiveContentsOutputBody,
     "ListCollectionResults": ListCollectionResults,
     "ListCollectionsOutputBody": ListCollectionsOutputBody,
     "ListExampleAnalysesOutputBody": ListExampleAnalysesOutputBody,
     "ListFunctionStringsOutputBody": ListFunctionStringsOutputBody,
     "ListFunctionsDataTypesOutputBody": ListFunctionsDataTypesOutputBody,
+    "ListImportedFunctionsOutputBody": ListImportedFunctionsOutputBody,
     "ListTeamsOutputBody": ListTeamsOutputBody,
     "ListUsersOutputBody": ListUsersOutputBody,
     "LocationOutputBody": LocationOutputBody,

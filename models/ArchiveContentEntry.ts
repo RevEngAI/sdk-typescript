@@ -9,26 +9,21 @@
  * Do not edit the class manually.
  */
 
-import { MatchFilters } from '../models/MatchFilters';
 import { HttpFile } from '../http/http';
 
-export class StartMatchingForAnalysisInputBody {
+export class ArchiveContentEntry {
     /**
-    * Narrow the candidate pool.
+    * Whether this entry is password-protected
     */
-    'filters'?: MatchFilters;
+    'encrypted': boolean;
     /**
-    * Similarity floor as a percentage. Defaults to 90.
+    * Path relative to the archive root
     */
-    'minSimilarity'?: number;
+    'path': string;
     /**
-    * By default a completed matching run for the same request is reused (response status=COMPLETED, no new run). Set true to force a fresh run.
+    * Uncompressed size in bytes
     */
-    'noCache'?: boolean;
-    /**
-    * Max matches returned per source function. Defaults to 1.
-    */
-    'resultsPerFunction'?: number;
+    'size': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -36,32 +31,26 @@ export class StartMatchingForAnalysisInputBody {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "filters",
-            "baseName": "filters",
-            "type": "MatchFilters",
-            "format": ""
-        },
-        {
-            "name": "minSimilarity",
-            "baseName": "min_similarity",
-            "type": "number",
-            "format": "double"
-        },
-        {
-            "name": "noCache",
-            "baseName": "no_cache",
+            "name": "encrypted",
+            "baseName": "encrypted",
             "type": "boolean",
             "format": ""
         },
         {
-            "name": "resultsPerFunction",
-            "baseName": "results_per_function",
+            "name": "path",
+            "baseName": "path",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "size",
+            "baseName": "size",
             "type": "number",
             "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return StartMatchingForAnalysisInputBody.attributeTypeMap;
+        return ArchiveContentEntry.attributeTypeMap;
     }
 
     public constructor() {

@@ -9,26 +9,16 @@
  * Do not edit the class manually.
  */
 
-import { MatchFilters } from '../models/MatchFilters';
 import { HttpFile } from '../http/http';
 
-export class StartMatchingForAnalysisInputBody {
+export class ImportedFunctionCallerEntry {
+    'functionId': number;
+    'functionName': string;
+    'functionVaddr': number;
     /**
-    * Narrow the candidate pool.
+    * The PLT/stub address this caller targets.
     */
-    'filters'?: MatchFilters;
-    /**
-    * Similarity floor as a percentage. Defaults to 90.
-    */
-    'minSimilarity'?: number;
-    /**
-    * By default a completed matching run for the same request is reused (response status=COMPLETED, no new run). Set true to force a fresh run.
-    */
-    'noCache'?: boolean;
-    /**
-    * Max matches returned per source function. Defaults to 1.
-    */
-    'resultsPerFunction'?: number;
+    'stubVaddr': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -36,32 +26,32 @@ export class StartMatchingForAnalysisInputBody {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "filters",
-            "baseName": "filters",
-            "type": "MatchFilters",
-            "format": ""
-        },
-        {
-            "name": "minSimilarity",
-            "baseName": "min_similarity",
+            "name": "functionId",
+            "baseName": "function_id",
             "type": "number",
-            "format": "double"
+            "format": "int64"
         },
         {
-            "name": "noCache",
-            "baseName": "no_cache",
-            "type": "boolean",
+            "name": "functionName",
+            "baseName": "function_name",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "resultsPerFunction",
-            "baseName": "results_per_function",
+            "name": "functionVaddr",
+            "baseName": "function_vaddr",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "stubVaddr",
+            "baseName": "stub_vaddr",
             "type": "number",
             "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return StartMatchingForAnalysisInputBody.attributeTypeMap;
+        return ImportedFunctionCallerEntry.attributeTypeMap;
     }
 
     public constructor() {

@@ -14,6 +14,10 @@ import { HttpFile } from '../http/http';
 
 export class StartMatchingOutputBody {
     /**
+    * Opaque token for this matching run. Pass it to the GET/status endpoints\' match_id query parameter to fetch this exact run.
+    */
+    'matchId': string;
+    /**
     * Log messages emitted during execution
     */
     'messages': Array<ProgressMessage> | null;
@@ -39,6 +43,12 @@ export class StartMatchingOutputBody {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "matchId",
+            "baseName": "match_id",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "messages",
             "baseName": "messages",
