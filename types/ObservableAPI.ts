@@ -34,6 +34,7 @@ import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
 import { AnalysisLogs } from '../models/AnalysisLogs';
 import { AnalysisRecord } from '../models/AnalysisRecord';
+import { AnalysisRecordBody } from '../models/AnalysisRecordBody';
 import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
@@ -41,6 +42,7 @@ import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringItem } from '../models/AnalysisStringItem';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
+import { AnalysisTagBody } from '../models/AnalysisTagBody';
 import { AnalysisTags } from '../models/AnalysisTags';
 import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
@@ -60,6 +62,7 @@ import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
+import { AutoUnstripStatusOutputBody } from '../models/AutoUnstripStatusOutputBody';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
 import { BaseResponseAnalysisBulkAddTagsResponse } from '../models/BaseResponseAnalysisBulkAddTagsResponse';
@@ -154,6 +157,9 @@ import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
+import { CanonicalName } from '../models/CanonicalName';
+import { CanonicalizeNamesInputBody } from '../models/CanonicalizeNamesInputBody';
+import { CanonicalizeNamesOutputBody } from '../models/CanonicalizeNamesOutputBody';
 import { Capabilities } from '../models/Capabilities';
 import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
 import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
@@ -318,10 +324,13 @@ import { ImportModel } from '../models/ImportModel';
 import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
 import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
+import { IndirectCallSite } from '../models/IndirectCallSite';
+import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBody';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
+import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
 import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
@@ -1913,6 +1922,40 @@ export class ObservableAnalysesCoreApi {
     }
 
     /**
+     * Returns the status of the auto-unstrip task for the binary backing the analysis. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the auto-unstrip status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisAutoUnstripStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripStatusOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3GetAnalysisAutoUnstripStatus(analysisId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3GetAnalysisAutoUnstripStatusWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the status of the auto-unstrip task for the binary backing the analysis. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the auto-unstrip status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisAutoUnstripStatus(analysisId: number, _options?: ConfigurationOptions): Observable<AutoUnstripStatusOutputBody> {
+        return this.v3GetAnalysisAutoUnstripStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripStatusOutputBody>) => apiResponse.data));
+    }
+
+    /**
      * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List strings for an analysis.
      * @param analysisId Analysis ID
@@ -1990,6 +2033,58 @@ export class ObservableAnalysesCoreApi {
      */
     public v3GetAnalysisStringsStatus(analysisId: number, _options?: ConfigurationOptions): Observable<GetAnalysisStringsStatusOutputBody> {
         return this.v3GetAnalysisStringsStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<GetAnalysisStringsStatusOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * List analyses
+     * @param [searchTerm]
+     * @param [analysisScope] Leave empty for no filter
+     * @param [status]
+     * @param [modelName]
+     * @param [usernames]
+     * @param [sha256Hash]
+     * @param [pageSize]
+     * @param [nextPageToken] Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
+     * @param [orderBy]
+     * @param [order]
+     */
+    public v3ListAnalysesWithHttpInfo(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<HttpInfo<ListAnalysesOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3ListAnalyses(searchTerm, analysisScope, status, modelName, usernames, sha256Hash, pageSize, nextPageToken, orderBy, order, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3ListAnalysesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * List analyses
+     * @param [searchTerm]
+     * @param [analysisScope] Leave empty for no filter
+     * @param [status]
+     * @param [modelName]
+     * @param [usernames]
+     * @param [sha256Hash]
+     * @param [pageSize]
+     * @param [nextPageToken] Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
+     * @param [orderBy]
+     * @param [order]
+     */
+    public v3ListAnalyses(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<ListAnalysesOutputBody> {
+        return this.v3ListAnalysesWithHttpInfo(searchTerm, analysisScope, status, modelName, usernames, sha256Hash, pageSize, nextPageToken, orderBy, order, _options).pipe(map((apiResponse: HttpInfo<ListAnalysesOutputBody>) => apiResponse.data));
     }
 
     /**
@@ -5071,6 +5166,40 @@ export class ObservableFunctionsCoreApi {
     }
 
     /**
+     * Returns the function\'s indirect call instructions with their resolved call target.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get indirect call sites for a function
+     * @param functionId Function ID
+     */
+    public getFunctionIndirectCallSitesWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<IndirectCallSitesOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getFunctionIndirectCallSites(functionId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionIndirectCallSitesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns the function\'s indirect call instructions with their resolved call target.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get indirect call sites for a function
+     * @param functionId Function ID
+     */
+    public getFunctionIndirectCallSites(functionId: number, _options?: ConfigurationOptions): Observable<IndirectCallSitesOutputBody> {
+        return this.getFunctionIndirectCallSitesWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<IndirectCallSitesOutputBody>) => apiResponse.data));
+    }
+
+    /**
      * Get string information found in the function
      * Get string information found in the function
      * @param functionId
@@ -5400,6 +5529,40 @@ export class ObservableFunctionsCoreApi {
      */
     public startFunctionsMatching(startMatchingForFunctionsInputBody: StartMatchingForFunctionsInputBody, _options?: ConfigurationOptions): Observable<StartMatchingOutputBody> {
         return this.startFunctionsMatchingWithHttpInfo(startMatchingForFunctionsInputBody, _options).pipe(map((apiResponse: HttpInfo<StartMatchingOutputBody>) => apiResponse.data));
+    }
+
+    /**
+     * Accepts up to 25 raw function names and returns their canonical forms in the same order. A name with no canonical form is returned unchanged.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `503` [`SERVICE_UNAVAILABLE`](/errors/SERVICE_UNAVAILABLE) — Service Unavailable
+     * Canonicalize a batch of function names
+     * @param canonicalizeNamesInputBody
+     */
+    public v3CanonicalizeFunctionNamesWithHttpInfo(canonicalizeNamesInputBody: CanonicalizeNamesInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<CanonicalizeNamesOutputBody>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.v3CanonicalizeFunctionNames(canonicalizeNamesInputBody, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.v3CanonicalizeFunctionNamesWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Accepts up to 25 raw function names and returns their canonical forms in the same order. A name with no canonical form is returned unchanged.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `503` [`SERVICE_UNAVAILABLE`](/errors/SERVICE_UNAVAILABLE) — Service Unavailable
+     * Canonicalize a batch of function names
+     * @param canonicalizeNamesInputBody
+     */
+    public v3CanonicalizeFunctionNames(canonicalizeNamesInputBody: CanonicalizeNamesInputBody, _options?: ConfigurationOptions): Observable<CanonicalizeNamesOutputBody> {
+        return this.v3CanonicalizeFunctionNamesWithHttpInfo(canonicalizeNamesInputBody, _options).pipe(map((apiResponse: HttpInfo<CanonicalizeNamesOutputBody>) => apiResponse.data));
     }
 
 }

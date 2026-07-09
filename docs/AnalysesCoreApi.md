@@ -27,8 +27,10 @@ Method | HTTP request | Description
 [**updateAnalysis**](AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**updateAnalysisTags**](AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**uploadFile**](AnalysesCoreApi.md#uploadFile) | **POST** /v2/upload | Upload File
+[**v3GetAnalysisAutoUnstripStatus**](AnalysesCoreApi.md#v3GetAnalysisAutoUnstripStatus) | **GET** /v3/analyses/{analysis_id}/auto-unstrip/status | Get the auto-unstrip status for an analysis.
 [**v3GetAnalysisStrings**](AnalysesCoreApi.md#v3GetAnalysisStrings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
 [**v3GetAnalysisStringsStatus**](AnalysesCoreApi.md#v3GetAnalysisStringsStatus) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
+[**v3ListAnalyses**](AnalysesCoreApi.md#v3ListAnalyses) | **GET** /v3/analyses | List analyses
 [**v3ListExampleAnalyses**](AnalysesCoreApi.md#v3ListExampleAnalyses) | **GET** /v3/analyses/examples | List example analyses
 
 
@@ -1461,6 +1463,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **v3GetAnalysisAutoUnstripStatus**
+> AutoUnstripStatusOutputBody v3GetAnalysisAutoUnstripStatus()
+
+Returns the status of the auto-unstrip task for the binary backing the analysis. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetAnalysisAutoUnstripStatusRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetAnalysisAutoUnstripStatusRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3GetAnalysisAutoUnstripStatus(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**AutoUnstripStatusOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **v3GetAnalysisStrings**
 > ListAnalysisStringsOutputBody v3GetAnalysisStrings()
 
@@ -1588,6 +1647,95 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3ListAnalyses**
+> ListAnalysesOutputBody v3ListAnalyses()
+
+Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3ListAnalysesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3ListAnalysesRequest = {
+  
+  searchTerm: "search_term_example",
+    // Leave empty for no filter (optional)
+  analysisScope: ["PRIVATE"],
+  
+  status: [
+    "Uploaded",
+  ],
+  
+  modelName: [
+    "model_name_example",
+  ],
+  
+  usernames: [
+    "usernames_example",
+  ],
+  
+  sha256Hash: "sha256_hash_example",
+  
+  pageSize: 20,
+    // Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination). (optional)
+  nextPageToken: "next_page_token_example",
+  
+  orderBy: "created",
+  
+  order: "DESC",
+};
+
+const data = await apiInstance.v3ListAnalyses(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchTerm** | [**string**] |  | (optional) defaults to undefined
+ **analysisScope** | **Array<&#39;PRIVATE&#39; &#124; &#39;PUBLIC&#39; &#124; &#39;TEAM&#39; &#124; &#39;11184809&#39;>** | Leave empty for no filter | (optional) defaults to undefined
+ **status** | **Array<&#39;Uploaded&#39; &#124; &#39;Queued&#39; &#124; &#39;Complete&#39; &#124; &#39;Error&#39; &#124; &#39;Processing&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to undefined
+ **modelName** | **Array&lt;string&gt;** |  | (optional) defaults to undefined
+ **usernames** | **Array&lt;string&gt;** |  | (optional) defaults to undefined
+ **sha256Hash** | [**string**] |  | (optional) defaults to undefined
+ **pageSize** | [**number**] |  | (optional) defaults to 20
+ **nextPageToken** | [**string**] | Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination). | (optional) defaults to undefined
+ **orderBy** | [**&#39;created&#39; | &#39;binary_name&#39; | &#39;binary_size&#39;**]**Array<&#39;created&#39; &#124; &#39;binary_name&#39; &#124; &#39;binary_size&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to 'created'
+ **order** | [**&#39;ASC&#39; | &#39;DESC&#39;**]**Array<&#39;ASC&#39; &#124; &#39;DESC&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to 'DESC'
+
+
+### Return type
+
+**ListAnalysesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 

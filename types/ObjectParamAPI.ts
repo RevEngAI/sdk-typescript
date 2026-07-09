@@ -33,6 +33,7 @@ import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
 import { AnalysisLogs } from '../models/AnalysisLogs';
 import { AnalysisRecord } from '../models/AnalysisRecord';
+import { AnalysisRecordBody } from '../models/AnalysisRecordBody';
 import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
@@ -40,6 +41,7 @@ import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringItem } from '../models/AnalysisStringItem';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
+import { AnalysisTagBody } from '../models/AnalysisTagBody';
 import { AnalysisTags } from '../models/AnalysisTags';
 import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
@@ -59,6 +61,7 @@ import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
+import { AutoUnstripStatusOutputBody } from '../models/AutoUnstripStatusOutputBody';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
 import { BaseResponseAnalysisBulkAddTagsResponse } from '../models/BaseResponseAnalysisBulkAddTagsResponse';
@@ -153,6 +156,9 @@ import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
+import { CanonicalName } from '../models/CanonicalName';
+import { CanonicalizeNamesInputBody } from '../models/CanonicalizeNamesInputBody';
+import { CanonicalizeNamesOutputBody } from '../models/CanonicalizeNamesOutputBody';
 import { Capabilities } from '../models/Capabilities';
 import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
 import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
@@ -317,10 +323,13 @@ import { ImportModel } from '../models/ImportModel';
 import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
 import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
+import { IndirectCallSite } from '../models/IndirectCallSite';
+import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBody';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
+import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
 import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
@@ -1387,6 +1396,17 @@ export interface AnalysesCoreApiUploadFileRequest {
     forceOverwrite?: boolean
 }
 
+export interface AnalysesCoreApiV3GetAnalysisAutoUnstripStatusRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiv3GetAnalysisAutoUnstripStatus
+     */
+    analysisId: number
+}
+
 export interface AnalysesCoreApiV3GetAnalysisStringsRequest {
     /**
      * Analysis ID
@@ -1452,6 +1472,81 @@ export interface AnalysesCoreApiV3GetAnalysisStringsStatusRequest {
      * @memberof AnalysesCoreApiv3GetAnalysisStringsStatus
      */
     analysisId: number
+}
+
+export interface AnalysesCoreApiV3ListAnalysesRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiv3ListAnalyses
+     */
+    searchTerm?: string
+    /**
+     * Leave empty for no filter
+     * Defaults to: undefined
+     * @type Array&lt;&#39;PRIVATE&#39; | &#39;PUBLIC&#39; | &#39;TEAM&#39;&gt;
+     * @memberof AnalysesCoreApiv3ListAnalyses
+     */
+    analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>
+    /**
+     * 
+     * Defaults to: undefined
+     * @type Array&lt;&#39;Uploaded&#39; | &#39;Queued&#39; | &#39;Complete&#39; | &#39;Error&#39; | &#39;Processing&#39;&gt;
+     * @memberof AnalysesCoreApiv3ListAnalyses
+     */
+    status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>
+    /**
+     * 
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof AnalysesCoreApiv3ListAnalyses
+     */
+    modelName?: Array<string>
+    /**
+     * 
+     * Defaults to: undefined
+     * @type Array&lt;string&gt;
+     * @memberof AnalysesCoreApiv3ListAnalyses
+     */
+    usernames?: Array<string>
+    /**
+     * 
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiv3ListAnalyses
+     */
+    sha256Hash?: string
+    /**
+     * 
+     * Minimum: 1
+     * Maximum: 50
+     * Defaults to: 20
+     * @type number
+     * @memberof AnalysesCoreApiv3ListAnalyses
+     */
+    pageSize?: number
+    /**
+     * Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiv3ListAnalyses
+     */
+    nextPageToken?: string
+    /**
+     * 
+     * Defaults to: &#39;created&#39;
+     * @type &#39;created&#39; | &#39;binary_name&#39; | &#39;binary_size&#39;
+     * @memberof AnalysesCoreApiv3ListAnalyses
+     */
+    orderBy?: 'created' | 'binary_name' | 'binary_size'
+    /**
+     * 
+     * Defaults to: &#39;DESC&#39;
+     * @type &#39;ASC&#39; | &#39;DESC&#39;
+     * @memberof AnalysesCoreApiv3ListAnalyses
+     */
+    order?: 'ASC' | 'DESC'
 }
 
 export interface AnalysesCoreApiV3ListExampleAnalysesRequest {
@@ -1877,6 +1972,24 @@ export class ObjectAnalysesCoreApi {
     }
 
     /**
+     * Returns the status of the auto-unstrip task for the binary backing the analysis. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the auto-unstrip status for an analysis.
+     * @param param the request object
+     */
+    public v3GetAnalysisAutoUnstripStatusWithHttpInfo(param: AnalysesCoreApiV3GetAnalysisAutoUnstripStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutoUnstripStatusOutputBody>> {
+        return this.api.v3GetAnalysisAutoUnstripStatusWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the status of the auto-unstrip task for the binary backing the analysis. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the auto-unstrip status for an analysis.
+     * @param param the request object
+     */
+    public v3GetAnalysisAutoUnstripStatus(param: AnalysesCoreApiV3GetAnalysisAutoUnstripStatusRequest, options?: ConfigurationOptions): Promise<AutoUnstripStatusOutputBody> {
+        return this.api.v3GetAnalysisAutoUnstripStatus(param.analysisId,  options).toPromise();
+    }
+
+    /**
      * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List strings for an analysis.
      * @param param the request object
@@ -1910,6 +2023,24 @@ export class ObjectAnalysesCoreApi {
      */
     public v3GetAnalysisStringsStatus(param: AnalysesCoreApiV3GetAnalysisStringsStatusRequest, options?: ConfigurationOptions): Promise<GetAnalysisStringsStatusOutputBody> {
         return this.api.v3GetAnalysisStringsStatus(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * List analyses
+     * @param param the request object
+     */
+    public v3ListAnalysesWithHttpInfo(param: AnalysesCoreApiV3ListAnalysesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAnalysesOutputBody>> {
+        return this.api.v3ListAnalysesWithHttpInfo(param.searchTerm, param.analysisScope, param.status, param.modelName, param.usernames, param.sha256Hash, param.pageSize, param.nextPageToken, param.orderBy, param.order,  options).toPromise();
+    }
+
+    /**
+     * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * List analyses
+     * @param param the request object
+     */
+    public v3ListAnalyses(param: AnalysesCoreApiV3ListAnalysesRequest = {}, options?: ConfigurationOptions): Promise<ListAnalysesOutputBody> {
+        return this.api.v3ListAnalyses(param.searchTerm, param.analysisScope, param.status, param.modelName, param.usernames, param.sha256Hash, param.pageSize, param.nextPageToken, param.orderBy, param.order,  options).toPromise();
     }
 
     /**
@@ -4373,6 +4504,17 @@ export interface FunctionsCoreApiGetFunctionDetails0Request {
     functionId: number
 }
 
+export interface FunctionsCoreApiGetFunctionIndirectCallSitesRequest {
+    /**
+     * Function ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof FunctionsCoreApigetFunctionIndirectCallSites
+     */
+    functionId: number
+}
+
 export interface FunctionsCoreApiGetFunctionStringsRequest {
     /**
      * 
@@ -4568,6 +4710,15 @@ export interface FunctionsCoreApiStartFunctionsMatchingRequest {
      * @memberof FunctionsCoreApistartFunctionsMatching
      */
     startMatchingForFunctionsInputBody: StartMatchingForFunctionsInputBody
+}
+
+export interface FunctionsCoreApiV3CanonicalizeFunctionNamesRequest {
+    /**
+     * 
+     * @type CanonicalizeNamesInputBody
+     * @memberof FunctionsCoreApiv3CanonicalizeFunctionNames
+     */
+    canonicalizeNamesInputBody: CanonicalizeNamesInputBody
 }
 
 export class ObjectFunctionsCoreApi {
@@ -4912,6 +5063,24 @@ export class ObjectFunctionsCoreApi {
     }
 
     /**
+     * Returns the function\'s indirect call instructions with their resolved call target.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get indirect call sites for a function
+     * @param param the request object
+     */
+    public getFunctionIndirectCallSitesWithHttpInfo(param: FunctionsCoreApiGetFunctionIndirectCallSitesRequest, options?: ConfigurationOptions): Promise<HttpInfo<IndirectCallSitesOutputBody>> {
+        return this.api.getFunctionIndirectCallSitesWithHttpInfo(param.functionId,  options).toPromise();
+    }
+
+    /**
+     * Returns the function\'s indirect call instructions with their resolved call target.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get indirect call sites for a function
+     * @param param the request object
+     */
+    public getFunctionIndirectCallSites(param: FunctionsCoreApiGetFunctionIndirectCallSitesRequest, options?: ConfigurationOptions): Promise<IndirectCallSitesOutputBody> {
+        return this.api.getFunctionIndirectCallSites(param.functionId,  options).toPromise();
+    }
+
+    /**
      * Get string information found in the function
      * Get string information found in the function
      * @param param the request object
@@ -5071,6 +5240,24 @@ export class ObjectFunctionsCoreApi {
      */
     public startFunctionsMatching(param: FunctionsCoreApiStartFunctionsMatchingRequest, options?: ConfigurationOptions): Promise<StartMatchingOutputBody> {
         return this.api.startFunctionsMatching(param.startMatchingForFunctionsInputBody,  options).toPromise();
+    }
+
+    /**
+     * Accepts up to 25 raw function names and returns their canonical forms in the same order. A name with no canonical form is returned unchanged.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `503` [`SERVICE_UNAVAILABLE`](/errors/SERVICE_UNAVAILABLE) — Service Unavailable
+     * Canonicalize a batch of function names
+     * @param param the request object
+     */
+    public v3CanonicalizeFunctionNamesWithHttpInfo(param: FunctionsCoreApiV3CanonicalizeFunctionNamesRequest, options?: ConfigurationOptions): Promise<HttpInfo<CanonicalizeNamesOutputBody>> {
+        return this.api.v3CanonicalizeFunctionNamesWithHttpInfo(param.canonicalizeNamesInputBody,  options).toPromise();
+    }
+
+    /**
+     * Accepts up to 25 raw function names and returns their canonical forms in the same order. A name with no canonical form is returned unchanged.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `503` [`SERVICE_UNAVAILABLE`](/errors/SERVICE_UNAVAILABLE) — Service Unavailable
+     * Canonicalize a batch of function names
+     * @param param the request object
+     */
+    public v3CanonicalizeFunctionNames(param: FunctionsCoreApiV3CanonicalizeFunctionNamesRequest, options?: ConfigurationOptions): Promise<CanonicalizeNamesOutputBody> {
+        return this.api.v3CanonicalizeFunctionNames(param.canonicalizeNamesInputBody,  options).toPromise();
     }
 
 }
