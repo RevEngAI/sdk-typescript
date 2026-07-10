@@ -16,6 +16,7 @@ import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
+import { AutoUnstripStatusOutputBody } from '../models/AutoUnstripStatusOutputBody';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalysisCreateResponse';
 import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
@@ -35,6 +36,7 @@ import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStrings
 import { GetMatchesOutputBody } from '../models/GetMatchesOutputBody';
 import { GetMatchesStatusOutputBody } from '../models/GetMatchesStatusOutputBody';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
+import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ModelName } from '../models/ModelName';
@@ -1341,6 +1343,49 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Returns the status of the auto-unstrip task for the binary backing the analysis. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the auto-unstrip status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public async v3GetAnalysisAutoUnstripStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetAnalysisAutoUnstripStatus", "analysisId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/auto-unstrip/status'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List strings for an analysis.
      * @param analysisId Analysis ID
@@ -1446,6 +1491,117 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * List analyses
+     * @param searchTerm 
+     * @param analysisScope Leave empty for no filter
+     * @param status 
+     * @param modelName 
+     * @param usernames 
+     * @param sha256Hash 
+     * @param pageSize 
+     * @param nextPageToken Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
+     * @param orderBy 
+     * @param order 
+     */
+    public async v3ListAnalyses(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+
+
+
+
+
+
+
+
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (searchTerm !== undefined) {
+            requestContext.setQueryParam("search_term", ObjectSerializer.serialize(searchTerm, "string", ""));
+        }
+
+        // Query Params
+        if (analysisScope !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(analysisScope, "Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("analysis_scope", serializedParam);
+            }
+        }
+
+        // Query Params
+        if (status !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(status, "Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("status", serializedParam);
+            }
+        }
+
+        // Query Params
+        if (modelName !== undefined) {
+            requestContext.setQueryParam("model_name", ObjectSerializer.serialize(modelName, "Array<string>", ""));
+        }
+
+        // Query Params
+        if (usernames !== undefined) {
+            requestContext.setQueryParam("usernames", ObjectSerializer.serialize(usernames, "Array<string>", ""));
+        }
+
+        // Query Params
+        if (sha256Hash !== undefined) {
+            requestContext.setQueryParam("sha256_hash", ObjectSerializer.serialize(sha256Hash, "string", ""));
+        }
+
+        // Query Params
+        if (pageSize !== undefined) {
+            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", "int64"));
+        }
+
+        // Query Params
+        if (nextPageToken !== undefined) {
+            requestContext.setQueryParam("next_page_token", ObjectSerializer.serialize(nextPageToken, "string", ""));
+        }
+
+        // Query Params
+        if (orderBy !== undefined) {
+            requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "'created' | 'binary_name' | 'binary_size'", ""));
+        }
+
+        // Query Params
+        if (order !== undefined) {
+            requestContext.setQueryParam("order", ObjectSerializer.serialize(order, "'ASC' | 'DESC'", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -2566,6 +2722,63 @@ export class AnalysesCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to v3GetAnalysisAutoUnstripStatus
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3GetAnalysisAutoUnstripStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AutoUnstripStatusOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: AutoUnstripStatusOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "AutoUnstripStatusOutputBody", ""
+            ) as AutoUnstripStatusOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: AutoUnstripStatusOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "AutoUnstripStatusOutputBody", ""
+            ) as AutoUnstripStatusOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to v3GetAnalysisStrings
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -2670,6 +2883,56 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "GetAnalysisStringsStatusOutputBody", ""
             ) as GetAnalysisStringsStatusOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3ListAnalyses
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3ListAnalysesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListAnalysesOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListAnalysesOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListAnalysesOutputBody", ""
+            ) as ListAnalysesOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListAnalysesOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListAnalysesOutputBody", ""
+            ) as ListAnalysesOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

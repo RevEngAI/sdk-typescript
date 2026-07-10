@@ -29,6 +29,7 @@ export * from '../models/AnalysisFunctionsList';
 export * from '../models/AnalysisLogMessage';
 export * from '../models/AnalysisLogs';
 export * from '../models/AnalysisRecord';
+export * from '../models/AnalysisRecordBody';
 export * from '../models/AnalysisReport';
 export * from '../models/AnalysisScope';
 export * from '../models/AnalysisStringFunction';
@@ -36,6 +37,7 @@ export * from '../models/AnalysisStringInput';
 export * from '../models/AnalysisStringItem';
 export * from '../models/AnalysisStringsResponse';
 export * from '../models/AnalysisStringsStatusResponse';
+export * from '../models/AnalysisTagBody';
 export * from '../models/AnalysisTags';
 export * from '../models/AnalysisUpdateRequest';
 export * from '../models/AnalysisUpdateTagsRequest';
@@ -55,6 +57,7 @@ export * from '../models/AttemptStartedEvent';
 export * from '../models/AutoRunAgents';
 export * from '../models/AutoUnstripRequest';
 export * from '../models/AutoUnstripResponse';
+export * from '../models/AutoUnstripStatusOutputBody';
 export * from '../models/BaseResponse';
 export * from '../models/BaseResponseAdditionalDetailsStatusResponse';
 export * from '../models/BaseResponseAnalysisBulkAddTagsResponse';
@@ -149,6 +152,9 @@ export * from '../models/CallEdgesOutputBody';
 export * from '../models/CalleeFunctionInfo';
 export * from '../models/CalleesCallerFunctionsResponse';
 export * from '../models/CallerFunctionInfo';
+export * from '../models/CanonicalName';
+export * from '../models/CanonicalizeNamesInputBody';
+export * from '../models/CanonicalizeNamesOutputBody';
 export * from '../models/Capabilities';
 export * from '../models/CapabilitiesAgentResponse';
 export * from '../models/CapabilitiesOutputBody';
@@ -313,10 +319,13 @@ export * from '../models/ImportModel';
 export * from '../models/ImportedFunctionCallerEntry';
 export * from '../models/ImportedFunctionDetailOutputBody';
 export * from '../models/ImportedFunctionEntry';
+export * from '../models/IndirectCallSite';
+export * from '../models/IndirectCallSitesOutputBody';
 export * from '../models/InlineComment';
 export * from '../models/InsertAnalysisLogRequest';
 export * from '../models/InviteUserInputBody';
 export * from '../models/IssuerAllowedDomain';
+export * from '../models/ListAnalysesOutputBody';
 export * from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 export * from '../models/ListAnalysisFunctionsOutputBody';
 export * from '../models/ListAnalysisStringsOutputBody';
@@ -536,6 +545,7 @@ import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
 import { AnalysisLogs } from '../models/AnalysisLogs';
 import { AnalysisRecord                  } from '../models/AnalysisRecord';
+import { AnalysisRecordBody , AnalysisRecordBodyAnalysisScopeEnum                } from '../models/AnalysisRecordBody';
 import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
@@ -543,6 +553,7 @@ import { AnalysisStringInput    } from '../models/AnalysisStringInput';
 import { AnalysisStringItem } from '../models/AnalysisStringItem';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse  } from '../models/AnalysisStringsStatusResponse';
+import { AnalysisTagBody } from '../models/AnalysisTagBody';
 import { AnalysisTags } from '../models/AnalysisTags';
 import { AnalysisUpdateRequest , AnalysisUpdateRequestAnalysisScopeEnum   } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
@@ -562,6 +573,7 @@ import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
+import { AutoUnstripStatusOutputBody, AutoUnstripStatusOutputBodyStatusEnum   } from '../models/AutoUnstripStatusOutputBody';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
 import { BaseResponseAnalysisBulkAddTagsResponse } from '../models/BaseResponseAnalysisBulkAddTagsResponse';
@@ -656,6 +668,9 @@ import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
+import { CanonicalName } from '../models/CanonicalName';
+import { CanonicalizeNamesInputBody } from '../models/CanonicalizeNamesInputBody';
+import { CanonicalizeNamesOutputBody } from '../models/CanonicalizeNamesOutputBody';
 import { Capabilities } from '../models/Capabilities';
 import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
 import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
@@ -820,10 +835,13 @@ import { ImportModel } from '../models/ImportModel';
 import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
 import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
+import { IndirectCallSite } from '../models/IndirectCallSite';
+import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBody';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
+import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
 import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
@@ -1027,12 +1045,14 @@ let primitives = [
 let enumsMap: Set<string> = new Set<string>([
     "AiDecompilationRating",
     "AnalysisBasicInfoOutputBodyAnalysisScopeEnum",
+    "AnalysisRecordBodyAnalysisScopeEnum",
     "AnalysisScope",
     "AnalysisUpdateRequestAnalysisScopeEnum",
     "AppApiRestV2AgentSchemaCapabilityTypeEnum",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
     "ArtifactReasonEnum",
+    "AutoUnstripStatusOutputBodyStatusEnum",
     "BatchBinaryMatchResultStatusEnum",
     "BatchMatchingOutputBodyStatusEnum",
     "BatchUpdateDataTypesResultStatusEnum",
@@ -1148,12 +1168,14 @@ let typeMap: {[index: string]: any} = {
     "AnalysisLogMessage": AnalysisLogMessage,
     "AnalysisLogs": AnalysisLogs,
     "AnalysisRecord": AnalysisRecord,
+    "AnalysisRecordBody": AnalysisRecordBody,
     "AnalysisReport": AnalysisReport,
     "AnalysisStringFunction": AnalysisStringFunction,
     "AnalysisStringInput": AnalysisStringInput,
     "AnalysisStringItem": AnalysisStringItem,
     "AnalysisStringsResponse": AnalysisStringsResponse,
     "AnalysisStringsStatusResponse": AnalysisStringsStatusResponse,
+    "AnalysisTagBody": AnalysisTagBody,
     "AnalysisTags": AnalysisTags,
     "AnalysisUpdateRequest": AnalysisUpdateRequest,
     "AnalysisUpdateTagsRequest": AnalysisUpdateTagsRequest,
@@ -1171,6 +1193,7 @@ let typeMap: {[index: string]: any} = {
     "AutoRunAgents": AutoRunAgents,
     "AutoUnstripRequest": AutoUnstripRequest,
     "AutoUnstripResponse": AutoUnstripResponse,
+    "AutoUnstripStatusOutputBody": AutoUnstripStatusOutputBody,
     "BaseResponse": BaseResponse,
     "BaseResponseAdditionalDetailsStatusResponse": BaseResponseAdditionalDetailsStatusResponse,
     "BaseResponseAnalysisBulkAddTagsResponse": BaseResponseAnalysisBulkAddTagsResponse,
@@ -1263,6 +1286,9 @@ let typeMap: {[index: string]: any} = {
     "CalleeFunctionInfo": CalleeFunctionInfo,
     "CalleesCallerFunctionsResponse": CalleesCallerFunctionsResponse,
     "CallerFunctionInfo": CallerFunctionInfo,
+    "CanonicalName": CanonicalName,
+    "CanonicalizeNamesInputBody": CanonicalizeNamesInputBody,
+    "CanonicalizeNamesOutputBody": CanonicalizeNamesOutputBody,
     "Capabilities": Capabilities,
     "CapabilitiesAgentResponse": CapabilitiesAgentResponse,
     "CapabilitiesOutputBody": CapabilitiesOutputBody,
@@ -1421,10 +1447,13 @@ let typeMap: {[index: string]: any} = {
     "ImportedFunctionCallerEntry": ImportedFunctionCallerEntry,
     "ImportedFunctionDetailOutputBody": ImportedFunctionDetailOutputBody,
     "ImportedFunctionEntry": ImportedFunctionEntry,
+    "IndirectCallSite": IndirectCallSite,
+    "IndirectCallSitesOutputBody": IndirectCallSitesOutputBody,
     "InlineComment": InlineComment,
     "InsertAnalysisLogRequest": InsertAnalysisLogRequest,
     "InviteUserInputBody": InviteUserInputBody,
     "IssuerAllowedDomain": IssuerAllowedDomain,
+    "ListAnalysesOutputBody": ListAnalysesOutputBody,
     "ListAnalysisFunctionsDataTypesOutputBody": ListAnalysisFunctionsDataTypesOutputBody,
     "ListAnalysisFunctionsOutputBody": ListAnalysisFunctionsOutputBody,
     "ListAnalysisStringsOutputBody": ListAnalysisStringsOutputBody,

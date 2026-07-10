@@ -33,6 +33,7 @@ import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
 import { AnalysisLogs } from '../models/AnalysisLogs';
 import { AnalysisRecord } from '../models/AnalysisRecord';
+import { AnalysisRecordBody } from '../models/AnalysisRecordBody';
 import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
@@ -40,6 +41,7 @@ import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringItem } from '../models/AnalysisStringItem';
 import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
+import { AnalysisTagBody } from '../models/AnalysisTagBody';
 import { AnalysisTags } from '../models/AnalysisTags';
 import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
@@ -59,6 +61,7 @@ import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
 import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
+import { AutoUnstripStatusOutputBody } from '../models/AutoUnstripStatusOutputBody';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
 import { BaseResponseAnalysisBulkAddTagsResponse } from '../models/BaseResponseAnalysisBulkAddTagsResponse';
@@ -153,6 +156,9 @@ import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
 import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
 import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
+import { CanonicalName } from '../models/CanonicalName';
+import { CanonicalizeNamesInputBody } from '../models/CanonicalizeNamesInputBody';
+import { CanonicalizeNamesOutputBody } from '../models/CanonicalizeNamesOutputBody';
 import { Capabilities } from '../models/Capabilities';
 import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
 import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
@@ -317,10 +323,13 @@ import { ImportModel } from '../models/ImportModel';
 import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
 import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
+import { IndirectCallSite } from '../models/IndirectCallSite';
+import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBody';
 import { InlineComment } from '../models/InlineComment';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
+import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
 import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
@@ -1456,6 +1465,28 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
+     * Returns the status of the auto-unstrip task for the binary backing the analysis. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the auto-unstrip status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisAutoUnstripStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AutoUnstripStatusOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisAutoUnstripStatusWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the auto-unstrip task for the binary backing the analysis. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the auto-unstrip status for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisAutoUnstripStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AutoUnstripStatusOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisAutoUnstripStatus(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Returns the strings discovered in an analysis, combining function-level and analysis-level strings. Supports value/function-name search, sorting and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List strings for an analysis.
      * @param analysisId Analysis ID
@@ -1508,6 +1539,46 @@ export class PromiseAnalysesCoreApi {
     public v3GetAnalysisStringsStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<GetAnalysisStringsStatusOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3GetAnalysisStringsStatus(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * List analyses
+     * @param [searchTerm]
+     * @param [analysisScope] Leave empty for no filter
+     * @param [status]
+     * @param [modelName]
+     * @param [usernames]
+     * @param [sha256Hash]
+     * @param [pageSize]
+     * @param [nextPageToken] Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
+     * @param [orderBy]
+     * @param [order]
+     */
+    public v3ListAnalysesWithHttpInfo(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAnalysesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalysesWithHttpInfo(searchTerm, analysisScope, status, modelName, usernames, sha256Hash, pageSize, nextPageToken, orderBy, order, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * List analyses
+     * @param [searchTerm]
+     * @param [analysisScope] Leave empty for no filter
+     * @param [status]
+     * @param [modelName]
+     * @param [usernames]
+     * @param [sha256Hash]
+     * @param [pageSize]
+     * @param [nextPageToken] Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
+     * @param [orderBy]
+     * @param [order]
+     */
+    public v3ListAnalyses(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListAnalysesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalyses(searchTerm, analysisScope, status, modelName, usernames, sha256Hash, pageSize, nextPageToken, orderBy, order, observableOptions);
         return result.toPromise();
     }
 
@@ -3605,6 +3676,28 @@ export class PromiseFunctionsCoreApi {
     }
 
     /**
+     * Returns the function\'s indirect call instructions with their resolved call target.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get indirect call sites for a function
+     * @param functionId Function ID
+     */
+    public getFunctionIndirectCallSitesWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<IndirectCallSitesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getFunctionIndirectCallSitesWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the function\'s indirect call instructions with their resolved call target.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get indirect call sites for a function
+     * @param functionId Function ID
+     */
+    public getFunctionIndirectCallSites(functionId: number, _options?: PromiseConfigurationOptions): Promise<IndirectCallSitesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getFunctionIndirectCallSites(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Get string information found in the function
      * Get string information found in the function
      * @param functionId
@@ -3825,6 +3918,28 @@ export class PromiseFunctionsCoreApi {
     public startFunctionsMatching(startMatchingForFunctionsInputBody: StartMatchingForFunctionsInputBody, _options?: PromiseConfigurationOptions): Promise<StartMatchingOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.startFunctionsMatching(startMatchingForFunctionsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Accepts up to 25 raw function names and returns their canonical forms in the same order. A name with no canonical form is returned unchanged.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `503` [`SERVICE_UNAVAILABLE`](/errors/SERVICE_UNAVAILABLE) — Service Unavailable
+     * Canonicalize a batch of function names
+     * @param canonicalizeNamesInputBody
+     */
+    public v3CanonicalizeFunctionNamesWithHttpInfo(canonicalizeNamesInputBody: CanonicalizeNamesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CanonicalizeNamesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CanonicalizeFunctionNamesWithHttpInfo(canonicalizeNamesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Accepts up to 25 raw function names and returns their canonical forms in the same order. A name with no canonical form is returned unchanged.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `503` [`SERVICE_UNAVAILABLE`](/errors/SERVICE_UNAVAILABLE) — Service Unavailable
+     * Canonicalize a batch of function names
+     * @param canonicalizeNamesInputBody
+     */
+    public v3CanonicalizeFunctionNames(canonicalizeNamesInputBody: CanonicalizeNamesInputBody, _options?: PromiseConfigurationOptions): Promise<CanonicalizeNamesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CanonicalizeFunctionNames(canonicalizeNamesInputBody, observableOptions);
         return result.toPromise();
     }
 
