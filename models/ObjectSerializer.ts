@@ -245,6 +245,7 @@ export * from '../models/EventTEXTMESSAGESTART';
 export * from '../models/EventTITLEUPDATED';
 export * from '../models/EventTOOLCALLARGSDELTA';
 export * from '../models/EventTOOLCALLEND';
+export * from '../models/EventTOOLCALLPROGRESS';
 export * from '../models/EventTOOLCALLRESULT';
 export * from '../models/EventTOOLCALLSTART';
 export * from '../models/EventTOOLCONFIRMATIONREQUIRED';
@@ -437,6 +438,7 @@ export * from '../models/SseEventTextMessageStartData';
 export * from '../models/SseEventTitleUpdatedData';
 export * from '../models/SseEventToolCallArgsDeltaData';
 export * from '../models/SseEventToolCallEndData';
+export * from '../models/SseEventToolCallProgressData';
 export * from '../models/SseEventToolCallResultData';
 export * from '../models/SseEventToolCallStartData';
 export * from '../models/SseEventToolConfirmationRequiredData';
@@ -761,6 +763,7 @@ import { EventTEXTMESSAGESTART , EventTEXTMESSAGESTARTEventEnum     } from '../m
 import { EventTITLEUPDATED , EventTITLEUPDATEDEventEnum     } from '../models/EventTITLEUPDATED';
 import { EventTOOLCALLARGSDELTA , EventTOOLCALLARGSDELTAEventEnum     } from '../models/EventTOOLCALLARGSDELTA';
 import { EventTOOLCALLEND , EventTOOLCALLENDEventEnum     } from '../models/EventTOOLCALLEND';
+import { EventTOOLCALLPROGRESS , EventTOOLCALLPROGRESSEventEnum     } from '../models/EventTOOLCALLPROGRESS';
 import { EventTOOLCALLRESULT , EventTOOLCALLRESULTEventEnum     } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART , EventTOOLCALLSTARTEventEnum     } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED , EventTOOLCONFIRMATIONREQUIREDEventEnum     } from '../models/EventTOOLCONFIRMATIONREQUIRED';
@@ -953,6 +956,7 @@ import { SseEventTextMessageStartData } from '../models/SseEventTextMessageStart
 import { SseEventTitleUpdatedData } from '../models/SseEventTitleUpdatedData';
 import { SseEventToolCallArgsDeltaData } from '../models/SseEventToolCallArgsDeltaData';
 import { SseEventToolCallEndData } from '../models/SseEventToolCallEndData';
+import { SseEventToolCallProgressData } from '../models/SseEventToolCallProgressData';
 import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData';
 import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
 import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
@@ -1087,6 +1091,7 @@ let enumsMap: Set<string> = new Set<string>([
     "EventTITLEUPDATEDEventEnum",
     "EventTOOLCALLARGSDELTAEventEnum",
     "EventTOOLCALLENDEventEnum",
+    "EventTOOLCALLPROGRESSEventEnum",
     "EventTOOLCALLRESULTEventEnum",
     "EventTOOLCALLSTARTEventEnum",
     "EventTOOLCONFIRMATIONREQUIREDEventEnum",
@@ -1377,6 +1382,7 @@ let typeMap: {[index: string]: any} = {
     "EventTITLEUPDATED": EventTITLEUPDATED,
     "EventTOOLCALLARGSDELTA": EventTOOLCALLARGSDELTA,
     "EventTOOLCALLEND": EventTOOLCALLEND,
+    "EventTOOLCALLPROGRESS": EventTOOLCALLPROGRESS,
     "EventTOOLCALLRESULT": EventTOOLCALLRESULT,
     "EventTOOLCALLSTART": EventTOOLCALLSTART,
     "EventTOOLCONFIRMATIONREQUIRED": EventTOOLCONFIRMATIONREQUIRED,
@@ -1560,6 +1566,7 @@ let typeMap: {[index: string]: any} = {
     "SseEventTitleUpdatedData": SseEventTitleUpdatedData,
     "SseEventToolCallArgsDeltaData": SseEventToolCallArgsDeltaData,
     "SseEventToolCallEndData": SseEventToolCallEndData,
+    "SseEventToolCallProgressData": SseEventToolCallProgressData,
     "SseEventToolCallResultData": SseEventToolCallResultData,
     "SseEventToolCallStartData": SseEventToolCallStartData,
     "SseEventToolConfirmationRequiredData": SseEventToolConfirmationRequiredData,
