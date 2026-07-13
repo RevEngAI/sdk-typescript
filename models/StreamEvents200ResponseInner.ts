@@ -22,6 +22,7 @@ import { EventTEXTMESSAGESTART } from '../models/EventTEXTMESSAGESTART';
 import { EventTITLEUPDATED } from '../models/EventTITLEUPDATED';
 import { EventTOOLCALLARGSDELTA } from '../models/EventTOOLCALLARGSDELTA';
 import { EventTOOLCALLEND } from '../models/EventTOOLCALLEND';
+import { EventTOOLCALLPROGRESS } from '../models/EventTOOLCALLPROGRESS';
 import { EventTOOLCALLRESULT } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
@@ -32,7 +33,7 @@ import { HttpFile } from '../http/http';
  * Type
  * @export
  */
-export type StreamEvents200ResponseInner = EventCONTEXTCOMPACTED | EventRUNCANCELLED | EventRUNERROR | EventRUNFINISHED | EventRUNSTARTED | EventSTEPFINISHED | EventSTEPSTARTED | EventTEXTMESSAGECONTENT | EventTEXTMESSAGEEND | EventTEXTMESSAGESTART | EventTITLEUPDATED | EventTOOLCALLARGSDELTA | EventTOOLCALLEND | EventTOOLCALLRESULT | EventTOOLCALLSTART | EventTOOLCONFIRMATIONREQUIRED;
+export type StreamEvents200ResponseInner = EventCONTEXTCOMPACTED | EventRUNCANCELLED | EventRUNERROR | EventRUNFINISHED | EventRUNSTARTED | EventSTEPFINISHED | EventSTEPSTARTED | EventTEXTMESSAGECONTENT | EventTEXTMESSAGEEND | EventTEXTMESSAGESTART | EventTITLEUPDATED | EventTOOLCALLARGSDELTA | EventTOOLCALLEND | EventTOOLCALLPROGRESS | EventTOOLCALLRESULT | EventTOOLCALLSTART | EventTOOLCONFIRMATIONREQUIRED;
 
 /**
 * @type StreamEvents200ResponseInnerClass
@@ -43,6 +44,7 @@ export class StreamEvents200ResponseInnerClass {
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 }
+
 
 
 

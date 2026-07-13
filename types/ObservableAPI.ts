@@ -250,6 +250,7 @@ import { EventTEXTMESSAGESTART } from '../models/EventTEXTMESSAGESTART';
 import { EventTITLEUPDATED } from '../models/EventTITLEUPDATED';
 import { EventTOOLCALLARGSDELTA } from '../models/EventTOOLCALLARGSDELTA';
 import { EventTOOLCALLEND } from '../models/EventTOOLCALLEND';
+import { EventTOOLCALLPROGRESS } from '../models/EventTOOLCALLPROGRESS';
 import { EventTOOLCALLRESULT } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
@@ -442,6 +443,7 @@ import { SseEventTextMessageStartData } from '../models/SseEventTextMessageStart
 import { SseEventTitleUpdatedData } from '../models/SseEventTitleUpdatedData';
 import { SseEventToolCallArgsDeltaData } from '../models/SseEventToolCallArgsDeltaData';
 import { SseEventToolCallEndData } from '../models/SseEventToolCallEndData';
+import { SseEventToolCallProgressData } from '../models/SseEventToolCallProgressData';
 import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData';
 import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
 import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
