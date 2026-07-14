@@ -14,7 +14,6 @@ import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
-import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
 import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
@@ -27,7 +26,6 @@ import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
 import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionEntry } from '../models/AnalysisFunctionEntry';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
-import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
@@ -59,8 +57,6 @@ import { Artifact } from '../models/Artifact';
 import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
 import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
-import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
-import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { AutoUnstripStatusOutputBody } from '../models/AutoUnstripStatusOutputBody';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
@@ -284,9 +280,6 @@ import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMatch } from '../models/FunctionMatch';
-import { FunctionMatchingFilters } from '../models/FunctionMatchingFilters';
-import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
-import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 import { FunctionNameHistory } from '../models/FunctionNameHistory';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
@@ -348,7 +341,6 @@ import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
-import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
 import { MemdumpEntry } from '../models/MemdumpEntry';
 import { MessageBody } from '../models/MessageBody';
 import { MetaModel } from '../models/MetaModel';
@@ -507,10 +499,7 @@ import { UserProfile } from '../models/UserProfile';
 import { V2FunctionHeader } from '../models/V2FunctionHeader';
 import { V2FunctionInfo } from '../models/V2FunctionInfo';
 import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
-import { V2FunctionMatch } from '../models/V2FunctionMatch';
 import { V2FunctionType } from '../models/V2FunctionType';
-import { V2MatchedFunction } from '../models/V2MatchedFunction';
-import { V2NameConfidence } from '../models/V2NameConfidence';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
@@ -1443,6 +1432,13 @@ export interface AnalysesCoreApiV3GetAnalysisStringsRequest {
      */
     search?: string
     /**
+     * How the search term matches string values.
+     * Defaults to: &#39;CONTAINS&#39;
+     * @type &#39;CONTAINS&#39; | &#39;STARTS_WITH&#39;
+     * @memberof AnalysesCoreApiv3GetAnalysisStrings
+     */
+    searchOperator?: 'CONTAINS' | 'STARTS_WITH'
+    /**
      * Filter by function name (case-insensitive substring match).
      * Defaults to: undefined
      * @type string
@@ -1997,7 +1993,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public v3GetAnalysisStringsWithHttpInfo(param: AnalysesCoreApiV3GetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAnalysisStringsOutputBody>> {
-        return this.api.v3GetAnalysisStringsWithHttpInfo(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
+        return this.api.v3GetAnalysisStringsWithHttpInfo(param.analysisId, param.page, param.pageSize, param.search, param.searchOperator, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
     }
 
     /**
@@ -2006,7 +2002,7 @@ export class ObjectAnalysesCoreApi {
      * @param param the request object
      */
     public v3GetAnalysisStrings(param: AnalysesCoreApiV3GetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<ListAnalysisStringsOutputBody> {
-        return this.api.v3GetAnalysisStrings(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
+        return this.api.v3GetAnalysisStrings(param.analysisId, param.page, param.pageSize, param.search, param.searchOperator, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
     }
 
     /**
@@ -4270,83 +4266,6 @@ export interface FunctionsCoreApiAddUserStringToFunctionRequest {
     addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody
 }
 
-export interface FunctionsCoreApiAiUnstripRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApiaiUnstrip
-     */
-    analysisId: number
-    /**
-     * 
-     * @type AiUnstripRequest
-     * @memberof FunctionsCoreApiaiUnstrip
-     */
-    aiUnstripRequest: AiUnstripRequest
-}
-
-export interface FunctionsCoreApiAnalysisFunctionMatchingRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApianalysisFunctionMatching
-     */
-    analysisId: number
-    /**
-     * 
-     * @type AnalysisFunctionMatchingRequest
-     * @memberof FunctionsCoreApianalysisFunctionMatching
-     */
-    analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest
-}
-
-export interface FunctionsCoreApiAutoUnstripRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApiautoUnstrip
-     */
-    analysisId: number
-    /**
-     * 
-     * @type AutoUnstripRequest
-     * @memberof FunctionsCoreApiautoUnstrip
-     */
-    autoUnstripRequest: AutoUnstripRequest
-}
-
-export interface FunctionsCoreApiBatchFunctionMatchingRequest {
-    /**
-     * 
-     * @type FunctionMatchingRequest
-     * @memberof FunctionsCoreApibatchFunctionMatching
-     */
-    functionMatchingRequest: FunctionMatchingRequest
-}
-
-export interface FunctionsCoreApiCancelAiUnstripRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApicancelAiUnstrip
-     */
-    analysisId: number
-}
-
-export interface FunctionsCoreApiCancelAutoUnstripRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApicancelAutoUnstrip
-     */
-    analysisId: number
-}
-
 export interface FunctionsCoreApiGetAnalysisStringsRequest {
     /**
      * 
@@ -4764,114 +4683,6 @@ export class ObjectFunctionsCoreApi {
      */
     public addUserStringToFunction(param: FunctionsCoreApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
         return this.api.addUserStringToFunction(param.functionId, param.addUserStringToFunctionInputBody,  options).toPromise();
-    }
-
-    /**
-     * Takes in the analysis ID, uses the functions ID\'s from it and settings to find the nearest function groups for each function that\'s within the system
-     * Performs matching and auto-unstrip for an analysis and its functions
-     * @param param the request object
-     */
-    public aiUnstripWithHttpInfo(param: FunctionsCoreApiAiUnstripRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
-        return this.api.aiUnstripWithHttpInfo(param.analysisId, param.aiUnstripRequest,  options).toPromise();
-    }
-
-    /**
-     * Takes in the analysis ID, uses the functions ID\'s from it and settings to find the nearest function groups for each function that\'s within the system
-     * Performs matching and auto-unstrip for an analysis and its functions
-     * @param param the request object
-     */
-    public aiUnstrip(param: FunctionsCoreApiAiUnstripRequest, options?: ConfigurationOptions): Promise<AutoUnstripResponse> {
-        return this.api.aiUnstrip(param.analysisId, param.aiUnstripRequest,  options).toPromise();
-    }
-
-    /**
-     * Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
-     * Perform matching for the functions of an analysis
-     * @param param the request object
-     */
-    public analysisFunctionMatchingWithHttpInfo(param: FunctionsCoreApiAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<HttpInfo<FunctionMatchingResponse>> {
-        return this.api.analysisFunctionMatchingWithHttpInfo(param.analysisId, param.analysisFunctionMatchingRequest,  options).toPromise();
-    }
-
-    /**
-     * Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
-     * Perform matching for the functions of an analysis
-     * @param param the request object
-     */
-    public analysisFunctionMatching(param: FunctionsCoreApiAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<FunctionMatchingResponse> {
-        return this.api.analysisFunctionMatching(param.analysisId, param.analysisFunctionMatchingRequest,  options).toPromise();
-    }
-
-    /**
-     * Takes in the analysis ID, uses the functions ID\'s from it and settings to find the nearest function for each function that\'s within the system
-     * Performs matching and auto-unstrip for an analysis and its functions
-     * @param param the request object
-     */
-    public autoUnstripWithHttpInfo(param: FunctionsCoreApiAutoUnstripRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
-        return this.api.autoUnstripWithHttpInfo(param.analysisId, param.autoUnstripRequest,  options).toPromise();
-    }
-
-    /**
-     * Takes in the analysis ID, uses the functions ID\'s from it and settings to find the nearest function for each function that\'s within the system
-     * Performs matching and auto-unstrip for an analysis and its functions
-     * @param param the request object
-     */
-    public autoUnstrip(param: FunctionsCoreApiAutoUnstripRequest, options?: ConfigurationOptions): Promise<AutoUnstripResponse> {
-        return this.api.autoUnstrip(param.analysisId, param.autoUnstripRequest,  options).toPromise();
-    }
-
-    /**
-     * Takes in an input of functions ID\'s and settings and finds the nearest functions for each function that\'s within the system
-     * Perform function matching for an arbitrary batch of functions, binaries or collections
-     * @param param the request object
-     */
-    public batchFunctionMatchingWithHttpInfo(param: FunctionsCoreApiBatchFunctionMatchingRequest, options?: ConfigurationOptions): Promise<HttpInfo<FunctionMatchingResponse>> {
-        return this.api.batchFunctionMatchingWithHttpInfo(param.functionMatchingRequest,  options).toPromise();
-    }
-
-    /**
-     * Takes in an input of functions ID\'s and settings and finds the nearest functions for each function that\'s within the system
-     * Perform function matching for an arbitrary batch of functions, binaries or collections
-     * @param param the request object
-     */
-    public batchFunctionMatching(param: FunctionsCoreApiBatchFunctionMatchingRequest, options?: ConfigurationOptions): Promise<FunctionMatchingResponse> {
-        return this.api.batchFunctionMatching(param.functionMatchingRequest,  options).toPromise();
-    }
-
-    /**
-     * Takes in the analysis ID and cancels a running ai-unstrip operation
-     * Cancels a running ai-unstrip
-     * @param param the request object
-     */
-    public cancelAiUnstripWithHttpInfo(param: FunctionsCoreApiCancelAiUnstripRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
-        return this.api.cancelAiUnstripWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Takes in the analysis ID and cancels a running ai-unstrip operation
-     * Cancels a running ai-unstrip
-     * @param param the request object
-     */
-    public cancelAiUnstrip(param: FunctionsCoreApiCancelAiUnstripRequest, options?: ConfigurationOptions): Promise<AutoUnstripResponse> {
-        return this.api.cancelAiUnstrip(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Takes in the analysis ID and cancels a running auto-unstrip operation
-     * Cancels a running auto-unstrip
-     * @param param the request object
-     */
-    public cancelAutoUnstripWithHttpInfo(param: FunctionsCoreApiCancelAutoUnstripRequest, options?: ConfigurationOptions): Promise<HttpInfo<AutoUnstripResponse>> {
-        return this.api.cancelAutoUnstripWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Takes in the analysis ID and cancels a running auto-unstrip operation
-     * Cancels a running auto-unstrip
-     * @param param the request object
-     */
-    public cancelAutoUnstrip(param: FunctionsCoreApiCancelAutoUnstripRequest, options?: ConfigurationOptions): Promise<AutoUnstripResponse> {
-        return this.api.cancelAutoUnstrip(param.analysisId,  options).toPromise();
     }
 
     /**
