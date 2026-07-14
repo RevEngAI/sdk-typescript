@@ -12,7 +12,10 @@
 import { HttpFile } from '../http/http';
 
 export class GetAnalysisStringsStatusOutputBody {
-    'status': string;
+    /**
+    * String-extraction task status
+    */
+    'status': GetAnalysisStringsStatusOutputBodyStatusEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,7 +25,7 @@ export class GetAnalysisStringsStatusOutputBody {
         {
             "name": "status",
             "baseName": "status",
-            "type": "string",
+            "type": "GetAnalysisStringsStatusOutputBodyStatusEnum",
             "format": ""
         }    ];
 
@@ -33,3 +36,13 @@ export class GetAnalysisStringsStatusOutputBody {
     public constructor() {
     }
 }
+
+export enum GetAnalysisStringsStatusOutputBodyStatusEnum {
+    Uninitialised = 'UNINITIALISED',
+    Pending = 'PENDING',
+    Running = 'RUNNING',
+    Completed = 'COMPLETED',
+    Failed = 'FAILED',
+    UnknownDefaultOpenApi = '11184809'
+}
+

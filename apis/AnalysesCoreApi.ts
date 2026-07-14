@@ -1392,17 +1392,19 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param page Page number (1-indexed).
      * @param pageSize Number of results per page.
      * @param search Filter by string value (case-insensitive substring match).
+     * @param searchOperator How the search term matches string values.
      * @param functionSearch Filter by function name (case-insensitive substring match).
      * @param orderBy Field to order results by.
      * @param sortOrder Sort direction.
      */
-    public async v3GetAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
+    public async v3GetAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, searchOperator?: 'CONTAINS' | 'STARTS_WITH', functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
             throw new RequiredError("AnalysesCoreApi", "v3GetAnalysisStrings", "analysisId");
         }
+
 
 
 
@@ -1432,6 +1434,11 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (search !== undefined) {
             requestContext.setQueryParam("search", ObjectSerializer.serialize(search, "string", ""));
+        }
+
+        // Query Params
+        if (searchOperator !== undefined) {
+            requestContext.setQueryParam("search_operator", ObjectSerializer.serialize(searchOperator, "'CONTAINS' | 'STARTS_WITH'", ""));
         }
 
         // Query Params

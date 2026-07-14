@@ -15,7 +15,6 @@ import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
-import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
 import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
@@ -28,7 +27,6 @@ import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
 import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionEntry } from '../models/AnalysisFunctionEntry';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
-import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
@@ -60,8 +58,6 @@ import { Artifact } from '../models/Artifact';
 import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
 import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
-import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
-import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { AutoUnstripStatusOutputBody } from '../models/AutoUnstripStatusOutputBody';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
@@ -285,9 +281,6 @@ import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMatch } from '../models/FunctionMatch';
-import { FunctionMatchingFilters } from '../models/FunctionMatchingFilters';
-import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
-import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 import { FunctionNameHistory } from '../models/FunctionNameHistory';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
@@ -349,7 +342,6 @@ import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
-import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
 import { MemdumpEntry } from '../models/MemdumpEntry';
 import { MessageBody } from '../models/MessageBody';
 import { MetaModel } from '../models/MetaModel';
@@ -508,10 +500,7 @@ import { UserProfile } from '../models/UserProfile';
 import { V2FunctionHeader } from '../models/V2FunctionHeader';
 import { V2FunctionInfo } from '../models/V2FunctionInfo';
 import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
-import { V2FunctionMatch } from '../models/V2FunctionMatch';
 import { V2FunctionType } from '../models/V2FunctionType';
-import { V2MatchedFunction } from '../models/V2MatchedFunction';
-import { V2NameConfidence } from '../models/V2NameConfidence';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
@@ -1964,14 +1953,15 @@ export class ObservableAnalysesCoreApi {
      * @param [page] Page number (1-indexed).
      * @param [pageSize] Number of results per page.
      * @param [search] Filter by string value (case-insensitive substring match).
+     * @param [searchOperator] How the search term matches string values.
      * @param [functionSearch] Filter by function name (case-insensitive substring match).
      * @param [orderBy] Field to order results by.
      * @param [sortOrder] Sort direction.
      */
-    public v3GetAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<HttpInfo<ListAnalysisStringsOutputBody>> {
+    public v3GetAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, searchOperator?: 'CONTAINS' | 'STARTS_WITH', functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<HttpInfo<ListAnalysisStringsOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.v3GetAnalysisStrings(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _config);
+        const requestContextPromise = this.requestFactory.v3GetAnalysisStrings(analysisId, page, pageSize, search, searchOperator, functionSearch, orderBy, sortOrder, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -1995,12 +1985,13 @@ export class ObservableAnalysesCoreApi {
      * @param [page] Page number (1-indexed).
      * @param [pageSize] Number of results per page.
      * @param [search] Filter by string value (case-insensitive substring match).
+     * @param [searchOperator] How the search term matches string values.
      * @param [functionSearch] Filter by function name (case-insensitive substring match).
      * @param [orderBy] Field to order results by.
      * @param [sortOrder] Sort direction.
      */
-    public v3GetAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<ListAnalysisStringsOutputBody> {
-        return this.v3GetAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _options).pipe(map((apiResponse: HttpInfo<ListAnalysisStringsOutputBody>) => apiResponse.data));
+    public v3GetAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, searchOperator?: 'CONTAINS' | 'STARTS_WITH', functionSearch?: string, orderBy?: 'value' | 'length', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<ListAnalysisStringsOutputBody> {
+        return this.v3GetAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, searchOperator, functionSearch, orderBy, sortOrder, _options).pipe(map((apiResponse: HttpInfo<ListAnalysisStringsOutputBody>) => apiResponse.data));
     }
 
     /**
@@ -4577,216 +4568,6 @@ export class ObservableFunctionsCoreApi {
      */
     public addUserStringToFunction(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
         return this.addUserStringToFunctionWithHttpInfo(functionId, addUserStringToFunctionInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
-    }
-
-    /**
-     * Takes in the analysis ID, uses the functions ID\'s from it and settings to find the nearest function groups for each function that\'s within the system
-     * Performs matching and auto-unstrip for an analysis and its functions
-     * @param analysisId
-     * @param aiUnstripRequest
-     */
-    public aiUnstripWithHttpInfo(analysisId: number, aiUnstripRequest: AiUnstripRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.aiUnstrip(analysisId, aiUnstripRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.aiUnstripWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Takes in the analysis ID, uses the functions ID\'s from it and settings to find the nearest function groups for each function that\'s within the system
-     * Performs matching and auto-unstrip for an analysis and its functions
-     * @param analysisId
-     * @param aiUnstripRequest
-     */
-    public aiUnstrip(analysisId: number, aiUnstripRequest: AiUnstripRequest, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
-        return this.aiUnstripWithHttpInfo(analysisId, aiUnstripRequest, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
-     * Perform matching for the functions of an analysis
-     * @param analysisId
-     * @param analysisFunctionMatchingRequest
-     */
-    public analysisFunctionMatchingWithHttpInfo(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionMatchingResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.analysisFunctionMatching(analysisId, analysisFunctionMatchingRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.analysisFunctionMatchingWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Takes in an analysis id and settings and matches the nearest functions to the ones associated with it. Results can optionally be filtered by collection, binary, debug type or (other) function ids
-     * Perform matching for the functions of an analysis
-     * @param analysisId
-     * @param analysisFunctionMatchingRequest
-     */
-    public analysisFunctionMatching(analysisId: number, analysisFunctionMatchingRequest: AnalysisFunctionMatchingRequest, _options?: ConfigurationOptions): Observable<FunctionMatchingResponse> {
-        return this.analysisFunctionMatchingWithHttpInfo(analysisId, analysisFunctionMatchingRequest, _options).pipe(map((apiResponse: HttpInfo<FunctionMatchingResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Takes in the analysis ID, uses the functions ID\'s from it and settings to find the nearest function for each function that\'s within the system
-     * Performs matching and auto-unstrip for an analysis and its functions
-     * @param analysisId
-     * @param autoUnstripRequest
-     */
-    public autoUnstripWithHttpInfo(analysisId: number, autoUnstripRequest: AutoUnstripRequest, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.autoUnstrip(analysisId, autoUnstripRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.autoUnstripWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Takes in the analysis ID, uses the functions ID\'s from it and settings to find the nearest function for each function that\'s within the system
-     * Performs matching and auto-unstrip for an analysis and its functions
-     * @param analysisId
-     * @param autoUnstripRequest
-     */
-    public autoUnstrip(analysisId: number, autoUnstripRequest: AutoUnstripRequest, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
-        return this.autoUnstripWithHttpInfo(analysisId, autoUnstripRequest, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Takes in an input of functions ID\'s and settings and finds the nearest functions for each function that\'s within the system
-     * Perform function matching for an arbitrary batch of functions, binaries or collections
-     * @param functionMatchingRequest
-     */
-    public batchFunctionMatchingWithHttpInfo(functionMatchingRequest: FunctionMatchingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionMatchingResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.batchFunctionMatching(functionMatchingRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.batchFunctionMatchingWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Takes in an input of functions ID\'s and settings and finds the nearest functions for each function that\'s within the system
-     * Perform function matching for an arbitrary batch of functions, binaries or collections
-     * @param functionMatchingRequest
-     */
-    public batchFunctionMatching(functionMatchingRequest: FunctionMatchingRequest, _options?: ConfigurationOptions): Observable<FunctionMatchingResponse> {
-        return this.batchFunctionMatchingWithHttpInfo(functionMatchingRequest, _options).pipe(map((apiResponse: HttpInfo<FunctionMatchingResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Takes in the analysis ID and cancels a running ai-unstrip operation
-     * Cancels a running ai-unstrip
-     * @param analysisId
-     */
-    public cancelAiUnstripWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.cancelAiUnstrip(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.cancelAiUnstripWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Takes in the analysis ID and cancels a running ai-unstrip operation
-     * Cancels a running ai-unstrip
-     * @param analysisId
-     */
-    public cancelAiUnstrip(analysisId: number, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
-        return this.cancelAiUnstripWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Takes in the analysis ID and cancels a running auto-unstrip operation
-     * Cancels a running auto-unstrip
-     * @param analysisId
-     */
-    public cancelAutoUnstripWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<AutoUnstripResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.cancelAutoUnstrip(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.cancelAutoUnstripWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Takes in the analysis ID and cancels a running auto-unstrip operation
-     * Cancels a running auto-unstrip
-     * @param analysisId
-     */
-    public cancelAutoUnstrip(analysisId: number, _options?: ConfigurationOptions): Observable<AutoUnstripResponse> {
-        return this.cancelAutoUnstripWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<AutoUnstripResponse>) => apiResponse.data));
     }
 
     /**

@@ -22,9 +22,9 @@ export class DynamicExecutionStatusResponse {
     */
     'logs': AnalysisLogs;
     /**
-    * Task status: UNINITIALISED, PENDING, RUNNING, COMPLETED, or FAILED
+    * Task status
     */
-    'status': string;
+    'status': DynamicExecutionStatusResponseStatusEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -46,7 +46,7 @@ export class DynamicExecutionStatusResponse {
         {
             "name": "status",
             "baseName": "status",
-            "type": "string",
+            "type": "DynamicExecutionStatusResponseStatusEnum",
             "format": ""
         }    ];
 
@@ -57,3 +57,13 @@ export class DynamicExecutionStatusResponse {
     public constructor() {
     }
 }
+
+export enum DynamicExecutionStatusResponseStatusEnum {
+    Uninitialised = 'UNINITIALISED',
+    Pending = 'PENDING',
+    Running = 'RUNNING',
+    Completed = 'COMPLETED',
+    Failed = 'FAILED',
+    UnknownDefaultOpenApi = '11184809'
+}
+

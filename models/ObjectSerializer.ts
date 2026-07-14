@@ -10,7 +10,6 @@ export * from '../models/AddUserStringInputBody';
 export * from '../models/AddUserStringToFunctionInputBody';
 export * from '../models/AdditionalDetailsStatusResponse';
 export * from '../models/AiDecompilationRating';
-export * from '../models/AiUnstripRequest';
 export * from '../models/AnalysisAccessInfo';
 export * from '../models/AnalysisBasicInfoOutputBody';
 export * from '../models/AnalysisBulkAddTagsRequest';
@@ -23,7 +22,6 @@ export * from '../models/AnalysisCreateResponse';
 export * from '../models/AnalysisDetailResponse';
 export * from '../models/AnalysisFunctionEntry';
 export * from '../models/AnalysisFunctionMapping';
-export * from '../models/AnalysisFunctionMatchingRequest';
 export * from '../models/AnalysisFunctions';
 export * from '../models/AnalysisFunctionsList';
 export * from '../models/AnalysisLogMessage';
@@ -55,8 +53,6 @@ export * from '../models/Artifact';
 export * from '../models/AttemptFailedEvent';
 export * from '../models/AttemptStartedEvent';
 export * from '../models/AutoRunAgents';
-export * from '../models/AutoUnstripRequest';
-export * from '../models/AutoUnstripResponse';
 export * from '../models/AutoUnstripStatusOutputBody';
 export * from '../models/BaseResponse';
 export * from '../models/BaseResponseAdditionalDetailsStatusResponse';
@@ -280,9 +276,6 @@ export * from '../models/FunctionListItem';
 export * from '../models/FunctionLocalVariableResponse';
 export * from '../models/FunctionMapping';
 export * from '../models/FunctionMatch';
-export * from '../models/FunctionMatchingFilters';
-export * from '../models/FunctionMatchingRequest';
-export * from '../models/FunctionMatchingResponse';
 export * from '../models/FunctionNameHistory';
 export * from '../models/FunctionParamResponse';
 export * from '../models/FunctionRename';
@@ -344,7 +337,6 @@ export * from '../models/Logs';
 export * from '../models/MITRETechnique';
 export * from '../models/MatchFilters';
 export * from '../models/MatchedFunction';
-export * from '../models/MatchedFunctionSuggestion';
 export * from '../models/MemdumpEntry';
 export * from '../models/MessageBody';
 export * from '../models/MetaModel';
@@ -503,10 +495,7 @@ export * from '../models/UserProfile';
 export * from '../models/V2FunctionHeader';
 export * from '../models/V2FunctionInfo';
 export * from '../models/V2FunctionInfoFuncDepsInner';
-export * from '../models/V2FunctionMatch';
 export * from '../models/V2FunctionType';
-export * from '../models/V2MatchedFunction';
-export * from '../models/V2NameConfidence';
 export * from '../models/Vulnerabilities';
 export * from '../models/Vulnerability';
 export * from '../models/WarningEvent';
@@ -528,7 +517,6 @@ import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
-import { AiUnstripRequest } from '../models/AiUnstripRequest';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody, AnalysisBasicInfoOutputBodyAnalysisScopeEnum                    } from '../models/AnalysisBasicInfoOutputBody';
 import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
@@ -541,7 +529,6 @@ import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
 import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionEntry } from '../models/AnalysisFunctionEntry';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
-import { AnalysisFunctionMatchingRequest } from '../models/AnalysisFunctionMatchingRequest';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
@@ -573,8 +560,6 @@ import { Artifact            , ArtifactReasonEnum          } from '../models/Art
 import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
 import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
-import { AutoUnstripRequest } from '../models/AutoUnstripRequest';
-import { AutoUnstripResponse } from '../models/AutoUnstripResponse';
 import { AutoUnstripStatusOutputBody, AutoUnstripStatusOutputBodyStatusEnum   } from '../models/AutoUnstripStatusOutputBody';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
@@ -728,7 +713,7 @@ import { DisassemblyOutputBody } from '../models/DisassemblyOutputBody';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
-import { DynamicExecutionStatusResponse } from '../models/DynamicExecutionStatusResponse';
+import { DynamicExecutionStatusResponse  , DynamicExecutionStatusResponseStatusEnum   } from '../models/DynamicExecutionStatusResponse';
 import { ELFImportModel } from '../models/ELFImportModel';
 import { ELFModel } from '../models/ELFModel';
 import { ELFRelocation } from '../models/ELFRelocation';
@@ -798,9 +783,6 @@ import { FunctionListItem  , FunctionListItemNameSourceTypeEnum        } from '.
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMatch } from '../models/FunctionMatch';
-import { FunctionMatchingFilters    , FunctionMatchingFiltersDebugTypesEnum   } from '../models/FunctionMatchingFilters';
-import { FunctionMatchingRequest } from '../models/FunctionMatchingRequest';
-import { FunctionMatchingResponse } from '../models/FunctionMatchingResponse';
 import { FunctionNameHistory        } from '../models/FunctionNameHistory';
 import { FunctionParamResponse } from '../models/FunctionParamResponse';
 import { FunctionRename } from '../models/FunctionRename';
@@ -821,7 +803,7 @@ import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAdditionalDetailsOutputBody } from '../models/GetAdditionalDetailsOutputBody';
 import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDetailsStatusOutputBody';
 import { GetAiDecompilationRatingResponse   } from '../models/GetAiDecompilationRatingResponse';
-import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
+import { GetAnalysisStringsStatusOutputBody, GetAnalysisStringsStatusOutputBodyStatusEnum   } from '../models/GetAnalysisStringsStatusOutputBody';
 import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetMatchesOutputBody , GetMatchesOutputBodyStatusEnum   } from '../models/GetMatchesOutputBody';
 import { GetMatchesStatusOutputBody , GetMatchesStatusOutputBodyStatusEnum      } from '../models/GetMatchesStatusOutputBody';
@@ -862,7 +844,6 @@ import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
-import { MatchedFunctionSuggestion } from '../models/MatchedFunctionSuggestion';
 import { MemdumpEntry } from '../models/MemdumpEntry';
 import { MessageBody } from '../models/MessageBody';
 import { MetaModel } from '../models/MetaModel';
@@ -1021,10 +1002,7 @@ import { UserProfile } from '../models/UserProfile';
 import { V2FunctionHeader } from '../models/V2FunctionHeader';
 import { V2FunctionInfo } from '../models/V2FunctionInfo';
 import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
-import { V2FunctionMatch } from '../models/V2FunctionMatch';
 import { V2FunctionType } from '../models/V2FunctionType';
-import { V2MatchedFunction } from '../models/V2MatchedFunction';
-import { V2NameConfidence } from '../models/V2NameConfidence';
 import { Vulnerabilities } from '../models/Vulnerabilities';
 import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
@@ -1069,6 +1047,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateUserInputBodyTierEnum",
     "DecompilationDataStatusEnum",
     "DynamicExecutionStatus",
+    "DynamicExecutionStatusResponseStatusEnum",
     "ErrorBodyCodeEnum",
     "EventAttemptFailedEventEnum",
     "EventAttemptStartedEventEnum",
@@ -1100,8 +1079,8 @@ let enumsMap: Set<string> = new Set<string>([
     "FileFormat",
     "Filters",
     "FunctionListItemNameSourceTypeEnum",
-    "FunctionMatchingFiltersDebugTypesEnum",
     "FunctionSourceType",
+    "GetAnalysisStringsStatusOutputBodyStatusEnum",
     "GetMatchesOutputBodyStatusEnum",
     "GetMatchesStatusOutputBodyStatusEnum",
     "GetSubscriptionOutputBodyStatusEnum",
@@ -1154,7 +1133,6 @@ let typeMap: {[index: string]: any} = {
     "AddUserStringInputBody": AddUserStringInputBody,
     "AddUserStringToFunctionInputBody": AddUserStringToFunctionInputBody,
     "AdditionalDetailsStatusResponse": AdditionalDetailsStatusResponse,
-    "AiUnstripRequest": AiUnstripRequest,
     "AnalysisAccessInfo": AnalysisAccessInfo,
     "AnalysisBasicInfoOutputBody": AnalysisBasicInfoOutputBody,
     "AnalysisBulkAddTagsRequest": AnalysisBulkAddTagsRequest,
@@ -1167,7 +1145,6 @@ let typeMap: {[index: string]: any} = {
     "AnalysisDetailResponse": AnalysisDetailResponse,
     "AnalysisFunctionEntry": AnalysisFunctionEntry,
     "AnalysisFunctionMapping": AnalysisFunctionMapping,
-    "AnalysisFunctionMatchingRequest": AnalysisFunctionMatchingRequest,
     "AnalysisFunctions": AnalysisFunctions,
     "AnalysisFunctionsList": AnalysisFunctionsList,
     "AnalysisLogMessage": AnalysisLogMessage,
@@ -1196,8 +1173,6 @@ let typeMap: {[index: string]: any} = {
     "AttemptFailedEvent": AttemptFailedEvent,
     "AttemptStartedEvent": AttemptStartedEvent,
     "AutoRunAgents": AutoRunAgents,
-    "AutoUnstripRequest": AutoUnstripRequest,
-    "AutoUnstripResponse": AutoUnstripResponse,
     "AutoUnstripStatusOutputBody": AutoUnstripStatusOutputBody,
     "BaseResponse": BaseResponse,
     "BaseResponseAdditionalDetailsStatusResponse": BaseResponseAdditionalDetailsStatusResponse,
@@ -1415,9 +1390,6 @@ let typeMap: {[index: string]: any} = {
     "FunctionLocalVariableResponse": FunctionLocalVariableResponse,
     "FunctionMapping": FunctionMapping,
     "FunctionMatch": FunctionMatch,
-    "FunctionMatchingFilters": FunctionMatchingFilters,
-    "FunctionMatchingRequest": FunctionMatchingRequest,
-    "FunctionMatchingResponse": FunctionMatchingResponse,
     "FunctionNameHistory": FunctionNameHistory,
     "FunctionParamResponse": FunctionParamResponse,
     "FunctionRename": FunctionRename,
@@ -1477,7 +1449,6 @@ let typeMap: {[index: string]: any} = {
     "MITRETechnique": MITRETechnique,
     "MatchFilters": MatchFilters,
     "MatchedFunction": MatchedFunction,
-    "MatchedFunctionSuggestion": MatchedFunctionSuggestion,
     "MemdumpEntry": MemdumpEntry,
     "MessageBody": MessageBody,
     "MetaModel": MetaModel,
@@ -1627,10 +1598,7 @@ let typeMap: {[index: string]: any} = {
     "V2FunctionHeader": V2FunctionHeader,
     "V2FunctionInfo": V2FunctionInfo,
     "V2FunctionInfoFuncDepsInner": V2FunctionInfoFuncDepsInner,
-    "V2FunctionMatch": V2FunctionMatch,
     "V2FunctionType": V2FunctionType,
-    "V2MatchedFunction": V2MatchedFunction,
-    "V2NameConfidence": V2NameConfidence,
     "Vulnerabilities": Vulnerabilities,
     "Vulnerability": Vulnerability,
     "WarningEvent": WarningEvent,

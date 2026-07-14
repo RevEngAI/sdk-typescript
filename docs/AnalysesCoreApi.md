@@ -1544,6 +1544,8 @@ const request: AnalysesCoreApiV3GetAnalysisStringsRequest = {
   pageSize: 100,
     // Filter by string value (case-insensitive substring match). (optional)
   search: "search_example",
+    // How the search term matches string values. (optional)
+  searchOperator: "CONTAINS",
     // Filter by function name (case-insensitive substring match). (optional)
   functionSearch: "function_search_example",
     // Field to order results by. (optional)
@@ -1565,6 +1567,7 @@ Name | Type | Description  | Notes
  **page** | [**number**] | Page number (1-indexed). | (optional) defaults to 1
  **pageSize** | [**number**] | Number of results per page. | (optional) defaults to 100
  **search** | [**string**] | Filter by string value (case-insensitive substring match). | (optional) defaults to undefined
+ **searchOperator** | [**&#39;CONTAINS&#39; | &#39;STARTS_WITH&#39;**]**Array<&#39;CONTAINS&#39; &#124; &#39;STARTS_WITH&#39; &#124; &#39;11184809&#39;>** | How the search term matches string values. | (optional) defaults to 'CONTAINS'
  **functionSearch** | [**string**] | Filter by function name (case-insensitive substring match). | (optional) defaults to undefined
  **orderBy** | [**&#39;value&#39; | &#39;length&#39;**]**Array<&#39;value&#39; &#124; &#39;length&#39; &#124; &#39;11184809&#39;>** | Field to order results by. | (optional) defaults to 'value'
  **sortOrder** | [**&#39;ASC&#39; | &#39;DESC&#39;**]**Array<&#39;ASC&#39; &#124; &#39;DESC&#39; &#124; &#39;11184809&#39;>** | Sort direction. | (optional) defaults to 'ASC'
