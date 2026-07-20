@@ -21,6 +21,10 @@ export class CallEdge {
     * Entry vaddr of the caller function (joined from function_t).
     */
     'callerVaddr': number;
+    /**
+    * Imported function ID for an external callee, resolved via the thunk/stub address.
+    */
+    'importedFunctionId'?: number;
     'isExternal': boolean;
     'thunkedVaddr'?: number;
 
@@ -62,6 +66,12 @@ export class CallEdge {
         {
             "name": "callerVaddr",
             "baseName": "caller_vaddr",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "importedFunctionId",
+            "baseName": "imported_function_id",
             "type": "number",
             "format": "int64"
         },
