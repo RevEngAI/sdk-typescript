@@ -24,13 +24,14 @@
   {{/supportsES6}}
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       {{#supportsES6}}
       "import": "./dist/index.js",
       {{/supportsES6}}
       {{^supportsES6}}
       "require": "./dist/index.js",
       {{/supportsES6}}
-      "types": "./dist/index.d.js"
+      "default": "./dist/index.js"
     }
   },
   "files": [
