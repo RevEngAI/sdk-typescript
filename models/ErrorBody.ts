@@ -109,6 +109,8 @@ export enum ErrorBodyCodeEnum {
     InvalidInviteCode = 'INVALID_INVITE_CODE',
     InvalidResetCode = 'INVALID_RESET_CODE',
     LastOrgOwner = 'LAST_ORG_OWNER',
+    LastTeamAdmin = 'LAST_TEAM_ADMIN',
+    LastTeamMember = 'LAST_TEAM_MEMBER',
     LinkedToOrg = 'LINKED_TO_ORG',
     MethodNotAllowed = 'METHOD_NOT_ALLOWED',
     NotAcceptable = 'NOT_ACCEPTABLE',

@@ -9,11 +9,12 @@
  * Do not edit the class manually.
  */
 
+import { AnalysisScope } from '../models/AnalysisScope';
 import { HttpFile } from '../http/http';
 
 export class AnalysisUpdateRequest {
     'binaryName'?: string | null;
-    'analysisScope'?: AnalysisUpdateRequestAnalysisScopeEnum | null;
+    'analysisScope'?: AnalysisScope | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -29,7 +30,7 @@ export class AnalysisUpdateRequest {
         {
             "name": "analysisScope",
             "baseName": "analysis_scope",
-            "type": "AnalysisUpdateRequestAnalysisScopeEnum",
+            "type": "AnalysisScope",
             "format": ""
         }    ];
 
@@ -41,9 +42,4 @@ export class AnalysisUpdateRequest {
     }
 }
 
-export enum AnalysisUpdateRequestAnalysisScopeEnum {
-    Public = 'PUBLIC',
-    Private = 'PRIVATE',
-    UnknownDefaultOpenApi = '11184809'
-}
 

@@ -13,9 +13,17 @@ import { HttpFile } from '../http/http';
 
 export class MatchFilters {
     /**
+    * Restrict matches to this architecture (multi-platform models only; matches all architectures if omitted). Rejected for single-architecture models.
+    */
+    'arch'?: MatchFiltersArchEnum;
+    /**
     * Restrict the candidate pool to these binary IDs.
     */
     'binaryIds'?: Array<number> | null;
+    /**
+    * Restrict matches to this word size (multi-platform models only). Rejected for single-architecture models.
+    */
+    'bits'?: number;
     /**
     * Restrict the candidate pool to binaries in these collection IDs.
     */
@@ -29,6 +37,10 @@ export class MatchFilters {
     */
     'functionIds'?: Array<number> | null;
     /**
+    * Restrict matches to this platform (multi-platform models only; matches all platforms if omitted). Rejected for single-architecture models.
+    */
+    'platform'?: MatchFiltersPlatformEnum;
+    /**
     * Restrict the candidate pool to functions owned by these user IDs.
     */
     'userIds'?: Array<number> | null;
@@ -39,9 +51,21 @@ export class MatchFilters {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "arch",
+            "baseName": "arch",
+            "type": "MatchFiltersArchEnum",
+            "format": ""
+        },
+        {
             "name": "binaryIds",
             "baseName": "binary_ids",
             "type": "Array<number>",
+            "format": "int64"
+        },
+        {
+            "name": "bits",
+            "baseName": "bits",
+            "type": "number",
             "format": "int64"
         },
         {
@@ -63,6 +87,12 @@ export class MatchFilters {
             "format": "int64"
         },
         {
+            "name": "platform",
+            "baseName": "platform",
+            "type": "MatchFiltersPlatformEnum",
+            "format": ""
+        },
+        {
             "name": "userIds",
             "baseName": "user_ids",
             "type": "Array<number>",
@@ -76,3 +106,19 @@ export class MatchFilters {
     public constructor() {
     }
 }
+
+export enum MatchFiltersArchEnum {
+    X86 = 'x86',
+    Arm = 'arm',
+    Unknown = 'unknown',
+    UnknownDefaultOpenApi = '11184809'
+}
+export enum MatchFiltersPlatformEnum {
+    Linux = 'linux',
+    Windows = 'windows',
+    Android = 'android',
+    Macos = 'macos',
+    Unknown = 'unknown',
+    UnknownDefaultOpenApi = '11184809'
+}
+
