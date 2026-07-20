@@ -544,7 +544,7 @@ import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse  } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTagBody } from '../models/AnalysisTagBody';
 import { AnalysisTags } from '../models/AnalysisTags';
-import { AnalysisUpdateRequest , AnalysisUpdateRequestAnalysisScopeEnum   } from '../models/AnalysisUpdateRequest';
+import { AnalysisUpdateRequest   } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { ApiCall } from '../models/ApiCall';
@@ -842,7 +842,7 @@ import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
 import { LocationOutputBody  , LocationOutputBodyCurrencyEnum   } from '../models/LocationOutputBody';
 import { Logs } from '../models/Logs';
 import { MITRETechnique } from '../models/MITRETechnique';
-import { MatchFilters } from '../models/MatchFilters';
+import { MatchFilters, MatchFiltersArchEnum       , MatchFiltersPlatformEnum    } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MemdumpEntry } from '../models/MemdumpEntry';
 import { MessageBody } from '../models/MessageBody';
@@ -1029,7 +1029,6 @@ let enumsMap: Set<string> = new Set<string>([
     "AnalysisBasicInfoOutputBodyAnalysisScopeEnum",
     "AnalysisRecordBodyAnalysisScopeEnum",
     "AnalysisScope",
-    "AnalysisUpdateRequestAnalysisScopeEnum",
     "AppApiRestV2AgentSchemaCapabilityTypeEnum",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
@@ -1088,6 +1087,8 @@ let enumsMap: Set<string> = new Set<string>([
     "IOCTypeEnum",
     "ISA",
     "LocationOutputBodyCurrencyEnum",
+    "MatchFiltersArchEnum",
+    "MatchFiltersPlatformEnum",
     "ModelName",
     "NameSourceTypeTypeEnum",
     "Order",
