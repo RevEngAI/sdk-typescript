@@ -1301,7 +1301,7 @@ const request: AnalysesCoreApiUpdateAnalysisRequest = {
   
   analysisUpdateRequest: {
     binaryName: "binaryName_example",
-    analysisScope: "PUBLIC",
+    analysisScope: "PRIVATE",
   },
 };
 

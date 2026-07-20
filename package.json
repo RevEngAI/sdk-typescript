@@ -1,6 +1,6 @@
 {
   "name": "@revengai/sdk",
-  "version": "v3.116.0",
+  "version": "3.119.0",
   "description": "TypeScript SDK for the RevEng.AI API",
   "author": "RevEng.AI",
   "repository": {
@@ -18,8 +18,9 @@
   "type": "commonjs",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
-      "types": "./dist/index.d.js"
+      "default": "./dist/index.js"
     }
   },
   "files": [
