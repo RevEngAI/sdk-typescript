@@ -18,8 +18,9 @@
   "type": "commonjs",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "require": "./dist/index.js",
-      "types": "./dist/index.d.js"
+      "default": "./dist/index.js"
     }
   },
   "files": [
