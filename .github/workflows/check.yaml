@@ -117,9 +117,8 @@ jobs:
         openapi-url: https://docs.reveng.ai/openapi.json
         config-file: config.yml
         template-dir: templates
-        # For the artifact version drop the `v` prefix as it's not usually used in NPM versions
         command-args: >
-          --additional-properties=artifactVersion=${{ steps.version_check.outputs.openapi_version_npm }}
+          --additional-properties=npmVersion=${{ steps.version_check.outputs.openapi_version_npm }}
 
     - name: Check for changes
       if: steps.version_check.outputs.should_generate == 'true'
