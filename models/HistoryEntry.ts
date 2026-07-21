@@ -37,6 +37,10 @@ export class HistoryEntry {
     */
     'mangledName'?: string;
     /**
+    * ID of the analysis the source function belongs to, if any
+    */
+    'sourceAnalysisId'?: number;
+    /**
     * ID of the source function this name was transferred from, if any
     */
     'sourceFunctionId'?: number;
@@ -85,6 +89,12 @@ export class HistoryEntry {
             "baseName": "mangled_name",
             "type": "string",
             "format": ""
+        },
+        {
+            "name": "sourceAnalysisId",
+            "baseName": "source_analysis_id",
+            "type": "number",
+            "format": "int64"
         },
         {
             "name": "sourceFunctionId",
