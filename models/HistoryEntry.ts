@@ -37,6 +37,10 @@ export class HistoryEntry {
     */
     'mangledName'?: string;
     /**
+    * ID of the source function this name was transferred from, if any
+    */
+    'sourceFunctionId'?: number;
+    /**
     * Source of the rename (USER, SYSTEM, AI_UNSTRIP, etc.)
     */
     'sourceType': string;
@@ -81,6 +85,12 @@ export class HistoryEntry {
             "baseName": "mangled_name",
             "type": "string",
             "format": ""
+        },
+        {
+            "name": "sourceFunctionId",
+            "baseName": "source_function_id",
+            "type": "number",
+            "format": "int64"
         },
         {
             "name": "sourceType",
