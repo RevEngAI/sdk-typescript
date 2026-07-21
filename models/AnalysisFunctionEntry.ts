@@ -19,7 +19,15 @@ export class AnalysisFunctionEntry {
     'functionSize': number;
     'functionVaddr': number;
     'mangledName'?: string | null;
+    /**
+    * ID of the analysis the source function belongs to, if any
+    */
+    'sourceAnalysisId'?: number;
     'sourceBinaryId'?: number;
+    /**
+    * ID of the source function this name was transferred from, if any
+    */
+    'sourceFunctionId'?: number;
     'sourceType': string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -70,8 +78,20 @@ export class AnalysisFunctionEntry {
             "format": ""
         },
         {
+            "name": "sourceAnalysisId",
+            "baseName": "source_analysis_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
             "name": "sourceBinaryId",
             "baseName": "source_binary_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "sourceFunctionId",
+            "baseName": "source_function_id",
             "type": "number",
             "format": "int64"
         },
