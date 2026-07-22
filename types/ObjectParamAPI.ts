@@ -2975,10 +2975,10 @@ export interface CollectionsApiV3ListCollectionsRequest {
     /**
      * 
      * Defaults to: &#39;collection&#39;
-     * @type &#39;created&#39; | &#39;collection&#39; | &#39;model&#39; | &#39;collection_size&#39; | &#39;updated&#39;
+     * @type &#39;created&#39; | &#39;collection&#39; | &#39;model&#39; | &#39;collection_size&#39; | &#39;updated&#39; | &#39;owner&#39;
      * @memberof CollectionsApiv3ListCollections
      */
-    orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated'
+    orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated' | 'owner'
     /**
      * 
      * Defaults to: &#39;ASC&#39;

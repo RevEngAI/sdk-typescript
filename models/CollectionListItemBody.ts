@@ -23,6 +23,7 @@ export class CollectionListItemBody {
     'modelName': string;
     'officialCollection': boolean;
     'teamId': number;
+    'updatedAt': Date;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -94,6 +95,12 @@ export class CollectionListItemBody {
             "baseName": "team_id",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "updatedAt",
+            "baseName": "updated_at",
+            "type": "Date",
+            "format": "date-time"
         }    ];
 
     static getAttributeTypeMap() {
