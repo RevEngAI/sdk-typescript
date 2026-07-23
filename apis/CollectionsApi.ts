@@ -673,7 +673,7 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
      * @param orderBy 
      * @param order 
      */
-    public async v3ListCollections(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
+    public async v3ListCollections(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
 
@@ -711,7 +711,7 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
 
         // Query Params
         if (orderBy !== undefined) {
-            requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "'created' | 'collection' | 'model' | 'collection_size' | 'updated' | 'owner'", ""));
+            requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "'created' | 'collection' | 'collection_size' | 'updated' | 'owner'", ""));
         }
 
         // Query Params

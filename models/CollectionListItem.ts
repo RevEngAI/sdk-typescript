@@ -48,10 +48,6 @@ export class CollectionListItem {
     * The datetime of when the collection was created
     */
     'creation': Date;
-    /**
-    * The model being used for the collection
-    */
-    'modelName': string;
     'teamId'?: number | null;
 
     static readonly discriminator: string | undefined = undefined;
@@ -112,12 +108,6 @@ export class CollectionListItem {
             "baseName": "creation",
             "type": "Date",
             "format": "date-time"
-        },
-        {
-            "name": "modelName",
-            "baseName": "model_name",
-            "type": "string",
-            "format": ""
         },
         {
             "name": "teamId",

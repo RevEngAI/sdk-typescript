@@ -29,10 +29,6 @@ export class CreateCollectionInputBody {
     */
     'description': string;
     /**
-    * Model ID the collection is associated with.
-    */
-    'modelId': number;
-    /**
     * Optional tags to attach to the collection.
     */
     'tags'?: Array<string> | null;
@@ -65,12 +61,6 @@ export class CreateCollectionInputBody {
             "baseName": "description",
             "type": "string",
             "format": ""
-        },
-        {
-            "name": "modelId",
-            "baseName": "model_id",
-            "type": "number",
-            "format": "int64"
         },
         {
             "name": "tags",

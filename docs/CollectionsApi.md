@@ -47,7 +47,6 @@ const request: CollectionsApiCreateCollectionRequest = {
     binaries: [
       1,
     ],
-    modelId: 1,
   },
 };
 
@@ -692,7 +691,7 @@ Name | Type | Description  | Notes
  **filters** | **Array<&#39;official_only&#39; &#124; &#39;user_only&#39; &#124; &#39;team_only&#39; &#124; &#39;public_only&#39; &#124; &#39;hide_empty&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to undefined
  **limit** | [**number**] |  | (optional) defaults to 20
  **offset** | [**number**] |  | (optional) defaults to 0
- **orderBy** | [**&#39;created&#39; | &#39;collection&#39; | &#39;model&#39; | &#39;collection_size&#39; | &#39;updated&#39; | &#39;owner&#39;**]**Array<&#39;created&#39; &#124; &#39;collection&#39; &#124; &#39;model&#39; &#124; &#39;collection_size&#39; &#124; &#39;updated&#39; &#124; &#39;owner&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to 'collection'
+ **orderBy** | [**&#39;created&#39; | &#39;collection&#39; | &#39;collection_size&#39; | &#39;updated&#39; | &#39;owner&#39;**]**Array<&#39;created&#39; &#124; &#39;collection&#39; &#124; &#39;collection_size&#39; &#124; &#39;updated&#39; &#124; &#39;owner&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to 'collection'
  **order** | [**&#39;ASC&#39; | &#39;DESC&#39;**]**Array<&#39;ASC&#39; &#124; &#39;DESC&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to 'ASC'
 
 

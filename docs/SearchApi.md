@@ -117,8 +117,6 @@ const request: SearchApiSearchCollectionsRequest = {
   tags: [
     "tags_example",
   ],
-    // The name of the model used to analyze the binary the function belongs to (optional)
-  modelName: "model_name_example",
     // The filters to be used for the search (optional)
   filters: [
     "official_only",
@@ -144,7 +142,6 @@ Name | Type | Description  | Notes
  **partialBinaryName** | [**string**] | The partial or full name of the binary belonging to the collection | (optional) defaults to undefined
  **partialBinarySha256** | [**string**] | The partial or full sha256 of the binary belonging to the collection | (optional) defaults to undefined
  **tags** | **Array&lt;string&gt;** | The tags to be searched for | (optional) defaults to undefined
- **modelName** | [**string**] | The name of the model used to analyze the binary the function belongs to | (optional) defaults to undefined
  **filters** | **Array&lt;Filters&gt;** | The filters to be used for the search | (optional) defaults to undefined
  **orderBy** | **AppApiRestV2CollectionsEnumsOrderBy** | The field to sort the order by in the results | (optional) defaults to undefined
  **orderByDirection** | **Order** | The order direction in which to return results | (optional) defaults to undefined
@@ -168,8 +165,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
-**422** | You must provide at least one of the filters; partial_collection_name, partial_binary_name, partial_binary_sha256, tags or model_name to search |  -  |
-**404** | The model name provided does not exist |  -  |
+**422** | You must provide at least one of the filters; partial_collection_name, partial_binary_name, partial_binary_sha256 or tags to search |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

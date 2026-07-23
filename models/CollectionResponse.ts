@@ -27,10 +27,6 @@ export class CollectionResponse {
     */
     'description': string;
     /**
-    * Collection model ID
-    */
-    'modelId': number;
-    /**
     * Collection user ID
     */
     'userId': number;
@@ -71,12 +67,6 @@ export class CollectionResponse {
             "name": "description",
             "baseName": "description",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "modelId",
-            "baseName": "model_id",
-            "type": "number",
             "format": ""
         },
         {

@@ -2975,10 +2975,10 @@ export interface CollectionsApiV3ListCollectionsRequest {
     /**
      * 
      * Defaults to: &#39;collection&#39;
-     * @type &#39;created&#39; | &#39;collection&#39; | &#39;model&#39; | &#39;collection_size&#39; | &#39;updated&#39; | &#39;owner&#39;
+     * @type &#39;created&#39; | &#39;collection&#39; | &#39;collection_size&#39; | &#39;updated&#39; | &#39;owner&#39;
      * @memberof CollectionsApiv3ListCollections
      */
-    orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated' | 'owner'
+    orderBy?: 'created' | 'collection' | 'collection_size' | 'updated' | 'owner'
     /**
      * 
      * Defaults to: &#39;ASC&#39;
@@ -5962,13 +5962,6 @@ export interface SearchApiSearchCollectionsRequest {
      */
     tags?: Array<string>
     /**
-     * The name of the model used to analyze the binary the function belongs to
-     * Defaults to: undefined
-     * @type string
-     * @memberof SearchApisearchCollections
-     */
-    modelName?: string
-    /**
      * The filters to be used for the search
      * Defaults to: undefined
      * @type Array&lt;Filters&gt;
@@ -6083,7 +6076,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchCollectionsWithHttpInfo(param: SearchApiSearchCollectionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionSearchResponse>> {
-        return this.api.searchCollectionsWithHttpInfo(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.modelName, param.filters, param.orderBy, param.orderByDirection,  options).toPromise();
+        return this.api.searchCollectionsWithHttpInfo(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.filters, param.orderBy, param.orderByDirection,  options).toPromise();
     }
 
     /**
@@ -6092,7 +6085,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchCollections(param: SearchApiSearchCollectionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseCollectionSearchResponse> {
-        return this.api.searchCollections(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.modelName, param.filters, param.orderBy, param.orderByDirection,  options).toPromise();
+        return this.api.searchCollections(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.filters, param.orderBy, param.orderByDirection,  options).toPromise();
     }
 
     /**

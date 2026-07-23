@@ -125,14 +125,12 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
      * @param partialBinaryName The partial or full name of the binary belonging to the collection
      * @param partialBinarySha256 The partial or full sha256 of the binary belonging to the collection
      * @param tags The tags to be searched for
-     * @param modelName The name of the model used to analyze the binary the function belongs to
      * @param filters The filters to be used for the search
      * @param orderBy The field to sort the order by in the results
      * @param orderByDirection The order direction in which to return results
      */
-    public async searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: Configuration): Promise<RequestContext> {
+    public async searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
-
 
 
 
@@ -181,11 +179,6 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
             for (const serializedParam of serializedParams) {
                 requestContext.appendQueryParam("tags", serializedParam);
             }
-        }
-
-        // Query Params
-        if (modelName !== undefined) {
-            requestContext.setQueryParam("model_name", ObjectSerializer.serialize(modelName, "string", ""));
         }
 
         // Query Params
@@ -412,14 +405,7 @@ export class SearchApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "You must provide at least one of the filters; partial_collection_name, partial_binary_name, partial_binary_sha256, tags or model_name to search", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "The model name provided does not exist", body, response.headers);
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "You must provide at least one of the filters; partial_collection_name, partial_binary_name, partial_binary_sha256 or tags to search", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml

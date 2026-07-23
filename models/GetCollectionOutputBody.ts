@@ -20,7 +20,6 @@ export class GetCollectionOutputBody {
     'createdAt': Date;
     'description': string;
     'hasNextPage'?: boolean;
-    'modelId': number;
     'pageNumber'?: number;
     'pageSize'?: number;
     'tags'?: Array<string> | null;
@@ -74,12 +73,6 @@ export class GetCollectionOutputBody {
             "baseName": "has_next_page",
             "type": "boolean",
             "format": ""
-        },
-        {
-            "name": "modelId",
-            "baseName": "model_id",
-            "type": "number",
-            "format": "int64"
         },
         {
             "name": "pageNumber",
