@@ -14,7 +14,6 @@ import { HttpFile } from '../http/http';
 export enum AppApiRestV2CollectionsEnumsOrderBy {
     Created = 'created',
     Collection = 'collection',
-    Model = 'model',
     Owner = 'owner',
     CollectionSize = 'collection_size',
     Updated = 'updated',

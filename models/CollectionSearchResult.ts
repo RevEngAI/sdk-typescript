@@ -33,14 +33,6 @@ export class CollectionSearchResult {
     */
     'createdAt': Date;
     /**
-    * The model ID of the binary
-    */
-    'modelId': number;
-    /**
-    * The name of the model
-    */
-    'modelName': string;
-    /**
     * The owner of the collection
     */
     'ownedBy': string;
@@ -86,18 +78,6 @@ export class CollectionSearchResult {
             "baseName": "created_at",
             "type": "Date",
             "format": "date-time"
-        },
-        {
-            "name": "modelId",
-            "baseName": "model_id",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "modelName",
-            "baseName": "model_name",
-            "type": "string",
-            "format": ""
         },
         {
             "name": "ownedBy",

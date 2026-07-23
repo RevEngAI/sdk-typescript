@@ -18,7 +18,6 @@ export class PatchCollectionOutputBody {
     'collectionScope': string;
     'createdAt': Date;
     'description': string;
-    'modelId': number;
     'teamId': number;
     'updatedAt': Date;
     'userId': number;
@@ -63,12 +62,6 @@ export class PatchCollectionOutputBody {
             "baseName": "description",
             "type": "string",
             "format": ""
-        },
-        {
-            "name": "modelId",
-            "baseName": "model_id",
-            "type": "number",
-            "format": "int64"
         },
         {
             "name": "teamId",

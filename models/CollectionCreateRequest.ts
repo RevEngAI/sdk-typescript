@@ -18,7 +18,6 @@ export class CollectionCreateRequest {
     'collectionScope'?: CollectionScope;
     'tags'?: Array<string> | null;
     'binaries'?: Array<number> | null;
-    'modelId': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -53,12 +52,6 @@ export class CollectionCreateRequest {
             "name": "binaries",
             "baseName": "binaries",
             "type": "Array<number>",
-            "format": ""
-        },
-        {
-            "name": "modelId",
-            "baseName": "model_id",
-            "type": "number",
             "format": ""
         }    ];
 

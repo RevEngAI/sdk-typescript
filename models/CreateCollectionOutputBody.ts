@@ -19,7 +19,6 @@ export class CreateCollectionOutputBody {
     'collectionScope': string;
     'createdAt': Date;
     'description': string;
-    'modelId': number;
     'tags'?: Array<string> | null;
     'teamId': number;
     'updatedAt': Date;
@@ -65,12 +64,6 @@ export class CreateCollectionOutputBody {
             "baseName": "description",
             "type": "string",
             "format": ""
-        },
-        {
-            "name": "modelId",
-            "baseName": "model_id",
-            "type": "number",
-            "format": "int64"
         },
         {
             "name": "tags",

@@ -2384,7 +2384,7 @@ export class PromiseCollectionsApi {
      * @param [orderBy]
      * @param [order]
      */
-    public v3ListCollectionsWithHttpInfo(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCollectionsOutputBody>> {
+    public v3ListCollectionsWithHttpInfo(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCollectionsOutputBody>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3ListCollectionsWithHttpInfo(searchTerm, filters, limit, offset, orderBy, order, observableOptions);
         return result.toPromise();
@@ -2400,7 +2400,7 @@ export class PromiseCollectionsApi {
      * @param [orderBy]
      * @param [order]
      */
-    public v3ListCollections(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'model' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListCollectionsOutputBody> {
+    public v3ListCollections(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListCollectionsOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3ListCollections(searchTerm, filters, limit, offset, orderBy, order, observableOptions);
         return result.toPromise();
@@ -4481,14 +4481,13 @@ export class PromiseSearchApi {
      * @param [partialBinaryName] The partial or full name of the binary belonging to the collection
      * @param [partialBinarySha256] The partial or full sha256 of the binary belonging to the collection
      * @param [tags] The tags to be searched for
-     * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [filters] The filters to be used for the search
      * @param [orderBy] The field to sort the order by in the results
      * @param [orderByDirection] The order direction in which to return results
      */
-    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionSearchResponse>> {
+    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionSearchResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, modelName, filters, orderBy, orderByDirection, observableOptions);
+        const result = this.api.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, observableOptions);
         return result.toPromise();
     }
 
@@ -4501,14 +4500,13 @@ export class PromiseSearchApi {
      * @param [partialBinaryName] The partial or full name of the binary belonging to the collection
      * @param [partialBinarySha256] The partial or full sha256 of the binary belonging to the collection
      * @param [tags] The tags to be searched for
-     * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [filters] The filters to be used for the search
      * @param [orderBy] The field to sort the order by in the results
      * @param [orderByDirection] The order direction in which to return results
      */
-    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, modelName?: string, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionSearchResponse> {
+    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionSearchResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, modelName, filters, orderBy, orderByDirection, observableOptions);
+        const result = this.api.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, observableOptions);
         return result.toPromise();
     }
 

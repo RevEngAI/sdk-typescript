@@ -20,7 +20,6 @@ export class CollectionListItemBody {
     'collectionTags': Array<string> | null;
     'creation': Date;
     'description': string;
-    'modelName': string;
     'officialCollection': boolean;
     'teamId': number;
     'updatedAt': Date;
@@ -75,12 +74,6 @@ export class CollectionListItemBody {
         {
             "name": "description",
             "baseName": "description",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "modelName",
-            "baseName": "model_name",
             "type": "string",
             "format": ""
         },
