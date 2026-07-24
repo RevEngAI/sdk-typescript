@@ -6267,11 +6267,12 @@ export class ObservableSearchApi {
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
      * @param [excludeBinaryId] A binary ID to exclude from the results
+     * @param [userIds] Restrict the search to binaries owned by these user IDs
      */
-    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinarySearchResponse>> {
+    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, userIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinarySearchResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, _config);
+        const requestContextPromise = this.requestFactory.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, userIds, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6299,9 +6300,10 @@ export class ObservableSearchApi {
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
      * @param [excludeBinaryId] A binary ID to exclude from the results
+     * @param [userIds] Restrict the search to binaries owned by these user IDs
      */
-    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, _options?: ConfigurationOptions): Observable<BaseResponseBinarySearchResponse> {
-        return this.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinarySearchResponse>) => apiResponse.data));
+    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, userIds?: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseBinarySearchResponse> {
+        return this.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, userIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinarySearchResponse>) => apiResponse.data));
     }
 
     /**
@@ -6316,11 +6318,12 @@ export class ObservableSearchApi {
      * @param [filters] The filters to be used for the search
      * @param [orderBy] The field to sort the order by in the results
      * @param [orderByDirection] The order direction in which to return results
+     * @param [userIds] Restrict the search to collections owned by these user IDs
      */
-    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionSearchResponse>> {
+    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, userIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionSearchResponse>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
-        const requestContextPromise = this.requestFactory.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, _config);
+        const requestContextPromise = this.requestFactory.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, userIds, _config);
         // build promise chain
         let middlewarePreObservable = from<RequestContext>(requestContextPromise);
         for (const middleware of _config.middleware) {
@@ -6349,9 +6352,10 @@ export class ObservableSearchApi {
      * @param [filters] The filters to be used for the search
      * @param [orderBy] The field to sort the order by in the results
      * @param [orderByDirection] The order direction in which to return results
+     * @param [userIds] Restrict the search to collections owned by these user IDs
      */
-    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: ConfigurationOptions): Observable<BaseResponseCollectionSearchResponse> {
-        return this.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionSearchResponse>) => apiResponse.data));
+    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, userIds?: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseCollectionSearchResponse> {
+        return this.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, userIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionSearchResponse>) => apiResponse.data));
     }
 
     /**
