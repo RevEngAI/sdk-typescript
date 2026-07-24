@@ -5913,6 +5913,13 @@ export interface SearchApiSearchBinariesRequest {
      * @memberof SearchApisearchBinaries
      */
     excludeBinaryId?: number
+    /**
+     * Restrict the search to binaries owned by these user IDs
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof SearchApisearchBinaries
+     */
+    userIds?: Array<number>
 }
 
 export interface SearchApiSearchCollectionsRequest {
@@ -5982,6 +5989,13 @@ export interface SearchApiSearchCollectionsRequest {
      * @memberof SearchApisearchCollections
      */
     orderByDirection?: Order
+    /**
+     * Restrict the search to collections owned by these user IDs
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof SearchApisearchCollections
+     */
+    userIds?: Array<number>
 }
 
 export interface SearchApiSearchFunctionsRequest {
@@ -6058,7 +6072,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchBinariesWithHttpInfo(param: SearchApiSearchBinariesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinarySearchResponse>> {
-        return this.api.searchBinariesWithHttpInfo(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly, param.excludeBinaryId,  options).toPromise();
+        return this.api.searchBinariesWithHttpInfo(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly, param.excludeBinaryId, param.userIds,  options).toPromise();
     }
 
     /**
@@ -6067,7 +6081,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchBinaries(param: SearchApiSearchBinariesRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseBinarySearchResponse> {
-        return this.api.searchBinaries(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly, param.excludeBinaryId,  options).toPromise();
+        return this.api.searchBinaries(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly, param.excludeBinaryId, param.userIds,  options).toPromise();
     }
 
     /**
@@ -6076,7 +6090,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchCollectionsWithHttpInfo(param: SearchApiSearchCollectionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionSearchResponse>> {
-        return this.api.searchCollectionsWithHttpInfo(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.filters, param.orderBy, param.orderByDirection,  options).toPromise();
+        return this.api.searchCollectionsWithHttpInfo(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.filters, param.orderBy, param.orderByDirection, param.userIds,  options).toPromise();
     }
 
     /**
@@ -6085,7 +6099,7 @@ export class ObjectSearchApi {
      * @param param the request object
      */
     public searchCollections(param: SearchApiSearchCollectionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseCollectionSearchResponse> {
-        return this.api.searchCollections(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.filters, param.orderBy, param.orderByDirection,  options).toPromise();
+        return this.api.searchCollections(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.filters, param.orderBy, param.orderByDirection, param.userIds,  options).toPromise();
     }
 
     /**
