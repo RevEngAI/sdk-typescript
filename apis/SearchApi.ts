@@ -33,9 +33,11 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
      * @param modelName The name of the model used to analyze the binary the function belongs to
      * @param userFilesOnly Whether to only search user\&#39;s uploaded files
      * @param excludeBinaryId A binary ID to exclude from the results
+     * @param userIds Restrict the search to binaries owned by these user IDs
      */
-    public async searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, _options?: Configuration): Promise<RequestContext> {
+    public async searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, userIds?: Array<number>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
 
@@ -95,6 +97,14 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
             requestContext.setQueryParam("exclude_binary_id", ObjectSerializer.serialize(excludeBinaryId, "number", ""));
         }
 
+        // Query Params
+        if (userIds !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(userIds, "Array<number>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("user_ids", serializedParam);
+            }
+        }
+
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -128,9 +138,11 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
      * @param filters The filters to be used for the search
      * @param orderBy The field to sort the order by in the results
      * @param orderByDirection The order direction in which to return results
+     * @param userIds Restrict the search to collections owned by these user IDs
      */
-    public async searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: Configuration): Promise<RequestContext> {
+    public async searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, userIds?: Array<number>, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
 
 
 
@@ -197,6 +209,14 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (orderByDirection !== undefined) {
             requestContext.setQueryParam("order_by_direction", ObjectSerializer.serialize(orderByDirection, "Order", ""));
+        }
+
+        // Query Params
+        if (userIds !== undefined) {
+            const serializedParams = ObjectSerializer.serialize(userIds, "Array<number>", "");
+            for (const serializedParam of serializedParams) {
+                requestContext.appendQueryParam("user_ids", serializedParam);
+            }
         }
 
 

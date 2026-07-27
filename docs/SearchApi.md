@@ -44,6 +44,10 @@ const request: SearchApiSearchBinariesRequest = {
   userFilesOnly: false,
     // A binary ID to exclude from the results (optional)
   excludeBinaryId: 1,
+    // Restrict the search to binaries owned by these user IDs (optional)
+  userIds: [
+    1,
+  ],
 };
 
 const data = await apiInstance.searchBinaries(request);
@@ -63,6 +67,7 @@ Name | Type | Description  | Notes
  **modelName** | [**string**] | The name of the model used to analyze the binary the function belongs to | (optional) defaults to undefined
  **userFilesOnly** | [**boolean**] | Whether to only search user\&#39;s uploaded files | (optional) defaults to false
  **excludeBinaryId** | [**number**] | A binary ID to exclude from the results | (optional) defaults to undefined
+ **userIds** | **Array&lt;number&gt;** | Restrict the search to binaries owned by these user IDs | (optional) defaults to undefined
 
 
 ### Return type
@@ -125,6 +130,10 @@ const request: SearchApiSearchCollectionsRequest = {
   orderBy: "created",
     // The order direction in which to return results (optional)
   orderByDirection: "ASC",
+    // Restrict the search to collections owned by these user IDs (optional)
+  userIds: [
+    1,
+  ],
 };
 
 const data = await apiInstance.searchCollections(request);
@@ -145,6 +154,7 @@ Name | Type | Description  | Notes
  **filters** | **Array&lt;Filters&gt;** | The filters to be used for the search | (optional) defaults to undefined
  **orderBy** | **AppApiRestV2CollectionsEnumsOrderBy** | The field to sort the order by in the results | (optional) defaults to undefined
  **orderByDirection** | **Order** | The order direction in which to return results | (optional) defaults to undefined
+ **userIds** | **Array&lt;number&gt;** | Restrict the search to collections owned by these user IDs | (optional) defaults to undefined
 
 
 ### Return type

@@ -15,6 +15,7 @@ export class Permissions {
     'canExportSymbols': boolean;
     'canGeneratePdfReports': boolean;
     'canUseAiMalwareAnalysis': boolean;
+    'canUseCompositionAnalysis': boolean;
     'canUseMalwareSandbox': boolean;
     'canUsePrivateAnalyses': boolean;
 
@@ -38,6 +39,12 @@ export class Permissions {
         {
             "name": "canUseAiMalwareAnalysis",
             "baseName": "can_use_ai_malware_analysis",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "canUseCompositionAnalysis",
+            "baseName": "can_use_composition_analysis",
             "type": "boolean",
             "format": ""
         },

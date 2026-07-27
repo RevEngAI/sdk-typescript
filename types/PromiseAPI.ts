@@ -4447,10 +4447,11 @@ export class PromiseSearchApi {
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
      * @param [excludeBinaryId] A binary ID to exclude from the results
+     * @param [userIds] Restrict the search to binaries owned by these user IDs
      */
-    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinarySearchResponse>> {
+    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, userIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseBinarySearchResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, observableOptions);
+        const result = this.api.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, userIds, observableOptions);
         return result.toPromise();
     }
 
@@ -4465,10 +4466,11 @@ export class PromiseSearchApi {
      * @param [modelName] The name of the model used to analyze the binary the function belongs to
      * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
      * @param [excludeBinaryId] A binary ID to exclude from the results
+     * @param [userIds] Restrict the search to binaries owned by these user IDs
      */
-    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinarySearchResponse> {
+    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, userIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<BaseResponseBinarySearchResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, observableOptions);
+        const result = this.api.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, userIds, observableOptions);
         return result.toPromise();
     }
 
@@ -4484,10 +4486,11 @@ export class PromiseSearchApi {
      * @param [filters] The filters to be used for the search
      * @param [orderBy] The field to sort the order by in the results
      * @param [orderByDirection] The order direction in which to return results
+     * @param [userIds] Restrict the search to collections owned by these user IDs
      */
-    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionSearchResponse>> {
+    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, userIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionSearchResponse>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, observableOptions);
+        const result = this.api.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, userIds, observableOptions);
         return result.toPromise();
     }
 
@@ -4503,10 +4506,11 @@ export class PromiseSearchApi {
      * @param [filters] The filters to be used for the search
      * @param [orderBy] The field to sort the order by in the results
      * @param [orderByDirection] The order direction in which to return results
+     * @param [userIds] Restrict the search to collections owned by these user IDs
      */
-    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionSearchResponse> {
+    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, userIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<BaseResponseCollectionSearchResponse> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, observableOptions);
+        const result = this.api.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, userIds, observableOptions);
         return result.toPromise();
     }
 
