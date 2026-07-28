@@ -5,28 +5,13 @@ All URIs are relative to *https://api.reveng.ai*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addUserStringToAnalysis**](AnalysesCoreApi.md#addUserStringToAnalysis) | **POST** /v3/analyses/{analysis_id}/user-provided-strings | Add a user-provided string to an analysis.
-[**createAnalysis**](AnalysesCoreApi.md#createAnalysis) | **POST** /v2/analyses | Create Analysis
-[**deleteAnalysis**](AnalysesCoreApi.md#deleteAnalysis) | **DELETE** /v2/analyses/{analysis_id} | Delete Analysis
-[**getAnalysisBasicInfo**](AnalysesCoreApi.md#getAnalysisBasicInfo) | **GET** /v2/analyses/{analysis_id}/basic | Gets basic analysis information
-[**getAnalysisBasicInfo_0**](AnalysesCoreApi.md#getAnalysisBasicInfo_0) | **GET** /v3/analyses/{analysis_id}/basic | Get basic analysis information
+[**getAnalysisBasicInfo**](AnalysesCoreApi.md#getAnalysisBasicInfo) | **GET** /v3/analyses/{analysis_id}/basic | Get basic analysis information
 [**getAnalysisBytes**](AnalysesCoreApi.md#getAnalysisBytes) | **GET** /v3/analyses/{analysis_id}/bytes | Get the bytes of a binary
-[**getAnalysisFunctionMap**](AnalysesCoreApi.md#getAnalysisFunctionMap) | **GET** /v2/analyses/{analysis_id}/func_maps | Get Analysis Function Map
 [**getAnalysisFunctionMatches**](AnalysesCoreApi.md#getAnalysisFunctionMatches) | **GET** /v3/analyses/{analysis_id}/functions/matches | Get function-matching results for an analysis
 [**getAnalysisFunctionMatchingStatus**](AnalysesCoreApi.md#getAnalysisFunctionMatchingStatus) | **GET** /v3/analyses/{analysis_id}/functions/matches/status | Get function-matching status for an analysis
-[**getAnalysisLogs**](AnalysesCoreApi.md#getAnalysisLogs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
-[**getAnalysisParams**](AnalysesCoreApi.md#getAnalysisParams) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
-[**getAnalysisStatus**](AnalysesCoreApi.md#getAnalysisStatus) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
 [**getDynamicExecutionReport**](AnalysesCoreApi.md#getDynamicExecutionReport) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/report | Get dynamic execution report
 [**getDynamicExecutionStatus**](AnalysesCoreApi.md#getDynamicExecutionStatus) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/status | Get dynamic execution status
-[**insertAnalysisLog**](AnalysesCoreApi.md#insertAnalysisLog) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
-[**listAnalyses**](AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
-[**lookupBinaryId**](AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
-[**putAnalysisStrings**](AnalysesCoreApi.md#putAnalysisStrings) | **PUT** /v2/analyses/{analysis_id}/strings | Add strings to the analysis
-[**requeueAnalysis**](AnalysesCoreApi.md#requeueAnalysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
 [**startAnalysisFunctionMatching**](AnalysesCoreApi.md#startAnalysisFunctionMatching) | **POST** /v3/analyses/{analysis_id}/functions/matches | Start function matching for an analysis
-[**updateAnalysis**](AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
-[**updateAnalysisTags**](AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
-[**uploadFile**](AnalysesCoreApi.md#uploadFile) | **POST** /v2/upload | Upload File
 [**v3GetAnalysisAutoUnstripStatus**](AnalysesCoreApi.md#v3GetAnalysisAutoUnstripStatus) | **GET** /v3/analyses/{analysis_id}/auto-unstrip/status | Get the auto-unstrip status for an analysis.
 [**v3GetAnalysisStrings**](AnalysesCoreApi.md#v3GetAnalysisStrings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
 [**v3GetAnalysisStringsStatus**](AnalysesCoreApi.md#v3GetAnalysisStringsStatus) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
@@ -35,7 +20,7 @@ Method | HTTP request | Description
 
 
 # **addUserStringToAnalysis**
-> { [key: string]: any; } addUserStringToAnalysis(addUserStringInputBody)
+> any addUserStringToAnalysis(addUserStringInputBody)
 
 Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
@@ -53,7 +38,10 @@ const request: AnalysesCoreApiAddUserStringToAnalysisRequest = {
     // Analysis ID
   analysisId: 1,
   
-  addUserStringInputBody: ,
+  addUserStringInputBody: {
+    string: "string_example",
+    virtualAddress: 0,
+  },
 };
 
 const data = await apiInstance.addUserStringToAnalysis(request);
@@ -71,7 +59,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{ [key: string]: any; }**
+**any**
 
 ### Authorization
 
@@ -94,173 +82,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **createAnalysis**
-> BaseResponseAnalysisCreateResponse createAnalysis(analysisCreateRequest)
-
-Begins an analysis
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiCreateAnalysisRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiCreateAnalysisRequest = {
-  
-  analysisCreateRequest: {
-    filename: "filename_example",
-    sha256Hash: "sha256Hash_example",
-    tags: [
-      {
-        name: "name_example",
-      },
-    ],
-    analysisScope: "PRIVATE",
-    symbols: {
-      baseAddress: 1,
-      functionBoundaries: [
-        {
-          mangledName: "mangledName_example",
-          startAddress: 1,
-          endAddress: 1,
-          includeInAnalysis: true,
-        },
-      ],
-    },
-    debugHash: "debugHash_example",
-    analysisConfig: {
-      scrapeThirdPartyConfig: {
-        enabled: false,
-      },
-      generateCves: false,
-      generateSbom: false,
-      generateCapabilities: false,
-      noCache: false,
-      advancedAnalysis: false,
-      sandboxConfig: {
-        enabled: false,
-        commandLineArgs: "",
-        startMethod: "standard_user_process",
-        timeout: 120,
-        archiveSha256Hash: "archiveSha256Hash_example",
-        archiveEntryPath: "archiveEntryPath_example",
-        archivePassword: "archivePassword_example",
-      },
-    },
-    binaryConfig: {
-      isa: "x86",
-      platform: "linux",
-      fileFormat: "pe",
-    },
-    autoRunAgents: {
-      triage: false,
-    },
-  },
-  
-  xRevEngApplication: "X-RevEng-Application_example",
-};
-
-const data = await apiInstance.createAnalysis(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisCreateRequest** | **AnalysisCreateRequest**|  |
- **xRevEngApplication** | [**string**] |  | (optional) defaults to undefined
-
-
-### Return type
-
-**BaseResponseAnalysisCreateResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**404** | Not Found |  -  |
-**400** | Bad Request |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **deleteAnalysis**
-> BaseResponseDict deleteAnalysis()
-
-Deletes an analysis based on the provided analysis ID.
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiDeleteAnalysisRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiDeleteAnalysisRequest = {
-  
-  analysisId: 1,
-};
-
-const data = await apiInstance.deleteAnalysis(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseDict**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**404** | Not Found |  -  |
-**403** | Forbidden |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **getAnalysisBasicInfo**
-> BaseResponseBasic getAnalysisBasicInfo()
+> AnalysisBasicInfoOutputBody getAnalysisBasicInfo()
 
-Returns basic analysis information for an analysis
+Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
 ### Example
 
@@ -273,65 +98,11 @@ const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
 
 const request: AnalysesCoreApiGetAnalysisBasicInfoRequest = {
-  
-  analysisId: 1,
-};
-
-const data = await apiInstance.getAnalysisBasicInfo(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseBasic**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getAnalysisBasicInfo_0**
-> AnalysisBasicInfoOutputBody getAnalysisBasicInfo_0()
-
-Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiGetAnalysisBasicInfo0Request } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiGetAnalysisBasicInfo0Request = {
     // Analysis ID
   analysisId: 1,
 };
 
-const data = await apiInstance.getAnalysisBasicInfo_0(request);
+const data = await apiInstance.getAnalysisBasicInfo(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -426,60 +197,6 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getAnalysisFunctionMap**
-> BaseResponseAnalysisFunctionMapping getAnalysisFunctionMap()
-
-Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiGetAnalysisFunctionMapRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiGetAnalysisFunctionMapRequest = {
-  
-  analysisId: 1,
-};
-
-const data = await apiInstance.getAnalysisFunctionMap(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseAnalysisFunctionMapping**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -605,168 +322,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getAnalysisLogs**
-> BaseResponseLogs getAnalysisLogs()
-
-Given an analysis ID gets the current logs of an analysis
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiGetAnalysisLogsRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiGetAnalysisLogsRequest = {
-  
-  analysisId: 1,
-};
-
-const data = await apiInstance.getAnalysisLogs(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseLogs**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getAnalysisParams**
-> BaseResponseParams getAnalysisParams()
-
-Gets the params that the analysis was run with
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiGetAnalysisParamsRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiGetAnalysisParamsRequest = {
-  
-  analysisId: 1,
-};
-
-const data = await apiInstance.getAnalysisParams(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseParams**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getAnalysisStatus**
-> BaseResponseStatus getAnalysisStatus()
-
-Given an analysis ID gets the current status of the analysis
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiGetAnalysisStatusRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiGetAnalysisStatusRequest = {
-  
-  analysisId: 1,
-};
-
-const data = await apiInstance.getAnalysisStatus(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseStatus**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **getDynamicExecutionReport**
 > AnalysisReport getDynamicExecutionReport()
 
@@ -880,343 +435,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **insertAnalysisLog**
-> BaseResponse insertAnalysisLog(insertAnalysisLogRequest)
-
-Inserts a log record for an analysis. Only the analysis owner can insert logs.
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiInsertAnalysisLogRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiInsertAnalysisLogRequest = {
-  
-  analysisId: 1,
-  
-  insertAnalysisLogRequest: {
-    log: "log_example",
-  },
-};
-
-const data = await apiInstance.insertAnalysisLog(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **insertAnalysisLogRequest** | **InsertAnalysisLogRequest**|  |
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **listAnalyses**
-> BaseResponseRecent listAnalyses()
-
-Gets the most recent analyses provided a scope, this is then paginated, if pages and limit doesnt fit, it increases the limit
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiListAnalysesRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiListAnalysesRequest = {
-  
-  searchTerm: "",
-    // The workspace to be viewed (optional)
-  workspace: [
-    "["personal"]",
-  ],
-    // The status of the analysis (optional)
-  status: [
-    "["All"]",
-  ],
-    // Show analysis belonging to the model (optional)
-  modelName: [
-    "binnet-0.7-x86-64-windows",
-  ],
-    // Show analysis that have a dynamic execution with the given status (optional)
-  dynamicExecutionStatus: "PENDING",
-    // Show analysis belonging to the user (optional)
-  usernames: [],
-  
-  sha256Hash: "sha256_hash_example",
-  
-  limit: 20,
-  
-  offset: 0,
-  
-  orderBy: "created",
-  
-  order: "ASC",
-};
-
-const data = await apiInstance.listAnalyses(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **searchTerm** | [**string**] |  | (optional) defaults to ''
- **workspace** | **Array&lt;Workspace&gt;** | The workspace to be viewed | (optional) defaults to undefined
- **status** | **Array&lt;StatusInput&gt;** | The status of the analysis | (optional) defaults to undefined
- **modelName** | **Array&lt;ModelName&gt;** | Show analysis belonging to the model | (optional) defaults to undefined
- **dynamicExecutionStatus** | **DynamicExecutionStatus** | Show analysis that have a dynamic execution with the given status | (optional) defaults to undefined
- **usernames** | **Array&lt;string&gt;** | Show analysis belonging to the user | (optional) defaults to undefined
- **sha256Hash** | [**string**] |  | (optional) defaults to undefined
- **limit** | [**number**] |  | (optional) defaults to 20
- **offset** | [**number**] |  | (optional) defaults to 0
- **orderBy** | **AppApiRestV2AnalysesEnumsOrderBy** |  | (optional) defaults to undefined
- **order** | **Order** |  | (optional) defaults to undefined
-
-
-### Return type
-
-**BaseResponseRecent**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **lookupBinaryId**
-> any lookupBinaryId()
-
-Given an binary ID gets the ID of an analysis
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiLookupBinaryIdRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiLookupBinaryIdRequest = {
-  
-  binaryId: 1,
-};
-
-const data = await apiInstance.lookupBinaryId(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **binaryId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**any**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **putAnalysisStrings**
-> BaseResponse putAnalysisStrings(putAnalysisStringsRequest)
-
-Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiPutAnalysisStringsRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiPutAnalysisStringsRequest = {
-  
-  analysisId: 1,
-  
-  putAnalysisStringsRequest: {
-    strings: [
-      {
-        value: "value_example",
-        vaddr: 1,
-        source: "SYSTEM",
-      },
-    ],
-  },
-};
-
-const data = await apiInstance.putAnalysisStrings(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **putAnalysisStringsRequest** | **PutAnalysisStringsRequest**|  |
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **requeueAnalysis**
-> BaseResponseCreated requeueAnalysis(reAnalysisForm)
-
-Re-queues an already uploaded analysis
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiRequeueAnalysisRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiRequeueAnalysisRequest = {
-  
-  analysisId: 1,
-  
-  reAnalysisForm: {
-    tags: [],
-    commandLineArgs: "",
-    priority: 0,
-    essential: true,
-    modelName: "modelName_example",
-    noCache: false,
-  },
-  
-  xRevEngApplication: "X-RevEng-Application_example",
-};
-
-const data = await apiInstance.requeueAnalysis(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **reAnalysisForm** | **ReAnalysisForm**|  |
- **analysisId** | [**number**] |  | defaults to undefined
- **xRevEngApplication** | [**string**] |  | (optional) defaults to undefined
-
-
-### Return type
-
-**BaseResponseCreated**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-**404** | Not Found |  -  |
-**400** | Bad Request |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **startAnalysisFunctionMatching**
 > StartMatchingOutputBody startAnalysisFunctionMatching(startMatchingForAnalysisInputBody)
 
@@ -1236,9 +454,31 @@ const request: AnalysesCoreApiStartAnalysisFunctionMatchingRequest = {
     // Analysis ID
   analysisId: 1,
   
-  startMatchingForAnalysisInputBody: 
-    key: null,
-  ,
+  startMatchingForAnalysisInputBody: {
+    filters: {
+      arch: "x86",
+      binaryIds: [
+        1,
+      ],
+      bits: 1,
+      collectionIds: [
+        1,
+      ],
+      debugTypes: [
+        "debugTypes_example",
+      ],
+      functionIds: [
+        1,
+      ],
+      platform: "linux",
+      userIds: [
+        1,
+      ],
+    },
+    minSimilarity: 0,
+    noCache: true,
+    resultsPerFunction: 1,
+  },
 };
 
 const data = await apiInstance.startAnalysisFunctionMatching(request);
@@ -1277,189 +517,6 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **updateAnalysis**
-> BaseResponseAnalysisDetailResponse updateAnalysis(analysisUpdateRequest)
-
-Updates analysis attributes (binary_name, analysis_scope). User must be the owner.
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiUpdateAnalysisRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiUpdateAnalysisRequest = {
-  
-  analysisId: 1,
-  
-  analysisUpdateRequest: {
-    binaryName: "binaryName_example",
-    analysisScope: "PRIVATE",
-  },
-};
-
-const data = await apiInstance.updateAnalysis(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisUpdateRequest** | **AnalysisUpdateRequest**|  |
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseAnalysisDetailResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **updateAnalysisTags**
-> BaseResponseAnalysisUpdateTagsResponse updateAnalysisTags(analysisUpdateTagsRequest)
-
-Updates analysis tags. User must be the owner.
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiUpdateAnalysisTagsRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiUpdateAnalysisTagsRequest = {
-  
-  analysisId: 1,
-  
-  analysisUpdateTagsRequest: {
-    tags: [
-      "tags_example",
-    ],
-  },
-};
-
-const data = await apiInstance.updateAnalysisTags(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisUpdateTagsRequest** | **AnalysisUpdateTagsRequest**|  |
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseAnalysisUpdateTagsResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **uploadFile**
-> BaseResponseUploadResponse uploadFile()
-
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiUploadFileRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiUploadFileRequest = {
-  
-  uploadFileType: "BINARY",
-  
-  file: { data: Buffer.from(fs.readFileSync('/path/to/file', 'utf-8')), name: '/path/to/file' },
-  
-  packedPassword: "packed_password_example",
-  
-  forceOverwrite: false,
-};
-
-const data = await apiInstance.uploadFile(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **uploadFileType** | **UploadFileType** |  | defaults to undefined
- **file** | [**HttpFile**] |  | defaults to undefined
- **packedPassword** | [**string**] |  | (optional) defaults to undefined
- **forceOverwrite** | [**boolean**] |  | (optional) defaults to false
-
-
-### Return type
-
-**BaseResponseUploadResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: multipart/form-data
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

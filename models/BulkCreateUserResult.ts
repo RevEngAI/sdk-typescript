@@ -13,7 +13,7 @@ import { User } from '../models/User';
 import { HttpFile } from '../http/http';
 
 export class BulkCreateUserResult {
-    'email': string | null;
+    'email': string;
     /**
     * Error description; present on failure
     */
@@ -27,7 +27,7 @@ export class BulkCreateUserResult {
     * Created user; present on success
     */
     'user'?: User;
-    'username': string | null;
+    'username': string;
 
     static readonly discriminator: string | undefined = undefined;
 

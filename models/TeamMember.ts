@@ -12,11 +12,11 @@
 import { HttpFile } from '../http/http';
 
 export class TeamMember {
-    'email': string | null;
+    'email': string;
     'isAdmin': boolean;
     'role': TeamMemberRoleEnum;
     'userId': number;
-    'username': string | null;
+    'username': string;
 
     static readonly discriminator: string | undefined = undefined;
 

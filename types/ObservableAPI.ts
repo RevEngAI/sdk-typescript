@@ -13,118 +13,21 @@ import { AddOwnerInputBody } from '../models/AddOwnerInputBody';
 import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
-import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
-import { AiDecompilationRating } from '../models/AiDecompilationRating';
-import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
-import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
-import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
-import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
-import { AnalysisConfig } from '../models/AnalysisConfig';
-import { AnalysisConfigSnapshot } from '../models/AnalysisConfigSnapshot';
-import { AnalysisCreateRequest } from '../models/AnalysisCreateRequest';
-import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
-import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionEntry } from '../models/AnalysisFunctionEntry';
-import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
-import { AnalysisFunctions } from '../models/AnalysisFunctions';
-import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
 import { AnalysisLogs } from '../models/AnalysisLogs';
-import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisRecordBody } from '../models/AnalysisRecordBody';
 import { AnalysisReport } from '../models/AnalysisReport';
-import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
-import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringItem } from '../models/AnalysisStringItem';
-import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
-import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTagBody } from '../models/AnalysisTagBody';
-import { AnalysisTags } from '../models/AnalysisTags';
-import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
-import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
-import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { ApiCall } from '../models/ApiCall';
-import { AppApiRestV2AgentSchemaCapability } from '../models/AppApiRestV2AgentSchemaCapability';
-import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
-import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
-import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
-import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
-import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
 import { ArchiveContentEntry } from '../models/ArchiveContentEntry';
-import { Argument } from '../models/Argument';
 import { Artifact } from '../models/Artifact';
 import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
 import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
-import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripStatusOutputBody } from '../models/AutoUnstripStatusOutputBody';
-import { BaseResponse } from '../models/BaseResponse';
-import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
-import { BaseResponseAnalysisBulkAddTagsResponse } from '../models/BaseResponseAnalysisBulkAddTagsResponse';
-import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalysisCreateResponse';
-import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
-import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
-import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
-import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
-import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
-import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseResponseAnalysisStringsStatusResponse';
-import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
-import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
-import { BaseResponseBasic } from '../models/BaseResponseBasic';
-import { BaseResponseBinariesRelatedStatusResponse } from '../models/BaseResponseBinariesRelatedStatusResponse';
-import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBinaryAdditionalResponse';
-import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
-import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
-import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySearchResponse';
-import { BaseResponseBool } from '../models/BaseResponseBool';
-import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
-import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
-import { BaseResponseCapabilitiesAgentResponse } from '../models/BaseResponseCapabilitiesAgentResponse';
-import { BaseResponseChildBinariesResponse } from '../models/BaseResponseChildBinariesResponse';
-import { BaseResponseCollectionBinariesUpdateResponse } from '../models/BaseResponseCollectionBinariesUpdateResponse';
-import { BaseResponseCollectionResponse } from '../models/BaseResponseCollectionResponse';
-import { BaseResponseCollectionSearchResponse } from '../models/BaseResponseCollectionSearchResponse';
-import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponseCollectionTagsUpdateResponse';
-import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
-import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
-import { BaseResponseCreated } from '../models/BaseResponseCreated';
-import { BaseResponseDict } from '../models/BaseResponseDict';
-import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
-import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
-import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
-import { BaseResponseFunctionDataTypes } from '../models/BaseResponseFunctionDataTypes';
-import { BaseResponseFunctionDataTypesList } from '../models/BaseResponseFunctionDataTypesList';
-import { BaseResponseFunctionSearchResponse } from '../models/BaseResponseFunctionSearchResponse';
-import { BaseResponseFunctionStringsResponse } from '../models/BaseResponseFunctionStringsResponse';
-import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
-import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
-import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
-import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
-import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
-import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
-import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
-import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
-import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
-import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
-import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
-import { BaseResponseLogs } from '../models/BaseResponseLogs';
-import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
-import { BaseResponseParams } from '../models/BaseResponseParams';
-import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
-import { BaseResponseRecent } from '../models/BaseResponseRecent';
-import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
-import { BaseResponseStatus } from '../models/BaseResponseStatus';
-import { BaseResponseStr } from '../models/BaseResponseStr';
-import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
-import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
-import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatusResponse';
-import { BaseResponseTriageReportResponse } from '../models/BaseResponseTriageReportResponse';
-import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
-import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
-import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
-import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
-import { Basic } from '../models/Basic';
 import { BatchBinaryMatchResult } from '../models/BatchBinaryMatchResult';
 import { BatchMatchingOutputBody } from '../models/BatchMatchingOutputBody';
 import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
@@ -134,57 +37,21 @@ import { BatchUpdateDataTypesInputBody } from '../models/BatchUpdateDataTypesInp
 import { BatchUpdateDataTypesItem } from '../models/BatchUpdateDataTypesItem';
 import { BatchUpdateDataTypesOutputBody } from '../models/BatchUpdateDataTypesOutputBody';
 import { BatchUpdateDataTypesResult } from '../models/BatchUpdateDataTypesResult';
-import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
-import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { Binary } from '../models/Binary';
-import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
-import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
-import { BinaryConfig } from '../models/BinaryConfig';
-import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
-import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
-import { BinarySearchResponse } from '../models/BinarySearchResponse';
-import { BinarySearchResult } from '../models/BinarySearchResult';
-import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { BulkCreateUserResult } from '../models/BulkCreateUserResult';
 import { BulkCreateUsersOutputBody } from '../models/BulkCreateUsersOutputBody';
-import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CallEdge } from '../models/CallEdge';
 import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
-import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
-import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
-import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
 import { CanonicalName } from '../models/CanonicalName';
 import { CanonicalizeNamesInputBody } from '../models/CanonicalizeNamesInputBody';
 import { CanonicalizeNamesOutputBody } from '../models/CanonicalizeNamesOutputBody';
-import { Capabilities } from '../models/Capabilities';
-import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
 import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
 import { CapabilityEntry } from '../models/CapabilityEntry';
-import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
-import { CodeSignatureModel } from '../models/CodeSignatureModel';
-import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
-import { CollectionBinariesUpdateResponse } from '../models/CollectionBinariesUpdateResponse';
-import { CollectionBinaryResponse } from '../models/CollectionBinaryResponse';
-import { CollectionCreateRequest } from '../models/CollectionCreateRequest';
-import { CollectionListItem } from '../models/CollectionListItem';
 import { CollectionListItemBody } from '../models/CollectionListItemBody';
-import { CollectionResponse } from '../models/CollectionResponse';
-import { CollectionResponseBinariesInner } from '../models/CollectionResponseBinariesInner';
-import { CollectionScope } from '../models/CollectionScope';
-import { CollectionSearchResponse } from '../models/CollectionSearchResponse';
-import { CollectionSearchResult } from '../models/CollectionSearchResult';
-import { CollectionTagsUpdateRequest } from '../models/CollectionTagsUpdateRequest';
-import { CollectionTagsUpdateResponse } from '../models/CollectionTagsUpdateResponse';
-import { CollectionUpdateRequest } from '../models/CollectionUpdateRequest';
-import { CommentBase } from '../models/CommentBase';
-import { CommentResponse } from '../models/CommentResponse';
-import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { CommentsData } from '../models/CommentsData';
-import { ConfigResponse } from '../models/ConfigResponse';
 import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
 import { ConsoleOutputEntry } from '../models/ConsoleOutputEntry';
-import { Context } from '../models/Context';
 import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
@@ -200,30 +67,15 @@ import { CreateOrganisationInputBody } from '../models/CreateOrganisationInputBo
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { CreateTeamInputBody } from '../models/CreateTeamInputBody';
 import { CreateUserInputBody } from '../models/CreateUserInputBody';
-import { Created } from '../models/Created';
 import { DataTypesEntry } from '../models/DataTypesEntry';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
-import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DecompilationData } from '../models/DecompilationData';
-import { DieMatch } from '../models/DieMatch';
 import { DisassemblyOutputBody } from '../models/DisassemblyOutputBody';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
-import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { DynamicExecutionStatusResponse } from '../models/DynamicExecutionStatusResponse';
-import { ELFImportModel } from '../models/ELFImportModel';
-import { ELFModel } from '../models/ELFModel';
-import { ELFRelocation } from '../models/ELFRelocation';
-import { ELFSection } from '../models/ELFSection';
-import { ELFSecurity } from '../models/ELFSecurity';
-import { ELFSegment } from '../models/ELFSegment';
-import { ELFSymbol } from '../models/ELFSymbol';
-import { ElfDynamicEntry } from '../models/ElfDynamicEntry';
-import { EntrypointModel } from '../models/EntrypointModel';
-import { Enumeration } from '../models/Enumeration';
 import { ErrorBody } from '../models/ErrorBody';
-import { ErrorModel } from '../models/ErrorModel';
 import { Event } from '../models/Event';
 import { EventAttemptFailed } from '../models/EventAttemptFailed';
 import { EventAttemptStarted } from '../models/EventAttemptStarted';
@@ -252,76 +104,36 @@ import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
 import { EventWarning } from '../models/EventWarning';
 import { Example } from '../models/Example';
-import { ExportModel } from '../models/ExportModel';
-import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedURL } from '../models/ExtractedURL';
 import { FileActivityEntry } from '../models/FileActivityEntry';
-import { FileFormat } from '../models/FileFormat';
-import { FileHashes } from '../models/FileHashes';
-import { FileMetadata } from '../models/FileMetadata';
-import { Filters } from '../models/Filters';
 import { FormFile } from '../models/FormFile';
 import { FunctionArgument } from '../models/FunctionArgument';
-import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
-import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
-import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
-import { FunctionBoundary } from '../models/FunctionBoundary';
 import { FunctionCallEdges } from '../models/FunctionCallEdges';
-import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
-import { FunctionDataTypes } from '../models/FunctionDataTypes';
-import { FunctionDataTypesList } from '../models/FunctionDataTypesList';
-import { FunctionDataTypesListItem } from '../models/FunctionDataTypesListItem';
-import { FunctionDataTypesParams } from '../models/FunctionDataTypesParams';
-import { FunctionDataTypesStatus } from '../models/FunctionDataTypesStatus';
 import { FunctionDependency } from '../models/FunctionDependency';
 import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
 import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfo } from '../models/FunctionInfo';
-import { FunctionListItem } from '../models/FunctionListItem';
-import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
-import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMatch } from '../models/FunctionMatch';
-import { FunctionNameHistory } from '../models/FunctionNameHistory';
-import { FunctionParamResponse } from '../models/FunctionParamResponse';
-import { FunctionRename } from '../models/FunctionRename';
-import { FunctionRenameMap } from '../models/FunctionRenameMap';
-import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
-import { FunctionSearchResult } from '../models/FunctionSearchResult';
-import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionStackVariable } from '../models/FunctionStackVariable';
-import { FunctionString } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
-import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionType } from '../models/FunctionType';
-import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
-import { FunctionsListRename } from '../models/FunctionsListRename';
-import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
 import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
-import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAdditionalDetailsOutputBody } from '../models/GetAdditionalDetailsOutputBody';
 import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDetailsStatusOutputBody';
-import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
 import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetMatchesOutputBody } from '../models/GetMatchesOutputBody';
 import { GetMatchesStatusOutputBody } from '../models/GetMatchesStatusOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
-import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GetSubscriptionOutputBody } from '../models/GetSubscriptionOutputBody';
-import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
-import { IOC } from '../models/IOC';
-import { ISA } from '../models/ISA';
-import { IconModel } from '../models/IconModel';
-import { ImportModel } from '../models/ImportModel';
 import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
 import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
 import { IndirectCallSite } from '../models/IndirectCallSite';
 import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBody';
 import { InlineComment } from '../models/InlineComment';
-import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
 import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
@@ -329,7 +141,6 @@ import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysis
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListArchiveContentsOutputBody } from '../models/ListArchiveContentsOutputBody';
-import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
@@ -338,30 +149,19 @@ import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctions
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
 import { LocationOutputBody } from '../models/LocationOutputBody';
-import { Logs } from '../models/Logs';
-import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MemdumpEntry } from '../models/MemdumpEntry';
 import { MessageBody } from '../models/MessageBody';
-import { MetaModel } from '../models/MetaModel';
-import { ModelName } from '../models/ModelName';
-import { ModelsResponse } from '../models/ModelsResponse';
 import { ModuleLoadEntry } from '../models/ModuleLoadEntry';
 import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
-import { NameSourceType } from '../models/NameSourceType';
 import { NetworkActivity } from '../models/NetworkActivity';
 import { OIDCCallbackInputBody } from '../models/OIDCCallbackInputBody';
-import { Order } from '../models/Order';
 import { Organisation } from '../models/Organisation';
 import { OrganisationGroup } from '../models/OrganisationGroup';
 import { OrganisationIssuer } from '../models/OrganisationIssuer';
 import { OrganisationOwner } from '../models/OrganisationOwner';
-import { PDBDebugModel } from '../models/PDBDebugModel';
-import { PEModel } from '../models/PEModel';
-import { PaginationModel } from '../models/PaginationModel';
-import { Params } from '../models/Params';
 import { PasswordResetInputBody } from '../models/PasswordResetInputBody';
 import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
 import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
@@ -372,7 +172,6 @@ import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutp
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { PcapBodyInfo } from '../models/PcapBodyInfo';
 import { Permissions } from '../models/Permissions';
-import { Platform } from '../models/Platform';
 import { PriceOutput } from '../models/PriceOutput';
 import { PriceSummary } from '../models/PriceSummary';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
@@ -383,43 +182,24 @@ import { ProductOutput } from '../models/ProductOutput';
 import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
-import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
-import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
-import { ReAnalysisForm } from '../models/ReAnalysisForm';
-import { Recent } from '../models/Recent';
 import { RefreshBody } from '../models/RefreshBody';
 import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
-import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
 import { RenameOutputBody } from '../models/RenameOutputBody';
 import { ReplacementValue } from '../models/ReplacementValue';
-import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
 import { ReportOptions } from '../models/ReportOptions';
 import { RevokeBody } from '../models/RevokeBody';
-import { SBOM } from '../models/SBOM';
-import { SBOMPackage } from '../models/SBOMPackage';
 import { SSOProvider } from '../models/SSOProvider';
 import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
-import { SandboxOptions } from '../models/SandboxOptions';
-import { SandboxStartMethod } from '../models/SandboxStartMethod';
-import { SandboxTimeout } from '../models/SandboxTimeout';
 import { ScheduledTaskEntry } from '../models/ScheduledTaskEntry';
-import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
-import { SectionModel } from '../models/SectionModel';
-import { SecurityModel } from '../models/SecurityModel';
-import { SegmentInfo } from '../models/SegmentInfo';
 import { SendMessageRequest } from '../models/SendMessageRequest';
 import { ServiceEntry } from '../models/ServiceEntry';
 import { SessionOutputBody } from '../models/SessionOutputBody';
-import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
-import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
-import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
-import { SingleSectionModel } from '../models/SingleSectionModel';
 import { SourceDeltaEvent } from '../models/SourceDeltaEvent';
 import { SourceResetEvent } from '../models/SourceResetEvent';
 import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
@@ -439,44 +219,23 @@ import { SseEventToolCallProgressData } from '../models/SseEventToolCallProgress
 import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData';
 import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
 import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
-import { StackVariable } from '../models/StackVariable';
 import { StartBatchMatchingInputBody } from '../models/StartBatchMatchingInputBody';
 import { StartMatchingForAnalysisInputBody } from '../models/StartMatchingForAnalysisInputBody';
 import { StartMatchingForFunctionsInputBody } from '../models/StartMatchingForFunctionsInputBody';
 import { StartMatchingOutputBody } from '../models/StartMatchingOutputBody';
 import { StartupInfo } from '../models/StartupInfo';
-import { StatusInput } from '../models/StatusInput';
-import { StatusOutput } from '../models/StatusOutput';
 import { StatusResponse } from '../models/StatusResponse';
 import { StreamAiDecompilation200ResponseInner } from '../models/StreamAiDecompilation200ResponseInner';
 import { StreamEvents200ResponseInner } from '../models/StreamEvents200ResponseInner';
-import { StringFunctions } from '../models/StringFunctions';
-import { StringSource } from '../models/StringSource';
-import { Structure } from '../models/Structure';
-import { StructureMember } from '../models/StructureMember';
-import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
 import { SummaryData } from '../models/SummaryData';
-import { Symbols } from '../models/Symbols';
-import { Tag } from '../models/Tag';
-import { TagItem } from '../models/TagItem';
-import { TagResponse } from '../models/TagResponse';
-import { TagSearchResponse } from '../models/TagSearchResponse';
-import { TagSearchResult } from '../models/TagSearchResult';
-import { TaskResponse } from '../models/TaskResponse';
-import { TaskStatus } from '../models/TaskStatus';
-import { TaskStatusResponse } from '../models/TaskStatusResponse';
 import { TcpCarvedFile } from '../models/TcpCarvedFile';
 import { Team } from '../models/Team';
 import { TeamMember } from '../models/TeamMember';
-import { TimestampModel } from '../models/TimestampModel';
 import { TokenInputBody } from '../models/TokenInputBody';
 import { TokenResponse } from '../models/TokenResponse';
 import { TokenisedData } from '../models/TokenisedData';
-import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
-import { TriageReportResponse } from '../models/TriageReportResponse';
 import { TriggerDynamicExecutionInputBody } from '../models/TriggerDynamicExecutionInputBody';
 import { Ttp } from '../models/Ttp';
-import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateDataTypesInputBody } from '../models/UpdateDataTypesInputBody';
 import { UpdateDataTypesOutputBody } from '../models/UpdateDataTypesOutputBody';
 import { UpdateIssuerInputBody } from '../models/UpdateIssuerInputBody';
@@ -487,584 +246,14 @@ import { UpdateTeamInputBody } from '../models/UpdateTeamInputBody';
 import { UpdateUserCreditsInputBody } from '../models/UpdateUserCreditsInputBody';
 import { UpdateUserInputBody } from '../models/UpdateUserInputBody';
 import { UpdateUserPasswordInputBody } from '../models/UpdateUserPasswordInputBody';
-import { UploadFileType } from '../models/UploadFileType';
-import { UploadResponse } from '../models/UploadResponse';
-import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
 import { UpsertOverridesData } from '../models/UpsertOverridesData';
 import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
 import { User } from '../models/User';
-import { UserActivityResponse } from '../models/UserActivityResponse';
 import { UserCredits } from '../models/UserCredits';
 import { UserIdentity } from '../models/UserIdentity';
 import { UserProfile } from '../models/UserProfile';
-import { V2FunctionHeader } from '../models/V2FunctionHeader';
-import { V2FunctionInfo } from '../models/V2FunctionInfo';
-import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
-import { V2FunctionType } from '../models/V2FunctionType';
-import { Vulnerabilities } from '../models/Vulnerabilities';
-import { Vulnerability } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
 import { WorkflowProgress } from '../models/WorkflowProgress';
-import { Workspace } from '../models/Workspace';
-import { XrefFromResponse } from '../models/XrefFromResponse';
-import { XrefResponse } from '../models/XrefResponse';
-import { XrefToResponse } from '../models/XrefToResponse';
-
-import { AgentApiRequestFactory, AgentApiResponseProcessor} from "../apis/AgentApi";
-export class ObservableAgentApi {
-    private requestFactory: AgentApiRequestFactory;
-    private responseProcessor: AgentApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AgentApiRequestFactory,
-        responseProcessor?: AgentApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new AgentApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new AgentApiResponseProcessor();
-    }
-
-    /**
-     * Check the status of a capabilities analysis workflow
-     * @param analysisId
-     */
-    public checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<TaskStatusResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Check the status of a capabilities analysis workflow
-     * @param analysisId
-     */
-    public checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(analysisId: number, _options?: ConfigurationOptions): Observable<TaskStatusResponse> {
-        return this.checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<TaskStatusResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Check the status of a report analysis workflow
-     * @param analysisId
-     */
-    public checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<TaskStatusResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Check the status of a report analysis workflow
-     * @param analysisId
-     */
-    public checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet(analysisId: number, _options?: ConfigurationOptions): Observable<TaskStatusResponse> {
-        return this.checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<TaskStatusResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Check the status of a triage analysis workflow
-     * @param analysisId
-     */
-    public checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGetWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<TaskStatusResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGetWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Check the status of a triage analysis workflow
-     * @param analysisId
-     */
-    public checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet(analysisId: number, _options?: ConfigurationOptions): Observable<TaskStatusResponse> {
-        return this.checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGetWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<TaskStatusResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Queues a capabilities analysis workflow process
-     * @param analysisId
-     */
-    public createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPostWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPostWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Queues a capabilities analysis workflow process
-     * @param analysisId
-     */
-    public createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseQueuedWorkflowTaskResponse> {
-        return this.createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPostWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseQueuedWorkflowTaskResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Queues a combined report analysis workflow process
-     * @param analysisId
-     */
-    public createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<QueuedWorkflowTaskResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Queues a combined report analysis workflow process
-     * @param analysisId
-     */
-    public createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost(analysisId: number, _options?: ConfigurationOptions): Observable<QueuedWorkflowTaskResponse> {
-        return this.createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<QueuedWorkflowTaskResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Queues a triage analysis workflow process
-     * @param analysisId
-     */
-    public createTriageTaskV2AnalysesAnalysisIdAgentTriagePostWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createTriageTaskV2AnalysesAnalysisIdAgentTriagePost(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createTriageTaskV2AnalysesAnalysisIdAgentTriagePostWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Queues a triage analysis workflow process
-     * @param analysisId
-     */
-    public createTriageTaskV2AnalysesAnalysisIdAgentTriagePost(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseQueuedWorkflowTaskResponse> {
-        return this.createTriageTaskV2AnalysesAnalysisIdAgentTriagePostWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseQueuedWorkflowTaskResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Get Capabilities Result
-     * @param analysisId
-     */
-    public getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCapabilitiesAgentResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get Capabilities Result
-     * @param analysisId
-     */
-    public getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseCapabilitiesAgentResponse> {
-        return this.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCapabilitiesAgentResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Returns: - A summary of the analysis - The software type of the binary - An attack flow summary - List of IOCs - List of MITRE executable techniques - A YARA rule
-     * Get Report Analysis Result
-     * @param analysisId
-     */
-    public getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGetWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseReportAnalysisResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGetWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns: - A summary of the analysis - The software type of the binary - An attack flow summary - List of IOCs - List of MITRE executable techniques - A YARA rule
-     * Get Report Analysis Result
-     * @param analysisId
-     */
-    public getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseReportAnalysisResponse> {
-        return this.getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGetWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseReportAnalysisResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Get Triage Result
-     * @param analysisId
-     */
-    public getTriageResultV2AnalysesAnalysisIdAgentTriageGetWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTriageReportResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getTriageResultV2AnalysesAnalysisIdAgentTriageGet(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTriageResultV2AnalysesAnalysisIdAgentTriageGetWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get Triage Result
-     * @param analysisId
-     */
-    public getTriageResultV2AnalysesAnalysisIdAgentTriageGet(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseTriageReportResponse> {
-        return this.getTriageResultV2AnalysesAnalysisIdAgentTriageGetWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTriageReportResponse>) => apiResponse.data));
-    }
-
-}
-
-import { AnalysesBulkActionsApiRequestFactory, AnalysesBulkActionsApiResponseProcessor} from "../apis/AnalysesBulkActionsApi";
-export class ObservableAnalysesBulkActionsApi {
-    private requestFactory: AnalysesBulkActionsApiRequestFactory;
-    private responseProcessor: AnalysesBulkActionsApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysesBulkActionsApiRequestFactory,
-        responseProcessor?: AnalysesBulkActionsApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new AnalysesBulkActionsApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new AnalysesBulkActionsApiResponseProcessor();
-    }
-
-    /**
-     * Updates analysis tags for multiple analyses. User must be the owner.
-     * Bulk Add Analysis Tags
-     * @param analysisBulkAddTagsRequest
-     */
-    public bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.bulkAddAnalysisTags(analysisBulkAddTagsRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.bulkAddAnalysisTagsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates analysis tags for multiple analyses. User must be the owner.
-     * Bulk Add Analysis Tags
-     * @param analysisBulkAddTagsRequest
-     */
-    public bulkAddAnalysisTags(analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisBulkAddTagsResponse> {
-        return this.bulkAddAnalysisTagsWithHttpInfo(analysisBulkAddTagsRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Deletes multiple analyses. User must be the owner of all analyses.
-     * Bulk Delete Analyses
-     * @param bulkDeleteAnalysesRequest
-     */
-    public bulkDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDict>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.bulkDeleteAnalyses(bulkDeleteAnalysesRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.bulkDeleteAnalysesWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes multiple analyses. User must be the owner of all analyses.
-     * Bulk Delete Analyses
-     * @param bulkDeleteAnalysesRequest
-     */
-    public bulkDeleteAnalyses(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, _options?: ConfigurationOptions): Observable<BaseResponseDict> {
-        return this.bulkDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDict>) => apiResponse.data));
-    }
-
-}
-
-import { AnalysesCommentsApiRequestFactory, AnalysesCommentsApiResponseProcessor} from "../apis/AnalysesCommentsApi";
-export class ObservableAnalysesCommentsApi {
-    private requestFactory: AnalysesCommentsApiRequestFactory;
-    private responseProcessor: AnalysesCommentsApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysesCommentsApiRequestFactory,
-        responseProcessor?: AnalysesCommentsApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new AnalysesCommentsApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new AnalysesCommentsApiResponseProcessor();
-    }
-
-    /**
-     * Creates a comment associated with a specified analysis).
-     * Create a comment for this analysis
-     * @param analysisId
-     * @param commentBase
-     */
-    public createAnalysisCommentWithHttpInfo(analysisId: number, commentBase: CommentBase, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createAnalysisComment(analysisId, commentBase, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createAnalysisCommentWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Creates a comment associated with a specified analysis).
-     * Create a comment for this analysis
-     * @param analysisId
-     * @param commentBase
-     */
-    public createAnalysisComment(analysisId: number, commentBase: CommentBase, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.createAnalysisCommentWithHttpInfo(analysisId, commentBase, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param commentId
-     * @param analysisId
-     */
-    public deleteAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.deleteAnalysisComment(commentId, analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteAnalysisCommentWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param commentId
-     * @param analysisId
-     */
-    public deleteAnalysisComment(commentId: number, analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
-        return this.deleteAnalysisCommentWithHttpInfo(commentId, analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
-     * Get comments for this analysis
-     * @param analysisId
-     */
-    public getAnalysisCommentsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCommentResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisComments(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisCommentsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
-     * Get comments for this analysis
-     * @param analysisId
-     */
-    public getAnalysisComments(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseListCommentResponse> {
-        return this.getAnalysisCommentsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCommentResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param commentId
-     * @param analysisId
-     * @param commentUpdateRequest
-     */
-    public updateAnalysisCommentWithHttpInfo(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCommentResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateAnalysisComment(commentId, analysisId, commentUpdateRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateAnalysisCommentWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param commentId
-     * @param analysisId
-     * @param commentUpdateRequest
-     */
-    public updateAnalysisComment(commentId: number, analysisId: number, commentUpdateRequest: CommentUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCommentResponse> {
-        return this.updateAnalysisCommentWithHttpInfo(commentId, analysisId, commentUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCommentResponse>) => apiResponse.data));
-    }
-
-}
 
 import { AnalysesCoreApiRequestFactory, AnalysesCoreApiResponseProcessor} from "../apis/AnalysesCoreApi";
 export class ObservableAnalysesCoreApi {
@@ -1088,7 +277,7 @@ export class ObservableAnalysesCoreApi {
      * @param analysisId Analysis ID
      * @param addUserStringInputBody
      */
-    public addUserStringToAnalysisWithHttpInfo(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
+    public addUserStringToAnalysisWithHttpInfo(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addUserStringToAnalysis(analysisId, addUserStringInputBody, _config);
@@ -1114,86 +303,16 @@ export class ObservableAnalysesCoreApi {
      * @param analysisId Analysis ID
      * @param addUserStringInputBody
      */
-    public addUserStringToAnalysis(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
-        return this.addUserStringToAnalysisWithHttpInfo(analysisId, addUserStringInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
+    public addUserStringToAnalysis(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: ConfigurationOptions): Observable<any> {
+        return this.addUserStringToAnalysisWithHttpInfo(analysisId, addUserStringInputBody, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
-     * Begins an analysis
-     * Create Analysis
-     * @param analysisCreateRequest
-     * @param [xRevEngApplication]
+     * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get basic analysis information
+     * @param analysisId Analysis ID
      */
-    public createAnalysisWithHttpInfo(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisCreateResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createAnalysis(analysisCreateRequest, xRevEngApplication, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createAnalysisWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Begins an analysis
-     * Create Analysis
-     * @param analysisCreateRequest
-     * @param [xRevEngApplication]
-     */
-    public createAnalysis(analysisCreateRequest: AnalysisCreateRequest, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisCreateResponse> {
-        return this.createAnalysisWithHttpInfo(analysisCreateRequest, xRevEngApplication, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisCreateResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Deletes an analysis based on the provided analysis ID.
-     * Delete Analysis
-     * @param analysisId
-     */
-    public deleteAnalysisWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseDict>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.deleteAnalysis(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteAnalysisWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes an analysis based on the provided analysis ID.
-     * Delete Analysis
-     * @param analysisId
-     */
-    public deleteAnalysis(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseDict> {
-        return this.deleteAnalysisWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseDict>) => apiResponse.data));
-    }
-
-    /**
-     * Returns basic analysis information for an analysis
-     * Gets basic analysis information
-     * @param analysisId
-     */
-    public getAnalysisBasicInfoWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBasic>> {
+    public getAnalysisBasicInfoWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<AnalysisBasicInfoOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getAnalysisBasicInfo(analysisId, _config);
@@ -1214,46 +333,12 @@ export class ObservableAnalysesCoreApi {
     }
 
     /**
-     * Returns basic analysis information for an analysis
-     * Gets basic analysis information
-     * @param analysisId
-     */
-    public getAnalysisBasicInfo(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseBasic> {
-        return this.getAnalysisBasicInfoWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBasic>) => apiResponse.data));
-    }
-
-    /**
      * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Get basic analysis information
      * @param analysisId Analysis ID
      */
-    public getAnalysisBasicInfo_1WithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<AnalysisBasicInfoOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisBasicInfo_1(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisBasicInfo_1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get basic analysis information
-     * @param analysisId Analysis ID
-     */
-    public getAnalysisBasicInfo_1(analysisId: number, _options?: ConfigurationOptions): Observable<AnalysisBasicInfoOutputBody> {
-        return this.getAnalysisBasicInfo_1WithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<AnalysisBasicInfoOutputBody>) => apiResponse.data));
+    public getAnalysisBasicInfo(analysisId: number, _options?: ConfigurationOptions): Observable<AnalysisBasicInfoOutputBody> {
+        return this.getAnalysisBasicInfoWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<AnalysisBasicInfoOutputBody>) => apiResponse.data));
     }
 
     /**
@@ -1290,40 +375,6 @@ export class ObservableAnalysesCoreApi {
      */
     public getAnalysisBytes(analysisId: number, page?: number, _options?: ConfigurationOptions): Observable<void> {
         return this.getAnalysisBytesWithHttpInfo(analysisId, page, _options).pipe(map((apiResponse: HttpInfo<void>) => apiResponse.data));
-    }
-
-    /**
-     * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
-     * Get Analysis Function Map
-     * @param analysisId
-     */
-    public getAnalysisFunctionMapWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisFunctionMap(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisFunctionMapWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
-     * Get Analysis Function Map
-     * @param analysisId
-     */
-    public getAnalysisFunctionMap(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctionMapping> {
-        return this.getAnalysisFunctionMapWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctionMapping>) => apiResponse.data));
     }
 
     /**
@@ -1399,108 +450,6 @@ export class ObservableAnalysesCoreApi {
     }
 
     /**
-     * Given an analysis ID gets the current logs of an analysis
-     * Gets the logs of an analysis
-     * @param analysisId
-     */
-    public getAnalysisLogsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseLogs>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisLogs(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisLogsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Given an analysis ID gets the current logs of an analysis
-     * Gets the logs of an analysis
-     * @param analysisId
-     */
-    public getAnalysisLogs(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseLogs> {
-        return this.getAnalysisLogsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseLogs>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the params that the analysis was run with
-     * Gets analysis param information
-     * @param analysisId
-     */
-    public getAnalysisParamsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseParams>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisParams(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisParamsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the params that the analysis was run with
-     * Gets analysis param information
-     * @param analysisId
-     */
-    public getAnalysisParams(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseParams> {
-        return this.getAnalysisParamsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseParams>) => apiResponse.data));
-    }
-
-    /**
-     * Given an analysis ID gets the current status of the analysis
-     * Gets the status of an analysis
-     * @param analysisId
-     */
-    public getAnalysisStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStatus>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisStatus(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisStatusWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Given an analysis ID gets the current status of the analysis
-     * Gets the status of an analysis
-     * @param analysisId
-     */
-    public getAnalysisStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseStatus> {
-        return this.getAnalysisStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStatus>) => apiResponse.data));
-    }
-
-    /**
      * Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
      * Get dynamic execution report
      * @param analysisId Analysis ID
@@ -1569,204 +518,6 @@ export class ObservableAnalysesCoreApi {
     }
 
     /**
-     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
-     * Insert a log entry for an analysis
-     * @param analysisId
-     * @param insertAnalysisLogRequest
-     */
-    public insertAnalysisLogWithHttpInfo(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.insertAnalysisLog(analysisId, insertAnalysisLogRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.insertAnalysisLogWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
-     * Insert a log entry for an analysis
-     * @param analysisId
-     * @param insertAnalysisLogRequest
-     */
-    public insertAnalysisLog(analysisId: number, insertAnalysisLogRequest: InsertAnalysisLogRequest, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.insertAnalysisLogWithHttpInfo(analysisId, insertAnalysisLogRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the most recent analyses provided a scope, this is then paginated, if pages and limit doesnt fit, it increases the limit
-     * Gets the most recent analyses
-     * @param [searchTerm]
-     * @param [workspace] The workspace to be viewed
-     * @param [status] The status of the analysis
-     * @param [modelName] Show analysis belonging to the model
-     * @param [dynamicExecutionStatus] Show analysis that have a dynamic execution with the given status
-     * @param [usernames] Show analysis belonging to the user
-     * @param [sha256Hash]
-     * @param [limit]
-     * @param [offset]
-     * @param [orderBy]
-     * @param [order]
-     */
-    public listAnalysesWithHttpInfo(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatus, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseRecent>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.listAnalyses(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listAnalysesWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the most recent analyses provided a scope, this is then paginated, if pages and limit doesnt fit, it increases the limit
-     * Gets the most recent analyses
-     * @param [searchTerm]
-     * @param [workspace] The workspace to be viewed
-     * @param [status] The status of the analysis
-     * @param [modelName] Show analysis belonging to the model
-     * @param [dynamicExecutionStatus] Show analysis that have a dynamic execution with the given status
-     * @param [usernames] Show analysis belonging to the user
-     * @param [sha256Hash]
-     * @param [limit]
-     * @param [offset]
-     * @param [orderBy]
-     * @param [order]
-     */
-    public listAnalyses(searchTerm?: string, workspace?: Array<Workspace>, status?: Array<StatusInput>, modelName?: Array<ModelName>, dynamicExecutionStatus?: DynamicExecutionStatus, usernames?: Array<string>, sha256Hash?: string, limit?: number, offset?: number, orderBy?: AppApiRestV2AnalysesEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<BaseResponseRecent> {
-        return this.listAnalysesWithHttpInfo(searchTerm, workspace, status, modelName, dynamicExecutionStatus, usernames, sha256Hash, limit, offset, orderBy, order, _options).pipe(map((apiResponse: HttpInfo<BaseResponseRecent>) => apiResponse.data));
-    }
-
-    /**
-     * Given an binary ID gets the ID of an analysis
-     * Gets the analysis ID from binary ID
-     * @param binaryId
-     */
-    public lookupBinaryIdWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.lookupBinaryId(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.lookupBinaryIdWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Given an binary ID gets the ID of an analysis
-     * Gets the analysis ID from binary ID
-     * @param binaryId
-     */
-    public lookupBinaryId(binaryId: number, _options?: ConfigurationOptions): Observable<any> {
-        return this.lookupBinaryIdWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
-    }
-
-    /**
-     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-     * Add strings to the analysis
-     * @param analysisId
-     * @param putAnalysisStringsRequest
-     */
-    public putAnalysisStringsWithHttpInfo(analysisId: number, putAnalysisStringsRequest: PutAnalysisStringsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.putAnalysisStrings(analysisId, putAnalysisStringsRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.putAnalysisStringsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-     * Add strings to the analysis
-     * @param analysisId
-     * @param putAnalysisStringsRequest
-     */
-    public putAnalysisStrings(analysisId: number, putAnalysisStringsRequest: PutAnalysisStringsRequest, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.putAnalysisStringsWithHttpInfo(analysisId, putAnalysisStringsRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Re-queues an already uploaded analysis
-     * Requeue Analysis
-     * @param analysisId
-     * @param reAnalysisForm
-     * @param [xRevEngApplication]
-     */
-    public requeueAnalysisWithHttpInfo(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCreated>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.requeueAnalysis(analysisId, reAnalysisForm, xRevEngApplication, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.requeueAnalysisWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Re-queues an already uploaded analysis
-     * Requeue Analysis
-     * @param analysisId
-     * @param reAnalysisForm
-     * @param [xRevEngApplication]
-     */
-    public requeueAnalysis(analysisId: number, reAnalysisForm: ReAnalysisForm, xRevEngApplication?: string, _options?: ConfigurationOptions): Observable<BaseResponseCreated> {
-        return this.requeueAnalysisWithHttpInfo(analysisId, reAnalysisForm, xRevEngApplication, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCreated>) => apiResponse.data));
-    }
-
-    /**
      * Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Start function matching for an analysis
      * @param analysisId Analysis ID
@@ -1800,116 +551,6 @@ export class ObservableAnalysesCoreApi {
      */
     public startAnalysisFunctionMatching(analysisId: number, startMatchingForAnalysisInputBody: StartMatchingForAnalysisInputBody, _options?: ConfigurationOptions): Observable<StartMatchingOutputBody> {
         return this.startAnalysisFunctionMatchingWithHttpInfo(analysisId, startMatchingForAnalysisInputBody, _options).pipe(map((apiResponse: HttpInfo<StartMatchingOutputBody>) => apiResponse.data));
-    }
-
-    /**
-     * Updates analysis attributes (binary_name, analysis_scope). User must be the owner.
-     * Update Analysis
-     * @param analysisId
-     * @param analysisUpdateRequest
-     */
-    public updateAnalysisWithHttpInfo(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisDetailResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateAnalysis(analysisId, analysisUpdateRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateAnalysisWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates analysis attributes (binary_name, analysis_scope). User must be the owner.
-     * Update Analysis
-     * @param analysisId
-     * @param analysisUpdateRequest
-     */
-    public updateAnalysis(analysisId: number, analysisUpdateRequest: AnalysisUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisDetailResponse> {
-        return this.updateAnalysisWithHttpInfo(analysisId, analysisUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisDetailResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Updates analysis tags. User must be the owner.
-     * Update Analysis Tags
-     * @param analysisId
-     * @param analysisUpdateTagsRequest
-     */
-    public updateAnalysisTagsWithHttpInfo(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateAnalysisTags(analysisId, analysisUpdateTagsRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateAnalysisTagsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates analysis tags. User must be the owner.
-     * Update Analysis Tags
-     * @param analysisId
-     * @param analysisUpdateTagsRequest
-     */
-    public updateAnalysisTags(analysisId: number, analysisUpdateTagsRequest: AnalysisUpdateTagsRequest, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisUpdateTagsResponse> {
-        return this.updateAnalysisTagsWithHttpInfo(analysisId, analysisUpdateTagsRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisUpdateTagsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Upload File
-     * @param uploadFileType
-     * @param file
-     * @param [packedPassword]
-     * @param [forceOverwrite]
-     */
-    public uploadFileWithHttpInfo(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUploadResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.uploadFile(uploadFileType, file, packedPassword, forceOverwrite, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.uploadFileWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Upload File
-     * @param uploadFileType
-     * @param file
-     * @param [packedPassword]
-     * @param [forceOverwrite]
-     */
-    public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: ConfigurationOptions): Observable<BaseResponseUploadResponse> {
-        return this.uploadFileWithHttpInfo(uploadFileType, file, packedPassword, forceOverwrite, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUploadResponse>) => apiResponse.data));
     }
 
     /**
@@ -2114,404 +755,6 @@ export class ObservableAnalysesCoreApi {
 
 }
 
-import { AnalysesResultsMetadataApiRequestFactory, AnalysesResultsMetadataApiResponseProcessor} from "../apis/AnalysesResultsMetadataApi";
-export class ObservableAnalysesResultsMetadataApi {
-    private requestFactory: AnalysesResultsMetadataApiRequestFactory;
-    private responseProcessor: AnalysesResultsMetadataApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysesResultsMetadataApiRequestFactory,
-        responseProcessor?: AnalysesResultsMetadataApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new AnalysesResultsMetadataApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new AnalysesResultsMetadataApiResponseProcessor();
-    }
-
-    /**
-     * Returns a paginated list of functions identified during analysis
-     * Get functions from analysis
-     * @param analysisId
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     */
-    public getAnalysisFunctionsPaginatedWithHttpInfo(analysisId: number, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctionsList>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisFunctionsPaginated(analysisId, page, pageSize, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisFunctionsPaginatedWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns a paginated list of functions identified during analysis
-     * Get functions from analysis
-     * @param analysisId
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     */
-    public getAnalysisFunctionsPaginated(analysisId: number, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctionsList> {
-        return this.getAnalysisFunctionsPaginatedWithHttpInfo(analysisId, page, pageSize, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctionsList>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the capabilities from the analysis
-     * @param analysisId
-     */
-    public getCapabilitiesWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCapabilities>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getCapabilities(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCapabilitiesWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the capabilities from the analysis
-     * @param analysisId
-     */
-    public getCapabilities(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseCapabilities> {
-        return this.getCapabilitiesWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCapabilities>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the functions identified during analysis
-     * Gets functions from analysis
-     * @param analysisId
-     * @param [searchTerm]
-     * @param [minVAddr]
-     * @param [maxVAddr]
-     * @param [includeEmbeddings]
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     */
-    public getFunctionsListWithHttpInfo(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, includeEmbeddings?: boolean, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisFunctions>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionsList(analysisId, searchTerm, minVAddr, maxVAddr, includeEmbeddings, page, pageSize, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionsListWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the functions identified during analysis
-     * Gets functions from analysis
-     * @param analysisId
-     * @param [searchTerm]
-     * @param [minVAddr]
-     * @param [maxVAddr]
-     * @param [includeEmbeddings]
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     */
-    public getFunctionsList(analysisId: number, searchTerm?: string, minVAddr?: number, maxVAddr?: number, includeEmbeddings?: boolean, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisFunctions> {
-        return this.getFunctionsListWithHttpInfo(analysisId, searchTerm, minVAddr, maxVAddr, includeEmbeddings, page, pageSize, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisFunctions>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the software-bill-of-materials (SBOM) found in the analysis
-     * @param analysisId
-     */
-    public getSbomWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListSBOM>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getSbom(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getSbomWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the software-bill-of-materials (SBOM) found in the analysis
-     * @param analysisId
-     */
-    public getSbom(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseListSBOM> {
-        return this.getSbomWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListSBOM>) => apiResponse.data));
-    }
-
-    /**
-     * Get function tags with maliciousness score
-     * @param analysisId
-     */
-    public getTagsWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisTags>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getTags(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getTagsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get function tags with maliciousness score
-     * @param analysisId
-     */
-    public getTags(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisTags> {
-        return this.getTagsWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisTags>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the vulnerabilities found in the analysis
-     * @param analysisId
-     */
-    public getVulnerabilitiesWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseVulnerabilities>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getVulnerabilities(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getVulnerabilitiesWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the vulnerabilities found in the analysis
-     * @param analysisId
-     */
-    public getVulnerabilities(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseVulnerabilities> {
-        return this.getVulnerabilitiesWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseVulnerabilities>) => apiResponse.data));
-    }
-
-}
-
-import { AnalysesXRefsApiRequestFactory, AnalysesXRefsApiResponseProcessor} from "../apis/AnalysesXRefsApi";
-export class ObservableAnalysesXRefsApi {
-    private requestFactory: AnalysesXRefsApiRequestFactory;
-    private responseProcessor: AnalysesXRefsApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AnalysesXRefsApiRequestFactory,
-        responseProcessor?: AnalysesXRefsApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new AnalysesXRefsApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new AnalysesXRefsApiResponseProcessor();
-    }
-
-    /**
-     * **This endpoint is in beta and may change without notice.**
-     * [Beta] Look up xrefs by virtual address
-     * @param analysisId
-     * @param vaddr Virtual address to match against xrefs
-     */
-    public getXrefByVaddrWithHttpInfo(analysisId: number, vaddr: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseXrefResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getXrefByVaddr(analysisId, vaddr, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getXrefByVaddrWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * **This endpoint is in beta and may change without notice.**
-     * [Beta] Look up xrefs by virtual address
-     * @param analysisId
-     * @param vaddr Virtual address to match against xrefs
-     */
-    public getXrefByVaddr(analysisId: number, vaddr: number, _options?: ConfigurationOptions): Observable<BaseResponseXrefResponse> {
-        return this.getXrefByVaddrWithHttpInfo(analysisId, vaddr, _options).pipe(map((apiResponse: HttpInfo<BaseResponseXrefResponse>) => apiResponse.data));
-    }
-
-}
-
-import { AuthenticationUsersApiRequestFactory, AuthenticationUsersApiResponseProcessor} from "../apis/AuthenticationUsersApi";
-export class ObservableAuthenticationUsersApi {
-    private requestFactory: AuthenticationUsersApiRequestFactory;
-    private responseProcessor: AuthenticationUsersApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: AuthenticationUsersApiRequestFactory,
-        responseProcessor?: AuthenticationUsersApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new AuthenticationUsersApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new AuthenticationUsersApiResponseProcessor();
-    }
-
-    /**
-     * Get a user\'s public information
-     * @param userId
-     */
-    public getUserWithHttpInfo(userId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGetPublicUserResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getUser(userId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getUserWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get a user\'s public information
-     * @param userId
-     */
-    public getUser(userId: number, _options?: ConfigurationOptions): Observable<BaseResponseGetPublicUserResponse> {
-        return this.getUserWithHttpInfo(userId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGetPublicUserResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Get auth user activity
-     */
-    public getUserActivityWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListUserActivityResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getUserActivity(_config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getUserActivityWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get auth user activity
-     */
-    public getUserActivity(_options?: ConfigurationOptions): Observable<BaseResponseListUserActivityResponse> {
-        return this.getUserActivityWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseListUserActivityResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Submits feedback about the application and forwards it to the RevEng.ai project management tool.
-     * Submit feedback about the application
-     * @param submitUserFeedbackRequest
-     */
-    public submitUserFeedbackWithHttpInfo(submitUserFeedbackRequest: SubmitUserFeedbackRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.submitUserFeedback(submitUserFeedbackRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.submitUserFeedbackWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Submits feedback about the application and forwards it to the RevEng.ai project management tool.
-     * Submit feedback about the application
-     * @param submitUserFeedbackRequest
-     */
-    public submitUserFeedback(submitUserFeedbackRequest: SubmitUserFeedbackRequest, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.submitUserFeedbackWithHttpInfo(submitUserFeedbackRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
-    }
-
-}
-
 import { BinariesApiRequestFactory, BinariesApiResponseProcessor} from "../apis/BinariesApi";
 export class ObservableBinariesApi {
     private requestFactory: BinariesApiRequestFactory;
@@ -2529,42 +772,11 @@ export class ObservableBinariesApi {
     }
 
     /**
-     * Downloads a zipped binary with password protection
-     * @param binaryId
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
+     * @param binaryId Binary ID
      */
-    public downloadZippedBinaryWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<HttpFile>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.downloadZippedBinary(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.downloadZippedBinaryWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Downloads a zipped binary with password protection
-     * @param binaryId
-     */
-    public downloadZippedBinary(binaryId: number, _options?: ConfigurationOptions): Observable<HttpFile> {
-        return this.downloadZippedBinaryWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<HttpFile>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the additional details of a binary
-     * @param binaryId
-     */
-    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
+    public getBinaryAdditionalDetailsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAdditionalDetailsOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getBinaryAdditionalDetails(binaryId, _config);
@@ -2585,18 +797,20 @@ export class ObservableBinariesApi {
     }
 
     /**
-     * Gets the additional details of a binary
-     * @param binaryId
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
+     * @param binaryId Binary ID
      */
-    public getBinaryAdditionalDetails(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryAdditionalResponse> {
-        return this.getBinaryAdditionalDetailsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryAdditionalResponse>) => apiResponse.data));
+    public getBinaryAdditionalDetails(binaryId: number, _options?: ConfigurationOptions): Observable<GetAdditionalDetailsOutputBody> {
+        return this.getBinaryAdditionalDetailsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<GetAdditionalDetailsOutputBody>) => apiResponse.data));
     }
 
     /**
-     * Gets the status of the additional details task for a binary
-     * @param binaryId
+     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the additional-details extraction status for a binary.
+     * @param binaryId Binary ID
      */
-    public getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAdditionalDetailsStatusResponse>> {
+    public getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAdditionalDetailsStatusOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getBinaryAdditionalDetailsStatus(binaryId, _config);
@@ -2617,239 +831,12 @@ export class ObservableBinariesApi {
     }
 
     /**
-     * Gets the status of the additional details task for a binary
-     * @param binaryId
-     */
-    public getBinaryAdditionalDetailsStatus(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseAdditionalDetailsStatusResponse> {
-        return this.getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAdditionalDetailsStatusResponse>) => apiResponse.data));
-    }
-
-    /**
      * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Get the additional-details extraction status for a binary.
      * @param binaryId Binary ID
      */
-    public getBinaryAdditionalDetailsStatus_1WithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAdditionalDetailsStatusOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetailsStatus_1(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryAdditionalDetailsStatus_1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the additional-details extraction status for a binary.
-     * @param binaryId Binary ID
-     */
-    public getBinaryAdditionalDetailsStatus_1(binaryId: number, _options?: ConfigurationOptions): Observable<GetAdditionalDetailsStatusOutputBody> {
-        return this.getBinaryAdditionalDetailsStatus_1WithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<GetAdditionalDetailsStatusOutputBody>) => apiResponse.data));
-    }
-
-    /**
-     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get additional details for a binary.
-     * @param binaryId Binary ID
-     */
-    public getBinaryAdditionalDetails_2WithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<GetAdditionalDetailsOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getBinaryAdditionalDetails_2(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryAdditionalDetails_2WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get additional details for a binary.
-     * @param binaryId Binary ID
-     */
-    public getBinaryAdditionalDetails_2(binaryId: number, _options?: ConfigurationOptions): Observable<GetAdditionalDetailsOutputBody> {
-        return this.getBinaryAdditionalDetails_2WithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<GetAdditionalDetailsOutputBody>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the details of a binary
-     * @param binaryId
-     */
-    public getBinaryDetailsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryDetailsResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getBinaryDetails(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryDetailsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the details of a binary
-     * @param binaryId
-     */
-    public getBinaryDetails(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryDetailsResponse> {
-        return this.getBinaryDetailsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryDetailsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the die info of a binary
-     * @param binaryId
-     */
-    public getBinaryDieInfoWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListDieMatch>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getBinaryDieInfo(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryDieInfoWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the die info of a binary
-     * @param binaryId
-     */
-    public getBinaryDieInfo(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseListDieMatch> {
-        return this.getBinaryDieInfoWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListDieMatch>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the external details of a binary
-     * @param binaryId
-     */
-    public getBinaryExternalsWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinaryExternalsResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getBinaryExternals(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryExternalsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the external details of a binary
-     * @param binaryId
-     */
-    public getBinaryExternals(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinaryExternalsResponse> {
-        return this.getBinaryExternalsWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinaryExternalsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the status of the unpack binary task for a binary
-     * @param binaryId
-     */
-    public getBinaryRelatedStatusWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinariesRelatedStatusResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getBinaryRelatedStatus(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinaryRelatedStatusWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the status of the unpack binary task for a binary
-     * @param binaryId
-     */
-    public getBinaryRelatedStatus(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseBinariesRelatedStatusResponse> {
-        return this.getBinaryRelatedStatusWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinariesRelatedStatusResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Gets the related binaries of a binary.
-     * @param binaryId
-     */
-    public getRelatedBinariesWithHttpInfo(binaryId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseChildBinariesResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getRelatedBinaries(binaryId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getRelatedBinariesWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the related binaries of a binary.
-     * @param binaryId
-     */
-    public getRelatedBinaries(binaryId: number, _options?: ConfigurationOptions): Observable<BaseResponseChildBinariesResponse> {
-        return this.getRelatedBinariesWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseChildBinariesResponse>) => apiResponse.data));
+    public getBinaryAdditionalDetailsStatus(binaryId: number, _options?: ConfigurationOptions): Observable<GetAdditionalDetailsStatusOutputBody> {
+        return this.getBinaryAdditionalDetailsStatusWithHttpInfo(binaryId, _options).pipe(map((apiResponse: HttpInfo<GetAdditionalDetailsStatusOutputBody>) => apiResponse.data));
     }
 
 }
@@ -2868,270 +855,6 @@ export class ObservableCollectionsApi {
         this.configuration = configuration;
         this.requestFactory = requestFactory || new CollectionsApiRequestFactory(configuration);
         this.responseProcessor = responseProcessor || new CollectionsApiResponseProcessor();
-    }
-
-    /**
-     * A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
-     * Creates new collection information
-     * @param collectionCreateRequest
-     */
-    public createCollectionWithHttpInfo(collectionCreateRequest: CollectionCreateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createCollection(collectionCreateRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createCollectionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
-     * Creates new collection information
-     * @param collectionCreateRequest
-     */
-    public createCollection(collectionCreateRequest: CollectionCreateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
-        return this.createCollectionWithHttpInfo(collectionCreateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Deletes a collection
-     * Deletes a collection
-     * @param collectionId
-     */
-    public deleteCollectionWithHttpInfo(collectionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBool>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.deleteCollection(collectionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.deleteCollectionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Deletes a collection
-     * Deletes a collection
-     * @param collectionId
-     */
-    public deleteCollection(collectionId: number, _options?: ConfigurationOptions): Observable<BaseResponseBool> {
-        return this.deleteCollectionWithHttpInfo(collectionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBool>) => apiResponse.data));
-    }
-
-    /**
-     * Gets a single collection. The collection can include binaries and tags if requested. You can specify whether to include tags and binaries in the response by using the query string parameters defined.
-     * Returns a collection
-     * @param collectionId
-     * @param [includeTags]
-     * @param [includeBinaries]
-     * @param [pageSize]
-     * @param [pageNumber]
-     * @param [binarySearchStr]
-     */
-    public getCollectionWithHttpInfo(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, pageSize?: number, pageNumber?: number, binarySearchStr?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getCollection(collectionId, includeTags, includeBinaries, pageSize, pageNumber, binarySearchStr, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getCollectionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets a single collection. The collection can include binaries and tags if requested. You can specify whether to include tags and binaries in the response by using the query string parameters defined.
-     * Returns a collection
-     * @param collectionId
-     * @param [includeTags]
-     * @param [includeBinaries]
-     * @param [pageSize]
-     * @param [pageNumber]
-     * @param [binarySearchStr]
-     */
-    public getCollection(collectionId: number, includeTags?: boolean, includeBinaries?: boolean, pageSize?: number, pageNumber?: number, binarySearchStr?: string, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
-        return this.getCollectionWithHttpInfo(collectionId, includeTags, includeBinaries, pageSize, pageNumber, binarySearchStr, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Returns a list of collections
-     * Gets basic collections information
-     * @param [searchTerm]
-     * @param [filters]
-     * @param [limit]
-     * @param [offset]
-     * @param [orderBy]
-     * @param [order]
-     */
-    public listCollectionsWithHttpInfo(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCollectionResults>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.listCollections(searchTerm, filters, limit, offset, orderBy, order, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listCollectionsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns a list of collections
-     * Gets basic collections information
-     * @param [searchTerm]
-     * @param [filters]
-     * @param [limit]
-     * @param [offset]
-     * @param [orderBy]
-     * @param [order]
-     */
-    public listCollections(searchTerm?: string, filters?: Array<Filters>, limit?: number, offset?: number, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, order?: Order, _options?: ConfigurationOptions): Observable<BaseResponseListCollectionResults> {
-        return this.listCollectionsWithHttpInfo(searchTerm, filters, limit, offset, orderBy, order, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCollectionResults>) => apiResponse.data));
-    }
-
-    /**
-     * Updates a collection, you can update the collection name, description, and scope
-     * Updates a collection
-     * @param collectionId
-     * @param collectionUpdateRequest
-     */
-    public updateCollectionWithHttpInfo(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateCollection(collectionId, collectionUpdateRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCollectionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates a collection, you can update the collection name, description, and scope
-     * Updates a collection
-     * @param collectionId
-     * @param collectionUpdateRequest
-     */
-    public updateCollection(collectionId: number, collectionUpdateRequest: CollectionUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionResponse> {
-        return this.updateCollectionWithHttpInfo(collectionId, collectionUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Updates/changes a collection binaries to whatever is provided in the request. After this update the collection will only contain the binaries provided in the request.
-     * Updates a collection binaries
-     * @param collectionId
-     * @param collectionBinariesUpdateRequest
-     */
-    public updateCollectionBinariesWithHttpInfo(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionBinariesUpdateResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateCollectionBinaries(collectionId, collectionBinariesUpdateRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCollectionBinariesWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates/changes a collection binaries to whatever is provided in the request. After this update the collection will only contain the binaries provided in the request.
-     * Updates a collection binaries
-     * @param collectionId
-     * @param collectionBinariesUpdateRequest
-     */
-    public updateCollectionBinaries(collectionId: number, collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionBinariesUpdateResponse> {
-        return this.updateCollectionBinariesWithHttpInfo(collectionId, collectionBinariesUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionBinariesUpdateResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Updates/changes a collection tags to whatever is provided in the request. After this update the collection will only contain the tags provided in the request.
-     * Updates a collection tags
-     * @param collectionId
-     * @param collectionTagsUpdateRequest
-     */
-    public updateCollectionTagsWithHttpInfo(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionTagsUpdateResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.updateCollectionTags(collectionId, collectionTagsUpdateRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.updateCollectionTagsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Updates/changes a collection tags to whatever is provided in the request. After this update the collection will only contain the tags provided in the request.
-     * Updates a collection tags
-     * @param collectionId
-     * @param collectionTagsUpdateRequest
-     */
-    public updateCollectionTags(collectionId: number, collectionTagsUpdateRequest: CollectionTagsUpdateRequest, _options?: ConfigurationOptions): Observable<BaseResponseCollectionTagsUpdateResponse> {
-        return this.updateCollectionTagsWithHttpInfo(collectionId, collectionTagsUpdateRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionTagsUpdateResponse>) => apiResponse.data));
     }
 
     /**
@@ -3400,56 +1123,6 @@ export class ObservableCollectionsApi {
 
 }
 
-import { ConfigApiRequestFactory, ConfigApiResponseProcessor} from "../apis/ConfigApi";
-export class ObservableConfigApi {
-    private requestFactory: ConfigApiRequestFactory;
-    private responseProcessor: ConfigApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: ConfigApiRequestFactory,
-        responseProcessor?: ConfigApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new ConfigApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new ConfigApiResponseProcessor();
-    }
-
-    /**
-     * General configuration endpoint
-     * Get Config
-     */
-    public getConfigWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseConfigResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getConfig(_config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getConfigWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * General configuration endpoint
-     * Get Config
-     */
-    public getConfig(_options?: ConfigurationOptions): Observable<BaseResponseConfigResponse> {
-        return this.getConfigWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseConfigResponse>) => apiResponse.data));
-    }
-
-}
-
 import { ConversationsApiRequestFactory, ConversationsApiResponseProcessor} from "../apis/ConversationsApi";
 export class ObservableConversationsApi {
     private requestFactory: ConversationsApiRequestFactory;
@@ -3710,208 +1383,6 @@ export class ObservableConversationsApi {
 
 }
 
-import { ExternalSourcesApiRequestFactory, ExternalSourcesApiResponseProcessor} from "../apis/ExternalSourcesApi";
-export class ObservableExternalSourcesApi {
-    private requestFactory: ExternalSourcesApiRequestFactory;
-    private responseProcessor: ExternalSourcesApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: ExternalSourcesApiRequestFactory,
-        responseProcessor?: ExternalSourcesApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new ExternalSourcesApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new ExternalSourcesApiResponseProcessor();
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param analysisId
-     */
-    public createExternalTaskVtWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseStr>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.createExternalTaskVt(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createExternalTaskVtWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param analysisId
-     */
-    public createExternalTaskVt(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseStr> {
-        return this.createExternalTaskVtWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseStr>) => apiResponse.data));
-    }
-
-    /**
-     * Get VirusTotal data
-     * @param analysisId
-     */
-    public getVtDataWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseExternalResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getVtData(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getVtDataWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get VirusTotal data
-     * @param analysisId
-     */
-    public getVtData(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseExternalResponse> {
-        return this.getVtDataWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseExternalResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Check the status of VirusTotal data retrieval
-     * @param analysisId
-     */
-    public getVtTaskStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTaskResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getVtTaskStatus(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getVtTaskStatusWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Check the status of VirusTotal data retrieval
-     * @param analysisId
-     */
-    public getVtTaskStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseTaskResponse> {
-        return this.getVtTaskStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTaskResponse>) => apiResponse.data));
-    }
-
-}
-
-import { FirmwareApiRequestFactory, FirmwareApiResponseProcessor} from "../apis/FirmwareApi";
-export class ObservableFirmwareApi {
-    private requestFactory: FirmwareApiRequestFactory;
-    private responseProcessor: FirmwareApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: FirmwareApiRequestFactory,
-        responseProcessor?: FirmwareApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new FirmwareApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new FirmwareApiResponseProcessor();
-    }
-
-    /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param taskId
-     */
-    public getBinariesForFirmwareTaskWithHttpInfo(taskId: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getBinariesForFirmwareTask(taskId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getBinariesForFirmwareTaskWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param taskId
-     */
-    public getBinariesForFirmwareTask(taskId: string, _options?: ConfigurationOptions): Observable<any> {
-        return this.getBinariesForFirmwareTaskWithHttpInfo(taskId, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
-    }
-
-    /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param file
-     * @param [password]
-     */
-    public uploadFirmwareWithHttpInfo(file: string, password?: string, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.uploadFirmware(file, password, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.uploadFirmwareWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param file
-     * @param [password]
-     */
-    public uploadFirmware(file: string, password?: string, _options?: ConfigurationOptions): Observable<any> {
-        return this.uploadFirmwareWithHttpInfo(file, password, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
-    }
-
-}
-
 import { FunctionsAIDecompilationApiRequestFactory, FunctionsAIDecompilationApiResponseProcessor} from "../apis/FunctionsAIDecompilationApi";
 export class ObservableFunctionsAIDecompilationApi {
     private requestFactory: FunctionsAIDecompilationApiRequestFactory;
@@ -4102,38 +1573,6 @@ export class ObservableFunctionsAIDecompilationApi {
      */
     public getAiDecompilationInlineCommentsStatus(functionId: number, _options?: ConfigurationOptions): Observable<WorkflowProgress> {
         return this.getAiDecompilationInlineCommentsStatusWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<WorkflowProgress>) => apiResponse.data));
-    }
-
-    /**
-     * Get rating for AI decompilation
-     * @param functionId The ID of the function for which to get the rating
-     */
-    public getAiDecompilationRatingWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseUnionGetAiDecompilationRatingResponseNoneType>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAiDecompilationRating(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAiDecompilationRatingWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get rating for AI decompilation
-     * @param functionId The ID of the function for which to get the rating
-     */
-    public getAiDecompilationRating(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseUnionGetAiDecompilationRatingResponseNoneType> {
-        return this.getAiDecompilationRatingWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseUnionGetAiDecompilationRatingResponseNoneType>) => apiResponse.data));
     }
 
     /**
@@ -4446,40 +1885,6 @@ export class ObservableFunctionsAIDecompilationApi {
         return this.upsertAiDecompilationOverridesWithHttpInfo(functionId, upsertOverridesInputBody, _options).pipe(map((apiResponse: HttpInfo<UpsertOverridesData>) => apiResponse.data));
     }
 
-    /**
-     * Upsert rating for AI decompilation
-     * @param functionId The ID of the function being rated
-     * @param upsertAiDecomplationRatingRequest
-     */
-    public upsertAiDecompilationRatingWithHttpInfo(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.upsertAiDecompilationRating(functionId, upsertAiDecomplationRatingRequest, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.upsertAiDecompilationRatingWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Upsert rating for AI decompilation
-     * @param functionId The ID of the function being rated
-     * @param upsertAiDecomplationRatingRequest
-     */
-    public upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.upsertAiDecompilationRatingWithHttpInfo(functionId, upsertAiDecomplationRatingRequest, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
-    }
-
 }
 
 import { FunctionsCoreApiRequestFactory, FunctionsCoreApiResponseProcessor} from "../apis/FunctionsCoreApi";
@@ -4504,7 +1909,7 @@ export class ObservableFunctionsCoreApi {
      * @param functionId Function ID
      * @param addCalleeInputBody
      */
-    public addFunctionCalleeWithHttpInfo(functionId: number, addCalleeInputBody: AddCalleeInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
+    public addFunctionCalleeWithHttpInfo(functionId: number, addCalleeInputBody: AddCalleeInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addFunctionCallee(functionId, addCalleeInputBody, _config);
@@ -4530,8 +1935,8 @@ export class ObservableFunctionsCoreApi {
      * @param functionId Function ID
      * @param addCalleeInputBody
      */
-    public addFunctionCallee(functionId: number, addCalleeInputBody: AddCalleeInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
-        return this.addFunctionCalleeWithHttpInfo(functionId, addCalleeInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
+    public addFunctionCallee(functionId: number, addCalleeInputBody: AddCalleeInputBody, _options?: ConfigurationOptions): Observable<any> {
+        return this.addFunctionCalleeWithHttpInfo(functionId, addCalleeInputBody, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
@@ -4540,7 +1945,7 @@ export class ObservableFunctionsCoreApi {
      * @param functionId Function ID
      * @param addUserStringToFunctionInputBody
      */
-    public addUserStringToFunctionWithHttpInfo(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
+    public addUserStringToFunctionWithHttpInfo(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.addUserStringToFunction(functionId, addUserStringToFunctionInputBody, _config);
@@ -4566,96 +1971,16 @@ export class ObservableFunctionsCoreApi {
      * @param functionId Function ID
      * @param addUserStringToFunctionInputBody
      */
-    public addUserStringToFunction(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
-        return this.addUserStringToFunctionWithHttpInfo(functionId, addUserStringToFunctionInputBody, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
+    public addUserStringToFunction(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: ConfigurationOptions): Observable<any> {
+        return this.addUserStringToFunctionWithHttpInfo(functionId, addUserStringToFunctionInputBody, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
     /**
-     * Get string information found in the analysis
-     * Get string information found in the Analysis
-     * @param analysisId
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [search] Search is applied to string value
-     * @param [functionSearch] Search is applied to function names
-     * @param [orderBy] Order by field
-     * @param [sortOrder] Sort order for the results
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function disassembly
+     * @param functionId Function ID
      */
-    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'length' | 'value', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisStringsResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisStringsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get string information found in the analysis
-     * Get string information found in the Analysis
-     * @param analysisId
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [search] Search is applied to string value
-     * @param [functionSearch] Search is applied to function names
-     * @param [orderBy] Order by field
-     * @param [sortOrder] Sort order for the results
-     */
-    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'length' | 'value', sortOrder?: 'ASC' | 'DESC', _options?: ConfigurationOptions): Observable<BaseResponseAnalysisStringsResponse> {
-        return this.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisStringsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Get string processing state for the Analysis
-     * Get string processing state for the Analysis
-     * @param analysisId
-     */
-    public getAnalysisStringsStatusWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseAnalysisStringsStatusResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getAnalysisStringsStatus(analysisId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getAnalysisStringsStatusWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get string processing state for the Analysis
-     * Get string processing state for the Analysis
-     * @param analysisId
-     */
-    public getAnalysisStringsStatus(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseAnalysisStringsStatusResponse> {
-        return this.getAnalysisStringsStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseAnalysisStringsStatusResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Get disassembly blocks related to the function
-     * Get disassembly blocks related to the function
-     * @param functionId
-     */
-    public getFunctionBlocksWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionBlocksResponse>> {
+    public getFunctionBlocksWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<DisassemblyOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getFunctionBlocks(functionId, _config);
@@ -4676,53 +2001,20 @@ export class ObservableFunctionsCoreApi {
     }
 
     /**
-     * Get disassembly blocks related to the function
-     * Get disassembly blocks related to the function
-     * @param functionId
-     */
-    public getFunctionBlocks(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionBlocksResponse> {
-        return this.getFunctionBlocksWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionBlocksResponse>) => apiResponse.data));
-    }
-
-    /**
      * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get function disassembly
      * @param functionId Function ID
      */
-    public getFunctionBlocks_1WithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<DisassemblyOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionBlocks_1(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionBlocks_1WithHttpInfo(rsp)));
-            }));
+    public getFunctionBlocks(functionId: number, _options?: ConfigurationOptions): Observable<DisassemblyOutputBody> {
+        return this.getFunctionBlocksWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<DisassemblyOutputBody>) => apiResponse.data));
     }
 
     /**
-     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get function disassembly
+     * Returns both the outgoing call edges (callees) and incoming call edges (callers) for a single function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get callees and callers for a function
      * @param functionId Function ID
      */
-    public getFunctionBlocks_1(functionId: number, _options?: ConfigurationOptions): Observable<DisassemblyOutputBody> {
-        return this.getFunctionBlocks_1WithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<DisassemblyOutputBody>) => apiResponse.data));
-    }
-
-    /**
-     * Get list of functions that call or are called by the specified function
-     * @param functionId
-     */
-    public getFunctionCalleesCallersWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCalleesCallerFunctionsResponse>> {
+    public getFunctionCalleesCallersWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<CallEdgesOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getFunctionCalleesCallers(functionId, _config);
@@ -4743,84 +2035,20 @@ export class ObservableFunctionsCoreApi {
     }
 
     /**
-     * Get list of functions that call or are called by the specified function
-     * @param functionId
-     */
-    public getFunctionCalleesCallers(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseCalleesCallerFunctionsResponse> {
-        return this.getFunctionCalleesCallersWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCalleesCallerFunctionsResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Get list of functions that call or are called for a list of functions
-     * @param functionIds
-     */
-    public getFunctionCalleesCallersBulkWithHttpInfo(functionIds: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListCalleesCallerFunctionsResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionCalleesCallersBulk(functionIds, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionCalleesCallersBulkWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Get list of functions that call or are called for a list of functions
-     * @param functionIds
-     */
-    public getFunctionCalleesCallersBulk(functionIds: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseListCalleesCallerFunctionsResponse> {
-        return this.getFunctionCalleesCallersBulkWithHttpInfo(functionIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListCalleesCallerFunctionsResponse>) => apiResponse.data));
-    }
-
-    /**
      * Returns both the outgoing call edges (callees) and incoming call edges (callers) for a single function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get callees and callers for a function
      * @param functionId Function ID
      */
-    public getFunctionCalleesCallers_2WithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<CallEdgesOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionCalleesCallers_2(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionCalleesCallers_2WithHttpInfo(rsp)));
-            }));
+    public getFunctionCalleesCallers(functionId: number, _options?: ConfigurationOptions): Observable<CallEdgesOutputBody> {
+        return this.getFunctionCalleesCallersWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<CallEdgesOutputBody>) => apiResponse.data));
     }
 
     /**
-     * Returns both the outgoing call edges (callees) and incoming call edges (callers) for a single function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get callees and callers for a function
+     * Returns the capability findings (CAPA-style behaviour matches) associated with the given function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get capabilities for a function
      * @param functionId Function ID
      */
-    public getFunctionCalleesCallers_2(functionId: number, _options?: ConfigurationOptions): Observable<CallEdgesOutputBody> {
-        return this.getFunctionCalleesCallers_2WithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<CallEdgesOutputBody>) => apiResponse.data));
-    }
-
-    /**
-     * Retrieve a functions capabilities
-     * @param functionId
-     */
-    public getFunctionCapabilitiesWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionCapabilityResponse>> {
+    public getFunctionCapabilitiesWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<CapabilitiesOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getFunctionCapabilities(functionId, _config);
@@ -4841,52 +2069,20 @@ export class ObservableFunctionsCoreApi {
     }
 
     /**
-     * Retrieve a functions capabilities
-     * @param functionId
-     */
-    public getFunctionCapabilities(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionCapabilityResponse> {
-        return this.getFunctionCapabilitiesWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionCapabilityResponse>) => apiResponse.data));
-    }
-
-    /**
      * Returns the capability findings (CAPA-style behaviour matches) associated with the given function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get capabilities for a function
      * @param functionId Function ID
      */
-    public getFunctionCapabilities_3WithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<CapabilitiesOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionCapabilities_3(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionCapabilities_3WithHttpInfo(rsp)));
-            }));
+    public getFunctionCapabilities(functionId: number, _options?: ConfigurationOptions): Observable<CapabilitiesOutputBody> {
+        return this.getFunctionCapabilitiesWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<CapabilitiesOutputBody>) => apiResponse.data));
     }
 
     /**
-     * Returns the capability findings (CAPA-style behaviour matches) associated with the given function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get capabilities for a function
-     * @param functionId Function ID
-     */
-    public getFunctionCapabilities_3(functionId: number, _options?: ConfigurationOptions): Observable<CapabilitiesOutputBody> {
-        return this.getFunctionCapabilities_3WithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<CapabilitiesOutputBody>) => apiResponse.data));
-    }
-
-    /**
+     * Returns metadata for a single function — name, virtual address, size, debug status, binary it belongs to.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get function details
-     * @param functionId
+     * @param functionId Function ID
      */
-    public getFunctionDetailsWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionsDetailResponse>> {
+    public getFunctionDetailsWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionDetailsOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getFunctionDetails(functionId, _config);
@@ -4907,45 +2103,12 @@ export class ObservableFunctionsCoreApi {
     }
 
     /**
-     * Get function details
-     * @param functionId
-     */
-    public getFunctionDetails(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseFunctionsDetailResponse> {
-        return this.getFunctionDetailsWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionsDetailResponse>) => apiResponse.data));
-    }
-
-    /**
      * Returns metadata for a single function — name, virtual address, size, debug status, binary it belongs to.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get function details
      * @param functionId Function ID
      */
-    public getFunctionDetails_4WithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<FunctionDetailsOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionDetails_4(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionDetails_4WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns metadata for a single function — name, virtual address, size, debug status, binary it belongs to.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get function details
-     * @param functionId Function ID
-     */
-    public getFunctionDetails_4(functionId: number, _options?: ConfigurationOptions): Observable<FunctionDetailsOutputBody> {
-        return this.getFunctionDetails_4WithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<FunctionDetailsOutputBody>) => apiResponse.data));
+    public getFunctionDetails(functionId: number, _options?: ConfigurationOptions): Observable<FunctionDetailsOutputBody> {
+        return this.getFunctionDetailsWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<FunctionDetailsOutputBody>) => apiResponse.data));
     }
 
     /**
@@ -4983,14 +2146,14 @@ export class ObservableFunctionsCoreApi {
     }
 
     /**
-     * Get string information found in the function
-     * Get string information found in the function
-     * @param functionId
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [search] Search is applied to string value
+     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for a function.
+     * @param functionId Function ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
      */
-    public getFunctionStringsWithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionStringsResponse>> {
+    public getFunctionStringsWithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListFunctionStringsOutputBody>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.getFunctionStrings(functionId, page, pageSize, search, _config);
@@ -5011,18 +2174,6 @@ export class ObservableFunctionsCoreApi {
     }
 
     /**
-     * Get string information found in the function
-     * Get string information found in the function
-     * @param functionId
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [search] Search is applied to string value
-     */
-    public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionStringsResponse> {
-        return this.getFunctionStringsWithHttpInfo(functionId, page, pageSize, search, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionStringsResponse>) => apiResponse.data));
-    }
-
-    /**
      * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List strings for a function.
      * @param functionId Function ID
@@ -5030,36 +2181,8 @@ export class ObservableFunctionsCoreApi {
      * @param [pageSize] Number of results per page.
      * @param [search] Filter by string value (case-insensitive substring match).
      */
-    public getFunctionStrings_5WithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<HttpInfo<ListFunctionStringsOutputBody>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionStrings_5(functionId, page, pageSize, search, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionStrings_5WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for a function.
-     * @param functionId Function ID
-     * @param [page] Page number (1-indexed).
-     * @param [pageSize] Number of results per page.
-     * @param [search] Filter by string value (case-insensitive substring match).
-     */
-    public getFunctionStrings_5(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<ListFunctionStringsOutputBody> {
-        return this.getFunctionStrings_5WithHttpInfo(functionId, page, pageSize, search, _options).pipe(map((apiResponse: HttpInfo<ListFunctionStringsOutputBody>) => apiResponse.data));
+    public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: ConfigurationOptions): Observable<ListFunctionStringsOutputBody> {
+        return this.getFunctionStringsWithHttpInfo(functionId, page, pageSize, search, _options).pipe(map((apiResponse: HttpInfo<ListFunctionStringsOutputBody>) => apiResponse.data));
     }
 
     /**
@@ -5403,76 +2526,6 @@ export class ObservableFunctionsDataTypesApi {
     }
 
     /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types
-     * @param analysisId
-     * @param functionDataTypesParams
-     */
-    public generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGenerateFunctionDataTypes>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.generateFunctionDataTypesForAnalysis(analysisId, functionDataTypesParams, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.generateFunctionDataTypesForAnalysisWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types
-     * @param analysisId
-     * @param functionDataTypesParams
-     */
-    public generateFunctionDataTypesForAnalysis(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, _options?: ConfigurationOptions): Observable<BaseResponseGenerateFunctionDataTypes> {
-        return this.generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionDataTypesParams, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGenerateFunctionDataTypes>) => apiResponse.data));
-    }
-
-    /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types for an arbitrary list of functions
-     * @param functionDataTypesParams
-     */
-    public generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams: FunctionDataTypesParams, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseGenerationStatusList>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.generateFunctionDataTypesForFunctions(functionDataTypesParams, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.generateFunctionDataTypesForFunctionsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types for an arbitrary list of functions
-     * @param functionDataTypesParams
-     */
-    public generateFunctionDataTypesForFunctions(functionDataTypesParams: FunctionDataTypesParams, _options?: ConfigurationOptions): Observable<BaseResponseGenerationStatusList> {
-        return this.generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams, _options).pipe(map((apiResponse: HttpInfo<BaseResponseGenerationStatusList>) => apiResponse.data));
-    }
-
-    /**
      * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get data types for a single function
      * @param analysisId Analysis ID
@@ -5544,76 +2597,6 @@ export class ObservableFunctionsDataTypesApi {
      */
     public listAnalysisFunctionsDataTypes(analysisId: number, offset?: number, limit?: number, _options?: ConfigurationOptions): Observable<ListAnalysisFunctionsDataTypesOutputBody> {
         return this.listAnalysisFunctionsDataTypesWithHttpInfo(analysisId, offset, limit, _options).pipe(map((apiResponse: HttpInfo<ListAnalysisFunctionsDataTypesOutputBody>) => apiResponse.data));
-    }
-
-    /**
-     * Returns data types for multiple functions with optional function ID filtering
-     * List Function Data Types
-     * @param analysisId
-     * @param [functionIds]
-     */
-    public listFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypesList>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.listFunctionDataTypesForAnalysis(analysisId, functionIds, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listFunctionDataTypesForAnalysisWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns data types for multiple functions with optional function ID filtering
-     * List Function Data Types
-     * @param analysisId
-     * @param [functionIds]
-     */
-    public listFunctionDataTypesForAnalysis(analysisId: number, functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypesList> {
-        return this.listFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypesList>) => apiResponse.data));
-    }
-
-    /**
-     * Returns data types for multiple function IDs
-     * List Function Data Types
-     * @param [functionIds]
-     */
-    public listFunctionDataTypesForFunctionsWithHttpInfo(functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionDataTypesList>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.listFunctionDataTypesForFunctions(functionIds, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.listFunctionDataTypesForFunctionsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Returns data types for multiple function IDs
-     * List Function Data Types
-     * @param [functionIds]
-     */
-    public listFunctionDataTypesForFunctions(functionIds?: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseFunctionDataTypesList> {
-        return this.listFunctionDataTypesForFunctionsWithHttpInfo(functionIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionDataTypesList>) => apiResponse.data));
     }
 
     /**
@@ -5707,40 +2690,6 @@ export class ObservableFunctionsRenamingHistoryApi {
     }
 
     /**
-     * Renames a list of functions using the function IDs   Will record name changes in history
-     * Batch Rename Functions
-     * @param functionsListRename
-     */
-    public batchRenameFunctionWithHttpInfo(functionsListRename: FunctionsListRename, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.batchRenameFunction(functionsListRename, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.batchRenameFunctionWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Renames a list of functions using the function IDs   Will record name changes in history
-     * Batch Rename Functions
-     * @param functionsListRename
-     */
-    public batchRenameFunction(functionsListRename: FunctionsListRename, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.batchRenameFunctionWithHttpInfo(functionsListRename, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
-    }
-
-    /**
      * Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Batch rename functions
      * @param batchRenameInputBody
@@ -5809,40 +2758,6 @@ export class ObservableFunctionsRenamingHistoryApi {
     }
 
     /**
-     * Gets the name history of a function using the function ID
-     * Get Function Name History
-     * @param functionId
-     */
-    public getFunctionNameHistoryWithHttpInfo(functionId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseListFunctionNameHistory>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getFunctionNameHistory(functionId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getFunctionNameHistoryWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets the name history of a function using the function ID
-     * Get Function Name History
-     * @param functionId
-     */
-    public getFunctionNameHistory(functionId: number, _options?: ConfigurationOptions): Observable<BaseResponseListFunctionNameHistory> {
-        return this.getFunctionNameHistoryWithHttpInfo(functionId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseListFunctionNameHistory>) => apiResponse.data));
-    }
-
-    /**
      * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Rename a function
      * @param functionId Function ID
@@ -5879,48 +2794,12 @@ export class ObservableFunctionsRenamingHistoryApi {
     }
 
     /**
-     * Renames a function using the function ID   Will record name change history
-     * Rename Function
-     * @param functionId
-     * @param functionRename
+     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Revert function name
+     * @param functionId Function ID
+     * @param historyId History ID to revert to
      */
-    public renameFunctionIdWithHttpInfo(functionId: number, functionRename: FunctionRename, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.renameFunctionId(functionId, functionRename, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.renameFunctionIdWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Renames a function using the function ID   Will record name change history
-     * Rename Function
-     * @param functionId
-     * @param functionRename
-     */
-    public renameFunctionId(functionId: number, functionRename: FunctionRename, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.renameFunctionIdWithHttpInfo(functionId, functionRename, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Reverts the function name to a previous name using the function ID and history ID
-     * Revert the function name
-     * @param functionId
-     * @param historyId
-     */
-    public revertFunctionNameWithHttpInfo(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponse>> {
+    public revertFunctionNameWithHttpInfo(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<HttpInfo<any>> {
         const _config = mergeConfiguration(this.configuration, _options);
 
         const requestContextPromise = this.requestFactory.revertFunctionName(functionId, historyId, _config);
@@ -5941,49 +2820,13 @@ export class ObservableFunctionsRenamingHistoryApi {
     }
 
     /**
-     * Reverts the function name to a previous name using the function ID and history ID
-     * Revert the function name
-     * @param functionId
-     * @param historyId
-     */
-    public revertFunctionName(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<BaseResponse> {
-        return this.revertFunctionNameWithHttpInfo(functionId, historyId, _options).pipe(map((apiResponse: HttpInfo<BaseResponse>) => apiResponse.data));
-    }
-
-    /**
      * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Revert function name
      * @param functionId Function ID
      * @param historyId History ID to revert to
      */
-    public revertFunctionName_1WithHttpInfo(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<HttpInfo<{ [key: string]: any; }>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.revertFunctionName_1(functionId, historyId, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.revertFunctionName_1WithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Revert function name
-     * @param functionId Function ID
-     * @param historyId History ID to revert to
-     */
-    public revertFunctionName_1(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<{ [key: string]: any; }> {
-        return this.revertFunctionName_1WithHttpInfo(functionId, historyId, _options).pipe(map((apiResponse: HttpInfo<{ [key: string]: any; }>) => apiResponse.data));
+    public revertFunctionName(functionId: number, historyId: number, _options?: ConfigurationOptions): Observable<any> {
+        return this.revertFunctionNameWithHttpInfo(functionId, historyId, _options).pipe(map((apiResponse: HttpInfo<any>) => apiResponse.data));
     }
 
 }
@@ -6066,56 +2909,6 @@ export class ObservableIAMUsersApi {
      */
     public getMyPermissions(_options?: ConfigurationOptions): Observable<Permissions> {
         return this.getMyPermissionsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<Permissions>) => apiResponse.data));
-    }
-
-}
-
-import { ModelsApiRequestFactory, ModelsApiResponseProcessor} from "../apis/ModelsApi";
-export class ObservableModelsApi {
-    private requestFactory: ModelsApiRequestFactory;
-    private responseProcessor: ModelsApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: ModelsApiRequestFactory,
-        responseProcessor?: ModelsApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new ModelsApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new ModelsApiResponseProcessor();
-    }
-
-    /**
-     * Gets active models available for analysis.
-     * Gets models
-     */
-    public getModelsWithHttpInfo(_options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseModelsResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.getModels(_config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getModelsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Gets active models available for analysis.
-     * Gets models
-     */
-    public getModels(_options?: ConfigurationOptions): Observable<BaseResponseModelsResponse> {
-        return this.getModelsWithHttpInfo(_options).pipe(map((apiResponse: HttpInfo<BaseResponseModelsResponse>) => apiResponse.data));
     }
 
 }
@@ -6236,204 +3029,6 @@ export class ObservableReportsApi {
      */
     public getPdfReportStatus(analysisId: number, _options?: ConfigurationOptions): Observable<WorkflowProgress> {
         return this.getPdfReportStatusWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<WorkflowProgress>) => apiResponse.data));
-    }
-
-}
-
-import { SearchApiRequestFactory, SearchApiResponseProcessor} from "../apis/SearchApi";
-export class ObservableSearchApi {
-    private requestFactory: SearchApiRequestFactory;
-    private responseProcessor: SearchApiResponseProcessor;
-    private configuration: Configuration;
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: SearchApiRequestFactory,
-        responseProcessor?: SearchApiResponseProcessor
-    ) {
-        this.configuration = configuration;
-        this.requestFactory = requestFactory || new SearchApiRequestFactory(configuration);
-        this.responseProcessor = responseProcessor || new SearchApiResponseProcessor();
-    }
-
-    /**
-     * Searches for a specific binary
-     * Binaries search
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [partialName] The partial or full name of the binary being searched
-     * @param [partialSha256] The partial or full sha256 of the binary being searched
-     * @param [tags] The tags to be searched for
-     * @param [modelName] The name of the model used to analyze the binary the function belongs to
-     * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
-     * @param [excludeBinaryId] A binary ID to exclude from the results
-     * @param [userIds] Restrict the search to binaries owned by these user IDs
-     */
-    public searchBinariesWithHttpInfo(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, userIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseBinarySearchResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.searchBinaries(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, userIds, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.searchBinariesWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Searches for a specific binary
-     * Binaries search
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [partialName] The partial or full name of the binary being searched
-     * @param [partialSha256] The partial or full sha256 of the binary being searched
-     * @param [tags] The tags to be searched for
-     * @param [modelName] The name of the model used to analyze the binary the function belongs to
-     * @param [userFilesOnly] Whether to only search user\&#39;s uploaded files
-     * @param [excludeBinaryId] A binary ID to exclude from the results
-     * @param [userIds] Restrict the search to binaries owned by these user IDs
-     */
-    public searchBinaries(page?: number, pageSize?: number, partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, userIds?: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseBinarySearchResponse> {
-        return this.searchBinariesWithHttpInfo(page, pageSize, partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, userIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseBinarySearchResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Searches for a specific collection
-     * Collections search
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [partialCollectionName] The partial or full name of the collection being searched
-     * @param [partialBinaryName] The partial or full name of the binary belonging to the collection
-     * @param [partialBinarySha256] The partial or full sha256 of the binary belonging to the collection
-     * @param [tags] The tags to be searched for
-     * @param [filters] The filters to be used for the search
-     * @param [orderBy] The field to sort the order by in the results
-     * @param [orderByDirection] The order direction in which to return results
-     * @param [userIds] Restrict the search to collections owned by these user IDs
-     */
-    public searchCollectionsWithHttpInfo(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, userIds?: Array<number>, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseCollectionSearchResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.searchCollections(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, userIds, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.searchCollectionsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Searches for a specific collection
-     * Collections search
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [partialCollectionName] The partial or full name of the collection being searched
-     * @param [partialBinaryName] The partial or full name of the binary belonging to the collection
-     * @param [partialBinarySha256] The partial or full sha256 of the binary belonging to the collection
-     * @param [tags] The tags to be searched for
-     * @param [filters] The filters to be used for the search
-     * @param [orderBy] The field to sort the order by in the results
-     * @param [orderByDirection] The order direction in which to return results
-     * @param [userIds] Restrict the search to collections owned by these user IDs
-     */
-    public searchCollections(page?: number, pageSize?: number, partialCollectionName?: string, partialBinaryName?: string, partialBinarySha256?: string, tags?: Array<string>, filters?: Array<Filters>, orderBy?: AppApiRestV2CollectionsEnumsOrderBy, orderByDirection?: Order, userIds?: Array<number>, _options?: ConfigurationOptions): Observable<BaseResponseCollectionSearchResponse> {
-        return this.searchCollectionsWithHttpInfo(page, pageSize, partialCollectionName, partialBinaryName, partialBinarySha256, tags, filters, orderBy, orderByDirection, userIds, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCollectionSearchResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Searches for a specific function
-     * Functions search
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [partialName] The partial or full name of the function being searched
-     * @param [modelName] The name of the model used to analyze the binary the function belongs to
-     */
-    public searchFunctionsWithHttpInfo(page?: number, pageSize?: number, partialName?: string, modelName?: string, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseFunctionSearchResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.searchFunctions(page, pageSize, partialName, modelName, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.searchFunctionsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Searches for a specific function
-     * Functions search
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [partialName] The partial or full name of the function being searched
-     * @param [modelName] The name of the model used to analyze the binary the function belongs to
-     */
-    public searchFunctions(page?: number, pageSize?: number, partialName?: string, modelName?: string, _options?: ConfigurationOptions): Observable<BaseResponseFunctionSearchResponse> {
-        return this.searchFunctionsWithHttpInfo(page, pageSize, partialName, modelName, _options).pipe(map((apiResponse: HttpInfo<BaseResponseFunctionSearchResponse>) => apiResponse.data));
-    }
-
-    /**
-     * Searches for tags by there name
-     * Tags search
-     * @param partialName The partial or full name of the tag to search for
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     */
-    public searchTagsWithHttpInfo(partialName: string, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseTagSearchResponse>> {
-        const _config = mergeConfiguration(this.configuration, _options);
-
-        const requestContextPromise = this.requestFactory.searchTags(partialName, page, pageSize, _config);
-        // build promise chain
-        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
-        for (const middleware of _config.middleware) {
-            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
-        }
-
-        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
-            pipe(mergeMap((response: ResponseContext) => {
-                let middlewarePostObservable = of(response);
-                for (const middleware of _config.middleware.reverse()) {
-                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
-                }
-                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.searchTagsWithHttpInfo(rsp)));
-            }));
-    }
-
-    /**
-     * Searches for tags by there name
-     * Tags search
-     * @param partialName The partial or full name of the tag to search for
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     */
-    public searchTags(partialName: string, page?: number, pageSize?: number, _options?: ConfigurationOptions): Observable<BaseResponseTagSearchResponse> {
-        return this.searchTagsWithHttpInfo(partialName, page, pageSize, _options).pipe(map((apiResponse: HttpInfo<BaseResponseTagSearchResponse>) => apiResponse.data));
     }
 
 }

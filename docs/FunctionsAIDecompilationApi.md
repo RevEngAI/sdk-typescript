@@ -9,7 +9,6 @@ Method | HTTP request | Description
 [**getAiDecompilation**](FunctionsAIDecompilationApi.md#getAiDecompilation) | **GET** /v3/functions/{function_id}/ai-decompilation | Get AI decompilation result
 [**getAiDecompilationInlineComments**](FunctionsAIDecompilationApi.md#getAiDecompilationInlineComments) | **GET** /v3/functions/{function_id}/ai-decompilation/inline-comments | Get AI decompilation inline comments
 [**getAiDecompilationInlineCommentsStatus**](FunctionsAIDecompilationApi.md#getAiDecompilationInlineCommentsStatus) | **GET** /v3/functions/{function_id}/ai-decompilation/inline-comments/status | Get inline comments generation workflow status
-[**getAiDecompilationRating**](FunctionsAIDecompilationApi.md#getAiDecompilationRating) | **GET** /v2/functions/{function_id}/ai-decompilation/rating | Get rating for AI decompilation
 [**getAiDecompilationStatus**](FunctionsAIDecompilationApi.md#getAiDecompilationStatus) | **GET** /v3/functions/{function_id}/ai-decompilation/status | Get AI decompilation workflow status
 [**getAiDecompilationSummary**](FunctionsAIDecompilationApi.md#getAiDecompilationSummary) | **GET** /v3/functions/{function_id}/ai-decompilation/summary | Get AI decompilation summary
 [**getAiDecompilationSummaryStatus**](FunctionsAIDecompilationApi.md#getAiDecompilationSummaryStatus) | **GET** /v3/functions/{function_id}/ai-decompilation/summary/status | Get summary generation workflow status
@@ -19,7 +18,6 @@ Method | HTTP request | Description
 [**regenerateAiDecompilationSummary**](FunctionsAIDecompilationApi.md#regenerateAiDecompilationSummary) | **POST** /v3/functions/{function_id}/ai-decompilation/summary | Regenerate AI decompilation summary
 [**streamAiDecompilation**](FunctionsAIDecompilationApi.md#streamAiDecompilation) | **GET** /v3/functions/{function_id}/ai-decompilation/events | Stream live AI decompilation output (SSE)
 [**upsertAiDecompilationOverrides**](FunctionsAIDecompilationApi.md#upsertAiDecompilationOverrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
-[**upsertAiDecompilationRating**](FunctionsAIDecompilationApi.md#upsertAiDecompilationRating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
 
 
 # **createAiDecompilation**
@@ -318,59 +316,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getAiDecompilationRating**
-> BaseResponseUnionGetAiDecompilationRatingResponseNoneType getAiDecompilationRating()
-
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
-import type { FunctionsAIDecompilationApiGetAiDecompilationRatingRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsAIDecompilationApi(configuration);
-
-const request: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest = {
-    // The ID of the function for which to get the rating
-  functionId: 1,
-};
-
-const data = await apiInstance.getAiDecompilationRating(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **functionId** | [**number**] | The ID of the function for which to get the rating | defaults to undefined
-
-
-### Return type
-
-**BaseResponseUnionGetAiDecompilationRatingResponseNoneType**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **getAiDecompilationStatus**
 > WorkflowProgress getAiDecompilationStatus()
 
@@ -618,7 +563,10 @@ const request: FunctionsAIDecompilationApiPatchAiDecompilationInlineCommentReque
     // Function ID
   functionId: 1,
   
-  patchCommentBody: ,
+  patchCommentBody: {
+    comment: "comment_example",
+    line: 1,
+  },
 };
 
 const data = await apiInstance.patchAiDecompilationInlineComment(request);
@@ -846,7 +794,11 @@ const request: FunctionsAIDecompilationApiUpsertAiDecompilationOverridesRequest 
     // Function ID
   functionId: 1,
   
-  upsertOverridesInputBody: ,
+  upsertOverridesInputBody: {
+    overrides: {
+      "key": "key_example",
+    },
+  },
 };
 
 const data = await apiInstance.upsertAiDecompilationOverrides(request);
@@ -885,65 +837,6 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **upsertAiDecompilationRating**
-> BaseResponse upsertAiDecompilationRating(upsertAiDecomplationRatingRequest)
-
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
-import type { FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsAIDecompilationApi(configuration);
-
-const request: FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest = {
-    // The ID of the function being rated
-  functionId: 1,
-  
-  upsertAiDecomplationRatingRequest: {
-    rating: "POSITIVE",
-    reason: "reason_example",
-  },
-};
-
-const data = await apiInstance.upsertAiDecompilationRating(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **upsertAiDecomplationRatingRequest** | **UpsertAiDecomplationRatingRequest**|  |
- **functionId** | [**number**] | The ID of the function being rated | defaults to undefined
-
-
-### Return type
-
-**BaseResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

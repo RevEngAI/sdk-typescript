@@ -9,14 +9,6 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { APIError } from '../models/APIError';
-import { BaseResponse } from '../models/BaseResponse';
-import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
-import { BaseResponseBinariesRelatedStatusResponse } from '../models/BaseResponseBinariesRelatedStatusResponse';
-import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBinaryAdditionalResponse';
-import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
-import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
-import { BaseResponseChildBinariesResponse } from '../models/BaseResponseChildBinariesResponse';
-import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { GetAdditionalDetailsOutputBody } from '../models/GetAdditionalDetailsOutputBody';
 import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDetailsStatusOutputBody';
 
@@ -26,52 +18,9 @@ import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDet
 export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Downloads a zipped binary with password protection
-     * @param binaryId 
-     */
-    public async downloadZippedBinary(binaryId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'binaryId' is not null or undefined
-        if (binaryId === null || binaryId === undefined) {
-            throw new RequiredError("BinariesApi", "downloadZippedBinary", "binaryId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/binaries/{binary_id}/download-zipped'
-            .replace('{' + 'binary_id' + '}', encodeURIComponent(String(binaryId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * @deprecated
-     *
-     * Gets the additional details of a binary
-     * @param binaryId 
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
+     * @param binaryId Binary ID
      */
     public async getBinaryAdditionalDetails(binaryId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
@@ -79,136 +28,6 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
             throw new RequiredError("BinariesApi", "getBinaryAdditionalDetails", "binaryId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/binaries/{binary_id}/additional-details'
-            .replace('{' + 'binary_id' + '}', encodeURIComponent(String(binaryId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * @deprecated
-     *
-     * Gets the status of the additional details task for a binary
-     * @param binaryId 
-     */
-    public async getBinaryAdditionalDetailsStatus(binaryId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'binaryId' is not null or undefined
-        if (binaryId === null || binaryId === undefined) {
-            throw new RequiredError("BinariesApi", "getBinaryAdditionalDetailsStatus", "binaryId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/binaries/{binary_id}/additional-details/status'
-            .replace('{' + 'binary_id' + '}', encodeURIComponent(String(binaryId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the additional-details extraction status for a binary.
-     * @param binaryId Binary ID
-     */
-    public async getBinaryAdditionalDetailsStatus_1(binaryId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'binaryId' is not null or undefined
-        if (binaryId === null || binaryId === undefined) {
-            throw new RequiredError("BinariesApi", "getBinaryAdditionalDetailsStatus_1", "binaryId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v3/binaries/{binary_id}/additional-details/status'
-            .replace('{' + 'binary_id' + '}', encodeURIComponent(String(binaryId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get additional details for a binary.
-     * @param binaryId Binary ID
-     */
-    public async getBinaryAdditionalDetails_2(binaryId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'binaryId' is not null or undefined
-        if (binaryId === null || binaryId === undefined) {
-            throw new RequiredError("BinariesApi", "getBinaryAdditionalDetails_2", "binaryId");
         }
 
 
@@ -242,188 +61,21 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Gets the details of a binary
-     * @param binaryId 
+     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the additional-details extraction status for a binary.
+     * @param binaryId Binary ID
      */
-    public async getBinaryDetails(binaryId: number, _options?: Configuration): Promise<RequestContext> {
+    public async getBinaryAdditionalDetailsStatus(binaryId: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'binaryId' is not null or undefined
         if (binaryId === null || binaryId === undefined) {
-            throw new RequiredError("BinariesApi", "getBinaryDetails", "binaryId");
+            throw new RequiredError("BinariesApi", "getBinaryAdditionalDetailsStatus", "binaryId");
         }
 
 
         // Path Params
-        const localVarPath = '/v2/binaries/{binary_id}/details'
-            .replace('{' + 'binary_id' + '}', encodeURIComponent(String(binaryId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Gets the die info of a binary
-     * @param binaryId 
-     */
-    public async getBinaryDieInfo(binaryId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'binaryId' is not null or undefined
-        if (binaryId === null || binaryId === undefined) {
-            throw new RequiredError("BinariesApi", "getBinaryDieInfo", "binaryId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/binaries/{binary_id}/die-info'
-            .replace('{' + 'binary_id' + '}', encodeURIComponent(String(binaryId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Gets the external details of a binary
-     * @param binaryId 
-     */
-    public async getBinaryExternals(binaryId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'binaryId' is not null or undefined
-        if (binaryId === null || binaryId === undefined) {
-            throw new RequiredError("BinariesApi", "getBinaryExternals", "binaryId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/binaries/{binary_id}/externals'
-            .replace('{' + 'binary_id' + '}', encodeURIComponent(String(binaryId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Gets the status of the unpack binary task for a binary
-     * @param binaryId 
-     */
-    public async getBinaryRelatedStatus(binaryId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'binaryId' is not null or undefined
-        if (binaryId === null || binaryId === undefined) {
-            throw new RequiredError("BinariesApi", "getBinaryRelatedStatus", "binaryId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/binaries/{binary_id}/related/status'
-            .replace('{' + 'binary_id' + '}', encodeURIComponent(String(binaryId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Gets the related binaries of a binary.
-     * @param binaryId 
-     */
-    public async getRelatedBinaries(binaryId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'binaryId' is not null or undefined
-        if (binaryId === null || binaryId === undefined) {
-            throw new RequiredError("BinariesApi", "getRelatedBinaries", "binaryId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/binaries/{binary_id}/related'
+        const localVarPath = '/v3/binaries/{binary_id}/additional-details/status'
             .replace('{' + 'binary_id' + '}', encodeURIComponent(String(binaryId)));
 
         // Make Request Context
@@ -459,65 +111,53 @@ export class BinariesApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to downloadZippedBinary
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async downloadZippedBinaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<HttpFile >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: HttpFile = await response.getBodyAsFile() as any as HttpFile;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", "binary"
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: HttpFile = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "HttpFile", "binary"
-            ) as HttpFile;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
      * @params response Response returned by the server for a request to getBinaryAdditionalDetails
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getBinaryAdditionalDetailsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseBinaryAdditionalResponse >> {
+     public async getBinaryAdditionalDetailsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetAdditionalDetailsOutputBody >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseBinaryAdditionalResponse = ObjectSerializer.deserialize(
+            const body: GetAdditionalDetailsOutputBody = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseBinaryAdditionalResponse", ""
-            ) as BaseResponseBinaryAdditionalResponse;
+                "GetAdditionalDetailsOutputBody", ""
+            ) as GetAdditionalDetailsOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
         }
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseBinaryAdditionalResponse = ObjectSerializer.deserialize(
+            const body: GetAdditionalDetailsOutputBody = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseBinaryAdditionalResponse", ""
-            ) as BaseResponseBinaryAdditionalResponse;
+                "GetAdditionalDetailsOutputBody", ""
+            ) as GetAdditionalDetailsOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -531,43 +171,7 @@ export class BinariesApiResponseProcessor {
      * @params response Response returned by the server for a request to getBinaryAdditionalDetailsStatus
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getBinaryAdditionalDetailsStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseAdditionalDetailsStatusResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseAdditionalDetailsStatusResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseAdditionalDetailsStatusResponse", ""
-            ) as BaseResponseAdditionalDetailsStatusResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseAdditionalDetailsStatusResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseAdditionalDetailsStatusResponse", ""
-            ) as BaseResponseAdditionalDetailsStatusResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getBinaryAdditionalDetailsStatus_1
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getBinaryAdditionalDetailsStatus_1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetAdditionalDetailsStatusOutputBody >> {
+     public async getBinaryAdditionalDetailsStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetAdditionalDetailsStatusOutputBody >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: GetAdditionalDetailsStatusOutputBody = ObjectSerializer.deserialize(
@@ -611,250 +215,6 @@ export class BinariesApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "GetAdditionalDetailsStatusOutputBody", ""
             ) as GetAdditionalDetailsStatusOutputBody;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getBinaryAdditionalDetails_2
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getBinaryAdditionalDetails_2WithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetAdditionalDetailsOutputBody >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: GetAdditionalDetailsOutputBody = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "GetAdditionalDetailsOutputBody", ""
-            ) as GetAdditionalDetailsOutputBody;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: GetAdditionalDetailsOutputBody = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "GetAdditionalDetailsOutputBody", ""
-            ) as GetAdditionalDetailsOutputBody;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getBinaryDetails
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getBinaryDetailsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseBinaryDetailsResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseBinaryDetailsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseBinaryDetailsResponse", ""
-            ) as BaseResponseBinaryDetailsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseBinaryDetailsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseBinaryDetailsResponse", ""
-            ) as BaseResponseBinaryDetailsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getBinaryDieInfo
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getBinaryDieInfoWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseListDieMatch >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseListDieMatch = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseListDieMatch", ""
-            ) as BaseResponseListDieMatch;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseListDieMatch = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseListDieMatch", ""
-            ) as BaseResponseListDieMatch;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getBinaryExternals
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getBinaryExternalsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseBinaryExternalsResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseBinaryExternalsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseBinaryExternalsResponse", ""
-            ) as BaseResponseBinaryExternalsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseBinaryExternalsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseBinaryExternalsResponse", ""
-            ) as BaseResponseBinaryExternalsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getBinaryRelatedStatus
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getBinaryRelatedStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseBinariesRelatedStatusResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseBinariesRelatedStatusResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseBinariesRelatedStatusResponse", ""
-            ) as BaseResponseBinariesRelatedStatusResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseBinariesRelatedStatusResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseBinariesRelatedStatusResponse", ""
-            ) as BaseResponseBinariesRelatedStatusResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getRelatedBinaries
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getRelatedBinariesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseChildBinariesResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseChildBinariesResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseChildBinariesResponse", ""
-            ) as BaseResponseChildBinariesResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseChildBinariesResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseChildBinariesResponse", ""
-            ) as BaseResponseChildBinariesResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

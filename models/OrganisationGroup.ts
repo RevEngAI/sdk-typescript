@@ -13,7 +13,7 @@ import { HttpFile } from '../http/http';
 
 export class OrganisationGroup {
     'createdAt': Date;
-    'name': string | null;
+    'name': string;
     'organisationGroupId': number;
     'organisationId': number;
     'teamId': number;

@@ -16,7 +16,7 @@ export class DisassemblyOutputBody {
     'functionId': number;
     'localVariables'?: any | null;
     'params'?: any | null;
-    'returnType'?: string | null;
+    'returnType'?: string;
     'returns': boolean;
 
     static readonly discriminator: string | undefined = undefined;

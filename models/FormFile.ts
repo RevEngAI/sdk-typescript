@@ -12,8 +12,8 @@
 import { HttpFile } from '../http/http';
 
 export class FormFile {
-    'contentType': string | null;
-    'filename': string | null;
+    'contentType': string;
+    'filename': string;
     'isSet': boolean;
     'size': number;
 

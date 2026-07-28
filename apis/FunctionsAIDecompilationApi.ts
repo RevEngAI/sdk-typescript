@@ -9,8 +9,6 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { APIError } from '../models/APIError';
-import { BaseResponse } from '../models/BaseResponse';
-import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { CommentsData } from '../models/CommentsData';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
 import { DecompilationData } from '../models/DecompilationData';
@@ -19,7 +17,6 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { StreamAiDecompilation200ResponseInner } from '../models/StreamAiDecompilation200ResponseInner';
 import { SummaryData } from '../models/SummaryData';
 import { TokenisedData } from '../models/TokenisedData';
-import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
 import { UpsertOverridesData } from '../models/UpsertOverridesData';
 import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
 import { WorkflowProgress } from '../models/WorkflowProgress';
@@ -239,48 +236,6 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
 
         // Path Params
         const localVarPath = '/v3/functions/{function_id}/ai-decompilation/inline-comments/status'
-            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Get rating for AI decompilation
-     * @param functionId The ID of the function for which to get the rating
-     */
-    public async getAiDecompilationRating(functionId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'functionId' is not null or undefined
-        if (functionId === null || functionId === undefined) {
-            throw new RequiredError("FunctionsAIDecompilationApi", "getAiDecompilationRating", "functionId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/functions/{function_id}/ai-decompilation/rating'
             .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
 
         // Make Request Context
@@ -731,66 +686,6 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         return requestContext;
     }
 
-    /**
-     * Upsert rating for AI decompilation
-     * @param functionId The ID of the function being rated
-     * @param upsertAiDecomplationRatingRequest 
-     */
-    public async upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'functionId' is not null or undefined
-        if (functionId === null || functionId === undefined) {
-            throw new RequiredError("FunctionsAIDecompilationApi", "upsertAiDecompilationRating", "functionId");
-        }
-
-
-        // verify required parameter 'upsertAiDecomplationRatingRequest' is not null or undefined
-        if (upsertAiDecomplationRatingRequest === null || upsertAiDecomplationRatingRequest === undefined) {
-            throw new RequiredError("FunctionsAIDecompilationApi", "upsertAiDecompilationRating", "upsertAiDecomplationRatingRequest");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/functions/{function_id}/ai-decompilation/rating'
-            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PATCH);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(upsertAiDecomplationRatingRequest, "UpsertAiDecomplationRatingRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
 }
 
 export class FunctionsAIDecompilationApiResponseProcessor {
@@ -1088,42 +983,6 @@ export class FunctionsAIDecompilationApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "WorkflowProgress", ""
             ) as WorkflowProgress;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getAiDecompilationRating
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getAiDecompilationRatingWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseUnionGetAiDecompilationRatingResponseNoneType >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseUnionGetAiDecompilationRatingResponseNoneType = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseUnionGetAiDecompilationRatingResponseNoneType", ""
-            ) as BaseResponseUnionGetAiDecompilationRatingResponseNoneType;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseUnionGetAiDecompilationRatingResponseNoneType = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseUnionGetAiDecompilationRatingResponseNoneType", ""
-            ) as BaseResponseUnionGetAiDecompilationRatingResponseNoneType;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1623,42 +1482,6 @@ export class FunctionsAIDecompilationApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "UpsertOverridesData", ""
             ) as UpsertOverridesData;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to upsertAiDecompilationRating
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async upsertAiDecompilationRatingWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

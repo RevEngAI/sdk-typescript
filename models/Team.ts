@@ -18,7 +18,7 @@ export class Team {
     'organisationId'?: number;
     'plan': TeamPlanEnum;
     'teamId': number;
-    'teamName': string | null;
+    'teamName': string;
 
     static readonly discriminator: string | undefined = undefined;
 

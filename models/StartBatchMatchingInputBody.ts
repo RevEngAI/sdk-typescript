@@ -19,7 +19,7 @@ export class StartBatchMatchingInputBody {
     /**
     * Restrict matches to candidates with these debug source types. Defaults to [\"SYSTEM\"].
     */
-    'debugTypes'?: Array<string | null> | null;
+    'debugTypes'?: Array<string> | null;
     /**
     * Similarity floor as a percentage. Defaults to 90.
     */
@@ -43,7 +43,7 @@ export class StartBatchMatchingInputBody {
         {
             "name": "debugTypes",
             "baseName": "debug_types",
-            "type": "Array<string | null>",
+            "type": "Array<string>",
             "format": ""
         },
         {

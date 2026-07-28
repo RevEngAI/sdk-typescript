@@ -12,118 +12,21 @@ import { AddOwnerInputBody } from '../models/AddOwnerInputBody';
 import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
-import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
-import { AiDecompilationRating } from '../models/AiDecompilationRating';
-import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
-import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
-import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
-import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
-import { AnalysisConfig } from '../models/AnalysisConfig';
-import { AnalysisConfigSnapshot } from '../models/AnalysisConfigSnapshot';
-import { AnalysisCreateRequest } from '../models/AnalysisCreateRequest';
-import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
-import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionEntry } from '../models/AnalysisFunctionEntry';
-import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
-import { AnalysisFunctions } from '../models/AnalysisFunctions';
-import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
 import { AnalysisLogs } from '../models/AnalysisLogs';
-import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisRecordBody } from '../models/AnalysisRecordBody';
 import { AnalysisReport } from '../models/AnalysisReport';
-import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
-import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringItem } from '../models/AnalysisStringItem';
-import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
-import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTagBody } from '../models/AnalysisTagBody';
-import { AnalysisTags } from '../models/AnalysisTags';
-import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
-import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
-import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { ApiCall } from '../models/ApiCall';
-import { AppApiRestV2AgentSchemaCapability } from '../models/AppApiRestV2AgentSchemaCapability';
-import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
-import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
-import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
-import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
-import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
 import { ArchiveContentEntry } from '../models/ArchiveContentEntry';
-import { Argument } from '../models/Argument';
 import { Artifact } from '../models/Artifact';
 import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
 import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
-import { AutoRunAgents } from '../models/AutoRunAgents';
 import { AutoUnstripStatusOutputBody } from '../models/AutoUnstripStatusOutputBody';
-import { BaseResponse } from '../models/BaseResponse';
-import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
-import { BaseResponseAnalysisBulkAddTagsResponse } from '../models/BaseResponseAnalysisBulkAddTagsResponse';
-import { BaseResponseAnalysisCreateResponse } from '../models/BaseResponseAnalysisCreateResponse';
-import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalysisDetailResponse';
-import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
-import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
-import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
-import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
-import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseResponseAnalysisStringsStatusResponse';
-import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
-import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
-import { BaseResponseBasic } from '../models/BaseResponseBasic';
-import { BaseResponseBinariesRelatedStatusResponse } from '../models/BaseResponseBinariesRelatedStatusResponse';
-import { BaseResponseBinaryAdditionalResponse } from '../models/BaseResponseBinaryAdditionalResponse';
-import { BaseResponseBinaryDetailsResponse } from '../models/BaseResponseBinaryDetailsResponse';
-import { BaseResponseBinaryExternalsResponse } from '../models/BaseResponseBinaryExternalsResponse';
-import { BaseResponseBinarySearchResponse } from '../models/BaseResponseBinarySearchResponse';
-import { BaseResponseBool } from '../models/BaseResponseBool';
-import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
-import { BaseResponseCapabilities } from '../models/BaseResponseCapabilities';
-import { BaseResponseCapabilitiesAgentResponse } from '../models/BaseResponseCapabilitiesAgentResponse';
-import { BaseResponseChildBinariesResponse } from '../models/BaseResponseChildBinariesResponse';
-import { BaseResponseCollectionBinariesUpdateResponse } from '../models/BaseResponseCollectionBinariesUpdateResponse';
-import { BaseResponseCollectionResponse } from '../models/BaseResponseCollectionResponse';
-import { BaseResponseCollectionSearchResponse } from '../models/BaseResponseCollectionSearchResponse';
-import { BaseResponseCollectionTagsUpdateResponse } from '../models/BaseResponseCollectionTagsUpdateResponse';
-import { BaseResponseCommentResponse } from '../models/BaseResponseCommentResponse';
-import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
-import { BaseResponseCreated } from '../models/BaseResponseCreated';
-import { BaseResponseDict } from '../models/BaseResponseDict';
-import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
-import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
-import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
-import { BaseResponseFunctionDataTypes } from '../models/BaseResponseFunctionDataTypes';
-import { BaseResponseFunctionDataTypesList } from '../models/BaseResponseFunctionDataTypesList';
-import { BaseResponseFunctionSearchResponse } from '../models/BaseResponseFunctionSearchResponse';
-import { BaseResponseFunctionStringsResponse } from '../models/BaseResponseFunctionStringsResponse';
-import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
-import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
-import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
-import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
-import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
-import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
-import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
-import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
-import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
-import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
-import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
-import { BaseResponseLogs } from '../models/BaseResponseLogs';
-import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
-import { BaseResponseParams } from '../models/BaseResponseParams';
-import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
-import { BaseResponseRecent } from '../models/BaseResponseRecent';
-import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
-import { BaseResponseStatus } from '../models/BaseResponseStatus';
-import { BaseResponseStr } from '../models/BaseResponseStr';
-import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
-import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
-import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatusResponse';
-import { BaseResponseTriageReportResponse } from '../models/BaseResponseTriageReportResponse';
-import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
-import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
-import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
-import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
-import { Basic } from '../models/Basic';
 import { BatchBinaryMatchResult } from '../models/BatchBinaryMatchResult';
 import { BatchMatchingOutputBody } from '../models/BatchMatchingOutputBody';
 import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
@@ -133,57 +36,21 @@ import { BatchUpdateDataTypesInputBody } from '../models/BatchUpdateDataTypesInp
 import { BatchUpdateDataTypesItem } from '../models/BatchUpdateDataTypesItem';
 import { BatchUpdateDataTypesOutputBody } from '../models/BatchUpdateDataTypesOutputBody';
 import { BatchUpdateDataTypesResult } from '../models/BatchUpdateDataTypesResult';
-import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
-import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { Binary } from '../models/Binary';
-import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
-import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
-import { BinaryConfig } from '../models/BinaryConfig';
-import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
-import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
-import { BinarySearchResponse } from '../models/BinarySearchResponse';
-import { BinarySearchResult } from '../models/BinarySearchResult';
-import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { BulkCreateUserResult } from '../models/BulkCreateUserResult';
 import { BulkCreateUsersOutputBody } from '../models/BulkCreateUsersOutputBody';
-import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { CallEdge } from '../models/CallEdge';
 import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
-import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
-import { CalleesCallerFunctionsResponse } from '../models/CalleesCallerFunctionsResponse';
-import { CallerFunctionInfo } from '../models/CallerFunctionInfo';
 import { CanonicalName } from '../models/CanonicalName';
 import { CanonicalizeNamesInputBody } from '../models/CanonicalizeNamesInputBody';
 import { CanonicalizeNamesOutputBody } from '../models/CanonicalizeNamesOutputBody';
-import { Capabilities } from '../models/Capabilities';
-import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
 import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
 import { CapabilityEntry } from '../models/CapabilityEntry';
-import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
-import { CodeSignatureModel } from '../models/CodeSignatureModel';
-import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
-import { CollectionBinariesUpdateResponse } from '../models/CollectionBinariesUpdateResponse';
-import { CollectionBinaryResponse } from '../models/CollectionBinaryResponse';
-import { CollectionCreateRequest } from '../models/CollectionCreateRequest';
-import { CollectionListItem } from '../models/CollectionListItem';
 import { CollectionListItemBody } from '../models/CollectionListItemBody';
-import { CollectionResponse } from '../models/CollectionResponse';
-import { CollectionResponseBinariesInner } from '../models/CollectionResponseBinariesInner';
-import { CollectionScope } from '../models/CollectionScope';
-import { CollectionSearchResponse } from '../models/CollectionSearchResponse';
-import { CollectionSearchResult } from '../models/CollectionSearchResult';
-import { CollectionTagsUpdateRequest } from '../models/CollectionTagsUpdateRequest';
-import { CollectionTagsUpdateResponse } from '../models/CollectionTagsUpdateResponse';
-import { CollectionUpdateRequest } from '../models/CollectionUpdateRequest';
-import { CommentBase } from '../models/CommentBase';
-import { CommentResponse } from '../models/CommentResponse';
-import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { CommentsData } from '../models/CommentsData';
-import { ConfigResponse } from '../models/ConfigResponse';
 import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
 import { ConsoleOutputEntry } from '../models/ConsoleOutputEntry';
-import { Context } from '../models/Context';
 import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
@@ -199,30 +66,15 @@ import { CreateOrganisationInputBody } from '../models/CreateOrganisationInputBo
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
 import { CreateTeamInputBody } from '../models/CreateTeamInputBody';
 import { CreateUserInputBody } from '../models/CreateUserInputBody';
-import { Created } from '../models/Created';
 import { DataTypesEntry } from '../models/DataTypesEntry';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
-import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DecompilationData } from '../models/DecompilationData';
-import { DieMatch } from '../models/DieMatch';
 import { DisassemblyOutputBody } from '../models/DisassemblyOutputBody';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
-import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { DynamicExecutionStatusResponse } from '../models/DynamicExecutionStatusResponse';
-import { ELFImportModel } from '../models/ELFImportModel';
-import { ELFModel } from '../models/ELFModel';
-import { ELFRelocation } from '../models/ELFRelocation';
-import { ELFSection } from '../models/ELFSection';
-import { ELFSecurity } from '../models/ELFSecurity';
-import { ELFSegment } from '../models/ELFSegment';
-import { ELFSymbol } from '../models/ELFSymbol';
-import { ElfDynamicEntry } from '../models/ElfDynamicEntry';
-import { EntrypointModel } from '../models/EntrypointModel';
-import { Enumeration } from '../models/Enumeration';
 import { ErrorBody } from '../models/ErrorBody';
-import { ErrorModel } from '../models/ErrorModel';
 import { Event } from '../models/Event';
 import { EventAttemptFailed } from '../models/EventAttemptFailed';
 import { EventAttemptStarted } from '../models/EventAttemptStarted';
@@ -251,76 +103,36 @@ import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
 import { EventWarning } from '../models/EventWarning';
 import { Example } from '../models/Example';
-import { ExportModel } from '../models/ExportModel';
-import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedURL } from '../models/ExtractedURL';
 import { FileActivityEntry } from '../models/FileActivityEntry';
-import { FileFormat } from '../models/FileFormat';
-import { FileHashes } from '../models/FileHashes';
-import { FileMetadata } from '../models/FileMetadata';
-import { Filters } from '../models/Filters';
 import { FormFile } from '../models/FormFile';
 import { FunctionArgument } from '../models/FunctionArgument';
-import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
-import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
-import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
-import { FunctionBoundary } from '../models/FunctionBoundary';
 import { FunctionCallEdges } from '../models/FunctionCallEdges';
-import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
-import { FunctionDataTypes } from '../models/FunctionDataTypes';
-import { FunctionDataTypesList } from '../models/FunctionDataTypesList';
-import { FunctionDataTypesListItem } from '../models/FunctionDataTypesListItem';
-import { FunctionDataTypesParams } from '../models/FunctionDataTypesParams';
-import { FunctionDataTypesStatus } from '../models/FunctionDataTypesStatus';
 import { FunctionDependency } from '../models/FunctionDependency';
 import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
 import { FunctionHeader } from '../models/FunctionHeader';
 import { FunctionInfo } from '../models/FunctionInfo';
-import { FunctionListItem } from '../models/FunctionListItem';
-import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
-import { FunctionMapping } from '../models/FunctionMapping';
 import { FunctionMatch } from '../models/FunctionMatch';
-import { FunctionNameHistory } from '../models/FunctionNameHistory';
-import { FunctionParamResponse } from '../models/FunctionParamResponse';
-import { FunctionRename } from '../models/FunctionRename';
-import { FunctionRenameMap } from '../models/FunctionRenameMap';
-import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
-import { FunctionSearchResult } from '../models/FunctionSearchResult';
-import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionStackVariable } from '../models/FunctionStackVariable';
-import { FunctionString } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
-import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionType } from '../models/FunctionType';
-import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
-import { FunctionsListRename } from '../models/FunctionsListRename';
-import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
 import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
-import { GenerationStatusList } from '../models/GenerationStatusList';
 import { GetAdditionalDetailsOutputBody } from '../models/GetAdditionalDetailsOutputBody';
 import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDetailsStatusOutputBody';
-import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
 import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetMatchesOutputBody } from '../models/GetMatchesOutputBody';
 import { GetMatchesStatusOutputBody } from '../models/GetMatchesStatusOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
-import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
 import { GetSubscriptionOutputBody } from '../models/GetSubscriptionOutputBody';
-import { GlobalVariable } from '../models/GlobalVariable';
 import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
-import { IOC } from '../models/IOC';
-import { ISA } from '../models/ISA';
-import { IconModel } from '../models/IconModel';
-import { ImportModel } from '../models/ImportModel';
 import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
 import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
 import { IndirectCallSite } from '../models/IndirectCallSite';
 import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBody';
 import { InlineComment } from '../models/InlineComment';
-import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
 import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
@@ -328,7 +140,6 @@ import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysis
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListArchiveContentsOutputBody } from '../models/ListArchiveContentsOutputBody';
-import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
@@ -337,30 +148,19 @@ import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctions
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
 import { LocationOutputBody } from '../models/LocationOutputBody';
-import { Logs } from '../models/Logs';
-import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MemdumpEntry } from '../models/MemdumpEntry';
 import { MessageBody } from '../models/MessageBody';
-import { MetaModel } from '../models/MetaModel';
-import { ModelName } from '../models/ModelName';
-import { ModelsResponse } from '../models/ModelsResponse';
 import { ModuleLoadEntry } from '../models/ModuleLoadEntry';
 import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
-import { NameSourceType } from '../models/NameSourceType';
 import { NetworkActivity } from '../models/NetworkActivity';
 import { OIDCCallbackInputBody } from '../models/OIDCCallbackInputBody';
-import { Order } from '../models/Order';
 import { Organisation } from '../models/Organisation';
 import { OrganisationGroup } from '../models/OrganisationGroup';
 import { OrganisationIssuer } from '../models/OrganisationIssuer';
 import { OrganisationOwner } from '../models/OrganisationOwner';
-import { PDBDebugModel } from '../models/PDBDebugModel';
-import { PEModel } from '../models/PEModel';
-import { PaginationModel } from '../models/PaginationModel';
-import { Params } from '../models/Params';
 import { PasswordResetInputBody } from '../models/PasswordResetInputBody';
 import { PatchCollectionBinariesInputBody } from '../models/PatchCollectionBinariesInputBody';
 import { PatchCollectionBinariesOutputBody } from '../models/PatchCollectionBinariesOutputBody';
@@ -371,7 +171,6 @@ import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutp
 import { PatchCommentBody } from '../models/PatchCommentBody';
 import { PcapBodyInfo } from '../models/PcapBodyInfo';
 import { Permissions } from '../models/Permissions';
-import { Platform } from '../models/Platform';
 import { PriceOutput } from '../models/PriceOutput';
 import { PriceSummary } from '../models/PriceSummary';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
@@ -382,43 +181,24 @@ import { ProductOutput } from '../models/ProductOutput';
 import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
-import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
-import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
-import { ReAnalysisForm } from '../models/ReAnalysisForm';
-import { Recent } from '../models/Recent';
 import { RefreshBody } from '../models/RefreshBody';
 import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
-import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
 import { RenameOutputBody } from '../models/RenameOutputBody';
 import { ReplacementValue } from '../models/ReplacementValue';
-import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
 import { ReportOptions } from '../models/ReportOptions';
 import { RevokeBody } from '../models/RevokeBody';
-import { SBOM } from '../models/SBOM';
-import { SBOMPackage } from '../models/SBOMPackage';
 import { SSOProvider } from '../models/SSOProvider';
 import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
-import { SandboxOptions } from '../models/SandboxOptions';
-import { SandboxStartMethod } from '../models/SandboxStartMethod';
-import { SandboxTimeout } from '../models/SandboxTimeout';
 import { ScheduledTaskEntry } from '../models/ScheduledTaskEntry';
-import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
-import { SectionModel } from '../models/SectionModel';
-import { SecurityModel } from '../models/SecurityModel';
-import { SegmentInfo } from '../models/SegmentInfo';
 import { SendMessageRequest } from '../models/SendMessageRequest';
 import { ServiceEntry } from '../models/ServiceEntry';
 import { SessionOutputBody } from '../models/SessionOutputBody';
-import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
-import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
-import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
-import { SingleSectionModel } from '../models/SingleSectionModel';
 import { SourceDeltaEvent } from '../models/SourceDeltaEvent';
 import { SourceResetEvent } from '../models/SourceResetEvent';
 import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
@@ -438,44 +218,23 @@ import { SseEventToolCallProgressData } from '../models/SseEventToolCallProgress
 import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData';
 import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
 import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
-import { StackVariable } from '../models/StackVariable';
 import { StartBatchMatchingInputBody } from '../models/StartBatchMatchingInputBody';
 import { StartMatchingForAnalysisInputBody } from '../models/StartMatchingForAnalysisInputBody';
 import { StartMatchingForFunctionsInputBody } from '../models/StartMatchingForFunctionsInputBody';
 import { StartMatchingOutputBody } from '../models/StartMatchingOutputBody';
 import { StartupInfo } from '../models/StartupInfo';
-import { StatusInput } from '../models/StatusInput';
-import { StatusOutput } from '../models/StatusOutput';
 import { StatusResponse } from '../models/StatusResponse';
 import { StreamAiDecompilation200ResponseInner } from '../models/StreamAiDecompilation200ResponseInner';
 import { StreamEvents200ResponseInner } from '../models/StreamEvents200ResponseInner';
-import { StringFunctions } from '../models/StringFunctions';
-import { StringSource } from '../models/StringSource';
-import { Structure } from '../models/Structure';
-import { StructureMember } from '../models/StructureMember';
-import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
 import { SummaryData } from '../models/SummaryData';
-import { Symbols } from '../models/Symbols';
-import { Tag } from '../models/Tag';
-import { TagItem } from '../models/TagItem';
-import { TagResponse } from '../models/TagResponse';
-import { TagSearchResponse } from '../models/TagSearchResponse';
-import { TagSearchResult } from '../models/TagSearchResult';
-import { TaskResponse } from '../models/TaskResponse';
-import { TaskStatus } from '../models/TaskStatus';
-import { TaskStatusResponse } from '../models/TaskStatusResponse';
 import { TcpCarvedFile } from '../models/TcpCarvedFile';
 import { Team } from '../models/Team';
 import { TeamMember } from '../models/TeamMember';
-import { TimestampModel } from '../models/TimestampModel';
 import { TokenInputBody } from '../models/TokenInputBody';
 import { TokenResponse } from '../models/TokenResponse';
 import { TokenisedData } from '../models/TokenisedData';
-import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
-import { TriageReportResponse } from '../models/TriageReportResponse';
 import { TriggerDynamicExecutionInputBody } from '../models/TriggerDynamicExecutionInputBody';
 import { Ttp } from '../models/Ttp';
-import { TypeDefinition } from '../models/TypeDefinition';
 import { UpdateDataTypesInputBody } from '../models/UpdateDataTypesInputBody';
 import { UpdateDataTypesOutputBody } from '../models/UpdateDataTypesOutputBody';
 import { UpdateIssuerInputBody } from '../models/UpdateIssuerInputBody';
@@ -486,494 +245,14 @@ import { UpdateTeamInputBody } from '../models/UpdateTeamInputBody';
 import { UpdateUserCreditsInputBody } from '../models/UpdateUserCreditsInputBody';
 import { UpdateUserInputBody } from '../models/UpdateUserInputBody';
 import { UpdateUserPasswordInputBody } from '../models/UpdateUserPasswordInputBody';
-import { UploadFileType } from '../models/UploadFileType';
-import { UploadResponse } from '../models/UploadResponse';
-import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
 import { UpsertOverridesData } from '../models/UpsertOverridesData';
 import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
 import { User } from '../models/User';
-import { UserActivityResponse } from '../models/UserActivityResponse';
 import { UserCredits } from '../models/UserCredits';
 import { UserIdentity } from '../models/UserIdentity';
 import { UserProfile } from '../models/UserProfile';
-import { V2FunctionHeader } from '../models/V2FunctionHeader';
-import { V2FunctionInfo } from '../models/V2FunctionInfo';
-import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
-import { V2FunctionType } from '../models/V2FunctionType';
-import { Vulnerabilities } from '../models/Vulnerabilities';
-import { Vulnerability } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
 import { WorkflowProgress } from '../models/WorkflowProgress';
-import { Workspace } from '../models/Workspace';
-import { XrefFromResponse } from '../models/XrefFromResponse';
-import { XrefResponse } from '../models/XrefResponse';
-import { XrefToResponse } from '../models/XrefToResponse';
-
-import { ObservableAgentApi } from "./ObservableAPI";
-import { AgentApiRequestFactory, AgentApiResponseProcessor} from "../apis/AgentApi";
-
-export interface AgentApiCheckCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AgentApicheckCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet
-     */
-    analysisId: number
-}
-
-export interface AgentApiCheckReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AgentApicheckReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet
-     */
-    analysisId: number
-}
-
-export interface AgentApiCheckTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGetRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AgentApicheckTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet
-     */
-    analysisId: number
-}
-
-export interface AgentApiCreateCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPostRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AgentApicreateCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost
-     */
-    analysisId: number
-}
-
-export interface AgentApiCreateReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AgentApicreateReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost
-     */
-    analysisId: number
-}
-
-export interface AgentApiCreateTriageTaskV2AnalysesAnalysisIdAgentTriagePostRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AgentApicreateTriageTaskV2AnalysesAnalysisIdAgentTriagePost
-     */
-    analysisId: number
-}
-
-export interface AgentApiGetCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AgentApigetCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet
-     */
-    analysisId: number
-}
-
-export interface AgentApiGetReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGetRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AgentApigetReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet
-     */
-    analysisId: number
-}
-
-export interface AgentApiGetTriageResultV2AnalysesAnalysisIdAgentTriageGetRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AgentApigetTriageResultV2AnalysesAnalysisIdAgentTriageGet
-     */
-    analysisId: number
-}
-
-export class ObjectAgentApi {
-    private api: ObservableAgentApi
-
-    public constructor(configuration: Configuration, requestFactory?: AgentApiRequestFactory, responseProcessor?: AgentApiResponseProcessor) {
-        this.api = new ObservableAgentApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Check the status of a capabilities analysis workflow
-     * @param param the request object
-     */
-    public checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetWithHttpInfo(param: AgentApiCheckCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<TaskStatusResponse>> {
-        return this.api.checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of a capabilities analysis workflow
-     * @param param the request object
-     */
-    public checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(param: AgentApiCheckCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetRequest, options?: ConfigurationOptions): Promise<TaskStatusResponse> {
-        return this.api.checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of a report analysis workflow
-     * @param param the request object
-     */
-    public checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetWithHttpInfo(param: AgentApiCheckReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<TaskStatusResponse>> {
-        return this.api.checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of a report analysis workflow
-     * @param param the request object
-     */
-    public checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet(param: AgentApiCheckReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetRequest, options?: ConfigurationOptions): Promise<TaskStatusResponse> {
-        return this.api.checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of a triage analysis workflow
-     * @param param the request object
-     */
-    public checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGetWithHttpInfo(param: AgentApiCheckTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<TaskStatusResponse>> {
-        return this.api.checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGetWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of a triage analysis workflow
-     * @param param the request object
-     */
-    public checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet(param: AgentApiCheckTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGetRequest, options?: ConfigurationOptions): Promise<TaskStatusResponse> {
-        return this.api.checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Queues a capabilities analysis workflow process
-     * @param param the request object
-     */
-    public createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPostWithHttpInfo(param: AgentApiCreateCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
-        return this.api.createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPostWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Queues a capabilities analysis workflow process
-     * @param param the request object
-     */
-    public createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost(param: AgentApiCreateCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPostRequest, options?: ConfigurationOptions): Promise<BaseResponseQueuedWorkflowTaskResponse> {
-        return this.api.createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Queues a combined report analysis workflow process
-     * @param param the request object
-     */
-    public createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostWithHttpInfo(param: AgentApiCreateReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<QueuedWorkflowTaskResponse>> {
-        return this.api.createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Queues a combined report analysis workflow process
-     * @param param the request object
-     */
-    public createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost(param: AgentApiCreateReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostRequest, options?: ConfigurationOptions): Promise<QueuedWorkflowTaskResponse> {
-        return this.api.createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Queues a triage analysis workflow process
-     * @param param the request object
-     */
-    public createTriageTaskV2AnalysesAnalysisIdAgentTriagePostWithHttpInfo(param: AgentApiCreateTriageTaskV2AnalysesAnalysisIdAgentTriagePostRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
-        return this.api.createTriageTaskV2AnalysesAnalysisIdAgentTriagePostWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Queues a triage analysis workflow process
-     * @param param the request object
-     */
-    public createTriageTaskV2AnalysesAnalysisIdAgentTriagePost(param: AgentApiCreateTriageTaskV2AnalysesAnalysisIdAgentTriagePostRequest, options?: ConfigurationOptions): Promise<BaseResponseQueuedWorkflowTaskResponse> {
-        return this.api.createTriageTaskV2AnalysesAnalysisIdAgentTriagePost(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get Capabilities Result
-     * @param param the request object
-     */
-    public getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetWithHttpInfo(param: AgentApiGetCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCapabilitiesAgentResponse>> {
-        return this.api.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get Capabilities Result
-     * @param param the request object
-     */
-    public getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(param: AgentApiGetCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetRequest, options?: ConfigurationOptions): Promise<BaseResponseCapabilitiesAgentResponse> {
-        return this.api.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns: - A summary of the analysis - The software type of the binary - An attack flow summary - List of IOCs - List of MITRE executable techniques - A YARA rule
-     * Get Report Analysis Result
-     * @param param the request object
-     */
-    public getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGetWithHttpInfo(param: AgentApiGetReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseReportAnalysisResponse>> {
-        return this.api.getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGetWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns: - A summary of the analysis - The software type of the binary - An attack flow summary - List of IOCs - List of MITRE executable techniques - A YARA rule
-     * Get Report Analysis Result
-     * @param param the request object
-     */
-    public getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet(param: AgentApiGetReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGetRequest, options?: ConfigurationOptions): Promise<BaseResponseReportAnalysisResponse> {
-        return this.api.getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get Triage Result
-     * @param param the request object
-     */
-    public getTriageResultV2AnalysesAnalysisIdAgentTriageGetWithHttpInfo(param: AgentApiGetTriageResultV2AnalysesAnalysisIdAgentTriageGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseTriageReportResponse>> {
-        return this.api.getTriageResultV2AnalysesAnalysisIdAgentTriageGetWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get Triage Result
-     * @param param the request object
-     */
-    public getTriageResultV2AnalysesAnalysisIdAgentTriageGet(param: AgentApiGetTriageResultV2AnalysesAnalysisIdAgentTriageGetRequest, options?: ConfigurationOptions): Promise<BaseResponseTriageReportResponse> {
-        return this.api.getTriageResultV2AnalysesAnalysisIdAgentTriageGet(param.analysisId,  options).toPromise();
-    }
-
-}
-
-import { ObservableAnalysesBulkActionsApi } from "./ObservableAPI";
-import { AnalysesBulkActionsApiRequestFactory, AnalysesBulkActionsApiResponseProcessor} from "../apis/AnalysesBulkActionsApi";
-
-export interface AnalysesBulkActionsApiBulkAddAnalysisTagsRequest {
-    /**
-     * 
-     * @type AnalysisBulkAddTagsRequest
-     * @memberof AnalysesBulkActionsApibulkAddAnalysisTags
-     */
-    analysisBulkAddTagsRequest: AnalysisBulkAddTagsRequest
-}
-
-export interface AnalysesBulkActionsApiBulkDeleteAnalysesRequest {
-    /**
-     * 
-     * @type BulkDeleteAnalysesRequest
-     * @memberof AnalysesBulkActionsApibulkDeleteAnalyses
-     */
-    bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest
-}
-
-export class ObjectAnalysesBulkActionsApi {
-    private api: ObservableAnalysesBulkActionsApi
-
-    public constructor(configuration: Configuration, requestFactory?: AnalysesBulkActionsApiRequestFactory, responseProcessor?: AnalysesBulkActionsApiResponseProcessor) {
-        this.api = new ObservableAnalysesBulkActionsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Updates analysis tags for multiple analyses. User must be the owner.
-     * Bulk Add Analysis Tags
-     * @param param the request object
-     */
-    public bulkAddAnalysisTagsWithHttpInfo(param: AnalysesBulkActionsApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisBulkAddTagsResponse>> {
-        return this.api.bulkAddAnalysisTagsWithHttpInfo(param.analysisBulkAddTagsRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates analysis tags for multiple analyses. User must be the owner.
-     * Bulk Add Analysis Tags
-     * @param param the request object
-     */
-    public bulkAddAnalysisTags(param: AnalysesBulkActionsApiBulkAddAnalysisTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisBulkAddTagsResponse> {
-        return this.api.bulkAddAnalysisTags(param.analysisBulkAddTagsRequest,  options).toPromise();
-    }
-
-    /**
-     * Deletes multiple analyses. User must be the owner of all analyses.
-     * Bulk Delete Analyses
-     * @param param the request object
-     */
-    public bulkDeleteAnalysesWithHttpInfo(param: AnalysesBulkActionsApiBulkDeleteAnalysesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
-        return this.api.bulkDeleteAnalysesWithHttpInfo(param.bulkDeleteAnalysesRequest,  options).toPromise();
-    }
-
-    /**
-     * Deletes multiple analyses. User must be the owner of all analyses.
-     * Bulk Delete Analyses
-     * @param param the request object
-     */
-    public bulkDeleteAnalyses(param: AnalysesBulkActionsApiBulkDeleteAnalysesRequest, options?: ConfigurationOptions): Promise<BaseResponseDict> {
-        return this.api.bulkDeleteAnalyses(param.bulkDeleteAnalysesRequest,  options).toPromise();
-    }
-
-}
-
-import { ObservableAnalysesCommentsApi } from "./ObservableAPI";
-import { AnalysesCommentsApiRequestFactory, AnalysesCommentsApiResponseProcessor} from "../apis/AnalysesCommentsApi";
-
-export interface AnalysesCommentsApiCreateAnalysisCommentRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCommentsApicreateAnalysisComment
-     */
-    analysisId: number
-    /**
-     * 
-     * @type CommentBase
-     * @memberof AnalysesCommentsApicreateAnalysisComment
-     */
-    commentBase: CommentBase
-}
-
-export interface AnalysesCommentsApiDeleteAnalysisCommentRequest {
-    /**
-     * 
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCommentsApideleteAnalysisComment
-     */
-    commentId: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCommentsApideleteAnalysisComment
-     */
-    analysisId: number
-}
-
-export interface AnalysesCommentsApiGetAnalysisCommentsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCommentsApigetAnalysisComments
-     */
-    analysisId: number
-}
-
-export interface AnalysesCommentsApiUpdateAnalysisCommentRequest {
-    /**
-     * 
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCommentsApiupdateAnalysisComment
-     */
-    commentId: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCommentsApiupdateAnalysisComment
-     */
-    analysisId: number
-    /**
-     * 
-     * @type CommentUpdateRequest
-     * @memberof AnalysesCommentsApiupdateAnalysisComment
-     */
-    commentUpdateRequest: CommentUpdateRequest
-}
-
-export class ObjectAnalysesCommentsApi {
-    private api: ObservableAnalysesCommentsApi
-
-    public constructor(configuration: Configuration, requestFactory?: AnalysesCommentsApiRequestFactory, responseProcessor?: AnalysesCommentsApiResponseProcessor) {
-        this.api = new ObservableAnalysesCommentsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Creates a comment associated with a specified analysis).
-     * Create a comment for this analysis
-     * @param param the request object
-     */
-    public createAnalysisCommentWithHttpInfo(param: AnalysesCommentsApiCreateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.createAnalysisCommentWithHttpInfo(param.analysisId, param.commentBase,  options).toPromise();
-    }
-
-    /**
-     * Creates a comment associated with a specified analysis).
-     * Create a comment for this analysis
-     * @param param the request object
-     */
-    public createAnalysisComment(param: AnalysesCommentsApiCreateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.createAnalysisComment(param.analysisId, param.commentBase,  options).toPromise();
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param param the request object
-     */
-    public deleteAnalysisCommentWithHttpInfo(param: AnalysesCommentsApiDeleteAnalysisCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        return this.api.deleteAnalysisCommentWithHttpInfo(param.commentId, param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Deletes an existing comment. Users can only delete their own comments.
-     * Delete a comment
-     * @param param the request object
-     */
-    public deleteAnalysisComment(param: AnalysesCommentsApiDeleteAnalysisCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
-        return this.api.deleteAnalysisComment(param.commentId, param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
-     * Get comments for this analysis
-     * @param param the request object
-     */
-    public getAnalysisCommentsWithHttpInfo(param: AnalysesCommentsApiGetAnalysisCommentsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCommentResponse>> {
-        return this.api.getAnalysisCommentsWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
-     * Get comments for this analysis
-     * @param param the request object
-     */
-    public getAnalysisComments(param: AnalysesCommentsApiGetAnalysisCommentsRequest, options?: ConfigurationOptions): Promise<BaseResponseListCommentResponse> {
-        return this.api.getAnalysisComments(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param param the request object
-     */
-    public updateAnalysisCommentWithHttpInfo(param: AnalysesCommentsApiUpdateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCommentResponse>> {
-        return this.api.updateAnalysisCommentWithHttpInfo(param.commentId, param.analysisId, param.commentUpdateRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates the content of an existing comment. Users can only update their own comments.
-     * Update a comment
-     * @param param the request object
-     */
-    public updateAnalysisComment(param: AnalysesCommentsApiUpdateAnalysisCommentRequest, options?: ConfigurationOptions): Promise<BaseResponseCommentResponse> {
-        return this.api.updateAnalysisComment(param.commentId, param.analysisId, param.commentUpdateRequest,  options).toPromise();
-    }
-
-}
 
 import { ObservableAnalysesCoreApi } from "./ObservableAPI";
 import { AnalysesCoreApiRequestFactory, AnalysesCoreApiResponseProcessor} from "../apis/AnalysesCoreApi";
@@ -995,49 +274,13 @@ export interface AnalysesCoreApiAddUserStringToAnalysisRequest {
     addUserStringInputBody: AddUserStringInputBody
 }
 
-export interface AnalysesCoreApiCreateAnalysisRequest {
-    /**
-     * 
-     * @type AnalysisCreateRequest
-     * @memberof AnalysesCoreApicreateAnalysis
-     */
-    analysisCreateRequest: AnalysisCreateRequest
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApicreateAnalysis
-     */
-    xRevEngApplication?: string
-}
-
-export interface AnalysesCoreApiDeleteAnalysisRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApideleteAnalysis
-     */
-    analysisId: number
-}
-
 export interface AnalysesCoreApiGetAnalysisBasicInfoRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetAnalysisBasicInfo
-     */
-    analysisId: number
-}
-
-export interface AnalysesCoreApiGetAnalysisBasicInfo0Request {
     /**
      * Analysis ID
      * Minimum: 1
      * Defaults to: undefined
      * @type number
-     * @memberof AnalysesCoreApigetAnalysisBasicInfo_1
+     * @memberof AnalysesCoreApigetAnalysisBasicInfo
      */
     analysisId: number
 }
@@ -1060,16 +303,6 @@ export interface AnalysesCoreApiGetAnalysisBytesRequest {
      * @memberof AnalysesCoreApigetAnalysisBytes
      */
     page?: number
-}
-
-export interface AnalysesCoreApiGetAnalysisFunctionMapRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetAnalysisFunctionMap
-     */
-    analysisId: number
 }
 
 export interface AnalysesCoreApiGetAnalysisFunctionMatchesRequest {
@@ -1108,36 +341,6 @@ export interface AnalysesCoreApiGetAnalysisFunctionMatchingStatusRequest {
     matchId?: string
 }
 
-export interface AnalysesCoreApiGetAnalysisLogsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetAnalysisLogs
-     */
-    analysisId: number
-}
-
-export interface AnalysesCoreApiGetAnalysisParamsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetAnalysisParams
-     */
-    analysisId: number
-}
-
-export interface AnalysesCoreApiGetAnalysisStatusRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetAnalysisStatus
-     */
-    analysisId: number
-}
-
 export interface AnalysesCoreApiGetDynamicExecutionReportRequest {
     /**
      * Analysis ID
@@ -1160,153 +363,6 @@ export interface AnalysesCoreApiGetDynamicExecutionStatusRequest {
     analysisId: number
 }
 
-export interface AnalysesCoreApiInsertAnalysisLogRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApiinsertAnalysisLog
-     */
-    analysisId: number
-    /**
-     * 
-     * @type InsertAnalysisLogRequest
-     * @memberof AnalysesCoreApiinsertAnalysisLog
-     */
-    insertAnalysisLogRequest: InsertAnalysisLogRequest
-}
-
-export interface AnalysesCoreApiListAnalysesRequest {
-    /**
-     * 
-     * Defaults to: &#39;&#39;
-     * @type string
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    searchTerm?: string
-    /**
-     * The workspace to be viewed
-     * Defaults to: undefined
-     * @type Array&lt;Workspace&gt;
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    workspace?: Array<Workspace>
-    /**
-     * The status of the analysis
-     * Defaults to: undefined
-     * @type Array&lt;StatusInput&gt;
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    status?: Array<StatusInput>
-    /**
-     * Show analysis belonging to the model
-     * Defaults to: undefined
-     * @type Array&lt;ModelName&gt;
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    modelName?: Array<ModelName>
-    /**
-     * Show analysis that have a dynamic execution with the given status
-     * Defaults to: undefined
-     * @type DynamicExecutionStatus
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    dynamicExecutionStatus?: DynamicExecutionStatus
-    /**
-     * Show analysis belonging to the user
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    usernames?: Array<string>
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    sha256Hash?: string
-    /**
-     * 
-     * Minimum: 5
-     * Maximum: 50
-     * Defaults to: 20
-     * @type number
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    limit?: number
-    /**
-     * 
-     * Defaults to: 0
-     * @type number
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    offset?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type AppApiRestV2AnalysesEnumsOrderBy
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    orderBy?: AppApiRestV2AnalysesEnumsOrderBy
-    /**
-     * 
-     * Defaults to: undefined
-     * @type Order
-     * @memberof AnalysesCoreApilistAnalyses
-     */
-    order?: Order
-}
-
-export interface AnalysesCoreApiLookupBinaryIdRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApilookupBinaryId
-     */
-    binaryId: number
-}
-
-export interface AnalysesCoreApiPutAnalysisStringsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApiputAnalysisStrings
-     */
-    analysisId: number
-    /**
-     * 
-     * @type PutAnalysisStringsRequest
-     * @memberof AnalysesCoreApiputAnalysisStrings
-     */
-    putAnalysisStringsRequest: PutAnalysisStringsRequest
-}
-
-export interface AnalysesCoreApiRequeueAnalysisRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApirequeueAnalysis
-     */
-    analysisId: number
-    /**
-     * 
-     * @type ReAnalysisForm
-     * @memberof AnalysesCoreApirequeueAnalysis
-     */
-    reAnalysisForm: ReAnalysisForm
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApirequeueAnalysis
-     */
-    xRevEngApplication?: string
-}
-
 export interface AnalysesCoreApiStartAnalysisFunctionMatchingRequest {
     /**
      * Analysis ID
@@ -1322,69 +378,6 @@ export interface AnalysesCoreApiStartAnalysisFunctionMatchingRequest {
      * @memberof AnalysesCoreApistartAnalysisFunctionMatching
      */
     startMatchingForAnalysisInputBody: StartMatchingForAnalysisInputBody
-}
-
-export interface AnalysesCoreApiUpdateAnalysisRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApiupdateAnalysis
-     */
-    analysisId: number
-    /**
-     * 
-     * @type AnalysisUpdateRequest
-     * @memberof AnalysesCoreApiupdateAnalysis
-     */
-    analysisUpdateRequest: AnalysisUpdateRequest
-}
-
-export interface AnalysesCoreApiUpdateAnalysisTagsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApiupdateAnalysisTags
-     */
-    analysisId: number
-    /**
-     * 
-     * @type AnalysisUpdateTagsRequest
-     * @memberof AnalysesCoreApiupdateAnalysisTags
-     */
-    analysisUpdateTagsRequest: AnalysisUpdateTagsRequest
-}
-
-export interface AnalysesCoreApiUploadFileRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type UploadFileType
-     * @memberof AnalysesCoreApiuploadFile
-     */
-    uploadFileType: UploadFileType
-    /**
-     * 
-     * Defaults to: undefined
-     * @type HttpFile
-     * @memberof AnalysesCoreApiuploadFile
-     */
-    file: HttpFile
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesCoreApiuploadFile
-     */
-    packedPassword?: string
-    /**
-     * 
-     * Defaults to: false
-     * @type boolean
-     * @memberof AnalysesCoreApiuploadFile
-     */
-    forceOverwrite?: boolean
 }
 
 export interface AnalysesCoreApiV3GetAnalysisAutoUnstripStatusRequest {
@@ -1562,7 +555,7 @@ export class ObjectAnalysesCoreApi {
      * Add a user-provided string to an analysis.
      * @param param the request object
      */
-    public addUserStringToAnalysisWithHttpInfo(param: AnalysesCoreApiAddUserStringToAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+    public addUserStringToAnalysisWithHttpInfo(param: AnalysesCoreApiAddUserStringToAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
         return this.api.addUserStringToAnalysisWithHttpInfo(param.analysisId, param.addUserStringInputBody,  options).toPromise();
     }
 
@@ -1571,80 +564,26 @@ export class ObjectAnalysesCoreApi {
      * Add a user-provided string to an analysis.
      * @param param the request object
      */
-    public addUserStringToAnalysis(param: AnalysesCoreApiAddUserStringToAnalysisRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
+    public addUserStringToAnalysis(param: AnalysesCoreApiAddUserStringToAnalysisRequest, options?: ConfigurationOptions): Promise<any> {
         return this.api.addUserStringToAnalysis(param.analysisId, param.addUserStringInputBody,  options).toPromise();
     }
 
     /**
-     * Begins an analysis
-     * Create Analysis
+     * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get basic analysis information
      * @param param the request object
      */
-    public createAnalysisWithHttpInfo(param: AnalysesCoreApiCreateAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisCreateResponse>> {
-        return this.api.createAnalysisWithHttpInfo(param.analysisCreateRequest, param.xRevEngApplication,  options).toPromise();
-    }
-
-    /**
-     * Begins an analysis
-     * Create Analysis
-     * @param param the request object
-     */
-    public createAnalysis(param: AnalysesCoreApiCreateAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisCreateResponse> {
-        return this.api.createAnalysis(param.analysisCreateRequest, param.xRevEngApplication,  options).toPromise();
-    }
-
-    /**
-     * Deletes an analysis based on the provided analysis ID.
-     * Delete Analysis
-     * @param param the request object
-     */
-    public deleteAnalysisWithHttpInfo(param: AnalysesCoreApiDeleteAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseDict>> {
-        return this.api.deleteAnalysisWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Deletes an analysis based on the provided analysis ID.
-     * Delete Analysis
-     * @param param the request object
-     */
-    public deleteAnalysis(param: AnalysesCoreApiDeleteAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseDict> {
-        return this.api.deleteAnalysis(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns basic analysis information for an analysis
-     * Gets basic analysis information
-     * @param param the request object
-     */
-    public getAnalysisBasicInfoWithHttpInfo(param: AnalysesCoreApiGetAnalysisBasicInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBasic>> {
+    public getAnalysisBasicInfoWithHttpInfo(param: AnalysesCoreApiGetAnalysisBasicInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<AnalysisBasicInfoOutputBody>> {
         return this.api.getAnalysisBasicInfoWithHttpInfo(param.analysisId,  options).toPromise();
     }
 
     /**
-     * Returns basic analysis information for an analysis
-     * Gets basic analysis information
+     * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get basic analysis information
      * @param param the request object
      */
-    public getAnalysisBasicInfo(param: AnalysesCoreApiGetAnalysisBasicInfoRequest, options?: ConfigurationOptions): Promise<BaseResponseBasic> {
+    public getAnalysisBasicInfo(param: AnalysesCoreApiGetAnalysisBasicInfoRequest, options?: ConfigurationOptions): Promise<AnalysisBasicInfoOutputBody> {
         return this.api.getAnalysisBasicInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get basic analysis information
-     * @param param the request object
-     */
-    public getAnalysisBasicInfo_1WithHttpInfo(param: AnalysesCoreApiGetAnalysisBasicInfo0Request, options?: ConfigurationOptions): Promise<HttpInfo<AnalysisBasicInfoOutputBody>> {
-        return this.api.getAnalysisBasicInfo_1WithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns basic metadata for the given analysis including binary details, model, owner, and function count.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get basic analysis information
-     * @param param the request object
-     */
-    public getAnalysisBasicInfo_1(param: AnalysesCoreApiGetAnalysisBasicInfo0Request, options?: ConfigurationOptions): Promise<AnalysisBasicInfoOutputBody> {
-        return this.api.getAnalysisBasicInfo_1(param.analysisId,  options).toPromise();
     }
 
     /**
@@ -1663,24 +602,6 @@ export class ObjectAnalysesCoreApi {
      */
     public getAnalysisBytes(param: AnalysesCoreApiGetAnalysisBytesRequest, options?: ConfigurationOptions): Promise<void> {
         return this.api.getAnalysisBytes(param.analysisId, param.page,  options).toPromise();
-    }
-
-    /**
-     * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
-     * Get Analysis Function Map
-     * @param param the request object
-     */
-    public getAnalysisFunctionMapWithHttpInfo(param: AnalysesCoreApiGetAnalysisFunctionMapRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctionMapping>> {
-        return this.api.getAnalysisFunctionMapWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns three maps: a map of function ids to function addresses, it\'s inverse and a map of function addresses to function names.
-     * Get Analysis Function Map
-     * @param param the request object
-     */
-    public getAnalysisFunctionMap(param: AnalysesCoreApiGetAnalysisFunctionMapRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisFunctionMapping> {
-        return this.api.getAnalysisFunctionMap(param.analysisId,  options).toPromise();
     }
 
     /**
@@ -1720,60 +641,6 @@ export class ObjectAnalysesCoreApi {
     }
 
     /**
-     * Given an analysis ID gets the current logs of an analysis
-     * Gets the logs of an analysis
-     * @param param the request object
-     */
-    public getAnalysisLogsWithHttpInfo(param: AnalysesCoreApiGetAnalysisLogsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseLogs>> {
-        return this.api.getAnalysisLogsWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Given an analysis ID gets the current logs of an analysis
-     * Gets the logs of an analysis
-     * @param param the request object
-     */
-    public getAnalysisLogs(param: AnalysesCoreApiGetAnalysisLogsRequest, options?: ConfigurationOptions): Promise<BaseResponseLogs> {
-        return this.api.getAnalysisLogs(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the params that the analysis was run with
-     * Gets analysis param information
-     * @param param the request object
-     */
-    public getAnalysisParamsWithHttpInfo(param: AnalysesCoreApiGetAnalysisParamsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseParams>> {
-        return this.api.getAnalysisParamsWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the params that the analysis was run with
-     * Gets analysis param information
-     * @param param the request object
-     */
-    public getAnalysisParams(param: AnalysesCoreApiGetAnalysisParamsRequest, options?: ConfigurationOptions): Promise<BaseResponseParams> {
-        return this.api.getAnalysisParams(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Given an analysis ID gets the current status of the analysis
-     * Gets the status of an analysis
-     * @param param the request object
-     */
-    public getAnalysisStatusWithHttpInfo(param: AnalysesCoreApiGetAnalysisStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseStatus>> {
-        return this.api.getAnalysisStatusWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Given an analysis ID gets the current status of the analysis
-     * Gets the status of an analysis
-     * @param param the request object
-     */
-    public getAnalysisStatus(param: AnalysesCoreApiGetAnalysisStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseStatus> {
-        return this.api.getAnalysisStatus(param.analysisId,  options).toPromise();
-    }
-
-    /**
      * Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
      * Get dynamic execution report
      * @param param the request object
@@ -1810,96 +677,6 @@ export class ObjectAnalysesCoreApi {
     }
 
     /**
-     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
-     * Insert a log entry for an analysis
-     * @param param the request object
-     */
-    public insertAnalysisLogWithHttpInfo(param: AnalysesCoreApiInsertAnalysisLogRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.insertAnalysisLogWithHttpInfo(param.analysisId, param.insertAnalysisLogRequest,  options).toPromise();
-    }
-
-    /**
-     * Inserts a log record for an analysis. Only the analysis owner can insert logs.
-     * Insert a log entry for an analysis
-     * @param param the request object
-     */
-    public insertAnalysisLog(param: AnalysesCoreApiInsertAnalysisLogRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.insertAnalysisLog(param.analysisId, param.insertAnalysisLogRequest,  options).toPromise();
-    }
-
-    /**
-     * Gets the most recent analyses provided a scope, this is then paginated, if pages and limit doesnt fit, it increases the limit
-     * Gets the most recent analyses
-     * @param param the request object
-     */
-    public listAnalysesWithHttpInfo(param: AnalysesCoreApiListAnalysesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseRecent>> {
-        return this.api.listAnalysesWithHttpInfo(param.searchTerm, param.workspace, param.status, param.modelName, param.dynamicExecutionStatus, param.usernames, param.sha256Hash, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
-    }
-
-    /**
-     * Gets the most recent analyses provided a scope, this is then paginated, if pages and limit doesnt fit, it increases the limit
-     * Gets the most recent analyses
-     * @param param the request object
-     */
-    public listAnalyses(param: AnalysesCoreApiListAnalysesRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseRecent> {
-        return this.api.listAnalyses(param.searchTerm, param.workspace, param.status, param.modelName, param.dynamicExecutionStatus, param.usernames, param.sha256Hash, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
-    }
-
-    /**
-     * Given an binary ID gets the ID of an analysis
-     * Gets the analysis ID from binary ID
-     * @param param the request object
-     */
-    public lookupBinaryIdWithHttpInfo(param: AnalysesCoreApiLookupBinaryIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.lookupBinaryIdWithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Given an binary ID gets the ID of an analysis
-     * Gets the analysis ID from binary ID
-     * @param param the request object
-     */
-    public lookupBinaryId(param: AnalysesCoreApiLookupBinaryIdRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.lookupBinaryId(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-     * Add strings to the analysis
-     * @param param the request object
-     */
-    public putAnalysisStringsWithHttpInfo(param: AnalysesCoreApiPutAnalysisStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.putAnalysisStringsWithHttpInfo(param.analysisId, param.putAnalysisStringsRequest,  options).toPromise();
-    }
-
-    /**
-     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-     * Add strings to the analysis
-     * @param param the request object
-     */
-    public putAnalysisStrings(param: AnalysesCoreApiPutAnalysisStringsRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.putAnalysisStrings(param.analysisId, param.putAnalysisStringsRequest,  options).toPromise();
-    }
-
-    /**
-     * Re-queues an already uploaded analysis
-     * Requeue Analysis
-     * @param param the request object
-     */
-    public requeueAnalysisWithHttpInfo(param: AnalysesCoreApiRequeueAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCreated>> {
-        return this.api.requeueAnalysisWithHttpInfo(param.analysisId, param.reAnalysisForm, param.xRevEngApplication,  options).toPromise();
-    }
-
-    /**
-     * Re-queues an already uploaded analysis
-     * Requeue Analysis
-     * @param param the request object
-     */
-    public requeueAnalysis(param: AnalysesCoreApiRequeueAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseCreated> {
-        return this.api.requeueAnalysis(param.analysisId, param.reAnalysisForm, param.xRevEngApplication,  options).toPromise();
-    }
-
-    /**
      * Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Start function matching for an analysis
      * @param param the request object
@@ -1915,58 +692,6 @@ export class ObjectAnalysesCoreApi {
      */
     public startAnalysisFunctionMatching(param: AnalysesCoreApiStartAnalysisFunctionMatchingRequest, options?: ConfigurationOptions): Promise<StartMatchingOutputBody> {
         return this.api.startAnalysisFunctionMatching(param.analysisId, param.startMatchingForAnalysisInputBody,  options).toPromise();
-    }
-
-    /**
-     * Updates analysis attributes (binary_name, analysis_scope). User must be the owner.
-     * Update Analysis
-     * @param param the request object
-     */
-    public updateAnalysisWithHttpInfo(param: AnalysesCoreApiUpdateAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisDetailResponse>> {
-        return this.api.updateAnalysisWithHttpInfo(param.analysisId, param.analysisUpdateRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates analysis attributes (binary_name, analysis_scope). User must be the owner.
-     * Update Analysis
-     * @param param the request object
-     */
-    public updateAnalysis(param: AnalysesCoreApiUpdateAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisDetailResponse> {
-        return this.api.updateAnalysis(param.analysisId, param.analysisUpdateRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates analysis tags. User must be the owner.
-     * Update Analysis Tags
-     * @param param the request object
-     */
-    public updateAnalysisTagsWithHttpInfo(param: AnalysesCoreApiUpdateAnalysisTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisUpdateTagsResponse>> {
-        return this.api.updateAnalysisTagsWithHttpInfo(param.analysisId, param.analysisUpdateTagsRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates analysis tags. User must be the owner.
-     * Update Analysis Tags
-     * @param param the request object
-     */
-    public updateAnalysisTags(param: AnalysesCoreApiUpdateAnalysisTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisUpdateTagsResponse> {
-        return this.api.updateAnalysisTags(param.analysisId, param.analysisUpdateTagsRequest,  options).toPromise();
-    }
-
-    /**
-     * Upload File
-     * @param param the request object
-     */
-    public uploadFileWithHttpInfo(param: AnalysesCoreApiUploadFileRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseUploadResponse>> {
-        return this.api.uploadFileWithHttpInfo(param.uploadFileType, param.file, param.packedPassword, param.forceOverwrite,  options).toPromise();
-    }
-
-    /**
-     * Upload File
-     * @param param the request object
-     */
-    public uploadFile(param: AnalysesCoreApiUploadFileRequest, options?: ConfigurationOptions): Promise<BaseResponseUploadResponse> {
-        return this.api.uploadFile(param.uploadFileType, param.file, param.packedPassword, param.forceOverwrite,  options).toPromise();
     }
 
     /**
@@ -2061,389 +786,13 @@ export class ObjectAnalysesCoreApi {
 
 }
 
-import { ObservableAnalysesResultsMetadataApi } from "./ObservableAPI";
-import { AnalysesResultsMetadataApiRequestFactory, AnalysesResultsMetadataApiResponseProcessor} from "../apis/AnalysesResultsMetadataApi";
-
-export interface AnalysesResultsMetadataApiGetAnalysisFunctionsPaginatedRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetAnalysisFunctionsPaginated
-     */
-    analysisId: number
-    /**
-     * The page number to retrieve.
-     * Minimum: 1
-     * Maximum: 100000
-     * Defaults to: 1
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetAnalysisFunctionsPaginated
-     */
-    page?: number
-    /**
-     * Number of items per page.
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetAnalysisFunctionsPaginated
-     */
-    pageSize?: number
-}
-
-export interface AnalysesResultsMetadataApiGetCapabilitiesRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetCapabilities
-     */
-    analysisId: number
-}
-
-export interface AnalysesResultsMetadataApiGetFunctionsListRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetFunctionsList
-     */
-    analysisId: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof AnalysesResultsMetadataApigetFunctionsList
-     */
-    searchTerm?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetFunctionsList
-     */
-    minVAddr?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetFunctionsList
-     */
-    maxVAddr?: number
-    /**
-     * 
-     * Defaults to: true
-     * @type boolean
-     * @memberof AnalysesResultsMetadataApigetFunctionsList
-     */
-    includeEmbeddings?: boolean
-    /**
-     * The page number to retrieve.
-     * Minimum: 1
-     * Maximum: 100000
-     * Defaults to: 1
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetFunctionsList
-     */
-    page?: number
-    /**
-     * Number of items per page.
-     * Minimum: 1
-     * Maximum: 1000
-     * Defaults to: 1000
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetFunctionsList
-     */
-    pageSize?: number
-}
-
-export interface AnalysesResultsMetadataApiGetSbomRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetSbom
-     */
-    analysisId: number
-}
-
-export interface AnalysesResultsMetadataApiGetTagsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetTags
-     */
-    analysisId: number
-}
-
-export interface AnalysesResultsMetadataApiGetVulnerabilitiesRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetVulnerabilities
-     */
-    analysisId: number
-}
-
-export class ObjectAnalysesResultsMetadataApi {
-    private api: ObservableAnalysesResultsMetadataApi
-
-    public constructor(configuration: Configuration, requestFactory?: AnalysesResultsMetadataApiRequestFactory, responseProcessor?: AnalysesResultsMetadataApiResponseProcessor) {
-        this.api = new ObservableAnalysesResultsMetadataApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Returns a paginated list of functions identified during analysis
-     * Get functions from analysis
-     * @param param the request object
-     */
-    public getAnalysisFunctionsPaginatedWithHttpInfo(param: AnalysesResultsMetadataApiGetAnalysisFunctionsPaginatedRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctionsList>> {
-        return this.api.getAnalysisFunctionsPaginatedWithHttpInfo(param.analysisId, param.page, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Returns a paginated list of functions identified during analysis
-     * Get functions from analysis
-     * @param param the request object
-     */
-    public getAnalysisFunctionsPaginated(param: AnalysesResultsMetadataApiGetAnalysisFunctionsPaginatedRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisFunctionsList> {
-        return this.api.getAnalysisFunctionsPaginated(param.analysisId, param.page, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Gets the capabilities from the analysis
-     * @param param the request object
-     */
-    public getCapabilitiesWithHttpInfo(param: AnalysesResultsMetadataApiGetCapabilitiesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCapabilities>> {
-        return this.api.getCapabilitiesWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the capabilities from the analysis
-     * @param param the request object
-     */
-    public getCapabilities(param: AnalysesResultsMetadataApiGetCapabilitiesRequest, options?: ConfigurationOptions): Promise<BaseResponseCapabilities> {
-        return this.api.getCapabilities(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the functions identified during analysis
-     * Gets functions from analysis
-     * @param param the request object
-     */
-    public getFunctionsListWithHttpInfo(param: AnalysesResultsMetadataApiGetFunctionsListRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisFunctions>> {
-        return this.api.getFunctionsListWithHttpInfo(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr, param.includeEmbeddings, param.page, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Gets the functions identified during analysis
-     * Gets functions from analysis
-     * @param param the request object
-     */
-    public getFunctionsList(param: AnalysesResultsMetadataApiGetFunctionsListRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisFunctions> {
-        return this.api.getFunctionsList(param.analysisId, param.searchTerm, param.minVAddr, param.maxVAddr, param.includeEmbeddings, param.page, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Gets the software-bill-of-materials (SBOM) found in the analysis
-     * @param param the request object
-     */
-    public getSbomWithHttpInfo(param: AnalysesResultsMetadataApiGetSbomRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListSBOM>> {
-        return this.api.getSbomWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the software-bill-of-materials (SBOM) found in the analysis
-     * @param param the request object
-     */
-    public getSbom(param: AnalysesResultsMetadataApiGetSbomRequest, options?: ConfigurationOptions): Promise<BaseResponseListSBOM> {
-        return this.api.getSbom(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get function tags with maliciousness score
-     * @param param the request object
-     */
-    public getTagsWithHttpInfo(param: AnalysesResultsMetadataApiGetTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisTags>> {
-        return this.api.getTagsWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get function tags with maliciousness score
-     * @param param the request object
-     */
-    public getTags(param: AnalysesResultsMetadataApiGetTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisTags> {
-        return this.api.getTags(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the vulnerabilities found in the analysis
-     * @param param the request object
-     */
-    public getVulnerabilitiesWithHttpInfo(param: AnalysesResultsMetadataApiGetVulnerabilitiesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseVulnerabilities>> {
-        return this.api.getVulnerabilitiesWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the vulnerabilities found in the analysis
-     * @param param the request object
-     */
-    public getVulnerabilities(param: AnalysesResultsMetadataApiGetVulnerabilitiesRequest, options?: ConfigurationOptions): Promise<BaseResponseVulnerabilities> {
-        return this.api.getVulnerabilities(param.analysisId,  options).toPromise();
-    }
-
-}
-
-import { ObservableAnalysesXRefsApi } from "./ObservableAPI";
-import { AnalysesXRefsApiRequestFactory, AnalysesXRefsApiResponseProcessor} from "../apis/AnalysesXRefsApi";
-
-export interface AnalysesXRefsApiGetXrefByVaddrRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesXRefsApigetXrefByVaddr
-     */
-    analysisId: number
-    /**
-     * Virtual address to match against xrefs
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesXRefsApigetXrefByVaddr
-     */
-    vaddr: number
-}
-
-export class ObjectAnalysesXRefsApi {
-    private api: ObservableAnalysesXRefsApi
-
-    public constructor(configuration: Configuration, requestFactory?: AnalysesXRefsApiRequestFactory, responseProcessor?: AnalysesXRefsApiResponseProcessor) {
-        this.api = new ObservableAnalysesXRefsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * **This endpoint is in beta and may change without notice.**
-     * [Beta] Look up xrefs by virtual address
-     * @param param the request object
-     */
-    public getXrefByVaddrWithHttpInfo(param: AnalysesXRefsApiGetXrefByVaddrRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseXrefResponse>> {
-        return this.api.getXrefByVaddrWithHttpInfo(param.analysisId, param.vaddr,  options).toPromise();
-    }
-
-    /**
-     * **This endpoint is in beta and may change without notice.**
-     * [Beta] Look up xrefs by virtual address
-     * @param param the request object
-     */
-    public getXrefByVaddr(param: AnalysesXRefsApiGetXrefByVaddrRequest, options?: ConfigurationOptions): Promise<BaseResponseXrefResponse> {
-        return this.api.getXrefByVaddr(param.analysisId, param.vaddr,  options).toPromise();
-    }
-
-}
-
-import { ObservableAuthenticationUsersApi } from "./ObservableAPI";
-import { AuthenticationUsersApiRequestFactory, AuthenticationUsersApiResponseProcessor} from "../apis/AuthenticationUsersApi";
-
-export interface AuthenticationUsersApiGetUserRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AuthenticationUsersApigetUser
-     */
-    userId: number
-}
-
-export interface AuthenticationUsersApiGetUserActivityRequest {
-}
-
-export interface AuthenticationUsersApiSubmitUserFeedbackRequest {
-    /**
-     * 
-     * @type SubmitUserFeedbackRequest
-     * @memberof AuthenticationUsersApisubmitUserFeedback
-     */
-    submitUserFeedbackRequest: SubmitUserFeedbackRequest
-}
-
-export class ObjectAuthenticationUsersApi {
-    private api: ObservableAuthenticationUsersApi
-
-    public constructor(configuration: Configuration, requestFactory?: AuthenticationUsersApiRequestFactory, responseProcessor?: AuthenticationUsersApiResponseProcessor) {
-        this.api = new ObservableAuthenticationUsersApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Get a user\'s public information
-     * @param param the request object
-     */
-    public getUserWithHttpInfo(param: AuthenticationUsersApiGetUserRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGetPublicUserResponse>> {
-        return this.api.getUserWithHttpInfo(param.userId,  options).toPromise();
-    }
-
-    /**
-     * Get a user\'s public information
-     * @param param the request object
-     */
-    public getUser(param: AuthenticationUsersApiGetUserRequest, options?: ConfigurationOptions): Promise<BaseResponseGetPublicUserResponse> {
-        return this.api.getUser(param.userId,  options).toPromise();
-    }
-
-    /**
-     * Get auth user activity
-     * @param param the request object
-     */
-    public getUserActivityWithHttpInfo(param: AuthenticationUsersApiGetUserActivityRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListUserActivityResponse>> {
-        return this.api.getUserActivityWithHttpInfo( options).toPromise();
-    }
-
-    /**
-     * Get auth user activity
-     * @param param the request object
-     */
-    public getUserActivity(param: AuthenticationUsersApiGetUserActivityRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseListUserActivityResponse> {
-        return this.api.getUserActivity( options).toPromise();
-    }
-
-    /**
-     * Submits feedback about the application and forwards it to the RevEng.ai project management tool.
-     * Submit feedback about the application
-     * @param param the request object
-     */
-    public submitUserFeedbackWithHttpInfo(param: AuthenticationUsersApiSubmitUserFeedbackRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.submitUserFeedbackWithHttpInfo(param.submitUserFeedbackRequest,  options).toPromise();
-    }
-
-    /**
-     * Submits feedback about the application and forwards it to the RevEng.ai project management tool.
-     * Submit feedback about the application
-     * @param param the request object
-     */
-    public submitUserFeedback(param: AuthenticationUsersApiSubmitUserFeedbackRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.submitUserFeedback(param.submitUserFeedbackRequest,  options).toPromise();
-    }
-
-}
-
 import { ObservableBinariesApi } from "./ObservableAPI";
 import { BinariesApiRequestFactory, BinariesApiResponseProcessor} from "../apis/BinariesApi";
 
-export interface BinariesApiDownloadZippedBinaryRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof BinariesApidownloadZippedBinary
-     */
-    binaryId: number
-}
-
 export interface BinariesApiGetBinaryAdditionalDetailsRequest {
     /**
-     * 
+     * Binary ID
+     * Minimum: 1
      * Defaults to: undefined
      * @type number
      * @memberof BinariesApigetBinaryAdditionalDetails
@@ -2453,82 +802,11 @@ export interface BinariesApiGetBinaryAdditionalDetailsRequest {
 
 export interface BinariesApiGetBinaryAdditionalDetailsStatusRequest {
     /**
-     * 
+     * Binary ID
+     * Minimum: 1
      * Defaults to: undefined
      * @type number
      * @memberof BinariesApigetBinaryAdditionalDetailsStatus
-     */
-    binaryId: number
-}
-
-export interface BinariesApiGetBinaryAdditionalDetailsStatus0Request {
-    /**
-     * Binary ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof BinariesApigetBinaryAdditionalDetailsStatus_1
-     */
-    binaryId: number
-}
-
-export interface BinariesApiGetBinaryAdditionalDetails0Request {
-    /**
-     * Binary ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof BinariesApigetBinaryAdditionalDetails_2
-     */
-    binaryId: number
-}
-
-export interface BinariesApiGetBinaryDetailsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof BinariesApigetBinaryDetails
-     */
-    binaryId: number
-}
-
-export interface BinariesApiGetBinaryDieInfoRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof BinariesApigetBinaryDieInfo
-     */
-    binaryId: number
-}
-
-export interface BinariesApiGetBinaryExternalsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof BinariesApigetBinaryExternals
-     */
-    binaryId: number
-}
-
-export interface BinariesApiGetBinaryRelatedStatusRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof BinariesApigetBinaryRelatedStatus
-     */
-    binaryId: number
-}
-
-export interface BinariesApiGetRelatedBinariesRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof BinariesApigetRelatedBinaries
      */
     binaryId: number
 }
@@ -2541,335 +819,45 @@ export class ObjectBinariesApi {
     }
 
     /**
-     * Downloads a zipped binary with password protection
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
      * @param param the request object
      */
-    public downloadZippedBinaryWithHttpInfo(param: BinariesApiDownloadZippedBinaryRequest, options?: ConfigurationOptions): Promise<HttpInfo<HttpFile>> {
-        return this.api.downloadZippedBinaryWithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Downloads a zipped binary with password protection
-     * @param param the request object
-     */
-    public downloadZippedBinary(param: BinariesApiDownloadZippedBinaryRequest, options?: ConfigurationOptions): Promise<HttpFile> {
-        return this.api.downloadZippedBinary(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the additional details of a binary
-     * @param param the request object
-     */
-    public getBinaryAdditionalDetailsWithHttpInfo(param: BinariesApiGetBinaryAdditionalDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryAdditionalResponse>> {
+    public getBinaryAdditionalDetailsWithHttpInfo(param: BinariesApiGetBinaryAdditionalDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetAdditionalDetailsOutputBody>> {
         return this.api.getBinaryAdditionalDetailsWithHttpInfo(param.binaryId,  options).toPromise();
     }
 
     /**
-     * Gets the additional details of a binary
+     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get additional details for a binary.
      * @param param the request object
      */
-    public getBinaryAdditionalDetails(param: BinariesApiGetBinaryAdditionalDetailsRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryAdditionalResponse> {
+    public getBinaryAdditionalDetails(param: BinariesApiGetBinaryAdditionalDetailsRequest, options?: ConfigurationOptions): Promise<GetAdditionalDetailsOutputBody> {
         return this.api.getBinaryAdditionalDetails(param.binaryId,  options).toPromise();
     }
 
     /**
-     * Gets the status of the additional details task for a binary
+     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the additional-details extraction status for a binary.
      * @param param the request object
      */
-    public getBinaryAdditionalDetailsStatusWithHttpInfo(param: BinariesApiGetBinaryAdditionalDetailsStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAdditionalDetailsStatusResponse>> {
+    public getBinaryAdditionalDetailsStatusWithHttpInfo(param: BinariesApiGetBinaryAdditionalDetailsStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetAdditionalDetailsStatusOutputBody>> {
         return this.api.getBinaryAdditionalDetailsStatusWithHttpInfo(param.binaryId,  options).toPromise();
     }
 
     /**
-     * Gets the status of the additional details task for a binary
+     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the additional-details extraction status for a binary.
      * @param param the request object
      */
-    public getBinaryAdditionalDetailsStatus(param: BinariesApiGetBinaryAdditionalDetailsStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseAdditionalDetailsStatusResponse> {
+    public getBinaryAdditionalDetailsStatus(param: BinariesApiGetBinaryAdditionalDetailsStatusRequest, options?: ConfigurationOptions): Promise<GetAdditionalDetailsStatusOutputBody> {
         return this.api.getBinaryAdditionalDetailsStatus(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the additional-details extraction status for a binary.
-     * @param param the request object
-     */
-    public getBinaryAdditionalDetailsStatus_1WithHttpInfo(param: BinariesApiGetBinaryAdditionalDetailsStatus0Request, options?: ConfigurationOptions): Promise<HttpInfo<GetAdditionalDetailsStatusOutputBody>> {
-        return this.api.getBinaryAdditionalDetailsStatus_1WithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Returns the status of the additional-details extraction task. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get the additional-details extraction status for a binary.
-     * @param param the request object
-     */
-    public getBinaryAdditionalDetailsStatus_1(param: BinariesApiGetBinaryAdditionalDetailsStatus0Request, options?: ConfigurationOptions): Promise<GetAdditionalDetailsStatusOutputBody> {
-        return this.api.getBinaryAdditionalDetailsStatus_1(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get additional details for a binary.
-     * @param param the request object
-     */
-    public getBinaryAdditionalDetails_2WithHttpInfo(param: BinariesApiGetBinaryAdditionalDetails0Request, options?: ConfigurationOptions): Promise<HttpInfo<GetAdditionalDetailsOutputBody>> {
-        return this.api.getBinaryAdditionalDetails_2WithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Returns structured metadata extracted by the additional-details pipeline for the given binary. Returns `null` for `details` when the pipeline has not yet run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get additional details for a binary.
-     * @param param the request object
-     */
-    public getBinaryAdditionalDetails_2(param: BinariesApiGetBinaryAdditionalDetails0Request, options?: ConfigurationOptions): Promise<GetAdditionalDetailsOutputBody> {
-        return this.api.getBinaryAdditionalDetails_2(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the details of a binary
-     * @param param the request object
-     */
-    public getBinaryDetailsWithHttpInfo(param: BinariesApiGetBinaryDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryDetailsResponse>> {
-        return this.api.getBinaryDetailsWithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the details of a binary
-     * @param param the request object
-     */
-    public getBinaryDetails(param: BinariesApiGetBinaryDetailsRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryDetailsResponse> {
-        return this.api.getBinaryDetails(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the die info of a binary
-     * @param param the request object
-     */
-    public getBinaryDieInfoWithHttpInfo(param: BinariesApiGetBinaryDieInfoRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListDieMatch>> {
-        return this.api.getBinaryDieInfoWithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the die info of a binary
-     * @param param the request object
-     */
-    public getBinaryDieInfo(param: BinariesApiGetBinaryDieInfoRequest, options?: ConfigurationOptions): Promise<BaseResponseListDieMatch> {
-        return this.api.getBinaryDieInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the external details of a binary
-     * @param param the request object
-     */
-    public getBinaryExternalsWithHttpInfo(param: BinariesApiGetBinaryExternalsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinaryExternalsResponse>> {
-        return this.api.getBinaryExternalsWithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the external details of a binary
-     * @param param the request object
-     */
-    public getBinaryExternals(param: BinariesApiGetBinaryExternalsRequest, options?: ConfigurationOptions): Promise<BaseResponseBinaryExternalsResponse> {
-        return this.api.getBinaryExternals(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the status of the unpack binary task for a binary
-     * @param param the request object
-     */
-    public getBinaryRelatedStatusWithHttpInfo(param: BinariesApiGetBinaryRelatedStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinariesRelatedStatusResponse>> {
-        return this.api.getBinaryRelatedStatusWithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the status of the unpack binary task for a binary
-     * @param param the request object
-     */
-    public getBinaryRelatedStatus(param: BinariesApiGetBinaryRelatedStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseBinariesRelatedStatusResponse> {
-        return this.api.getBinaryRelatedStatus(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the related binaries of a binary.
-     * @param param the request object
-     */
-    public getRelatedBinariesWithHttpInfo(param: BinariesApiGetRelatedBinariesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseChildBinariesResponse>> {
-        return this.api.getRelatedBinariesWithHttpInfo(param.binaryId,  options).toPromise();
-    }
-
-    /**
-     * Gets the related binaries of a binary.
-     * @param param the request object
-     */
-    public getRelatedBinaries(param: BinariesApiGetRelatedBinariesRequest, options?: ConfigurationOptions): Promise<BaseResponseChildBinariesResponse> {
-        return this.api.getRelatedBinaries(param.binaryId,  options).toPromise();
     }
 
 }
 
 import { ObservableCollectionsApi } from "./ObservableAPI";
 import { CollectionsApiRequestFactory, CollectionsApiResponseProcessor} from "../apis/CollectionsApi";
-
-export interface CollectionsApiCreateCollectionRequest {
-    /**
-     * 
-     * @type CollectionCreateRequest
-     * @memberof CollectionsApicreateCollection
-     */
-    collectionCreateRequest: CollectionCreateRequest
-}
-
-export interface CollectionsApiDeleteCollectionRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof CollectionsApideleteCollection
-     */
-    collectionId: number
-}
-
-export interface CollectionsApiGetCollectionRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof CollectionsApigetCollection
-     */
-    collectionId: number
-    /**
-     * 
-     * Defaults to: false
-     * @type boolean
-     * @memberof CollectionsApigetCollection
-     */
-    includeTags?: boolean
-    /**
-     * 
-     * Defaults to: false
-     * @type boolean
-     * @memberof CollectionsApigetCollection
-     */
-    includeBinaries?: boolean
-    /**
-     * 
-     * Minimum: 1
-     * Maximum: 100
-     * Defaults to: 10
-     * @type number
-     * @memberof CollectionsApigetCollection
-     */
-    pageSize?: number
-    /**
-     * 
-     * Minimum: 1
-     * Defaults to: 1
-     * @type number
-     * @memberof CollectionsApigetCollection
-     */
-    pageNumber?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof CollectionsApigetCollection
-     */
-    binarySearchStr?: string
-}
-
-export interface CollectionsApiListCollectionsRequest {
-    /**
-     * 
-     * Defaults to: &#39;&#39;
-     * @type string
-     * @memberof CollectionsApilistCollections
-     */
-    searchTerm?: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type Array&lt;Filters&gt;
-     * @memberof CollectionsApilistCollections
-     */
-    filters?: Array<Filters>
-    /**
-     * 
-     * Minimum: 5
-     * Maximum: 50
-     * Defaults to: 20
-     * @type number
-     * @memberof CollectionsApilistCollections
-     */
-    limit?: number
-    /**
-     * 
-     * Defaults to: 0
-     * @type number
-     * @memberof CollectionsApilistCollections
-     */
-    offset?: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type AppApiRestV2CollectionsEnumsOrderBy
-     * @memberof CollectionsApilistCollections
-     */
-    orderBy?: AppApiRestV2CollectionsEnumsOrderBy
-    /**
-     * 
-     * Defaults to: undefined
-     * @type Order
-     * @memberof CollectionsApilistCollections
-     */
-    order?: Order
-}
-
-export interface CollectionsApiUpdateCollectionRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof CollectionsApiupdateCollection
-     */
-    collectionId: number
-    /**
-     * 
-     * @type CollectionUpdateRequest
-     * @memberof CollectionsApiupdateCollection
-     */
-    collectionUpdateRequest: CollectionUpdateRequest
-}
-
-export interface CollectionsApiUpdateCollectionBinariesRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof CollectionsApiupdateCollectionBinaries
-     */
-    collectionId: number
-    /**
-     * 
-     * @type CollectionBinariesUpdateRequest
-     * @memberof CollectionsApiupdateCollectionBinaries
-     */
-    collectionBinariesUpdateRequest: CollectionBinariesUpdateRequest
-}
-
-export interface CollectionsApiUpdateCollectionTagsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof CollectionsApiupdateCollectionTags
-     */
-    collectionId: number
-    /**
-     * 
-     * @type CollectionTagsUpdateRequest
-     * @memberof CollectionsApiupdateCollectionTags
-     */
-    collectionTagsUpdateRequest: CollectionTagsUpdateRequest
-}
 
 export interface CollectionsApiV3CreateCollectionRequest {
     /**
@@ -3047,132 +1035,6 @@ export class ObjectCollectionsApi {
     }
 
     /**
-     * A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
-     * Creates new collection information
-     * @param param the request object
-     */
-    public createCollectionWithHttpInfo(param: CollectionsApiCreateCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
-        return this.api.createCollectionWithHttpInfo(param.collectionCreateRequest,  options).toPromise();
-    }
-
-    /**
-     * A collection is a group of binaries that are related in some way. This endpoint creates a new collection and allows you to add tags and binaries to it. If you add tags or binaries to the collection, they will be returned in the response.
-     * Creates new collection information
-     * @param param the request object
-     */
-    public createCollection(param: CollectionsApiCreateCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionResponse> {
-        return this.api.createCollection(param.collectionCreateRequest,  options).toPromise();
-    }
-
-    /**
-     * Deletes a collection
-     * Deletes a collection
-     * @param param the request object
-     */
-    public deleteCollectionWithHttpInfo(param: CollectionsApiDeleteCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBool>> {
-        return this.api.deleteCollectionWithHttpInfo(param.collectionId,  options).toPromise();
-    }
-
-    /**
-     * Deletes a collection
-     * Deletes a collection
-     * @param param the request object
-     */
-    public deleteCollection(param: CollectionsApiDeleteCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseBool> {
-        return this.api.deleteCollection(param.collectionId,  options).toPromise();
-    }
-
-    /**
-     * Gets a single collection. The collection can include binaries and tags if requested. You can specify whether to include tags and binaries in the response by using the query string parameters defined.
-     * Returns a collection
-     * @param param the request object
-     */
-    public getCollectionWithHttpInfo(param: CollectionsApiGetCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
-        return this.api.getCollectionWithHttpInfo(param.collectionId, param.includeTags, param.includeBinaries, param.pageSize, param.pageNumber, param.binarySearchStr,  options).toPromise();
-    }
-
-    /**
-     * Gets a single collection. The collection can include binaries and tags if requested. You can specify whether to include tags and binaries in the response by using the query string parameters defined.
-     * Returns a collection
-     * @param param the request object
-     */
-    public getCollection(param: CollectionsApiGetCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionResponse> {
-        return this.api.getCollection(param.collectionId, param.includeTags, param.includeBinaries, param.pageSize, param.pageNumber, param.binarySearchStr,  options).toPromise();
-    }
-
-    /**
-     * Returns a list of collections
-     * Gets basic collections information
-     * @param param the request object
-     */
-    public listCollectionsWithHttpInfo(param: CollectionsApiListCollectionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCollectionResults>> {
-        return this.api.listCollectionsWithHttpInfo(param.searchTerm, param.filters, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
-    }
-
-    /**
-     * Returns a list of collections
-     * Gets basic collections information
-     * @param param the request object
-     */
-    public listCollections(param: CollectionsApiListCollectionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseListCollectionResults> {
-        return this.api.listCollections(param.searchTerm, param.filters, param.limit, param.offset, param.orderBy, param.order,  options).toPromise();
-    }
-
-    /**
-     * Updates a collection, you can update the collection name, description, and scope
-     * Updates a collection
-     * @param param the request object
-     */
-    public updateCollectionWithHttpInfo(param: CollectionsApiUpdateCollectionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionResponse>> {
-        return this.api.updateCollectionWithHttpInfo(param.collectionId, param.collectionUpdateRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates a collection, you can update the collection name, description, and scope
-     * Updates a collection
-     * @param param the request object
-     */
-    public updateCollection(param: CollectionsApiUpdateCollectionRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionResponse> {
-        return this.api.updateCollection(param.collectionId, param.collectionUpdateRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates/changes a collection binaries to whatever is provided in the request. After this update the collection will only contain the binaries provided in the request.
-     * Updates a collection binaries
-     * @param param the request object
-     */
-    public updateCollectionBinariesWithHttpInfo(param: CollectionsApiUpdateCollectionBinariesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionBinariesUpdateResponse>> {
-        return this.api.updateCollectionBinariesWithHttpInfo(param.collectionId, param.collectionBinariesUpdateRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates/changes a collection binaries to whatever is provided in the request. After this update the collection will only contain the binaries provided in the request.
-     * Updates a collection binaries
-     * @param param the request object
-     */
-    public updateCollectionBinaries(param: CollectionsApiUpdateCollectionBinariesRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionBinariesUpdateResponse> {
-        return this.api.updateCollectionBinaries(param.collectionId, param.collectionBinariesUpdateRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates/changes a collection tags to whatever is provided in the request. After this update the collection will only contain the tags provided in the request.
-     * Updates a collection tags
-     * @param param the request object
-     */
-    public updateCollectionTagsWithHttpInfo(param: CollectionsApiUpdateCollectionTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionTagsUpdateResponse>> {
-        return this.api.updateCollectionTagsWithHttpInfo(param.collectionId, param.collectionTagsUpdateRequest,  options).toPromise();
-    }
-
-    /**
-     * Updates/changes a collection tags to whatever is provided in the request. After this update the collection will only contain the tags provided in the request.
-     * Updates a collection tags
-     * @param param the request object
-     */
-    public updateCollectionTags(param: CollectionsApiUpdateCollectionTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseCollectionTagsUpdateResponse> {
-        return this.api.updateCollectionTags(param.collectionId, param.collectionTagsUpdateRequest,  options).toPromise();
-    }
-
-    /**
      * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * Create a collection.
      * @param param the request object
@@ -3296,39 +1158,6 @@ export class ObjectCollectionsApi {
      */
     public v3PatchCollectionTags(param: CollectionsApiV3PatchCollectionTagsRequest, options?: ConfigurationOptions): Promise<PatchCollectionTagsOutputBody> {
         return this.api.v3PatchCollectionTags(param.collectionId, param.patchCollectionTagsInputBody,  options).toPromise();
-    }
-
-}
-
-import { ObservableConfigApi } from "./ObservableAPI";
-import { ConfigApiRequestFactory, ConfigApiResponseProcessor} from "../apis/ConfigApi";
-
-export interface ConfigApiGetConfigRequest {
-}
-
-export class ObjectConfigApi {
-    private api: ObservableConfigApi
-
-    public constructor(configuration: Configuration, requestFactory?: ConfigApiRequestFactory, responseProcessor?: ConfigApiResponseProcessor) {
-        this.api = new ObservableConfigApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * General configuration endpoint
-     * Get Config
-     * @param param the request object
-     */
-    public getConfigWithHttpInfo(param: ConfigApiGetConfigRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseConfigResponse>> {
-        return this.api.getConfigWithHttpInfo( options).toPromise();
-    }
-
-    /**
-     * General configuration endpoint
-     * Get Config
-     * @param param the request object
-     */
-    public getConfig(param: ConfigApiGetConfigRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseConfigResponse> {
-        return this.api.getConfig( options).toPromise();
     }
 
 }
@@ -3552,171 +1381,6 @@ export class ObjectConversationsApi {
 
 }
 
-import { ObservableExternalSourcesApi } from "./ObservableAPI";
-import { ExternalSourcesApiRequestFactory, ExternalSourcesApiResponseProcessor} from "../apis/ExternalSourcesApi";
-
-export interface ExternalSourcesApiCreateExternalTaskVtRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof ExternalSourcesApicreateExternalTaskVt
-     */
-    analysisId: number
-}
-
-export interface ExternalSourcesApiGetVtDataRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof ExternalSourcesApigetVtData
-     */
-    analysisId: number
-}
-
-export interface ExternalSourcesApiGetVtTaskStatusRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof ExternalSourcesApigetVtTaskStatus
-     */
-    analysisId: number
-}
-
-export class ObjectExternalSourcesApi {
-    private api: ObservableExternalSourcesApi
-
-    public constructor(configuration: Configuration, requestFactory?: ExternalSourcesApiRequestFactory, responseProcessor?: ExternalSourcesApiResponseProcessor) {
-        this.api = new ObservableExternalSourcesApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param param the request object
-     */
-    public createExternalTaskVtWithHttpInfo(param: ExternalSourcesApiCreateExternalTaskVtRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
-        return this.api.createExternalTaskVtWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param param the request object
-     */
-    public createExternalTaskVt(param: ExternalSourcesApiCreateExternalTaskVtRequest, options?: ConfigurationOptions): Promise<BaseResponseStr> {
-        return this.api.createExternalTaskVt(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get VirusTotal data
-     * @param param the request object
-     */
-    public getVtDataWithHttpInfo(param: ExternalSourcesApiGetVtDataRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
-        return this.api.getVtDataWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get VirusTotal data
-     * @param param the request object
-     */
-    public getVtData(param: ExternalSourcesApiGetVtDataRequest, options?: ConfigurationOptions): Promise<BaseResponseExternalResponse> {
-        return this.api.getVtData(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of VirusTotal data retrieval
-     * @param param the request object
-     */
-    public getVtTaskStatusWithHttpInfo(param: ExternalSourcesApiGetVtTaskStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
-        return this.api.getVtTaskStatusWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of VirusTotal data retrieval
-     * @param param the request object
-     */
-    public getVtTaskStatus(param: ExternalSourcesApiGetVtTaskStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseTaskResponse> {
-        return this.api.getVtTaskStatus(param.analysisId,  options).toPromise();
-    }
-
-}
-
-import { ObservableFirmwareApi } from "./ObservableAPI";
-import { FirmwareApiRequestFactory, FirmwareApiResponseProcessor} from "../apis/FirmwareApi";
-
-export interface FirmwareApiGetBinariesForFirmwareTaskRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FirmwareApigetBinariesForFirmwareTask
-     */
-    taskId: string
-}
-
-export interface FirmwareApiUploadFirmwareRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FirmwareApiuploadFirmware
-     */
-    file: string
-    /**
-     * 
-     * Defaults to: undefined
-     * @type string
-     * @memberof FirmwareApiuploadFirmware
-     */
-    password?: string
-}
-
-export class ObjectFirmwareApi {
-    private api: ObservableFirmwareApi
-
-    public constructor(configuration: Configuration, requestFactory?: FirmwareApiRequestFactory, responseProcessor?: FirmwareApiResponseProcessor) {
-        this.api = new ObservableFirmwareApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param param the request object
-     */
-    public getBinariesForFirmwareTaskWithHttpInfo(param: FirmwareApiGetBinariesForFirmwareTaskRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.getBinariesForFirmwareTaskWithHttpInfo(param.taskId,  options).toPromise();
-    }
-
-    /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param param the request object
-     */
-    public getBinariesForFirmwareTask(param: FirmwareApiGetBinariesForFirmwareTaskRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.getBinariesForFirmwareTask(param.taskId,  options).toPromise();
-    }
-
-    /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param param the request object
-     */
-    public uploadFirmwareWithHttpInfo(param: FirmwareApiUploadFirmwareRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
-        return this.api.uploadFirmwareWithHttpInfo(param.file, param.password,  options).toPromise();
-    }
-
-    /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param param the request object
-     */
-    public uploadFirmware(param: FirmwareApiUploadFirmwareRequest, options?: ConfigurationOptions): Promise<any> {
-        return this.api.uploadFirmware(param.file, param.password,  options).toPromise();
-    }
-
-}
-
 import { ObservableFunctionsAIDecompilationApi } from "./ObservableAPI";
 import { FunctionsAIDecompilationApiRequestFactory, FunctionsAIDecompilationApiResponseProcessor} from "../apis/FunctionsAIDecompilationApi";
 
@@ -3795,16 +1459,6 @@ export interface FunctionsAIDecompilationApiGetAiDecompilationInlineCommentsStat
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsAIDecompilationApigetAiDecompilationInlineCommentsStatus
-     */
-    functionId: number
-}
-
-export interface FunctionsAIDecompilationApiGetAiDecompilationRatingRequest {
-    /**
-     * The ID of the function for which to get the rating
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsAIDecompilationApigetAiDecompilationRating
      */
     functionId: number
 }
@@ -3920,22 +1574,6 @@ export interface FunctionsAIDecompilationApiUpsertAiDecompilationOverridesReques
     upsertOverridesInputBody: UpsertOverridesInputBody
 }
 
-export interface FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest {
-    /**
-     * The ID of the function being rated
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsAIDecompilationApiupsertAiDecompilationRating
-     */
-    functionId: number
-    /**
-     * 
-     * @type UpsertAiDecomplationRatingRequest
-     * @memberof FunctionsAIDecompilationApiupsertAiDecompilationRating
-     */
-    upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest
-}
-
 export class ObjectFunctionsAIDecompilationApi {
     private api: ObservableFunctionsAIDecompilationApi
 
@@ -4031,22 +1669,6 @@ export class ObjectFunctionsAIDecompilationApi {
      */
     public getAiDecompilationInlineCommentsStatus(param: FunctionsAIDecompilationApiGetAiDecompilationInlineCommentsStatusRequest, options?: ConfigurationOptions): Promise<WorkflowProgress> {
         return this.api.getAiDecompilationInlineCommentsStatus(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Get rating for AI decompilation
-     * @param param the request object
-     */
-    public getAiDecompilationRatingWithHttpInfo(param: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseUnionGetAiDecompilationRatingResponseNoneType>> {
-        return this.api.getAiDecompilationRatingWithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Get rating for AI decompilation
-     * @param param the request object
-     */
-    public getAiDecompilationRating(param: FunctionsAIDecompilationApiGetAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<BaseResponseUnionGetAiDecompilationRatingResponseNoneType> {
-        return this.api.getAiDecompilationRating(param.functionId,  options).toPromise();
     }
 
     /**
@@ -4211,22 +1833,6 @@ export class ObjectFunctionsAIDecompilationApi {
         return this.api.upsertAiDecompilationOverrides(param.functionId, param.upsertOverridesInputBody,  options).toPromise();
     }
 
-    /**
-     * Upsert rating for AI decompilation
-     * @param param the request object
-     */
-    public upsertAiDecompilationRatingWithHttpInfo(param: FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.upsertAiDecompilationRatingWithHttpInfo(param.functionId, param.upsertAiDecomplationRatingRequest,  options).toPromise();
-    }
-
-    /**
-     * Upsert rating for AI decompilation
-     * @param param the request object
-     */
-    public upsertAiDecompilationRating(param: FunctionsAIDecompilationApiUpsertAiDecompilationRatingRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.upsertAiDecompilationRating(param.functionId, param.upsertAiDecomplationRatingRequest,  options).toPromise();
-    }
-
 }
 
 import { ObservableFunctionsCoreApi } from "./ObservableAPI";
@@ -4266,74 +1872,10 @@ export interface FunctionsCoreApiAddUserStringToFunctionRequest {
     addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody
 }
 
-export interface FunctionsCoreApiGetAnalysisStringsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApigetAnalysisStrings
-     */
-    analysisId: number
-    /**
-     * The page number to retrieve.
-     * Minimum: 1
-     * Maximum: 100000
-     * Defaults to: 1
-     * @type number
-     * @memberof FunctionsCoreApigetAnalysisStrings
-     */
-    page?: number
-    /**
-     * Number of items per page.
-     * Minimum: 1
-     * Defaults to: 100
-     * @type number
-     * @memberof FunctionsCoreApigetAnalysisStrings
-     */
-    pageSize?: number
-    /**
-     * Search is applied to string value
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsCoreApigetAnalysisStrings
-     */
-    search?: string
-    /**
-     * Search is applied to function names
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsCoreApigetAnalysisStrings
-     */
-    functionSearch?: string
-    /**
-     * Order by field
-     * Defaults to: &#39;value&#39;
-     * @type &#39;length&#39; | &#39;value&#39;
-     * @memberof FunctionsCoreApigetAnalysisStrings
-     */
-    orderBy?: 'length' | 'value'
-    /**
-     * Sort order for the results
-     * Defaults to: &#39;ASC&#39;
-     * @type &#39;ASC&#39; | &#39;DESC&#39;
-     * @memberof FunctionsCoreApigetAnalysisStrings
-     */
-    sortOrder?: 'ASC' | 'DESC'
-}
-
-export interface FunctionsCoreApiGetAnalysisStringsStatusRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApigetAnalysisStringsStatus
-     */
-    analysisId: number
-}
-
 export interface FunctionsCoreApiGetFunctionBlocksRequest {
     /**
-     * 
+     * Function ID
+     * Minimum: 1
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsCoreApigetFunctionBlocks
@@ -4341,20 +1883,10 @@ export interface FunctionsCoreApiGetFunctionBlocksRequest {
     functionId: number
 }
 
-export interface FunctionsCoreApiGetFunctionBlocks0Request {
+export interface FunctionsCoreApiGetFunctionCalleesCallersRequest {
     /**
      * Function ID
      * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApigetFunctionBlocks_1
-     */
-    functionId: number
-}
-
-export interface FunctionsCoreApiGetFunctionCalleesCallersRequest {
-    /**
-     * 
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsCoreApigetFunctionCalleesCallers
@@ -4362,30 +1894,10 @@ export interface FunctionsCoreApiGetFunctionCalleesCallersRequest {
     functionId: number
 }
 
-export interface FunctionsCoreApiGetFunctionCalleesCallersBulkRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type Array&lt;number&gt;
-     * @memberof FunctionsCoreApigetFunctionCalleesCallersBulk
-     */
-    functionIds: Array<number>
-}
-
-export interface FunctionsCoreApiGetFunctionCalleesCallers0Request {
+export interface FunctionsCoreApiGetFunctionCapabilitiesRequest {
     /**
      * Function ID
      * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApigetFunctionCalleesCallers_2
-     */
-    functionId: number
-}
-
-export interface FunctionsCoreApiGetFunctionCapabilitiesRequest {
-    /**
-     * 
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsCoreApigetFunctionCapabilities
@@ -4393,34 +1905,13 @@ export interface FunctionsCoreApiGetFunctionCapabilitiesRequest {
     functionId: number
 }
 
-export interface FunctionsCoreApiGetFunctionCapabilities0Request {
+export interface FunctionsCoreApiGetFunctionDetailsRequest {
     /**
      * Function ID
      * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApigetFunctionCapabilities_3
-     */
-    functionId: number
-}
-
-export interface FunctionsCoreApiGetFunctionDetailsRequest {
-    /**
-     * 
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsCoreApigetFunctionDetails
-     */
-    functionId: number
-}
-
-export interface FunctionsCoreApiGetFunctionDetails0Request {
-    /**
-     * Function ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApigetFunctionDetails_4
      */
     functionId: number
 }
@@ -4438,45 +1929,11 @@ export interface FunctionsCoreApiGetFunctionIndirectCallSitesRequest {
 
 export interface FunctionsCoreApiGetFunctionStringsRequest {
     /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsCoreApigetFunctionStrings
-     */
-    functionId: number
-    /**
-     * The page number to retrieve.
-     * Minimum: 1
-     * Maximum: 100000
-     * Defaults to: 1
-     * @type number
-     * @memberof FunctionsCoreApigetFunctionStrings
-     */
-    page?: number
-    /**
-     * Number of items per page.
-     * Minimum: 1
-     * Defaults to: 100
-     * @type number
-     * @memberof FunctionsCoreApigetFunctionStrings
-     */
-    pageSize?: number
-    /**
-     * Search is applied to string value
-     * Defaults to: undefined
-     * @type string
-     * @memberof FunctionsCoreApigetFunctionStrings
-     */
-    search?: string
-}
-
-export interface FunctionsCoreApiGetFunctionStrings0Request {
-    /**
      * Function ID
      * Minimum: 1
      * Defaults to: undefined
      * @type number
-     * @memberof FunctionsCoreApigetFunctionStrings_5
+     * @memberof FunctionsCoreApigetFunctionStrings
      */
     functionId: number
     /**
@@ -4484,7 +1941,7 @@ export interface FunctionsCoreApiGetFunctionStrings0Request {
      * Minimum: 1
      * Defaults to: 1
      * @type number
-     * @memberof FunctionsCoreApigetFunctionStrings_5
+     * @memberof FunctionsCoreApigetFunctionStrings
      */
     page?: number
     /**
@@ -4493,14 +1950,14 @@ export interface FunctionsCoreApiGetFunctionStrings0Request {
      * Maximum: 500
      * Defaults to: 100
      * @type number
-     * @memberof FunctionsCoreApigetFunctionStrings_5
+     * @memberof FunctionsCoreApigetFunctionStrings
      */
     pageSize?: number
     /**
      * Filter by string value (case-insensitive substring match).
      * Defaults to: undefined
      * @type string
-     * @memberof FunctionsCoreApigetFunctionStrings_5
+     * @memberof FunctionsCoreApigetFunctionStrings
      */
     search?: string
 }
@@ -4654,7 +2111,7 @@ export class ObjectFunctionsCoreApi {
      * Add a callee to a function
      * @param param the request object
      */
-    public addFunctionCalleeWithHttpInfo(param: FunctionsCoreApiAddFunctionCalleeRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+    public addFunctionCalleeWithHttpInfo(param: FunctionsCoreApiAddFunctionCalleeRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
         return this.api.addFunctionCalleeWithHttpInfo(param.functionId, param.addCalleeInputBody,  options).toPromise();
     }
 
@@ -4663,7 +2120,7 @@ export class ObjectFunctionsCoreApi {
      * Add a callee to a function
      * @param param the request object
      */
-    public addFunctionCallee(param: FunctionsCoreApiAddFunctionCalleeRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
+    public addFunctionCallee(param: FunctionsCoreApiAddFunctionCalleeRequest, options?: ConfigurationOptions): Promise<any> {
         return this.api.addFunctionCallee(param.functionId, param.addCalleeInputBody,  options).toPromise();
     }
 
@@ -4672,7 +2129,7 @@ export class ObjectFunctionsCoreApi {
      * Add a user-provided string to a function.
      * @param param the request object
      */
-    public addUserStringToFunctionWithHttpInfo(param: FunctionsCoreApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+    public addUserStringToFunctionWithHttpInfo(param: FunctionsCoreApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
         return this.api.addUserStringToFunctionWithHttpInfo(param.functionId, param.addUserStringToFunctionInputBody,  options).toPromise();
     }
 
@@ -4681,198 +2138,80 @@ export class ObjectFunctionsCoreApi {
      * Add a user-provided string to a function.
      * @param param the request object
      */
-    public addUserStringToFunction(param: FunctionsCoreApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
+    public addUserStringToFunction(param: FunctionsCoreApiAddUserStringToFunctionRequest, options?: ConfigurationOptions): Promise<any> {
         return this.api.addUserStringToFunction(param.functionId, param.addUserStringToFunctionInputBody,  options).toPromise();
     }
 
     /**
-     * Get string information found in the analysis
-     * Get string information found in the Analysis
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function disassembly
      * @param param the request object
      */
-    public getAnalysisStringsWithHttpInfo(param: FunctionsCoreApiGetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsResponse>> {
-        return this.api.getAnalysisStringsWithHttpInfo(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
-    }
-
-    /**
-     * Get string information found in the analysis
-     * Get string information found in the Analysis
-     * @param param the request object
-     */
-    public getAnalysisStrings(param: FunctionsCoreApiGetAnalysisStringsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisStringsResponse> {
-        return this.api.getAnalysisStrings(param.analysisId, param.page, param.pageSize, param.search, param.functionSearch, param.orderBy, param.sortOrder,  options).toPromise();
-    }
-
-    /**
-     * Get string processing state for the Analysis
-     * Get string processing state for the Analysis
-     * @param param the request object
-     */
-    public getAnalysisStringsStatusWithHttpInfo(param: FunctionsCoreApiGetAnalysisStringsStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsStatusResponse>> {
-        return this.api.getAnalysisStringsStatusWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get string processing state for the Analysis
-     * Get string processing state for the Analysis
-     * @param param the request object
-     */
-    public getAnalysisStringsStatus(param: FunctionsCoreApiGetAnalysisStringsStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisStringsStatusResponse> {
-        return this.api.getAnalysisStringsStatus(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get disassembly blocks related to the function
-     * Get disassembly blocks related to the function
-     * @param param the request object
-     */
-    public getFunctionBlocksWithHttpInfo(param: FunctionsCoreApiGetFunctionBlocksRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionBlocksResponse>> {
+    public getFunctionBlocksWithHttpInfo(param: FunctionsCoreApiGetFunctionBlocksRequest, options?: ConfigurationOptions): Promise<HttpInfo<DisassemblyOutputBody>> {
         return this.api.getFunctionBlocksWithHttpInfo(param.functionId,  options).toPromise();
     }
 
     /**
-     * Get disassembly blocks related to the function
-     * Get disassembly blocks related to the function
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function disassembly
      * @param param the request object
      */
-    public getFunctionBlocks(param: FunctionsCoreApiGetFunctionBlocksRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionBlocksResponse> {
+    public getFunctionBlocks(param: FunctionsCoreApiGetFunctionBlocksRequest, options?: ConfigurationOptions): Promise<DisassemblyOutputBody> {
         return this.api.getFunctionBlocks(param.functionId,  options).toPromise();
     }
 
     /**
-     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get function disassembly
+     * Returns both the outgoing call edges (callees) and incoming call edges (callers) for a single function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get callees and callers for a function
      * @param param the request object
      */
-    public getFunctionBlocks_1WithHttpInfo(param: FunctionsCoreApiGetFunctionBlocks0Request, options?: ConfigurationOptions): Promise<HttpInfo<DisassemblyOutputBody>> {
-        return this.api.getFunctionBlocks_1WithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get function disassembly
-     * @param param the request object
-     */
-    public getFunctionBlocks_1(param: FunctionsCoreApiGetFunctionBlocks0Request, options?: ConfigurationOptions): Promise<DisassemblyOutputBody> {
-        return this.api.getFunctionBlocks_1(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Get list of functions that call or are called by the specified function
-     * @param param the request object
-     */
-    public getFunctionCalleesCallersWithHttpInfo(param: FunctionsCoreApiGetFunctionCalleesCallersRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCalleesCallerFunctionsResponse>> {
+    public getFunctionCalleesCallersWithHttpInfo(param: FunctionsCoreApiGetFunctionCalleesCallersRequest, options?: ConfigurationOptions): Promise<HttpInfo<CallEdgesOutputBody>> {
         return this.api.getFunctionCalleesCallersWithHttpInfo(param.functionId,  options).toPromise();
     }
 
     /**
-     * Get list of functions that call or are called by the specified function
+     * Returns both the outgoing call edges (callees) and incoming call edges (callers) for a single function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get callees and callers for a function
      * @param param the request object
      */
-    public getFunctionCalleesCallers(param: FunctionsCoreApiGetFunctionCalleesCallersRequest, options?: ConfigurationOptions): Promise<BaseResponseCalleesCallerFunctionsResponse> {
+    public getFunctionCalleesCallers(param: FunctionsCoreApiGetFunctionCalleesCallersRequest, options?: ConfigurationOptions): Promise<CallEdgesOutputBody> {
         return this.api.getFunctionCalleesCallers(param.functionId,  options).toPromise();
     }
 
     /**
-     * Get list of functions that call or are called for a list of functions
+     * Returns the capability findings (CAPA-style behaviour matches) associated with the given function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get capabilities for a function
      * @param param the request object
      */
-    public getFunctionCalleesCallersBulkWithHttpInfo(param: FunctionsCoreApiGetFunctionCalleesCallersBulkRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListCalleesCallerFunctionsResponse>> {
-        return this.api.getFunctionCalleesCallersBulkWithHttpInfo(param.functionIds,  options).toPromise();
-    }
-
-    /**
-     * Get list of functions that call or are called for a list of functions
-     * @param param the request object
-     */
-    public getFunctionCalleesCallersBulk(param: FunctionsCoreApiGetFunctionCalleesCallersBulkRequest, options?: ConfigurationOptions): Promise<BaseResponseListCalleesCallerFunctionsResponse> {
-        return this.api.getFunctionCalleesCallersBulk(param.functionIds,  options).toPromise();
-    }
-
-    /**
-     * Returns both the outgoing call edges (callees) and incoming call edges (callers) for a single function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get callees and callers for a function
-     * @param param the request object
-     */
-    public getFunctionCalleesCallers_2WithHttpInfo(param: FunctionsCoreApiGetFunctionCalleesCallers0Request, options?: ConfigurationOptions): Promise<HttpInfo<CallEdgesOutputBody>> {
-        return this.api.getFunctionCalleesCallers_2WithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Returns both the outgoing call edges (callees) and incoming call edges (callers) for a single function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get callees and callers for a function
-     * @param param the request object
-     */
-    public getFunctionCalleesCallers_2(param: FunctionsCoreApiGetFunctionCalleesCallers0Request, options?: ConfigurationOptions): Promise<CallEdgesOutputBody> {
-        return this.api.getFunctionCalleesCallers_2(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Retrieve a functions capabilities
-     * @param param the request object
-     */
-    public getFunctionCapabilitiesWithHttpInfo(param: FunctionsCoreApiGetFunctionCapabilitiesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionCapabilityResponse>> {
+    public getFunctionCapabilitiesWithHttpInfo(param: FunctionsCoreApiGetFunctionCapabilitiesRequest, options?: ConfigurationOptions): Promise<HttpInfo<CapabilitiesOutputBody>> {
         return this.api.getFunctionCapabilitiesWithHttpInfo(param.functionId,  options).toPromise();
     }
 
     /**
-     * Retrieve a functions capabilities
+     * Returns the capability findings (CAPA-style behaviour matches) associated with the given function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get capabilities for a function
      * @param param the request object
      */
-    public getFunctionCapabilities(param: FunctionsCoreApiGetFunctionCapabilitiesRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionCapabilityResponse> {
+    public getFunctionCapabilities(param: FunctionsCoreApiGetFunctionCapabilitiesRequest, options?: ConfigurationOptions): Promise<CapabilitiesOutputBody> {
         return this.api.getFunctionCapabilities(param.functionId,  options).toPromise();
     }
 
     /**
-     * Returns the capability findings (CAPA-style behaviour matches) associated with the given function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get capabilities for a function
-     * @param param the request object
-     */
-    public getFunctionCapabilities_3WithHttpInfo(param: FunctionsCoreApiGetFunctionCapabilities0Request, options?: ConfigurationOptions): Promise<HttpInfo<CapabilitiesOutputBody>> {
-        return this.api.getFunctionCapabilities_3WithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Returns the capability findings (CAPA-style behaviour matches) associated with the given function.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get capabilities for a function
-     * @param param the request object
-     */
-    public getFunctionCapabilities_3(param: FunctionsCoreApiGetFunctionCapabilities0Request, options?: ConfigurationOptions): Promise<CapabilitiesOutputBody> {
-        return this.api.getFunctionCapabilities_3(param.functionId,  options).toPromise();
-    }
-
-    /**
+     * Returns metadata for a single function — name, virtual address, size, debug status, binary it belongs to.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get function details
      * @param param the request object
      */
-    public getFunctionDetailsWithHttpInfo(param: FunctionsCoreApiGetFunctionDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionsDetailResponse>> {
+    public getFunctionDetailsWithHttpInfo(param: FunctionsCoreApiGetFunctionDetailsRequest, options?: ConfigurationOptions): Promise<HttpInfo<FunctionDetailsOutputBody>> {
         return this.api.getFunctionDetailsWithHttpInfo(param.functionId,  options).toPromise();
     }
 
     /**
+     * Returns metadata for a single function — name, virtual address, size, debug status, binary it belongs to.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get function details
      * @param param the request object
      */
-    public getFunctionDetails(param: FunctionsCoreApiGetFunctionDetailsRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionsDetailResponse> {
+    public getFunctionDetails(param: FunctionsCoreApiGetFunctionDetailsRequest, options?: ConfigurationOptions): Promise<FunctionDetailsOutputBody> {
         return this.api.getFunctionDetails(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Returns metadata for a single function — name, virtual address, size, debug status, binary it belongs to.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get function details
-     * @param param the request object
-     */
-    public getFunctionDetails_4WithHttpInfo(param: FunctionsCoreApiGetFunctionDetails0Request, options?: ConfigurationOptions): Promise<HttpInfo<FunctionDetailsOutputBody>> {
-        return this.api.getFunctionDetails_4WithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Returns metadata for a single function — name, virtual address, size, debug status, binary it belongs to.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get function details
-     * @param param the request object
-     */
-    public getFunctionDetails_4(param: FunctionsCoreApiGetFunctionDetails0Request, options?: ConfigurationOptions): Promise<FunctionDetailsOutputBody> {
-        return this.api.getFunctionDetails_4(param.functionId,  options).toPromise();
     }
 
     /**
@@ -4894,39 +2233,21 @@ export class ObjectFunctionsCoreApi {
     }
 
     /**
-     * Get string information found in the function
-     * Get string information found in the function
+     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for a function.
      * @param param the request object
      */
-    public getFunctionStringsWithHttpInfo(param: FunctionsCoreApiGetFunctionStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionStringsResponse>> {
+    public getFunctionStringsWithHttpInfo(param: FunctionsCoreApiGetFunctionStringsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListFunctionStringsOutputBody>> {
         return this.api.getFunctionStringsWithHttpInfo(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
     }
 
     /**
-     * Get string information found in the function
-     * Get string information found in the function
+     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for a function.
      * @param param the request object
      */
-    public getFunctionStrings(param: FunctionsCoreApiGetFunctionStringsRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionStringsResponse> {
+    public getFunctionStrings(param: FunctionsCoreApiGetFunctionStringsRequest, options?: ConfigurationOptions): Promise<ListFunctionStringsOutputBody> {
         return this.api.getFunctionStrings(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
-    }
-
-    /**
-     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for a function.
-     * @param param the request object
-     */
-    public getFunctionStrings_5WithHttpInfo(param: FunctionsCoreApiGetFunctionStrings0Request, options?: ConfigurationOptions): Promise<HttpInfo<ListFunctionStringsOutputBody>> {
-        return this.api.getFunctionStrings_5WithHttpInfo(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
-    }
-
-    /**
-     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for a function.
-     * @param param the request object
-     */
-    public getFunctionStrings_5(param: FunctionsCoreApiGetFunctionStrings0Request, options?: ConfigurationOptions): Promise<ListFunctionStringsOutputBody> {
-        return this.api.getFunctionStrings_5(param.functionId, param.page, param.pageSize, param.search,  options).toPromise();
     }
 
     /**
@@ -5095,31 +2416,6 @@ export interface FunctionsDataTypesApiBatchUpdateFunctionDataTypesRequest {
     batchUpdateDataTypesInputBody: BatchUpdateDataTypesInputBody
 }
 
-export interface FunctionsDataTypesApiGenerateFunctionDataTypesForAnalysisRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDataTypesApigenerateFunctionDataTypesForAnalysis
-     */
-    analysisId: number
-    /**
-     * 
-     * @type FunctionDataTypesParams
-     * @memberof FunctionsDataTypesApigenerateFunctionDataTypesForAnalysis
-     */
-    functionDataTypesParams: FunctionDataTypesParams
-}
-
-export interface FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsRequest {
-    /**
-     * 
-     * @type FunctionDataTypesParams
-     * @memberof FunctionsDataTypesApigenerateFunctionDataTypesForFunctions
-     */
-    functionDataTypesParams: FunctionDataTypesParams
-}
-
 export interface FunctionsDataTypesApiGetFunctionDataTypesRequest {
     /**
      * Analysis ID
@@ -5165,33 +2461,6 @@ export interface FunctionsDataTypesApiListAnalysisFunctionsDataTypesRequest {
      * @memberof FunctionsDataTypesApilistAnalysisFunctionsDataTypes
      */
     limit?: number
-}
-
-export interface FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsDataTypesApilistFunctionDataTypesForAnalysis
-     */
-    analysisId: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type Array&lt;number&gt;
-     * @memberof FunctionsDataTypesApilistFunctionDataTypesForAnalysis
-     */
-    functionIds?: Array<number>
-}
-
-export interface FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type Array&lt;number&gt;
-     * @memberof FunctionsDataTypesApilistFunctionDataTypesForFunctions
-     */
-    functionIds?: Array<number>
 }
 
 export interface FunctionsDataTypesApiListFunctionsDataTypesRequest {
@@ -5255,42 +2524,6 @@ export class ObjectFunctionsDataTypesApi {
     }
 
     /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types
-     * @param param the request object
-     */
-    public generateFunctionDataTypesForAnalysisWithHttpInfo(param: FunctionsDataTypesApiGenerateFunctionDataTypesForAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGenerateFunctionDataTypes>> {
-        return this.api.generateFunctionDataTypesForAnalysisWithHttpInfo(param.analysisId, param.functionDataTypesParams,  options).toPromise();
-    }
-
-    /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types
-     * @param param the request object
-     */
-    public generateFunctionDataTypesForAnalysis(param: FunctionsDataTypesApiGenerateFunctionDataTypesForAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseGenerateFunctionDataTypes> {
-        return this.api.generateFunctionDataTypesForAnalysis(param.analysisId, param.functionDataTypesParams,  options).toPromise();
-    }
-
-    /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types for an arbitrary list of functions
-     * @param param the request object
-     */
-    public generateFunctionDataTypesForFunctionsWithHttpInfo(param: FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseGenerationStatusList>> {
-        return this.api.generateFunctionDataTypesForFunctionsWithHttpInfo(param.functionDataTypesParams,  options).toPromise();
-    }
-
-    /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types for an arbitrary list of functions
-     * @param param the request object
-     */
-    public generateFunctionDataTypesForFunctions(param: FunctionsDataTypesApiGenerateFunctionDataTypesForFunctionsRequest, options?: ConfigurationOptions): Promise<BaseResponseGenerationStatusList> {
-        return this.api.generateFunctionDataTypesForFunctions(param.functionDataTypesParams,  options).toPromise();
-    }
-
-    /**
      * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get data types for a single function
      * @param param the request object
@@ -5324,42 +2557,6 @@ export class ObjectFunctionsDataTypesApi {
      */
     public listAnalysisFunctionsDataTypes(param: FunctionsDataTypesApiListAnalysisFunctionsDataTypesRequest, options?: ConfigurationOptions): Promise<ListAnalysisFunctionsDataTypesOutputBody> {
         return this.api.listAnalysisFunctionsDataTypes(param.analysisId, param.offset, param.limit,  options).toPromise();
-    }
-
-    /**
-     * Returns data types for multiple functions with optional function ID filtering
-     * List Function Data Types
-     * @param param the request object
-     */
-    public listFunctionDataTypesForAnalysisWithHttpInfo(param: FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypesList>> {
-        return this.api.listFunctionDataTypesForAnalysisWithHttpInfo(param.analysisId, param.functionIds,  options).toPromise();
-    }
-
-    /**
-     * Returns data types for multiple functions with optional function ID filtering
-     * List Function Data Types
-     * @param param the request object
-     */
-    public listFunctionDataTypesForAnalysis(param: FunctionsDataTypesApiListFunctionDataTypesForAnalysisRequest, options?: ConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
-        return this.api.listFunctionDataTypesForAnalysis(param.analysisId, param.functionIds,  options).toPromise();
-    }
-
-    /**
-     * Returns data types for multiple function IDs
-     * List Function Data Types
-     * @param param the request object
-     */
-    public listFunctionDataTypesForFunctionsWithHttpInfo(param: FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypesList>> {
-        return this.api.listFunctionDataTypesForFunctionsWithHttpInfo(param.functionIds,  options).toPromise();
-    }
-
-    /**
-     * Returns data types for multiple function IDs
-     * List Function Data Types
-     * @param param the request object
-     */
-    public listFunctionDataTypesForFunctions(param: FunctionsDataTypesApiListFunctionDataTypesForFunctionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
-        return this.api.listFunctionDataTypesForFunctions(param.functionIds,  options).toPromise();
     }
 
     /**
@@ -5403,15 +2600,6 @@ export class ObjectFunctionsDataTypesApi {
 import { ObservableFunctionsRenamingHistoryApi } from "./ObservableAPI";
 import { FunctionsRenamingHistoryApiRequestFactory, FunctionsRenamingHistoryApiResponseProcessor} from "../apis/FunctionsRenamingHistoryApi";
 
-export interface FunctionsRenamingHistoryApiBatchRenameFunctionRequest {
-    /**
-     * 
-     * @type FunctionsListRename
-     * @memberof FunctionsRenamingHistoryApibatchRenameFunction
-     */
-    functionsListRename: FunctionsListRename
-}
-
 export interface FunctionsRenamingHistoryApiBatchRenameFunctionsRequest {
     /**
      * 
@@ -5428,16 +2616,6 @@ export interface FunctionsRenamingHistoryApiGetFunctionHistoryRequest {
      * Defaults to: undefined
      * @type number
      * @memberof FunctionsRenamingHistoryApigetFunctionHistory
-     */
-    functionId: number
-}
-
-export interface FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsRenamingHistoryApigetFunctionNameHistory
      */
     functionId: number
 }
@@ -5459,46 +2637,13 @@ export interface FunctionsRenamingHistoryApiRenameFunctionRequest {
     renameInputBody: RenameInputBody
 }
 
-export interface FunctionsRenamingHistoryApiRenameFunctionIdRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsRenamingHistoryApirenameFunctionId
-     */
-    functionId: number
-    /**
-     * 
-     * @type FunctionRename
-     * @memberof FunctionsRenamingHistoryApirenameFunctionId
-     */
-    functionRename: FunctionRename
-}
-
 export interface FunctionsRenamingHistoryApiRevertFunctionNameRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsRenamingHistoryApirevertFunctionName
-     */
-    functionId: number
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof FunctionsRenamingHistoryApirevertFunctionName
-     */
-    historyId: number
-}
-
-export interface FunctionsRenamingHistoryApiRevertFunctionName0Request {
     /**
      * Function ID
      * Minimum: 1
      * Defaults to: undefined
      * @type number
-     * @memberof FunctionsRenamingHistoryApirevertFunctionName_1
+     * @memberof FunctionsRenamingHistoryApirevertFunctionName
      */
     functionId: number
     /**
@@ -5506,7 +2651,7 @@ export interface FunctionsRenamingHistoryApiRevertFunctionName0Request {
      * Minimum: 1
      * Defaults to: undefined
      * @type number
-     * @memberof FunctionsRenamingHistoryApirevertFunctionName_1
+     * @memberof FunctionsRenamingHistoryApirevertFunctionName
      */
     historyId: number
 }
@@ -5516,24 +2661,6 @@ export class ObjectFunctionsRenamingHistoryApi {
 
     public constructor(configuration: Configuration, requestFactory?: FunctionsRenamingHistoryApiRequestFactory, responseProcessor?: FunctionsRenamingHistoryApiResponseProcessor) {
         this.api = new ObservableFunctionsRenamingHistoryApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Renames a list of functions using the function IDs   Will record name changes in history
-     * Batch Rename Functions
-     * @param param the request object
-     */
-    public batchRenameFunctionWithHttpInfo(param: FunctionsRenamingHistoryApiBatchRenameFunctionRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.batchRenameFunctionWithHttpInfo(param.functionsListRename,  options).toPromise();
-    }
-
-    /**
-     * Renames a list of functions using the function IDs   Will record name changes in history
-     * Batch Rename Functions
-     * @param param the request object
-     */
-    public batchRenameFunction(param: FunctionsRenamingHistoryApiBatchRenameFunctionRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.batchRenameFunction(param.functionsListRename,  options).toPromise();
     }
 
     /**
@@ -5573,24 +2700,6 @@ export class ObjectFunctionsRenamingHistoryApi {
     }
 
     /**
-     * Gets the name history of a function using the function ID
-     * Get Function Name History
-     * @param param the request object
-     */
-    public getFunctionNameHistoryWithHttpInfo(param: FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListFunctionNameHistory>> {
-        return this.api.getFunctionNameHistoryWithHttpInfo(param.functionId,  options).toPromise();
-    }
-
-    /**
-     * Gets the name history of a function using the function ID
-     * Get Function Name History
-     * @param param the request object
-     */
-    public getFunctionNameHistory(param: FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest, options?: ConfigurationOptions): Promise<BaseResponseListFunctionNameHistory> {
-        return this.api.getFunctionNameHistory(param.functionId,  options).toPromise();
-    }
-
-    /**
      * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Rename a function
      * @param param the request object
@@ -5609,57 +2718,21 @@ export class ObjectFunctionsRenamingHistoryApi {
     }
 
     /**
-     * Renames a function using the function ID   Will record name change history
-     * Rename Function
+     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Revert function name
      * @param param the request object
      */
-    public renameFunctionIdWithHttpInfo(param: FunctionsRenamingHistoryApiRenameFunctionIdRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        return this.api.renameFunctionIdWithHttpInfo(param.functionId, param.functionRename,  options).toPromise();
-    }
-
-    /**
-     * Renames a function using the function ID   Will record name change history
-     * Rename Function
-     * @param param the request object
-     */
-    public renameFunctionId(param: FunctionsRenamingHistoryApiRenameFunctionIdRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
-        return this.api.renameFunctionId(param.functionId, param.functionRename,  options).toPromise();
-    }
-
-    /**
-     * Reverts the function name to a previous name using the function ID and history ID
-     * Revert the function name
-     * @param param the request object
-     */
-    public revertFunctionNameWithHttpInfo(param: FunctionsRenamingHistoryApiRevertFunctionNameRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
+    public revertFunctionNameWithHttpInfo(param: FunctionsRenamingHistoryApiRevertFunctionNameRequest, options?: ConfigurationOptions): Promise<HttpInfo<any>> {
         return this.api.revertFunctionNameWithHttpInfo(param.functionId, param.historyId,  options).toPromise();
     }
 
     /**
-     * Reverts the function name to a previous name using the function ID and history ID
-     * Revert the function name
+     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Revert function name
      * @param param the request object
      */
-    public revertFunctionName(param: FunctionsRenamingHistoryApiRevertFunctionNameRequest, options?: ConfigurationOptions): Promise<BaseResponse> {
+    public revertFunctionName(param: FunctionsRenamingHistoryApiRevertFunctionNameRequest, options?: ConfigurationOptions): Promise<any> {
         return this.api.revertFunctionName(param.functionId, param.historyId,  options).toPromise();
-    }
-
-    /**
-     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Revert function name
-     * @param param the request object
-     */
-    public revertFunctionName_1WithHttpInfo(param: FunctionsRenamingHistoryApiRevertFunctionName0Request, options?: ConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
-        return this.api.revertFunctionName_1WithHttpInfo(param.functionId, param.historyId,  options).toPromise();
-    }
-
-    /**
-     * Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Revert function name
-     * @param param the request object
-     */
-    public revertFunctionName_1(param: FunctionsRenamingHistoryApiRevertFunctionName0Request, options?: ConfigurationOptions): Promise<{ [key: string]: any; }> {
-        return this.api.revertFunctionName_1(param.functionId, param.historyId,  options).toPromise();
     }
 
 }
@@ -5714,39 +2787,6 @@ export class ObjectIAMUsersApi {
      */
     public getMyPermissions(param: IAMUsersApiGetMyPermissionsRequest = {}, options?: ConfigurationOptions): Promise<Permissions> {
         return this.api.getMyPermissions( options).toPromise();
-    }
-
-}
-
-import { ObservableModelsApi } from "./ObservableAPI";
-import { ModelsApiRequestFactory, ModelsApiResponseProcessor} from "../apis/ModelsApi";
-
-export interface ModelsApiGetModelsRequest {
-}
-
-export class ObjectModelsApi {
-    private api: ObservableModelsApi
-
-    public constructor(configuration: Configuration, requestFactory?: ModelsApiRequestFactory, responseProcessor?: ModelsApiResponseProcessor) {
-        this.api = new ObservableModelsApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Gets active models available for analysis.
-     * Gets models
-     * @param param the request object
-     */
-    public getModelsWithHttpInfo(param: ModelsApiGetModelsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseModelsResponse>> {
-        return this.api.getModelsWithHttpInfo( options).toPromise();
-    }
-
-    /**
-     * Gets active models available for analysis.
-     * Gets models
-     * @param param the request object
-     */
-    public getModels(param: ModelsApiGetModelsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseModelsResponse> {
-        return this.api.getModels( options).toPromise();
     }
 
 }
@@ -5846,296 +2886,6 @@ export class ObjectReportsApi {
      */
     public getPdfReportStatus(param: ReportsApiGetPdfReportStatusRequest, options?: ConfigurationOptions): Promise<WorkflowProgress> {
         return this.api.getPdfReportStatus(param.analysisId,  options).toPromise();
-    }
-
-}
-
-import { ObservableSearchApi } from "./ObservableAPI";
-import { SearchApiRequestFactory, SearchApiResponseProcessor} from "../apis/SearchApi";
-
-export interface SearchApiSearchBinariesRequest {
-    /**
-     * The page number to retrieve.
-     * Minimum: 1
-     * Maximum: 100000
-     * Defaults to: 1
-     * @type number
-     * @memberof SearchApisearchBinaries
-     */
-    page?: number
-    /**
-     * Number of items per page.
-     * Minimum: 1
-     * Defaults to: 10
-     * @type number
-     * @memberof SearchApisearchBinaries
-     */
-    pageSize?: number
-    /**
-     * The partial or full name of the binary being searched
-     * Defaults to: undefined
-     * @type string
-     * @memberof SearchApisearchBinaries
-     */
-    partialName?: string
-    /**
-     * The partial or full sha256 of the binary being searched
-     * Defaults to: undefined
-     * @type string
-     * @memberof SearchApisearchBinaries
-     */
-    partialSha256?: string
-    /**
-     * The tags to be searched for
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof SearchApisearchBinaries
-     */
-    tags?: Array<string>
-    /**
-     * The name of the model used to analyze the binary the function belongs to
-     * Defaults to: undefined
-     * @type string
-     * @memberof SearchApisearchBinaries
-     */
-    modelName?: string
-    /**
-     * Whether to only search user\&#39;s uploaded files
-     * Defaults to: false
-     * @type boolean
-     * @memberof SearchApisearchBinaries
-     */
-    userFilesOnly?: boolean
-    /**
-     * A binary ID to exclude from the results
-     * Defaults to: undefined
-     * @type number
-     * @memberof SearchApisearchBinaries
-     */
-    excludeBinaryId?: number
-    /**
-     * Restrict the search to binaries owned by these user IDs
-     * Defaults to: undefined
-     * @type Array&lt;number&gt;
-     * @memberof SearchApisearchBinaries
-     */
-    userIds?: Array<number>
-}
-
-export interface SearchApiSearchCollectionsRequest {
-    /**
-     * The page number to retrieve.
-     * Minimum: 1
-     * Maximum: 100000
-     * Defaults to: 1
-     * @type number
-     * @memberof SearchApisearchCollections
-     */
-    page?: number
-    /**
-     * Number of items per page.
-     * Minimum: 1
-     * Defaults to: 10
-     * @type number
-     * @memberof SearchApisearchCollections
-     */
-    pageSize?: number
-    /**
-     * The partial or full name of the collection being searched
-     * Defaults to: undefined
-     * @type string
-     * @memberof SearchApisearchCollections
-     */
-    partialCollectionName?: string
-    /**
-     * The partial or full name of the binary belonging to the collection
-     * Defaults to: undefined
-     * @type string
-     * @memberof SearchApisearchCollections
-     */
-    partialBinaryName?: string
-    /**
-     * The partial or full sha256 of the binary belonging to the collection
-     * Defaults to: undefined
-     * @type string
-     * @memberof SearchApisearchCollections
-     */
-    partialBinarySha256?: string
-    /**
-     * The tags to be searched for
-     * Defaults to: undefined
-     * @type Array&lt;string&gt;
-     * @memberof SearchApisearchCollections
-     */
-    tags?: Array<string>
-    /**
-     * The filters to be used for the search
-     * Defaults to: undefined
-     * @type Array&lt;Filters&gt;
-     * @memberof SearchApisearchCollections
-     */
-    filters?: Array<Filters>
-    /**
-     * The field to sort the order by in the results
-     * Defaults to: undefined
-     * @type AppApiRestV2CollectionsEnumsOrderBy
-     * @memberof SearchApisearchCollections
-     */
-    orderBy?: AppApiRestV2CollectionsEnumsOrderBy
-    /**
-     * The order direction in which to return results
-     * Defaults to: undefined
-     * @type Order
-     * @memberof SearchApisearchCollections
-     */
-    orderByDirection?: Order
-    /**
-     * Restrict the search to collections owned by these user IDs
-     * Defaults to: undefined
-     * @type Array&lt;number&gt;
-     * @memberof SearchApisearchCollections
-     */
-    userIds?: Array<number>
-}
-
-export interface SearchApiSearchFunctionsRequest {
-    /**
-     * The page number to retrieve.
-     * Minimum: 1
-     * Maximum: 100000
-     * Defaults to: 1
-     * @type number
-     * @memberof SearchApisearchFunctions
-     */
-    page?: number
-    /**
-     * Number of items per page.
-     * Minimum: 1
-     * Defaults to: 10
-     * @type number
-     * @memberof SearchApisearchFunctions
-     */
-    pageSize?: number
-    /**
-     * The partial or full name of the function being searched
-     * Defaults to: undefined
-     * @type string
-     * @memberof SearchApisearchFunctions
-     */
-    partialName?: string
-    /**
-     * The name of the model used to analyze the binary the function belongs to
-     * Defaults to: undefined
-     * @type string
-     * @memberof SearchApisearchFunctions
-     */
-    modelName?: string
-}
-
-export interface SearchApiSearchTagsRequest {
-    /**
-     * The partial or full name of the tag to search for
-     * Defaults to: undefined
-     * @type string
-     * @memberof SearchApisearchTags
-     */
-    partialName: string
-    /**
-     * The page number to retrieve.
-     * Minimum: 1
-     * Maximum: 100000
-     * Defaults to: 1
-     * @type number
-     * @memberof SearchApisearchTags
-     */
-    page?: number
-    /**
-     * Number of items per page.
-     * Minimum: 1
-     * Defaults to: 10
-     * @type number
-     * @memberof SearchApisearchTags
-     */
-    pageSize?: number
-}
-
-export class ObjectSearchApi {
-    private api: ObservableSearchApi
-
-    public constructor(configuration: Configuration, requestFactory?: SearchApiRequestFactory, responseProcessor?: SearchApiResponseProcessor) {
-        this.api = new ObservableSearchApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Searches for a specific binary
-     * Binaries search
-     * @param param the request object
-     */
-    public searchBinariesWithHttpInfo(param: SearchApiSearchBinariesRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseBinarySearchResponse>> {
-        return this.api.searchBinariesWithHttpInfo(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly, param.excludeBinaryId, param.userIds,  options).toPromise();
-    }
-
-    /**
-     * Searches for a specific binary
-     * Binaries search
-     * @param param the request object
-     */
-    public searchBinaries(param: SearchApiSearchBinariesRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseBinarySearchResponse> {
-        return this.api.searchBinaries(param.page, param.pageSize, param.partialName, param.partialSha256, param.tags, param.modelName, param.userFilesOnly, param.excludeBinaryId, param.userIds,  options).toPromise();
-    }
-
-    /**
-     * Searches for a specific collection
-     * Collections search
-     * @param param the request object
-     */
-    public searchCollectionsWithHttpInfo(param: SearchApiSearchCollectionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseCollectionSearchResponse>> {
-        return this.api.searchCollectionsWithHttpInfo(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.filters, param.orderBy, param.orderByDirection, param.userIds,  options).toPromise();
-    }
-
-    /**
-     * Searches for a specific collection
-     * Collections search
-     * @param param the request object
-     */
-    public searchCollections(param: SearchApiSearchCollectionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseCollectionSearchResponse> {
-        return this.api.searchCollections(param.page, param.pageSize, param.partialCollectionName, param.partialBinaryName, param.partialBinarySha256, param.tags, param.filters, param.orderBy, param.orderByDirection, param.userIds,  options).toPromise();
-    }
-
-    /**
-     * Searches for a specific function
-     * Functions search
-     * @param param the request object
-     */
-    public searchFunctionsWithHttpInfo(param: SearchApiSearchFunctionsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionSearchResponse>> {
-        return this.api.searchFunctionsWithHttpInfo(param.page, param.pageSize, param.partialName, param.modelName,  options).toPromise();
-    }
-
-    /**
-     * Searches for a specific function
-     * Functions search
-     * @param param the request object
-     */
-    public searchFunctions(param: SearchApiSearchFunctionsRequest = {}, options?: ConfigurationOptions): Promise<BaseResponseFunctionSearchResponse> {
-        return this.api.searchFunctions(param.page, param.pageSize, param.partialName, param.modelName,  options).toPromise();
-    }
-
-    /**
-     * Searches for tags by there name
-     * Tags search
-     * @param param the request object
-     */
-    public searchTagsWithHttpInfo(param: SearchApiSearchTagsRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseTagSearchResponse>> {
-        return this.api.searchTagsWithHttpInfo(param.partialName, param.page, param.pageSize,  options).toPromise();
-    }
-
-    /**
-     * Searches for tags by there name
-     * Tags search
-     * @param param the request object
-     */
-    public searchTags(param: SearchApiSearchTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseTagSearchResponse> {
-        return this.api.searchTags(param.partialName, param.page, param.pageSize,  options).toPromise();
     }
 
 }

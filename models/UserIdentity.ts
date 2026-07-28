@@ -13,8 +13,8 @@ import { HttpFile } from '../http/http';
 
 export class UserIdentity {
     'createdAt': Date;
-    'issuerUrl': string | null;
-    'subject': string | null;
+    'issuerUrl': string;
+    'subject': string;
     'updatedAt': Date;
     'userId': number;
     'userIdentityId': number;

@@ -4,77 +4,11 @@ All URIs are relative to *https://api.reveng.ai*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**batchRenameFunction**](FunctionsRenamingHistoryApi.md#batchRenameFunction) | **POST** /v2/functions/rename/batch | Batch Rename Functions
 [**batchRenameFunctions**](FunctionsRenamingHistoryApi.md#batchRenameFunctions) | **POST** /v3/functions/rename | Batch rename functions
 [**getFunctionHistory**](FunctionsRenamingHistoryApi.md#getFunctionHistory) | **GET** /v3/functions/{function_id}/history | Get function name history
-[**getFunctionNameHistory**](FunctionsRenamingHistoryApi.md#getFunctionNameHistory) | **GET** /v2/functions/history/{function_id} | Get Function Name History
 [**renameFunction**](FunctionsRenamingHistoryApi.md#renameFunction) | **POST** /v3/functions/{function_id}/rename | Rename a function
-[**renameFunctionId**](FunctionsRenamingHistoryApi.md#renameFunctionId) | **POST** /v2/functions/rename/{function_id} | Rename Function
-[**revertFunctionName**](FunctionsRenamingHistoryApi.md#revertFunctionName) | **POST** /v2/functions/history/{function_id}/{history_id} | Revert the function name
-[**revertFunctionName_0**](FunctionsRenamingHistoryApi.md#revertFunctionName_0) | **POST** /v3/functions/{function_id}/history/{history_id}/revert | Revert function name
+[**revertFunctionName**](FunctionsRenamingHistoryApi.md#revertFunctionName) | **POST** /v3/functions/{function_id}/history/{history_id}/revert | Revert function name
 
-
-# **batchRenameFunction**
-> BaseResponse batchRenameFunction(functionsListRename)
-
-Renames a list of functions using the function IDs   Will record name changes in history
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsRenamingHistoryApi } from '@revengai/sdk';
-import type { FunctionsRenamingHistoryApiBatchRenameFunctionRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsRenamingHistoryApi(configuration);
-
-const request: FunctionsRenamingHistoryApiBatchRenameFunctionRequest = {
-  
-  functionsListRename: {
-    functions: [
-      {
-        functionId: 1,
-        newName: "newName_example",
-        newMangledName: "newMangledName_example",
-      },
-    ],
-  },
-};
-
-const data = await apiInstance.batchRenameFunction(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **functionsListRename** | **FunctionsListRename**|  |
-
-
-### Return type
-
-**BaseResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **batchRenameFunctions**
 > BatchRenameOutputBody batchRenameFunctions(batchRenameInputBody)
@@ -93,7 +27,15 @@ const apiInstance = new FunctionsRenamingHistoryApi(configuration);
 
 const request: FunctionsRenamingHistoryApiBatchRenameFunctionsRequest = {
   
-  batchRenameInputBody: ,
+  batchRenameInputBody: {
+    functions: [
+      {
+        functionId: 1,
+        newMangledName: "newMangledName_example",
+        newName: "newName_example",
+      },
+    ],
+  },
 };
 
 const data = await apiInstance.batchRenameFunctions(request);
@@ -190,60 +132,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getFunctionNameHistory**
-> BaseResponseListFunctionNameHistory getFunctionNameHistory()
-
-Gets the name history of a function using the function ID
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsRenamingHistoryApi } from '@revengai/sdk';
-import type { FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsRenamingHistoryApi(configuration);
-
-const request: FunctionsRenamingHistoryApiGetFunctionNameHistoryRequest = {
-  
-  functionId: 1,
-};
-
-const data = await apiInstance.getFunctionNameHistory(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **functionId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseListFunctionNameHistory**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **renameFunction**
 > RenameOutputBody renameFunction(renameInputBody)
 
@@ -263,7 +151,11 @@ const request: FunctionsRenamingHistoryApiRenameFunctionRequest = {
     // Function ID
   functionId: 1,
   
-  renameInputBody: ,
+  renameInputBody: {
+    newMangledName: "newMangledName_example",
+    newName: "newName_example",
+    preserveAiDecompilation: true,
+  },
 };
 
 const data = await apiInstance.renameFunction(request);
@@ -304,70 +196,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **renameFunctionId**
-> BaseResponse renameFunctionId(functionRename)
-
-Renames a function using the function ID   Will record name change history
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsRenamingHistoryApi } from '@revengai/sdk';
-import type { FunctionsRenamingHistoryApiRenameFunctionIdRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsRenamingHistoryApi(configuration);
-
-const request: FunctionsRenamingHistoryApiRenameFunctionIdRequest = {
-  
-  functionId: 1,
-  
-  functionRename: {
-    newName: "newName_example",
-    newMangledName: "newMangledName_example",
-  },
-};
-
-const data = await apiInstance.renameFunctionId(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **functionRename** | **FunctionRename**|  |
- **functionId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **revertFunctionName**
-> BaseResponse revertFunctionName()
+> any revertFunctionName()
 
-Reverts the function name to a previous name using the function ID and history ID
+Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
 ### Example
 
@@ -380,70 +212,13 @@ const configuration = createConfiguration();
 const apiInstance = new FunctionsRenamingHistoryApi(configuration);
 
 const request: FunctionsRenamingHistoryApiRevertFunctionNameRequest = {
-  
-  functionId: 1,
-  
-  historyId: 1,
-};
-
-const data = await apiInstance.revertFunctionName(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **functionId** | [**number**] |  | defaults to undefined
- **historyId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **revertFunctionName_0**
-> { [key: string]: any; } revertFunctionName_0()
-
-Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsRenamingHistoryApi } from '@revengai/sdk';
-import type { FunctionsRenamingHistoryApiRevertFunctionName0Request } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsRenamingHistoryApi(configuration);
-
-const request: FunctionsRenamingHistoryApiRevertFunctionName0Request = {
     // Function ID
   functionId: 1,
     // History ID to revert to
   historyId: 1,
 };
 
-const data = await apiInstance.revertFunctionName_0(request);
+const data = await apiInstance.revertFunctionName(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -458,7 +233,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{ [key: string]: any; }**
+**any**
 
 ### Authorization
 

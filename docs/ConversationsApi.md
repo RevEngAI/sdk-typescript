@@ -89,7 +89,9 @@ const request: ConversationsApiConfirmToolRequest = {
     // Conversation UUID
   id: "id_example",
   
-  confirmToolInputBody: ,
+  confirmToolInputBody: {
+    approved: true,
+  },
 };
 
 const data = await apiInstance.confirmTool(request);
@@ -147,7 +149,13 @@ const apiInstance = new ConversationsApi(configuration);
 
 const request: ConversationsApiCreateConversationRequest = {
   
-  createConversationRequest: ,
+  createConversationRequest: {
+    context: {
+      analysisId: 1,
+      functionId: 1,
+    },
+    title: "title_example",
+  },
 };
 
 const data = await apiInstance.createConversation(request);
@@ -309,7 +317,13 @@ const request: ConversationsApiSendMessageRequest = {
     // Conversation UUID
   id: "id_example",
   
-  sendMessageRequest: ,
+  sendMessageRequest: {
+    content: "content_example",
+    context: {
+      analysisId: 1,
+      functionId: 1,
+    },
+  },
 };
 
 const data = await apiInstance.sendMessage(request);

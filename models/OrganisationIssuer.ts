@@ -18,7 +18,7 @@ export class OrganisationIssuer {
     'clientId'?: string;
     'createdAt': Date;
     'enabled': boolean;
-    'issuerUrl': string | null;
+    'issuerUrl': string;
     /**
     * JSON Web Key Set URI discovered from the issuer\'s OIDC configuration. Populated automatically during issuer registration.
     */
