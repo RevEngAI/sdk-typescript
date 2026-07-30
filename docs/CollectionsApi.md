@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**updateCollection**](CollectionsApi.md#updateCollection) | **PATCH** /v2/collections/{collection_id} | Updates a collection
 [**updateCollectionBinaries**](CollectionsApi.md#updateCollectionBinaries) | **PATCH** /v2/collections/{collection_id}/binaries | Updates a collection binaries
 [**updateCollectionTags**](CollectionsApi.md#updateCollectionTags) | **PATCH** /v2/collections/{collection_id}/tags | Updates a collection tags
+[**v3AddCollectionBinaries**](CollectionsApi.md#v3AddCollectionBinaries) | **POST** /v3/collections/{collection_id}/binaries | Add binaries to a collection.
 [**v3CreateCollection**](CollectionsApi.md#v3CreateCollection) | **POST** /v3/collections | Create a collection.
 [**v3DeleteCollection**](CollectionsApi.md#v3DeleteCollection) | **DELETE** /v3/collections/{collection_id} | Delete a collection.
 [**v3GetCollection**](CollectionsApi.md#v3GetCollection) | **GET** /v3/collections/{collection_id} | Get a collection.
@@ -18,6 +19,7 @@ Method | HTTP request | Description
 [**v3PatchCollection**](CollectionsApi.md#v3PatchCollection) | **PATCH** /v3/collections/{collection_id} | Update a collection.
 [**v3PatchCollectionBinaries**](CollectionsApi.md#v3PatchCollectionBinaries) | **PATCH** /v3/collections/{collection_id}/binaries | Replace the binaries in a collection.
 [**v3PatchCollectionTags**](CollectionsApi.md#v3PatchCollectionTags) | **PATCH** /v3/collections/{collection_id}/tags | Replace the tags on a collection.
+[**v3RemoveCollectionBinaries**](CollectionsApi.md#v3RemoveCollectionBinaries) | **DELETE** /v3/collections/{collection_id}/binaries | Remove binaries from a collection.
 
 
 # **createCollection**
@@ -461,6 +463,66 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **v3AddCollectionBinaries**
+> void v3AddCollectionBinaries(addCollectionBinariesInputBody)
+
+Links the supplied binaries to a collection without affecting any binaries already linked. Binary IDs already linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+
+```typescript
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiV3AddCollectionBinariesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new CollectionsApi(configuration);
+
+const request: CollectionsApiV3AddCollectionBinariesRequest = {
+  
+  collectionId: 1,
+  
+  addCollectionBinariesInputBody: ,
+};
+
+const data = await apiInstance.v3AddCollectionBinaries(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **addCollectionBinariesInputBody** | **AddCollectionBinariesInputBody**|  |
+ **collectionId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **v3CreateCollection**
 > CreateCollectionOutputBody v3CreateCollection(createCollectionInputBody)
 
@@ -891,6 +953,66 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3RemoveCollectionBinaries**
+> void v3RemoveCollectionBinaries(removeCollectionBinariesInputBody)
+
+Unlinks the supplied binaries from a collection without affecting any other binaries linked to it. Binary IDs not linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, CollectionsApi } from '@revengai/sdk';
+import type { CollectionsApiV3RemoveCollectionBinariesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new CollectionsApi(configuration);
+
+const request: CollectionsApiV3RemoveCollectionBinariesRequest = {
+  
+  collectionId: 1,
+  
+  removeCollectionBinariesInputBody: ,
+};
+
+const data = await apiInstance.v3RemoveCollectionBinaries(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **removeCollectionBinariesInputBody** | **RemoveCollectionBinariesInputBody**|  |
+ **collectionId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |

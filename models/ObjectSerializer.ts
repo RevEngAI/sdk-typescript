@@ -3,6 +3,7 @@ export * from '../models/AIDecompInverseFunctionMapItem';
 export * from '../models/AIDecompInverseStringMapItem';
 export * from '../models/APIError';
 export * from '../models/AddCalleeInputBody';
+export * from '../models/AddCollectionBinariesInputBody';
 export * from '../models/AddIssuerDomainInputBody';
 export * from '../models/AddOwnerInputBody';
 export * from '../models/AddTeamMemberInputBody';
@@ -387,6 +388,7 @@ export * from '../models/RegenerateOutputBody';
 export * from '../models/RegisterUserInputBody';
 export * from '../models/RegistryOperation';
 export * from '../models/RelativeBinaryResponse';
+export * from '../models/RemoveCollectionBinariesInputBody';
 export * from '../models/RenameAppliedEvent';
 export * from '../models/RenameInputBody';
 export * from '../models/RenameOutputBody';
@@ -510,6 +512,7 @@ import { AIDecompInverseFunctionMapItem } from '../models/AIDecompInverseFunctio
 import { AIDecompInverseStringMapItem } from '../models/AIDecompInverseStringMapItem';
 import { APIError } from '../models/APIError';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
+import { AddCollectionBinariesInputBody } from '../models/AddCollectionBinariesInputBody';
 import { AddIssuerDomainInputBody } from '../models/AddIssuerDomainInputBody';
 import { AddOwnerInputBody } from '../models/AddOwnerInputBody';
 import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
@@ -894,6 +897,7 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RemoveCollectionBinariesInputBody } from '../models/RemoveCollectionBinariesInputBody';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
 import { RenameOutputBody } from '../models/RenameOutputBody';
@@ -1128,6 +1132,7 @@ let typeMap: {[index: string]: any} = {
     "AIDecompInverseStringMapItem": AIDecompInverseStringMapItem,
     "APIError": APIError,
     "AddCalleeInputBody": AddCalleeInputBody,
+    "AddCollectionBinariesInputBody": AddCollectionBinariesInputBody,
     "AddIssuerDomainInputBody": AddIssuerDomainInputBody,
     "AddOwnerInputBody": AddOwnerInputBody,
     "AddTeamMemberInputBody": AddTeamMemberInputBody,
@@ -1497,6 +1502,7 @@ let typeMap: {[index: string]: any} = {
     "RegisterUserInputBody": RegisterUserInputBody,
     "RegistryOperation": RegistryOperation,
     "RelativeBinaryResponse": RelativeBinaryResponse,
+    "RemoveCollectionBinariesInputBody": RemoveCollectionBinariesInputBody,
     "RenameAppliedEvent": RenameAppliedEvent,
     "RenameInputBody": RenameInputBody,
     "RenameOutputBody": RenameOutputBody,

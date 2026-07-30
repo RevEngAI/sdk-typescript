@@ -7,6 +7,7 @@ import { AIDecompInverseFunctionMapItem } from '../models/AIDecompInverseFunctio
 import { AIDecompInverseStringMapItem } from '../models/AIDecompInverseStringMapItem';
 import { APIError } from '../models/APIError';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
+import { AddCollectionBinariesInputBody } from '../models/AddCollectionBinariesInputBody';
 import { AddIssuerDomainInputBody } from '../models/AddIssuerDomainInputBody';
 import { AddOwnerInputBody } from '../models/AddOwnerInputBody';
 import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
@@ -391,6 +392,7 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RemoveCollectionBinariesInputBody } from '../models/RemoveCollectionBinariesInputBody';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
 import { RenameOutputBody } from '../models/RenameOutputBody';
@@ -2871,6 +2873,23 @@ export interface CollectionsApiUpdateCollectionTagsRequest {
     collectionTagsUpdateRequest: CollectionTagsUpdateRequest
 }
 
+export interface CollectionsApiV3AddCollectionBinariesRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof CollectionsApiv3AddCollectionBinaries
+     */
+    collectionId: number
+    /**
+     * 
+     * @type AddCollectionBinariesInputBody
+     * @memberof CollectionsApiv3AddCollectionBinaries
+     */
+    addCollectionBinariesInputBody: AddCollectionBinariesInputBody
+}
+
 export interface CollectionsApiV3CreateCollectionRequest {
     /**
      * 
@@ -3039,6 +3058,23 @@ export interface CollectionsApiV3PatchCollectionTagsRequest {
     patchCollectionTagsInputBody: PatchCollectionTagsInputBody
 }
 
+export interface CollectionsApiV3RemoveCollectionBinariesRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof CollectionsApiv3RemoveCollectionBinaries
+     */
+    collectionId: number
+    /**
+     * 
+     * @type RemoveCollectionBinariesInputBody
+     * @memberof CollectionsApiv3RemoveCollectionBinaries
+     */
+    removeCollectionBinariesInputBody: RemoveCollectionBinariesInputBody
+}
+
 export class ObjectCollectionsApi {
     private api: ObservableCollectionsApi
 
@@ -3173,6 +3209,24 @@ export class ObjectCollectionsApi {
     }
 
     /**
+     * Links the supplied binaries to a collection without affecting any binaries already linked. Binary IDs already linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Add binaries to a collection.
+     * @param param the request object
+     */
+    public v3AddCollectionBinariesWithHttpInfo(param: CollectionsApiV3AddCollectionBinariesRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.v3AddCollectionBinariesWithHttpInfo(param.collectionId, param.addCollectionBinariesInputBody,  options).toPromise();
+    }
+
+    /**
+     * Links the supplied binaries to a collection without affecting any binaries already linked. Binary IDs already linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Add binaries to a collection.
+     * @param param the request object
+     */
+    public v3AddCollectionBinaries(param: CollectionsApiV3AddCollectionBinariesRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.v3AddCollectionBinaries(param.collectionId, param.addCollectionBinariesInputBody,  options).toPromise();
+    }
+
+    /**
      * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * Create a collection.
      * @param param the request object
@@ -3296,6 +3350,24 @@ export class ObjectCollectionsApi {
      */
     public v3PatchCollectionTags(param: CollectionsApiV3PatchCollectionTagsRequest, options?: ConfigurationOptions): Promise<PatchCollectionTagsOutputBody> {
         return this.api.v3PatchCollectionTags(param.collectionId, param.patchCollectionTagsInputBody,  options).toPromise();
+    }
+
+    /**
+     * Unlinks the supplied binaries from a collection without affecting any other binaries linked to it. Binary IDs not linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Remove binaries from a collection.
+     * @param param the request object
+     */
+    public v3RemoveCollectionBinariesWithHttpInfo(param: CollectionsApiV3RemoveCollectionBinariesRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.v3RemoveCollectionBinariesWithHttpInfo(param.collectionId, param.removeCollectionBinariesInputBody,  options).toPromise();
+    }
+
+    /**
+     * Unlinks the supplied binaries from a collection without affecting any other binaries linked to it. Binary IDs not linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Remove binaries from a collection.
+     * @param param the request object
+     */
+    public v3RemoveCollectionBinaries(param: CollectionsApiV3RemoveCollectionBinariesRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.v3RemoveCollectionBinaries(param.collectionId, param.removeCollectionBinariesInputBody,  options).toPromise();
     }
 
 }
