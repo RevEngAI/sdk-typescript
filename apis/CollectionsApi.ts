@@ -9,6 +9,7 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { APIError } from '../models/APIError';
+import { AddCollectionBinariesInputBody } from '../models/AddCollectionBinariesInputBody';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseBool } from '../models/BaseResponseBool';
@@ -32,6 +33,7 @@ import { PatchCollectionInputBody } from '../models/PatchCollectionInputBody';
 import { PatchCollectionOutputBody } from '../models/PatchCollectionOutputBody';
 import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
 import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
+import { RemoveCollectionBinariesInputBody } from '../models/RemoveCollectionBinariesInputBody';
 
 /**
  * no description
@@ -490,6 +492,67 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Links the supplied binaries to a collection without affecting any binaries already linked. Binary IDs already linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Add binaries to a collection.
+     * @param collectionId 
+     * @param addCollectionBinariesInputBody 
+     */
+    public async v3AddCollectionBinaries(collectionId: number, addCollectionBinariesInputBody: AddCollectionBinariesInputBody, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'collectionId' is not null or undefined
+        if (collectionId === null || collectionId === undefined) {
+            throw new RequiredError("CollectionsApi", "v3AddCollectionBinaries", "collectionId");
+        }
+
+
+        // verify required parameter 'addCollectionBinariesInputBody' is not null or undefined
+        if (addCollectionBinariesInputBody === null || addCollectionBinariesInputBody === undefined) {
+            throw new RequiredError("CollectionsApi", "v3AddCollectionBinaries", "addCollectionBinariesInputBody");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/collections/{collection_id}/binaries'
+            .replace('{' + 'collection_id' + '}', encodeURIComponent(String(collectionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(addCollectionBinariesInputBody, "AddCollectionBinariesInputBody", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * Create a collection.
      * @param createCollectionInputBody 
@@ -923,6 +986,67 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
         return requestContext;
     }
 
+    /**
+     * Unlinks the supplied binaries from a collection without affecting any other binaries linked to it. Binary IDs not linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Remove binaries from a collection.
+     * @param collectionId 
+     * @param removeCollectionBinariesInputBody 
+     */
+    public async v3RemoveCollectionBinaries(collectionId: number, removeCollectionBinariesInputBody: RemoveCollectionBinariesInputBody, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'collectionId' is not null or undefined
+        if (collectionId === null || collectionId === undefined) {
+            throw new RequiredError("CollectionsApi", "v3RemoveCollectionBinaries", "collectionId");
+        }
+
+
+        // verify required parameter 'removeCollectionBinariesInputBody' is not null or undefined
+        if (removeCollectionBinariesInputBody === null || removeCollectionBinariesInputBody === undefined) {
+            throw new RequiredError("CollectionsApi", "v3RemoveCollectionBinaries", "removeCollectionBinariesInputBody");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/collections/{collection_id}/binaries'
+            .replace('{' + 'collection_id' + '}', encodeURIComponent(String(collectionId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.DELETE);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(removeCollectionBinariesInputBody, "RemoveCollectionBinariesInputBody", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
 }
 
 export class CollectionsApiResponseProcessor {
@@ -1173,6 +1297,59 @@ export class CollectionsApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponseCollectionTagsUpdateResponse", ""
             ) as BaseResponseCollectionTagsUpdateResponse;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3AddCollectionBinaries
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3AddCollectionBinariesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("204", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1547,6 +1724,59 @@ export class CollectionsApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "PatchCollectionTagsOutputBody", ""
             ) as PatchCollectionTagsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3RemoveCollectionBinaries
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3RemoveCollectionBinariesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("204", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

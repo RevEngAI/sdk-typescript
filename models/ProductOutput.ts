@@ -38,6 +38,10 @@ export class ProductOutput {
     */
     'prices': Array<PriceOutput> | null;
     /**
+    * When true, this product is not self-serve purchasable and must be bought via direct sales.
+    */
+    'salesOnly': boolean;
+    /**
     * User tier associated with this product, if any.
     */
     'tier'?: string;
@@ -81,6 +85,12 @@ export class ProductOutput {
             "name": "prices",
             "baseName": "prices",
             "type": "Array<PriceOutput>",
+            "format": ""
+        },
+        {
+            "name": "salesOnly",
+            "baseName": "sales_only",
+            "type": "boolean",
             "format": ""
         },
         {

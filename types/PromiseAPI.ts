@@ -7,6 +7,7 @@ import { AIDecompInverseFunctionMapItem } from '../models/AIDecompInverseFunctio
 import { AIDecompInverseStringMapItem } from '../models/AIDecompInverseStringMapItem';
 import { APIError } from '../models/APIError';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
+import { AddCollectionBinariesInputBody } from '../models/AddCollectionBinariesInputBody';
 import { AddIssuerDomainInputBody } from '../models/AddIssuerDomainInputBody';
 import { AddOwnerInputBody } from '../models/AddOwnerInputBody';
 import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
@@ -391,6 +392,7 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RemoveCollectionBinariesInputBody } from '../models/RemoveCollectionBinariesInputBody';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
 import { RenameOutputBody } from '../models/RenameOutputBody';
@@ -2299,6 +2301,30 @@ export class PromiseCollectionsApi {
     }
 
     /**
+     * Links the supplied binaries to a collection without affecting any binaries already linked. Binary IDs already linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Add binaries to a collection.
+     * @param collectionId
+     * @param addCollectionBinariesInputBody
+     */
+    public v3AddCollectionBinariesWithHttpInfo(collectionId: number, addCollectionBinariesInputBody: AddCollectionBinariesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3AddCollectionBinariesWithHttpInfo(collectionId, addCollectionBinariesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Links the supplied binaries to a collection without affecting any binaries already linked. Binary IDs already linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Add binaries to a collection.
+     * @param collectionId
+     * @param addCollectionBinariesInputBody
+     */
+    public v3AddCollectionBinaries(collectionId: number, addCollectionBinariesInputBody: AddCollectionBinariesInputBody, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3AddCollectionBinaries(collectionId, addCollectionBinariesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Creates a new collection, optionally tagging it and linking binary IDs to it. Tags and binaries are returned in the response only when they were supplied in the request.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * Create a collection.
      * @param createCollectionInputBody
@@ -2475,6 +2501,30 @@ export class PromiseCollectionsApi {
     public v3PatchCollectionTags(collectionId: number, patchCollectionTagsInputBody: PatchCollectionTagsInputBody, _options?: PromiseConfigurationOptions): Promise<PatchCollectionTagsOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3PatchCollectionTags(collectionId, patchCollectionTagsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Unlinks the supplied binaries from a collection without affecting any other binaries linked to it. Binary IDs not linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Remove binaries from a collection.
+     * @param collectionId
+     * @param removeCollectionBinariesInputBody
+     */
+    public v3RemoveCollectionBinariesWithHttpInfo(collectionId: number, removeCollectionBinariesInputBody: RemoveCollectionBinariesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RemoveCollectionBinariesWithHttpInfo(collectionId, removeCollectionBinariesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Unlinks the supplied binaries from a collection without affecting any other binaries linked to it. Binary IDs not linked to the collection are ignored.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Remove binaries from a collection.
+     * @param collectionId
+     * @param removeCollectionBinariesInputBody
+     */
+    public v3RemoveCollectionBinaries(collectionId: number, removeCollectionBinariesInputBody: RemoveCollectionBinariesInputBody, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RemoveCollectionBinaries(collectionId, removeCollectionBinariesInputBody, observableOptions);
         return result.toPromise();
     }
 
