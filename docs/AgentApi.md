@@ -5,12 +5,15 @@ All URIs are relative to *https://api.reveng.ai*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet**](AgentApi.md#checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet) | **GET** /v2/analyses/{analysis_id}/agent/capabilities/status | Check the status of a capabilities analysis workflow
+[**checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet**](AgentApi.md#checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet) | **GET** /v2/analyses/{analysis_id}/agent/remediation/status | Check the status of a remediation analysis workflow
 [**checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet**](AgentApi.md#checkReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGet) | **GET** /v2/analyses/{analysis_id}/agent/report-analysis/status | Check the status of a report analysis workflow
 [**checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet**](AgentApi.md#checkTriageTaskStatusV2AnalysesAnalysisIdAgentTriageStatusGet) | **GET** /v2/analyses/{analysis_id}/agent/triage/status | Check the status of a triage analysis workflow
 [**createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost**](AgentApi.md#createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost) | **POST** /v2/analyses/{analysis_id}/agent/capabilities | Queues a capabilities analysis workflow process
+[**createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost**](AgentApi.md#createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost) | **POST** /v2/analyses/{analysis_id}/agent/remediation | Queues a remediation analysis workflow process
 [**createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost**](AgentApi.md#createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost) | **POST** /v2/analyses/{analysis_id}/agent/report-analysis | Queues a combined report analysis workflow process
 [**createTriageTaskV2AnalysesAnalysisIdAgentTriagePost**](AgentApi.md#createTriageTaskV2AnalysesAnalysisIdAgentTriagePost) | **POST** /v2/analyses/{analysis_id}/agent/triage | Queues a triage analysis workflow process
 [**getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet**](AgentApi.md#getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet) | **GET** /v2/analyses/{analysis_id}/agent/capabilities | Get Capabilities Result
+[**getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet**](AgentApi.md#getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet) | **GET** /v2/analyses/{analysis_id}/agent/remediation | Get Remediation Result
 [**getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet**](AgentApi.md#getReportAnalysisResultV2AnalysesAnalysisIdAgentReportAnalysisGet) | **GET** /v2/analyses/{analysis_id}/agent/report-analysis | Get Report Analysis Result
 [**getTriageResultV2AnalysesAnalysisIdAgentTriageGet**](AgentApi.md#getTriageResultV2AnalysesAnalysisIdAgentTriageGet) | **GET** /v2/analyses/{analysis_id}/agent/triage | Get Triage Result
 
@@ -35,6 +38,59 @@ const request: AgentApiCheckCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapab
 };
 
 const data = await apiInstance.checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**TaskStatusResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet**
+> TaskStatusResponse checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet()
+
+
+### Example
+
+
+```typescript
+import { createConfiguration, AgentApi } from '@revengai/sdk';
+import type { AgentApiCheckRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AgentApi(configuration);
+
+const request: AgentApiCheckRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetRequest = {
+  
+  analysisId: 1,
+};
+
+const data = await apiInstance.checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -227,6 +283,59 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost**
+> BaseResponseQueuedWorkflowTaskResponse createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost()
+
+
+### Example
+
+
+```typescript
+import { createConfiguration, AgentApi } from '@revengai/sdk';
+import type { AgentApiCreateRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AgentApi(configuration);
+
+const request: AgentApiCreateRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostRequest = {
+  
+  analysisId: 1,
+};
+
+const data = await apiInstance.createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseQueuedWorkflowTaskResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost**
 > QueuedWorkflowTaskResponse createReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPost()
 
@@ -368,6 +477,60 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BaseResponseCapabilitiesAgentResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Successful Response |  -  |
+**422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet**
+> BaseResponseRemediationAgentResponse getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet()
+
+Returns: - A list of generated YARA rules - A list of generated Snort rules - A list of generated STIX rules
+
+### Example
+
+
+```typescript
+import { createConfiguration, AgentApi } from '@revengai/sdk';
+import type { AgentApiGetRemediationResultV2AnalysesAnalysisIdAgentRemediationGetRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AgentApi(configuration);
+
+const request: AgentApiGetRemediationResultV2AnalysesAnalysisIdAgentRemediationGetRequest = {
+  
+  analysisId: 1,
+};
+
+const data = await apiInstance.getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] |  | defaults to undefined
+
+
+### Return type
+
+**BaseResponseRemediationAgentResponse**
 
 ### Authorization
 

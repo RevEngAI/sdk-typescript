@@ -109,6 +109,7 @@ export * from '../models/BaseResponseModelsResponse';
 export * from '../models/BaseResponseParams';
 export * from '../models/BaseResponseQueuedWorkflowTaskResponse';
 export * from '../models/BaseResponseRecent';
+export * from '../models/BaseResponseRemediationAgentResponse';
 export * from '../models/BaseResponseReportAnalysisResponse';
 export * from '../models/BaseResponseStatus';
 export * from '../models/BaseResponseStr';
@@ -388,6 +389,7 @@ export * from '../models/RegenerateOutputBody';
 export * from '../models/RegisterUserInputBody';
 export * from '../models/RegistryOperation';
 export * from '../models/RelativeBinaryResponse';
+export * from '../models/RemediationAgentResponse';
 export * from '../models/RemoveCollectionBinariesInputBody';
 export * from '../models/RenameAppliedEvent';
 export * from '../models/RenameInputBody';
@@ -618,6 +620,7 @@ import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse
 import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
+import { BaseResponseRemediationAgentResponse } from '../models/BaseResponseRemediationAgentResponse';
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
@@ -897,6 +900,7 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RemediationAgentResponse } from '../models/RemediationAgentResponse';
 import { RemoveCollectionBinariesInputBody } from '../models/RemoveCollectionBinariesInputBody';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
@@ -1234,6 +1238,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseParams": BaseResponseParams,
     "BaseResponseQueuedWorkflowTaskResponse": BaseResponseQueuedWorkflowTaskResponse,
     "BaseResponseRecent": BaseResponseRecent,
+    "BaseResponseRemediationAgentResponse": BaseResponseRemediationAgentResponse,
     "BaseResponseReportAnalysisResponse": BaseResponseReportAnalysisResponse,
     "BaseResponseStatus": BaseResponseStatus,
     "BaseResponseStr": BaseResponseStr,
@@ -1502,6 +1507,7 @@ let typeMap: {[index: string]: any} = {
     "RegisterUserInputBody": RegisterUserInputBody,
     "RegistryOperation": RegistryOperation,
     "RelativeBinaryResponse": RelativeBinaryResponse,
+    "RemediationAgentResponse": RemediationAgentResponse,
     "RemoveCollectionBinariesInputBody": RemoveCollectionBinariesInputBody,
     "RenameAppliedEvent": RenameAppliedEvent,
     "RenameInputBody": RenameInputBody,
