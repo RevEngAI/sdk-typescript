@@ -114,6 +114,7 @@ import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse
 import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
+import { BaseResponseRemediationAgentResponse } from '../models/BaseResponseRemediationAgentResponse';
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
@@ -393,6 +394,7 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RemediationAgentResponse } from '../models/RemediationAgentResponse';
 import { RemoveCollectionBinariesInputBody } from '../models/RemoveCollectionBinariesInputBody';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
@@ -561,6 +563,38 @@ export class ObservableAgentApi {
     }
 
     /**
+     * Check the status of a remediation analysis workflow
+     * @param analysisId
+     */
+    public checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<TaskStatusResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet(analysisId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Check the status of a remediation analysis workflow
+     * @param analysisId
+     */
+    public checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet(analysisId: number, _options?: ConfigurationOptions): Observable<TaskStatusResponse> {
+        return this.checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<TaskStatusResponse>) => apiResponse.data));
+    }
+
+    /**
      * Check the status of a report analysis workflow
      * @param analysisId
      */
@@ -657,6 +691,38 @@ export class ObservableAgentApi {
     }
 
     /**
+     * Queues a remediation analysis workflow process
+     * @param analysisId
+     */
+    public createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost(analysisId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Queues a remediation analysis workflow process
+     * @param analysisId
+     */
+    public createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseQueuedWorkflowTaskResponse> {
+        return this.createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseQueuedWorkflowTaskResponse>) => apiResponse.data));
+    }
+
+    /**
      * Queues a combined report analysis workflow process
      * @param analysisId
      */
@@ -750,6 +816,40 @@ export class ObservableAgentApi {
      */
     public getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseCapabilitiesAgentResponse> {
         return this.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseCapabilitiesAgentResponse>) => apiResponse.data));
+    }
+
+    /**
+     * Returns: - A list of generated YARA rules - A list of generated Snort rules - A list of generated STIX rules
+     * Get Remediation Result
+     * @param analysisId
+     */
+    public getRemediationResultV2AnalysesAnalysisIdAgentRemediationGetWithHttpInfo(analysisId: number, _options?: ConfigurationOptions): Observable<HttpInfo<BaseResponseRemediationAgentResponse>> {
+        const _config = mergeConfiguration(this.configuration, _options);
+
+        const requestContextPromise = this.requestFactory.getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet(analysisId, _config);
+        // build promise chain
+        let middlewarePreObservable = from<RequestContext>(requestContextPromise);
+        for (const middleware of _config.middleware) {
+            middlewarePreObservable = middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => middleware.pre(ctx)));
+        }
+
+        return middlewarePreObservable.pipe(mergeMap((ctx: RequestContext) => _config.httpApi.send(ctx))).
+            pipe(mergeMap((response: ResponseContext) => {
+                let middlewarePostObservable = of(response);
+                for (const middleware of _config.middleware.reverse()) {
+                    middlewarePostObservable = middlewarePostObservable.pipe(mergeMap((rsp: ResponseContext) => middleware.post(rsp)));
+                }
+                return middlewarePostObservable.pipe(map((rsp: ResponseContext) => this.responseProcessor.getRemediationResultV2AnalysesAnalysisIdAgentRemediationGetWithHttpInfo(rsp)));
+            }));
+    }
+
+    /**
+     * Returns: - A list of generated YARA rules - A list of generated Snort rules - A list of generated STIX rules
+     * Get Remediation Result
+     * @param analysisId
+     */
+    public getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet(analysisId: number, _options?: ConfigurationOptions): Observable<BaseResponseRemediationAgentResponse> {
+        return this.getRemediationResultV2AnalysesAnalysisIdAgentRemediationGetWithHttpInfo(analysisId, _options).pipe(map((apiResponse: HttpInfo<BaseResponseRemediationAgentResponse>) => apiResponse.data));
     }
 
     /**

@@ -113,6 +113,7 @@ import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse
 import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
+import { BaseResponseRemediationAgentResponse } from '../models/BaseResponseRemediationAgentResponse';
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
@@ -392,6 +393,7 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RemediationAgentResponse } from '../models/RemediationAgentResponse';
 import { RemoveCollectionBinariesInputBody } from '../models/RemoveCollectionBinariesInputBody';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
@@ -524,6 +526,16 @@ export interface AgentApiCheckCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCap
     analysisId: number
 }
 
+export interface AgentApiCheckRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AgentApicheckRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet
+     */
+    analysisId: number
+}
+
 export interface AgentApiCheckReportAnalysisTaskStatusV2AnalysesAnalysisIdAgentReportAnalysisStatusGetRequest {
     /**
      * 
@@ -554,6 +566,16 @@ export interface AgentApiCreateCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabili
     analysisId: number
 }
 
+export interface AgentApiCreateRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AgentApicreateRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost
+     */
+    analysisId: number
+}
+
 export interface AgentApiCreateReportAnalysisTaskV2AnalysesAnalysisIdAgentReportAnalysisPostRequest {
     /**
      * 
@@ -580,6 +602,16 @@ export interface AgentApiGetCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilit
      * Defaults to: undefined
      * @type number
      * @memberof AgentApigetCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet
+     */
+    analysisId: number
+}
+
+export interface AgentApiGetRemediationResultV2AnalysesAnalysisIdAgentRemediationGetRequest {
+    /**
+     * 
+     * Defaults to: undefined
+     * @type number
+     * @memberof AgentApigetRemediationResultV2AnalysesAnalysisIdAgentRemediationGet
      */
     analysisId: number
 }
@@ -625,6 +657,22 @@ export class ObjectAgentApi {
      */
     public checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(param: AgentApiCheckCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGetRequest, options?: ConfigurationOptions): Promise<TaskStatusResponse> {
         return this.api.checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Check the status of a remediation analysis workflow
+     * @param param the request object
+     */
+    public checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetWithHttpInfo(param: AgentApiCheckRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<TaskStatusResponse>> {
+        return this.api.checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Check the status of a remediation analysis workflow
+     * @param param the request object
+     */
+    public checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet(param: AgentApiCheckRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetRequest, options?: ConfigurationOptions): Promise<TaskStatusResponse> {
+        return this.api.checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet(param.analysisId,  options).toPromise();
     }
 
     /**
@@ -676,6 +724,22 @@ export class ObjectAgentApi {
     }
 
     /**
+     * Queues a remediation analysis workflow process
+     * @param param the request object
+     */
+    public createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostWithHttpInfo(param: AgentApiCreateRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
+        return this.api.createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Queues a remediation analysis workflow process
+     * @param param the request object
+     */
+    public createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost(param: AgentApiCreateRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostRequest, options?: ConfigurationOptions): Promise<BaseResponseQueuedWorkflowTaskResponse> {
+        return this.api.createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost(param.analysisId,  options).toPromise();
+    }
+
+    /**
      * Queues a combined report analysis workflow process
      * @param param the request object
      */
@@ -721,6 +785,24 @@ export class ObjectAgentApi {
      */
     public getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(param: AgentApiGetCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGetRequest, options?: ConfigurationOptions): Promise<BaseResponseCapabilitiesAgentResponse> {
         return this.api.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns: - A list of generated YARA rules - A list of generated Snort rules - A list of generated STIX rules
+     * Get Remediation Result
+     * @param param the request object
+     */
+    public getRemediationResultV2AnalysesAnalysisIdAgentRemediationGetWithHttpInfo(param: AgentApiGetRemediationResultV2AnalysesAnalysisIdAgentRemediationGetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseRemediationAgentResponse>> {
+        return this.api.getRemediationResultV2AnalysesAnalysisIdAgentRemediationGetWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns: - A list of generated YARA rules - A list of generated Snort rules - A list of generated STIX rules
+     * Get Remediation Result
+     * @param param the request object
+     */
+    public getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet(param: AgentApiGetRemediationResultV2AnalysesAnalysisIdAgentRemediationGetRequest, options?: ConfigurationOptions): Promise<BaseResponseRemediationAgentResponse> {
+        return this.api.getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet(param.analysisId,  options).toPromise();
     }
 
     /**

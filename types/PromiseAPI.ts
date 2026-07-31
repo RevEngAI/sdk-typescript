@@ -113,6 +113,7 @@ import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse
 import { BaseResponseParams } from '../models/BaseResponseParams';
 import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
+import { BaseResponseRemediationAgentResponse } from '../models/BaseResponseRemediationAgentResponse';
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
@@ -392,6 +393,7 @@ import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
+import { RemediationAgentResponse } from '../models/RemediationAgentResponse';
 import { RemoveCollectionBinariesInputBody } from '../models/RemoveCollectionBinariesInputBody';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
@@ -545,6 +547,26 @@ export class PromiseAgentApi {
     }
 
     /**
+     * Check the status of a remediation analysis workflow
+     * @param analysisId
+     */
+    public checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TaskStatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Check the status of a remediation analysis workflow
+     * @param analysisId
+     */
+    public checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<TaskStatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkRemediationTaskStatusV2AnalysesAnalysisIdAgentRemediationStatusGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Check the status of a report analysis workflow
      * @param analysisId
      */
@@ -605,6 +627,26 @@ export class PromiseAgentApi {
     }
 
     /**
+     * Queues a remediation analysis workflow process
+     * @param analysisId
+     */
+    public createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPostWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a remediation analysis workflow process
+     * @param analysisId
+     */
+    public createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseQueuedWorkflowTaskResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createRemediationTaskV2AnalysesAnalysisIdAgentRemediationPost(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Queues a combined report analysis workflow process
      * @param analysisId
      */
@@ -661,6 +703,28 @@ export class PromiseAgentApi {
     public getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCapabilitiesAgentResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns: - A list of generated YARA rules - A list of generated Snort rules - A list of generated STIX rules
+     * Get Remediation Result
+     * @param analysisId
+     */
+    public getRemediationResultV2AnalysesAnalysisIdAgentRemediationGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseRemediationAgentResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getRemediationResultV2AnalysesAnalysisIdAgentRemediationGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns: - A list of generated YARA rules - A list of generated Snort rules - A list of generated STIX rules
+     * Get Remediation Result
+     * @param analysisId
+     */
+    public getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseRemediationAgentResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getRemediationResultV2AnalysesAnalysisIdAgentRemediationGet(analysisId, observableOptions);
         return result.toPromise();
     }
 
