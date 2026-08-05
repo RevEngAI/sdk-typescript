@@ -19,14 +19,6 @@ export class AnalysisConfig {
     */
     'scrapeThirdPartyConfig'?: ScrapeThirdPartyConfig;
     /**
-    * A configuration option for fetching CVEs data.
-    */
-    'generateCves'?: boolean;
-    /**
-    * A configuration option for generating software bill of materials data.
-    */
-    'generateSbom'?: boolean;
-    /**
     * A configuration option for generating capabilities of a binary
     */
     'generateCapabilities'?: boolean;
@@ -52,18 +44,6 @@ export class AnalysisConfig {
             "name": "scrapeThirdPartyConfig",
             "baseName": "scrape_third_party_config",
             "type": "ScrapeThirdPartyConfig",
-            "format": ""
-        },
-        {
-            "name": "generateCves",
-            "baseName": "generate_cves",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "generateSbom",
-            "baseName": "generate_sbom",
-            "type": "boolean",
             "format": ""
         },
         {

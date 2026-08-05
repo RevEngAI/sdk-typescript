@@ -102,7 +102,6 @@ export * from '../models/BaseResponseListCollectionResults';
 export * from '../models/BaseResponseListCommentResponse';
 export * from '../models/BaseResponseListDieMatch';
 export * from '../models/BaseResponseListFunctionNameHistory';
-export * from '../models/BaseResponseListSBOM';
 export * from '../models/BaseResponseListUserActivityResponse';
 export * from '../models/BaseResponseLogs';
 export * from '../models/BaseResponseModelsResponse';
@@ -119,7 +118,6 @@ export * from '../models/BaseResponseTaskStatusResponse';
 export * from '../models/BaseResponseTriageReportResponse';
 export * from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 export * from '../models/BaseResponseUploadResponse';
-export * from '../models/BaseResponseVulnerabilities';
 export * from '../models/BaseResponseXrefResponse';
 export * from '../models/Basic';
 export * from '../models/BatchBinaryMatchResult';
@@ -400,8 +398,6 @@ export * from '../models/ReportEvent';
 export * from '../models/ReportInfo';
 export * from '../models/ReportOptions';
 export * from '../models/RevokeBody';
-export * from '../models/SBOM';
-export * from '../models/SBOMPackage';
 export * from '../models/SSOProvider';
 export * from '../models/SSOProvidersOutputBody';
 export * from '../models/SandboxOptions';
@@ -500,8 +496,6 @@ export * from '../models/V2FunctionHeader';
 export * from '../models/V2FunctionInfo';
 export * from '../models/V2FunctionInfoFuncDepsInner';
 export * from '../models/V2FunctionType';
-export * from '../models/Vulnerabilities';
-export * from '../models/Vulnerability';
 export * from '../models/WarningEvent';
 export * from '../models/WorkflowProgress';
 export * from '../models/Workspace';
@@ -613,7 +607,6 @@ import { BaseResponseListCollectionResults } from '../models/BaseResponseListCol
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
-import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
@@ -630,7 +623,6 @@ import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatus
 import { BaseResponseTriageReportResponse } from '../models/BaseResponseTriageReportResponse';
 import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
-import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
 import { BatchBinaryMatchResult    , BatchBinaryMatchResultStatusEnum   } from '../models/BatchBinaryMatchResult';
@@ -911,8 +903,6 @@ import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
 import { ReportOptions } from '../models/ReportOptions';
 import { RevokeBody } from '../models/RevokeBody';
-import { SBOM } from '../models/SBOM';
-import { SBOMPackage } from '../models/SBOMPackage';
 import { SSOProvider } from '../models/SSOProvider';
 import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
 import { SandboxOptions        } from '../models/SandboxOptions';
@@ -1011,8 +1001,6 @@ import { V2FunctionHeader } from '../models/V2FunctionHeader';
 import { V2FunctionInfo } from '../models/V2FunctionInfo';
 import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
 import { V2FunctionType } from '../models/V2FunctionType';
-import { Vulnerabilities } from '../models/Vulnerabilities';
-import { Vulnerability    , VulnerabilitySeverityEnum         } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
 import { WorkflowProgress , WorkflowProgressStatusEnum      } from '../models/WorkflowProgress';
 import { Workspace } from '../models/Workspace';
@@ -1125,7 +1113,6 @@ let enumsMap: Set<string> = new Set<string>([
     "UploadFileType",
     "UserRoleEnum",
     "UserTierEnum",
-    "VulnerabilitySeverityEnum",
     "WorkflowProgressStatusEnum",
     "Workspace",
 ]);
@@ -1231,7 +1218,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseListCommentResponse": BaseResponseListCommentResponse,
     "BaseResponseListDieMatch": BaseResponseListDieMatch,
     "BaseResponseListFunctionNameHistory": BaseResponseListFunctionNameHistory,
-    "BaseResponseListSBOM": BaseResponseListSBOM,
     "BaseResponseListUserActivityResponse": BaseResponseListUserActivityResponse,
     "BaseResponseLogs": BaseResponseLogs,
     "BaseResponseModelsResponse": BaseResponseModelsResponse,
@@ -1248,7 +1234,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseTriageReportResponse": BaseResponseTriageReportResponse,
     "BaseResponseUnionGetAiDecompilationRatingResponseNoneType": BaseResponseUnionGetAiDecompilationRatingResponseNoneType,
     "BaseResponseUploadResponse": BaseResponseUploadResponse,
-    "BaseResponseVulnerabilities": BaseResponseVulnerabilities,
     "BaseResponseXrefResponse": BaseResponseXrefResponse,
     "Basic": Basic,
     "BatchBinaryMatchResult": BatchBinaryMatchResult,
@@ -1518,8 +1503,6 @@ let typeMap: {[index: string]: any} = {
     "ReportInfo": ReportInfo,
     "ReportOptions": ReportOptions,
     "RevokeBody": RevokeBody,
-    "SBOM": SBOM,
-    "SBOMPackage": SBOMPackage,
     "SSOProvider": SSOProvider,
     "SSOProvidersOutputBody": SSOProvidersOutputBody,
     "SandboxOptions": SandboxOptions,
@@ -1612,8 +1595,6 @@ let typeMap: {[index: string]: any} = {
     "V2FunctionInfo": V2FunctionInfo,
     "V2FunctionInfoFuncDepsInner": V2FunctionInfoFuncDepsInner,
     "V2FunctionType": V2FunctionType,
-    "Vulnerabilities": Vulnerabilities,
-    "Vulnerability": Vulnerability,
     "WarningEvent": WarningEvent,
     "WorkflowProgress": WorkflowProgress,
     "XrefFromResponse": XrefFromResponse,

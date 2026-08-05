@@ -106,7 +106,6 @@ import { BaseResponseListCollectionResults } from '../models/BaseResponseListCol
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
-import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
@@ -123,7 +122,6 @@ import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatus
 import { BaseResponseTriageReportResponse } from '../models/BaseResponseTriageReportResponse';
 import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
-import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
 import { BatchBinaryMatchResult } from '../models/BatchBinaryMatchResult';
@@ -404,8 +402,6 @@ import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
 import { ReportOptions } from '../models/ReportOptions';
 import { RevokeBody } from '../models/RevokeBody';
-import { SBOM } from '../models/SBOM';
-import { SBOMPackage } from '../models/SBOMPackage';
 import { SSOProvider } from '../models/SSOProvider';
 import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
 import { SandboxOptions } from '../models/SandboxOptions';
@@ -504,8 +500,6 @@ import { V2FunctionHeader } from '../models/V2FunctionHeader';
 import { V2FunctionInfo } from '../models/V2FunctionInfo';
 import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
 import { V2FunctionType } from '../models/V2FunctionType';
-import { Vulnerabilities } from '../models/Vulnerabilities';
-import { Vulnerability } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
 import { WorkflowProgress } from '../models/WorkflowProgress';
 import { Workspace } from '../models/Workspace';
@@ -2242,32 +2236,12 @@ export interface AnalysesResultsMetadataApiGetFunctionsListRequest {
     pageSize?: number
 }
 
-export interface AnalysesResultsMetadataApiGetSbomRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetSbom
-     */
-    analysisId: number
-}
-
 export interface AnalysesResultsMetadataApiGetTagsRequest {
     /**
      * 
      * Defaults to: undefined
      * @type number
      * @memberof AnalysesResultsMetadataApigetTags
-     */
-    analysisId: number
-}
-
-export interface AnalysesResultsMetadataApiGetVulnerabilitiesRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesResultsMetadataApigetVulnerabilities
      */
     analysisId: number
 }
@@ -2332,22 +2306,6 @@ export class ObjectAnalysesResultsMetadataApi {
     }
 
     /**
-     * Gets the software-bill-of-materials (SBOM) found in the analysis
-     * @param param the request object
-     */
-    public getSbomWithHttpInfo(param: AnalysesResultsMetadataApiGetSbomRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseListSBOM>> {
-        return this.api.getSbomWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the software-bill-of-materials (SBOM) found in the analysis
-     * @param param the request object
-     */
-    public getSbom(param: AnalysesResultsMetadataApiGetSbomRequest, options?: ConfigurationOptions): Promise<BaseResponseListSBOM> {
-        return this.api.getSbom(param.analysisId,  options).toPromise();
-    }
-
-    /**
      * Get function tags with maliciousness score
      * @param param the request object
      */
@@ -2361,22 +2319,6 @@ export class ObjectAnalysesResultsMetadataApi {
      */
     public getTags(param: AnalysesResultsMetadataApiGetTagsRequest, options?: ConfigurationOptions): Promise<BaseResponseAnalysisTags> {
         return this.api.getTags(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the vulnerabilities found in the analysis
-     * @param param the request object
-     */
-    public getVulnerabilitiesWithHttpInfo(param: AnalysesResultsMetadataApiGetVulnerabilitiesRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseVulnerabilities>> {
-        return this.api.getVulnerabilitiesWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Gets the vulnerabilities found in the analysis
-     * @param param the request object
-     */
-    public getVulnerabilities(param: AnalysesResultsMetadataApiGetVulnerabilitiesRequest, options?: ConfigurationOptions): Promise<BaseResponseVulnerabilities> {
-        return this.api.getVulnerabilities(param.analysisId,  options).toPromise();
     }
 
 }

@@ -106,7 +106,6 @@ import { BaseResponseListCollectionResults } from '../models/BaseResponseListCol
 import { BaseResponseListCommentResponse } from '../models/BaseResponseListCommentResponse';
 import { BaseResponseListDieMatch } from '../models/BaseResponseListDieMatch';
 import { BaseResponseListFunctionNameHistory } from '../models/BaseResponseListFunctionNameHistory';
-import { BaseResponseListSBOM } from '../models/BaseResponseListSBOM';
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
@@ -123,7 +122,6 @@ import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatus
 import { BaseResponseTriageReportResponse } from '../models/BaseResponseTriageReportResponse';
 import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
-import { BaseResponseVulnerabilities } from '../models/BaseResponseVulnerabilities';
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
 import { BatchBinaryMatchResult } from '../models/BatchBinaryMatchResult';
@@ -404,8 +402,6 @@ import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
 import { ReportOptions } from '../models/ReportOptions';
 import { RevokeBody } from '../models/RevokeBody';
-import { SBOM } from '../models/SBOM';
-import { SBOMPackage } from '../models/SBOMPackage';
 import { SSOProvider } from '../models/SSOProvider';
 import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
 import { SandboxOptions } from '../models/SandboxOptions';
@@ -504,8 +500,6 @@ import { V2FunctionHeader } from '../models/V2FunctionHeader';
 import { V2FunctionInfo } from '../models/V2FunctionInfo';
 import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
 import { V2FunctionType } from '../models/V2FunctionType';
-import { Vulnerabilities } from '../models/Vulnerabilities';
-import { Vulnerability } from '../models/Vulnerability';
 import { WarningEvent } from '../models/WarningEvent';
 import { WorkflowProgress } from '../models/WorkflowProgress';
 import { Workspace } from '../models/Workspace';
@@ -1761,26 +1755,6 @@ export class PromiseAnalysesResultsMetadataApi {
     }
 
     /**
-     * Gets the software-bill-of-materials (SBOM) found in the analysis
-     * @param analysisId
-     */
-    public getSbomWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseListSBOM>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getSbomWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Gets the software-bill-of-materials (SBOM) found in the analysis
-     * @param analysisId
-     */
-    public getSbom(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseListSBOM> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getSbom(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Get function tags with maliciousness score
      * @param analysisId
      */
@@ -1797,26 +1771,6 @@ export class PromiseAnalysesResultsMetadataApi {
     public getTags(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisTags> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getTags(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Gets the vulnerabilities found in the analysis
-     * @param analysisId
-     */
-    public getVulnerabilitiesWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseVulnerabilities>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getVulnerabilitiesWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Gets the vulnerabilities found in the analysis
-     * @param analysisId
-     */
-    public getVulnerabilities(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseVulnerabilities> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getVulnerabilities(analysisId, observableOptions);
         return result.toPromise();
     }
 

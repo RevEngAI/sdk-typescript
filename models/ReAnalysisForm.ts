@@ -29,7 +29,7 @@ export class ReAnalysisForm {
     */
     'priority'?: number;
     /**
-    * Only runs essential parts of the analysis, skips tags/sbom/cves etc.
+    * Only runs essential parts of the analysis, skips tags etc.
     */
     'essential'?: boolean;
     'modelName'?: string | null;

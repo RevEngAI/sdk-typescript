@@ -96,9 +96,7 @@ Class | Method | HTTP request | Description
 *AnalysesResultsMetadataApi* | [**getAnalysisFunctionsPaginated**](docs/AnalysesResultsMetadataApi.md#getAnalysisFunctionsPaginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 *AnalysesResultsMetadataApi* | [**getCapabilities**](docs/AnalysesResultsMetadataApi.md#getCapabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 *AnalysesResultsMetadataApi* | [**getFunctionsList**](docs/AnalysesResultsMetadataApi.md#getFunctionsList) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
-*AnalysesResultsMetadataApi* | [**getSbom**](docs/AnalysesResultsMetadataApi.md#getSbom) | **GET** /v2/analyses/{analysis_id}/sbom | Gets the software-bill-of-materials (SBOM) found in the analysis
 *AnalysesResultsMetadataApi* | [**getTags**](docs/AnalysesResultsMetadataApi.md#getTags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
-*AnalysesResultsMetadataApi* | [**getVulnerabilities**](docs/AnalysesResultsMetadataApi.md#getVulnerabilities) | **GET** /v2/analyses/{analysis_id}/vulnerabilities | Gets the vulnerabilities found in the analysis
 *AnalysesXRefsApi* | [**getXrefByVaddr**](docs/AnalysesXRefsApi.md#getXrefByVaddr) | **GET** /v2/analyses/{analysis_id}/xrefs/{vaddr} | [Beta] Look up xrefs by virtual address
 *AuthenticationUsersApi* | [**getUser**](docs/AuthenticationUsersApi.md#getUser) | **GET** /v2/users/{user_id} | Get a user\&#39;s public information
 *AuthenticationUsersApi* | [**getUserActivity**](docs/AuthenticationUsersApi.md#getUserActivity) | **GET** /v2/users/activity | Get auth user activity
@@ -317,7 +315,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseListCommentResponse](BaseResponseListCommentResponse.md)
  - [BaseResponseListDieMatch](BaseResponseListDieMatch.md)
  - [BaseResponseListFunctionNameHistory](BaseResponseListFunctionNameHistory.md)
- - [BaseResponseListSBOM](BaseResponseListSBOM.md)
  - [BaseResponseListUserActivityResponse](BaseResponseListUserActivityResponse.md)
  - [BaseResponseLogs](BaseResponseLogs.md)
  - [BaseResponseModelsResponse](BaseResponseModelsResponse.md)
@@ -334,7 +331,6 @@ Class | Method | HTTP request | Description
  - [BaseResponseTriageReportResponse](BaseResponseTriageReportResponse.md)
  - [BaseResponseUnionGetAiDecompilationRatingResponseNoneType](BaseResponseUnionGetAiDecompilationRatingResponseNoneType.md)
  - [BaseResponseUploadResponse](BaseResponseUploadResponse.md)
- - [BaseResponseVulnerabilities](BaseResponseVulnerabilities.md)
  - [BaseResponseXrefResponse](BaseResponseXrefResponse.md)
  - [Basic](Basic.md)
  - [BatchBinaryMatchResult](BatchBinaryMatchResult.md)
@@ -615,8 +611,6 @@ Class | Method | HTTP request | Description
  - [ReportInfo](ReportInfo.md)
  - [ReportOptions](ReportOptions.md)
  - [RevokeBody](RevokeBody.md)
- - [SBOM](SBOM.md)
- - [SBOMPackage](SBOMPackage.md)
  - [SSOProvider](SSOProvider.md)
  - [SSOProvidersOutputBody](SSOProvidersOutputBody.md)
  - [SandboxOptions](SandboxOptions.md)
@@ -715,8 +709,6 @@ Class | Method | HTTP request | Description
  - [V2FunctionInfo](V2FunctionInfo.md)
  - [V2FunctionInfoFuncDepsInner](V2FunctionInfoFuncDepsInner.md)
  - [V2FunctionType](V2FunctionType.md)
- - [Vulnerabilities](Vulnerabilities.md)
- - [Vulnerability](Vulnerability.md)
  - [WarningEvent](WarningEvent.md)
  - [WorkflowProgress](WorkflowProgress.md)
  - [Workspace](Workspace.md)

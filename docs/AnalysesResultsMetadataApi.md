@@ -7,9 +7,7 @@ Method | HTTP request | Description
 [**getAnalysisFunctionsPaginated**](AnalysesResultsMetadataApi.md#getAnalysisFunctionsPaginated) | **GET** /v2/analyses/{analysis_id}/functions | Get functions from analysis
 [**getCapabilities**](AnalysesResultsMetadataApi.md#getCapabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 [**getFunctionsList**](AnalysesResultsMetadataApi.md#getFunctionsList) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
-[**getSbom**](AnalysesResultsMetadataApi.md#getSbom) | **GET** /v2/analyses/{analysis_id}/sbom | Gets the software-bill-of-materials (SBOM) found in the analysis
 [**getTags**](AnalysesResultsMetadataApi.md#getTags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
-[**getVulnerabilities**](AnalysesResultsMetadataApi.md#getVulnerabilities) | **GET** /v2/analyses/{analysis_id}/vulnerabilities | Gets the vulnerabilities found in the analysis
 
 
 # **getAnalysisFunctionsPaginated**
@@ -197,59 +195,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getSbom**
-> BaseResponseListSBOM getSbom()
-
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
-import type { AnalysesResultsMetadataApiGetSbomRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesResultsMetadataApi(configuration);
-
-const request: AnalysesResultsMetadataApiGetSbomRequest = {
-  
-  analysisId: 1,
-};
-
-const data = await apiInstance.getSbom(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseListSBOM**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **getTags**
 > BaseResponseAnalysisTags getTags()
 
@@ -284,59 +229,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 **BaseResponseAnalysisTags**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getVulnerabilities**
-> BaseResponseVulnerabilities getVulnerabilities()
-
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
-import type { AnalysesResultsMetadataApiGetVulnerabilitiesRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesResultsMetadataApi(configuration);
-
-const request: AnalysesResultsMetadataApiGetVulnerabilitiesRequest = {
-  
-  analysisId: 1,
-};
-
-const data = await apiInstance.getVulnerabilities(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseVulnerabilities**
 
 ### Authorization
 
