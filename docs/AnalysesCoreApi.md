@@ -136,8 +136,6 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
       scrapeThirdPartyConfig: {
         enabled: false,
       },
-      generateCves: false,
-      generateSbom: false,
       generateCapabilities: false,
       noCache: false,
       advancedAnalysis: false,

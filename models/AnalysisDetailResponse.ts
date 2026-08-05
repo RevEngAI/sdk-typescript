@@ -31,7 +31,6 @@ export class AnalysisDetailResponse {
     'dashboardUrl': string;
     'debug': boolean;
     'modelName': string;
-    'sbom'?: { [key: string]: any; } | null;
     'sha256Hash': string;
     'autoRunAgents': AutoRunAgents;
     /**
@@ -120,12 +119,6 @@ export class AnalysisDetailResponse {
             "name": "modelName",
             "baseName": "model_name",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "sbom",
-            "baseName": "sbom",
-            "type": "{ [key: string]: any; }",
             "format": ""
         },
         {
