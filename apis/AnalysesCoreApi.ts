@@ -1748,7 +1748,7 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "BaseResponse", ""
             ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
+            throw new ApiException<BaseResponse>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
         }
         if (isCodeInRange("404", response.httpStatusCode)) {
             const body: BaseResponse = ObjectSerializer.deserialize(

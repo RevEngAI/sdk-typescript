@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
+**422** | Unprocessable Entity |  -  |
 **404** | Not Found |  -  |
 **400** | Bad Request |  -  |
 
