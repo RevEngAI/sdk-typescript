@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 # **batchRenameFunctions**
 > BatchRenameOutputBody batchRenameFunctions(batchRenameInputBody)
 
-Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+Renames multiple functions in a single request. Records name changes in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
 
 ### Example
 
@@ -93,7 +93,15 @@ const apiInstance = new FunctionsRenamingHistoryApi(configuration);
 
 const request: FunctionsRenamingHistoryApiBatchRenameFunctionsRequest = {
   
-  batchRenameInputBody: ,
+  batchRenameInputBody: {
+    functions: [
+      {
+        functionId: 1,
+        newMangledName: "newMangledName_example",
+        newName: "newName_example",
+      },
+    ],
+  },
 };
 
 const data = await apiInstance.batchRenameFunctions(request);
@@ -247,7 +255,7 @@ Name | Type | Description  | Notes
 # **renameFunction**
 > RenameOutputBody renameFunction(renameInputBody)
 
-Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+Renames a single function and records the change in history. `source_type` defaults to USER when omitted.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
 ### Example
 
@@ -263,7 +271,11 @@ const request: FunctionsRenamingHistoryApiRenameFunctionRequest = {
     // Function ID
   functionId: 1,
   
-  renameInputBody: ,
+  renameInputBody: {
+    newMangledName: "newMangledName_example",
+    newName: "newName_example",
+    sourceType: "SYSTEM",
+  },
 };
 
 const data = await apiInstance.renameFunction(request);
@@ -326,6 +338,7 @@ const request: FunctionsRenamingHistoryApiRenameFunctionIdRequest = {
   functionRename: {
     newName: "newName_example",
     newMangledName: "newMangledName_example",
+    sourceType: "SYSTEM",
   },
 };
 
@@ -422,7 +435,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **revertFunctionName_0**
-> { [key: string]: any; } revertFunctionName_0()
+> any revertFunctionName_0()
 
 Reverts a function\'s name to a previous value from its history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
@@ -458,7 +471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{ [key: string]: any; }**
+**any**
 
 ### Authorization
 

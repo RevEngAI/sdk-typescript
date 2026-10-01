@@ -13,19 +13,19 @@ import { HttpFile } from '../http/http';
 
 export class DieMatch {
     /**
-    * Canonical name of the matched signature/technology (e.g., \'UPX\', \'GCC\', \'MSVC\').
-    */
-    'name': string;
-    /**
-    * Category assigned by DIE for the match (e.g., \'compiler\', \'packer\', \'file\').
-    */
-    'type': string;
-    /**
-    * Human-readable description from DIE\'s \'string\' field; suitable for UI/logs, not for parsing.
+    * Human-readable description from DIE; suitable for display, not parsing
     */
     'display': string;
     /**
-    * Extracted version string when available; may be empty/None if unknown.
+    * Canonical name of the matched signature or technology
+    */
+    'name': string;
+    /**
+    * Category DIE assigns the match, such as compiler, packer or file
+    */
+    'type': string;
+    /**
+    * Version DIE extracted, empty when it could not determine one
     */
     'version': string;
 
@@ -35,6 +35,12 @@ export class DieMatch {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "display",
+            "baseName": "display",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "name",
             "baseName": "name",
             "type": "string",
@@ -43,12 +49,6 @@ export class DieMatch {
         {
             "name": "type",
             "baseName": "type",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "display",
-            "baseName": "display",
             "type": "string",
             "format": ""
         },

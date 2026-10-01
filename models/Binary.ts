@@ -16,9 +16,29 @@ export class Binary {
     'binaryId': number;
     'binaryName': string;
     'createdAt': Date;
+    /**
+    * Detected instruction-set architecture; empty when unavailable
+    */
+    'detectedArchitecture': string;
+    /**
+    * Detected operating-system platform; empty when unavailable
+    */
+    'detectedBinaryType': string;
     'isSystemAnalysis': boolean;
+    /**
+    * Name of the model the analysis ran on
+    */
+    'modelName': string;
     'ownerId': number;
     'sha256Hash': string;
+    /**
+    * User-supplied instruction-set architecture; \"AUTO\" when not overridden
+    */
+    'suppliedArchitecture': string;
+    /**
+    * User-supplied operating-system platform; \"AUTO\" when not overridden
+    */
+    'suppliedBinaryType': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -50,9 +70,27 @@ export class Binary {
             "format": "date-time"
         },
         {
+            "name": "detectedArchitecture",
+            "baseName": "detected_architecture",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "detectedBinaryType",
+            "baseName": "detected_binary_type",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "isSystemAnalysis",
             "baseName": "is_system_analysis",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "modelName",
+            "baseName": "model_name",
+            "type": "string",
             "format": ""
         },
         {
@@ -64,6 +102,18 @@ export class Binary {
         {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "suppliedArchitecture",
+            "baseName": "supplied_architecture",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "suppliedBinaryType",
+            "baseName": "supplied_binary_type",
             "type": "string",
             "format": ""
         }    ];

@@ -2,10 +2,11 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration, PromiseConfigurationOptions, wrapOptions } from '../configuration'
 import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../middleware';
 
-import { AIDecompFunctionMapping } from '../models/AIDecompFunctionMapping';
-import { AIDecompInverseFunctionMapItem } from '../models/AIDecompInverseFunctionMapItem';
-import { AIDecompInverseStringMapItem } from '../models/AIDecompInverseStringMapItem';
 import { APIError } from '../models/APIError';
+import { AcceptTypeSuggestionsInputBody } from '../models/AcceptTypeSuggestionsInputBody';
+import { AcceptTypeSuggestionsOutputBody } from '../models/AcceptTypeSuggestionsOutputBody';
+import { AcceptedType } from '../models/AcceptedType';
+import { ActivityBody } from '../models/ActivityBody';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddCollectionBinariesInputBody } from '../models/AddCollectionBinariesInputBody';
 import { AddIssuerDomainInputBody } from '../models/AddIssuerDomainInputBody';
@@ -14,26 +15,36 @@ import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
+import { AgentWorkflowUsageOutputBody } from '../models/AgentWorkflowUsageOutputBody';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
+import { AnalyseCapabilitiesBody } from '../models/AnalyseCapabilitiesBody';
+import { AnalysisAccessBody } from '../models/AnalysisAccessBody';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
 import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
 import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
 import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
+import { AnalysisCapabilitiesOutputBody } from '../models/AnalysisCapabilitiesOutputBody';
+import { AnalysisCapabilityBody } from '../models/AnalysisCapabilityBody';
 import { AnalysisConfig } from '../models/AnalysisConfig';
 import { AnalysisConfigSnapshot } from '../models/AnalysisConfigSnapshot';
 import { AnalysisCreateRequest } from '../models/AnalysisCreateRequest';
 import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
+import { AnalysisDataTypesGroup } from '../models/AnalysisDataTypesGroup';
+import { AnalysisDataTypesOutputBody } from '../models/AnalysisDataTypesOutputBody';
+import { AnalysisDetailOutputBody } from '../models/AnalysisDetailOutputBody';
 import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionEntry } from '../models/AnalysisFunctionEntry';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
 import { AnalysisFunctions } from '../models/AnalysisFunctions';
 import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
+import { AnalysisLogEntry } from '../models/AnalysisLogEntry';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
 import { AnalysisLogs } from '../models/AnalysisLogs';
 import { AnalysisRecord } from '../models/AnalysisRecord';
 import { AnalysisRecordBody } from '../models/AnalysisRecordBody';
 import { AnalysisReport } from '../models/AnalysisReport';
+import { AnalysisRequirement } from '../models/AnalysisRequirement';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
 import { AnalysisStringInput } from '../models/AnalysisStringInput';
@@ -42,10 +53,14 @@ import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
 import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTagBody } from '../models/AnalysisTagBody';
 import { AnalysisTags } from '../models/AnalysisTags';
+import { AnalysisTagsOutputBody } from '../models/AnalysisTagsOutputBody';
 import { AnalysisUpdateRequest } from '../models/AnalysisUpdateRequest';
 import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
+import { AnalysisXrefOutputBody } from '../models/AnalysisXrefOutputBody';
 import { ApiCall } from '../models/ApiCall';
+import { ApiCombinationEvidence } from '../models/ApiCombinationEvidence';
+import { ApiKeyBody } from '../models/ApiKeyBody';
 import { AppApiRestV2AgentSchemaCapability } from '../models/AppApiRestV2AgentSchemaCapability';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
@@ -53,12 +68,15 @@ import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2Fu
 import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
 import { ArchiveContentEntry } from '../models/ArchiveContentEntry';
-import { Argument } from '../models/Argument';
+import { ArrayDataType } from '../models/ArrayDataType';
+import { ArrayDefinition } from '../models/ArrayDefinition';
 import { Artifact } from '../models/Artifact';
 import { AttemptFailedEvent } from '../models/AttemptFailedEvent';
 import { AttemptStartedEvent } from '../models/AttemptStartedEvent';
 import { AutoRunAgents } from '../models/AutoRunAgents';
+import { AutoRunAgentsBody } from '../models/AutoRunAgentsBody';
 import { AutoUnstripStatusOutputBody } from '../models/AutoUnstripStatusOutputBody';
+import { BaseDataType } from '../models/BaseDataType';
 import { BaseResponse } from '../models/BaseResponse';
 import { BaseResponseAdditionalDetailsStatusResponse } from '../models/BaseResponseAdditionalDetailsStatusResponse';
 import { BaseResponseAnalysisBulkAddTagsResponse } from '../models/BaseResponseAnalysisBulkAddTagsResponse';
@@ -93,13 +111,9 @@ import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
 import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
-import { BaseResponseFunctionDataTypes } from '../models/BaseResponseFunctionDataTypes';
-import { BaseResponseFunctionDataTypesList } from '../models/BaseResponseFunctionDataTypesList';
 import { BaseResponseFunctionSearchResponse } from '../models/BaseResponseFunctionSearchResponse';
 import { BaseResponseFunctionStringsResponse } from '../models/BaseResponseFunctionStringsResponse';
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
-import { BaseResponseGenerateFunctionDataTypes } from '../models/BaseResponseGenerateFunctionDataTypes';
-import { BaseResponseGenerationStatusList } from '../models/BaseResponseGenerationStatusList';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
 import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { BaseResponseListCollectionResults } from '../models/BaseResponseListCollectionResults';
@@ -110,10 +124,12 @@ import { BaseResponseListUserActivityResponse } from '../models/BaseResponseList
 import { BaseResponseLogs } from '../models/BaseResponseLogs';
 import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse';
 import { BaseResponseParams } from '../models/BaseResponseParams';
+import { BaseResponseProtocolsAgentResponse } from '../models/BaseResponseProtocolsAgentResponse';
 import { BaseResponseQueuedWorkflowTaskResponse } from '../models/BaseResponseQueuedWorkflowTaskResponse';
 import { BaseResponseRecent } from '../models/BaseResponseRecent';
 import { BaseResponseRemediationAgentResponse } from '../models/BaseResponseRemediationAgentResponse';
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
+import { BaseResponseSecretsAgentResponse } from '../models/BaseResponseSecretsAgentResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
@@ -125,14 +141,11 @@ import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse
 import { BaseResponseXrefResponse } from '../models/BaseResponseXrefResponse';
 import { Basic } from '../models/Basic';
 import { BatchBinaryMatchResult } from '../models/BatchBinaryMatchResult';
+import { BatchFunctionSignatureEntry } from '../models/BatchFunctionSignatureEntry';
 import { BatchMatchingOutputBody } from '../models/BatchMatchingOutputBody';
 import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
 import { BatchRenameItem } from '../models/BatchRenameItem';
 import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
-import { BatchUpdateDataTypesInputBody } from '../models/BatchUpdateDataTypesInputBody';
-import { BatchUpdateDataTypesItem } from '../models/BatchUpdateDataTypesItem';
-import { BatchUpdateDataTypesOutputBody } from '../models/BatchUpdateDataTypesOutputBody';
-import { BatchUpdateDataTypesResult } from '../models/BatchUpdateDataTypesResult';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
 import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { Binary } from '../models/Binary';
@@ -140,13 +153,25 @@ import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalD
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
 import { BinaryConfig } from '../models/BinaryConfig';
 import { BinaryDetailsResponse } from '../models/BinaryDetailsResponse';
+import { BinaryExportMetadata } from '../models/BinaryExportMetadata';
+import { BinaryExportResult } from '../models/BinaryExportResult';
+import { BinaryExternalsBody } from '../models/BinaryExternalsBody';
 import { BinaryExternalsResponse } from '../models/BinaryExternalsResponse';
 import { BinarySearchResponse } from '../models/BinarySearchResponse';
 import { BinarySearchResult } from '../models/BinarySearchResult';
+import { BinarySearchResultBody } from '../models/BinarySearchResultBody';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
+import { BitfieldDataType } from '../models/BitfieldDataType';
+import { BulkAddTagsInputBody } from '../models/BulkAddTagsInputBody';
+import { BulkAddTagsOutputBody } from '../models/BulkAddTagsOutputBody';
+import { BulkAddTagsResultBody } from '../models/BulkAddTagsResultBody';
 import { BulkCreateUserResult } from '../models/BulkCreateUserResult';
 import { BulkCreateUsersOutputBody } from '../models/BulkCreateUsersOutputBody';
+import { BulkDeleteAnalysesInputBody } from '../models/BulkDeleteAnalysesInputBody';
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
+import { BytesConstant } from '../models/BytesConstant';
+import { CallChain } from '../models/CallChain';
+import { CallChainEvidence } from '../models/CallChainEvidence';
 import { CallEdge } from '../models/CallEdge';
 import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
@@ -158,6 +183,8 @@ import { CanonicalizeNamesOutputBody } from '../models/CanonicalizeNamesOutputBo
 import { Capabilities } from '../models/Capabilities';
 import { CapabilitiesAgentResponse } from '../models/CapabilitiesAgentResponse';
 import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
+import { CapabilitiesResult } from '../models/CapabilitiesResult';
+import { Capability } from '../models/Capability';
 import { CapabilityEntry } from '../models/CapabilityEntry';
 import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
 import { CodeSignatureModel } from '../models/CodeSignatureModel';
@@ -179,6 +206,7 @@ import { CommentBase } from '../models/CommentBase';
 import { CommentResponse } from '../models/CommentResponse';
 import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 import { CommentsData } from '../models/CommentsData';
+import { Config } from '../models/Config';
 import { ConfigResponse } from '../models/ConfigResponse';
 import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
@@ -187,28 +215,69 @@ import { Context } from '../models/Context';
 import { Conversation } from '../models/Conversation';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
+import { CopyFunctionSignaturesInputBody } from '../models/CopyFunctionSignaturesInputBody';
+import { CopyFunctionSignaturesOutputBody } from '../models/CopyFunctionSignaturesOutputBody';
+import { CopySignatureItem } from '../models/CopySignatureItem';
 import { CreateAIDecompOutputBody } from '../models/CreateAIDecompOutputBody';
+import { CreateAnalysisDataTypesInputBody } from '../models/CreateAnalysisDataTypesInputBody';
+import { CreateArrayDataType } from '../models/CreateArrayDataType';
+import { CreateBaseDataType } from '../models/CreateBaseDataType';
+import { CreateBitfieldDataType } from '../models/CreateBitfieldDataType';
 import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
 import { CreateCollectionInputBody } from '../models/CreateCollectionInputBody';
 import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
+import { CreateDataTypeEntry } from '../models/CreateDataTypeEntry';
+import { CreateEnumDataType } from '../models/CreateEnumDataType';
+import { CreateFunctionDataType } from '../models/CreateFunctionDataType';
 import { CreateGroupInputBody } from '../models/CreateGroupInputBody';
 import { CreateIdentityInputBody } from '../models/CreateIdentityInputBody';
 import { CreateIssuerInputBody } from '../models/CreateIssuerInputBody';
+import { CreateMetadata } from '../models/CreateMetadata';
 import { CreateOrganisationInputBody } from '../models/CreateOrganisationInputBody';
+import { CreatePointerDataType } from '../models/CreatePointerDataType';
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
+import { CreateRequest } from '../models/CreateRequest';
+import { CreateResult } from '../models/CreateResult';
+import { CreateSecretStoreInputBody } from '../models/CreateSecretStoreInputBody';
+import { CreateStructDataType } from '../models/CreateStructDataType';
 import { CreateTeamInputBody } from '../models/CreateTeamInputBody';
+import { CreateTypedefDataType } from '../models/CreateTypedefDataType';
+import { CreateURLRequest } from '../models/CreateURLRequest';
+import { CreateURLResponse } from '../models/CreateURLResponse';
+import { CreateUnionDataType } from '../models/CreateUnionDataType';
+import { CreateUnknownDataType } from '../models/CreateUnknownDataType';
 import { CreateUserInputBody } from '../models/CreateUserInputBody';
 import { Created } from '../models/Created';
-import { DataTypesEntry } from '../models/DataTypesEntry';
+import { CryptoCall } from '../models/CryptoCall';
+import { CryptoDirectMatch } from '../models/CryptoDirectMatch';
+import { CryptoExplainMetadata } from '../models/CryptoExplainMetadata';
+import { CryptoExplainResult } from '../models/CryptoExplainResult';
+import { CryptoExplainedFunction } from '../models/CryptoExplainedFunction';
+import { CryptoFinding } from '../models/CryptoFinding';
+import { CryptoScanMetadata } from '../models/CryptoScanMetadata';
+import { CryptoScanResult } from '../models/CryptoScanResult';
+import { CryptoVerification } from '../models/CryptoVerification';
+import { DailyAnalysesCountOutputBody } from '../models/DailyAnalysesCountOutputBody';
+import { DailyCountBody } from '../models/DailyCountBody';
+import { DataTypeEntry } from '../models/DataTypeEntry';
+import { DataTypeEnumValueEntry } from '../models/DataTypeEnumValueEntry';
+import { DataTypeFunctionEntry } from '../models/DataTypeFunctionEntry';
+import { DataTypeFunctionParameterEntry } from '../models/DataTypeFunctionParameterEntry';
+import { DataTypeMemberEntry } from '../models/DataTypeMemberEntry';
+import { DataTypeVersion } from '../models/DataTypeVersion';
 import { DecompFailedEvent } from '../models/DecompFailedEvent';
 import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DecompilationData } from '../models/DecompilationData';
+import { DecompilerSummary } from '../models/DecompilerSummary';
+import { DecompilerSummaryEvidence } from '../models/DecompilerSummaryEvidence';
 import { DieMatch } from '../models/DieMatch';
 import { DisassemblyOutputBody } from '../models/DisassemblyOutputBody';
+import { Display } from '../models/Display';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
+import { DynamicExecutionMetadata } from '../models/DynamicExecutionMetadata';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { DynamicExecutionStatusResponse } from '../models/DynamicExecutionStatusResponse';
 import { ELFImportModel } from '../models/ELFImportModel';
@@ -219,8 +288,10 @@ import { ELFSecurity } from '../models/ELFSecurity';
 import { ELFSegment } from '../models/ELFSegment';
 import { ELFSymbol } from '../models/ELFSymbol';
 import { ElfDynamicEntry } from '../models/ElfDynamicEntry';
+import { Endianness } from '../models/Endianness';
 import { EntrypointModel } from '../models/EntrypointModel';
-import { Enumeration } from '../models/Enumeration';
+import { EnumDataType } from '../models/EnumDataType';
+import { EnumDefinition } from '../models/EnumDefinition';
 import { ErrorBody } from '../models/ErrorBody';
 import { ErrorModel } from '../models/ErrorModel';
 import { Event } from '../models/Event';
@@ -229,6 +300,7 @@ import { EventAttemptStarted } from '../models/EventAttemptStarted';
 import { EventCONTEXTCOMPACTED } from '../models/EventCONTEXTCOMPACTED';
 import { EventDecompFailed } from '../models/EventDecompFailed';
 import { EventDecompFinished } from '../models/EventDecompFinished';
+import { EventNamesFinished } from '../models/EventNamesFinished';
 import { EventProse } from '../models/EventProse';
 import { EventRUNCANCELLED } from '../models/EventRUNCANCELLED';
 import { EventRUNERROR } from '../models/EventRUNERROR';
@@ -249,33 +321,51 @@ import { EventTOOLCALLPROGRESS } from '../models/EventTOOLCALLPROGRESS';
 import { EventTOOLCALLRESULT } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
+import { EventTypesSuggested } from '../models/EventTypesSuggested';
 import { EventWarning } from '../models/EventWarning';
+import { EvidenceEffect } from '../models/EvidenceEffect';
+import { EvidenceStrength } from '../models/EvidenceStrength';
 import { Example } from '../models/Example';
+import { ExecutionCall } from '../models/ExecutionCall';
+import { ExecutionDirectMatch } from '../models/ExecutionDirectMatch';
+import { ExecutionExplainMetadata } from '../models/ExecutionExplainMetadata';
+import { ExecutionExplainResult } from '../models/ExecutionExplainResult';
+import { ExecutionExplainedFunction } from '../models/ExecutionExplainedFunction';
+import { ExecutionFinding } from '../models/ExecutionFinding';
+import { ExecutionScanMetadata } from '../models/ExecutionScanMetadata';
+import { ExecutionScanResult } from '../models/ExecutionScanResult';
+import { ExecutionVerification } from '../models/ExecutionVerification';
 import { ExportModel } from '../models/ExportModel';
 import { ExternalResponse } from '../models/ExternalResponse';
+import { ExtractedBinary } from '../models/ExtractedBinary';
 import { ExtractedURL } from '../models/ExtractedURL';
+import { ExtractionFailure } from '../models/ExtractionFailure';
+import { FeedbackOutputBody } from '../models/FeedbackOutputBody';
 import { FileActivityEntry } from '../models/FileActivityEntry';
 import { FileFormat } from '../models/FileFormat';
 import { FileHashes } from '../models/FileHashes';
 import { FileMetadata } from '../models/FileMetadata';
+import { FilesystemAnalyseMetadata } from '../models/FilesystemAnalyseMetadata';
+import { FilesystemAnalyseResult } from '../models/FilesystemAnalyseResult';
+import { FilesystemCall } from '../models/FilesystemCall';
+import { FilesystemDirectMatch } from '../models/FilesystemDirectMatch';
+import { FilesystemExplainedFunction } from '../models/FilesystemExplainedFunction';
+import { FilesystemFinding } from '../models/FilesystemFinding';
+import { FilesystemScanMetadata } from '../models/FilesystemScanMetadata';
+import { FilesystemScanResult } from '../models/FilesystemScanResult';
+import { FilesystemVerification } from '../models/FilesystemVerification';
 import { Filters } from '../models/Filters';
+import { Finding } from '../models/Finding';
+import { FindingEvidenceInner } from '../models/FindingEvidenceInner';
 import { FormFile } from '../models/FormFile';
-import { FunctionArgument } from '../models/FunctionArgument';
 import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
 import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
 import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
 import { FunctionBoundary } from '../models/FunctionBoundary';
 import { FunctionCallEdges } from '../models/FunctionCallEdges';
 import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
-import { FunctionDataTypes } from '../models/FunctionDataTypes';
-import { FunctionDataTypesList } from '../models/FunctionDataTypesList';
-import { FunctionDataTypesListItem } from '../models/FunctionDataTypesListItem';
-import { FunctionDataTypesParams } from '../models/FunctionDataTypesParams';
-import { FunctionDataTypesStatus } from '../models/FunctionDataTypesStatus';
-import { FunctionDependency } from '../models/FunctionDependency';
+import { FunctionDataType } from '../models/FunctionDataType';
 import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
-import { FunctionHeader } from '../models/FunctionHeader';
-import { FunctionInfo } from '../models/FunctionInfo';
 import { FunctionListItem } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
@@ -286,72 +376,135 @@ import { FunctionRename } from '../models/FunctionRename';
 import { FunctionRenameMap } from '../models/FunctionRenameMap';
 import { FunctionSearchResponse } from '../models/FunctionSearchResponse';
 import { FunctionSearchResult } from '../models/FunctionSearchResult';
+import { FunctionSearchResultBody } from '../models/FunctionSearchResultBody';
+import { FunctionSignatureBody } from '../models/FunctionSignatureBody';
+import { FunctionSignatureEntry } from '../models/FunctionSignatureEntry';
+import { FunctionSignatureVersion } from '../models/FunctionSignatureVersion';
+import { FunctionSimilarity } from '../models/FunctionSimilarity';
+import { FunctionSimilarityEvidence } from '../models/FunctionSimilarityEvidence';
 import { FunctionSourceType } from '../models/FunctionSourceType';
-import { FunctionStackVariable } from '../models/FunctionStackVariable';
 import { FunctionString } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
-import { FunctionType } from '../models/FunctionType';
+import { FunctionTypeDefinition } from '../models/FunctionTypeDefinition';
 import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
 import { FunctionsListRename } from '../models/FunctionsListRename';
-import { GenerateFunctionDataTypes } from '../models/GenerateFunctionDataTypes';
+import { FunctionsProgressOutputBody } from '../models/FunctionsProgressOutputBody';
 import { GeneratePDFOutputBody } from '../models/GeneratePDFOutputBody';
-import { GenerationStatusList } from '../models/GenerationStatusList';
+import { GetAPIKeysOutputBody } from '../models/GetAPIKeysOutputBody';
 import { GetAdditionalDetailsOutputBody } from '../models/GetAdditionalDetailsOutputBody';
 import { GetAdditionalDetailsStatusOutputBody } from '../models/GetAdditionalDetailsStatusOutputBody';
 import { GetAiDecompilationRatingResponse } from '../models/GetAiDecompilationRatingResponse';
+import { GetAnalysisLogsOutputBody } from '../models/GetAnalysisLogsOutputBody';
 import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStringsStatusOutputBody';
+import { GetBinaryExternalsOutputBody } from '../models/GetBinaryExternalsOutputBody';
 import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
+import { GetConfigOutputBody } from '../models/GetConfigOutputBody';
+import { GetDataTypeHistoryBody } from '../models/GetDataTypeHistoryBody';
+import { GetDieInfoOutputBody } from '../models/GetDieInfoOutputBody';
+import { GetFunctionMapsOutputBody } from '../models/GetFunctionMapsOutputBody';
+import { GetFunctionSignatureHistoryBody } from '../models/GetFunctionSignatureHistoryBody';
 import { GetMatchesOutputBody } from '../models/GetMatchesOutputBody';
 import { GetMatchesStatusOutputBody } from '../models/GetMatchesStatusOutputBody';
+import { GetModelsOutputBody } from '../models/GetModelsOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
+import { GetPublicUserOutputBody } from '../models/GetPublicUserOutputBody';
 import { GetPublicUserResponse } from '../models/GetPublicUserResponse';
+import { GetRelatedBinariesOutputBody } from '../models/GetRelatedBinariesOutputBody';
+import { GetRelatedStatusOutputBody } from '../models/GetRelatedStatusOutputBody';
 import { GetSubscriptionOutputBody } from '../models/GetSubscriptionOutputBody';
-import { GlobalVariable } from '../models/GlobalVariable';
+import { GetTokensResponse } from '../models/GetTokensResponse';
+import { GetUserActivityOutputBody } from '../models/GetUserActivityOutputBody';
+import { HardcodedSecretEvidence } from '../models/HardcodedSecretEvidence';
+import { HistoryActor } from '../models/HistoryActor';
 import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
 import { IOC } from '../models/IOC';
 import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
+import { ImportDynamicExecutionFileOutputBody } from '../models/ImportDynamicExecutionFileOutputBody';
 import { ImportModel } from '../models/ImportModel';
+import { ImportedApi } from '../models/ImportedApi';
+import { ImportedApiCall } from '../models/ImportedApiCall';
+import { ImportedApiCallEvidence } from '../models/ImportedApiCallEvidence';
 import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
 import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
 import { IndirectCallSite } from '../models/IndirectCallSite';
 import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBody';
 import { InlineComment } from '../models/InlineComment';
+import { InputBody } from '../models/InputBody';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
+import { KnownConstantEvidence } from '../models/KnownConstantEvidence';
+import { LineAttributionsData } from '../models/LineAttributionsData';
 import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
-import { ListAnalysisFunctionsDataTypesOutputBody } from '../models/ListAnalysisFunctionsDataTypesOutputBody';
+import { ListAnalysisDataTypesOutputBody } from '../models/ListAnalysisDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListArchiveContentsOutputBody } from '../models/ListArchiveContentsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
+import { ListDataTypeFunctionsBody } from '../models/ListDataTypeFunctionsBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
+import { ListFunctionSignaturesOutputBody } from '../models/ListFunctionSignaturesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
-import { ListFunctionsDataTypesOutputBody } from '../models/ListFunctionsDataTypesOutputBody';
 import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
+import { ListSecretStoreOutputBody } from '../models/ListSecretStoreOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
 import { LocationOutputBody } from '../models/LocationOutputBody';
 import { Logs } from '../models/Logs';
+import { LookupAnalysisByBinaryIDOutputBody } from '../models/LookupAnalysisByBinaryIDOutputBody';
 import { MITRETechnique } from '../models/MITRETechnique';
 import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MemdumpEntry } from '../models/MemdumpEntry';
 import { MessageBody } from '../models/MessageBody';
+import { Meta } from '../models/Meta';
 import { MetaModel } from '../models/MetaModel';
+import { Metadata } from '../models/Metadata';
+import { ModelInterpretation } from '../models/ModelInterpretation';
+import { ModelInterpretationEvidence } from '../models/ModelInterpretationEvidence';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { ModuleLoadEntry } from '../models/ModuleLoadEntry';
 import { MutexEntry } from '../models/MutexEntry';
 import { NameConfidence } from '../models/NameConfidence';
 import { NameSourceType } from '../models/NameSourceType';
+import { NamesFinishedEvent } from '../models/NamesFinishedEvent';
 import { NetworkActivity } from '../models/NetworkActivity';
+import { NetworkingCall } from '../models/NetworkingCall';
+import { NetworkingDirectMatch } from '../models/NetworkingDirectMatch';
+import { NetworkingExplainMetadata } from '../models/NetworkingExplainMetadata';
+import { NetworkingExplainResult } from '../models/NetworkingExplainResult';
+import { NetworkingExplainedFunction } from '../models/NetworkingExplainedFunction';
+import { NetworkingFinding } from '../models/NetworkingFinding';
+import { NetworkingScanMetadata } from '../models/NetworkingScanMetadata';
+import { NetworkingScanResult } from '../models/NetworkingScanResult';
+import { NetworkingVerification } from '../models/NetworkingVerification';
 import { OIDCCallbackInputBody } from '../models/OIDCCallbackInputBody';
+import { OperandXref } from '../models/OperandXref';
+import { OperationBinaryExportMetadataBinaryExportResult } from '../models/OperationBinaryExportMetadataBinaryExportResult';
+import { OperationCreateMetadataCreateResult } from '../models/OperationCreateMetadataCreateResult';
+import { OperationCryptoExplainMetadataCryptoExplainResult } from '../models/OperationCryptoExplainMetadataCryptoExplainResult';
+import { OperationCryptoScanMetadataCryptoScanResult } from '../models/OperationCryptoScanMetadataCryptoScanResult';
+import { OperationDynamicExecutionMetadataDynamicExecutionResult } from '../models/OperationDynamicExecutionMetadataDynamicExecutionResult';
+import { OperationExecutionExplainMetadataExecutionExplainResult } from '../models/OperationExecutionExplainMetadataExecutionExplainResult';
+import { OperationExecutionScanMetadataExecutionScanResult } from '../models/OperationExecutionScanMetadataExecutionScanResult';
+import { OperationFilesystemAnalyseMetadataFilesystemAnalyseResult } from '../models/OperationFilesystemAnalyseMetadataFilesystemAnalyseResult';
+import { OperationFilesystemScanMetadataFilesystemScanResult } from '../models/OperationFilesystemScanMetadataFilesystemScanResult';
+import { OperationMetadataCapabilitiesResult } from '../models/OperationMetadataCapabilitiesResult';
+import { OperationMetadataRemediationResult } from '../models/OperationMetadataRemediationResult';
+import { OperationMetadataReportResult } from '../models/OperationMetadataReportResult';
+import { OperationMetadataThreatReportResult } from '../models/OperationMetadataThreatReportResult';
+import { OperationMetadataTriageResult } from '../models/OperationMetadataTriageResult';
+import { OperationNetworkingExplainMetadataNetworkingExplainResult } from '../models/OperationNetworkingExplainMetadataNetworkingExplainResult';
+import { OperationNetworkingScanMetadataNetworkingScanResult } from '../models/OperationNetworkingScanMetadataNetworkingScanResult';
+import { OperationSecurityScanMetadataSecurityScanResult } from '../models/OperationSecurityScanMetadataSecurityScanResult';
+import { OperationVirusTotalScanMetadataVirusTotalScanResult } from '../models/OperationVirusTotalScanMetadataVirusTotalScanResult';
+import { OperationWorkflowProgressResultBody } from '../models/OperationWorkflowProgressResultBody';
 import { Order } from '../models/Order';
 import { Organisation } from '../models/Organisation';
 import { OrganisationGroup } from '../models/OrganisationGroup';
@@ -372,6 +525,8 @@ import { PatchCommentBody } from '../models/PatchCommentBody';
 import { PcapBodyInfo } from '../models/PcapBodyInfo';
 import { Permissions } from '../models/Permissions';
 import { Platform } from '../models/Platform';
+import { PointerDataType } from '../models/PointerDataType';
+import { PointerDefinition } from '../models/PointerDefinition';
 import { PriceOutput } from '../models/PriceOutput';
 import { PriceSummary } from '../models/PriceSummary';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
@@ -382,43 +537,75 @@ import { ProductOutput } from '../models/ProductOutput';
 import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
+import { ProtocolsAgentResponse } from '../models/ProtocolsAgentResponse';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
+import { RatingOutputBody } from '../models/RatingOutputBody';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
+import { ReferencedConstant } from '../models/ReferencedConstant';
+import { ReferencedConstantEvidence } from '../models/ReferencedConstantEvidence';
 import { RefreshBody } from '../models/RefreshBody';
 import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
 import { RegistryOperation } from '../models/RegistryOperation';
+import { RelatedBinary } from '../models/RelatedBinary';
 import { RelativeBinaryResponse } from '../models/RelativeBinaryResponse';
 import { RemediationAgentResponse } from '../models/RemediationAgentResponse';
+import { RemediationResult } from '../models/RemediationResult';
 import { RemoveCollectionBinariesInputBody } from '../models/RemoveCollectionBinariesInputBody';
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody } from '../models/RenameInputBody';
 import { RenameOutputBody } from '../models/RenameOutputBody';
-import { ReplacementValue } from '../models/ReplacementValue';
+import { RenameUnnamedFunctionsResult } from '../models/RenameUnnamedFunctionsResult';
+import { RenderedToken } from '../models/RenderedToken';
+import { ReportAnalysisBody } from '../models/ReportAnalysisBody';
 import { ReportAnalysisResponse } from '../models/ReportAnalysisResponse';
 import { ReportEvent } from '../models/ReportEvent';
 import { ReportInfo } from '../models/ReportInfo';
 import { ReportOptions } from '../models/ReportOptions';
+import { ReportReachabilityStatus } from '../models/ReportReachabilityStatus';
+import { ReportResult } from '../models/ReportResult';
+import { RequestedConfigBody } from '../models/RequestedConfigBody';
+import { ResendVerificationEmailInputBody } from '../models/ResendVerificationEmailInputBody';
+import { ResolvedEntity } from '../models/ResolvedEntity';
+import { ResultBody } from '../models/ResultBody';
 import { RevokeBody } from '../models/RevokeBody';
+import { RuleKind } from '../models/RuleKind';
+import { RunDynamicExecutionInputBody } from '../models/RunDynamicExecutionInputBody';
 import { SSOProvider } from '../models/SSOProvider';
 import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
+import { SandboxConfig } from '../models/SandboxConfig';
 import { SandboxOptions } from '../models/SandboxOptions';
 import { SandboxStartMethod } from '../models/SandboxStartMethod';
 import { SandboxTimeout } from '../models/SandboxTimeout';
 import { ScheduledTaskEntry } from '../models/ScheduledTaskEntry';
 import { ScrapeThirdPartyConfig } from '../models/ScrapeThirdPartyConfig';
+import { ScreenshotEntry } from '../models/ScreenshotEntry';
+import { ScreenshotsIndex } from '../models/ScreenshotsIndex';
+import { SearchBinariesOutputBody } from '../models/SearchBinariesOutputBody';
+import { SearchFunctionsOutputBody } from '../models/SearchFunctionsOutputBody';
+import { SearchTagsOutputBody } from '../models/SearchTagsOutputBody';
+import { SecretBody } from '../models/SecretBody';
+import { SecretsAgentResponse } from '../models/SecretsAgentResponse';
 import { SectionModel } from '../models/SectionModel';
+import { SecurityFinding } from '../models/SecurityFinding';
 import { SecurityModel } from '../models/SecurityModel';
+import { SecurityScanMetadata } from '../models/SecurityScanMetadata';
+import { SecurityScanResult } from '../models/SecurityScanResult';
 import { SegmentInfo } from '../models/SegmentInfo';
 import { SendMessageRequest } from '../models/SendMessageRequest';
 import { ServiceEntry } from '../models/ServiceEntry';
 import { SessionOutputBody } from '../models/SessionOutputBody';
+import { SignatureParameterEntry } from '../models/SignatureParameterEntry';
+import { SignatureParameterInput } from '../models/SignatureParameterInput';
+import { SignatureStorageEntry } from '../models/SignatureStorageEntry';
+import { SignatureStorageInput } from '../models/SignatureStorageInput';
 import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel';
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
 import { SingleSectionModel } from '../models/SingleSectionModel';
+import { SoftwareTypeCountsBody } from '../models/SoftwareTypeCountsBody';
 import { SourceDeltaEvent } from '../models/SourceDeltaEvent';
 import { SourceResetEvent } from '../models/SourceResetEvent';
 import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
@@ -438,22 +625,36 @@ import { SseEventToolCallProgressData } from '../models/SseEventToolCallProgress
 import { SseEventToolCallResultData } from '../models/SseEventToolCallResultData';
 import { SseEventToolCallStartData } from '../models/SseEventToolCallStartData';
 import { SseEventToolConfirmationRequiredData } from '../models/SseEventToolConfirmationRequiredData';
-import { StackVariable } from '../models/StackVariable';
 import { StartBatchMatchingInputBody } from '../models/StartBatchMatchingInputBody';
 import { StartMatchingForAnalysisInputBody } from '../models/StartMatchingForAnalysisInputBody';
 import { StartMatchingForFunctionsInputBody } from '../models/StartMatchingForFunctionsInputBody';
 import { StartMatchingOutputBody } from '../models/StartMatchingOutputBody';
 import { StartupInfo } from '../models/StartupInfo';
+import { Status } from '../models/Status';
+import { StatusBody } from '../models/StatusBody';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StatusResponse } from '../models/StatusResponse';
 import { StreamAiDecompilation200ResponseInner } from '../models/StreamAiDecompilation200ResponseInner';
 import { StreamEvents200ResponseInner } from '../models/StreamEvents200ResponseInner';
 import { StringFunctions } from '../models/StringFunctions';
+import { StringMatch } from '../models/StringMatch';
+import { StringMatchEvidence } from '../models/StringMatchEvidence';
 import { StringSource } from '../models/StringSource';
-import { Structure } from '../models/Structure';
-import { StructureMember } from '../models/StructureMember';
+import { StructDataType } from '../models/StructDataType';
+import { StructDefinition } from '../models/StructDefinition';
+import { Subject } from '../models/Subject';
+import { SubjectAnyOf } from '../models/SubjectAnyOf';
+import { SubjectAnyOf1 } from '../models/SubjectAnyOf1';
+import { SubjectAnyOf2 } from '../models/SubjectAnyOf2';
+import { SubjectAnyOf3 } from '../models/SubjectAnyOf3';
+import { SubmitFeedbackBody } from '../models/SubmitFeedbackBody';
+import { SubmitFeedbackInputBody } from '../models/SubmitFeedbackInputBody';
+import { SubmitFeedbackOutputBody } from '../models/SubmitFeedbackOutputBody';
 import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
+import { SuggestedHole } from '../models/SuggestedHole';
+import { SuggestedMemberView } from '../models/SuggestedMemberView';
+import { SuggestedTypeView } from '../models/SuggestedTypeView';
 import { SummaryData } from '../models/SummaryData';
 import { Symbols } from '../models/Symbols';
 import { Tag } from '../models/Tag';
@@ -461,50 +662,90 @@ import { TagItem } from '../models/TagItem';
 import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
+import { TagSearchResultBody } from '../models/TagSearchResultBody';
 import { TaskResponse } from '../models/TaskResponse';
 import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse } from '../models/TaskStatusResponse';
 import { TcpCarvedFile } from '../models/TcpCarvedFile';
 import { Team } from '../models/Team';
 import { TeamMember } from '../models/TeamMember';
+import { Technique } from '../models/Technique';
+import { ThreatReportResult } from '../models/ThreatReportResult';
 import { TimestampModel } from '../models/TimestampModel';
+import { Token } from '../models/Token';
 import { TokenInputBody } from '../models/TokenInputBody';
 import { TokenResponse } from '../models/TokenResponse';
 import { TokenisedData } from '../models/TokenisedData';
+import { TriageFunction } from '../models/TriageFunction';
 import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
+import { TriageResult } from '../models/TriageResult';
+import { TriggerCryptoScanInputBody } from '../models/TriggerCryptoScanInputBody';
 import { TriggerDynamicExecutionInputBody } from '../models/TriggerDynamicExecutionInputBody';
+import { TriggerExecutionExplainInputBody } from '../models/TriggerExecutionExplainInputBody';
+import { TriggerExecutionScanInputBody } from '../models/TriggerExecutionScanInputBody';
+import { TriggerFilesystemAnalyseInputBody } from '../models/TriggerFilesystemAnalyseInputBody';
+import { TriggerFilesystemScanInputBody } from '../models/TriggerFilesystemScanInputBody';
+import { TriggerNetworkingExplainInputBody } from '../models/TriggerNetworkingExplainInputBody';
+import { TriggerNetworkingScanInputBody } from '../models/TriggerNetworkingScanInputBody';
+import { TriggerRenameUnnamedFunctionsInputBody } from '../models/TriggerRenameUnnamedFunctionsInputBody';
+import { TriggerSecurityScanInputBody } from '../models/TriggerSecurityScanInputBody';
 import { Ttp } from '../models/Ttp';
-import { TypeDefinition } from '../models/TypeDefinition';
-import { UpdateDataTypesInputBody } from '../models/UpdateDataTypesInputBody';
-import { UpdateDataTypesOutputBody } from '../models/UpdateDataTypesOutputBody';
+import { TypeSuggestionsData } from '../models/TypeSuggestionsData';
+import { TypedefDataType } from '../models/TypedefDataType';
+import { TypedefDefinition } from '../models/TypedefDefinition';
+import { TypesSuggestedEvent } from '../models/TypesSuggestedEvent';
+import { UnionDataType } from '../models/UnionDataType';
+import { UnionDefinition } from '../models/UnionDefinition';
+import { UnknownDataType } from '../models/UnknownDataType';
+import { UpdateAnalysisDataTypesInputBody } from '../models/UpdateAnalysisDataTypesInputBody';
+import { UpdateAnalysisInputBody } from '../models/UpdateAnalysisInputBody';
+import { UpdateArrayDataType } from '../models/UpdateArrayDataType';
+import { UpdateBaseDataType } from '../models/UpdateBaseDataType';
+import { UpdateBitfieldDataType } from '../models/UpdateBitfieldDataType';
+import { UpdateDataTypeEntry } from '../models/UpdateDataTypeEntry';
+import { UpdateEnumDataType } from '../models/UpdateEnumDataType';
+import { UpdateFunctionDataType } from '../models/UpdateFunctionDataType';
+import { UpdateFunctionSignatureInputBody } from '../models/UpdateFunctionSignatureInputBody';
 import { UpdateIssuerInputBody } from '../models/UpdateIssuerInputBody';
 import { UpdateOrganisationInputBody } from '../models/UpdateOrganisationInputBody';
 import { UpdatePasswordInputBody } from '../models/UpdatePasswordInputBody';
+import { UpdatePointerDataType } from '../models/UpdatePointerDataType';
 import { UpdateProfileInputBody } from '../models/UpdateProfileInputBody';
+import { UpdateSecretStoreInputBody } from '../models/UpdateSecretStoreInputBody';
+import { UpdateStructDataType } from '../models/UpdateStructDataType';
+import { UpdateTagsInputBody } from '../models/UpdateTagsInputBody';
 import { UpdateTeamInputBody } from '../models/UpdateTeamInputBody';
+import { UpdateTypedefDataType } from '../models/UpdateTypedefDataType';
+import { UpdateUnionDataType } from '../models/UpdateUnionDataType';
+import { UpdateUnknownDataType } from '../models/UpdateUnknownDataType';
 import { UpdateUserCreditsInputBody } from '../models/UpdateUserCreditsInputBody';
 import { UpdateUserInputBody } from '../models/UpdateUserInputBody';
 import { UpdateUserPasswordInputBody } from '../models/UpdateUserPasswordInputBody';
+import { UpgradeAnalysisModelOutputBody } from '../models/UpgradeAnalysisModelOutputBody';
 import { UploadFileType } from '../models/UploadFileType';
+import { UploadOutputBody } from '../models/UploadOutputBody';
 import { UploadResponse } from '../models/UploadResponse';
 import { UpsertAiDecomplationRatingRequest } from '../models/UpsertAiDecomplationRatingRequest';
 import { UpsertOverridesData } from '../models/UpsertOverridesData';
 import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
+import { UpsertRatingInputBody } from '../models/UpsertRatingInputBody';
 import { User } from '../models/User';
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { UserCredits } from '../models/UserCredits';
 import { UserIdentity } from '../models/UserIdentity';
 import { UserProfile } from '../models/UserProfile';
-import { V2FunctionHeader } from '../models/V2FunctionHeader';
-import { V2FunctionInfo } from '../models/V2FunctionInfo';
-import { V2FunctionInfoFuncDepsInner } from '../models/V2FunctionInfoFuncDepsInner';
-import { V2FunctionType } from '../models/V2FunctionType';
+import { VirusTotalScanMetadata } from '../models/VirusTotalScanMetadata';
+import { VirusTotalScanResult } from '../models/VirusTotalScanResult';
 import { WarningEvent } from '../models/WarningEvent';
+import { WorkflowDayBody } from '../models/WorkflowDayBody';
 import { WorkflowProgress } from '../models/WorkflowProgress';
 import { Workspace } from '../models/Workspace';
+import { XrefFromBody } from '../models/XrefFromBody';
 import { XrefFromResponse } from '../models/XrefFromResponse';
+import { XrefIntoBody } from '../models/XrefIntoBody';
 import { XrefResponse } from '../models/XrefResponse';
+import { XrefSegmentBody } from '../models/XrefSegmentBody';
 import { XrefToResponse } from '../models/XrefToResponse';
 import { ObservableAgentApi } from './ObservableAPI';
 
@@ -537,6 +778,26 @@ export class PromiseAgentApi {
     public checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<TaskStatusResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.checkCapabilitiesTaskStatusV2AnalysesAnalysisIdAgentCapabilitiesStatusGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Check the status of a protocols discovery workflow
+     * @param analysisId
+     */
+    public checkProtocolsTaskStatusV2AnalysesAnalysisIdAgentProtocolsStatusGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TaskStatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkProtocolsTaskStatusV2AnalysesAnalysisIdAgentProtocolsStatusGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Check the status of a protocols discovery workflow
+     * @param analysisId
+     */
+    public checkProtocolsTaskStatusV2AnalysesAnalysisIdAgentProtocolsStatusGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<TaskStatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkProtocolsTaskStatusV2AnalysesAnalysisIdAgentProtocolsStatusGet(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -581,6 +842,26 @@ export class PromiseAgentApi {
     }
 
     /**
+     * Check the status of a secrets discovery workflow
+     * @param analysisId
+     */
+    public checkSecretsTaskStatusV2AnalysesAnalysisIdAgentSecretsStatusGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TaskStatusResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkSecretsTaskStatusV2AnalysesAnalysisIdAgentSecretsStatusGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Check the status of a secrets discovery workflow
+     * @param analysisId
+     */
+    public checkSecretsTaskStatusV2AnalysesAnalysisIdAgentSecretsStatusGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<TaskStatusResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.checkSecretsTaskStatusV2AnalysesAnalysisIdAgentSecretsStatusGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Check the status of a triage analysis workflow
      * @param analysisId
      */
@@ -617,6 +898,26 @@ export class PromiseAgentApi {
     public createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseQueuedWorkflowTaskResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.createCapabilitiesTaskV2AnalysesAnalysisIdAgentCapabilitiesPost(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a protocols discovery workflow process
+     * @param analysisId
+     */
+    public createProtocolsTaskV2AnalysesAnalysisIdAgentProtocolsPostWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createProtocolsTaskV2AnalysesAnalysisIdAgentProtocolsPostWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a protocols discovery workflow process
+     * @param analysisId
+     */
+    public createProtocolsTaskV2AnalysesAnalysisIdAgentProtocolsPost(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseQueuedWorkflowTaskResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createProtocolsTaskV2AnalysesAnalysisIdAgentProtocolsPost(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -661,6 +962,26 @@ export class PromiseAgentApi {
     }
 
     /**
+     * Queues a secrets discovery workflow process
+     * @param analysisId
+     */
+    public createSecretsTaskV2AnalysesAnalysisIdAgentSecretsPostWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseQueuedWorkflowTaskResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createSecretsTaskV2AnalysesAnalysisIdAgentSecretsPostWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a secrets discovery workflow process
+     * @param analysisId
+     */
+    public createSecretsTaskV2AnalysesAnalysisIdAgentSecretsPost(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseQueuedWorkflowTaskResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.createSecretsTaskV2AnalysesAnalysisIdAgentSecretsPost(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Queues a triage analysis workflow process
      * @param analysisId
      */
@@ -697,6 +1018,28 @@ export class PromiseAgentApi {
     public getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseCapabilitiesAgentResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getCapabilitiesResultV2AnalysesAnalysisIdAgentCapabilitiesGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the protocols report, including metadata, findings, and evidence.
+     * Get Protocols Result
+     * @param analysisId
+     */
+    public getProtocolsResultV2AnalysesAnalysisIdAgentProtocolsGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseProtocolsAgentResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getProtocolsResultV2AnalysesAnalysisIdAgentProtocolsGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the protocols report, including metadata, findings, and evidence.
+     * Get Protocols Result
+     * @param analysisId
+     */
+    public getProtocolsResultV2AnalysesAnalysisIdAgentProtocolsGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseProtocolsAgentResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getProtocolsResultV2AnalysesAnalysisIdAgentProtocolsGet(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -745,6 +1088,28 @@ export class PromiseAgentApi {
     }
 
     /**
+     * Returns the secrets report, including metadata, findings, and evidence.
+     * Get Secrets Result
+     * @param analysisId
+     */
+    public getSecretsResultV2AnalysesAnalysisIdAgentSecretsGetWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseSecretsAgentResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getSecretsResultV2AnalysesAnalysisIdAgentSecretsGetWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the secrets report, including metadata, findings, and evidence.
+     * Get Secrets Result
+     * @param analysisId
+     */
+    public getSecretsResultV2AnalysesAnalysisIdAgentSecretsGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseSecretsAgentResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.getSecretsResultV2AnalysesAnalysisIdAgentSecretsGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Get Triage Result
      * @param analysisId
      */
@@ -761,6 +1126,844 @@ export class PromiseAgentApi {
     public getTriageResultV2AnalysesAnalysisIdAgentTriageGet(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseTriageReportResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getTriageResultV2AnalysesAnalysisIdAgentTriageGet(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Requests cancellation of the currently running rename-unnamed-functions run for the analysis. Returns 404 if no run is in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancel the rename-unnamed-functions agent.
+     * @param analysisId Analysis ID
+     */
+    public v3CancelRenameUnnamedFunctionsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CancelRenameUnnamedFunctionsWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Requests cancellation of the currently running rename-unnamed-functions run for the analysis. Returns 404 if no run is in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancel the rename-unnamed-functions agent.
+     * @param analysisId Analysis ID
+     */
+    public v3CancelRenameUnnamedFunctions(analysisId: number, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CancelRenameUnnamedFunctions(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Requests cancellation of the currently running security-scan run for the analysis. Returns 404 if no run is in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancel a security-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3CancelSecurityScanOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CancelSecurityScanOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Requests cancellation of the currently running security-scan run for the analysis. Returns 404 if no run is in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancel a security-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3CancelSecurityScanOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CancelSecurityScanOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the sentiment the caller recorded for one agent on this analysis, or a null sentiment when they have not recorded any.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the caller\'s feedback on an agent\'s output.
+     * @param analysisId Analysis ID
+     * @param agent Which agent\&#39;s output the feedback is about
+     */
+    public v3GetBinaryAgentFeedbackWithHttpInfo(analysisId: number, agent: 'triage' | 'capabilities' | 'report-analysis' | 'remediation' | 'protocols' | 'secrets', _options?: PromiseConfigurationOptions): Promise<HttpInfo<FeedbackOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryAgentFeedbackWithHttpInfo(analysisId, agent, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the sentiment the caller recorded for one agent on this analysis, or a null sentiment when they have not recorded any.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the caller\'s feedback on an agent\'s output.
+     * @param analysisId Analysis ID
+     * @param agent Which agent\&#39;s output the feedback is about
+     */
+    public v3GetBinaryAgentFeedback(analysisId: number, agent: 'triage' | 'capabilities' | 'report-analysis' | 'remediation' | 'protocols' | 'secrets', _options?: PromiseConfigurationOptions): Promise<FeedbackOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryAgentFeedback(analysisId, agent, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a capabilities run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a capabilities operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetCapabilitiesOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataCapabilitiesResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetCapabilitiesOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a capabilities run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a capabilities operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetCapabilitiesOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataCapabilitiesResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetCapabilitiesOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the crypto-explain run for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a crypto-explain operation.
+     * @param functionId Function ID
+     */
+    public v3GetCryptoExplainOperationWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationCryptoExplainMetadataCryptoExplainResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetCryptoExplainOperationWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the crypto-explain run for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a crypto-explain operation.
+     * @param functionId Function ID
+     */
+    public v3GetCryptoExplainOperation(functionId: number, _options?: PromiseConfigurationOptions): Promise<OperationCryptoExplainMetadataCryptoExplainResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetCryptoExplainOperation(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the crypto-scan run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a crypto-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetCryptoScanOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationCryptoScanMetadataCryptoScanResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetCryptoScanOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the crypto-scan run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a crypto-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetCryptoScanOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationCryptoScanMetadataCryptoScanResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetCryptoScanOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the execution-explain run for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get an execution-explain operation.
+     * @param functionId Function ID
+     */
+    public v3GetExecutionExplainOperationWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationExecutionExplainMetadataExecutionExplainResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetExecutionExplainOperationWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the execution-explain run for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get an execution-explain operation.
+     * @param functionId Function ID
+     */
+    public v3GetExecutionExplainOperation(functionId: number, _options?: PromiseConfigurationOptions): Promise<OperationExecutionExplainMetadataExecutionExplainResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetExecutionExplainOperation(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the execution-scan run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get an execution-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetExecutionScanOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationExecutionScanMetadataExecutionScanResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetExecutionScanOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the execution-scan run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get an execution-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetExecutionScanOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationExecutionScanMetadataExecutionScanResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetExecutionScanOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the filesystem-analyse run for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a filesystem-analyse operation.
+     * @param functionId Function ID
+     */
+    public v3GetFilesystemAnalyseOperationWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationFilesystemAnalyseMetadataFilesystemAnalyseResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetFilesystemAnalyseOperationWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the filesystem-analyse run for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a filesystem-analyse operation.
+     * @param functionId Function ID
+     */
+    public v3GetFilesystemAnalyseOperation(functionId: number, _options?: PromiseConfigurationOptions): Promise<OperationFilesystemAnalyseMetadataFilesystemAnalyseResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetFilesystemAnalyseOperation(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the filesystem-scan run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a filesystem-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetFilesystemScanOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationFilesystemScanMetadataFilesystemScanResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetFilesystemScanOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the filesystem-scan run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a filesystem-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetFilesystemScanOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationFilesystemScanMetadataFilesystemScanResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetFilesystemScanOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the networking-explain run for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a networking-explain operation.
+     * @param functionId Function ID
+     */
+    public v3GetNetworkingExplainOperationWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationNetworkingExplainMetadataNetworkingExplainResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetNetworkingExplainOperationWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the networking-explain run for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a networking-explain operation.
+     * @param functionId Function ID
+     */
+    public v3GetNetworkingExplainOperation(functionId: number, _options?: PromiseConfigurationOptions): Promise<OperationNetworkingExplainMetadataNetworkingExplainResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetNetworkingExplainOperation(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the networking-scan run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a networking-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetNetworkingScanOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationNetworkingScanMetadataNetworkingScanResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetNetworkingScanOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the networking-scan run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a networking-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetNetworkingScanOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationNetworkingScanMetadataNetworkingScanResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetNetworkingScanOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a protocols run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response.report` is set once the run has completed and carries the findings document as the agent produced it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a protocols operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetProtocolsOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataReportResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetProtocolsOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a protocols run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response.report` is set once the run has completed and carries the findings document as the agent produced it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a protocols operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetProtocolsOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataReportResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetProtocolsOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a remediation run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a remediation operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetRemediationOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataRemediationResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetRemediationOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a remediation run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a remediation operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetRemediationOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataRemediationResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetRemediationOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the summary of the most recent completed rename-unnamed-functions run. Returns 409 while a run is still in progress and 404 when the agent has never produced a result for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get rename-unnamed-functions agent result.
+     * @param analysisId Analysis ID
+     */
+    public v3GetRenameUnnamedFunctionsResultWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RenameUnnamedFunctionsResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetRenameUnnamedFunctionsResultWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the summary of the most recent completed rename-unnamed-functions run. Returns 409 while a run is still in progress and 404 when the agent has never produced a result for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get rename-unnamed-functions agent result.
+     * @param analysisId Analysis ID
+     */
+    public v3GetRenameUnnamedFunctionsResult(analysisId: number, _options?: PromiseConfigurationOptions): Promise<RenameUnnamedFunctionsResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetRenameUnnamedFunctionsResult(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the most recent rename-unnamed-functions run for the analysis. `UNINITIALISED` means the agent has never been triggered, so it is safe to start one.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get rename-unnamed-functions agent status.
+     * @param analysisId Analysis ID
+     */
+    public v3GetRenameUnnamedFunctionsStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<StatusBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetRenameUnnamedFunctionsStatusWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the most recent rename-unnamed-functions run for the analysis. `UNINITIALISED` means the agent has never been triggered, so it is safe to start one.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get rename-unnamed-functions agent status.
+     * @param analysisId Analysis ID
+     */
+    public v3GetRenameUnnamedFunctionsStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<StatusBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetRenameUnnamedFunctionsStatus(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a report-analysis run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a report-analysis operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetReportAnalysisOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataThreatReportResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetReportAnalysisOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a report-analysis run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a report-analysis operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetReportAnalysisOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataThreatReportResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetReportAnalysisOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a secrets run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response.report` is set once the run has completed and carries the findings document as the agent produced it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a secrets operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetSecretsOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataReportResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetSecretsOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a secrets run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response.report` is set once the run has completed and carries the findings document as the agent produced it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a secrets operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetSecretsOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataReportResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetSecretsOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the security-scan run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a security-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetSecurityScanOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationSecurityScanMetadataSecurityScanResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetSecurityScanOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the security-scan run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a security-scan operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetSecurityScanOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationSecurityScanMetadataSecurityScanResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetSecurityScanOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a triage run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a triage operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetTriageOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataTriageResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetTriageOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls a triage run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Get a triage operation.
+     * @param analysisId Analysis ID
+     */
+    public v3GetTriageOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataTriageResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetTriageOperation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the capabilities agent, which attributes behavioural capabilities to individual functions, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the capabilities agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunCapabilitiesWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataCapabilitiesResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunCapabilitiesWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the capabilities agent, which attributes behavioural capabilities to individual functions, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the capabilities agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunCapabilities(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataCapabilitiesResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunCapabilities(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that explains the cryptography the function implements, and returns the operation to poll for its outcome. Requires credits. Returns 409 while a run is already in progress for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the crypto-explain agent.
+     * @param functionId Function ID
+     */
+    public v3RunCryptoExplainWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationCryptoExplainMetadataCryptoExplainResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunCryptoExplainWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that explains the cryptography the function implements, and returns the operation to poll for its outcome. Requires credits. Returns 409 while a run is already in progress for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the crypto-explain agent.
+     * @param functionId Function ID
+     */
+    public v3RunCryptoExplain(functionId: number, _options?: PromiseConfigurationOptions): Promise<OperationCryptoExplainMetadataCryptoExplainResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunCryptoExplain(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that name-matches the analysis\' functions and their callees against known crypto-library APIs, and returns the operation to poll for its outcome. Purely name-based — never triggers AI decompilation, so it costs no credits and runs in seconds. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Run the crypto-scan agent.
+     * @param analysisId Analysis ID
+     * @param triggerCryptoScanInputBody
+     */
+    public v3RunCryptoScanWithHttpInfo(analysisId: number, triggerCryptoScanInputBody: TriggerCryptoScanInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationCryptoScanMetadataCryptoScanResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunCryptoScanWithHttpInfo(analysisId, triggerCryptoScanInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that name-matches the analysis\' functions and their callees against known crypto-library APIs, and returns the operation to poll for its outcome. Purely name-based — never triggers AI decompilation, so it costs no credits and runs in seconds. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Run the crypto-scan agent.
+     * @param analysisId Analysis ID
+     * @param triggerCryptoScanInputBody
+     */
+    public v3RunCryptoScan(analysisId: number, triggerCryptoScanInputBody: TriggerCryptoScanInputBody, _options?: PromiseConfigurationOptions): Promise<OperationCryptoScanMetadataCryptoScanResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunCryptoScan(analysisId, triggerCryptoScanInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that explains the code execution the function performs, and returns the operation to poll for its outcome. Requires credits. Returns 409 while a run is already in progress for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the execution-explain agent.
+     * @param functionId Function ID
+     * @param triggerExecutionExplainInputBody
+     */
+    public v3RunExecutionExplainWithHttpInfo(functionId: number, triggerExecutionExplainInputBody: TriggerExecutionExplainInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationExecutionExplainMetadataExecutionExplainResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunExecutionExplainWithHttpInfo(functionId, triggerExecutionExplainInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that explains the code execution the function performs, and returns the operation to poll for its outcome. Requires credits. Returns 409 while a run is already in progress for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the execution-explain agent.
+     * @param functionId Function ID
+     * @param triggerExecutionExplainInputBody
+     */
+    public v3RunExecutionExplain(functionId: number, triggerExecutionExplainInputBody: TriggerExecutionExplainInputBody, _options?: PromiseConfigurationOptions): Promise<OperationExecutionExplainMetadataExecutionExplainResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunExecutionExplain(functionId, triggerExecutionExplainInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that name-matches the analysis\' functions and their callees against known code-execution APIs, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Run the execution-scan agent.
+     * @param analysisId Analysis ID
+     * @param triggerExecutionScanInputBody
+     */
+    public v3RunExecutionScanWithHttpInfo(analysisId: number, triggerExecutionScanInputBody: TriggerExecutionScanInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationExecutionScanMetadataExecutionScanResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunExecutionScanWithHttpInfo(analysisId, triggerExecutionScanInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that name-matches the analysis\' functions and their callees against known code-execution APIs, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Run the execution-scan agent.
+     * @param analysisId Analysis ID
+     * @param triggerExecutionScanInputBody
+     */
+    public v3RunExecutionScan(analysisId: number, triggerExecutionScanInputBody: TriggerExecutionScanInputBody, _options?: PromiseConfigurationOptions): Promise<OperationExecutionScanMetadataExecutionScanResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunExecutionScan(analysisId, triggerExecutionScanInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that explains the filesystem/system access the function performs, and returns the operation to poll for its outcome. Requires credits. Returns 409 while a run is already in progress for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the filesystem-analyse agent.
+     * @param functionId Function ID
+     * @param triggerFilesystemAnalyseInputBody
+     */
+    public v3RunFilesystemAnalyseWithHttpInfo(functionId: number, triggerFilesystemAnalyseInputBody: TriggerFilesystemAnalyseInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationFilesystemAnalyseMetadataFilesystemAnalyseResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunFilesystemAnalyseWithHttpInfo(functionId, triggerFilesystemAnalyseInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that explains the filesystem/system access the function performs, and returns the operation to poll for its outcome. Requires credits. Returns 409 while a run is already in progress for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the filesystem-analyse agent.
+     * @param functionId Function ID
+     * @param triggerFilesystemAnalyseInputBody
+     */
+    public v3RunFilesystemAnalyse(functionId: number, triggerFilesystemAnalyseInputBody: TriggerFilesystemAnalyseInputBody, _options?: PromiseConfigurationOptions): Promise<OperationFilesystemAnalyseMetadataFilesystemAnalyseResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunFilesystemAnalyse(functionId, triggerFilesystemAnalyseInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that name-matches the analysis\' functions and their callees against known filesystem/system APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Run the filesystem-scan agent.
+     * @param analysisId Analysis ID
+     * @param triggerFilesystemScanInputBody
+     */
+    public v3RunFilesystemScanWithHttpInfo(analysisId: number, triggerFilesystemScanInputBody: TriggerFilesystemScanInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationFilesystemScanMetadataFilesystemScanResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunFilesystemScanWithHttpInfo(analysisId, triggerFilesystemScanInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that name-matches the analysis\' functions and their callees against known filesystem/system APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Run the filesystem-scan agent.
+     * @param analysisId Analysis ID
+     * @param triggerFilesystemScanInputBody
+     */
+    public v3RunFilesystemScan(analysisId: number, triggerFilesystemScanInputBody: TriggerFilesystemScanInputBody, _options?: PromiseConfigurationOptions): Promise<OperationFilesystemScanMetadataFilesystemScanResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunFilesystemScan(analysisId, triggerFilesystemScanInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that explains the network communication a function performs, and returns the operation to poll for its outcome. Requires credits. Returns 409 while a run is already in progress for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the networking-explain agent.
+     * @param functionId Function ID
+     * @param triggerNetworkingExplainInputBody
+     */
+    public v3RunNetworkingExplainWithHttpInfo(functionId: number, triggerNetworkingExplainInputBody: TriggerNetworkingExplainInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationNetworkingExplainMetadataNetworkingExplainResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunNetworkingExplainWithHttpInfo(functionId, triggerNetworkingExplainInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that explains the network communication a function performs, and returns the operation to poll for its outcome. Requires credits. Returns 409 while a run is already in progress for this function.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the networking-explain agent.
+     * @param functionId Function ID
+     * @param triggerNetworkingExplainInputBody
+     */
+    public v3RunNetworkingExplain(functionId: number, triggerNetworkingExplainInputBody: TriggerNetworkingExplainInputBody, _options?: PromiseConfigurationOptions): Promise<OperationNetworkingExplainMetadataNetworkingExplainResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunNetworkingExplain(functionId, triggerNetworkingExplainInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that name-matches the analysis\' functions and their callees against known networking APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Run the networking-scan agent.
+     * @param analysisId Analysis ID
+     * @param triggerNetworkingScanInputBody
+     */
+    public v3RunNetworkingScanWithHttpInfo(analysisId: number, triggerNetworkingScanInputBody: TriggerNetworkingScanInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationNetworkingScanMetadataNetworkingScanResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunNetworkingScanWithHttpInfo(analysisId, triggerNetworkingScanInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that name-matches the analysis\' functions and their callees against known networking APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Run the networking-scan agent.
+     * @param analysisId Analysis ID
+     * @param triggerNetworkingScanInputBody
+     */
+    public v3RunNetworkingScan(analysisId: number, triggerNetworkingScanInputBody: TriggerNetworkingScanInputBody, _options?: PromiseConfigurationOptions): Promise<OperationNetworkingScanMetadataNetworkingScanResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunNetworkingScan(analysisId, triggerNetworkingScanInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the protocols agent, which identifies the network and data protocols the binary implements, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the protocols agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunProtocolsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataReportResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunProtocolsWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the protocols agent, which identifies the network and data protocols the binary implements, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the protocols agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunProtocols(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataReportResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunProtocols(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the remediation agent, which generates YARA, Snort and STIX detection rules for the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the remediation agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunRemediationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataRemediationResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunRemediationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the remediation agent, which generates YARA, Snort and STIX detection rules for the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the remediation agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunRemediation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataRemediationResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunRemediation(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the report-analysis agent, which produces a combined threat report — summary, software type, attack flow, indicators of compromise, MITRE ATT&CK techniques and a YARA rule — and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the report-analysis agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunReportAnalysisWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataThreatReportResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunReportAnalysisWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the report-analysis agent, which produces a combined threat report — summary, software type, attack flow, indicators of compromise, MITRE ATT&CK techniques and a YARA rule — and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the report-analysis agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunReportAnalysis(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataThreatReportResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunReportAnalysis(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the secrets agent, which finds credentials and other hardcoded secrets in the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the secrets agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunSecretsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataReportResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunSecretsWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the secrets agent, which finds credentials and other hardcoded secrets in the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the secrets agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunSecrets(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataReportResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunSecrets(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that decompiles the analysis\' functions and runs a security scan over the decompiled source, and returns the operation to poll for its outcome. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `max_functions_to_scan` to bound it. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the security-scan agent.
+     * @param analysisId Analysis ID
+     * @param triggerSecurityScanInputBody
+     */
+    public v3RunSecurityScanWithHttpInfo(analysisId: number, triggerSecurityScanInputBody: TriggerSecurityScanInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationSecurityScanMetadataSecurityScanResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunSecurityScanWithHttpInfo(analysisId, triggerSecurityScanInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that decompiles the analysis\' functions and runs a security scan over the decompiled source, and returns the operation to poll for its outcome. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `max_functions_to_scan` to bound it. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the security-scan agent.
+     * @param analysisId Analysis ID
+     * @param triggerSecurityScanInputBody
+     */
+    public v3RunSecurityScan(analysisId: number, triggerSecurityScanInputBody: TriggerSecurityScanInputBody, _options?: PromiseConfigurationOptions): Promise<OperationSecurityScanMetadataSecurityScanResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunSecurityScan(analysisId, triggerSecurityScanInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the triage agent, which scores the binary and each of its functions for maliciousness, and returns the operation to poll for its outcome. Unlike the other binary agents this one is not gated on subscription tier. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the triage agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunTriageWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationMetadataTriageResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunTriageWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts the triage agent, which scores the binary and each of its functions for maliciousness, and returns the operation to poll for its outcome. Unlike the other binary agents this one is not gated on subscription tier. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the triage agent.
+     * @param analysisId Analysis ID
+     */
+    public v3RunTriage(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationMetadataTriageResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RunTriage(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that renames the analysis\' unnamed functions from their AI decompilations. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `limit` to bound it. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the rename-unnamed-functions agent.
+     * @param analysisId Analysis ID
+     * @param triggerRenameUnnamedFunctionsInputBody
+     */
+    public v3TriggerRenameUnnamedFunctionsWithHttpInfo(analysisId: number, triggerRenameUnnamedFunctionsInputBody: TriggerRenameUnnamedFunctionsInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<StatusBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3TriggerRenameUnnamedFunctionsWithHttpInfo(analysisId, triggerRenameUnnamedFunctionsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an agent that renames the analysis\' unnamed functions from their AI decompilations. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `limit` to bound it. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Run the rename-unnamed-functions agent.
+     * @param analysisId Analysis ID
+     * @param triggerRenameUnnamedFunctionsInputBody
+     */
+    public v3TriggerRenameUnnamedFunctions(analysisId: number, triggerRenameUnnamedFunctionsInputBody: TriggerRenameUnnamedFunctionsInputBody, _options?: PromiseConfigurationOptions): Promise<StatusBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3TriggerRenameUnnamedFunctions(analysisId, triggerRenameUnnamedFunctionsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Records how useful the caller found one agent\'s output for this analysis. Replaces any sentiment they recorded previously.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Record feedback on an agent\'s output.
+     * @param analysisId Analysis ID
+     * @param agent Which agent\&#39;s output the feedback is about
+     * @param submitFeedbackInputBody
+     */
+    public v3UpsertBinaryAgentFeedbackWithHttpInfo(analysisId: number, agent: 'triage' | 'capabilities' | 'report-analysis' | 'remediation' | 'protocols' | 'secrets', submitFeedbackInputBody: SubmitFeedbackInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpsertBinaryAgentFeedbackWithHttpInfo(analysisId, agent, submitFeedbackInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Records how useful the caller found one agent\'s output for this analysis. Replaces any sentiment they recorded previously.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Record feedback on an agent\'s output.
+     * @param analysisId Analysis ID
+     * @param agent Which agent\&#39;s output the feedback is about
+     * @param submitFeedbackInputBody
+     */
+    public v3UpsertBinaryAgentFeedback(analysisId: number, agent: 'triage' | 'capabilities' | 'report-analysis' | 'remediation' | 'protocols' | 'secrets', submitFeedbackInputBody: SubmitFeedbackInputBody, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpsertBinaryAgentFeedback(analysisId, agent, submitFeedbackInputBody, observableOptions);
         return result.toPromise();
     }
 
@@ -824,6 +2027,50 @@ export class PromiseAnalysesBulkActionsApi {
     public bulkDeleteAnalyses(bulkDeleteAnalysesRequest: BulkDeleteAnalysesRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponseDict> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.bulkDeleteAnalyses(bulkDeleteAnalysesRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Adds tags (origin RevEng) to every given analysis\' binary. The caller must own every analysis, or none are changed.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add tags to multiple analyses.
+     * @param bulkAddTagsInputBody
+     */
+    public v3BatchAddAnalysisTagsWithHttpInfo(bulkAddTagsInputBody: BulkAddTagsInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BulkAddTagsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3BatchAddAnalysisTagsWithHttpInfo(bulkAddTagsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Adds tags (origin RevEng) to every given analysis\' binary. The caller must own every analysis, or none are changed.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Add tags to multiple analyses.
+     * @param bulkAddTagsInputBody
+     */
+    public v3BatchAddAnalysisTags(bulkAddTagsInputBody: BulkAddTagsInputBody, _options?: PromiseConfigurationOptions): Promise<BulkAddTagsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3BatchAddAnalysisTags(bulkAddTagsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deactivates every given analysis. The caller must own all of them, or none are deleted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Delete multiple analyses.
+     * @param bulkDeleteAnalysesInputBody
+     */
+    public v3BatchDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesInputBody: BulkDeleteAnalysesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3BatchDeleteAnalysesWithHttpInfo(bulkDeleteAnalysesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deactivates every given analysis. The caller must own all of them, or none are deleted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Delete multiple analyses.
+     * @param bulkDeleteAnalysesInputBody
+     */
+    public v3BatchDeleteAnalyses(bulkDeleteAnalysesInputBody: BulkDeleteAnalysesInputBody, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3BatchDeleteAnalyses(bulkDeleteAnalysesInputBody, observableOptions);
         return result.toPromise();
     }
 
@@ -967,7 +2214,7 @@ export class PromiseAnalysesCoreApi {
      * @param analysisId Analysis ID
      * @param addUserStringInputBody
      */
-    public addUserStringToAnalysisWithHttpInfo(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+    public addUserStringToAnalysisWithHttpInfo(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addUserStringToAnalysisWithHttpInfo(analysisId, addUserStringInputBody, observableOptions);
         return result.toPromise();
@@ -979,7 +2226,7 @@ export class PromiseAnalysesCoreApi {
      * @param analysisId Analysis ID
      * @param addUserStringInputBody
      */
-    public addUserStringToAnalysis(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: any; }> {
+    public addUserStringToAnalysis(analysisId: number, addUserStringInputBody: AddUserStringInputBody, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addUserStringToAnalysis(analysisId, addUserStringInputBody, observableOptions);
         return result.toPromise();
@@ -1516,6 +2763,74 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
+     * Deactivates the analysis. Only the owner may call it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Delete an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3DeleteAnalysisWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3DeleteAnalysisWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deactivates the analysis. Only the owner may call it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Delete an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3DeleteAnalysis(analysisId: number, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3DeleteAnalysis(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams the exported binary. Returns 404 if the task is not complete or its result has expired -- export again in either case.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Download a binary export
+     * @param analysisId Analysis ID
+     * @param [taskId] Task ID returned by queueing the export
+     */
+    public v3DownloadBinaryExportWithHttpInfo(analysisId: number, taskId?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3DownloadBinaryExportWithHttpInfo(analysisId, taskId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams the exported binary. Returns 404 if the task is not complete or its result has expired -- export again in either case.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Download a binary export
+     * @param analysisId Analysis ID
+     * @param [taskId] Task ID returned by queueing the export
+     */
+    public v3DownloadBinaryExport(analysisId: number, taskId?: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3DownloadBinaryExport(analysisId, taskId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the analysis\' resource-level detail: binary attributes, ownership, and the configuration it was submitted with.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisDetailOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the analysis\' resource-level detail: binary attributes, ownership, and the configuration it was submitted with.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysis(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AnalysisDetailOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysis(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Returns the status of the auto-unstrip task for the binary backing the analysis. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Get the auto-unstrip status for an analysis.
      * @param analysisId Analysis ID
@@ -1534,6 +2849,72 @@ export class PromiseAnalysesCoreApi {
     public v3GetAnalysisAutoUnstripStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AutoUnstripStatusOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3GetAnalysisAutoUnstripStatus(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns how many functions the analysis has and how many carry an embedding, with the percentage complete. Embeddings are counted from the unified store, so an analysis whose model predates the current multi-arch one reports zero.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get function embedding progress for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisFunctionsProgressWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionsProgressOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisFunctionsProgressWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns how many functions the analysis has and how many carry an embedding, with the percentage complete. Embeddings are counted from the unified store, so an analysis whose model predates the current multi-arch one reports zero.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get function embedding progress for an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisFunctionsProgress(analysisId: number, _options?: PromiseConfigurationOptions): Promise<FunctionsProgressOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisFunctionsProgress(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns every log line recorded for the Analysis, oldest first, merged from every source that has written one.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the Analysis log
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisLogsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetAnalysisLogsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisLogsWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns every log line recorded for the Analysis, oldest first, merged from every source that has written one.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the Analysis log
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisLogs(analysisId: number, _options?: PromiseConfigurationOptions): Promise<GetAnalysisLogsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisLogs(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls the status of an Analysis-creation operation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get an Analysis-creation operation
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationCreateMetadataCreateResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisOperationWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Polls the status of an Analysis-creation operation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get an Analysis-creation operation
+     * @param analysisId Analysis ID
+     */
+    public v3GetAnalysisOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationCreateMetadataCreateResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisOperation(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -1596,22 +2977,24 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
-     * List analyses
-     * @param [searchTerm]
-     * @param [analysisScope] Leave empty for no filter
-     * @param [status]
-     * @param [modelName]
-     * @param [usernames]
-     * @param [sha256Hash]
-     * @param [pageSize]
-     * @param [nextPageToken] Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
-     * @param [orderBy]
-     * @param [order]
+     * Returns the current state of the export started for this task ID. `done` is the only readiness signal: while false, poll again; once true, exactly one of `response` or `error` is set. A task ID the platform no longer recognises -- whether it never existed or its history has expired -- resolves to a failed operation, since either way the caller must export again.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a binary export operation
+     * @param taskId Task ID returned by queueing the export
      */
-    public v3ListAnalysesWithHttpInfo(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAnalysesOutputBody>> {
+    public v3GetBinaryExportOperationWithHttpInfo(taskId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationBinaryExportMetadataBinaryExportResult>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3ListAnalysesWithHttpInfo(searchTerm, analysisScope, status, modelName, usernames, sha256Hash, pageSize, nextPageToken, orderBy, order, observableOptions);
+        const result = this.api.v3GetBinaryExportOperationWithHttpInfo(taskId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the current state of the export started for this task ID. `done` is the only readiness signal: while false, poll again; once true, exactly one of `response` or `error` is set. A task ID the platform no longer recognises -- whether it never existed or its history has expired -- resolves to a failed operation, since either way the caller must export again.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a binary export operation
+     * @param taskId Task ID returned by queueing the export
+     */
+    public v3GetBinaryExportOperation(taskId: string, _options?: PromiseConfigurationOptions): Promise<OperationBinaryExportMetadataBinaryExportResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryExportOperation(taskId, observableOptions);
         return result.toPromise();
     }
 
@@ -1619,19 +3002,45 @@ export class PromiseAnalysesCoreApi {
      * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * List analyses
      * @param [searchTerm]
-     * @param [analysisScope] Leave empty for no filter
+     * @param [analysisScope] Leave empty to search your own, your team\&#39;s and all public analyses
      * @param [status]
      * @param [modelName]
      * @param [usernames]
      * @param [sha256Hash]
+     * @param [binaryId] Restrict to analyses of this binary. A binary can carry more than one analysis; they are returned newest first under the default sort
+     * @param [platform] Restrict to binaries running on one of these operating-system platforms. Matches the uploader\&#39;s override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter
+     * @param [architecture] Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter
      * @param [pageSize]
      * @param [nextPageToken] Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
      * @param [orderBy]
      * @param [order]
      */
-    public v3ListAnalyses(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListAnalysesOutputBody> {
+    public v3ListAnalysesWithHttpInfo(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, binaryId?: number, platform?: Array<'windows' | 'linux' | 'android'>, architecture?: Array<'x86_64' | 'x86_32' | 'arm_64'>, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAnalysesOutputBody>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3ListAnalyses(searchTerm, analysisScope, status, modelName, usernames, sha256Hash, pageSize, nextPageToken, orderBy, order, observableOptions);
+        const result = this.api.v3ListAnalysesWithHttpInfo(searchTerm, analysisScope, status, modelName, usernames, sha256Hash, binaryId, platform, architecture, pageSize, nextPageToken, orderBy, order, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * List analyses
+     * @param [searchTerm]
+     * @param [analysisScope] Leave empty to search your own, your team\&#39;s and all public analyses
+     * @param [status]
+     * @param [modelName]
+     * @param [usernames]
+     * @param [sha256Hash]
+     * @param [binaryId] Restrict to analyses of this binary. A binary can carry more than one analysis; they are returned newest first under the default sort
+     * @param [platform] Restrict to binaries running on one of these operating-system platforms. Matches the uploader\&#39;s override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter
+     * @param [architecture] Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter
+     * @param [pageSize]
+     * @param [nextPageToken] Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination).
+     * @param [orderBy]
+     * @param [order]
+     */
+    public v3ListAnalyses(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, binaryId?: number, platform?: Array<'windows' | 'linux' | 'android'>, architecture?: Array<'x86_64' | 'x86_32' | 'arm_64'>, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListAnalysesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalyses(searchTerm, analysisScope, status, modelName, usernames, sha256Hash, binaryId, platform, architecture, pageSize, nextPageToken, orderBy, order, observableOptions);
         return result.toPromise();
     }
 
@@ -1652,6 +3061,146 @@ export class PromiseAnalysesCoreApi {
     public v3ListExampleAnalyses(_options?: PromiseConfigurationOptions): Promise<ListExampleAnalysesOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3ListExampleAnalyses(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the ID of the most recent analysis of this binary that the caller may see (their own, their team\'s, or public). Returns 404 if the binary has none, whether because it has never been analysed or because every analysis of it is private to someone else.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Look up the most recent analysis for a binary.
+     * @param binaryId Binary ID
+     */
+    public v3LookupAnalysisByBinaryIdWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LookupAnalysisByBinaryIDOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3LookupAnalysisByBinaryIdWithHttpInfo(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the ID of the most recent analysis of this binary that the caller may see (their own, their team\'s, or public). Returns 404 if the binary has none, whether because it has never been analysed or because every analysis of it is private to someone else.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Look up the most recent analysis for a binary.
+     * @param binaryId Binary ID
+     */
+    public v3LookupAnalysisByBinaryId(binaryId: number, _options?: PromiseConfigurationOptions): Promise<LookupAnalysisByBinaryIDOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3LookupAnalysisByBinaryId(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an asynchronous export of the binary with its current symbols rewritten in, and returns the operation to poll for its outcome. Only the owner may call it, and it requires a subscription tier that supports symbol export. Download the result once the operation reports done.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Queue a binary export
+     * @param analysisId Analysis ID
+     */
+    public v3QueueBinaryExportWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationBinaryExportMetadataBinaryExportResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3QueueBinaryExportWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts an asynchronous export of the binary with its current symbols rewritten in, and returns the operation to poll for its outcome. Only the owner may call it, and it requires a subscription tier that supports symbol export. Download the result once the operation reports done.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Queue a binary export
+     * @param analysisId Analysis ID
+     */
+    public v3QueueBinaryExport(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationBinaryExportMetadataBinaryExportResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3QueueBinaryExport(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Searches for tags by name. partial_name is required and must be at least 3 characters.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Search tags
+     * @param [partialName] Partial or full tag name to search for, at least 3 characters
+     * @param [limit] Maximum results to return
+     * @param [offset] Number of results to skip
+     */
+    public v3SearchTagsWithHttpInfo(partialName?: string, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SearchTagsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3SearchTagsWithHttpInfo(partialName, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Searches for tags by name. partial_name is required and must be at least 3 characters.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Search tags
+     * @param [partialName] Partial or full tag name to search for, at least 3 characters
+     * @param [limit] Maximum results to return
+     * @param [offset] Number of results to skip
+     */
+    public v3SearchTags(partialName?: string, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<SearchTagsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3SearchTags(partialName, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Renames the analysis\' binary and/or changes its scope. Only the owner may call it. Changing to a non-PUBLIC scope requires a subscription tier that supports private analyses.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Update an analysis.
+     * @param analysisId Analysis ID
+     * @param updateAnalysisInputBody
+     */
+    public v3UpdateAnalysisWithHttpInfo(analysisId: number, updateAnalysisInputBody: UpdateAnalysisInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisDetailOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpdateAnalysisWithHttpInfo(analysisId, updateAnalysisInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Renames the analysis\' binary and/or changes its scope. Only the owner may call it. Changing to a non-PUBLIC scope requires a subscription tier that supports private analyses.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Update an analysis.
+     * @param analysisId Analysis ID
+     * @param updateAnalysisInputBody
+     */
+    public v3UpdateAnalysis(analysisId: number, updateAnalysisInputBody: UpdateAnalysisInputBody, _options?: PromiseConfigurationOptions): Promise<AnalysisDetailOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpdateAnalysis(analysisId, updateAnalysisInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces the analysis\' binary\'s user tags (origin RevEng) with the given set. A tag recorded under any other origin, such as a heuristic detection sharing a name with a user tag, is left in place even when its name is absent from the request. Only the owner may call it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Replace an analysis\' tags.
+     * @param analysisId Analysis ID
+     * @param updateTagsInputBody
+     */
+    public v3UpdateAnalysisTagsWithHttpInfo(analysisId: number, updateTagsInputBody: UpdateTagsInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisTagsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpdateAnalysisTagsWithHttpInfo(analysisId, updateTagsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces the analysis\' binary\'s user tags (origin RevEng) with the given set. A tag recorded under any other origin, such as a heuristic detection sharing a name with a user tag, is left in place even when its name is absent from the request. Only the owner may call it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Replace an analysis\' tags.
+     * @param analysisId Analysis ID
+     * @param updateTagsInputBody
+     */
+    public v3UpdateAnalysisTags(analysisId: number, updateTagsInputBody: UpdateTagsInputBody, _options?: PromiseConfigurationOptions): Promise<AnalysisTagsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpdateAnalysisTags(analysisId, updateTagsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Re-runs an analysis created on an older model against the current unified model, in place — the analysis ID does not change. No credits are consumed. Only the owner may call it, and only once the analysis has settled: the pipeline clears the binary\'s functions, names, data types and signatures before re-running. Returns 409 if the analysis is already on the latest model, or is still running. Poll `GET /v3/analyses/{analysis_id}/basic` for status, as with any other run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Re-analyse on the latest model
+     * @param analysisId Analysis ID
+     */
+    public v3UpgradeAnalysisModelWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpgradeAnalysisModelOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpgradeAnalysisModelWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Re-runs an analysis created on an older model against the current unified model, in place — the analysis ID does not change. No credits are consumed. Only the owner may call it, and only once the analysis has settled: the pipeline clears the binary\'s functions, names, data types and signatures before re-running. Returns 409 if the analysis is already on the latest model, or is still running. Poll `GET /v3/analyses/{analysis_id}/basic` for status, as with any other run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Re-analyse on the latest model
+     * @param analysisId Analysis ID
+     */
+    public v3UpgradeAnalysisModel(analysisId: number, _options?: PromiseConfigurationOptions): Promise<UpgradeAnalysisModelOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpgradeAnalysisModel(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -1774,6 +3323,74 @@ export class PromiseAnalysesResultsMetadataApi {
         return result.toPromise();
     }
 
+    /**
+     * Returns every cross-reference into and out of a virtual address, read from the analysis\' cache.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Look up xrefs by virtual address.
+     * @param analysisId Analysis ID
+     * @param vaddr Virtual address to match against xrefs
+     */
+    public v3GetAnalysisXrefWithHttpInfo(analysisId: number, vaddr: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisXrefOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisXrefWithHttpInfo(analysisId, vaddr, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns every cross-reference into and out of a virtual address, read from the analysis\' cache.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Look up xrefs by virtual address.
+     * @param analysisId Analysis ID
+     * @param vaddr Virtual address to match against xrefs
+     */
+    public v3GetAnalysisXref(analysisId: number, vaddr: number, _options?: PromiseConfigurationOptions): Promise<AnalysisXrefOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisXref(analysisId, vaddr, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the capabilities the binary-analysis pipeline attributed to the analysis\' functions, ordered by function address. This is the static capability set recorded against the binary, not the AI capabilities agent\'s findings, which are triggered by `/v3/analyses/{analysis_id}/capabilities:run`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List the capabilities found in an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3ListAnalysisCapabilitiesWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisCapabilitiesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalysisCapabilitiesWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the capabilities the binary-analysis pipeline attributed to the analysis\' functions, ordered by function address. This is the static capability set recorded against the binary, not the AI capabilities agent\'s findings, which are triggered by `/v3/analyses/{analysis_id}/capabilities:run`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List the capabilities found in an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3ListAnalysisCapabilities(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AnalysisCapabilitiesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalysisCapabilities(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns every tag on the analysis\' binary, of any origin.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List the tags on an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3ListAnalysisTagsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisTagsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalysisTagsWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns every tag on the analysis\' binary, of any origin.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List the tags on an analysis.
+     * @param analysisId Analysis ID
+     */
+    public v3ListAnalysisTags(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AnalysisTagsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalysisTags(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
 
 }
 
@@ -1893,6 +3510,70 @@ export class PromiseAuthenticationUsersApi {
     public submitUserFeedback(submitUserFeedbackRequest: SubmitUserFeedbackRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.submitUserFeedback(submitUserFeedbackRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a user\'s username. Any authenticated caller may look up any user by ID.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a user\'s public information
+     * @param userId User ID
+     */
+    public v3GetUserWithHttpInfo(userId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetPublicUserOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetUserWithHttpInfo(userId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a user\'s username. Any authenticated caller may look up any user by ID.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a user\'s public information
+     * @param userId User ID
+     */
+    public v3GetUser(userId: number, _options?: PromiseConfigurationOptions): Promise<GetPublicUserOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetUser(userId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the caller\'s own recent activity, their team\'s, and everyone\'s public activity, newest first.
+     * Get the caller\'s activity feed
+     */
+    public v3GetUserActivityWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<GetUserActivityOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetUserActivityWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the caller\'s own recent activity, their team\'s, and everyone\'s public activity, newest first.
+     * Get the caller\'s activity feed
+     */
+    public v3GetUserActivity(_options?: PromiseConfigurationOptions): Promise<GetUserActivityOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetUserActivity(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Submits feedback about the application to a Slack channel.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Submit feedback
+     * @param submitFeedbackBody
+     */
+    public v3SubmitUserFeedbackWithHttpInfo(submitFeedbackBody: SubmitFeedbackBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SubmitFeedbackOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3SubmitUserFeedbackWithHttpInfo(submitFeedbackBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Submits feedback about the application to a Slack channel.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Submit feedback
+     * @param submitFeedbackBody
+     */
+    public v3SubmitUserFeedback(submitFeedbackBody: SubmitFeedbackBody, _options?: PromiseConfigurationOptions): Promise<SubmitFeedbackOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3SubmitUserFeedback(submitFeedbackBody, observableOptions);
         return result.toPromise();
     }
 
@@ -2116,6 +3797,180 @@ export class PromiseBinariesApi {
     public getRelatedBinaries(binaryId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseChildBinariesResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getRelatedBinaries(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams the binary\'s uploaded file back as a zip archive, encrypted with a fixed password (`infected`) that deters antivirus scanning in transit rather than protecting confidentiality. Only the binary\'s owner, or an admin/superadmin, may download it; an internally-managed account\'s binary can only be downloaded by a superadmin.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Download a binary as a password-protected zip.
+     * @param binaryId Binary ID
+     */
+    public v3DownloadBinaryZippedWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3DownloadBinaryZippedWithHttpInfo(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams the binary\'s uploaded file back as a zip archive, encrypted with a fixed password (`infected`) that deters antivirus scanning in transit rather than protecting confidentiality. Only the binary\'s owner, or an admin/superadmin, may download it; an internally-managed account\'s binary can only be downloaded by a superadmin.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Download a binary as a password-protected zip.
+     * @param binaryId Binary ID
+     */
+    public v3DownloadBinaryZipped(binaryId: number, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3DownloadBinaryZipped(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the signatures Detect It Easy recognised in the binary — packers, compilers and file types — with the version it could extract. Empty when detection has not run or recognised nothing.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get Detect It Easy matches for a binary.
+     * @param binaryId Binary ID
+     */
+    public v3GetBinaryDieInfoWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetDieInfoOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryDieInfoWithHttpInfo(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the signatures Detect It Easy recognised in the binary — packers, compilers and file types — with the version it could extract. Empty when detection has not run or recognised nothing.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get Detect It Easy matches for a binary.
+     * @param binaryId Binary ID
+     */
+    public v3GetBinaryDieInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<GetDieInfoOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryDieInfo(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns VirusTotal and MalwareBazaar lookup results for the binary\'s content hash. `externals` is null until at least one lookup has run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get third-party threat-intel lookups for a binary.
+     * @param binaryId Binary ID
+     */
+    public v3GetBinaryExternalsWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetBinaryExternalsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryExternalsWithHttpInfo(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns VirusTotal and MalwareBazaar lookup results for the binary\'s content hash. `externals` is null until at least one lookup has run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get third-party threat-intel lookups for a binary.
+     * @param binaryId Binary ID
+     */
+    public v3GetBinaryExternals(binaryId: number, _options?: PromiseConfigurationOptions): Promise<GetBinaryExternalsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryExternals(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the binaries unpacked out of this one, and the archive it came out of when it was not uploaded directly. A related binary that has never been analysed carries a null `analysis_id`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the binaries related to this one by unpacking.
+     * @param binaryId Binary ID
+     */
+    public v3GetBinaryRelatedWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetRelatedBinariesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryRelatedWithHttpInfo(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the binaries unpacked out of this one, and the archive it came out of when it was not uploaded directly. A related binary that has never been analysed carries a null `analysis_id`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the binaries related to this one by unpacking.
+     * @param binaryId Binary ID
+     */
+    public v3GetBinaryRelated(binaryId: number, _options?: PromiseConfigurationOptions): Promise<GetRelatedBinariesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryRelated(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the task that unpacks an archive into its contents, which is what decides whether the related-binary list is still filling up. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the archive-unpacking status for a binary.
+     * @param binaryId Binary ID
+     */
+    public v3GetBinaryRelatedStatusWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetRelatedStatusOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryRelatedStatusWithHttpInfo(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the status of the task that unpacks an archive into its contents, which is what decides whether the related-binary list is still filling up. One of `UNINITIALISED`, `PENDING`, `RUNNING`, `COMPLETED`, `FAILED`.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the archive-unpacking status for a binary.
+     * @param binaryId Binary ID
+     */
+    public v3GetBinaryRelatedStatus(binaryId: number, _options?: PromiseConfigurationOptions): Promise<GetRelatedStatusOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetBinaryRelatedStatus(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Searches for binaries visible to the caller. At least one of partial_name, partial_sha256, tags, or model_name must be provided.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Search binaries
+     * @param [partialName] Partial or full binary name to search for
+     * @param [partialSha256] Partial or full SHA-256 hash to search for
+     * @param [tags] Restrict results to binaries carrying at least one of these tags
+     * @param [modelName] Restrict results to binaries analysed with this model
+     * @param [userFilesOnly] Restrict results to files the caller uploaded themself
+     * @param [excludeBinaryId] A binary ID to exclude from the results
+     * @param [userIds] Restrict results to binaries owned by one of these user IDs
+     * @param [limit] Maximum results to return
+     * @param [offset] Number of results to skip
+     */
+    public v3SearchBinariesWithHttpInfo(partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, userIds?: Array<number>, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SearchBinariesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3SearchBinariesWithHttpInfo(partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, userIds, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Searches for binaries visible to the caller. At least one of partial_name, partial_sha256, tags, or model_name must be provided.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Search binaries
+     * @param [partialName] Partial or full binary name to search for
+     * @param [partialSha256] Partial or full SHA-256 hash to search for
+     * @param [tags] Restrict results to binaries carrying at least one of these tags
+     * @param [modelName] Restrict results to binaries analysed with this model
+     * @param [userFilesOnly] Restrict results to files the caller uploaded themself
+     * @param [excludeBinaryId] A binary ID to exclude from the results
+     * @param [userIds] Restrict results to binaries owned by one of these user IDs
+     * @param [limit] Maximum results to return
+     * @param [offset] Number of results to skip
+     */
+    public v3SearchBinaries(partialName?: string, partialSha256?: string, tags?: Array<string>, modelName?: string, userFilesOnly?: boolean, excludeBinaryId?: number, userIds?: Array<number>, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<SearchBinariesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3SearchBinaries(partialName, partialSha256, tags, modelName, userFilesOnly, excludeBinaryId, userIds, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Uploads a binary, debug symbol, packed sample, or firmware image, keyed by its SHA-256 hash. A BINARY upload from a non-system caller also detects the file\'s architecture and OS so POST /v3/analyses knows whether it can run static analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+     * Upload a file.
+     * @param file The file\\\&#39;s raw bytes.
+     * @param uploadFileType The kind of file being uploaded.
+     * @param [forceOverwrite] Re-upload and overwrite even if a file with this hash already exists.
+     */
+    public v3UploadFileWithHttpInfo(file: HttpFile, uploadFileType: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UploadOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UploadFileWithHttpInfo(file, uploadFileType, forceOverwrite, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Uploads a binary, debug symbol, packed sample, or firmware image, keyed by its SHA-256 hash. A BINARY upload from a non-system caller also detects the file\'s architecture and OS so POST /v3/analyses knows whether it can run static analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+     * Upload a file.
+     * @param file The file\\\&#39;s raw bytes.
+     * @param uploadFileType The kind of file being uploaded.
+     * @param [forceOverwrite] Re-upload and overwrite even if a file with this hash already exists.
+     */
+    public v3UploadFile(file: HttpFile, uploadFileType: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<UploadOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UploadFile(file, uploadFileType, forceOverwrite, observableOptions);
         return result.toPromise();
     }
 
@@ -2365,7 +4220,7 @@ export class PromiseCollectionsApi {
     }
 
     /**
-     * Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Deletes a collection along with its binary links, tags, and hierarchy links. The binaries themselves are not deleted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Delete a collection.
      * @param collectionId
      */
@@ -2376,7 +4231,7 @@ export class PromiseCollectionsApi {
     }
 
     /**
-     * Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Deletes a collection along with its binary links, tags, and hierarchy links. The binaries themselves are not deleted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Delete a collection.
      * @param collectionId
      */
@@ -2419,34 +4274,42 @@ export class PromiseCollectionsApi {
     }
 
     /**
-     * Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Lists collections accessible to the authenticated user. Supports search by collection name, contained binary name/SHA-256, tags, owner, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * List collections.
-     * @param [searchTerm]
+     * @param [searchTerm] Partial or full collection name to search for
+     * @param [binaryName] Only return Collections containing a Binary whose name contains this
+     * @param [binarySha256] Only return Collections containing a Binary whose SHA-256 hash contains this
+     * @param [tags] Only return Collections carrying at least one of these Tags
+     * @param [userIds] Restrict results to Collections owned by one of these user IDs
      * @param [filters]
      * @param [limit]
      * @param [offset]
      * @param [orderBy]
      * @param [order]
      */
-    public v3ListCollectionsWithHttpInfo(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCollectionsOutputBody>> {
+    public v3ListCollectionsWithHttpInfo(searchTerm?: string, binaryName?: string, binarySha256?: string, tags?: Array<string>, userIds?: Array<number>, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListCollectionsOutputBody>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3ListCollectionsWithHttpInfo(searchTerm, filters, limit, offset, orderBy, order, observableOptions);
+        const result = this.api.v3ListCollectionsWithHttpInfo(searchTerm, binaryName, binarySha256, tags, userIds, filters, limit, offset, orderBy, order, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Lists collections accessible to the authenticated user. Supports search by collection name, contained binary name/SHA-256, tags, owner, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * List collections.
-     * @param [searchTerm]
+     * @param [searchTerm] Partial or full collection name to search for
+     * @param [binaryName] Only return Collections containing a Binary whose name contains this
+     * @param [binarySha256] Only return Collections containing a Binary whose SHA-256 hash contains this
+     * @param [tags] Only return Collections carrying at least one of these Tags
+     * @param [userIds] Restrict results to Collections owned by one of these user IDs
      * @param [filters]
      * @param [limit]
      * @param [offset]
      * @param [orderBy]
      * @param [order]
      */
-    public v3ListCollections(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListCollectionsOutputBody> {
+    public v3ListCollections(searchTerm?: string, binaryName?: string, binarySha256?: string, tags?: Array<string>, userIds?: Array<number>, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListCollectionsOutputBody> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3ListCollections(searchTerm, filters, limit, offset, orderBy, order, observableOptions);
+        const result = this.api.v3ListCollections(searchTerm, binaryName, binarySha256, tags, userIds, filters, limit, offset, orderBy, order, observableOptions);
         return result.toPromise();
     }
 
@@ -2582,6 +4445,46 @@ export class PromiseConfigApi {
     public getConfig(_options?: PromiseConfigurationOptions): Promise<BaseResponseConfigResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getConfig(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the settings a client needs to configure itself: where to send users to view results, the largest binary the calling user may submit, and what AI decompilation supports. The size limit reflects the caller\'s own role and tier.
+     * Get client configuration.
+     */
+    public v3GetConfigWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<GetConfigOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetConfigWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the settings a client needs to configure itself: where to send users to view results, the largest binary the calling user may submit, and what AI decompilation supports. The size limit reflects the caller\'s own role and tier.
+     * Get client configuration.
+     */
+    public v3GetConfig(_options?: PromiseConfigurationOptions): Promise<GetConfigOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetConfig(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the models a new analysis can be run on, by base name — the architecture and platform variants a model is built for are collapsed into one entry, and models no longer offered are omitted.  **Error codes:** - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get the models available for analysis.
+     */
+    public v3GetModelsWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<GetModelsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetModelsWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the models a new analysis can be run on, by base name — the architecture and platform variants a model is built for are collapsed into one entry, and models no longer offered are omitted.  **Error codes:** - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get the models available for analysis.
+     */
+    public v3GetModels(_options?: PromiseConfigurationOptions): Promise<GetModelsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetModels(observableOptions);
         return result.toPromise();
     }
 
@@ -2767,6 +4670,311 @@ export class PromiseConversationsApi {
 
 
 
+import { ObservableDataTypesApi } from './ObservableAPI';
+
+import { DataTypesApiRequestFactory, DataTypesApiResponseProcessor} from "../apis/DataTypesApi";
+export class PromiseDataTypesApi {
+    private api: ObservableDataTypesApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: DataTypesApiRequestFactory,
+        responseProcessor?: DataTypesApiResponseProcessor
+    ) {
+        this.api = new ObservableDataTypesApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Replaces each target function\'s signature with a copy of its source\'s parameters, return type and calling convention. Every target must belong to this analysis; a source may belong to any analysis the caller can read. The whole request is rejected if any pair is invalid.  A `data_type_id` means nothing outside the analysis that issued it, so the types a copied signature needs are resolved against this analysis by namespace, name and kind. A type this analysis already has under that key has its definition replaced by the source\'s; a type it lacks is created. Copied signatures get a `source_type` of `USER` and a `source_function_id`, and their previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Copy function signatures
+     * @param analysisId Analysis ID
+     * @param copyFunctionSignaturesInputBody
+     */
+    public v3CopyFunctionSignaturesWithHttpInfo(analysisId: number, copyFunctionSignaturesInputBody: CopyFunctionSignaturesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CopyFunctionSignaturesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CopyFunctionSignaturesWithHttpInfo(analysisId, copyFunctionSignaturesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces each target function\'s signature with a copy of its source\'s parameters, return type and calling convention. Every target must belong to this analysis; a source may belong to any analysis the caller can read. The whole request is rejected if any pair is invalid.  A `data_type_id` means nothing outside the analysis that issued it, so the types a copied signature needs are resolved against this analysis by namespace, name and kind. A type this analysis already has under that key has its definition replaced by the source\'s; a type it lacks is created. Copied signatures get a `source_type` of `USER` and a `source_function_id`, and their previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Copy function signatures
+     * @param analysisId Analysis ID
+     * @param copyFunctionSignaturesInputBody
+     */
+    public v3CopyFunctionSignatures(analysisId: number, copyFunctionSignaturesInputBody: CopyFunctionSignaturesInputBody, _options?: PromiseConfigurationOptions): Promise<CopyFunctionSignaturesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CopyFunctionSignatures(analysisId, copyFunctionSignaturesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Adds user-authored types to an analysis. Many types can be created in one request; the whole request is rejected if any of them is invalid. Ids are assigned by the server and returned here. Stored types get a `source_type` of `USER`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create an analysis\'s data types
+     * @param analysisId Analysis ID
+     * @param createAnalysisDataTypesInputBody
+     */
+    public v3CreateAnalysisDataTypesWithHttpInfo(analysisId: number, createAnalysisDataTypesInputBody: CreateAnalysisDataTypesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisDataTypesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CreateAnalysisDataTypesWithHttpInfo(analysisId, createAnalysisDataTypesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Adds user-authored types to an analysis. Many types can be created in one request; the whole request is rejected if any of them is invalid. Ids are assigned by the server and returned here. Stored types get a `source_type` of `USER`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create an analysis\'s data types
+     * @param analysisId Analysis ID
+     * @param createAnalysisDataTypesInputBody
+     */
+    public v3CreateAnalysisDataTypes(analysisId: number, createAnalysisDataTypesInputBody: CreateAnalysisDataTypesInputBody, _options?: PromiseConfigurationOptions): Promise<AnalysisDataTypesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CreateAnalysisDataTypes(analysisId, createAnalysisDataTypesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a single data type by its `data_type_id`, byte-identical to the entry the data types list returns for it — same variant, same fields, same definition — so a client can cache and invalidate rows from either endpoint interchangeably.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get one of an analysis\'s data types
+     * @param analysisId Analysis ID
+     * @param dataTypeId Data type ID, as returned by the data types list for this analysis. 0 is a valid id.
+     */
+    public v3GetAnalysisDataTypeWithHttpInfo(analysisId: number, dataTypeId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DataTypeEntry>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisDataTypeWithHttpInfo(analysisId, dataTypeId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns a single data type by its `data_type_id`, byte-identical to the entry the data types list returns for it — same variant, same fields, same definition — so a client can cache and invalidate rows from either endpoint interchangeably.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get one of an analysis\'s data types
+     * @param analysisId Analysis ID
+     * @param dataTypeId Data type ID, as returned by the data types list for this analysis. 0 is a valid id.
+     */
+    public v3GetAnalysisDataType(analysisId: number, dataTypeId: number, _options?: PromiseConfigurationOptions): Promise<DataTypeEntry> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisDataType(analysisId, dataTypeId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * The versions a data type has held, newest first, each attributed to the edit that wrote it. The first value is the current value.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a data type\'s edit history
+     * @param analysisId Analysis ID
+     * @param dataTypeId Data type ID, as returned by the data types list for this analysis. 0 is a valid id.
+     */
+    public v3GetAnalysisDataTypeHistoryWithHttpInfo(analysisId: number, dataTypeId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetDataTypeHistoryBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisDataTypeHistoryWithHttpInfo(analysisId, dataTypeId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * The versions a data type has held, newest first, each attributed to the edit that wrote it. The first value is the current value.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a data type\'s edit history
+     * @param analysisId Analysis ID
+     * @param dataTypeId Data type ID, as returned by the data types list for this analysis. 0 is a valid id.
+     */
+    public v3GetAnalysisDataTypeHistory(analysisId: number, dataTypeId: number, _options?: PromiseConfigurationOptions): Promise<GetDataTypeHistoryBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisDataTypeHistory(analysisId, dataTypeId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the extracted signature for one function: its parameters, return type and calling convention. Pass `include_data_types=true` to also get the data types it names.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a function\'s signature
+     * @param analysisId Analysis ID
+     * @param functionId Function ID
+     * @param [includeDataTypes] Include the data types the signature names in the response.
+     */
+    public v3GetFunctionSignatureWithHttpInfo(analysisId: number, functionId: number, includeDataTypes?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionSignatureBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetFunctionSignatureWithHttpInfo(analysisId, functionId, includeDataTypes, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the extracted signature for one function: its parameters, return type and calling convention. Pass `include_data_types=true` to also get the data types it names.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a function\'s signature
+     * @param analysisId Analysis ID
+     * @param functionId Function ID
+     * @param [includeDataTypes] Include the data types the signature names in the response.
+     */
+    public v3GetFunctionSignature(analysisId: number, functionId: number, includeDataTypes?: boolean, _options?: PromiseConfigurationOptions): Promise<FunctionSignatureBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetFunctionSignature(analysisId, functionId, includeDataTypes, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * The versions a function\'s signature has held, newest first, each attributed to the edit that wrote it. The first value is the current value.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a function signature\'s edit history
+     * @param analysisId Analysis ID
+     * @param functionId Function ID
+     */
+    public v3GetFunctionSignatureHistoryWithHttpInfo(analysisId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetFunctionSignatureHistoryBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetFunctionSignatureHistoryWithHttpInfo(analysisId, functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * The versions a function\'s signature has held, newest first, each attributed to the edit that wrote it. The first value is the current value.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a function signature\'s edit history
+     * @param analysisId Analysis ID
+     * @param functionId Function ID
+     */
+    public v3GetFunctionSignatureHistory(analysisId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<GetFunctionSignatureHistoryBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetFunctionSignatureHistory(analysisId, functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Paginated, filterable list of the data types extracted from the binary — structs, unions, enums, typedefs and the rest. Every entry carries its full definition, so paging this list once resolves every `data_type_id` a definition or signature refers to; no follow-up request per id is needed.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List an analysis\'s data types
+     * @param analysisId Analysis ID
+     * @param [offset] Pagination offset.
+     * @param [limit] Page size.
+     * @param [kind] Only return types of these kinds. Repeat for more than one; empty means no filter.
+     * @param [namespace] Only return types in these namespaces, matched exactly. Omit for no filter; pass an empty value (namespace&#x3D;) for the binary\&#39;s own types, which have no namespace.
+     * @param [search] Only return types whose name contains this term. Wildcards in the term are matched literally.
+     * @param [sourceType] Only return types from these sources. Empty means no filter.
+     * @param [orderBy] Field to order by. name orders by namespace, then name, then kind; size orders by size with types of unknown size last, then by namespace, name and kind.
+     * @param [order] Sort direction.
+     */
+    public v3ListAnalysisDataTypesWithHttpInfo(analysisId: number, offset?: number, limit?: number, kind?: Array<'STRUCT' | 'UNION' | 'ENUM' | 'TYPEDEF' | 'POINTER' | 'ARRAY' | 'FUNCTION_DEFINITION' | 'BITFIELD' | 'BASE' | 'UNKNOWN'>, namespace?: Array<string>, search?: string, sourceType?: Array<'SYSTEM' | 'USER' | 'AUTO_UNSTRIP' | 'AI_DECOMP'>, orderBy?: 'name' | 'size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAnalysisDataTypesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalysisDataTypesWithHttpInfo(analysisId, offset, limit, kind, namespace, search, sourceType, orderBy, order, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Paginated, filterable list of the data types extracted from the binary — structs, unions, enums, typedefs and the rest. Every entry carries its full definition, so paging this list once resolves every `data_type_id` a definition or signature refers to; no follow-up request per id is needed.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List an analysis\'s data types
+     * @param analysisId Analysis ID
+     * @param [offset] Pagination offset.
+     * @param [limit] Page size.
+     * @param [kind] Only return types of these kinds. Repeat for more than one; empty means no filter.
+     * @param [namespace] Only return types in these namespaces, matched exactly. Omit for no filter; pass an empty value (namespace&#x3D;) for the binary\&#39;s own types, which have no namespace.
+     * @param [search] Only return types whose name contains this term. Wildcards in the term are matched literally.
+     * @param [sourceType] Only return types from these sources. Empty means no filter.
+     * @param [orderBy] Field to order by. name orders by namespace, then name, then kind; size orders by size with types of unknown size last, then by namespace, name and kind.
+     * @param [order] Sort direction.
+     */
+    public v3ListAnalysisDataTypes(analysisId: number, offset?: number, limit?: number, kind?: Array<'STRUCT' | 'UNION' | 'ENUM' | 'TYPEDEF' | 'POINTER' | 'ARRAY' | 'FUNCTION_DEFINITION' | 'BITFIELD' | 'BASE' | 'UNKNOWN'>, namespace?: Array<string>, search?: string, sourceType?: Array<'SYSTEM' | 'USER' | 'AUTO_UNSTRIP' | 'AI_DECOMP'>, orderBy?: 'name' | 'size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListAnalysisDataTypesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalysisDataTypes(analysisId, offset, limit, kind, namespace, search, sourceType, orderBy, order, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Functions that use this data type as their return type or as a parameter. Matches the `data_type_id` exactly as it appears in the signature, so a function taking `sockaddr_in *` matches the pointer type rather than `sockaddr_in`. Ordered by function ID. There is no total count; page with `after_function_id`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List the functions using a data type
+     * @param analysisId Analysis ID
+     * @param dataTypeId Data type ID, as returned by the data types list for this analysis. 0 is a valid id.
+     * @param [pageSize] Page size.
+     * @param [afterFunctionId] Return functions with an ID greater than this. Pass the previous page\&#39;s next_after_function_id; 0 starts at the first function.
+     */
+    public v3ListDataTypeFunctionsWithHttpInfo(analysisId: number, dataTypeId: number, pageSize?: number, afterFunctionId?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListDataTypeFunctionsBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListDataTypeFunctionsWithHttpInfo(analysisId, dataTypeId, pageSize, afterFunctionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Functions that use this data type as their return type or as a parameter. Matches the `data_type_id` exactly as it appears in the signature, so a function taking `sockaddr_in *` matches the pointer type rather than `sockaddr_in`. Ordered by function ID. There is no total count; page with `after_function_id`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List the functions using a data type
+     * @param analysisId Analysis ID
+     * @param dataTypeId Data type ID, as returned by the data types list for this analysis. 0 is a valid id.
+     * @param [pageSize] Page size.
+     * @param [afterFunctionId] Return functions with an ID greater than this. Pass the previous page\&#39;s next_after_function_id; 0 starts at the first function.
+     */
+    public v3ListDataTypeFunctions(analysisId: number, dataTypeId: number, pageSize?: number, afterFunctionId?: number, _options?: PromiseConfigurationOptions): Promise<ListDataTypeFunctionsBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListDataTypeFunctions(analysisId, dataTypeId, pageSize, afterFunctionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the extracted signature for each supplied function ID, in request order. The functions need not share an analysis; each entry names the analysis its `data_type_id`s resolve against. Pass `include_data_types=true` to also get those data types, grouped by analysis. The caller must have read access to every function or the request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Get signatures for many functions
+     * @param functionIds Function IDs to fetch signatures for.
+     * @param [includeDataTypes] Include the data types the signatures name in the response.
+     */
+    public v3ListFunctionSignaturesWithHttpInfo(functionIds: Array<number>, includeDataTypes?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListFunctionSignaturesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListFunctionSignaturesWithHttpInfo(functionIds, includeDataTypes, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the extracted signature for each supplied function ID, in request order. The functions need not share an analysis; each entry names the analysis its `data_type_id`s resolve against. Pass `include_data_types=true` to also get those data types, grouped by analysis. The caller must have read access to every function or the request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Get signatures for many functions
+     * @param functionIds Function IDs to fetch signatures for.
+     * @param [includeDataTypes] Include the data types the signatures name in the response.
+     */
+    public v3ListFunctionSignatures(functionIds: Array<number>, includeDataTypes?: boolean, _options?: PromiseConfigurationOptions): Promise<ListFunctionSignaturesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListFunctionSignatures(functionIds, includeDataTypes, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces stored types in full: a field left out of the request is cleared. Many types can be updated in one request; the whole request is rejected if any of them is invalid. `kind` may be changed, and the definition must then match the new kind. Updated types get a `source_type` of `USER`, and their previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update an analysis\'s data types
+     * @param analysisId Analysis ID
+     * @param updateAnalysisDataTypesInputBody
+     */
+    public v3UpdateAnalysisDataTypesWithHttpInfo(analysisId: number, updateAnalysisDataTypesInputBody: UpdateAnalysisDataTypesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisDataTypesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpdateAnalysisDataTypesWithHttpInfo(analysisId, updateAnalysisDataTypesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces stored types in full: a field left out of the request is cleared. Many types can be updated in one request; the whole request is rejected if any of them is invalid. `kind` may be changed, and the definition must then match the new kind. Updated types get a `source_type` of `USER`, and their previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update an analysis\'s data types
+     * @param analysisId Analysis ID
+     * @param updateAnalysisDataTypesInputBody
+     */
+    public v3UpdateAnalysisDataTypes(analysisId: number, updateAnalysisDataTypesInputBody: UpdateAnalysisDataTypesInputBody, _options?: PromiseConfigurationOptions): Promise<AnalysisDataTypesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpdateAnalysisDataTypes(analysisId, updateAnalysisDataTypesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces a function\'s parameters, return type and calling convention in full — anything left out of the request is cleared. Parameter and return types are `data_type_id`s belonging to this analysis. Edits an extracted signature only: a function with `has_signature` false is rejected with 404. The stored signature gets a `source_type` of `USER`, and its previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update a function\'s signature
+     * @param analysisId Analysis ID
+     * @param functionId Function ID
+     * @param updateFunctionSignatureInputBody
+     */
+    public v3UpdateFunctionSignatureWithHttpInfo(analysisId: number, functionId: number, updateFunctionSignatureInputBody: UpdateFunctionSignatureInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<FunctionSignatureEntry>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpdateFunctionSignatureWithHttpInfo(analysisId, functionId, updateFunctionSignatureInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Replaces a function\'s parameters, return type and calling convention in full — anything left out of the request is cleared. Parameter and return types are `data_type_id`s belonging to this analysis. Edits an extracted signature only: a function with `has_signature` false is rejected with 404. The stored signature gets a `source_type` of `USER`, and its previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update a function\'s signature
+     * @param analysisId Analysis ID
+     * @param functionId Function ID
+     * @param updateFunctionSignatureInputBody
+     */
+    public v3UpdateFunctionSignature(analysisId: number, functionId: number, updateFunctionSignatureInputBody: UpdateFunctionSignatureInputBody, _options?: PromiseConfigurationOptions): Promise<FunctionSignatureEntry> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpdateFunctionSignature(analysisId, functionId, updateFunctionSignatureInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
 import { ObservableExternalSourcesApi } from './ObservableAPI';
 
 import { ExternalSourcesApiRequestFactory, ExternalSourcesApiResponseProcessor} from "../apis/ExternalSourcesApi";
@@ -2841,68 +5049,47 @@ export class PromiseExternalSourcesApi {
         return result.toPromise();
     }
 
-
-}
-
-
-
-import { ObservableFirmwareApi } from './ObservableAPI';
-
-import { FirmwareApiRequestFactory, FirmwareApiResponseProcessor} from "../apis/FirmwareApi";
-export class PromiseFirmwareApi {
-    private api: ObservableFirmwareApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: FirmwareApiRequestFactory,
-        responseProcessor?: FirmwareApiResponseProcessor
-    ) {
-        this.api = new ObservableFirmwareApi(configuration, requestFactory, responseProcessor);
-    }
-
     /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param taskId
+     * Returns the current state of the most recently triggered VirusTotal lookup for this binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a VirusTotal scan operation.
+     * @param binaryId Binary ID
      */
-    public getBinariesForFirmwareTaskWithHttpInfo(taskId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public v3GetVirustotalScanOperationWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationVirusTotalScanMetadataVirusTotalScanResult>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinariesForFirmwareTaskWithHttpInfo(taskId, observableOptions);
+        const result = this.api.v3GetVirustotalScanOperationWithHttpInfo(binaryId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param taskId
+     * Returns the current state of the most recently triggered VirusTotal lookup for this binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a VirusTotal scan operation.
+     * @param binaryId Binary ID
      */
-    public getBinariesForFirmwareTask(taskId: string, _options?: PromiseConfigurationOptions): Promise<any> {
+    public v3GetVirustotalScanOperation(binaryId: number, _options?: PromiseConfigurationOptions): Promise<OperationVirusTotalScanMetadataVirusTotalScanResult> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.getBinariesForFirmwareTask(taskId, observableOptions);
+        const result = this.api.v3GetVirustotalScanOperation(binaryId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param file
-     * @param [password]
+     * Starts a lookup of the binary\'s content hash against VirusTotal, using the team\'s registered API key, and returns the operation to poll for its outcome. Returns 403 if the team has no valid key registered, and 409 while a lookup is already in progress for this binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `403` [`NO_VIRUSTOTAL_KEY`](/errors/NO_VIRUSTOTAL_KEY) — No VirusTotal Key
+     * Trigger a VirusTotal lookup for a binary.
+     * @param binaryId Binary ID
      */
-    public uploadFirmwareWithHttpInfo(file: string, password?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
+    public v3RunVirustotalScanWithHttpInfo(binaryId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationVirusTotalScanMetadataVirusTotalScanResult>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFirmwareWithHttpInfo(file, password, observableOptions);
+        const result = this.api.v3RunVirustotalScanWithHttpInfo(binaryId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Uploads a firmware file and begins a \'Firmware Unpacker\' task. Returns a result identifier, which can be used to poll for the response.
-     * Upload firmware for unpacking
-     * @param file
-     * @param [password]
+     * Starts a lookup of the binary\'s content hash against VirusTotal, using the team\'s registered API key, and returns the operation to poll for its outcome. Returns 403 if the team has no valid key registered, and 409 while a lookup is already in progress for this binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `403` [`NO_VIRUSTOTAL_KEY`](/errors/NO_VIRUSTOTAL_KEY) — No VirusTotal Key
+     * Trigger a VirusTotal lookup for a binary.
+     * @param binaryId Binary ID
      */
-    public uploadFirmware(file: string, password?: string, _options?: PromiseConfigurationOptions): Promise<any> {
+    public v3RunVirustotalScan(binaryId: number, _options?: PromiseConfigurationOptions): Promise<OperationVirusTotalScanMetadataVirusTotalScanResult> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.uploadFirmware(file, password, observableOptions);
+        const result = this.api.v3RunVirustotalScan(binaryId, observableOptions);
         return result.toPromise();
     }
 
@@ -2929,12 +5116,12 @@ export class PromiseFunctionsAIDecompilationApi {
      * Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
      * Start AI decompilation
      * @param functionId Function ID
-     * @param [contextAware] Use context-aware decompilation
      * @param [temperature] LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
+     * @param [typeSuggestions] Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
      */
-    public createAiDecompilationWithHttpInfo(functionId: number, contextAware?: boolean, temperature?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
+    public createAiDecompilationWithHttpInfo(functionId: number, temperature?: number, typeSuggestions?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationWithHttpInfo(functionId, contextAware, temperature, observableOptions);
+        const result = this.api.createAiDecompilationWithHttpInfo(functionId, temperature, typeSuggestions, observableOptions);
         return result.toPromise();
     }
 
@@ -2942,12 +5129,12 @@ export class PromiseFunctionsAIDecompilationApi {
      * Begins the AI decompilation process for a function. Charges team credits and starts the workflow.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
      * Start AI decompilation
      * @param functionId Function ID
-     * @param [contextAware] Use context-aware decompilation
      * @param [temperature] LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
+     * @param [typeSuggestions] Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
      */
-    public createAiDecompilation(functionId: number, contextAware?: boolean, temperature?: number, _options?: PromiseConfigurationOptions): Promise<CreateAIDecompOutputBody> {
+    public createAiDecompilation(functionId: number, temperature?: number, typeSuggestions?: boolean, _options?: PromiseConfigurationOptions): Promise<CreateAIDecompOutputBody> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilation(functionId, contextAware, temperature, observableOptions);
+        const result = this.api.createAiDecompilation(functionId, temperature, typeSuggestions, observableOptions);
         return result.toPromise();
     }
 
@@ -3128,28 +5315,6 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Returns the decompilation with placeholder tokens, the function mapping for token resolution, and the predicted function name.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
-     * Get tokenised AI decompilation with function mapping
-     * @param functionId Function ID
-     */
-    public getAiDecompilationTokenisedWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TokenisedData>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTokenisedWithHttpInfo(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the decompilation with placeholder tokens, the function mapping for token resolution, and the predicted function name.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
-     * Get tokenised AI decompilation with function mapping
-     * @param functionId Function ID
-     */
-    public getAiDecompilationTokenised(functionId: number, _options?: PromiseConfigurationOptions): Promise<TokenisedData> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAiDecompilationTokenised(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Merges a single line comment into the existing AI-generated inline comments. Requires comments to have been generated first.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Update a single inline comment
      * @param functionId Function ID
@@ -3174,7 +5339,7 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers the comments would reference. Poll the inline comments status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
      * Regenerate AI decompilation inline comments
      * @param functionId Function ID
      */
@@ -3185,7 +5350,7 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers the comments would reference. Poll the inline comments status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
      * Regenerate AI decompilation inline comments
      * @param functionId Function ID
      */
@@ -3196,7 +5361,7 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Starts a new summary generation workflow for the function. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts a new summary generation workflow for the function. Requires an existing decompilation. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers a summary would describe. Poll the summary status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
      * Regenerate AI decompilation summary
      * @param functionId Function ID
      */
@@ -3207,7 +5372,7 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Starts a new summary generation workflow for the function. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Starts a new summary generation workflow for the function. Requires an existing decompilation. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers a summary would describe. Poll the summary status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
      * Regenerate AI decompilation summary
      * @param functionId Function ID
      */
@@ -3218,7 +5383,7 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`. Terminal events: `decomp_finished` (success) or `decomp_failed` (all retries exhausted). `attempt_failed` is per-attempt and non-terminal — Temporal may retry the activity. Clients should treat `attempt` changes as a reset signal. `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
+     * Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`.  **Terminal events — the stream closes on these:** `names_finished` (success) and `decomp_failed` (all retries exhausted). `names_finished` is published on every success path, including when the naming pass is disabled, produces nothing, or fails, so a successful run always closes.  **`decomp_finished` is NOT terminal.** It marks the end of the model call, not the end of the run: entity restore, the result write, the placeholder-naming pass and the type-suggestion pass all follow it, and the last two rewrite the identifiers the source renders with. Reading the decompilation at `decomp_finished` therefore returns names that are about to change — wait for `names_finished`. `attempt_failed` is per-attempt and non-terminal too: Temporal may retry, and clients disambiguate on `attempt`, which they should treat as a reset signal.  `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
      * Stream live AI decompilation output (SSE)
      * @param functionId Function ID
      */
@@ -3229,37 +5394,13 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`. Terminal events: `decomp_finished` (success) or `decomp_failed` (all retries exhausted). `attempt_failed` is per-attempt and non-terminal — Temporal may retry the activity. Clients should treat `attempt` changes as a reset signal. `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
+     * Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`.  **Terminal events — the stream closes on these:** `names_finished` (success) and `decomp_failed` (all retries exhausted). `names_finished` is published on every success path, including when the naming pass is disabled, produces nothing, or fails, so a successful run always closes.  **`decomp_finished` is NOT terminal.** It marks the end of the model call, not the end of the run: entity restore, the result write, the placeholder-naming pass and the type-suggestion pass all follow it, and the last two rewrite the identifiers the source renders with. Reading the decompilation at `decomp_finished` therefore returns names that are about to change — wait for `names_finished`. `attempt_failed` is per-attempt and non-terminal too: Temporal may retry, and clients disambiguate on `attempt`, which they should treat as a reset signal.  `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
      * Stream live AI decompilation output (SSE)
      * @param functionId Function ID
      */
     public streamAiDecompilation(functionId: number, _options?: PromiseConfigurationOptions): Promise<Array<StreamAiDecompilation200ResponseInner>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.streamAiDecompilation(functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
-     * Upsert variable/function name overrides
-     * @param functionId Function ID
-     * @param upsertOverridesInputBody
-     */
-    public upsertAiDecompilationOverridesWithHttpInfo(functionId: number, upsertOverridesInputBody: UpsertOverridesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpsertOverridesData>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.upsertAiDecompilationOverridesWithHttpInfo(functionId, upsertOverridesInputBody, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
-     * Upsert variable/function name overrides
-     * @param functionId Function ID
-     * @param upsertOverridesInputBody
-     */
-    public upsertAiDecompilationOverrides(functionId: number, upsertOverridesInputBody: UpsertOverridesInputBody, _options?: PromiseConfigurationOptions): Promise<UpsertOverridesData> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.upsertAiDecompilationOverrides(functionId, upsertOverridesInputBody, observableOptions);
         return result.toPromise();
     }
 
@@ -3282,6 +5423,166 @@ export class PromiseFunctionsAIDecompilationApi {
     public upsertAiDecompilationRating(functionId: number, upsertAiDecomplationRatingRequest: UpsertAiDecomplationRatingRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.upsertAiDecompilationRating(functionId, upsertAiDecomplationRatingRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Stores the named type suggestions as data types of this function\'s analysis, with a `source_type` of `AI_DECOMP` and this function as their `source_function_id`.  Each suggestion is stored as the type suggestions endpoint renders it: a `STRUCT` where members were placed, a `TYPEDEF` where the suggestion is a name for a scalar, and an `UNKNOWN` type where nothing gave it a shape. A member with no offset or width is left out and counted in `skipped_members`. A type expression a member names is matched against the analysis by name alone and created where nothing matches: `char *` creates a `char` `BASE` type and a `POINTER` type pointing at it, reusing either where the analysis already holds it. A member naming another suggestion accepted by the same request resolves to it. Only a trailing `*` is taken apart, so a name like `int &` stands for one type.  No size is stored: the widths a suggestion carries are lower bounds rather than the type\'s own. A suggestion the analysis already holds a type of that name and kind for resolves to it, so repeating a request stores nothing further.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Accept AI decompilation type suggestions
+     * @param functionId Function ID
+     * @param acceptTypeSuggestionsInputBody
+     */
+    public v3AcceptAiDecompilationTypeSuggestionsWithHttpInfo(functionId: number, acceptTypeSuggestionsInputBody: AcceptTypeSuggestionsInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AcceptTypeSuggestionsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3AcceptAiDecompilationTypeSuggestionsWithHttpInfo(functionId, acceptTypeSuggestionsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Stores the named type suggestions as data types of this function\'s analysis, with a `source_type` of `AI_DECOMP` and this function as their `source_function_id`.  Each suggestion is stored as the type suggestions endpoint renders it: a `STRUCT` where members were placed, a `TYPEDEF` where the suggestion is a name for a scalar, and an `UNKNOWN` type where nothing gave it a shape. A member with no offset or width is left out and counted in `skipped_members`. A type expression a member names is matched against the analysis by name alone and created where nothing matches: `char *` creates a `char` `BASE` type and a `POINTER` type pointing at it, reusing either where the analysis already holds it. A member naming another suggestion accepted by the same request resolves to it. Only a trailing `*` is taken apart, so a name like `int &` stands for one type.  No size is stored: the widths a suggestion carries are lower bounds rather than the type\'s own. A suggestion the analysis already holds a type of that name and kind for resolves to it, so repeating a request stores nothing further.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Accept AI decompilation type suggestions
+     * @param functionId Function ID
+     * @param acceptTypeSuggestionsInputBody
+     */
+    public v3AcceptAiDecompilationTypeSuggestions(functionId: number, acceptTypeSuggestionsInputBody: AcceptTypeSuggestionsInputBody, _options?: PromiseConfigurationOptions): Promise<AcceptTypeSuggestionsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3AcceptAiDecompilationTypeSuggestions(functionId, acceptTypeSuggestionsInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the correspondence between the function\'s disassembly line numbers and its AI-decompilation line numbers, grouped by disassembly line. Both sides are 0-indexed and the correspondence has a many-to-many relationship. The mapping is empty until a completed run has produced one, and is empty for a run that produced none.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation line attributions
+     * @param functionId Function ID
+     */
+    public v3GetAiDecompilationLineAttributionsWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<LineAttributionsData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAiDecompilationLineAttributionsWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the correspondence between the function\'s disassembly line numbers and its AI-decompilation line numbers, grouped by disassembly line. Both sides are 0-indexed and the correspondence has a many-to-many relationship. The mapping is empty until a completed run has produced one, and is empty for a run that produced none.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation line attributions
+     * @param functionId Function ID
+     */
+    public v3GetAiDecompilationLineAttributions(functionId: number, _options?: PromiseConfigurationOptions): Promise<LineAttributionsData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAiDecompilationLineAttributions(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the caller\'s rating and reason for a function\'s AI decompilation, or null fields when they have not rated it yet.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation rating
+     * @param functionId Function ID
+     */
+    public v3GetAiDecompilationRatingWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RatingOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAiDecompilationRatingWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the caller\'s rating and reason for a function\'s AI decompilation, or null fields when they have not rated it yet.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation rating
+     * @param functionId Function ID
+     */
+    public v3GetAiDecompilationRating(functionId: number, _options?: PromiseConfigurationOptions): Promise<RatingOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAiDecompilationRating(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the tokenised AI-decompilation source, the value each token resolves to, and the user\'s overrides as a separate unmerged map. The source is empty and the overrides are null until a run has succeeded.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation tokens and user overrides
+     * @param functionId Function ID
+     */
+    public v3GetAiDecompilationTokensWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetTokensResponse>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAiDecompilationTokensWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the tokenised AI-decompilation source, the value each token resolves to, and the user\'s overrides as a separate unmerged map. The source is empty and the overrides are null until a run has succeeded.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation tokens and user overrides
+     * @param functionId Function ID
+     */
+    public v3GetAiDecompilationTokens(functionId: number, _options?: PromiseConfigurationOptions): Promise<GetTokensResponse> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAiDecompilationTokens(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the aggregate types the AI decompilation inferred for this function: a suggested name for each type and each of its members, the members\' offsets and widths, and the gaps between them. Members revealed only by a caller or callee are included and marked by origin, as are members the model placed rather than observed. Nothing here is a data type row — these are proposals, and creating a row from one is the client\'s call. The list is empty until a run has produced suggestions, which is ordinary and not an error.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation type suggestions
+     * @param functionId Function ID
+     */
+    public v3GetAiDecompilationTypeSuggestionsWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<TypeSuggestionsData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAiDecompilationTypeSuggestionsWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the aggregate types the AI decompilation inferred for this function: a suggested name for each type and each of its members, the members\' offsets and widths, and the gaps between them. Members revealed only by a caller or callee are included and marked by origin, as are members the model placed rather than observed. Nothing here is a data type row — these are proposals, and creating a row from one is the client\'s call. The list is empty until a run has produced suggestions, which is ordinary and not an error.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Get AI decompilation type suggestions
+     * @param functionId Function ID
+     */
+    public v3GetAiDecompilationTypeSuggestions(functionId: number, _options?: PromiseConfigurationOptions): Promise<TypeSuggestionsData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAiDecompilationTypeSuggestions(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Upsert variable/function name overrides
+     * @param functionId Function ID
+     * @param upsertOverridesInputBody
+     */
+    public v3UpsertAiDecompilationOverridesWithHttpInfo(functionId: number, upsertOverridesInputBody: UpsertOverridesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpsertOverridesData>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpsertAiDecompilationOverridesWithHttpInfo(functionId, upsertOverridesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Upsert variable/function name overrides
+     * @param functionId Function ID
+     * @param upsertOverridesInputBody
+     */
+    public v3UpsertAiDecompilationOverrides(functionId: number, upsertOverridesInputBody: UpsertOverridesInputBody, _options?: PromiseConfigurationOptions): Promise<UpsertOverridesData> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpsertAiDecompilationOverrides(functionId, upsertOverridesInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Records the caller\'s rating and optional reason for a function\'s AI decompilation, replacing any they recorded before. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Upsert AI decompilation rating
+     * @param functionId Function ID
+     * @param upsertRatingInputBody
+     */
+    public v3UpsertAiDecompilationRatingWithHttpInfo(functionId: number, upsertRatingInputBody: UpsertRatingInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpsertAiDecompilationRatingWithHttpInfo(functionId, upsertRatingInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Records the caller\'s rating and optional reason for a function\'s AI decompilation, replacing any they recorded before. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Upsert AI decompilation rating
+     * @param functionId Function ID
+     * @param upsertRatingInputBody
+     */
+    public v3UpsertAiDecompilationRating(functionId: number, upsertRatingInputBody: UpsertRatingInputBody, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpsertAiDecompilationRating(functionId, upsertRatingInputBody, observableOptions);
         return result.toPromise();
     }
 
@@ -3310,7 +5611,7 @@ export class PromiseFunctionsCoreApi {
      * @param functionId Function ID
      * @param addCalleeInputBody
      */
-    public addFunctionCalleeWithHttpInfo(functionId: number, addCalleeInputBody: AddCalleeInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+    public addFunctionCalleeWithHttpInfo(functionId: number, addCalleeInputBody: AddCalleeInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addFunctionCalleeWithHttpInfo(functionId, addCalleeInputBody, observableOptions);
         return result.toPromise();
@@ -3322,7 +5623,7 @@ export class PromiseFunctionsCoreApi {
      * @param functionId Function ID
      * @param addCalleeInputBody
      */
-    public addFunctionCallee(functionId: number, addCalleeInputBody: AddCalleeInputBody, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: any; }> {
+    public addFunctionCallee(functionId: number, addCalleeInputBody: AddCalleeInputBody, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addFunctionCallee(functionId, addCalleeInputBody, observableOptions);
         return result.toPromise();
@@ -3334,7 +5635,7 @@ export class PromiseFunctionsCoreApi {
      * @param functionId Function ID
      * @param addUserStringToFunctionInputBody
      */
-    public addUserStringToFunctionWithHttpInfo(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+    public addUserStringToFunctionWithHttpInfo(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addUserStringToFunctionWithHttpInfo(functionId, addUserStringToFunctionInputBody, observableOptions);
         return result.toPromise();
@@ -3346,7 +5647,7 @@ export class PromiseFunctionsCoreApi {
      * @param functionId Function ID
      * @param addUserStringToFunctionInputBody
      */
-    public addUserStringToFunction(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: any; }> {
+    public addUserStringToFunction(functionId: number, addUserStringToFunctionInputBody: AddUserStringToFunctionInputBody, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.addUserStringToFunction(functionId, addUserStringToFunctionInputBody, observableOptions);
         return result.toPromise();
@@ -3431,7 +5732,7 @@ export class PromiseFunctionsCoreApi {
     }
 
     /**
-     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Get function disassembly
      * @param functionId Function ID
      */
@@ -3442,7 +5743,7 @@ export class PromiseFunctionsCoreApi {
     }
 
     /**
-     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Get function disassembly
      * @param functionId Function ID
      */
@@ -3866,236 +6167,53 @@ export class PromiseFunctionsCoreApi {
         return result.toPromise();
     }
 
-
-}
-
-
-
-import { ObservableFunctionsDataTypesApi } from './ObservableAPI';
-
-import { FunctionsDataTypesApiRequestFactory, FunctionsDataTypesApiResponseProcessor} from "../apis/FunctionsDataTypesApi";
-export class PromiseFunctionsDataTypesApi {
-    private api: ObservableFunctionsDataTypesApi
-
-    public constructor(
-        configuration: Configuration,
-        requestFactory?: FunctionsDataTypesApiRequestFactory,
-        responseProcessor?: FunctionsDataTypesApiResponseProcessor
-    ) {
-        this.api = new ObservableFunctionsDataTypesApi(configuration, requestFactory, responseProcessor);
-    }
-
     /**
-     * Updates data types for multiple functions in one analysis. All function IDs in the body must belong to the analysis. Each item is processed independently and reports its own outcome: a stale `data_types_version` yields `version_conflict` for that item without affecting the rest of the batch.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
-     * Batch update function data types
+     * Returns three maps built from every function in the analysis\'s binary: function ID to virtual address, its inverse, and virtual address to mangled name. Empty maps for a binary with no functions yet.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function ID/address maps for an analysis
      * @param analysisId Analysis ID
-     * @param batchUpdateDataTypesInputBody
      */
-    public batchUpdateFunctionDataTypesWithHttpInfo(analysisId: number, batchUpdateDataTypesInputBody: BatchUpdateDataTypesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BatchUpdateDataTypesOutputBody>> {
+    public v3GetAnalysisFuncMapsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetFunctionMapsOutputBody>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.batchUpdateFunctionDataTypesWithHttpInfo(analysisId, batchUpdateDataTypesInputBody, observableOptions);
+        const result = this.api.v3GetAnalysisFuncMapsWithHttpInfo(analysisId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Updates data types for multiple functions in one analysis. All function IDs in the body must belong to the analysis. Each item is processed independently and reports its own outcome: a stale `data_types_version` yields `version_conflict` for that item without affecting the rest of the batch.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
-     * Batch update function data types
+     * Returns three maps built from every function in the analysis\'s binary: function ID to virtual address, its inverse, and virtual address to mangled name. Empty maps for a binary with no functions yet.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function ID/address maps for an analysis
      * @param analysisId Analysis ID
-     * @param batchUpdateDataTypesInputBody
      */
-    public batchUpdateFunctionDataTypes(analysisId: number, batchUpdateDataTypesInputBody: BatchUpdateDataTypesInputBody, _options?: PromiseConfigurationOptions): Promise<BatchUpdateDataTypesOutputBody> {
+    public v3GetAnalysisFuncMaps(analysisId: number, _options?: PromiseConfigurationOptions): Promise<GetFunctionMapsOutputBody> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.batchUpdateFunctionDataTypes(analysisId, batchUpdateDataTypesInputBody, observableOptions);
+        const result = this.api.v3GetAnalysisFuncMaps(analysisId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types
-     * @param analysisId
-     * @param functionDataTypesParams
+     * Searches for functions visible to the caller. At least one of partial_name or model_name must be provided.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Search functions
+     * @param [partialName] Partial or full function name to search for
+     * @param [modelName] Restrict results to functions analysed with this model
+     * @param [limit] Maximum results to return
+     * @param [offset] Number of results to skip
      */
-    public generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGenerateFunctionDataTypes>> {
+    public v3SearchFunctionsWithHttpInfo(partialName?: string, modelName?: string, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<SearchFunctionsOutputBody>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionDataTypesParams, observableOptions);
+        const result = this.api.v3SearchFunctionsWithHttpInfo(partialName, modelName, limit, offset, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types
-     * @param analysisId
-     * @param functionDataTypesParams
+     * Searches for functions visible to the caller. At least one of partial_name or model_name must be provided.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Search functions
+     * @param [partialName] Partial or full function name to search for
+     * @param [modelName] Restrict results to functions analysed with this model
+     * @param [limit] Maximum results to return
+     * @param [offset] Number of results to skip
      */
-    public generateFunctionDataTypesForAnalysis(analysisId: number, functionDataTypesParams: FunctionDataTypesParams, _options?: PromiseConfigurationOptions): Promise<BaseResponseGenerateFunctionDataTypes> {
+    public v3SearchFunctions(partialName?: string, modelName?: string, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<SearchFunctionsOutputBody> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.generateFunctionDataTypesForAnalysis(analysisId, functionDataTypesParams, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types for an arbitrary list of functions
-     * @param functionDataTypesParams
-     */
-    public generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams: FunctionDataTypesParams, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseGenerationStatusList>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.generateFunctionDataTypesForFunctionsWithHttpInfo(functionDataTypesParams, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Submits a request to generate the function data types
-     * Generate Function Data Types for an arbitrary list of functions
-     * @param functionDataTypesParams
-     */
-    public generateFunctionDataTypesForFunctions(functionDataTypesParams: FunctionDataTypesParams, _options?: PromiseConfigurationOptions): Promise<BaseResponseGenerationStatusList> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.generateFunctionDataTypesForFunctions(functionDataTypesParams, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get data types for a single function
-     * @param analysisId Analysis ID
-     * @param functionId Function ID
-     */
-    public getFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DataTypesEntry>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionDataTypesWithHttpInfo(analysisId, functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the stored data-types blob for one function. The function must belong to the supplied analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * Get data types for a single function
-     * @param analysisId Analysis ID
-     * @param functionId Function ID
-     */
-    public getFunctionDataTypes(analysisId: number, functionId: number, _options?: PromiseConfigurationOptions): Promise<DataTypesEntry> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionDataTypes(analysisId, functionId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Paginated read of the stored data-types blob for each function in the analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * List data types for all functions in an analysis
-     * @param analysisId Analysis ID
-     * @param [offset] Pagination offset. Defaults to 0.
-     * @param [limit] Page size. Defaults to 100.
-     */
-    public listAnalysisFunctionsDataTypesWithHttpInfo(analysisId: number, offset?: number, limit?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAnalysisFunctionsDataTypesOutputBody>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.listAnalysisFunctionsDataTypesWithHttpInfo(analysisId, offset, limit, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Paginated read of the stored data-types blob for each function in the analysis.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
-     * List data types for all functions in an analysis
-     * @param analysisId Analysis ID
-     * @param [offset] Pagination offset. Defaults to 0.
-     * @param [limit] Page size. Defaults to 100.
-     */
-    public listAnalysisFunctionsDataTypes(analysisId: number, offset?: number, limit?: number, _options?: PromiseConfigurationOptions): Promise<ListAnalysisFunctionsDataTypesOutputBody> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.listAnalysisFunctionsDataTypes(analysisId, offset, limit, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns data types for multiple functions with optional function ID filtering
-     * List Function Data Types
-     * @param analysisId
-     * @param [functionIds]
-     */
-    public listFunctionDataTypesForAnalysisWithHttpInfo(analysisId: number, functionIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypesList>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.listFunctionDataTypesForAnalysisWithHttpInfo(analysisId, functionIds, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns data types for multiple functions with optional function ID filtering
-     * List Function Data Types
-     * @param analysisId
-     * @param [functionIds]
-     */
-    public listFunctionDataTypesForAnalysis(analysisId: number, functionIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.listFunctionDataTypesForAnalysis(analysisId, functionIds, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns data types for multiple function IDs
-     * List Function Data Types
-     * @param [functionIds]
-     */
-    public listFunctionDataTypesForFunctionsWithHttpInfo(functionIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionDataTypesList>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.listFunctionDataTypesForFunctionsWithHttpInfo(functionIds, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns data types for multiple function IDs
-     * List Function Data Types
-     * @param [functionIds]
-     */
-    public listFunctionDataTypesForFunctions(functionIds?: Array<number>, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionDataTypesList> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.listFunctionDataTypesForFunctions(functionIds, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the stored data-types blob for each supplied function ID. Caller must have read access to every function or the request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
-     * Get data types for many functions
-     * @param functionIds Function IDs to fetch data-types for.
-     */
-    public listFunctionsDataTypesWithHttpInfo(functionIds: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListFunctionsDataTypesOutputBody>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.listFunctionsDataTypesWithHttpInfo(functionIds, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the stored data-types blob for each supplied function ID. Caller must have read access to every function or the request is rejected.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
-     * Get data types for many functions
-     * @param functionIds Function IDs to fetch data-types for.
-     */
-    public listFunctionsDataTypes(functionIds: Array<number>, _options?: PromiseConfigurationOptions): Promise<ListFunctionsDataTypesOutputBody> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.listFunctionsDataTypes(functionIds, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Stores user-specific overrides for a function\'s data types. Uses optimistic concurrency: if the stored version doesn\'t match `data_types_version`, the update is rejected with 409.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-     * Update function data types
-     * @param analysisId Analysis ID
-     * @param functionId Function ID
-     * @param updateDataTypesInputBody
-     */
-    public updateFunctionDataTypesWithHttpInfo(analysisId: number, functionId: number, updateDataTypesInputBody: UpdateDataTypesInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<UpdateDataTypesOutputBody>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.updateFunctionDataTypesWithHttpInfo(analysisId, functionId, updateDataTypesInputBody, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Stores user-specific overrides for a function\'s data types. Uses optimistic concurrency: if the stored version doesn\'t match `data_types_version`, the update is rejected with 409.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-     * Update function data types
-     * @param analysisId Analysis ID
-     * @param functionId Function ID
-     * @param updateDataTypesInputBody
-     */
-    public updateFunctionDataTypes(analysisId: number, functionId: number, updateDataTypesInputBody: UpdateDataTypesInputBody, _options?: PromiseConfigurationOptions): Promise<UpdateDataTypesOutputBody> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.updateFunctionDataTypes(analysisId, functionId, updateDataTypesInputBody, observableOptions);
+        const result = this.api.v3SearchFunctions(partialName, modelName, limit, offset, observableOptions);
         return result.toPromise();
     }
 
@@ -4141,7 +6259,7 @@ export class PromiseFunctionsRenamingHistoryApi {
     }
 
     /**
-     * Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Renames multiple functions in a single request. Records name changes in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Batch rename functions
      * @param batchRenameInputBody
      */
@@ -4152,7 +6270,7 @@ export class PromiseFunctionsRenamingHistoryApi {
     }
 
     /**
-     * Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Renames multiple functions in a single request. Records name changes in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Batch rename functions
      * @param batchRenameInputBody
      */
@@ -4207,7 +6325,7 @@ export class PromiseFunctionsRenamingHistoryApi {
     }
 
     /**
-     * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Renames a single function and records the change in history. `source_type` defaults to USER when omitted.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Rename a function
      * @param functionId Function ID
      * @param renameInputBody
@@ -4219,7 +6337,7 @@ export class PromiseFunctionsRenamingHistoryApi {
     }
 
     /**
-     * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Renames a single function and records the change in history. `source_type` defaults to USER when omitted.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Rename a function
      * @param functionId Function ID
      * @param renameInputBody
@@ -4284,7 +6402,7 @@ export class PromiseFunctionsRenamingHistoryApi {
      * @param functionId Function ID
      * @param historyId History ID to revert to
      */
-    public revertFunctionName_1WithHttpInfo(functionId: number, historyId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<{ [key: string]: any; }>> {
+    public revertFunctionName_1WithHttpInfo(functionId: number, historyId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<any>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.revertFunctionName_1WithHttpInfo(functionId, historyId, observableOptions);
         return result.toPromise();
@@ -4296,7 +6414,7 @@ export class PromiseFunctionsRenamingHistoryApi {
      * @param functionId Function ID
      * @param historyId History ID to revert to
      */
-    public revertFunctionName_1(functionId: number, historyId: number, _options?: PromiseConfigurationOptions): Promise<{ [key: string]: any; }> {
+    public revertFunctionName_1(functionId: number, historyId: number, _options?: PromiseConfigurationOptions): Promise<any> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.revertFunctionName_1(functionId, historyId, observableOptions);
         return result.toPromise();

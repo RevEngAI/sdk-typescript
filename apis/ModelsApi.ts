@@ -17,6 +17,8 @@ import { BaseResponseModelsResponse } from '../models/BaseResponseModelsResponse
 export class ModelsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
+     * @deprecated
+     *
      * Gets active models available for analysis.
      * Gets models
      */

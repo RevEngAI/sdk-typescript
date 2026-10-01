@@ -42,6 +42,18 @@ export class AnalysisRecordBody {
     */
     'creation': Date;
     /**
+    * Detected instruction-set architecture; empty when unavailable
+    */
+    'detectedArchitecture': string;
+    /**
+    * Detected binary container format; empty when unavailable
+    */
+    'detectedBinaryFormat': string;
+    /**
+    * Detected operating-system platform; empty when unavailable
+    */
+    'detectedBinaryType': string;
+    /**
     * Hash of the binary\'s provided function boundaries
     */
     'functionBoundariesHash': string;
@@ -58,6 +70,10 @@ export class AnalysisRecordBody {
     */
     'modelName': string;
     /**
+    * True when the analysis ran on a model older than the current one, so its owner can re-analyse it on the latest. Describes the analysis, not the caller\'s rights — only the owner may act on it
+    */
+    'modelUpgradeAvailable': boolean;
+    /**
     * SHA-256 hash of the binary
     */
     'sha256Hash': string;
@@ -65,6 +81,18 @@ export class AnalysisRecordBody {
     * Analysis status
     */
     'status': string;
+    /**
+    * User-supplied instruction-set architecture; \"AUTO\" when not overridden
+    */
+    'suppliedArchitecture': string;
+    /**
+    * User-supplied binary container format; \"AUTO\" when not overridden
+    */
+    'suppliedBinaryFormat': string;
+    /**
+    * User-supplied operating-system platform; \"AUTO\" when not overridden
+    */
+    'suppliedBinaryType': string;
     /**
     * Tags associated with the binary
     */
@@ -122,6 +150,24 @@ export class AnalysisRecordBody {
             "format": "date-time"
         },
         {
+            "name": "detectedArchitecture",
+            "baseName": "detected_architecture",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "detectedBinaryFormat",
+            "baseName": "detected_binary_format",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "detectedBinaryType",
+            "baseName": "detected_binary_type",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "functionBoundariesHash",
             "baseName": "function_boundaries_hash",
             "type": "string",
@@ -146,6 +192,12 @@ export class AnalysisRecordBody {
             "format": ""
         },
         {
+            "name": "modelUpgradeAvailable",
+            "baseName": "model_upgrade_available",
+            "type": "boolean",
+            "format": ""
+        },
+        {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
             "type": "string",
@@ -154,6 +206,24 @@ export class AnalysisRecordBody {
         {
             "name": "status",
             "baseName": "status",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "suppliedArchitecture",
+            "baseName": "supplied_architecture",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "suppliedBinaryFormat",
+            "baseName": "supplied_binary_format",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "suppliedBinaryType",
+            "baseName": "supplied_binary_type",
             "type": "string",
             "format": ""
         },

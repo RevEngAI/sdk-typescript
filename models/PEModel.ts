@@ -27,7 +27,7 @@ export class PEModel {
     'checksum': number;
     'imageBase': number;
     'security': SecurityModel | null;
-    'versionInfo': { [key: string]: any; } | null;
+    'versionInfo': any | null;
     'debugInfo': PDBDebugModel | null;
     'numberOfResources': number | null;
     'entryPoint': EntrypointModel | null;
@@ -86,7 +86,7 @@ export class PEModel {
         {
             "name": "versionInfo",
             "baseName": "version_info",
-            "type": "{ [key: string]: any; }",
+            "type": "any",
             "format": ""
         },
         {

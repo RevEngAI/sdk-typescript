@@ -21,6 +21,8 @@ import { CommentUpdateRequest } from '../models/CommentUpdateRequest';
 export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
+     * @deprecated
+     *
      * Creates a comment associated with a specified analysis).
      * Create a comment for this analysis
      * @param analysisId 
@@ -82,6 +84,8 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Deletes an existing comment. Users can only delete their own comments.
      * Delete a comment
      * @param commentId 
@@ -133,6 +137,8 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Retrieves all comments created for a specific analysis. Only returns comments for resources the requesting user has access to.
      * Get comments for this analysis
      * @param analysisId 
@@ -176,6 +182,8 @@ export class AnalysesCommentsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Updates the content of an existing comment. Users can only update their own comments.
      * Update a comment
      * @param commentId 

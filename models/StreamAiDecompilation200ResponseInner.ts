@@ -13,10 +13,12 @@ import { EventAttemptFailed } from '../models/EventAttemptFailed';
 import { EventAttemptStarted } from '../models/EventAttemptStarted';
 import { EventDecompFailed } from '../models/EventDecompFailed';
 import { EventDecompFinished } from '../models/EventDecompFinished';
+import { EventNamesFinished } from '../models/EventNamesFinished';
 import { EventProse } from '../models/EventProse';
 import { EventRenameApplied } from '../models/EventRenameApplied';
 import { EventSourceDelta } from '../models/EventSourceDelta';
 import { EventSourceReset } from '../models/EventSourceReset';
+import { EventTypesSuggested } from '../models/EventTypesSuggested';
 import { EventWarning } from '../models/EventWarning';
 import { HttpFile } from '../http/http';
 
@@ -25,7 +27,7 @@ import { HttpFile } from '../http/http';
  * Type
  * @export
  */
-export type StreamAiDecompilation200ResponseInner = EventAttemptFailed | EventAttemptStarted | EventDecompFailed | EventDecompFinished | EventProse | EventRenameApplied | EventSourceDelta | EventSourceReset | EventWarning;
+export type StreamAiDecompilation200ResponseInner = EventAttemptFailed | EventAttemptStarted | EventDecompFailed | EventDecompFinished | EventNamesFinished | EventProse | EventRenameApplied | EventSourceDelta | EventSourceReset | EventTypesSuggested | EventWarning;
 
 /**
 * @type StreamAiDecompilation200ResponseInnerClass
@@ -36,6 +38,8 @@ export class StreamAiDecompilation200ResponseInnerClass {
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 }
+
+
 
 
 

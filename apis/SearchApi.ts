@@ -23,6 +23,8 @@ import { Order } from '../models/Order';
 export class SearchApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
+     * @deprecated
+     *
      * Searches for a specific binary
      * Binaries search
      * @param page The page number to retrieve.
@@ -127,6 +129,8 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Searches for a specific collection
      * Collections search
      * @param page The page number to retrieve.
@@ -241,6 +245,8 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Searches for a specific function
      * Functions search
      * @param page The page number to retrieve.
@@ -304,6 +310,8 @@ export class SearchApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Searches for tags by there name
      * Tags search
      * @param partialName The partial or full name of the tag to search for

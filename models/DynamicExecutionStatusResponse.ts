@@ -18,7 +18,7 @@ export class DynamicExecutionStatusResponse {
     */
     'errorMessage'?: string;
     /**
-    * Sandbox status log messages captured during the run. Contains a single \"No logs available\" message when none have been captured yet.
+    * Sandbox status log messages captured during the run. Empty when none have been captured yet.
     */
     'logs': AnalysisLogs;
     /**

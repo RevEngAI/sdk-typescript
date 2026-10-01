@@ -19,7 +19,7 @@ export class BinaryExternalsResponse {
     /**
     * VirusTotal information
     */
-    'vt': { [key: string]: any; };
+    'vt': any;
     /**
     * VirusTotal last updated date
     */
@@ -27,7 +27,7 @@ export class BinaryExternalsResponse {
     /**
     * MalwareBazaar information
     */
-    'mb': { [key: string]: any; };
+    'mb': any;
     /**
     * MalwareBazaar last updated date
     */
@@ -47,7 +47,7 @@ export class BinaryExternalsResponse {
         {
             "name": "vt",
             "baseName": "vt",
-            "type": "{ [key: string]: any; }",
+            "type": "any",
             "format": ""
         },
         {
@@ -59,7 +59,7 @@ export class BinaryExternalsResponse {
         {
             "name": "mb",
             "baseName": "mb",
-            "type": "{ [key: string]: any; }",
+            "type": "any",
             "format": ""
         },
         {

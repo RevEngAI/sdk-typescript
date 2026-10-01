@@ -18,6 +18,8 @@ import { ErrorModel } from '../models/ErrorModel';
 export class AnalysesXRefsApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
+     * @deprecated
+     *
      * **This endpoint is in beta and may change without notice.**
      * [Beta] Look up xrefs by virtual address
      * @param analysisId 

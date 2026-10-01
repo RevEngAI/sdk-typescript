@@ -9,13 +9,14 @@
  * Do not edit the class manually.
  */
 
+import { Token } from '../models/Token';
 import { HttpFile } from '../http/http';
 
 export class UpsertOverridesData {
     /**
-    * Merged override mappings after applying changes
+    * Every override on the function after applying this request, keyed by placeholder token, each carrying who chose it.
     */
-    'userOverrideMappings': { [key: string]: string; };
+    'placeholderToUserOverride': { [key: string]: Token; };
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,9 +24,9 @@ export class UpsertOverridesData {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "userOverrideMappings",
-            "baseName": "user_override_mappings",
-            "type": "{ [key: string]: string; }",
+            "name": "placeholderToUserOverride",
+            "baseName": "placeholder_to_user_override",
+            "type": "{ [key: string]: Token; }",
             "format": ""
         }    ];
 

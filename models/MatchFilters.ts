@@ -13,33 +13,37 @@ import { HttpFile } from '../http/http';
 
 export class MatchFilters {
     /**
-    * Restrict matches to this architecture (multi-platform models only; matches all architectures if omitted). Rejected for single-architecture models.
+    * Restrict matches to candidates whose binary was detected as one of these architectures. Word size is part of the value, so there is no separate bits filter. Matches all architectures if omitted.
     */
-    'arch'?: MatchFiltersArchEnum;
+    'architectures'?: Array<MatchFiltersArchitecturesEnum> | null;
     /**
     * Restrict the candidate pool to these binary IDs.
     */
     'binaryIds'?: Array<number> | null;
     /**
-    * Restrict matches to this word size (multi-platform models only). Rejected for single-architecture models.
-    */
-    'bits'?: number;
-    /**
     * Restrict the candidate pool to binaries in these collection IDs.
     */
     'collectionIds'?: Array<number> | null;
     /**
+    * Restrict matches to candidates with auto/system debug symbols. Multi-platform models only; rejected for single-architecture models.
+    */
+    'debug'?: boolean;
+    /**
     * Restrict matches to candidates with these debug source types. Accepted: SYSTEM, USER.
     */
-    'debugTypes'?: Array<string> | null;
+    'debugTypes'?: Array<string | null> | null;
     /**
     * Restrict the candidate pool to these function IDs.
     */
     'functionIds'?: Array<number> | null;
     /**
-    * Restrict matches to this platform (multi-platform models only; matches all platforms if omitted). Rejected for single-architecture models.
+    * When debug is set, also match user-named functions (not only auto/system debug). No effect unless debug is true.
     */
-    'platform'?: MatchFiltersPlatformEnum;
+    'includeUserDebug'?: boolean;
+    /**
+    * Restrict matches to candidates whose binary was detected as one of these platforms. Matches all platforms if omitted; a binary whose detection has not run is never matched by a non-empty filter.
+    */
+    'platforms'?: Array<MatchFiltersPlatformsEnum> | null;
     /**
     * Restrict the candidate pool to functions owned by these user IDs.
     */
@@ -51,9 +55,9 @@ export class MatchFilters {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "arch",
-            "baseName": "arch",
-            "type": "MatchFiltersArchEnum",
+            "name": "architectures",
+            "baseName": "architectures",
+            "type": "Array<MatchFiltersArchitecturesEnum>",
             "format": ""
         },
         {
@@ -63,21 +67,21 @@ export class MatchFilters {
             "format": "int64"
         },
         {
-            "name": "bits",
-            "baseName": "bits",
-            "type": "number",
-            "format": "int64"
-        },
-        {
             "name": "collectionIds",
             "baseName": "collection_ids",
             "type": "Array<number>",
             "format": "int64"
         },
         {
+            "name": "debug",
+            "baseName": "debug",
+            "type": "boolean",
+            "format": ""
+        },
+        {
             "name": "debugTypes",
             "baseName": "debug_types",
-            "type": "Array<string>",
+            "type": "Array<string | null>",
             "format": ""
         },
         {
@@ -87,9 +91,15 @@ export class MatchFilters {
             "format": "int64"
         },
         {
-            "name": "platform",
-            "baseName": "platform",
-            "type": "MatchFiltersPlatformEnum",
+            "name": "includeUserDebug",
+            "baseName": "include_user_debug",
+            "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "platforms",
+            "baseName": "platforms",
+            "type": "Array<MatchFiltersPlatformsEnum>",
             "format": ""
         },
         {
@@ -107,18 +117,16 @@ export class MatchFilters {
     }
 }
 
-export enum MatchFiltersArchEnum {
-    X86 = 'x86',
-    Arm = 'arm',
-    Unknown = 'unknown',
+export enum MatchFiltersArchitecturesEnum {
+    X8664 = 'x86_64',
+    X8632 = 'x86_32',
+    Arm64 = 'arm_64',
     UnknownDefaultOpenApi = '11184809'
 }
-export enum MatchFiltersPlatformEnum {
-    Linux = 'linux',
+export enum MatchFiltersPlatformsEnum {
     Windows = 'windows',
+    Linux = 'linux',
     Android = 'android',
-    Macos = 'macos',
-    Unknown = 'unknown',
     UnknownDefaultOpenApi = '11184809'
 }
 

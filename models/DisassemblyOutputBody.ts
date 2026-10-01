@@ -9,14 +9,20 @@
  * Do not edit the class manually.
  */
 
+import { OperandXref } from '../models/OperandXref';
 import { HttpFile } from '../http/http';
 
 export class DisassemblyOutputBody {
     'basicBlocks'?: any | null;
     'functionId': number;
+    'globalVariables'?: any | null;
     'localVariables'?: any | null;
+    /**
+    * Instruction operands that reference a pointer slot, sorted by instruction_vaddr, target_vaddr, pointed_vaddr.
+    */
+    'operandXrefs'?: Array<OperandXref> | null;
     'params'?: any | null;
-    'returnType'?: string | null;
+    'returnType'?: string;
     'returns': boolean;
 
     static readonly discriminator: string | undefined = undefined;
@@ -37,9 +43,21 @@ export class DisassemblyOutputBody {
             "format": "int64"
         },
         {
+            "name": "globalVariables",
+            "baseName": "global_variables",
+            "type": "any",
+            "format": ""
+        },
+        {
             "name": "localVariables",
             "baseName": "local_variables",
             "type": "any",
+            "format": ""
+        },
+        {
+            "name": "operandXrefs",
+            "baseName": "operand_xrefs",
+            "type": "Array<OperandXref>",
             "format": ""
         },
         {

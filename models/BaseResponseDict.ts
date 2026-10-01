@@ -18,7 +18,7 @@ export class BaseResponseDict {
     * Response status on whether the request succeeded
     */
     'status'?: boolean;
-    'data'?: { [key: string]: any; } | null;
+    'data'?: any | null;
     'message'?: string | null;
     'errors'?: Array<ErrorModel> | null;
     /**
@@ -40,7 +40,7 @@ export class BaseResponseDict {
         {
             "name": "data",
             "baseName": "data",
-            "type": "{ [key: string]: any; }",
+            "type": "any",
             "format": ""
         },
         {

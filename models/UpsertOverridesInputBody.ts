@@ -9,13 +9,14 @@
  * Do not edit the class manually.
  */
 
+import { Token } from '../models/Token';
 import { HttpFile } from '../http/http';
 
 export class UpsertOverridesInputBody {
     /**
-    * Token to name mappings. Empty string removes the override.
+    * Overrides keyed by placeholder token. An entry whose value is an empty string removes that override.
     */
-    'overrides': { [key: string]: string; };
+    'overrides': { [key: string]: Token; };
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -25,7 +26,7 @@ export class UpsertOverridesInputBody {
         {
             "name": "overrides",
             "baseName": "overrides",
-            "type": "{ [key: string]: string; }",
+            "type": "{ [key: string]: Token; }",
             "format": ""
         }    ];
 

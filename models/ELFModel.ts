@@ -36,9 +36,9 @@ export class ELFModel {
     'imports': ELFImportModel;
     'exportedFunctions': Array<string>;
     'dynamicEntries': Array<ElfDynamicEntry>;
-    'notes': Array<{ [key: string]: any; }>;
-    'debugInfo': { [key: string]: any; };
-    'versionInfo': { [key: string]: any; };
+    'notes': Array<any | null>;
+    'debugInfo': any;
+    'versionInfo': any;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -150,19 +150,19 @@ export class ELFModel {
         {
             "name": "notes",
             "baseName": "notes",
-            "type": "Array<{ [key: string]: any; }>",
+            "type": "Array<any | null>",
             "format": ""
         },
         {
             "name": "debugInfo",
             "baseName": "debug_info",
-            "type": "{ [key: string]: any; }",
+            "type": "any",
             "format": ""
         },
         {
             "name": "versionInfo",
             "baseName": "version_info",
-            "type": "{ [key: string]: any; }",
+            "type": "any",
             "format": ""
         }    ];
 

@@ -44,7 +44,7 @@ export class ConfigResponse {
             "name": "maxFileSizeBytes",
             "baseName": "max_file_size_bytes",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
             "name": "aiDecompilerUnsupportedLanguages",

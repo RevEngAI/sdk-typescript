@@ -482,7 +482,11 @@ const request: CollectionsApiV3AddCollectionBinariesRequest = {
   
   collectionId: 1,
   
-  addCollectionBinariesInputBody: ,
+  addCollectionBinariesInputBody: {
+    binaries: [
+      1,
+    ],
+  },
 };
 
 const data = await apiInstance.v3AddCollectionBinaries(request);
@@ -540,7 +544,17 @@ const apiInstance = new CollectionsApi(configuration);
 
 const request: CollectionsApiV3CreateCollectionRequest = {
   
-  createCollectionInputBody: ,
+  createCollectionInputBody: {
+    binaries: [
+      1,
+    ],
+    collectionName: "collectionName_example",
+    collectionScope: "PRIVATE",
+    description: "description_example",
+    tags: [
+      "tags_example",
+    ],
+  },
 };
 
 const data = await apiInstance.v3CreateCollection(request);
@@ -582,7 +596,7 @@ Name | Type | Description  | Notes
 # **v3DeleteCollection**
 > void v3DeleteCollection()
 
-Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+Deletes a collection along with its binary links, tags, and hierarchy links. The binaries themselves are not deleted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
 ### Example
 
@@ -631,7 +645,6 @@ Name | Type | Description  | Notes
 **204** | No Content |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
-**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -711,7 +724,7 @@ Name | Type | Description  | Notes
 # **v3ListCollections**
 > ListCollectionsOutputBody v3ListCollections()
 
-Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+Lists collections accessible to the authenticated user. Supports search by collection name, contained binary name/SHA-256, tags, owner, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
 
 ### Example
 
@@ -724,8 +737,20 @@ const configuration = createConfiguration();
 const apiInstance = new CollectionsApi(configuration);
 
 const request: CollectionsApiV3ListCollectionsRequest = {
-  
+    // Partial or full collection name to search for (optional)
   searchTerm: "search_term_example",
+    // Only return Collections containing a Binary whose name contains this (optional)
+  binaryName: "binary_name_example",
+    // Only return Collections containing a Binary whose SHA-256 hash contains this (optional)
+  binarySha256: "binary_sha256_example",
+    // Only return Collections carrying at least one of these Tags (optional)
+  tags: [
+    "tags_example",
+  ],
+    // Restrict results to Collections owned by one of these user IDs (optional)
+  userIds: [
+    1,
+  ],
   
   filters: [
     "official_only",
@@ -749,7 +774,11 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **searchTerm** | [**string**] |  | (optional) defaults to undefined
+ **searchTerm** | [**string**] | Partial or full collection name to search for | (optional) defaults to undefined
+ **binaryName** | [**string**] | Only return Collections containing a Binary whose name contains this | (optional) defaults to undefined
+ **binarySha256** | [**string**] | Only return Collections containing a Binary whose SHA-256 hash contains this | (optional) defaults to undefined
+ **tags** | **Array&lt;string&gt;** | Only return Collections carrying at least one of these Tags | (optional) defaults to undefined
+ **userIds** | **Array&lt;number&gt;** | Restrict results to Collections owned by one of these user IDs | (optional) defaults to undefined
  **filters** | **Array<&#39;official_only&#39; &#124; &#39;user_only&#39; &#124; &#39;team_only&#39; &#124; &#39;public_only&#39; &#124; &#39;hide_empty&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to undefined
  **limit** | [**number**] |  | (optional) defaults to 20
  **offset** | [**number**] |  | (optional) defaults to 0
@@ -799,7 +828,11 @@ const request: CollectionsApiV3PatchCollectionRequest = {
   
   collectionId: 1,
   
-  patchCollectionInputBody: ,
+  patchCollectionInputBody: {
+    collectionName: "collectionName_example",
+    collectionScope: "collectionScope_example",
+    description: "description_example",
+  },
 };
 
 const data = await apiInstance.v3PatchCollection(request);
@@ -859,7 +892,11 @@ const request: CollectionsApiV3PatchCollectionBinariesRequest = {
   
   collectionId: 1,
   
-  patchCollectionBinariesInputBody: ,
+  patchCollectionBinariesInputBody: {
+    binaries: [
+      1,
+    ],
+  },
 };
 
 const data = await apiInstance.v3PatchCollectionBinaries(request);
@@ -919,7 +956,11 @@ const request: CollectionsApiV3PatchCollectionTagsRequest = {
   
   collectionId: 1,
   
-  patchCollectionTagsInputBody: ,
+  patchCollectionTagsInputBody: {
+    tags: [
+      "tags_example",
+    ],
+  },
 };
 
 const data = await apiInstance.v3PatchCollectionTags(request);
@@ -979,7 +1020,11 @@ const request: CollectionsApiV3RemoveCollectionBinariesRequest = {
   
   collectionId: 1,
   
-  removeCollectionBinariesInputBody: ,
+  removeCollectionBinariesInputBody: {
+    binaries: [
+      1,
+    ],
+  },
 };
 
 const data = await apiInstance.v3RemoveCollectionBinaries(request);

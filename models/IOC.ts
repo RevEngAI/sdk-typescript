@@ -13,20 +13,29 @@ import { HttpFile } from '../http/http';
 
 export class IOC {
     /**
-    * Type of the IOC
-    */
-    'type': IOCTypeEnum;
-    /**
-    * Value of the IOC
-    */
-    'value': string;
-    /**
-    * Description of the IOC
+    * What the indicator means
     */
     'description': string;
-    'source'?: string | null;
-    'functionId'?: number | null;
-    'functionName'?: string | null;
+    /**
+    * ID of the function it was found in. Null when the source does not resolve to one.
+    */
+    'functionId': number | null;
+    /**
+    * Name of the function it was found in. Null when the source does not resolve to one.
+    */
+    'functionName': string | null;
+    /**
+    * Where in the binary it was found, usually a hex address. Null when the agent did not report one.
+    */
+    'source': string | null;
+    /**
+    * Indicator type
+    */
+    'type': string;
+    /**
+    * The indicator itself
+    */
+    'value': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -34,20 +43,20 @@ export class IOC {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "type",
-            "baseName": "type",
-            "type": "IOCTypeEnum",
-            "format": ""
-        },
-        {
-            "name": "value",
-            "baseName": "value",
+            "name": "description",
+            "baseName": "description",
             "type": "string",
             "format": ""
         },
         {
-            "name": "description",
-            "baseName": "description",
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "functionName",
+            "baseName": "function_name",
             "type": "string",
             "format": ""
         },
@@ -58,14 +67,14 @@ export class IOC {
             "format": ""
         },
         {
-            "name": "functionId",
-            "baseName": "function_id",
-            "type": "number",
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "functionName",
-            "baseName": "function_name",
+            "name": "value",
+            "baseName": "value",
             "type": "string",
             "format": ""
         }    ];
@@ -77,31 +86,3 @@ export class IOC {
     public constructor() {
     }
 }
-
-export enum IOCTypeEnum {
-    Ip = 'ip',
-    Domain = 'domain',
-    Url = 'url',
-    Usernames = 'usernames',
-    Passwords = 'passwords',
-    FileHash = 'file_hash',
-    Mutex = 'mutex',
-    RegistryKey = 'registry_key',
-    Filename = 'filename',
-    Email = 'email',
-    C2Endpoint = 'c2_endpoint',
-    UserAgent = 'user_agent',
-    PemKey = 'pem_key',
-    SshKey = 'ssh_key',
-    NetworkPort = 'network_port',
-    Ja3 = 'ja3',
-    SslCertFingerprint = 'ssl_cert_fingerprint',
-    HttpHeader = 'http_header',
-    Service = 'service',
-    ScheduledTask = 'scheduled_task',
-    PeHeader = 'pe_header',
-    Entropy = 'entropy',
-    Other = 'other',
-    UnknownDefaultOpenApi = '11184809'
-}
-

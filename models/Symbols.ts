@@ -13,14 +13,8 @@ import { FunctionBoundary } from '../models/FunctionBoundary';
 import { HttpFile } from '../http/http';
 
 export class Symbols {
-    /**
-    * The starting address of the execution
-    */
     'baseAddress': number;
-    /**
-    * List of user defined function boundaries
-    */
-    'functionBoundaries'?: Array<FunctionBoundary>;
+    'functionBoundaries'?: Array<FunctionBoundary> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,7 +25,7 @@ export class Symbols {
             "name": "baseAddress",
             "baseName": "base_address",
             "type": "number",
-            "format": "bigint"
+            "format": "int64"
         },
         {
             "name": "functionBoundaries",
