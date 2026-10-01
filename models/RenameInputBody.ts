@@ -21,9 +21,9 @@ export class RenameInputBody {
     */
     'newName': string;
     /**
-    * Keep the cached AI decompilation, summary and inline comments. Set when the new name comes from the model\'s own prediction (e.g. Transfer Name) so existing AI output is not discarded and regenerated.
+    * Source that triggered the rename
     */
-    'preserveAiDecompilation'?: boolean;
+    'sourceType'?: RenameInputBodySourceTypeEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -43,9 +43,9 @@ export class RenameInputBody {
             "format": ""
         },
         {
-            "name": "preserveAiDecompilation",
-            "baseName": "preserve_ai_decompilation",
-            "type": "boolean",
+            "name": "sourceType",
+            "baseName": "source_type",
+            "type": "RenameInputBodySourceTypeEnum",
             "format": ""
         }    ];
 
@@ -56,3 +56,14 @@ export class RenameInputBody {
     public constructor() {
     }
 }
+
+export enum RenameInputBodySourceTypeEnum {
+    System = 'SYSTEM',
+    User = 'USER',
+    External = 'EXTERNAL',
+    AutoUnstrip = 'AUTO_UNSTRIP',
+    AiUnstrip = 'AI_UNSTRIP',
+    AiAgent = 'AI_AGENT',
+    UnknownDefaultOpenApi = '11184809'
+}
+

@@ -17,6 +17,10 @@ export class SummaryData {
     */
     'aiSummary': string;
     /**
+    * Name the model proposes for this function, produced alongside the summary.
+    */
+    'predictedFunctionName'?: string;
+    /**
     * Raw summary from the model
     */
     'summary': string;
@@ -33,6 +37,12 @@ export class SummaryData {
         {
             "name": "aiSummary",
             "baseName": "ai_summary",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "predictedFunctionName",
+            "baseName": "predicted_function_name",
             "type": "string",
             "format": ""
         },

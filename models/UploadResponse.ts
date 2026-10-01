@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+import { AnalysisRequirement } from '../models/AnalysisRequirement';
 import { UploadFileType } from '../models/UploadFileType';
 import { HttpFile } from '../http/http';
 
@@ -20,6 +21,7 @@ export class UploadResponse {
     'isArchive': boolean;
     'canSandbox': boolean;
     'canExtract': boolean;
+    'analysisRequirements'?: Array<AnalysisRequirement>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -66,6 +68,12 @@ export class UploadResponse {
             "name": "canExtract",
             "baseName": "can_extract",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "analysisRequirements",
+            "baseName": "analysis_requirements",
+            "type": "Array<AnalysisRequirement>",
             "format": ""
         }    ];
 

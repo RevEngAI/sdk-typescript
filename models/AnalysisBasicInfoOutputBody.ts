@@ -45,6 +45,18 @@ export class AnalysisBasicInfoOutputBody {
     */
     'debug': boolean;
     /**
+    * Detected instruction-set architecture; empty when unavailable
+    */
+    'detectedArchitecture': string;
+    /**
+    * Detected binary container format; empty when unavailable
+    */
+    'detectedBinaryFormat': string;
+    /**
+    * Detected operating-system platform; empty when unavailable
+    */
+    'detectedBinaryType': string;
+    /**
     * Number of functions in the binary
     */
     'functionCount': number;
@@ -69,6 +81,10 @@ export class AnalysisBasicInfoOutputBody {
     */
     'modelName': string;
     /**
+    * True when the analysis ran on a model older than the current one, so its owner can re-analyse it on the latest. Describes the analysis, not the caller\'s rights — only the owner may act on it
+    */
+    'modelUpgradeAvailable': boolean;
+    /**
     * Username of the analysis owner
     */
     'ownerUsername': string;
@@ -80,6 +96,18 @@ export class AnalysisBasicInfoOutputBody {
     * SHA-256 hash of the binary
     */
     'sha256Hash': string;
+    /**
+    * User-supplied instruction-set architecture; \"AUTO\" when not overridden
+    */
+    'suppliedArchitecture': string;
+    /**
+    * User-supplied binary container format; \"AUTO\" when not overridden
+    */
+    'suppliedBinaryFormat': string;
+    /**
+    * User-supplied operating-system platform; \"AUTO\" when not overridden
+    */
+    'suppliedBinaryType': string;
     /**
     * Team ID of the analysis
     */
@@ -139,6 +167,24 @@ export class AnalysisBasicInfoOutputBody {
             "format": ""
         },
         {
+            "name": "detectedArchitecture",
+            "baseName": "detected_architecture",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "detectedBinaryFormat",
+            "baseName": "detected_binary_format",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "detectedBinaryType",
+            "baseName": "detected_binary_type",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "functionCount",
             "baseName": "function_count",
             "type": "number",
@@ -175,6 +221,12 @@ export class AnalysisBasicInfoOutputBody {
             "format": ""
         },
         {
+            "name": "modelUpgradeAvailable",
+            "baseName": "model_upgrade_available",
+            "type": "boolean",
+            "format": ""
+        },
+        {
             "name": "ownerUsername",
             "baseName": "owner_username",
             "type": "string",
@@ -189,6 +241,24 @@ export class AnalysisBasicInfoOutputBody {
         {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "suppliedArchitecture",
+            "baseName": "supplied_architecture",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "suppliedBinaryFormat",
+            "baseName": "supplied_binary_format",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "suppliedBinaryType",
+            "baseName": "supplied_binary_type",
             "type": "string",
             "format": ""
         },

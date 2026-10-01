@@ -25,6 +25,10 @@ export class StartBatchMatchingInputBody {
     */
     'minSimilarity'?: number;
     /**
+    * By default a completed matching run is reused per binary (that binary reports status=COMPLETED, no new run). Set true to force fresh runs for every binary.
+    */
+    'noCache'?: boolean;
+    /**
     * Max matches returned per source function. Defaults to 1.
     */
     'resultsPerFunction'?: number;
@@ -51,6 +55,12 @@ export class StartBatchMatchingInputBody {
             "baseName": "min_similarity",
             "type": "number",
             "format": "double"
+        },
+        {
+            "name": "noCache",
+            "baseName": "no_cache",
+            "type": "boolean",
+            "format": ""
         },
         {
             "name": "resultsPerFunction",

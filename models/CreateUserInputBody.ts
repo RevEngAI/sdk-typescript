@@ -37,6 +37,10 @@ export class CreateUserInputBody {
     */
     'role'?: CreateUserInputBodyRoleEnum;
     /**
+    * Existing team to add the user to, which also becomes their default team
+    */
+    'teamId'?: number;
+    /**
     * User tier (defaults to ENTHUSIAST)
     */
     'tier'?: CreateUserInputBodyTierEnum;
@@ -89,6 +93,12 @@ export class CreateUserInputBody {
             "baseName": "role",
             "type": "CreateUserInputBodyRoleEnum",
             "format": ""
+        },
+        {
+            "name": "teamId",
+            "baseName": "team_id",
+            "type": "number",
+            "format": "int64"
         },
         {
             "name": "tier",

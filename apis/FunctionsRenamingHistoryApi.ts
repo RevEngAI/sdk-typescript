@@ -80,7 +80,7 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
-     * Renames multiple functions in a single request. Records name changes in history and copies data types from source functions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Renames multiple functions in a single request. Records name changes in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * Batch rename functions
      * @param batchRenameInputBody 
      */
@@ -221,7 +221,7 @@ export class FunctionsRenamingHistoryApiRequestFactory extends BaseAPIRequestFac
     }
 
     /**
-     * Renames a single function and records the change in history.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Renames a single function and records the change in history. `source_type` defaults to USER when omitted.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Rename a function
      * @param functionId Function ID
      * @param renameInputBody 
@@ -774,13 +774,13 @@ export class FunctionsRenamingHistoryApiResponseProcessor {
      * @params response Response returned by the server for a request to revertFunctionName_1
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async revertFunctionName_1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<{ [key: string]: any; } >> {
+     public async revertFunctionName_1WithHttpInfo(response: ResponseContext): Promise<HttpInfo<any >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("204", response.httpStatusCode)) {
-            const body: { [key: string]: any; } = ObjectSerializer.deserialize(
+            const body: any = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "{ [key: string]: any; }", ""
-            ) as { [key: string]: any; };
+                "any", ""
+            ) as any;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
@@ -814,10 +814,10 @@ export class FunctionsRenamingHistoryApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: { [key: string]: any; } = ObjectSerializer.deserialize(
+            const body: any = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "{ [key: string]: any; }", ""
-            ) as { [key: string]: any; };
+                "any", ""
+            ) as any;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

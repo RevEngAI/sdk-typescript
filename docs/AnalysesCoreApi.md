@@ -27,15 +27,28 @@ Method | HTTP request | Description
 [**updateAnalysis**](AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**updateAnalysisTags**](AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**uploadFile**](AnalysesCoreApi.md#uploadFile) | **POST** /v2/upload | Upload File
+[**v3DeleteAnalysis**](AnalysesCoreApi.md#v3DeleteAnalysis) | **DELETE** /v3/analyses/{analysis_id} | Delete an analysis.
+[**v3DownloadBinaryExport**](AnalysesCoreApi.md#v3DownloadBinaryExport) | **GET** /v3/analyses/{analysis_id}/binary-export | Download a binary export
+[**v3GetAnalysis**](AnalysesCoreApi.md#v3GetAnalysis) | **GET** /v3/analyses/{analysis_id} | Get an analysis.
 [**v3GetAnalysisAutoUnstripStatus**](AnalysesCoreApi.md#v3GetAnalysisAutoUnstripStatus) | **GET** /v3/analyses/{analysis_id}/auto-unstrip/status | Get the auto-unstrip status for an analysis.
+[**v3GetAnalysisFunctionsProgress**](AnalysesCoreApi.md#v3GetAnalysisFunctionsProgress) | **GET** /v3/analyses/{analysis_id}/progress/functions | Get function embedding progress for an analysis.
+[**v3GetAnalysisLogs**](AnalysesCoreApi.md#v3GetAnalysisLogs) | **GET** /v3/analyses/{analysis_id}/logs | Get the Analysis log
+[**v3GetAnalysisOperation**](AnalysesCoreApi.md#v3GetAnalysisOperation) | **GET** /v3/operations/analyses/{analysis_id} | Get an Analysis-creation operation
 [**v3GetAnalysisStrings**](AnalysesCoreApi.md#v3GetAnalysisStrings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
 [**v3GetAnalysisStringsStatus**](AnalysesCoreApi.md#v3GetAnalysisStringsStatus) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
+[**v3GetBinaryExportOperation**](AnalysesCoreApi.md#v3GetBinaryExportOperation) | **GET** /v3/operations/binary-export/{task_id} | Get a binary export operation
 [**v3ListAnalyses**](AnalysesCoreApi.md#v3ListAnalyses) | **GET** /v3/analyses | List analyses
 [**v3ListExampleAnalyses**](AnalysesCoreApi.md#v3ListExampleAnalyses) | **GET** /v3/analyses/examples | List example analyses
+[**v3LookupAnalysisByBinaryId**](AnalysesCoreApi.md#v3LookupAnalysisByBinaryId) | **GET** /v3/analyses/lookup/{binary_id} | Look up the most recent analysis for a binary.
+[**v3QueueBinaryExport**](AnalysesCoreApi.md#v3QueueBinaryExport) | **POST** /v3/analyses/{analysis_id}/binary-export | Queue a binary export
+[**v3SearchTags**](AnalysesCoreApi.md#v3SearchTags) | **GET** /v3/tags | Search tags
+[**v3UpdateAnalysis**](AnalysesCoreApi.md#v3UpdateAnalysis) | **PATCH** /v3/analyses/{analysis_id} | Update an analysis.
+[**v3UpdateAnalysisTags**](AnalysesCoreApi.md#v3UpdateAnalysisTags) | **PATCH** /v3/analyses/{analysis_id}/tags | Replace an analysis\&#39; tags.
+[**v3UpgradeAnalysisModel**](AnalysesCoreApi.md#v3UpgradeAnalysisModel) | **POST** /v3/analyses/{analysis_id}/upgrade-model | Re-analyse on the latest model
 
 
 # **addUserStringToAnalysis**
-> { [key: string]: any; } addUserStringToAnalysis(addUserStringInputBody)
+> any addUserStringToAnalysis(addUserStringInputBody)
 
 Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
@@ -53,7 +66,10 @@ const request: AnalysesCoreApiAddUserStringToAnalysisRequest = {
     // Analysis ID
   analysisId: 1,
   
-  addUserStringInputBody: ,
+  addUserStringInputBody: {
+    string: "string_example",
+    virtualAddress: 0,
+  },
 };
 
 const data = await apiInstance.addUserStringToAnalysis(request);
@@ -71,7 +87,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**{ [key: string]: any; }**
+**any**
 
 ### Authorization
 
@@ -121,20 +137,20 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
     ],
     analysisScope: "PRIVATE",
     symbols: {
-      baseAddress: 1,
+      baseAddress: 0,
       functionBoundaries: [
         {
-          mangledName: "mangledName_example",
-          startAddress: 1,
-          endAddress: 1,
+          endAddress: 0,
           includeInAnalysis: true,
+          mangledName: "mangledName_example",
+          startAddress: 0,
         },
       ],
     },
     debugHash: "debugHash_example",
     analysisConfig: {
       scrapeThirdPartyConfig: {
-        enabled: false,
+        enabled: true,
       },
       generateCapabilities: false,
       noCache: false,
@@ -150,12 +166,12 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
       },
     },
     binaryConfig: {
+      fileFormat: "pe",
       isa: "x86",
       platform: "linux",
-      fileFormat: "pe",
     },
     autoRunAgents: {
-      triage: false,
+      triage: true,
     },
   },
   
@@ -193,7 +209,7 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
+**422** | Unprocessable Entity |  -  |
 **404** | Not Found |  -  |
 **400** | Bad Request |  -  |
 
@@ -1234,9 +1250,36 @@ const request: AnalysesCoreApiStartAnalysisFunctionMatchingRequest = {
     // Analysis ID
   analysisId: 1,
   
-  startMatchingForAnalysisInputBody: 
-    key: null,
-  ,
+  startMatchingForAnalysisInputBody: {
+    filters: {
+      architectures: [
+        "x86_64",
+      ],
+      binaryIds: [
+        1,
+      ],
+      collectionIds: [
+        1,
+      ],
+      debug: true,
+      debugTypes: [
+        "debugTypes_example",
+      ],
+      functionIds: [
+        1,
+      ],
+      includeUserDebug: true,
+      platforms: [
+        "windows",
+      ],
+      userIds: [
+        1,
+      ],
+    },
+    minSimilarity: 0,
+    noCache: true,
+    resultsPerFunction: 1,
+  },
 };
 
 const data = await apiInstance.startAnalysisFunctionMatching(request);
@@ -1461,6 +1504,180 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **v3DeleteAnalysis**
+> void v3DeleteAnalysis()
+
+Deactivates the analysis. Only the owner may call it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3DeleteAnalysisRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3DeleteAnalysisRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3DeleteAnalysis(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3DownloadBinaryExport**
+> void v3DownloadBinaryExport()
+
+Streams the exported binary. Returns 404 if the task is not complete or its result has expired -- export again in either case.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3DownloadBinaryExportRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3DownloadBinaryExportRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Task ID returned by queueing the export (optional)
+  taskId: "task_id_example",
+};
+
+const data = await apiInstance.v3DownloadBinaryExport(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **taskId** | [**string**] | Task ID returned by queueing the export | (optional) defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetAnalysis**
+> AnalysisDetailOutputBody v3GetAnalysis()
+
+Returns the analysis\' resource-level detail: binary attributes, ownership, and the configuration it was submitted with.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetAnalysisRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetAnalysisRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3GetAnalysis(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**AnalysisDetailOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **v3GetAnalysisAutoUnstripStatus**
 > AutoUnstripStatusOutputBody v3GetAnalysisAutoUnstripStatus()
 
@@ -1496,6 +1713,177 @@ Name | Type | Description  | Notes
 ### Return type
 
 **AutoUnstripStatusOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetAnalysisFunctionsProgress**
+> FunctionsProgressOutputBody v3GetAnalysisFunctionsProgress()
+
+Returns how many functions the analysis has and how many carry an embedding, with the percentage complete. Embeddings are counted from the unified store, so an analysis whose model predates the current multi-arch one reports zero.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetAnalysisFunctionsProgressRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetAnalysisFunctionsProgressRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3GetAnalysisFunctionsProgress(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**FunctionsProgressOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetAnalysisLogs**
+> GetAnalysisLogsOutputBody v3GetAnalysisLogs()
+
+Returns every log line recorded for the Analysis, oldest first, merged from every source that has written one.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetAnalysisLogsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetAnalysisLogsRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3GetAnalysisLogs(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**GetAnalysisLogsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetAnalysisOperation**
+> OperationCreateMetadataCreateResult v3GetAnalysisOperation()
+
+Polls the status of an Analysis-creation operation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetAnalysisOperationRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetAnalysisOperationRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3GetAnalysisOperation(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**OperationCreateMetadataCreateResult**
 
 ### Authorization
 
@@ -1653,6 +2041,63 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **v3GetBinaryExportOperation**
+> OperationBinaryExportMetadataBinaryExportResult v3GetBinaryExportOperation()
+
+Returns the current state of the export started for this task ID. `done` is the only readiness signal: while false, poll again; once true, exactly one of `response` or `error` is set. A task ID the platform no longer recognises -- whether it never existed or its history has expired -- resolves to a failed operation, since either way the caller must export again.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetBinaryExportOperationRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetBinaryExportOperationRequest = {
+    // Task ID returned by queueing the export
+  taskId: "task_id_example",
+};
+
+const data = await apiInstance.v3GetBinaryExportOperation(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **taskId** | [**string**] | Task ID returned by queueing the export | defaults to undefined
+
+
+### Return type
+
+**OperationBinaryExportMetadataBinaryExportResult**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **v3ListAnalyses**
 > ListAnalysesOutputBody v3ListAnalyses()
 
@@ -1671,8 +2116,10 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiV3ListAnalysesRequest = {
   
   searchTerm: "search_term_example",
-    // Leave empty for no filter (optional)
-  analysisScope: ["PRIVATE"],
+    // Leave empty to search your own, your team\'s and all public analyses (optional)
+  analysisScope: [
+    "PRIVATE",
+  ],
   
   status: [
     "Uploaded",
@@ -1687,6 +2134,16 @@ const request: AnalysesCoreApiV3ListAnalysesRequest = {
   ],
   
   sha256Hash: "sha256_hash_example",
+    // Restrict to analyses of this binary. A binary can carry more than one analysis; they are returned newest first under the default sort (optional)
+  binaryId: 1,
+    // Restrict to binaries running on one of these operating-system platforms. Matches the uploader\'s override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter (optional)
+  platform: [
+    "windows",
+  ],
+    // Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter (optional)
+  architecture: [
+    "x86_64",
+  ],
   
   pageSize: 20,
     // Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination). (optional)
@@ -1707,11 +2164,14 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **searchTerm** | [**string**] |  | (optional) defaults to undefined
- **analysisScope** | **Array<&#39;PRIVATE&#39; &#124; &#39;PUBLIC&#39; &#124; &#39;TEAM&#39; &#124; &#39;11184809&#39;>** | Leave empty for no filter | (optional) defaults to undefined
+ **analysisScope** | **Array<&#39;PRIVATE&#39; &#124; &#39;PUBLIC&#39; &#124; &#39;TEAM&#39; &#124; &#39;11184809&#39;>** | Leave empty to search your own, your team\&#39;s and all public analyses | (optional) defaults to undefined
  **status** | **Array<&#39;Uploaded&#39; &#124; &#39;Queued&#39; &#124; &#39;Complete&#39; &#124; &#39;Error&#39; &#124; &#39;Processing&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to undefined
  **modelName** | **Array&lt;string&gt;** |  | (optional) defaults to undefined
  **usernames** | **Array&lt;string&gt;** |  | (optional) defaults to undefined
  **sha256Hash** | [**string**] |  | (optional) defaults to undefined
+ **binaryId** | [**number**] | Restrict to analyses of this binary. A binary can carry more than one analysis; they are returned newest first under the default sort | (optional) defaults to undefined
+ **platform** | **Array<&#39;windows&#39; &#124; &#39;linux&#39; &#124; &#39;android&#39; &#124; &#39;11184809&#39;>** | Restrict to binaries running on one of these operating-system platforms. Matches the uploader\&#39;s override when they set one, the detected platform otherwise; a binary with neither is never matched. Leave empty for no filter | (optional) defaults to undefined
+ **architecture** | **Array<&#39;x86_64&#39; &#124; &#39;x86_32&#39; &#124; &#39;arm_64&#39; &#124; &#39;11184809&#39;>** | Restrict to binaries built for one of these instruction-set architectures. Resolved the same way as platform. Leave empty for no filter | (optional) defaults to undefined
  **pageSize** | [**number**] |  | (optional) defaults to 20
  **nextPageToken** | [**string**] | Forward-pagination cursor from a prior response. When set, order_by/order are taken from the token (the sort cannot change mid-pagination). | (optional) defaults to undefined
  **orderBy** | [**&#39;created&#39; | &#39;binary_name&#39; | &#39;binary_size&#39;**]**Array<&#39;created&#39; &#124; &#39;binary_name&#39; &#124; &#39;binary_size&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to 'created'
@@ -1786,6 +2246,366 @@ This endpoint does not need any parameter.
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3LookupAnalysisByBinaryId**
+> LookupAnalysisByBinaryIDOutputBody v3LookupAnalysisByBinaryId()
+
+Returns the ID of the most recent analysis of this binary that the caller may see (their own, their team\'s, or public). Returns 404 if the binary has none, whether because it has never been analysed or because every analysis of it is private to someone else.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3LookupAnalysisByBinaryIdRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3LookupAnalysisByBinaryIdRequest = {
+    // Binary ID
+  binaryId: 1,
+};
+
+const data = await apiInstance.v3LookupAnalysisByBinaryId(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **binaryId** | [**number**] | Binary ID | defaults to undefined
+
+
+### Return type
+
+**LookupAnalysisByBinaryIDOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3QueueBinaryExport**
+> OperationBinaryExportMetadataBinaryExportResult v3QueueBinaryExport()
+
+Starts an asynchronous export of the binary with its current symbols rewritten in, and returns the operation to poll for its outcome. Only the owner may call it, and it requires a subscription tier that supports symbol export. Download the result once the operation reports done.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3QueueBinaryExportRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3QueueBinaryExportRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3QueueBinaryExport(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**OperationBinaryExportMetadataBinaryExportResult**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3SearchTags**
+> SearchTagsOutputBody v3SearchTags()
+
+Searches for tags by name. partial_name is required and must be at least 3 characters.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3SearchTagsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3SearchTagsRequest = {
+    // Partial or full tag name to search for, at least 3 characters (optional)
+  partialName: "partial_name_example",
+    // Maximum results to return (optional)
+  limit: 10,
+    // Number of results to skip (optional)
+  offset: 0,
+};
+
+const data = await apiInstance.v3SearchTags(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **partialName** | [**string**] | Partial or full tag name to search for, at least 3 characters | (optional) defaults to undefined
+ **limit** | [**number**] | Maximum results to return | (optional) defaults to 10
+ **offset** | [**number**] | Number of results to skip | (optional) defaults to 0
+
+
+### Return type
+
+**SearchTagsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3UpdateAnalysis**
+> AnalysisDetailOutputBody v3UpdateAnalysis(updateAnalysisInputBody)
+
+Renames the analysis\' binary and/or changes its scope. Only the owner may call it. Changing to a non-PUBLIC scope requires a subscription tier that supports private analyses.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3UpdateAnalysisRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3UpdateAnalysisRequest = {
+    // Analysis ID
+  analysisId: 1,
+  
+  updateAnalysisInputBody: {
+    analysisScope: "PUBLIC",
+    binaryName: "binaryName_example",
+  },
+};
+
+const data = await apiInstance.v3UpdateAnalysis(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateAnalysisInputBody** | **UpdateAnalysisInputBody**|  |
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**AnalysisDetailOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3UpdateAnalysisTags**
+> AnalysisTagsOutputBody v3UpdateAnalysisTags(updateTagsInputBody)
+
+Replaces the analysis\' binary\'s user tags (origin RevEng) with the given set. A tag recorded under any other origin, such as a heuristic detection sharing a name with a user tag, is left in place even when its name is absent from the request. Only the owner may call it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3UpdateAnalysisTagsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3UpdateAnalysisTagsRequest = {
+    // Analysis ID
+  analysisId: 1,
+  
+  updateTagsInputBody: {
+    tags: [
+      "tags_example",
+    ],
+  },
+};
+
+const data = await apiInstance.v3UpdateAnalysisTags(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **updateTagsInputBody** | **UpdateTagsInputBody**|  |
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**AnalysisTagsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3UpgradeAnalysisModel**
+> UpgradeAnalysisModelOutputBody v3UpgradeAnalysisModel()
+
+Re-runs an analysis created on an older model against the current unified model, in place — the analysis ID does not change. No credits are consumed. Only the owner may call it, and only once the analysis has settled: the pipeline clears the binary\'s functions, names, data types and signatures before re-running. Returns 409 if the analysis is already on the latest model, or is still running. Poll `GET /v3/analyses/{analysis_id}/basic` for status, as with any other run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3UpgradeAnalysisModelRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3UpgradeAnalysisModelRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3UpgradeAnalysisModel(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**UpgradeAnalysisModelOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

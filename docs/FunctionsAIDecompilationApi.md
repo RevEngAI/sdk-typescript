@@ -13,13 +13,18 @@ Method | HTTP request | Description
 [**getAiDecompilationStatus**](FunctionsAIDecompilationApi.md#getAiDecompilationStatus) | **GET** /v3/functions/{function_id}/ai-decompilation/status | Get AI decompilation workflow status
 [**getAiDecompilationSummary**](FunctionsAIDecompilationApi.md#getAiDecompilationSummary) | **GET** /v3/functions/{function_id}/ai-decompilation/summary | Get AI decompilation summary
 [**getAiDecompilationSummaryStatus**](FunctionsAIDecompilationApi.md#getAiDecompilationSummaryStatus) | **GET** /v3/functions/{function_id}/ai-decompilation/summary/status | Get summary generation workflow status
-[**getAiDecompilationTokenised**](FunctionsAIDecompilationApi.md#getAiDecompilationTokenised) | **GET** /v3/functions/{function_id}/ai-decompilation/tokenised | Get tokenised AI decompilation with function mapping
 [**patchAiDecompilationInlineComment**](FunctionsAIDecompilationApi.md#patchAiDecompilationInlineComment) | **PATCH** /v3/functions/{function_id}/ai-decompilation/inline-comments | Update a single inline comment
 [**regenerateAiDecompilationInlineComments**](FunctionsAIDecompilationApi.md#regenerateAiDecompilationInlineComments) | **POST** /v3/functions/{function_id}/ai-decompilation/inline-comments | Regenerate AI decompilation inline comments
 [**regenerateAiDecompilationSummary**](FunctionsAIDecompilationApi.md#regenerateAiDecompilationSummary) | **POST** /v3/functions/{function_id}/ai-decompilation/summary | Regenerate AI decompilation summary
 [**streamAiDecompilation**](FunctionsAIDecompilationApi.md#streamAiDecompilation) | **GET** /v3/functions/{function_id}/ai-decompilation/events | Stream live AI decompilation output (SSE)
-[**upsertAiDecompilationOverrides**](FunctionsAIDecompilationApi.md#upsertAiDecompilationOverrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 [**upsertAiDecompilationRating**](FunctionsAIDecompilationApi.md#upsertAiDecompilationRating) | **PATCH** /v2/functions/{function_id}/ai-decompilation/rating | Upsert rating for AI decompilation
+[**v3AcceptAiDecompilationTypeSuggestions**](FunctionsAIDecompilationApi.md#v3AcceptAiDecompilationTypeSuggestions) | **POST** /v3/functions/{function_id}/ai-decompilation/type-suggestions/accept | Accept AI decompilation type suggestions
+[**v3GetAiDecompilationLineAttributions**](FunctionsAIDecompilationApi.md#v3GetAiDecompilationLineAttributions) | **GET** /v3/functions/{function_id}/ai-decompilation/line-attributions | Get AI decompilation line attributions
+[**v3GetAiDecompilationRating**](FunctionsAIDecompilationApi.md#v3GetAiDecompilationRating) | **GET** /v3/functions/{function_id}/ai-decompilation/rating | Get AI decompilation rating
+[**v3GetAiDecompilationTokens**](FunctionsAIDecompilationApi.md#v3GetAiDecompilationTokens) | **GET** /v3/functions/{function_id}/ai-decompilation/tokens | Get AI decompilation tokens and user overrides
+[**v3GetAiDecompilationTypeSuggestions**](FunctionsAIDecompilationApi.md#v3GetAiDecompilationTypeSuggestions) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Get AI decompilation type suggestions
+[**v3UpsertAiDecompilationOverrides**](FunctionsAIDecompilationApi.md#v3UpsertAiDecompilationOverrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
+[**v3UpsertAiDecompilationRating**](FunctionsAIDecompilationApi.md#v3UpsertAiDecompilationRating) | **PATCH** /v3/functions/{function_id}/ai-decompilation/rating | Upsert AI decompilation rating
 
 
 # **createAiDecompilation**
@@ -40,10 +45,10 @@ const apiInstance = new FunctionsAIDecompilationApi(configuration);
 const request: FunctionsAIDecompilationApiCreateAiDecompilationRequest = {
     // Function ID
   functionId: 1,
-    // Use context-aware decompilation (optional)
-  contextAware: false,
     // LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. (optional)
   temperature: -1,
+    // Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. (optional)
+  typeSuggestions: true,
 };
 
 const data = await apiInstance.createAiDecompilation(request);
@@ -56,8 +61,8 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **functionId** | [**number**] | Function ID | defaults to undefined
- **contextAware** | [**boolean**] | Use context-aware decompilation | (optional) defaults to false
  **temperature** | [**number**] | LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default. | (optional) defaults to -1
+ **typeSuggestions** | [**boolean**] | Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. | (optional) defaults to true
 
 
 ### Return type
@@ -542,63 +547,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getAiDecompilationTokenised**
-> TokenisedData getAiDecompilationTokenised()
-
-Returns the decompilation with placeholder tokens, the function mapping for token resolution, and the predicted function name.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
-import type { FunctionsAIDecompilationApiGetAiDecompilationTokenisedRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsAIDecompilationApi(configuration);
-
-const request: FunctionsAIDecompilationApiGetAiDecompilationTokenisedRequest = {
-    // Function ID
-  functionId: 1,
-};
-
-const data = await apiInstance.getAiDecompilationTokenised(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **functionId** | [**number**] | Function ID | defaults to undefined
-
-
-### Return type
-
-**TokenisedData**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **patchAiDecompilationInlineComment**
 > CommentsData patchAiDecompilationInlineComment(patchCommentBody)
 
@@ -618,7 +566,10 @@ const request: FunctionsAIDecompilationApiPatchAiDecompilationInlineCommentReque
     // Function ID
   functionId: 1,
   
-  patchCommentBody: ,
+  patchCommentBody: {
+    comment: "comment_example",
+    line: 1,
+  },
 };
 
 const data = await apiInstance.patchAiDecompilationInlineComment(request);
@@ -662,7 +613,7 @@ Name | Type | Description  | Notes
 # **regenerateAiDecompilationInlineComments**
 > RegenerateOutputBody regenerateAiDecompilationInlineComments()
 
-Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+Starts a new inline comments generation workflow for the function. Requires an existing decompilation with a summary. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers the comments would reference. Poll the inline comments status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
 ### Example
 
@@ -709,8 +660,10 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **202** | Accepted |  -  |
+**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -719,7 +672,7 @@ Name | Type | Description  | Notes
 # **regenerateAiDecompilationSummary**
 > RegenerateOutputBody regenerateAiDecompilationSummary()
 
-Starts a new summary generation workflow for the function. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+Starts a new summary generation workflow for the function. Requires an existing decompilation. Rejected while a decompilation is running: its naming and type-suggestion passes are still changing the identifiers a summary would describe. Poll the summary status endpoint, which reports PENDING until then.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
 
 ### Example
 
@@ -768,6 +721,7 @@ Name | Type | Description  | Notes
 **202** | Accepted |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -776,7 +730,7 @@ Name | Type | Description  | Notes
 # **streamAiDecompilation**
 > Array<StreamAiDecompilation200ResponseInner> streamAiDecompilation()
 
-Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`. Terminal events: `decomp_finished` (success) or `decomp_failed` (all retries exhausted). `attempt_failed` is per-attempt and non-terminal — Temporal may retry the activity. Clients should treat `attempt` changes as a reset signal. `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
+Opens a Server-Sent Events stream of incremental decompilation events for the given function. Each event has a `type` discriminator (also used as the SSE `event:` line) and a per-attempt monotonic `seq`.  **Terminal events — the stream closes on these:** `names_finished` (success) and `decomp_failed` (all retries exhausted). `names_finished` is published on every success path, including when the naming pass is disabled, produces nothing, or fails, so a successful run always closes.  **`decomp_finished` is NOT terminal.** It marks the end of the model call, not the end of the run: entity restore, the result write, the placeholder-naming pass and the type-suggestion pass all follow it, and the last two rewrite the identifiers the source renders with. Reading the decompilation at `decomp_finished` therefore returns names that are about to change — wait for `names_finished`. `attempt_failed` is per-attempt and non-terminal too: Temporal may retry, and clients disambiguate on `attempt`, which they should treat as a reset signal.  `last_event_id` is not supported — clients fall back to polling the standard GET endpoint after the stream ends.
 
 ### Example
 
@@ -824,67 +778,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **0** | Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **upsertAiDecompilationOverrides**
-> UpsertOverridesData upsertAiDecompilationOverrides(upsertOverridesInputBody)
-
-Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
-import type { FunctionsAIDecompilationApiUpsertAiDecompilationOverridesRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsAIDecompilationApi(configuration);
-
-const request: FunctionsAIDecompilationApiUpsertAiDecompilationOverridesRequest = {
-    // Function ID
-  functionId: 1,
-  
-  upsertOverridesInputBody: ,
-};
-
-const data = await apiInstance.upsertAiDecompilationOverrides(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **upsertOverridesInputBody** | **UpsertOverridesInputBody**|  |
- **functionId** | [**number**] | Function ID | defaults to undefined
-
-
-### Return type
-
-**UpsertOverridesData**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -944,6 +837,431 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **201** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3AcceptAiDecompilationTypeSuggestions**
+> AcceptTypeSuggestionsOutputBody v3AcceptAiDecompilationTypeSuggestions(acceptTypeSuggestionsInputBody)
+
+Stores the named type suggestions as data types of this function\'s analysis, with a `source_type` of `AI_DECOMP` and this function as their `source_function_id`.  Each suggestion is stored as the type suggestions endpoint renders it: a `STRUCT` where members were placed, a `TYPEDEF` where the suggestion is a name for a scalar, and an `UNKNOWN` type where nothing gave it a shape. A member with no offset or width is left out and counted in `skipped_members`. A type expression a member names is matched against the analysis by name alone and created where nothing matches: `char *` creates a `char` `BASE` type and a `POINTER` type pointing at it, reusing either where the analysis already holds it. A member naming another suggestion accepted by the same request resolves to it. Only a trailing `*` is taken apart, so a name like `int &` stands for one type.  No size is stored: the widths a suggestion carries are lower bounds rather than the type\'s own. A suggestion the analysis already holds a type of that name and kind for resolves to it, so repeating a request stores nothing further.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiV3AcceptAiDecompilationTypeSuggestionsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiV3AcceptAiDecompilationTypeSuggestionsRequest = {
+    // Function ID
+  functionId: 1,
+  
+  acceptTypeSuggestionsInputBody: {
+    keys: [
+      "keys_example",
+    ],
+  },
+};
+
+const data = await apiInstance.v3AcceptAiDecompilationTypeSuggestions(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **acceptTypeSuggestionsInputBody** | **AcceptTypeSuggestionsInputBody**|  |
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**AcceptTypeSuggestionsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetAiDecompilationLineAttributions**
+> LineAttributionsData v3GetAiDecompilationLineAttributions()
+
+Returns the correspondence between the function\'s disassembly line numbers and its AI-decompilation line numbers, grouped by disassembly line. Both sides are 0-indexed and the correspondence has a many-to-many relationship. The mapping is empty until a completed run has produced one, and is empty for a run that produced none.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiV3GetAiDecompilationLineAttributionsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiV3GetAiDecompilationLineAttributionsRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.v3GetAiDecompilationLineAttributions(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**LineAttributionsData**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetAiDecompilationRating**
+> RatingOutputBody v3GetAiDecompilationRating()
+
+Returns the caller\'s rating and reason for a function\'s AI decompilation, or null fields when they have not rated it yet.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiV3GetAiDecompilationRatingRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiV3GetAiDecompilationRatingRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.v3GetAiDecompilationRating(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**RatingOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetAiDecompilationTokens**
+> GetTokensResponse v3GetAiDecompilationTokens()
+
+Returns the tokenised AI-decompilation source, the value each token resolves to, and the user\'s overrides as a separate unmerged map. The source is empty and the overrides are null until a run has succeeded.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiV3GetAiDecompilationTokensRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiV3GetAiDecompilationTokensRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.v3GetAiDecompilationTokens(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**GetTokensResponse**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetAiDecompilationTypeSuggestions**
+> TypeSuggestionsData v3GetAiDecompilationTypeSuggestions()
+
+Returns the aggregate types the AI decompilation inferred for this function: a suggested name for each type and each of its members, the members\' offsets and widths, and the gaps between them. Members revealed only by a caller or callee are included and marked by origin, as are members the model placed rather than observed. Nothing here is a data type row — these are proposals, and creating a row from one is the client\'s call. The list is empty until a run has produced suggestions, which is ordinary and not an error.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiV3GetAiDecompilationTypeSuggestionsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiV3GetAiDecompilationTypeSuggestionsRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.v3GetAiDecompilationTypeSuggestions(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**TypeSuggestionsData**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3UpsertAiDecompilationOverrides**
+> UpsertOverridesData v3UpsertAiDecompilationOverrides(upsertOverridesInputBody)
+
+Applies user-provided name overrides to placeholder tokens in the decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiV3UpsertAiDecompilationOverridesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiV3UpsertAiDecompilationOverridesRequest = {
+    // Function ID
+  functionId: 1,
+  
+  upsertOverridesInputBody: {
+    overrides: {
+      "key": {
+        source: "user",
+        value: "value_example",
+      },
+    },
+  },
+};
+
+const data = await apiInstance.v3UpsertAiDecompilationOverrides(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **upsertOverridesInputBody** | **UpsertOverridesInputBody**|  |
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**UpsertOverridesData**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3UpsertAiDecompilationRating**
+> void v3UpsertAiDecompilationRating(upsertRatingInputBody)
+
+Records the caller\'s rating and optional reason for a function\'s AI decompilation, replacing any they recorded before. Requires an existing decompilation.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsAIDecompilationApi } from '@revengai/sdk';
+import type { FunctionsAIDecompilationApiV3UpsertAiDecompilationRatingRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsAIDecompilationApi(configuration);
+
+const request: FunctionsAIDecompilationApiV3UpsertAiDecompilationRatingRequest = {
+    // Function ID
+  functionId: 1,
+  
+  upsertRatingInputBody: {
+    rating: "POSITIVE",
+    reason: "reason_example",
+  },
+};
+
+const data = await apiInstance.v3UpsertAiDecompilationRating(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **upsertRatingInputBody** | **UpsertRatingInputBody**|  |
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

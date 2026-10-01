@@ -18,7 +18,7 @@ export class AnalysisFunctionEntry {
     'functionName': string;
     'functionSize': number;
     'functionVaddr': number;
-    'mangledName'?: string | null;
+    'mangledName'?: string;
     /**
     * ID of the analysis the source function belongs to, if any
     */

@@ -26,6 +26,7 @@ import { CanonicalizeNamesOutputBody } from '../models/CanonicalizeNamesOutputBo
 import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
 import { DisassemblyOutputBody } from '../models/DisassemblyOutputBody';
 import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
+import { GetFunctionMapsOutputBody } from '../models/GetFunctionMapsOutputBody';
 import { GetMatchesOutputBody } from '../models/GetMatchesOutputBody';
 import { GetMatchesStatusOutputBody } from '../models/GetMatchesStatusOutputBody';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
@@ -33,6 +34,7 @@ import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBo
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
+import { SearchFunctionsOutputBody } from '../models/SearchFunctionsOutputBody';
 import { StartMatchingForFunctionsInputBody } from '../models/StartMatchingForFunctionsInputBody';
 import { StartMatchingOutputBody } from '../models/StartMatchingOutputBody';
 
@@ -341,7 +343,7 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Get function disassembly
      * @param functionId Function ID
      */
@@ -1284,6 +1286,112 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
         return requestContext;
     }
 
+    /**
+     * Returns three maps built from every function in the analysis\'s binary: function ID to virtual address, its inverse, and virtual address to mangled name. Empty maps for a binary with no functions yet.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get function ID/address maps for an analysis
+     * @param analysisId Analysis ID
+     */
+    public async v3GetAnalysisFuncMaps(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("FunctionsCoreApi", "v3GetAnalysisFuncMaps", "analysisId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/func-maps'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Searches for functions visible to the caller. At least one of partial_name or model_name must be provided.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Search functions
+     * @param partialName Partial or full function name to search for
+     * @param modelName Restrict results to functions analysed with this model
+     * @param limit Maximum results to return
+     * @param offset Number of results to skip
+     */
+    public async v3SearchFunctions(partialName?: string, modelName?: string, limit?: number, offset?: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+
+
+
+
+        // Path Params
+        const localVarPath = '/v3/functions';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (partialName !== undefined) {
+            requestContext.setQueryParam("partial_name", ObjectSerializer.serialize(partialName, "string", ""));
+        }
+
+        // Query Params
+        if (modelName !== undefined) {
+            requestContext.setQueryParam("model_name", ObjectSerializer.serialize(modelName, "string", ""));
+        }
+
+        // Query Params
+        if (limit !== undefined) {
+            requestContext.setQueryParam("limit", ObjectSerializer.serialize(limit, "number", "int64"));
+        }
+
+        // Query Params
+        if (offset !== undefined) {
+            requestContext.setQueryParam("offset", ObjectSerializer.serialize(offset, "number", "int64"));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
 }
 
 export class FunctionsCoreApiResponseProcessor {
@@ -1295,13 +1403,13 @@ export class FunctionsCoreApiResponseProcessor {
      * @params response Response returned by the server for a request to addFunctionCallee
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async addFunctionCalleeWithHttpInfo(response: ResponseContext): Promise<HttpInfo<{ [key: string]: any; } >> {
+     public async addFunctionCalleeWithHttpInfo(response: ResponseContext): Promise<HttpInfo<any >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: { [key: string]: any; } = ObjectSerializer.deserialize(
+            const body: any = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "{ [key: string]: any; }", ""
-            ) as { [key: string]: any; };
+                "any", ""
+            ) as any;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("400", response.httpStatusCode)) {
@@ -1342,10 +1450,10 @@ export class FunctionsCoreApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: { [key: string]: any; } = ObjectSerializer.deserialize(
+            const body: any = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "{ [key: string]: any; }", ""
-            ) as { [key: string]: any; };
+                "any", ""
+            ) as any;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1359,13 +1467,13 @@ export class FunctionsCoreApiResponseProcessor {
      * @params response Response returned by the server for a request to addUserStringToFunction
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async addUserStringToFunctionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<{ [key: string]: any; } >> {
+     public async addUserStringToFunctionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<any >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: { [key: string]: any; } = ObjectSerializer.deserialize(
+            const body: any = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "{ [key: string]: any; }", ""
-            ) as { [key: string]: any; };
+                "any", ""
+            ) as any;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
@@ -1399,10 +1507,10 @@ export class FunctionsCoreApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: { [key: string]: any; } = ObjectSerializer.deserialize(
+            const body: any = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "{ [key: string]: any; }", ""
-            ) as { [key: string]: any; };
+                "any", ""
+            ) as any;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -1553,6 +1661,13 @@ export class FunctionsCoreApiResponseProcessor {
                 "APIError", ""
             ) as APIError;
             throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
             const body: APIError = ObjectSerializer.deserialize(
@@ -2531,6 +2646,106 @@ export class FunctionsCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "CanonicalizeNamesOutputBody", ""
             ) as CanonicalizeNamesOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3GetAnalysisFuncMaps
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3GetAnalysisFuncMapsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<GetFunctionMapsOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: GetFunctionMapsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "GetFunctionMapsOutputBody", ""
+            ) as GetFunctionMapsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: GetFunctionMapsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "GetFunctionMapsOutputBody", ""
+            ) as GetFunctionMapsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3SearchFunctions
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3SearchFunctionsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<SearchFunctionsOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: SearchFunctionsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SearchFunctionsOutputBody", ""
+            ) as SearchFunctionsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: SearchFunctionsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "SearchFunctionsOutputBody", ""
+            ) as SearchFunctionsOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

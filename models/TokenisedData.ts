@@ -9,14 +9,15 @@
  * Do not edit the class manually.
  */
 
-import { AIDecompFunctionMapping } from '../models/AIDecompFunctionMapping';
+import { ResolvedEntity } from '../models/ResolvedEntity';
 import { HttpFile } from '../http/http';
 
 export class TokenisedData {
     /**
-    * Complete mapping data for token resolution
+    * One entry per token in the tokenised source, with the name it resolves to and its hover metadata.
     */
-    'functionMapping'?: AIDecompFunctionMapping;
+    'entities'?: Array<ResolvedEntity> | null;
+    'lineAttribution'?: any | null;
     /**
     * Predicted function name from the AI model
     */
@@ -36,9 +37,15 @@ export class TokenisedData {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "functionMapping",
-            "baseName": "function_mapping",
-            "type": "AIDecompFunctionMapping",
+            "name": "entities",
+            "baseName": "entities",
+            "type": "Array<ResolvedEntity>",
+            "format": ""
+        },
+        {
+            "name": "lineAttribution",
+            "baseName": "line_attribution",
+            "type": "any",
             "format": ""
         },
         {

@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+import { FunctionSourceType } from '../models/FunctionSourceType';
 import { HttpFile } from '../http/http';
 
 export class FunctionRename {
@@ -20,6 +21,10 @@ export class FunctionRename {
     * The new mangled name for the function
     */
     'newMangledName': string;
+    /**
+    * The source that triggered the rename
+    */
+    'sourceType'?: FunctionSourceType;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -37,6 +42,12 @@ export class FunctionRename {
             "baseName": "new_mangled_name",
             "type": "string",
             "format": ""
+        },
+        {
+            "name": "sourceType",
+            "baseName": "source_type",
+            "type": "FunctionSourceType",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
@@ -46,3 +57,5 @@ export class FunctionRename {
     public constructor() {
     }
 }
+
+

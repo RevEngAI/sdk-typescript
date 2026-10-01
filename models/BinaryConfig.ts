@@ -9,15 +9,12 @@
  * Do not edit the class manually.
  */
 
-import { FileFormat } from '../models/FileFormat';
-import { ISA } from '../models/ISA';
-import { Platform } from '../models/Platform';
 import { HttpFile } from '../http/http';
 
 export class BinaryConfig {
-    'isa'?: ISA | null;
-    'platform'?: Platform | null;
-    'fileFormat'?: FileFormat | null;
+    'fileFormat'?: BinaryConfigFileFormatEnum;
+    'isa'?: BinaryConfigIsaEnum;
+    'platform'?: BinaryConfigPlatformEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -25,21 +22,21 @@ export class BinaryConfig {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "fileFormat",
+            "baseName": "file_format",
+            "type": "BinaryConfigFileFormatEnum",
+            "format": ""
+        },
+        {
             "name": "isa",
             "baseName": "isa",
-            "type": "ISA",
+            "type": "BinaryConfigIsaEnum",
             "format": ""
         },
         {
             "name": "platform",
             "baseName": "platform",
-            "type": "Platform",
-            "format": ""
-        },
-        {
-            "name": "fileFormat",
-            "baseName": "file_format",
-            "type": "FileFormat",
+            "type": "BinaryConfigPlatformEnum",
             "format": ""
         }    ];
 
@@ -51,4 +48,22 @@ export class BinaryConfig {
     }
 }
 
+export enum BinaryConfigFileFormatEnum {
+    Pe = 'pe',
+    Elf = 'elf',
+    Blob = 'blob',
+    UnknownDefaultOpenApi = '11184809'
+}
+export enum BinaryConfigIsaEnum {
+    X86 = 'x86',
+    X8664 = 'x86_64',
+    Arm = 'arm',
+    UnknownDefaultOpenApi = '11184809'
+}
+export enum BinaryConfigPlatformEnum {
+    Linux = 'linux',
+    Windows = 'windows',
+    Android = 'android',
+    UnknownDefaultOpenApi = '11184809'
+}
 

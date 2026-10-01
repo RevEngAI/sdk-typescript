@@ -13,7 +13,7 @@ import { HttpFile } from '../http/http';
 
 export class ExternalResponse {
     'sha256Hash': string;
-    'data': { [key: string]: any; };
+    'data': any;
     'lastUpdated': Date;
 
     static readonly discriminator: string | undefined = undefined;
@@ -30,7 +30,7 @@ export class ExternalResponse {
         {
             "name": "data",
             "baseName": "data",
-            "type": "{ [key: string]: any; }",
+            "type": "any",
             "format": ""
         },
         {

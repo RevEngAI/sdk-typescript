@@ -606,7 +606,7 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Deletes a collection. The collection must not have any linked binaries (call PATCH /v3/collections/{collection_id}/binaries with an empty list first).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+     * Deletes a collection along with its binary links, tags, and hierarchy links. The binaries themselves are not deleted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Delete a collection.
      * @param collectionId 
      */
@@ -727,17 +727,25 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Lists collections accessible to the authenticated user. Supports search, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Lists collections accessible to the authenticated user. Supports search by collection name, contained binary name/SHA-256, tags, owner, filtering, ordering, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * List collections.
-     * @param searchTerm 
+     * @param searchTerm Partial or full collection name to search for
+     * @param binaryName Only return Collections containing a Binary whose name contains this
+     * @param binarySha256 Only return Collections containing a Binary whose SHA-256 hash contains this
+     * @param tags Only return Collections carrying at least one of these Tags
+     * @param userIds Restrict results to Collections owned by one of these user IDs
      * @param filters 
      * @param limit 
      * @param offset 
      * @param orderBy 
      * @param order 
      */
-    public async v3ListCollections(searchTerm?: string, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
+    public async v3ListCollections(searchTerm?: string, binaryName?: string, binarySha256?: string, tags?: Array<string>, userIds?: Array<number>, filters?: Array<'official_only' | 'user_only' | 'team_only' | 'public_only' | 'hide_empty'>, limit?: number, offset?: number, orderBy?: 'created' | 'collection' | 'collection_size' | 'updated' | 'owner', order?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
+
+
+
+
 
 
 
@@ -755,6 +763,26 @@ export class CollectionsApiRequestFactory extends BaseAPIRequestFactory {
         // Query Params
         if (searchTerm !== undefined) {
             requestContext.setQueryParam("search_term", ObjectSerializer.serialize(searchTerm, "string", ""));
+        }
+
+        // Query Params
+        if (binaryName !== undefined) {
+            requestContext.setQueryParam("binary_name", ObjectSerializer.serialize(binaryName, "string", ""));
+        }
+
+        // Query Params
+        if (binarySha256 !== undefined) {
+            requestContext.setQueryParam("binary_sha256", ObjectSerializer.serialize(binarySha256, "string", ""));
+        }
+
+        // Query Params
+        if (tags !== undefined) {
+            requestContext.setQueryParam("tags", ObjectSerializer.serialize(tags, "Array<string>", ""));
+        }
+
+        // Query Params
+        if (userIds !== undefined) {
+            requestContext.setQueryParam("user_ids", ObjectSerializer.serialize(userIds, "Array<number>", "int64"));
         }
 
         // Query Params
@@ -1431,13 +1459,6 @@ export class CollectionsApiResponseProcessor {
                 "APIError", ""
             ) as APIError;
             throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("409", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
             const body: APIError = ObjectSerializer.deserialize(

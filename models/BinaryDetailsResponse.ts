@@ -20,33 +20,27 @@ export class BinaryDetailsResponse {
     * The size of the binary in bits
     */
     'bits': number;
-    'crc32': string;
+    'crc32': string | null;
     '_class': string;
-    'entropy': number;
-    'fileSize': number;
+    'entropy': number | null;
+    'fileSize': number | null;
     /**
     * 
     */
     'language': string;
-    'md5': string;
+    'md5': string | null;
     'machine': string;
     /**
     * OS target of the binary
     */
     'os': string;
-    /**
-    * SHA1 hash of the binary
-    */
-    'sha1': string;
-    /**
-    * SHA256 hash of the binary
-    */
-    'sha256': string;
+    'sha1': string | null;
+    'sha256': string | null;
     'ssdeep': string | null;
     '_static': boolean;
     'stripped': boolean;
     'subSys': string;
-    'tlsh': string;
+    'tlsh': string | null;
     'type': string;
     'debug': boolean;
     'firstSeen': Date;

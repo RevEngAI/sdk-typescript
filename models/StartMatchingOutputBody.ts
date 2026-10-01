@@ -22,6 +22,10 @@ export class StartMatchingOutputBody {
     */
     'messages': Array<ProgressMessage> | null;
     /**
+    * Overall completion as a percentage, weighted by step duration
+    */
+    'percent': number;
+    /**
     * Current workflow status
     */
     'status': StartMatchingOutputBodyStatusEnum;
@@ -34,9 +38,25 @@ export class StartMatchingOutputBody {
     */
     'stepIndex': number;
     /**
+    * Percentage points the current step contributes when it completes
+    */
+    'stepShare': number;
+    /**
     * Total number of steps in the workflow
     */
     'stepsTotal': number;
+    /**
+    * Phase within the current step, when the step reports one
+    */
+    'subStep'?: string;
+    /**
+    * Items completed in the current phase
+    */
+    'subStepDone'?: number;
+    /**
+    * Items the current phase will process, 0 when unknown
+    */
+    'subStepTotal'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -54,6 +74,12 @@ export class StartMatchingOutputBody {
             "baseName": "messages",
             "type": "Array<ProgressMessage>",
             "format": ""
+        },
+        {
+            "name": "percent",
+            "baseName": "percent",
+            "type": "number",
+            "format": "int64"
         },
         {
             "name": "status",
@@ -74,8 +100,32 @@ export class StartMatchingOutputBody {
             "format": "int64"
         },
         {
+            "name": "stepShare",
+            "baseName": "step_share",
+            "type": "number",
+            "format": "int64"
+        },
+        {
             "name": "stepsTotal",
             "baseName": "steps_total",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "subStep",
+            "baseName": "sub_step",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "subStepDone",
+            "baseName": "sub_step_done",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "subStepTotal",
+            "baseName": "sub_step_total",
             "type": "number",
             "format": "int64"
         }    ];
