@@ -317,6 +317,7 @@ export * from '../models/EventTOOLCALLPROGRESS';
 export * from '../models/EventTOOLCALLRESULT';
 export * from '../models/EventTOOLCALLSTART';
 export * from '../models/EventTOOLCONFIRMATIONREQUIRED';
+export * from '../models/EventTypesApplied';
 export * from '../models/EventTypesSuggested';
 export * from '../models/EventWarning';
 export * from '../models/EvidenceEffect';
@@ -690,6 +691,7 @@ export * from '../models/Ttp';
 export * from '../models/TypeSuggestionsData';
 export * from '../models/TypedefDataType';
 export * from '../models/TypedefDefinition';
+export * from '../models/TypesAppliedEvent';
 export * from '../models/TypesSuggestedEvent';
 export * from '../models/UnionDataType';
 export * from '../models/UnionDefinition';
@@ -1063,6 +1065,7 @@ import { EventTOOLCALLPROGRESS , EventTOOLCALLPROGRESSEventEnum     } from '../m
 import { EventTOOLCALLRESULT , EventTOOLCALLRESULTEventEnum     } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART , EventTOOLCALLSTARTEventEnum     } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED , EventTOOLCONFIRMATIONREQUIREDEventEnum     } from '../models/EventTOOLCONFIRMATIONREQUIRED';
+import { EventTypesApplied , EventTypesAppliedEventEnum     } from '../models/EventTypesApplied';
 import { EventTypesSuggested , EventTypesSuggestedEventEnum     } from '../models/EventTypesSuggested';
 import { EventWarning , EventWarningEventEnum     } from '../models/EventWarning';
 import { EvidenceEffect } from '../models/EvidenceEffect';
@@ -1436,6 +1439,7 @@ import { Ttp } from '../models/Ttp';
 import { TypeSuggestionsData , TypeSuggestionsDataStatusEnum    } from '../models/TypeSuggestionsData';
 import { TypedefDataType    , TypedefDataTypeKindEnum       , TypedefDataTypeSourceTypeEnum   } from '../models/TypedefDataType';
 import { TypedefDefinition } from '../models/TypedefDefinition';
+import { TypesAppliedEvent } from '../models/TypesAppliedEvent';
 import { TypesSuggestedEvent } from '../models/TypesSuggestedEvent';
 import { UnionDataType    , UnionDataTypeKindEnum       , UnionDataTypeSourceTypeEnum   } from '../models/UnionDataType';
 import { UnionDefinition } from '../models/UnionDefinition';
@@ -1610,6 +1614,7 @@ let enumsMap: Set<string> = new Set<string>([
     "EventTOOLCALLRESULTEventEnum",
     "EventTOOLCALLSTARTEventEnum",
     "EventTOOLCONFIRMATIONREQUIREDEventEnum",
+    "EventTypesAppliedEventEnum",
     "EventTypesSuggestedEventEnum",
     "EventWarningEventEnum",
     "EvidenceEffect",
@@ -2096,6 +2101,7 @@ let typeMap: {[index: string]: any} = {
     "EventTOOLCALLRESULT": EventTOOLCALLRESULT,
     "EventTOOLCALLSTART": EventTOOLCALLSTART,
     "EventTOOLCONFIRMATIONREQUIRED": EventTOOLCONFIRMATIONREQUIRED,
+    "EventTypesApplied": EventTypesApplied,
     "EventTypesSuggested": EventTypesSuggested,
     "EventWarning": EventWarning,
     "Example": Example,
@@ -2453,6 +2459,7 @@ let typeMap: {[index: string]: any} = {
     "TypeSuggestionsData": TypeSuggestionsData,
     "TypedefDataType": TypedefDataType,
     "TypedefDefinition": TypedefDefinition,
+    "TypesAppliedEvent": TypesAppliedEvent,
     "TypesSuggestedEvent": TypesSuggestedEvent,
     "UnionDataType": UnionDataType,
     "UnionDefinition": UnionDefinition,

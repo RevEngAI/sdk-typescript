@@ -18,6 +18,7 @@ import { EventProse } from '../models/EventProse';
 import { EventRenameApplied } from '../models/EventRenameApplied';
 import { EventSourceDelta } from '../models/EventSourceDelta';
 import { EventSourceReset } from '../models/EventSourceReset';
+import { EventTypesApplied } from '../models/EventTypesApplied';
 import { EventTypesSuggested } from '../models/EventTypesSuggested';
 import { EventWarning } from '../models/EventWarning';
 import { HttpFile } from '../http/http';
@@ -27,7 +28,7 @@ import { HttpFile } from '../http/http';
  * Type
  * @export
  */
-export type StreamAiDecompilation200ResponseInner = EventAttemptFailed | EventAttemptStarted | EventDecompFailed | EventDecompFinished | EventNamesFinished | EventProse | EventRenameApplied | EventSourceDelta | EventSourceReset | EventTypesSuggested | EventWarning;
+export type StreamAiDecompilation200ResponseInner = EventAttemptFailed | EventAttemptStarted | EventDecompFailed | EventDecompFinished | EventNamesFinished | EventProse | EventRenameApplied | EventSourceDelta | EventSourceReset | EventTypesApplied | EventTypesSuggested | EventWarning;
 
 /**
 * @type StreamAiDecompilation200ResponseInnerClass
@@ -38,6 +39,7 @@ export class StreamAiDecompilation200ResponseInnerClass {
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 }
+
 
 
 

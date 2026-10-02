@@ -15,7 +15,11 @@ import { HttpFile } from '../http/http';
 
 export class SuggestedTypeView {
     /**
-    * Existing data type the members were accessed through. Null when nothing resolved to a row; never minted for a suggestion.
+    * The type this suggestion became: a newly minted data type holding its name and members. Once set, the suggestion\'s entities resolve through this id rather than data_type_id. Null when it has not been applied, either because the pass is off or because nothing gave the suggestion a shape to store.
+    */
+    'appliedDataTypeId'?: number;
+    /**
+    * The type this suggestion is about: the existing data type the members were accessed through. Never modified by applying a suggestion. Null when nothing resolved to a row, which is what makes the suggestion a proposal.
     */
     'dataTypeId'?: number;
     /**
@@ -27,7 +31,7 @@ export class SuggestedTypeView {
     */
     'impliedSize'?: number;
     /**
-    * Identity of the suggestion: index:<data_type_id> where the access named a row, else token:<type_token>.
+    * Identity of the suggestion: index:<data_type_id> where the access named a row, type:<type_token> for a type with no observed members, else token:<type_token>. Do not infer data_type_id from the prefix: a type: key may carry one too.
     */
     'key': string;
     /**
@@ -52,6 +56,12 @@ export class SuggestedTypeView {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "appliedDataTypeId",
+            "baseName": "applied_data_type_id",
+            "type": "number",
+            "format": "int64"
+        },
         {
             "name": "dataTypeId",
             "baseName": "data_type_id",

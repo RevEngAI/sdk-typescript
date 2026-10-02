@@ -9,19 +9,23 @@
  * Do not edit the class manually.
  */
 
-import { AcceptedType } from '../models/AcceptedType';
-import { DataTypeEntry } from '../models/DataTypeEntry';
+import { TypesAppliedEvent } from '../models/TypesAppliedEvent';
 import { HttpFile } from '../http/http';
 
-export class AcceptTypeSuggestionsOutputBody {
+export class EventTypesApplied {
+    'data': TypesAppliedEvent;
     /**
-    * One entry per requested suggestion that had a shape to store, in request order.
+    * The event name.
     */
-    'accepted': Array<AcceptedType> | null;
+    'event': EventTypesAppliedEventEnum;
     /**
-    * The type each requested suggestion resolved to, plus every type minted to satisfy one, ordered by data_type_id.
+    * The event ID.
     */
-    'dataTypes': Array<DataTypeEntry> | null;
+    'id'?: number;
+    /**
+    * The retry time in milliseconds.
+    */
+    'retry'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -29,22 +33,40 @@ export class AcceptTypeSuggestionsOutputBody {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "accepted",
-            "baseName": "accepted",
-            "type": "Array<AcceptedType>",
+            "name": "data",
+            "baseName": "data",
+            "type": "TypesAppliedEvent",
             "format": ""
         },
         {
-            "name": "dataTypes",
-            "baseName": "data_types",
-            "type": "Array<DataTypeEntry>",
+            "name": "event",
+            "baseName": "event",
+            "type": "EventTypesAppliedEventEnum",
+            "format": ""
+        },
+        {
+            "name": "id",
+            "baseName": "id",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "retry",
+            "baseName": "retry",
+            "type": "number",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return AcceptTypeSuggestionsOutputBody.attributeTypeMap;
+        return EventTypesApplied.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+export enum EventTypesAppliedEventEnum {
+    TypesApplied = 'types_applied',
+    UnknownDefaultOpenApi = '11184809'
+}
+

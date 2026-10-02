@@ -321,6 +321,7 @@ import { EventTOOLCALLPROGRESS } from '../models/EventTOOLCALLPROGRESS';
 import { EventTOOLCALLRESULT } from '../models/EventTOOLCALLRESULT';
 import { EventTOOLCALLSTART } from '../models/EventTOOLCALLSTART';
 import { EventTOOLCONFIRMATIONREQUIRED } from '../models/EventTOOLCONFIRMATIONREQUIRED';
+import { EventTypesApplied } from '../models/EventTypesApplied';
 import { EventTypesSuggested } from '../models/EventTypesSuggested';
 import { EventWarning } from '../models/EventWarning';
 import { EvidenceEffect } from '../models/EvidenceEffect';
@@ -694,6 +695,7 @@ import { Ttp } from '../models/Ttp';
 import { TypeSuggestionsData } from '../models/TypeSuggestionsData';
 import { TypedefDataType } from '../models/TypedefDataType';
 import { TypedefDefinition } from '../models/TypedefDefinition';
+import { TypesAppliedEvent } from '../models/TypesAppliedEvent';
 import { TypesSuggestedEvent } from '../models/TypesSuggestedEvent';
 import { UnionDataType } from '../models/UnionDataType';
 import { UnionDefinition } from '../models/UnionDefinition';
@@ -5118,10 +5120,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param functionId Function ID
      * @param [temperature] LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
      * @param [typeSuggestions] Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
+     * @param [applyTypes] Store the suggested types as data types of this function\&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
      */
-    public createAiDecompilationWithHttpInfo(functionId: number, temperature?: number, typeSuggestions?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
+    public createAiDecompilationWithHttpInfo(functionId: number, temperature?: number, typeSuggestions?: boolean, applyTypes?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationWithHttpInfo(functionId, temperature, typeSuggestions, observableOptions);
+        const result = this.api.createAiDecompilationWithHttpInfo(functionId, temperature, typeSuggestions, applyTypes, observableOptions);
         return result.toPromise();
     }
 
@@ -5131,10 +5134,11 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param functionId Function ID
      * @param [temperature] LLM temperature (0.0-1.0). Overrides the server default when set. Omit or set to -1 to use the server default.
      * @param [typeSuggestions] Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
+     * @param [applyTypes] Store the suggested types as data types of this function\&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
      */
-    public createAiDecompilation(functionId: number, temperature?: number, typeSuggestions?: boolean, _options?: PromiseConfigurationOptions): Promise<CreateAIDecompOutputBody> {
+    public createAiDecompilation(functionId: number, temperature?: number, typeSuggestions?: boolean, applyTypes?: boolean, _options?: PromiseConfigurationOptions): Promise<CreateAIDecompOutputBody> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilation(functionId, temperature, typeSuggestions, observableOptions);
+        const result = this.api.createAiDecompilation(functionId, temperature, typeSuggestions, applyTypes, observableOptions);
         return result.toPromise();
     }
 
@@ -5427,7 +5431,7 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Stores the named type suggestions as data types of this function\'s analysis, with a `source_type` of `AI_DECOMP` and this function as their `source_function_id`.  Each suggestion is stored as the type suggestions endpoint renders it: a `STRUCT` where members were placed, a `TYPEDEF` where the suggestion is a name for a scalar, and an `UNKNOWN` type where nothing gave it a shape. A member with no offset or width is left out and counted in `skipped_members`. A type expression a member names is matched against the analysis by name alone and created where nothing matches: `char *` creates a `char` `BASE` type and a `POINTER` type pointing at it, reusing either where the analysis already holds it. A member naming another suggestion accepted by the same request resolves to it. Only a trailing `*` is taken apart, so a name like `int &` stands for one type.  No size is stored: the widths a suggestion carries are lower bounds rather than the type\'s own. A suggestion the analysis already holds a type of that name and kind for resolves to it, so repeating a request stores nothing further.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Stores the named type suggestions as data types of this function\'s analysis, with a `source_type` of `AI_DECOMP` and this function as their `source_function_id`.  Each suggestion is stored as the type suggestions endpoint renders it: a `STRUCT` where members were placed and a `TYPEDEF` where the suggestion is a name for a scalar. A suggestion nothing gave a shape to is left out, so `accepted` can be shorter than the keys requested. A member with no offset or width is left out and counted in `skipped_members`. A type expression a member names is matched against the analysis by name alone and created where nothing matches: `char *` creates a `char` `BASE` type and a `POINTER` type pointing at it, reusing either where the analysis already holds it. A member naming another suggestion accepted by the same request resolves to it. Only a trailing `*` is taken apart, so a name like `int &` stands for one type.  No size is stored: the widths a suggestion carries are lower bounds rather than the type\'s own. A suggestion the analysis already holds a type of that name and kind for resolves to it, so repeating a request stores nothing further.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
      * Accept AI decompilation type suggestions
      * @param functionId Function ID
      * @param acceptTypeSuggestionsInputBody
@@ -5439,7 +5443,7 @@ export class PromiseFunctionsAIDecompilationApi {
     }
 
     /**
-     * Stores the named type suggestions as data types of this function\'s analysis, with a `source_type` of `AI_DECOMP` and this function as their `source_function_id`.  Each suggestion is stored as the type suggestions endpoint renders it: a `STRUCT` where members were placed, a `TYPEDEF` where the suggestion is a name for a scalar, and an `UNKNOWN` type where nothing gave it a shape. A member with no offset or width is left out and counted in `skipped_members`. A type expression a member names is matched against the analysis by name alone and created where nothing matches: `char *` creates a `char` `BASE` type and a `POINTER` type pointing at it, reusing either where the analysis already holds it. A member naming another suggestion accepted by the same request resolves to it. Only a trailing `*` is taken apart, so a name like `int &` stands for one type.  No size is stored: the widths a suggestion carries are lower bounds rather than the type\'s own. A suggestion the analysis already holds a type of that name and kind for resolves to it, so repeating a request stores nothing further.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Stores the named type suggestions as data types of this function\'s analysis, with a `source_type` of `AI_DECOMP` and this function as their `source_function_id`.  Each suggestion is stored as the type suggestions endpoint renders it: a `STRUCT` where members were placed and a `TYPEDEF` where the suggestion is a name for a scalar. A suggestion nothing gave a shape to is left out, so `accepted` can be shorter than the keys requested. A member with no offset or width is left out and counted in `skipped_members`. A type expression a member names is matched against the analysis by name alone and created where nothing matches: `char *` creates a `char` `BASE` type and a `POINTER` type pointing at it, reusing either where the analysis already holds it. A member naming another suggestion accepted by the same request resolves to it. Only a trailing `*` is taken apart, so a name like `int &` stands for one type.  No size is stored: the widths a suggestion carries are lower bounds rather than the type\'s own. A suggestion the analysis already holds a type of that name and kind for resolves to it, so repeating a request stores nothing further.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
      * Accept AI decompilation type suggestions
      * @param functionId Function ID
      * @param acceptTypeSuggestionsInputBody
@@ -5535,6 +5539,52 @@ export class PromiseFunctionsAIDecompilationApi {
     public v3GetAiDecompilationTypeSuggestions(functionId: number, _options?: PromiseConfigurationOptions): Promise<TypeSuggestionsData> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3GetAiDecompilationTypeSuggestions(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns fine-grained progress of the type suggestion workflow. Reports PENDING while a decompilation is running, because its own type-naming pass produces the same suggestions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get type suggestion workflow status
+     * @param functionId Function ID
+     */
+    public v3GetAiDecompilationTypeSuggestionsStatusWithHttpInfo(functionId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<WorkflowProgress>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAiDecompilationTypeSuggestionsStatusWithHttpInfo(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns fine-grained progress of the type suggestion workflow. Reports PENDING while a decompilation is running, because its own type-naming pass produces the same suggestions.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get type suggestion workflow status
+     * @param functionId Function ID
+     */
+    public v3GetAiDecompilationTypeSuggestionsStatus(functionId: number, _options?: PromiseConfigurationOptions): Promise<WorkflowProgress> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAiDecompilationTypeSuggestionsStatus(functionId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts a new type suggestion workflow for the function, discarding the suggestions already stored. Requires a successful decompilation; it re-runs only the type-naming pass, so it costs no decompilation credit. The regenerated types are stored as data types of the analysis unless `apply_types=false`; types a previous run stored are not removed. Rejected while a decompilation is running: it runs the same pass itself once its output settles. Poll the type-suggestions status endpoint, which reports PENDING until then, and read the result from the type-suggestions endpoint.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Regenerate AI decompilation type suggestions
+     * @param functionId Function ID
+     * @param [applyTypes] Store the regenerated types as data types of this function\&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
+     */
+    public v3RegenerateAiDecompilationTypeSuggestionsWithHttpInfo(functionId: number, applyTypes?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<RegenerateOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RegenerateAiDecompilationTypeSuggestionsWithHttpInfo(functionId, applyTypes, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts a new type suggestion workflow for the function, discarding the suggestions already stored. Requires a successful decompilation; it re-runs only the type-naming pass, so it costs no decompilation credit. The regenerated types are stored as data types of the analysis unless `apply_types=false`; types a previous run stored are not removed. Rejected while a decompilation is running: it runs the same pass itself once its output settles. Poll the type-suggestions status endpoint, which reports PENDING until then, and read the result from the type-suggestions endpoint.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `500` [`INTERNAL_ERROR`](/errors/INTERNAL_ERROR) — Internal Server Error
+     * Regenerate AI decompilation type suggestions
+     * @param functionId Function ID
+     * @param [applyTypes] Store the regenerated types as data types of this function\&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
+     */
+    public v3RegenerateAiDecompilationTypeSuggestions(functionId: number, applyTypes?: boolean, _options?: PromiseConfigurationOptions): Promise<RegenerateOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RegenerateAiDecompilationTypeSuggestions(functionId, applyTypes, observableOptions);
         return result.toPromise();
     }
 
