@@ -243,6 +243,8 @@ Class | Method | HTTP request | Description
 *FunctionsAIDecompilationApi* | [**v3GetAiDecompilationRating**](docs/FunctionsAIDecompilationApi.md#v3GetAiDecompilationRating) | **GET** /v3/functions/{function_id}/ai-decompilation/rating | Get AI decompilation rating
 *FunctionsAIDecompilationApi* | [**v3GetAiDecompilationTokens**](docs/FunctionsAIDecompilationApi.md#v3GetAiDecompilationTokens) | **GET** /v3/functions/{function_id}/ai-decompilation/tokens | Get AI decompilation tokens and user overrides
 *FunctionsAIDecompilationApi* | [**v3GetAiDecompilationTypeSuggestions**](docs/FunctionsAIDecompilationApi.md#v3GetAiDecompilationTypeSuggestions) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Get AI decompilation type suggestions
+*FunctionsAIDecompilationApi* | [**v3GetAiDecompilationTypeSuggestionsStatus**](docs/FunctionsAIDecompilationApi.md#v3GetAiDecompilationTypeSuggestionsStatus) | **GET** /v3/functions/{function_id}/ai-decompilation/type-suggestions/status | Get type suggestion workflow status
+*FunctionsAIDecompilationApi* | [**v3RegenerateAiDecompilationTypeSuggestions**](docs/FunctionsAIDecompilationApi.md#v3RegenerateAiDecompilationTypeSuggestions) | **POST** /v3/functions/{function_id}/ai-decompilation/type-suggestions | Regenerate AI decompilation type suggestions
 *FunctionsAIDecompilationApi* | [**v3UpsertAiDecompilationOverrides**](docs/FunctionsAIDecompilationApi.md#v3UpsertAiDecompilationOverrides) | **PATCH** /v3/functions/{function_id}/ai-decompilation/overrides | Upsert variable/function name overrides
 *FunctionsAIDecompilationApi* | [**v3UpsertAiDecompilationRating**](docs/FunctionsAIDecompilationApi.md#v3UpsertAiDecompilationRating) | **PATCH** /v3/functions/{function_id}/ai-decompilation/rating | Upsert AI decompilation rating
 *FunctionsCoreApi* | [**addFunctionCallee**](docs/FunctionsCoreApi.md#addFunctionCallee) | **POST** /v3/functions/{function_id}/callees | Add a callee to a function
@@ -612,6 +614,7 @@ Class | Method | HTTP request | Description
  - [EventTOOLCALLRESULT](EventTOOLCALLRESULT.md)
  - [EventTOOLCALLSTART](EventTOOLCALLSTART.md)
  - [EventTOOLCONFIRMATIONREQUIRED](EventTOOLCONFIRMATIONREQUIRED.md)
+ - [EventTypesApplied](EventTypesApplied.md)
  - [EventTypesSuggested](EventTypesSuggested.md)
  - [EventWarning](EventWarning.md)
  - [EvidenceEffect](EvidenceEffect.md)
@@ -985,6 +988,7 @@ Class | Method | HTTP request | Description
  - [TypeSuggestionsData](TypeSuggestionsData.md)
  - [TypedefDataType](TypedefDataType.md)
  - [TypedefDefinition](TypedefDefinition.md)
+ - [TypesAppliedEvent](TypesAppliedEvent.md)
  - [TypesSuggestedEvent](TypesSuggestedEvent.md)
  - [UnionDataType](UnionDataType.md)
  - [UnionDefinition](UnionDefinition.md)

@@ -9,19 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { AcceptedType } from '../models/AcceptedType';
-import { DataTypeEntry } from '../models/DataTypeEntry';
 import { HttpFile } from '../http/http';
 
-export class AcceptTypeSuggestionsOutputBody {
-    /**
-    * One entry per requested suggestion that had a shape to store, in request order.
-    */
-    'accepted': Array<AcceptedType> | null;
-    /**
-    * The type each requested suggestion resolved to, plus every type minted to satisfy one, ordered by data_type_id.
-    */
-    'dataTypes': Array<DataTypeEntry> | null;
+export class TypesAppliedEvent {
+    'attempt': number;
+    'seq': number;
+    'skipped': number;
+    'type': string;
+    'types': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -29,20 +24,38 @@ export class AcceptTypeSuggestionsOutputBody {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "accepted",
-            "baseName": "accepted",
-            "type": "Array<AcceptedType>",
+            "name": "attempt",
+            "baseName": "attempt",
+            "type": "number",
+            "format": "int32"
+        },
+        {
+            "name": "seq",
+            "baseName": "seq",
+            "type": "number",
+            "format": "int32"
+        },
+        {
+            "name": "skipped",
+            "baseName": "skipped",
+            "type": "number",
+            "format": "int32"
+        },
+        {
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "dataTypes",
-            "baseName": "data_types",
-            "type": "Array<DataTypeEntry>",
-            "format": ""
+            "name": "types",
+            "baseName": "types",
+            "type": "number",
+            "format": "int32"
         }    ];
 
     static getAttributeTypeMap() {
-        return AcceptTypeSuggestionsOutputBody.attributeTypeMap;
+        return TypesAppliedEvent.attributeTypeMap;
     }
 
     public constructor() {
