@@ -1,6 +1,6 @@
 {
   "name": "@revengai/sdk",
-  "version": "4.69.0",
+  "version": "4.70.0",
   "description": "TypeScript SDK for the RevEng.AI API",
   "author": "RevEng.AI",
   "repository": {
