@@ -280,6 +280,8 @@ import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionMetadata } from '../models/DynamicExecutionMetadata';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { DynamicExecutionStatusResponse } from '../models/DynamicExecutionStatusResponse';
+import { DynamicExecutionSummary } from '../models/DynamicExecutionSummary';
+import { DynamicExecutionSummaryMetadata } from '../models/DynamicExecutionSummaryMetadata';
 import { ELFImportModel } from '../models/ELFImportModel';
 import { ELFModel } from '../models/ELFModel';
 import { ELFRelocation } from '../models/ELFRelocation';
@@ -492,6 +494,7 @@ import { OperationCreateMetadataCreateResult } from '../models/OperationCreateMe
 import { OperationCryptoExplainMetadataCryptoExplainResult } from '../models/OperationCryptoExplainMetadataCryptoExplainResult';
 import { OperationCryptoScanMetadataCryptoScanResult } from '../models/OperationCryptoScanMetadataCryptoScanResult';
 import { OperationDynamicExecutionMetadataDynamicExecutionResult } from '../models/OperationDynamicExecutionMetadataDynamicExecutionResult';
+import { OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult } from '../models/OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult';
 import { OperationExecutionExplainMetadataExecutionExplainResult } from '../models/OperationExecutionExplainMetadataExecutionExplainResult';
 import { OperationExecutionScanMetadataExecutionScanResult } from '../models/OperationExecutionScanMetadataExecutionScanResult';
 import { OperationFilesystemAnalyseMetadataFilesystemAnalyseResult } from '../models/OperationFilesystemAnalyseMetadataFilesystemAnalyseResult';
