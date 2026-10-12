@@ -276,6 +276,8 @@ export * from '../models/DrakvufFileMetadata';
 export * from '../models/DynamicExecutionMetadata';
 export * from '../models/DynamicExecutionStatus';
 export * from '../models/DynamicExecutionStatusResponse';
+export * from '../models/DynamicExecutionSummary';
+export * from '../models/DynamicExecutionSummaryMetadata';
 export * from '../models/ELFImportModel';
 export * from '../models/ELFModel';
 export * from '../models/ELFRelocation';
@@ -488,6 +490,7 @@ export * from '../models/OperationCreateMetadataCreateResult';
 export * from '../models/OperationCryptoExplainMetadataCryptoExplainResult';
 export * from '../models/OperationCryptoScanMetadataCryptoScanResult';
 export * from '../models/OperationDynamicExecutionMetadataDynamicExecutionResult';
+export * from '../models/OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult';
 export * from '../models/OperationExecutionExplainMetadataExecutionExplainResult';
 export * from '../models/OperationExecutionScanMetadataExecutionScanResult';
 export * from '../models/OperationFilesystemAnalyseMetadataFilesystemAnalyseResult';
@@ -1024,6 +1027,8 @@ import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionMetadata , DynamicExecutionMetadataStatusEnum   } from '../models/DynamicExecutionMetadata';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { DynamicExecutionStatusResponse  , DynamicExecutionStatusResponseStatusEnum   } from '../models/DynamicExecutionStatusResponse';
+import { DynamicExecutionSummary } from '../models/DynamicExecutionSummary';
+import { DynamicExecutionSummaryMetadata, DynamicExecutionSummaryMetadataStatusEnum   } from '../models/DynamicExecutionSummaryMetadata';
 import { ELFImportModel } from '../models/ELFImportModel';
 import { ELFModel } from '../models/ELFModel';
 import { ELFRelocation } from '../models/ELFRelocation';
@@ -1236,6 +1241,7 @@ import { OperationCreateMetadataCreateResult } from '../models/OperationCreateMe
 import { OperationCryptoExplainMetadataCryptoExplainResult } from '../models/OperationCryptoExplainMetadataCryptoExplainResult';
 import { OperationCryptoScanMetadataCryptoScanResult } from '../models/OperationCryptoScanMetadataCryptoScanResult';
 import { OperationDynamicExecutionMetadataDynamicExecutionResult } from '../models/OperationDynamicExecutionMetadataDynamicExecutionResult';
+import { OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult } from '../models/OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult';
 import { OperationExecutionExplainMetadataExecutionExplainResult } from '../models/OperationExecutionExplainMetadataExecutionExplainResult';
 import { OperationExecutionScanMetadataExecutionScanResult } from '../models/OperationExecutionScanMetadataExecutionScanResult';
 import { OperationFilesystemAnalyseMetadataFilesystemAnalyseResult } from '../models/OperationFilesystemAnalyseMetadataFilesystemAnalyseResult';
@@ -1584,6 +1590,7 @@ let enumsMap: Set<string> = new Set<string>([
     "DynamicExecutionMetadataStatusEnum",
     "DynamicExecutionStatus",
     "DynamicExecutionStatusResponseStatusEnum",
+    "DynamicExecutionSummaryMetadataStatusEnum",
     "Endianness",
     "EnumDataTypeKindEnum",
     "EnumDataTypeSourceTypeEnum",
@@ -2061,6 +2068,8 @@ let typeMap: {[index: string]: any} = {
     "DrakvufFileMetadata": DrakvufFileMetadata,
     "DynamicExecutionMetadata": DynamicExecutionMetadata,
     "DynamicExecutionStatusResponse": DynamicExecutionStatusResponse,
+    "DynamicExecutionSummary": DynamicExecutionSummary,
+    "DynamicExecutionSummaryMetadata": DynamicExecutionSummaryMetadata,
     "ELFImportModel": ELFImportModel,
     "ELFModel": ELFModel,
     "ELFRelocation": ELFRelocation,
@@ -2265,6 +2274,7 @@ let typeMap: {[index: string]: any} = {
     "OperationCryptoExplainMetadataCryptoExplainResult": OperationCryptoExplainMetadataCryptoExplainResult,
     "OperationCryptoScanMetadataCryptoScanResult": OperationCryptoScanMetadataCryptoScanResult,
     "OperationDynamicExecutionMetadataDynamicExecutionResult": OperationDynamicExecutionMetadataDynamicExecutionResult,
+    "OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult": OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult,
     "OperationExecutionExplainMetadataExecutionExplainResult": OperationExecutionExplainMetadataExecutionExplainResult,
     "OperationExecutionScanMetadataExecutionScanResult": OperationExecutionScanMetadataExecutionScanResult,
     "OperationFilesystemAnalyseMetadataFilesystemAnalyseResult": OperationFilesystemAnalyseMetadataFilesystemAnalyseResult,
