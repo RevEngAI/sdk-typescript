@@ -1035,6 +1035,8 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * @deprecated
+     *
      * Re-queues an already uploaded analysis
      * Requeue Analysis
      * @param analysisId 
