@@ -14,6 +14,7 @@ import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPubl
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { GetPublicUserOutputBody } from '../models/GetPublicUserOutputBody';
 import { GetUserActivityOutputBody } from '../models/GetUserActivityOutputBody';
+import { ListPublicUsersOutputBody } from '../models/ListPublicUsersOutputBody';
 import { SubmitFeedbackBody } from '../models/SubmitFeedbackBody';
 import { SubmitFeedbackOutputBody } from '../models/SubmitFeedbackOutputBody';
 import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
@@ -214,6 +215,53 @@ export class AuthenticationUsersApiRequestFactory extends BaseAPIRequestFactory 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns up to 5 active users whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
+     * Search users
+     * @param searchTerm Text the username contains (case-insensitive)
+     */
+    public async v3ListUsers(searchTerm: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'searchTerm' is not null or undefined
+        if (searchTerm === null || searchTerm === undefined) {
+            throw new RequiredError("AuthenticationUsersApi", "v3ListUsers", "searchTerm");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/users';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (searchTerm !== undefined) {
+            requestContext.setQueryParam("search_term", ObjectSerializer.serialize(searchTerm, "string", ""));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -481,6 +529,42 @@ export class AuthenticationUsersApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "GetUserActivityOutputBody", ""
             ) as GetUserActivityOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3ListUsers
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3ListUsersWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListPublicUsersOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListPublicUsersOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListPublicUsersOutputBody", ""
+            ) as ListPublicUsersOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListPublicUsersOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListPublicUsersOutputBody", ""
+            ) as ListPublicUsersOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

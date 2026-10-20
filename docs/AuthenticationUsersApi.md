@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**submitUserFeedback**](AuthenticationUsersApi.md#submitUserFeedback) | **POST** /v2/users/feedback | Submit feedback about the application
 [**v3GetUser**](AuthenticationUsersApi.md#v3GetUser) | **GET** /v3/users/{user_id} | Get a user\&#39;s public information
 [**v3GetUserActivity**](AuthenticationUsersApi.md#v3GetUserActivity) | **GET** /v3/users/activity | Get the caller\&#39;s activity feed
+[**v3ListUsers**](AuthenticationUsersApi.md#v3ListUsers) | **GET** /v3/users | Search users
 [**v3SubmitUserFeedback**](AuthenticationUsersApi.md#v3SubmitUserFeedback) | **POST** /v3/users/feedback | Submit feedback
 
 
@@ -253,6 +254,60 @@ This endpoint does not need any parameter.
 ### Return type
 
 **GetUserActivityOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3ListUsers**
+> ListPublicUsersOutputBody v3ListUsers()
+
+Returns up to 5 active users whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
+
+### Example
+
+
+```typescript
+import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
+import type { AuthenticationUsersApiV3ListUsersRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AuthenticationUsersApi(configuration);
+
+const request: AuthenticationUsersApiV3ListUsersRequest = {
+    // Text the username contains (case-insensitive)
+  searchTerm: "search_term_example",
+};
+
+const data = await apiInstance.v3ListUsers(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchTerm** | [**string**] | Text the username contains (case-insensitive) | defaults to undefined
+
+
+### Return type
+
+**ListPublicUsersOutputBody**
 
 ### Authorization
 

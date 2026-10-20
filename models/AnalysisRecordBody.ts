@@ -54,6 +54,10 @@ export class AnalysisRecordBody {
     */
     'detectedBinaryType': string;
     /**
+    * Detected source language; empty when unavailable
+    */
+    'detectedLanguage': string;
+    /**
     * Hash of the binary\'s provided function boundaries
     */
     'functionBoundariesHash': string;
@@ -164,6 +168,12 @@ export class AnalysisRecordBody {
         {
             "name": "detectedBinaryType",
             "baseName": "detected_binary_type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "detectedLanguage",
+            "baseName": "detected_language",
             "type": "string",
             "format": ""
         },

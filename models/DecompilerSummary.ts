@@ -14,7 +14,7 @@ import { Subject } from '../models/Subject';
 import { HttpFile } from '../http/http';
 
 export class DecompilerSummary {
-    'subject': Subject;
+    'subject': Subject | null;
     'summary': string;
     'reachability'?: CallChain | null;
 

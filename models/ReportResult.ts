@@ -9,11 +9,19 @@
  * Do not edit the class manually.
  */
 
+import { ReportFinding } from '../models/ReportFinding';
+import { ReportMeta } from '../models/ReportMeta';
 import { HttpFile } from '../http/http';
 
 export class ReportResult {
-    'findings': any | null;
-    'meta': any | null;
+    /**
+    * The findings the agent reported, each with its supporting evidence.
+    */
+    'findings': Array<ReportFinding>;
+    /**
+    * Report-level metadata.
+    */
+    'meta': ReportMeta;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,13 +31,13 @@ export class ReportResult {
         {
             "name": "findings",
             "baseName": "findings",
-            "type": "any",
+            "type": "Array<ReportFinding>",
             "format": ""
         },
         {
             "name": "meta",
             "baseName": "meta",
-            "type": "any",
+            "type": "ReportMeta",
             "format": ""
         }    ];
 

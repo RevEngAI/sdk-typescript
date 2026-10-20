@@ -1,3 +1,4 @@
+export * from '../models/APICombinationEvidence';
 export * from '../models/APIError';
 export * from '../models/AcceptTypeSuggestionsInputBody';
 export * from '../models/AcceptTypeSuggestionsOutputBody';
@@ -37,6 +38,8 @@ export * from '../models/AnalysisFunctionsList';
 export * from '../models/AnalysisLogEntry';
 export * from '../models/AnalysisLogMessage';
 export * from '../models/AnalysisLogs';
+export * from '../models/AnalysisOperationBody';
+export * from '../models/AnalysisOperationsOutputBody';
 export * from '../models/AnalysisRecord';
 export * from '../models/AnalysisRecordBody';
 export * from '../models/AnalysisReport';
@@ -270,14 +273,17 @@ export * from '../models/DecompilerSummary';
 export * from '../models/DecompilerSummaryEvidence';
 export * from '../models/DieMatch';
 export * from '../models/DisassemblyOutputBody';
+export * from '../models/DisassemblySummaryEvidence';
 export * from '../models/Display';
 export * from '../models/DnsQuery';
 export * from '../models/DrakvufFileMetadata';
 export * from '../models/DynamicExecutionMetadata';
+export * from '../models/DynamicExecutionResult';
 export * from '../models/DynamicExecutionStatus';
 export * from '../models/DynamicExecutionStatusResponse';
 export * from '../models/DynamicExecutionSummary';
 export * from '../models/DynamicExecutionSummaryMetadata';
+export * from '../models/DynamicExecutionSummaryResult';
 export * from '../models/ELFImportModel';
 export * from '../models/ELFModel';
 export * from '../models/ELFRelocation';
@@ -365,6 +371,7 @@ export * from '../models/FunctionCallEdges';
 export * from '../models/FunctionCapabilityResponse';
 export * from '../models/FunctionDataType';
 export * from '../models/FunctionDetailsOutputBody';
+export * from '../models/FunctionGlobalVariable';
 export * from '../models/FunctionListItem';
 export * from '../models/FunctionLocalVariableResponse';
 export * from '../models/FunctionMapping';
@@ -386,6 +393,7 @@ export * from '../models/FunctionString';
 export * from '../models/FunctionStringItem';
 export * from '../models/FunctionStringsResponse';
 export * from '../models/FunctionTypeDefinition';
+export * from '../models/FunctionUsage';
 export * from '../models/FunctionsDetailResponse';
 export * from '../models/FunctionsListRename';
 export * from '../models/FunctionsProgressOutputBody';
@@ -403,6 +411,7 @@ export * from '../models/GetDataTypeHistoryBody';
 export * from '../models/GetDieInfoOutputBody';
 export * from '../models/GetFunctionMapsOutputBody';
 export * from '../models/GetFunctionSignatureHistoryBody';
+export * from '../models/GetGlobalHistoryOutputBody';
 export * from '../models/GetMatchesOutputBody';
 export * from '../models/GetMatchesStatusOutputBody';
 export * from '../models/GetModelsOutputBody';
@@ -414,6 +423,8 @@ export * from '../models/GetRelatedStatusOutputBody';
 export * from '../models/GetSubscriptionOutputBody';
 export * from '../models/GetTokensResponse';
 export * from '../models/GetUserActivityOutputBody';
+export * from '../models/GlobalHistoryEntry';
+export * from '../models/GlobalVariable';
 export * from '../models/HardcodedSecretEvidence';
 export * from '../models/HistoryActor';
 export * from '../models/HistoryEntry';
@@ -423,6 +434,7 @@ export * from '../models/ISA';
 export * from '../models/IconModel';
 export * from '../models/ImportDynamicExecutionFileOutputBody';
 export * from '../models/ImportModel';
+export * from '../models/ImportedAPICallEvidence';
 export * from '../models/ImportedApi';
 export * from '../models/ImportedApiCall';
 export * from '../models/ImportedApiCallEvidence';
@@ -441,15 +453,20 @@ export * from '../models/LineAttributionsData';
 export * from '../models/ListAnalysesOutputBody';
 export * from '../models/ListAnalysisDataTypesOutputBody';
 export * from '../models/ListAnalysisFunctionsOutputBody';
+export * from '../models/ListAnalysisGlobalsOutputBody';
 export * from '../models/ListAnalysisStringsOutputBody';
 export * from '../models/ListArchiveContentsOutputBody';
 export * from '../models/ListCollectionResults';
 export * from '../models/ListCollectionsOutputBody';
 export * from '../models/ListDataTypeFunctionsBody';
 export * from '../models/ListExampleAnalysesOutputBody';
+export * from '../models/ListFunctionGlobalsOutputBody';
 export * from '../models/ListFunctionSignaturesOutputBody';
 export * from '../models/ListFunctionStringsOutputBody';
+export * from '../models/ListGlobalFunctionsOutputBody';
 export * from '../models/ListImportedFunctionsOutputBody';
+export * from '../models/ListOperationPrerequisitesOutputBody';
+export * from '../models/ListPublicUsersOutputBody';
 export * from '../models/ListSecretStoreOutputBody';
 export * from '../models/ListTeamsOutputBody';
 export * from '../models/ListUsersOutputBody';
@@ -502,6 +519,8 @@ export * from '../models/OperationMetadataThreatReportResult';
 export * from '../models/OperationMetadataTriageResult';
 export * from '../models/OperationNetworkingExplainMetadataNetworkingExplainResult';
 export * from '../models/OperationNetworkingScanMetadataNetworkingScanResult';
+export * from '../models/OperationPrerequisitesBody';
+export * from '../models/OperationRenameUnnamedFunctionsMetadataRenameUnnamedFunctionsResult';
 export * from '../models/OperationSecurityScanMetadataSecurityScanResult';
 export * from '../models/OperationVirusTotalScanMetadataVirusTotalScanResult';
 export * from '../models/OperationWorkflowProgressResultBody';
@@ -538,6 +557,7 @@ export * from '../models/ProductSummary';
 export * from '../models/ProgressMessage';
 export * from '../models/ProseEvent';
 export * from '../models/ProtocolsAgentResponse';
+export * from '../models/PublicUserBody';
 export * from '../models/PutAnalysisStringsRequest';
 export * from '../models/QueuedWorkflowTaskResponse';
 export * from '../models/RatingOutputBody';
@@ -557,16 +577,31 @@ export * from '../models/RemoveCollectionBinariesInputBody';
 export * from '../models/RenameAppliedEvent';
 export * from '../models/RenameInputBody';
 export * from '../models/RenameOutputBody';
+export * from '../models/RenameUnnamedFunctionsMetadata';
 export * from '../models/RenameUnnamedFunctionsResult';
 export * from '../models/RenderedToken';
 export * from '../models/ReportAnalysisBody';
 export * from '../models/ReportAnalysisResponse';
+export * from '../models/ReportBytesConstant';
+export * from '../models/ReportCallChain';
+export * from '../models/ReportCodeSummary';
 export * from '../models/ReportEvent';
+export * from '../models/ReportFinding';
+export * from '../models/ReportFindingEvidenceInner';
+export * from '../models/ReportFunctionSimilarity';
+export * from '../models/ReportImportedAPI';
+export * from '../models/ReportImportedAPICall';
 export * from '../models/ReportInfo';
+export * from '../models/ReportMeta';
+export * from '../models/ReportModelInterpretation';
 export * from '../models/ReportOptions';
 export * from '../models/ReportReachabilityStatus';
+export * from '../models/ReportReferencedConstant';
 export * from '../models/ReportResult';
+export * from '../models/ReportStringMatch';
+export * from '../models/ReportSubject';
 export * from '../models/RequestedConfigBody';
+export * from '../models/RequeueAnalysisRequest';
 export * from '../models/ResendVerificationEmailInputBody';
 export * from '../models/ResolvedEntity';
 export * from '../models/ResultBody';
@@ -700,6 +735,7 @@ export * from '../models/UnionDataType';
 export * from '../models/UnionDefinition';
 export * from '../models/UnknownDataType';
 export * from '../models/UpdateAnalysisDataTypesInputBody';
+export * from '../models/UpdateAnalysisGlobalInputBody';
 export * from '../models/UpdateAnalysisInputBody';
 export * from '../models/UpdateArrayDataType';
 export * from '../models/UpdateBaseDataType';
@@ -749,6 +785,7 @@ export * from '../models/XrefResponse';
 export * from '../models/XrefSegmentBody';
 export * from '../models/XrefToResponse';
 
+import { APICombinationEvidence , APICombinationEvidenceEffectEnum  , APICombinationEvidenceEvidenceKindEnum  , APICombinationEvidenceKindEnum  , APICombinationEvidenceStrengthEnum   } from '../models/APICombinationEvidence';
 import { APIError } from '../models/APIError';
 import { AcceptTypeSuggestionsInputBody } from '../models/AcceptTypeSuggestionsInputBody';
 import { AcceptTypeSuggestionsOutputBody } from '../models/AcceptTypeSuggestionsOutputBody';
@@ -767,7 +804,7 @@ import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AnalyseCapabilitiesBody } from '../models/AnalyseCapabilitiesBody';
 import { AnalysisAccessBody } from '../models/AnalysisAccessBody';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
-import { AnalysisBasicInfoOutputBody, AnalysisBasicInfoOutputBodyAnalysisScopeEnum                           } from '../models/AnalysisBasicInfoOutputBody';
+import { AnalysisBasicInfoOutputBody, AnalysisBasicInfoOutputBodyAnalysisScopeEnum                            } from '../models/AnalysisBasicInfoOutputBody';
 import { AnalysisBulkAddTagsRequest } from '../models/AnalysisBulkAddTagsRequest';
 import { AnalysisBulkAddTagsResponse } from '../models/AnalysisBulkAddTagsResponse';
 import { AnalysisBulkAddTagsResponseItem } from '../models/AnalysisBulkAddTagsResponseItem';
@@ -779,7 +816,7 @@ import { AnalysisCreateRequest          } from '../models/AnalysisCreateRequest'
 import { AnalysisCreateResponse } from '../models/AnalysisCreateResponse';
 import { AnalysisDataTypesGroup } from '../models/AnalysisDataTypesGroup';
 import { AnalysisDataTypesOutputBody } from '../models/AnalysisDataTypesOutputBody';
-import { AnalysisDetailOutputBody  , AnalysisDetailOutputBodyAnalysisScopeEnum                } from '../models/AnalysisDetailOutputBody';
+import { AnalysisDetailOutputBody  , AnalysisDetailOutputBodyAnalysisScopeEnum                   } from '../models/AnalysisDetailOutputBody';
 import { AnalysisDetailResponse } from '../models/AnalysisDetailResponse';
 import { AnalysisFunctionEntry } from '../models/AnalysisFunctionEntry';
 import { AnalysisFunctionMapping } from '../models/AnalysisFunctionMapping';
@@ -788,8 +825,10 @@ import { AnalysisFunctionsList } from '../models/AnalysisFunctionsList';
 import { AnalysisLogEntry, AnalysisLogEntryLevelEnum      } from '../models/AnalysisLogEntry';
 import { AnalysisLogMessage } from '../models/AnalysisLogMessage';
 import { AnalysisLogs } from '../models/AnalysisLogs';
+import { AnalysisOperationBody  , AnalysisOperationBodyStatusEnum   } from '../models/AnalysisOperationBody';
+import { AnalysisOperationsOutputBody } from '../models/AnalysisOperationsOutputBody';
 import { AnalysisRecord                  } from '../models/AnalysisRecord';
-import { AnalysisRecordBody , AnalysisRecordBodyAnalysisScopeEnum                       } from '../models/AnalysisRecordBody';
+import { AnalysisRecordBody , AnalysisRecordBodyAnalysisScopeEnum                        } from '../models/AnalysisRecordBody';
 import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisRequirement } from '../models/AnalysisRequirement';
 import { AnalysisScope } from '../models/AnalysisScope';
@@ -918,7 +957,7 @@ import { BulkDeleteAnalysesInputBody } from '../models/BulkDeleteAnalysesInputBo
 import { BulkDeleteAnalysesRequest } from '../models/BulkDeleteAnalysesRequest';
 import { BytesConstant, BytesConstantFormatEnum     } from '../models/BytesConstant';
 import { CallChain } from '../models/CallChain';
-import { CallChainEvidence, CallChainEvidenceEvidenceKindEnum  , CallChainEvidenceKindEnum   , CallChainEvidenceStrengthEnum    } from '../models/CallChainEvidence';
+import { CallChainEvidence , CallChainEvidenceEffectEnum  , CallChainEvidenceEvidenceKindEnum  , CallChainEvidenceKindEnum  , CallChainEvidenceStrengthEnum   } from '../models/CallChainEvidence';
 import { CallEdge } from '../models/CallEdge';
 import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
 import { CalleeFunctionInfo } from '../models/CalleeFunctionInfo';
@@ -1018,17 +1057,20 @@ import { DecompFinishedEvent } from '../models/DecompFinishedEvent';
 import { DecompilationCommentContext } from '../models/DecompilationCommentContext';
 import { DecompilationData , DecompilationDataStatusEnum   } from '../models/DecompilationData';
 import { DecompilerSummary } from '../models/DecompilerSummary';
-import { DecompilerSummaryEvidence, DecompilerSummaryEvidenceEvidenceKindEnum  , DecompilerSummaryEvidenceKindEnum   , DecompilerSummaryEvidenceStrengthEnum    } from '../models/DecompilerSummaryEvidence';
+import { DecompilerSummaryEvidence, DecompilerSummaryEvidenceEffectEnum  , DecompilerSummaryEvidenceEvidenceKindEnum  , DecompilerSummaryEvidenceKindEnum  , DecompilerSummaryEvidenceStrengthEnum    } from '../models/DecompilerSummaryEvidence';
 import { DieMatch } from '../models/DieMatch';
 import { DisassemblyOutputBody } from '../models/DisassemblyOutputBody';
+import { DisassemblySummaryEvidence, DisassemblySummaryEvidenceEffectEnum  , DisassemblySummaryEvidenceEvidenceKindEnum  , DisassemblySummaryEvidenceKindEnum  , DisassemblySummaryEvidenceStrengthEnum    } from '../models/DisassemblySummaryEvidence';
 import { Display } from '../models/Display';
 import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionMetadata , DynamicExecutionMetadataStatusEnum   } from '../models/DynamicExecutionMetadata';
+import { DynamicExecutionResult } from '../models/DynamicExecutionResult';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { DynamicExecutionStatusResponse  , DynamicExecutionStatusResponseStatusEnum   } from '../models/DynamicExecutionStatusResponse';
 import { DynamicExecutionSummary } from '../models/DynamicExecutionSummary';
 import { DynamicExecutionSummaryMetadata, DynamicExecutionSummaryMetadataStatusEnum   } from '../models/DynamicExecutionSummaryMetadata';
+import { DynamicExecutionSummaryResult } from '../models/DynamicExecutionSummaryResult';
 import { ELFImportModel } from '../models/ELFImportModel';
 import { ELFModel } from '../models/ELFModel';
 import { ELFRelocation } from '../models/ELFRelocation';
@@ -1116,6 +1158,7 @@ import { FunctionCallEdges } from '../models/FunctionCallEdges';
 import { FunctionCapabilityResponse } from '../models/FunctionCapabilityResponse';
 import { FunctionDataType    , FunctionDataTypeKindEnum       , FunctionDataTypeSourceTypeEnum   } from '../models/FunctionDataType';
 import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
+import { FunctionGlobalVariable       , FunctionGlobalVariableNameSourceEnum      , FunctionGlobalVariableTypeSourceEnum     , FunctionGlobalVariableValueKindEnum  , FunctionGlobalVariableValueSourceEnum   } from '../models/FunctionGlobalVariable';
 import { FunctionListItem  , FunctionListItemNameSourceTypeEnum        } from '../models/FunctionListItem';
 import { FunctionLocalVariableResponse } from '../models/FunctionLocalVariableResponse';
 import { FunctionMapping } from '../models/FunctionMapping';
@@ -1131,12 +1174,13 @@ import { FunctionSignatureBody         , FunctionSignatureBodySourceTypeEnum   }
 import { FunctionSignatureEntry        , FunctionSignatureEntrySourceTypeEnum   } from '../models/FunctionSignatureEntry';
 import { FunctionSignatureVersion } from '../models/FunctionSignatureVersion';
 import { FunctionSimilarity } from '../models/FunctionSimilarity';
-import { FunctionSimilarityEvidence, FunctionSimilarityEvidenceEvidenceKindEnum  , FunctionSimilarityEvidenceKindEnum   , FunctionSimilarityEvidenceStrengthEnum    } from '../models/FunctionSimilarityEvidence';
+import { FunctionSimilarityEvidence, FunctionSimilarityEvidenceEffectEnum  , FunctionSimilarityEvidenceEvidenceKindEnum  , FunctionSimilarityEvidenceKindEnum   , FunctionSimilarityEvidenceStrengthEnum   } from '../models/FunctionSimilarityEvidence';
 import { FunctionSourceType } from '../models/FunctionSourceType';
 import { FunctionString    } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
 import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionTypeDefinition } from '../models/FunctionTypeDefinition';
+import { FunctionUsage } from '../models/FunctionUsage';
 import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
 import { FunctionsListRename } from '../models/FunctionsListRename';
 import { FunctionsProgressOutputBody } from '../models/FunctionsProgressOutputBody';
@@ -1154,6 +1198,7 @@ import { GetDataTypeHistoryBody } from '../models/GetDataTypeHistoryBody';
 import { GetDieInfoOutputBody } from '../models/GetDieInfoOutputBody';
 import { GetFunctionMapsOutputBody } from '../models/GetFunctionMapsOutputBody';
 import { GetFunctionSignatureHistoryBody } from '../models/GetFunctionSignatureHistoryBody';
+import { GetGlobalHistoryOutputBody } from '../models/GetGlobalHistoryOutputBody';
 import { GetMatchesOutputBody , GetMatchesOutputBodyStatusEnum   } from '../models/GetMatchesOutputBody';
 import { GetMatchesStatusOutputBody  , GetMatchesStatusOutputBodyStatusEnum          } from '../models/GetMatchesStatusOutputBody';
 import { GetModelsOutputBody } from '../models/GetModelsOutputBody';
@@ -1165,7 +1210,9 @@ import { GetRelatedStatusOutputBody, GetRelatedStatusOutputBodyStatusEnum   } fr
 import { GetSubscriptionOutputBody    , GetSubscriptionOutputBodyStatusEnum  , GetSubscriptionOutputBodyTierEnum   } from '../models/GetSubscriptionOutputBody';
 import { GetTokensResponse } from '../models/GetTokensResponse';
 import { GetUserActivityOutputBody } from '../models/GetUserActivityOutputBody';
-import { HardcodedSecretEvidence, HardcodedSecretEvidenceEvidenceKindEnum  , HardcodedSecretEvidenceKindEnum  , HardcodedSecretEvidenceEffectEnum           } from '../models/HardcodedSecretEvidence';
+import { GlobalHistoryEntry } from '../models/GlobalHistoryEntry';
+import { GlobalVariable      , GlobalVariableNameSourceEnum     , GlobalVariableTypeSourceEnum     , GlobalVariableValueKindEnum  , GlobalVariableValueSourceEnum   } from '../models/GlobalVariable';
+import { HardcodedSecretEvidence , HardcodedSecretEvidenceEffectEnum   , HardcodedSecretEvidenceEvidenceKindEnum  , HardcodedSecretEvidenceKindEnum     , HardcodedSecretEvidenceSecretKindEnum   , HardcodedSecretEvidenceStrengthEnum   } from '../models/HardcodedSecretEvidence';
 import { HistoryActor } from '../models/HistoryActor';
 import { HistoryEntry } from '../models/HistoryEntry';
 import { HttpRequest } from '../models/HttpRequest';
@@ -1174,6 +1221,7 @@ import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportDynamicExecutionFileOutputBody } from '../models/ImportDynamicExecutionFileOutputBody';
 import { ImportModel } from '../models/ImportModel';
+import { ImportedAPICallEvidence , ImportedAPICallEvidenceEffectEnum  , ImportedAPICallEvidenceEvidenceKindEnum  , ImportedAPICallEvidenceKindEnum  , ImportedAPICallEvidenceStrengthEnum   } from '../models/ImportedAPICallEvidence';
 import { ImportedApi } from '../models/ImportedApi';
 import { ImportedApiCall } from '../models/ImportedApiCall';
 import { ImportedApiCallEvidence, ImportedApiCallEvidenceEvidenceKindEnum  , ImportedApiCallEvidenceKindEnum   , ImportedApiCallEvidenceStrengthEnum    } from '../models/ImportedApiCallEvidence';
@@ -1187,20 +1235,25 @@ import { InputBody } from '../models/InputBody';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
-import { KnownConstantEvidence, KnownConstantEvidenceEvidenceKindEnum  , KnownConstantEvidenceKindEnum   , KnownConstantEvidenceStrengthEnum    } from '../models/KnownConstantEvidence';
+import { KnownConstantEvidence, KnownConstantEvidenceEffectEnum  , KnownConstantEvidenceEvidenceKindEnum  , KnownConstantEvidenceKindEnum  , KnownConstantEvidenceStrengthEnum    } from '../models/KnownConstantEvidence';
 import { LineAttributionsData } from '../models/LineAttributionsData';
 import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
 import { ListAnalysisDataTypesOutputBody } from '../models/ListAnalysisDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
+import { ListAnalysisGlobalsOutputBody } from '../models/ListAnalysisGlobalsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
 import { ListArchiveContentsOutputBody } from '../models/ListArchiveContentsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListDataTypeFunctionsBody } from '../models/ListDataTypeFunctionsBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
+import { ListFunctionGlobalsOutputBody } from '../models/ListFunctionGlobalsOutputBody';
 import { ListFunctionSignaturesOutputBody } from '../models/ListFunctionSignaturesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
+import { ListGlobalFunctionsOutputBody } from '../models/ListGlobalFunctionsOutputBody';
 import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
+import { ListOperationPrerequisitesOutputBody } from '../models/ListOperationPrerequisitesOutputBody';
+import { ListPublicUsersOutputBody } from '../models/ListPublicUsersOutputBody';
 import { ListSecretStoreOutputBody } from '../models/ListSecretStoreOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
@@ -1216,7 +1269,7 @@ import { Meta  } from '../models/Meta';
 import { MetaModel } from '../models/MetaModel';
 import { Metadata , MetadataStatusEnum   } from '../models/Metadata';
 import { ModelInterpretation } from '../models/ModelInterpretation';
-import { ModelInterpretationEvidence, ModelInterpretationEvidenceEvidenceKindEnum  , ModelInterpretationEvidenceKindEnum      } from '../models/ModelInterpretationEvidence';
+import { ModelInterpretationEvidence, ModelInterpretationEvidenceEffectEnum  , ModelInterpretationEvidenceEvidenceKindEnum   , ModelInterpretationEvidenceKindEnum  , ModelInterpretationEvidenceStrengthEnum   } from '../models/ModelInterpretationEvidence';
 import { ModelName } from '../models/ModelName';
 import { ModelsResponse } from '../models/ModelsResponse';
 import { ModuleLoadEntry } from '../models/ModuleLoadEntry';
@@ -1253,6 +1306,8 @@ import { OperationMetadataThreatReportResult } from '../models/OperationMetadata
 import { OperationMetadataTriageResult } from '../models/OperationMetadataTriageResult';
 import { OperationNetworkingExplainMetadataNetworkingExplainResult } from '../models/OperationNetworkingExplainMetadataNetworkingExplainResult';
 import { OperationNetworkingScanMetadataNetworkingScanResult } from '../models/OperationNetworkingScanMetadataNetworkingScanResult';
+import { OperationPrerequisitesBody } from '../models/OperationPrerequisitesBody';
+import { OperationRenameUnnamedFunctionsMetadataRenameUnnamedFunctionsResult } from '../models/OperationRenameUnnamedFunctionsMetadataRenameUnnamedFunctionsResult';
 import { OperationSecurityScanMetadataSecurityScanResult } from '../models/OperationSecurityScanMetadataSecurityScanResult';
 import { OperationVirusTotalScanMetadataVirusTotalScanResult } from '../models/OperationVirusTotalScanMetadataVirusTotalScanResult';
 import { OperationWorkflowProgressResultBody } from '../models/OperationWorkflowProgressResultBody';
@@ -1289,13 +1344,14 @@ import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage, ProgressMessageLevelEnum      } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
 import { ProtocolsAgentResponse } from '../models/ProtocolsAgentResponse';
+import { PublicUserBody } from '../models/PublicUserBody';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { RatingOutputBody, RatingOutputBodyRatingEnum    } from '../models/RatingOutputBody';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
 import { ReferencedConstant    } from '../models/ReferencedConstant';
-import { ReferencedConstantEvidence, ReferencedConstantEvidenceEvidenceKindEnum  , ReferencedConstantEvidenceKindEnum   , ReferencedConstantEvidenceStrengthEnum    } from '../models/ReferencedConstantEvidence';
+import { ReferencedConstantEvidence , ReferencedConstantEvidenceEffectEnum  , ReferencedConstantEvidenceEvidenceKindEnum  , ReferencedConstantEvidenceKindEnum  , ReferencedConstantEvidenceStrengthEnum   } from '../models/ReferencedConstantEvidence';
 import { RefreshBody } from '../models/RefreshBody';
 import { RegenerateOutputBody } from '../models/RegenerateOutputBody';
 import { RegisterUserInputBody } from '../models/RegisterUserInputBody';
@@ -1308,18 +1364,33 @@ import { RemoveCollectionBinariesInputBody } from '../models/RemoveCollectionBin
 import { RenameAppliedEvent } from '../models/RenameAppliedEvent';
 import { RenameInputBody  , RenameInputBodySourceTypeEnum   } from '../models/RenameInputBody';
 import { RenameOutputBody } from '../models/RenameOutputBody';
+import { RenameUnnamedFunctionsMetadata , RenameUnnamedFunctionsMetadataStatusEnum   } from '../models/RenameUnnamedFunctionsMetadata';
 import { RenameUnnamedFunctionsResult } from '../models/RenameUnnamedFunctionsResult';
 import { RenderedToken   , RenderedTokenKindEnum     } from '../models/RenderedToken';
 import { ReportAnalysisBody } from '../models/ReportAnalysisBody';
 import { ReportAnalysisResponse , ReportAnalysisResponseSoftwareTypeEnum         } from '../models/ReportAnalysisResponse';
+import { ReportBytesConstant, ReportBytesConstantDisplayEnum  , ReportBytesConstantFormatEnum    } from '../models/ReportBytesConstant';
+import { ReportCallChain } from '../models/ReportCallChain';
+import { ReportCodeSummary } from '../models/ReportCodeSummary';
 import { ReportEvent } from '../models/ReportEvent';
+import { ReportFinding  , ReportFindingReachabilityEnum   } from '../models/ReportFinding';
+import { ReportFindingEvidenceInnerClass } from '../models/ReportFindingEvidenceInner';
+import { ReportFunctionSimilarity } from '../models/ReportFunctionSimilarity';
+import { ReportImportedAPI } from '../models/ReportImportedAPI';
+import { ReportImportedAPICall } from '../models/ReportImportedAPICall';
 import { ReportInfo } from '../models/ReportInfo';
+import { ReportMeta, ReportMetaEndiannessEnum   } from '../models/ReportMeta';
+import { ReportModelInterpretation } from '../models/ReportModelInterpretation';
 import { ReportOptions } from '../models/ReportOptions';
 import { ReportReachabilityStatus } from '../models/ReportReachabilityStatus';
+import { ReportReferencedConstant, ReportReferencedConstantDisplayEnum     } from '../models/ReportReferencedConstant';
 import { ReportResult } from '../models/ReportResult';
+import { ReportStringMatch } from '../models/ReportStringMatch';
+import { ReportSubject } from '../models/ReportSubject';
 import { RequestedConfigBody } from '../models/RequestedConfigBody';
+import { RequeueAnalysisRequest } from '../models/RequeueAnalysisRequest';
 import { ResendVerificationEmailInputBody } from '../models/ResendVerificationEmailInputBody';
-import { ResolvedEntity       , ResolvedEntityFieldStatusEnum      , ResolvedEntityNameSourceEnum               } from '../models/ResolvedEntity';
+import { ResolvedEntity       , ResolvedEntityFieldStatusEnum      , ResolvedEntityNameSourceEnum                 } from '../models/ResolvedEntity';
 import { ResultBody } from '../models/ResultBody';
 import { RevokeBody } from '../models/RevokeBody';
 import { RuleKind } from '../models/RuleKind';
@@ -1390,7 +1461,7 @@ import { StreamAiDecompilation200ResponseInnerClass } from '../models/StreamAiDe
 import { StreamEvents200ResponseInnerClass } from '../models/StreamEvents200ResponseInner';
 import { StringFunctions    } from '../models/StringFunctions';
 import { StringMatch } from '../models/StringMatch';
-import { StringMatchEvidence, StringMatchEvidenceEvidenceKindEnum  , StringMatchEvidenceKindEnum   , StringMatchEvidenceStrengthEnum    } from '../models/StringMatchEvidence';
+import { StringMatchEvidence, StringMatchEvidenceEffectEnum  , StringMatchEvidenceEvidenceKindEnum  , StringMatchEvidenceKindEnum  , StringMatchEvidenceStrengthEnum    } from '../models/StringMatchEvidence';
 import { StringSource } from '../models/StringSource';
 import { StructDataType    , StructDataTypeKindEnum       , StructDataTypeSourceTypeEnum   } from '../models/StructDataType';
 import { StructDefinition } from '../models/StructDefinition';
@@ -1451,6 +1522,7 @@ import { UnionDataType    , UnionDataTypeKindEnum       , UnionDataTypeSourceTyp
 import { UnionDefinition } from '../models/UnionDefinition';
 import { UnknownDataType   , UnknownDataTypeKindEnum       , UnknownDataTypeSourceTypeEnum   } from '../models/UnknownDataType';
 import { UpdateAnalysisDataTypesInputBody } from '../models/UpdateAnalysisDataTypesInputBody';
+import { UpdateAnalysisGlobalInputBody } from '../models/UpdateAnalysisGlobalInputBody';
 import { UpdateAnalysisInputBody, UpdateAnalysisInputBodyAnalysisScopeEnum    } from '../models/UpdateAnalysisInputBody';
 import { UpdateArrayDataType  , UpdateArrayDataTypeKindEnum      } from '../models/UpdateArrayDataType';
 import { UpdateBaseDataType , UpdateBaseDataTypeKindEnum      } from '../models/UpdateBaseDataType';
@@ -1513,6 +1585,10 @@ let primitives = [
                  ];
 
 let enumsMap: Set<string> = new Set<string>([
+    "APICombinationEvidenceEffectEnum",
+    "APICombinationEvidenceEvidenceKindEnum",
+    "APICombinationEvidenceKindEnum",
+    "APICombinationEvidenceStrengthEnum",
     "ActivityBodyActionsEnum",
     "ActivityBodyActivityScopeEnum",
     "ActivityBodySourcesEnum",
@@ -1520,6 +1596,7 @@ let enumsMap: Set<string> = new Set<string>([
     "AnalysisBasicInfoOutputBodyAnalysisScopeEnum",
     "AnalysisDetailOutputBodyAnalysisScopeEnum",
     "AnalysisLogEntryLevelEnum",
+    "AnalysisOperationBodyStatusEnum",
     "AnalysisRecordBodyAnalysisScopeEnum",
     "AnalysisScope",
     "ApiCombinationEvidenceEvidenceKindEnum",
@@ -1545,6 +1622,7 @@ let enumsMap: Set<string> = new Set<string>([
     "BitfieldDataTypeKindEnum",
     "BitfieldDataTypeSourceTypeEnum",
     "BytesConstantFormatEnum",
+    "CallChainEvidenceEffectEnum",
     "CallChainEvidenceEvidenceKindEnum",
     "CallChainEvidenceKindEnum",
     "CallChainEvidenceStrengthEnum",
@@ -1583,9 +1661,14 @@ let enumsMap: Set<string> = new Set<string>([
     "DataTypeEntryKindEnum",
     "DataTypeEntrySourceTypeEnum",
     "DecompilationDataStatusEnum",
+    "DecompilerSummaryEvidenceEffectEnum",
     "DecompilerSummaryEvidenceEvidenceKindEnum",
     "DecompilerSummaryEvidenceKindEnum",
     "DecompilerSummaryEvidenceStrengthEnum",
+    "DisassemblySummaryEvidenceEffectEnum",
+    "DisassemblySummaryEvidenceEvidenceKindEnum",
+    "DisassemblySummaryEvidenceKindEnum",
+    "DisassemblySummaryEvidenceStrengthEnum",
     "Display",
     "DynamicExecutionMetadataStatusEnum",
     "DynamicExecutionStatus",
@@ -1654,14 +1737,21 @@ let enumsMap: Set<string> = new Set<string>([
     "FilesystemScanMetadataStatusEnum",
     "FilesystemVerificationConfidenceEnum",
     "Filters",
+    "FindingEvidenceInnerEffectEnum",
     "FindingEvidenceInnerEvidenceKindEnum",
     "FindingEvidenceInnerKindEnum",
-    "FindingEvidenceInnerEffectEnum",
+    "FindingEvidenceInnerStrengthEnum",
+    "FindingEvidenceInnerSecretKindEnum",
     "FunctionDataTypeKindEnum",
     "FunctionDataTypeSourceTypeEnum",
+    "FunctionGlobalVariableNameSourceEnum",
+    "FunctionGlobalVariableTypeSourceEnum",
+    "FunctionGlobalVariableValueKindEnum",
+    "FunctionGlobalVariableValueSourceEnum",
     "FunctionListItemNameSourceTypeEnum",
     "FunctionSignatureBodySourceTypeEnum",
     "FunctionSignatureEntrySourceTypeEnum",
+    "FunctionSimilarityEvidenceEffectEnum",
     "FunctionSimilarityEvidenceEvidenceKindEnum",
     "FunctionSimilarityEvidenceKindEnum",
     "FunctionSimilarityEvidenceStrengthEnum",
@@ -1672,13 +1762,24 @@ let enumsMap: Set<string> = new Set<string>([
     "GetRelatedStatusOutputBodyStatusEnum",
     "GetSubscriptionOutputBodyStatusEnum",
     "GetSubscriptionOutputBodyTierEnum",
+    "GlobalVariableNameSourceEnum",
+    "GlobalVariableTypeSourceEnum",
+    "GlobalVariableValueKindEnum",
+    "GlobalVariableValueSourceEnum",
+    "HardcodedSecretEvidenceEffectEnum",
     "HardcodedSecretEvidenceEvidenceKindEnum",
     "HardcodedSecretEvidenceKindEnum",
-    "HardcodedSecretEvidenceEffectEnum",
+    "HardcodedSecretEvidenceSecretKindEnum",
+    "HardcodedSecretEvidenceStrengthEnum",
     "ISA",
+    "ImportedAPICallEvidenceEffectEnum",
+    "ImportedAPICallEvidenceEvidenceKindEnum",
+    "ImportedAPICallEvidenceKindEnum",
+    "ImportedAPICallEvidenceStrengthEnum",
     "ImportedApiCallEvidenceEvidenceKindEnum",
     "ImportedApiCallEvidenceKindEnum",
     "ImportedApiCallEvidenceStrengthEnum",
+    "KnownConstantEvidenceEffectEnum",
     "KnownConstantEvidenceEvidenceKindEnum",
     "KnownConstantEvidenceKindEnum",
     "KnownConstantEvidenceStrengthEnum",
@@ -1686,8 +1787,10 @@ let enumsMap: Set<string> = new Set<string>([
     "MatchFiltersArchitecturesEnum",
     "MatchFiltersPlatformsEnum",
     "MetadataStatusEnum",
+    "ModelInterpretationEvidenceEffectEnum",
     "ModelInterpretationEvidenceEvidenceKindEnum",
     "ModelInterpretationEvidenceKindEnum",
+    "ModelInterpretationEvidenceStrengthEnum",
     "ModelName",
     "NameSourceTypeTypeEnum",
     "NetworkingCallCategoryEnum",
@@ -1710,13 +1813,25 @@ let enumsMap: Set<string> = new Set<string>([
     "PriceSummaryIntervalEnum",
     "ProgressMessageLevelEnum",
     "RatingOutputBodyRatingEnum",
+    "ReferencedConstantEvidenceEffectEnum",
     "ReferencedConstantEvidenceEvidenceKindEnum",
     "ReferencedConstantEvidenceKindEnum",
     "ReferencedConstantEvidenceStrengthEnum",
     "RenameInputBodySourceTypeEnum",
+    "RenameUnnamedFunctionsMetadataStatusEnum",
     "RenderedTokenKindEnum",
     "ReportAnalysisResponseSoftwareTypeEnum",
+    "ReportBytesConstantDisplayEnum",
+    "ReportBytesConstantFormatEnum",
+    "ReportFindingReachabilityEnum",
+    "ReportFindingEvidenceInnerEffectEnum",
+    "ReportFindingEvidenceInnerEvidenceKindEnum",
+    "ReportFindingEvidenceInnerKindEnum",
+    "ReportFindingEvidenceInnerStrengthEnum",
+    "ReportFindingEvidenceInnerSecretKindEnum",
+    "ReportMetaEndiannessEnum",
     "ReportReachabilityStatus",
+    "ReportReferencedConstantDisplayEnum",
     "ResolvedEntityFieldStatusEnum",
     "ResolvedEntityNameSourceEnum",
     "RuleKind",
@@ -1737,6 +1852,7 @@ let enumsMap: Set<string> = new Set<string>([
     "StatusInput",
     "StreamAiDecompilation200ResponseInnerEventEnum",
     "StreamEvents200ResponseInnerEventEnum",
+    "StringMatchEvidenceEffectEnum",
     "StringMatchEvidenceEvidenceKindEnum",
     "StringMatchEvidenceKindEnum",
     "StringMatchEvidenceStrengthEnum",
@@ -1799,6 +1915,7 @@ let enumsMap: Set<string> = new Set<string>([
 ]);
 
 let typeMap: {[index: string]: any} = {
+    "APICombinationEvidence": APICombinationEvidence,
     "APIError": APIError,
     "AcceptTypeSuggestionsInputBody": AcceptTypeSuggestionsInputBody,
     "AcceptTypeSuggestionsOutputBody": AcceptTypeSuggestionsOutputBody,
@@ -1837,6 +1954,8 @@ let typeMap: {[index: string]: any} = {
     "AnalysisLogEntry": AnalysisLogEntry,
     "AnalysisLogMessage": AnalysisLogMessage,
     "AnalysisLogs": AnalysisLogs,
+    "AnalysisOperationBody": AnalysisOperationBody,
+    "AnalysisOperationsOutputBody": AnalysisOperationsOutputBody,
     "AnalysisRecord": AnalysisRecord,
     "AnalysisRecordBody": AnalysisRecordBody,
     "AnalysisReport": AnalysisReport,
@@ -2064,12 +2183,15 @@ let typeMap: {[index: string]: any} = {
     "DecompilerSummaryEvidence": DecompilerSummaryEvidence,
     "DieMatch": DieMatch,
     "DisassemblyOutputBody": DisassemblyOutputBody,
+    "DisassemblySummaryEvidence": DisassemblySummaryEvidence,
     "DnsQuery": DnsQuery,
     "DrakvufFileMetadata": DrakvufFileMetadata,
     "DynamicExecutionMetadata": DynamicExecutionMetadata,
+    "DynamicExecutionResult": DynamicExecutionResult,
     "DynamicExecutionStatusResponse": DynamicExecutionStatusResponse,
     "DynamicExecutionSummary": DynamicExecutionSummary,
     "DynamicExecutionSummaryMetadata": DynamicExecutionSummaryMetadata,
+    "DynamicExecutionSummaryResult": DynamicExecutionSummaryResult,
     "ELFImportModel": ELFImportModel,
     "ELFModel": ELFModel,
     "ELFRelocation": ELFRelocation,
@@ -2152,6 +2274,7 @@ let typeMap: {[index: string]: any} = {
     "FunctionCapabilityResponse": FunctionCapabilityResponse,
     "FunctionDataType": FunctionDataType,
     "FunctionDetailsOutputBody": FunctionDetailsOutputBody,
+    "FunctionGlobalVariable": FunctionGlobalVariable,
     "FunctionListItem": FunctionListItem,
     "FunctionLocalVariableResponse": FunctionLocalVariableResponse,
     "FunctionMapping": FunctionMapping,
@@ -2172,6 +2295,7 @@ let typeMap: {[index: string]: any} = {
     "FunctionStringItem": FunctionStringItem,
     "FunctionStringsResponse": FunctionStringsResponse,
     "FunctionTypeDefinition": FunctionTypeDefinition,
+    "FunctionUsage": FunctionUsage,
     "FunctionsDetailResponse": FunctionsDetailResponse,
     "FunctionsListRename": FunctionsListRename,
     "FunctionsProgressOutputBody": FunctionsProgressOutputBody,
@@ -2189,6 +2313,7 @@ let typeMap: {[index: string]: any} = {
     "GetDieInfoOutputBody": GetDieInfoOutputBody,
     "GetFunctionMapsOutputBody": GetFunctionMapsOutputBody,
     "GetFunctionSignatureHistoryBody": GetFunctionSignatureHistoryBody,
+    "GetGlobalHistoryOutputBody": GetGlobalHistoryOutputBody,
     "GetMatchesOutputBody": GetMatchesOutputBody,
     "GetMatchesStatusOutputBody": GetMatchesStatusOutputBody,
     "GetModelsOutputBody": GetModelsOutputBody,
@@ -2200,6 +2325,8 @@ let typeMap: {[index: string]: any} = {
     "GetSubscriptionOutputBody": GetSubscriptionOutputBody,
     "GetTokensResponse": GetTokensResponse,
     "GetUserActivityOutputBody": GetUserActivityOutputBody,
+    "GlobalHistoryEntry": GlobalHistoryEntry,
+    "GlobalVariable": GlobalVariable,
     "HardcodedSecretEvidence": HardcodedSecretEvidence,
     "HistoryActor": HistoryActor,
     "HistoryEntry": HistoryEntry,
@@ -2208,6 +2335,7 @@ let typeMap: {[index: string]: any} = {
     "IconModel": IconModel,
     "ImportDynamicExecutionFileOutputBody": ImportDynamicExecutionFileOutputBody,
     "ImportModel": ImportModel,
+    "ImportedAPICallEvidence": ImportedAPICallEvidence,
     "ImportedApi": ImportedApi,
     "ImportedApiCall": ImportedApiCall,
     "ImportedApiCallEvidence": ImportedApiCallEvidence,
@@ -2226,15 +2354,20 @@ let typeMap: {[index: string]: any} = {
     "ListAnalysesOutputBody": ListAnalysesOutputBody,
     "ListAnalysisDataTypesOutputBody": ListAnalysisDataTypesOutputBody,
     "ListAnalysisFunctionsOutputBody": ListAnalysisFunctionsOutputBody,
+    "ListAnalysisGlobalsOutputBody": ListAnalysisGlobalsOutputBody,
     "ListAnalysisStringsOutputBody": ListAnalysisStringsOutputBody,
     "ListArchiveContentsOutputBody": ListArchiveContentsOutputBody,
     "ListCollectionResults": ListCollectionResults,
     "ListCollectionsOutputBody": ListCollectionsOutputBody,
     "ListDataTypeFunctionsBody": ListDataTypeFunctionsBody,
     "ListExampleAnalysesOutputBody": ListExampleAnalysesOutputBody,
+    "ListFunctionGlobalsOutputBody": ListFunctionGlobalsOutputBody,
     "ListFunctionSignaturesOutputBody": ListFunctionSignaturesOutputBody,
     "ListFunctionStringsOutputBody": ListFunctionStringsOutputBody,
+    "ListGlobalFunctionsOutputBody": ListGlobalFunctionsOutputBody,
     "ListImportedFunctionsOutputBody": ListImportedFunctionsOutputBody,
+    "ListOperationPrerequisitesOutputBody": ListOperationPrerequisitesOutputBody,
+    "ListPublicUsersOutputBody": ListPublicUsersOutputBody,
     "ListSecretStoreOutputBody": ListSecretStoreOutputBody,
     "ListTeamsOutputBody": ListTeamsOutputBody,
     "ListUsersOutputBody": ListUsersOutputBody,
@@ -2286,6 +2419,8 @@ let typeMap: {[index: string]: any} = {
     "OperationMetadataTriageResult": OperationMetadataTriageResult,
     "OperationNetworkingExplainMetadataNetworkingExplainResult": OperationNetworkingExplainMetadataNetworkingExplainResult,
     "OperationNetworkingScanMetadataNetworkingScanResult": OperationNetworkingScanMetadataNetworkingScanResult,
+    "OperationPrerequisitesBody": OperationPrerequisitesBody,
+    "OperationRenameUnnamedFunctionsMetadataRenameUnnamedFunctionsResult": OperationRenameUnnamedFunctionsMetadataRenameUnnamedFunctionsResult,
     "OperationSecurityScanMetadataSecurityScanResult": OperationSecurityScanMetadataSecurityScanResult,
     "OperationVirusTotalScanMetadataVirusTotalScanResult": OperationVirusTotalScanMetadataVirusTotalScanResult,
     "OperationWorkflowProgressResultBody": OperationWorkflowProgressResultBody,
@@ -2320,6 +2455,7 @@ let typeMap: {[index: string]: any} = {
     "ProgressMessage": ProgressMessage,
     "ProseEvent": ProseEvent,
     "ProtocolsAgentResponse": ProtocolsAgentResponse,
+    "PublicUserBody": PublicUserBody,
     "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
     "QueuedWorkflowTaskResponse": QueuedWorkflowTaskResponse,
     "RatingOutputBody": RatingOutputBody,
@@ -2339,15 +2475,30 @@ let typeMap: {[index: string]: any} = {
     "RenameAppliedEvent": RenameAppliedEvent,
     "RenameInputBody": RenameInputBody,
     "RenameOutputBody": RenameOutputBody,
+    "RenameUnnamedFunctionsMetadata": RenameUnnamedFunctionsMetadata,
     "RenameUnnamedFunctionsResult": RenameUnnamedFunctionsResult,
     "RenderedToken": RenderedToken,
     "ReportAnalysisBody": ReportAnalysisBody,
     "ReportAnalysisResponse": ReportAnalysisResponse,
+    "ReportBytesConstant": ReportBytesConstant,
+    "ReportCallChain": ReportCallChain,
+    "ReportCodeSummary": ReportCodeSummary,
     "ReportEvent": ReportEvent,
+    "ReportFinding": ReportFinding,
+    "ReportFindingEvidenceInner": ReportFindingEvidenceInnerClass,
+    "ReportFunctionSimilarity": ReportFunctionSimilarity,
+    "ReportImportedAPI": ReportImportedAPI,
+    "ReportImportedAPICall": ReportImportedAPICall,
     "ReportInfo": ReportInfo,
+    "ReportMeta": ReportMeta,
+    "ReportModelInterpretation": ReportModelInterpretation,
     "ReportOptions": ReportOptions,
+    "ReportReferencedConstant": ReportReferencedConstant,
     "ReportResult": ReportResult,
+    "ReportStringMatch": ReportStringMatch,
+    "ReportSubject": ReportSubject,
     "RequestedConfigBody": RequestedConfigBody,
+    "RequeueAnalysisRequest": RequeueAnalysisRequest,
     "ResendVerificationEmailInputBody": ResendVerificationEmailInputBody,
     "ResolvedEntity": ResolvedEntity,
     "ResultBody": ResultBody,
@@ -2475,6 +2626,7 @@ let typeMap: {[index: string]: any} = {
     "UnionDefinition": UnionDefinition,
     "UnknownDataType": UnknownDataType,
     "UpdateAnalysisDataTypesInputBody": UpdateAnalysisDataTypesInputBody,
+    "UpdateAnalysisGlobalInputBody": UpdateAnalysisGlobalInputBody,
     "UpdateAnalysisInputBody": UpdateAnalysisInputBody,
     "UpdateArrayDataType": UpdateArrayDataType,
     "UpdateBaseDataType": UpdateBaseDataType,

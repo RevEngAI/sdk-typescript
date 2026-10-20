@@ -55,7 +55,7 @@ export class Example {
     /**
     * Tags associated with this binary
     */
-    'tags': Array<string> | null;
+    'tags': Array<string | null> | null;
     /**
     * Username of the analysis owner
     */
@@ -129,7 +129,7 @@ export class Example {
         {
             "name": "tags",
             "baseName": "tags",
-            "type": "Array<string>",
+            "type": "Array<string | null>",
             "format": ""
         },
         {
