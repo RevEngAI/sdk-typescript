@@ -9,25 +9,42 @@
  * Do not edit the class manually.
  */
 
-import { BytesConstant } from '../models/BytesConstant';
-import { EvidenceEffect } from '../models/EvidenceEffect';
+import { ReportBytesConstant } from '../models/ReportBytesConstant';
 import { HttpFile } from '../http/http';
 
-/**
-* A known constant whose semantic use has not been demonstrated.
-*/
 export class KnownConstantEvidence {
-    'evidenceKind'?: KnownConstantEvidenceEvidenceKindEnum;
-    'kind'?: KnownConstantEvidenceKindEnum;
-    'effect': EvidenceEffect;
-    'strength'?: KnownConstantEvidenceStrengthEnum;
-    'values': Array<BytesConstant>;
+    /**
+    * Whether the evidence supports or refutes the finding.
+    */
+    'effect': KnownConstantEvidenceEffectEnum;
+    /**
+    * Kind of evidence.
+    */
+    'evidenceKind': KnownConstantEvidenceEvidenceKindEnum;
+    /**
+    * How the evidence was derived.
+    */
+    'kind': KnownConstantEvidenceKindEnum;
+    /**
+    * How directly the evidence bears on the finding.
+    */
+    'strength': KnownConstantEvidenceStrengthEnum;
+    /**
+    * The well-known constants found in the binary.
+    */
+    'values': Array<ReportBytesConstant>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "effect",
+            "baseName": "effect",
+            "type": "KnownConstantEvidenceEffectEnum",
+            "format": ""
+        },
         {
             "name": "evidenceKind",
             "baseName": "evidence_kind",
@@ -41,12 +58,6 @@ export class KnownConstantEvidence {
             "format": ""
         },
         {
-            "name": "effect",
-            "baseName": "effect",
-            "type": "EvidenceEffect",
-            "format": ""
-        },
-        {
             "name": "strength",
             "baseName": "strength",
             "type": "KnownConstantEvidenceStrengthEnum",
@@ -55,7 +66,7 @@ export class KnownConstantEvidence {
         {
             "name": "values",
             "baseName": "values",
-            "type": "Array<BytesConstant>",
+            "type": "Array<ReportBytesConstant>",
             "format": ""
         }    ];
 
@@ -67,6 +78,11 @@ export class KnownConstantEvidence {
     }
 }
 
+export enum KnownConstantEvidenceEffectEnum {
+    Supports = 'supports',
+    Refutes = 'refutes',
+    UnknownDefaultOpenApi = '11184809'
+}
 export enum KnownConstantEvidenceEvidenceKindEnum {
     KnownConstant = 'known_constant',
     UnknownDefaultOpenApi = '11184809'

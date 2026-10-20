@@ -15,7 +15,7 @@ import { Subject } from '../models/Subject';
 import { HttpFile } from '../http/http';
 
 export class ReferencedConstant {
-    'subject': Subject;
+    'subject': Subject | null;
     'value': BytesConstant;
     'display'?: Display | null;
 

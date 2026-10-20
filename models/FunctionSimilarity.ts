@@ -15,7 +15,7 @@ import { HttpFile } from '../http/http';
 export class FunctionSimilarity {
     'name': string;
     'similarity': number;
-    'subject': Subject;
+    'subject': Subject | null;
 
     static readonly discriminator: string | undefined = undefined;
 

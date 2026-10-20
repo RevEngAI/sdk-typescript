@@ -57,6 +57,10 @@ export class AnalysisBasicInfoOutputBody {
     */
     'detectedBinaryType': string;
     /**
+    * Detected source language; empty when unavailable
+    */
+    'detectedLanguage': string;
+    /**
     * Number of functions in the binary
     */
     'functionCount': number;
@@ -181,6 +185,12 @@ export class AnalysisBasicInfoOutputBody {
         {
             "name": "detectedBinaryType",
             "baseName": "detected_binary_type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "detectedLanguage",
+            "baseName": "detected_language",
             "type": "string",
             "format": ""
         },

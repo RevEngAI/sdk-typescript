@@ -28,6 +28,7 @@ Method | HTTP request | Description
 [**v3GetCapabilitiesOperation**](AgentApi.md#v3GetCapabilitiesOperation) | **GET** /v3/operations/capabilities/{analysis_id} | Get a capabilities operation.
 [**v3GetCryptoExplainOperation**](AgentApi.md#v3GetCryptoExplainOperation) | **GET** /v3/operations/crypto-explain/{function_id} | Get a crypto-explain operation.
 [**v3GetCryptoScanOperation**](AgentApi.md#v3GetCryptoScanOperation) | **GET** /v3/operations/crypto-scan/{analysis_id} | Get a crypto-scan operation.
+[**v3GetCryptographyOperation**](AgentApi.md#v3GetCryptographyOperation) | **GET** /v3/operations/cryptography/{analysis_id} | Get a cryptography operation.
 [**v3GetExecutionExplainOperation**](AgentApi.md#v3GetExecutionExplainOperation) | **GET** /v3/operations/execution-explain/{function_id} | Get an execution-explain operation.
 [**v3GetExecutionScanOperation**](AgentApi.md#v3GetExecutionScanOperation) | **GET** /v3/operations/execution-scan/{analysis_id} | Get an execution-scan operation.
 [**v3GetFilesystemAnalyseOperation**](AgentApi.md#v3GetFilesystemAnalyseOperation) | **GET** /v3/operations/filesystem-analyse/{function_id} | Get a filesystem-analyse operation.
@@ -36,15 +37,18 @@ Method | HTTP request | Description
 [**v3GetNetworkingScanOperation**](AgentApi.md#v3GetNetworkingScanOperation) | **GET** /v3/operations/networking-scan/{analysis_id} | Get a networking-scan operation.
 [**v3GetProtocolsOperation**](AgentApi.md#v3GetProtocolsOperation) | **GET** /v3/operations/protocols/{analysis_id} | Get a protocols operation.
 [**v3GetRemediationOperation**](AgentApi.md#v3GetRemediationOperation) | **GET** /v3/operations/remediation/{analysis_id} | Get a remediation operation.
+[**v3GetRenameUnnamedFunctionsOperation**](AgentApi.md#v3GetRenameUnnamedFunctionsOperation) | **GET** /v3/operations/rename-unnamed-functions/{analysis_id} | Get a rename-unnamed-functions operation.
 [**v3GetRenameUnnamedFunctionsResult**](AgentApi.md#v3GetRenameUnnamedFunctionsResult) | **GET** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions | Get rename-unnamed-functions agent result.
 [**v3GetRenameUnnamedFunctionsStatus**](AgentApi.md#v3GetRenameUnnamedFunctionsStatus) | **GET** /v3/analyses/{analysis_id}/agents/rename-unnamed-functions/status | Get rename-unnamed-functions agent status.
 [**v3GetReportAnalysisOperation**](AgentApi.md#v3GetReportAnalysisOperation) | **GET** /v3/operations/report-analysis/{analysis_id} | Get a report-analysis operation.
 [**v3GetSecretsOperation**](AgentApi.md#v3GetSecretsOperation) | **GET** /v3/operations/secrets/{analysis_id} | Get a secrets operation.
 [**v3GetSecurityScanOperation**](AgentApi.md#v3GetSecurityScanOperation) | **GET** /v3/operations/security-scan/{analysis_id} | Get a security-scan operation.
 [**v3GetTriageOperation**](AgentApi.md#v3GetTriageOperation) | **GET** /v3/operations/triage/{analysis_id} | Get a triage operation.
+[**v3ListOperationPrerequisites**](AgentApi.md#v3ListOperationPrerequisites) | **GET** /v3/operation-prerequisites | List operation prerequisites.
 [**v3RunCapabilities**](AgentApi.md#v3RunCapabilities) | **POST** /v3/analyses/{analysis_id}/capabilities:run | Run the capabilities agent.
 [**v3RunCryptoExplain**](AgentApi.md#v3RunCryptoExplain) | **POST** /v3/functions/{function_id}/crypto-explain:run | Run the crypto-explain agent.
 [**v3RunCryptoScan**](AgentApi.md#v3RunCryptoScan) | **POST** /v3/analyses/{analysis_id}/crypto-scan:run | Run the crypto-scan agent.
+[**v3RunCryptography**](AgentApi.md#v3RunCryptography) | **POST** /v3/analyses/{analysis_id}/cryptography:run | Run the cryptography agent.
 [**v3RunExecutionExplain**](AgentApi.md#v3RunExecutionExplain) | **POST** /v3/functions/{function_id}/execution-explain:run | Run the execution-explain agent.
 [**v3RunExecutionScan**](AgentApi.md#v3RunExecutionScan) | **POST** /v3/analyses/{analysis_id}/execution-scan:run | Run the execution-scan agent.
 [**v3RunFilesystemAnalyse**](AgentApi.md#v3RunFilesystemAnalyse) | **POST** /v3/functions/{function_id}/filesystem-analyse:run | Run the filesystem-analyse agent.
@@ -1166,7 +1170,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
- **agent** | [**&#39;triage&#39; | &#39;capabilities&#39; | &#39;report-analysis&#39; | &#39;remediation&#39; | &#39;protocols&#39; | &#39;secrets&#39;**]**Array<&#39;triage&#39; &#124; &#39;capabilities&#39; &#124; &#39;report-analysis&#39; &#124; &#39;remediation&#39; &#124; &#39;protocols&#39; &#124; &#39;secrets&#39; &#124; &#39;11184809&#39;>** | Which agent\&#39;s output the feedback is about | defaults to undefined
+ **agent** | [**&#39;triage&#39; | &#39;capabilities&#39; | &#39;report-analysis&#39; | &#39;remediation&#39; | &#39;protocols&#39; | &#39;secrets&#39; | &#39;cryptography&#39;**]**Array<&#39;triage&#39; &#124; &#39;capabilities&#39; &#124; &#39;report-analysis&#39; &#124; &#39;remediation&#39; &#124; &#39;protocols&#39; &#124; &#39;secrets&#39; &#124; &#39;cryptography&#39; &#124; &#39;11184809&#39;>** | Which agent\&#39;s output the feedback is about | defaults to undefined
 
 
 ### Return type
@@ -1361,6 +1365,64 @@ Name | Type | Description  | Notes
 **200** | OK |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetCryptographyOperation**
+> OperationMetadataReportResult v3GetCryptographyOperation()
+
+Polls a cryptography run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed and holds the findings, each with its supporting evidence.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+
+### Example
+
+
+```typescript
+import { createConfiguration, AgentApi } from '@revengai/sdk';
+import type { AgentApiV3GetCryptographyOperationRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AgentApi(configuration);
+
+const request: AgentApiV3GetCryptographyOperationRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3GetCryptographyOperation(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**OperationMetadataReportResult**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -1711,7 +1773,7 @@ Name | Type | Description  | Notes
 # **v3GetProtocolsOperation**
 > OperationMetadataReportResult v3GetProtocolsOperation()
 
-Polls a protocols run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response.report` is set once the run has completed and carries the findings document as the agent produced it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+Polls a protocols run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed and holds the findings, each with its supporting evidence.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
 
 ### Example
 
@@ -1819,6 +1881,63 @@ Name | Type | Description  | Notes
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetRenameUnnamedFunctionsOperation**
+> OperationRenameUnnamedFunctionsMetadataRenameUnnamedFunctionsResult v3GetRenameUnnamedFunctionsOperation()
+
+Returns the current state of the rename-unnamed-functions run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AgentApi } from '@revengai/sdk';
+import type { AgentApiV3GetRenameUnnamedFunctionsOperationRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AgentApi(configuration);
+
+const request: AgentApiV3GetRenameUnnamedFunctionsOperationRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3GetRenameUnnamedFunctionsOperation(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**OperationRenameUnnamedFunctionsMetadataRenameUnnamedFunctionsResult**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -2000,7 +2119,7 @@ Name | Type | Description  | Notes
 # **v3GetSecretsOperation**
 > OperationMetadataReportResult v3GetSecretsOperation()
 
-Polls a secrets run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response.report` is set once the run has completed and carries the findings document as the agent produced it.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+Polls a secrets run. `metadata.status` tracks the run and `metadata.log_history` carries its progress messages; `response` is set once the run has completed and holds the findings, each with its supporting evidence.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
 
 ### Example
 
@@ -2170,10 +2289,57 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **v3ListOperationPrerequisites**
+> ListOperationPrerequisitesOutputBody v3ListOperationPrerequisites()
+
+Lists the operations that can only start once other operations have completed on the same analysis. To check whether an analysis has completed them, use `/v3/analyses/{analysis_id}/operations`.
+
+### Example
+
+
+```typescript
+import { createConfiguration, AgentApi } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AgentApi(configuration);
+
+const request = {};
+
+const data = await apiInstance.v3ListOperationPrerequisites(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+This endpoint does not need any parameter.
+
+
+### Return type
+
+**ListOperationPrerequisitesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **v3RunCapabilities**
 > OperationMetadataCapabilitiesResult v3RunCapabilities()
 
-Starts the capabilities agent, which attributes behavioural capabilities to individual functions, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+Starts the capabilities agent, which attributes behavioural capabilities to individual functions, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
 
 ### Example
 
@@ -2291,7 +2457,7 @@ Name | Type | Description  | Notes
 # **v3RunCryptoScan**
 > OperationCryptoScanMetadataCryptoScanResult v3RunCryptoScan(triggerCryptoScanInputBody)
 
-Starts an agent that name-matches the analysis\' functions and their callees against known crypto-library APIs, and returns the operation to poll for its outcome. Purely name-based — never triggers AI decompilation, so it costs no credits and runs in seconds. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+Starts an agent that name-matches the analysis\' functions and their callees against known crypto-library APIs, and returns the operation to poll for its outcome. Purely name-based — never triggers AI decompilation, so it costs no credits and runs in seconds. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
 
 ### Example
 
@@ -2349,6 +2515,65 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3RunCryptography**
+> OperationMetadataReportResult v3RunCryptography()
+
+Starts the cryptography agent, which identifies cryptographic operations in the binary and reports its findings, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+
+### Example
+
+
+```typescript
+import { createConfiguration, AgentApi } from '@revengai/sdk';
+import type { AgentApiV3RunCryptographyRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AgentApi(configuration);
+
+const request: AgentApiV3RunCryptographyRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3RunCryptography(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**OperationMetadataReportResult**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**402** | Payment Required |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |
@@ -2424,7 +2649,7 @@ Name | Type | Description  | Notes
 # **v3RunExecutionScan**
 > OperationExecutionScanMetadataExecutionScanResult v3RunExecutionScan(triggerExecutionScanInputBody)
 
-Starts an agent that name-matches the analysis\' functions and their callees against known code-execution APIs, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+Starts an agent that name-matches the analysis\' functions and their callees against known code-execution APIs, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
 
 ### Example
 
@@ -2557,7 +2782,7 @@ Name | Type | Description  | Notes
 # **v3RunFilesystemScan**
 > OperationFilesystemScanMetadataFilesystemScanResult v3RunFilesystemScan(triggerFilesystemScanInputBody)
 
-Starts an agent that name-matches the analysis\' functions and their callees against known filesystem/system APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+Starts an agent that name-matches the analysis\' functions and their callees against known filesystem/system APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
 
 ### Example
 
@@ -2690,7 +2915,7 @@ Name | Type | Description  | Notes
 # **v3RunNetworkingScan**
 > OperationNetworkingScanMetadataNetworkingScanResult v3RunNetworkingScan(triggerNetworkingScanInputBody)
 
-Starts an agent that name-matches the analysis\' functions and their callees against known networking APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
+Starts an agent that name-matches the analysis\' functions and their callees against known networking APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
 
 ### Example
 
@@ -2759,7 +2984,7 @@ Name | Type | Description  | Notes
 # **v3RunProtocols**
 > OperationMetadataReportResult v3RunProtocols()
 
-Starts the protocols agent, which identifies the network and data protocols the binary implements, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+Starts the protocols agent, which identifies the network and data protocols the binary implements, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
 
 ### Example
 
@@ -2818,7 +3043,7 @@ Name | Type | Description  | Notes
 # **v3RunRemediation**
 > OperationMetadataRemediationResult v3RunRemediation()
 
-Starts the remediation agent, which generates YARA, Snort and STIX detection rules for the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+Starts the remediation agent, which generates YARA, Snort and STIX detection rules for the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
 
 ### Example
 
@@ -2877,7 +3102,7 @@ Name | Type | Description  | Notes
 # **v3RunReportAnalysis**
 > OperationMetadataThreatReportResult v3RunReportAnalysis()
 
-Starts the report-analysis agent, which produces a combined threat report — summary, software type, attack flow, indicators of compromise, MITRE ATT&CK techniques and a YARA rule — and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+Starts the report-analysis agent, which produces a combined threat report — summary, software type, attack flow, indicators of compromise, MITRE ATT&CK techniques and a YARA rule — and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
 
 ### Example
 
@@ -2936,7 +3161,7 @@ Name | Type | Description  | Notes
 # **v3RunSecrets**
 > OperationMetadataReportResult v3RunSecrets()
 
-Starts the secrets agent, which finds credentials and other hardcoded secrets in the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+Starts the secrets agent, which finds credentials and other hardcoded secrets in the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
 
 ### Example
 
@@ -3059,7 +3284,7 @@ Name | Type | Description  | Notes
 # **v3RunTriage**
 > OperationMetadataTriageResult v3RunTriage()
 
-Starts the triage agent, which scores the binary and each of its functions for maliciousness, and returns the operation to poll for its outcome. Unlike the other binary agents this one is not gated on subscription tier. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+Starts the triage agent, which scores the binary and each of its functions for maliciousness, and returns the operation to poll for its outcome. Unlike the other binary agents this one is not gated on subscription tier. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
 
 ### Example
 
@@ -3216,7 +3441,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **submitFeedbackInputBody** | **SubmitFeedbackInputBody**|  |
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
- **agent** | [**&#39;triage&#39; | &#39;capabilities&#39; | &#39;report-analysis&#39; | &#39;remediation&#39; | &#39;protocols&#39; | &#39;secrets&#39;**]**Array<&#39;triage&#39; &#124; &#39;capabilities&#39; &#124; &#39;report-analysis&#39; &#124; &#39;remediation&#39; &#124; &#39;protocols&#39; &#124; &#39;secrets&#39; &#124; &#39;11184809&#39;>** | Which agent\&#39;s output the feedback is about | defaults to undefined
+ **agent** | [**&#39;triage&#39; | &#39;capabilities&#39; | &#39;report-analysis&#39; | &#39;remediation&#39; | &#39;protocols&#39; | &#39;secrets&#39; | &#39;cryptography&#39;**]**Array<&#39;triage&#39; &#124; &#39;capabilities&#39; &#124; &#39;report-analysis&#39; &#124; &#39;remediation&#39; &#124; &#39;protocols&#39; &#124; &#39;secrets&#39; &#124; &#39;cryptography&#39; &#124; &#39;11184809&#39;>** | Which agent\&#39;s output the feedback is about | defaults to undefined
 
 
 ### Return type

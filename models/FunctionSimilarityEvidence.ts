@@ -9,25 +9,42 @@
  * Do not edit the class manually.
  */
 
-import { EvidenceEffect } from '../models/EvidenceEffect';
-import { FunctionSimilarity } from '../models/FunctionSimilarity';
+import { ReportFunctionSimilarity } from '../models/ReportFunctionSimilarity';
 import { HttpFile } from '../http/http';
 
-/**
-* Function-similarity results suggestive of a capability.
-*/
 export class FunctionSimilarityEvidence {
-    'evidenceKind'?: FunctionSimilarityEvidenceEvidenceKindEnum;
-    'kind'?: FunctionSimilarityEvidenceKindEnum;
-    'effect': EvidenceEffect;
-    'strength'?: FunctionSimilarityEvidenceStrengthEnum;
-    'similarities': Array<FunctionSimilarity>;
+    /**
+    * Whether the evidence supports or refutes the finding.
+    */
+    'effect': FunctionSimilarityEvidenceEffectEnum;
+    /**
+    * Kind of evidence.
+    */
+    'evidenceKind': FunctionSimilarityEvidenceEvidenceKindEnum;
+    /**
+    * How the evidence was derived.
+    */
+    'kind': FunctionSimilarityEvidenceKindEnum;
+    /**
+    * The similar functions.
+    */
+    'similarities': Array<ReportFunctionSimilarity>;
+    /**
+    * How directly the evidence bears on the finding.
+    */
+    'strength': FunctionSimilarityEvidenceStrengthEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "effect",
+            "baseName": "effect",
+            "type": "FunctionSimilarityEvidenceEffectEnum",
+            "format": ""
+        },
         {
             "name": "evidenceKind",
             "baseName": "evidence_kind",
@@ -41,21 +58,15 @@ export class FunctionSimilarityEvidence {
             "format": ""
         },
         {
-            "name": "effect",
-            "baseName": "effect",
-            "type": "EvidenceEffect",
+            "name": "similarities",
+            "baseName": "similarities",
+            "type": "Array<ReportFunctionSimilarity>",
             "format": ""
         },
         {
             "name": "strength",
             "baseName": "strength",
             "type": "FunctionSimilarityEvidenceStrengthEnum",
-            "format": ""
-        },
-        {
-            "name": "similarities",
-            "baseName": "similarities",
-            "type": "Array<FunctionSimilarity>",
             "format": ""
         }    ];
 
@@ -67,6 +78,11 @@ export class FunctionSimilarityEvidence {
     }
 }
 
+export enum FunctionSimilarityEvidenceEffectEnum {
+    Supports = 'supports',
+    Refutes = 'refutes',
+    UnknownDefaultOpenApi = '11184809'
+}
 export enum FunctionSimilarityEvidenceEvidenceKindEnum {
     FunctionSimilarity = 'function_similarity',
     UnknownDefaultOpenApi = '11184809'

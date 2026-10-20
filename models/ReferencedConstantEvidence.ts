@@ -9,25 +9,48 @@
  * Do not edit the class manually.
  */
 
-import { EvidenceEffect } from '../models/EvidenceEffect';
-import { ReferencedConstant } from '../models/ReferencedConstant';
+import { ReportReferencedConstant } from '../models/ReportReferencedConstant';
 import { HttpFile } from '../http/http';
 
-/**
-* Constants and the instructions that reference them.
-*/
 export class ReferencedConstantEvidence {
-    'evidenceKind'?: ReferencedConstantEvidenceEvidenceKindEnum;
-    'kind'?: ReferencedConstantEvidenceKindEnum;
-    'effect': EvidenceEffect;
-    'strength'?: ReferencedConstantEvidenceStrengthEnum;
-    'constants': Array<ReferencedConstant>;
+    /**
+    * The constants and where they are referenced.
+    */
+    'constants': Array<ReportReferencedConstant>;
+    /**
+    * Whether the evidence supports or refutes the finding.
+    */
+    'effect': ReferencedConstantEvidenceEffectEnum;
+    /**
+    * Kind of evidence.
+    */
+    'evidenceKind': ReferencedConstantEvidenceEvidenceKindEnum;
+    /**
+    * How the evidence was derived.
+    */
+    'kind': ReferencedConstantEvidenceKindEnum;
+    /**
+    * How directly the evidence bears on the finding.
+    */
+    'strength': ReferencedConstantEvidenceStrengthEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "constants",
+            "baseName": "constants",
+            "type": "Array<ReportReferencedConstant>",
+            "format": ""
+        },
+        {
+            "name": "effect",
+            "baseName": "effect",
+            "type": "ReferencedConstantEvidenceEffectEnum",
+            "format": ""
+        },
         {
             "name": "evidenceKind",
             "baseName": "evidence_kind",
@@ -41,21 +64,9 @@ export class ReferencedConstantEvidence {
             "format": ""
         },
         {
-            "name": "effect",
-            "baseName": "effect",
-            "type": "EvidenceEffect",
-            "format": ""
-        },
-        {
             "name": "strength",
             "baseName": "strength",
             "type": "ReferencedConstantEvidenceStrengthEnum",
-            "format": ""
-        },
-        {
-            "name": "constants",
-            "baseName": "constants",
-            "type": "Array<ReferencedConstant>",
             "format": ""
         }    ];
 
@@ -67,6 +78,11 @@ export class ReferencedConstantEvidence {
     }
 }
 
+export enum ReferencedConstantEvidenceEffectEnum {
+    Supports = 'supports',
+    Refutes = 'refutes',
+    UnknownDefaultOpenApi = '11184809'
+}
 export enum ReferencedConstantEvidenceEvidenceKindEnum {
     ReferencedConstant = 'referenced_constant',
     UnknownDefaultOpenApi = '11184809'
