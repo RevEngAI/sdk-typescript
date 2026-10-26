@@ -29,6 +29,7 @@ Method | HTTP request | Description
 [**startFunctionsMatching**](FunctionsCoreApi.md#startFunctionsMatching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 [**v3CanonicalizeFunctionNames**](FunctionsCoreApi.md#v3CanonicalizeFunctionNames) | **POST** /v3/functions/canonical-names | Canonicalize a batch of function names
 [**v3GetAnalysisFuncMaps**](FunctionsCoreApi.md#v3GetAnalysisFuncMaps) | **GET** /v3/analyses/{analysis_id}/func-maps | Get function ID/address maps for an analysis
+[**v3ListFunctionGlobals**](FunctionsCoreApi.md#v3ListFunctionGlobals) | **GET** /v3/functions/{function_id}/globals | List the global variables a function references.
 [**v3SearchFunctions**](FunctionsCoreApi.md#v3SearchFunctions) | **GET** /v3/functions | Search functions
 
 
@@ -1532,6 +1533,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 **GetFunctionMapsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3ListFunctionGlobals**
+> ListFunctionGlobalsOutputBody v3ListFunctionGlobals()
+
+Returns the global variables referenced by the function, ordered by address.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiV3ListFunctionGlobalsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiV3ListFunctionGlobalsRequest = {
+    // Function ID
+  functionId: 1,
+};
+
+const data = await apiInstance.v3ListFunctionGlobals(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+
+
+### Return type
+
+**ListFunctionGlobalsOutputBody**
 
 ### Authorization
 

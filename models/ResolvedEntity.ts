@@ -33,9 +33,11 @@ export class ResolvedEntity {
     'suggestionConfidence': string | null;
     'token': string | null;
     'typeIndex': number | null;
+    'typeSource': string | null;
     'vaddr': number | null;
     'value': string | null;
     'valueConfidence': string | null;
+    'valueKind': string | null;
     'valueType': string | null;
 
     static readonly discriminator: string | undefined = undefined;
@@ -170,6 +172,12 @@ export class ResolvedEntity {
             "format": "int64"
         },
         {
+            "name": "typeSource",
+            "baseName": "type_source",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "vaddr",
             "baseName": "vaddr",
             "type": "number",
@@ -184,6 +192,12 @@ export class ResolvedEntity {
         {
             "name": "valueConfidence",
             "baseName": "value_confidence",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "valueKind",
+            "baseName": "value_kind",
             "type": "string",
             "format": ""
         },

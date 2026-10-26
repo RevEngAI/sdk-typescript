@@ -24,6 +24,10 @@ export class Binary {
     * Detected operating-system platform; empty when unavailable
     */
     'detectedBinaryType': string;
+    /**
+    * Detected source language; empty when unavailable
+    */
+    'detectedLanguage': string;
     'isSystemAnalysis': boolean;
     /**
     * Name of the model the analysis ran on
@@ -78,6 +82,12 @@ export class Binary {
         {
             "name": "detectedBinaryType",
             "baseName": "detected_binary_type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "detectedLanguage",
+            "baseName": "detected_language",
             "type": "string",
             "format": ""
         },

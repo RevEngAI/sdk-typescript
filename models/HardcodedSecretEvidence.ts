@@ -9,31 +9,77 @@
  * Do not edit the class manually.
  */
 
-import { EvidenceStrength } from '../models/EvidenceStrength';
-import { RuleKind } from '../models/RuleKind';
 import { HttpFile } from '../http/http';
 
-/**
-* A hard-coded secret identified in the binary\'s data.
-*/
 export class HardcodedSecretEvidence {
-    'evidenceKind'?: HardcodedSecretEvidenceEvidenceKindEnum;
-    'kind'?: HardcodedSecretEvidenceKindEnum;
-    'effect'?: HardcodedSecretEvidenceEffectEnum;
-    'strength': EvidenceStrength;
-    'ruleId': string;
+    /**
+    * What the rule detects.
+    */
     'description': string;
-    'secretKind': RuleKind;
-    'secret': string;
+    /**
+    * Whether the evidence supports or refutes the finding.
+    */
+    'effect': HardcodedSecretEvidenceEffectEnum;
+    /**
+    * Shannon entropy of the secret, in bits per byte.
+    */
     'entropy': number;
-    'size': number;
+    /**
+    * Kind of evidence.
+    */
+    'evidenceKind': HardcodedSecretEvidenceEvidenceKindEnum;
+    /**
+    * How the evidence was derived.
+    */
+    'kind': HardcodedSecretEvidenceKindEnum;
+    /**
+    * Address of the secret in the binary\'s data.
+    */
     'references': Array<number>;
+    /**
+    * Identifier of the secret-scanning rule that matched.
+    */
+    'ruleId': string;
+    /**
+    * The secret as it appears in the binary.
+    */
+    'secret': string;
+    /**
+    * Category of the secret.
+    */
+    'secretKind': HardcodedSecretEvidenceSecretKindEnum;
+    /**
+    * Size of the secret in bytes.
+    */
+    'size': number;
+    /**
+    * How directly the evidence bears on the finding.
+    */
+    'strength': HardcodedSecretEvidenceStrengthEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "description",
+            "baseName": "description",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "effect",
+            "baseName": "effect",
+            "type": "HardcodedSecretEvidenceEffectEnum",
+            "format": ""
+        },
+        {
+            "name": "entropy",
+            "baseName": "entropy",
+            "type": "number",
+            "format": "double"
+        },
         {
             "name": "evidenceKind",
             "baseName": "evidence_kind",
@@ -47,33 +93,15 @@ export class HardcodedSecretEvidence {
             "format": ""
         },
         {
-            "name": "effect",
-            "baseName": "effect",
-            "type": "HardcodedSecretEvidenceEffectEnum",
-            "format": ""
-        },
-        {
-            "name": "strength",
-            "baseName": "strength",
-            "type": "EvidenceStrength",
-            "format": ""
+            "name": "references",
+            "baseName": "references",
+            "type": "Array<number>",
+            "format": "int64"
         },
         {
             "name": "ruleId",
             "baseName": "rule_id",
             "type": "string",
-            "format": ""
-        },
-        {
-            "name": "description",
-            "baseName": "description",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "secretKind",
-            "baseName": "secret_kind",
-            "type": "RuleKind",
             "format": ""
         },
         {
@@ -83,21 +111,21 @@ export class HardcodedSecretEvidence {
             "format": ""
         },
         {
-            "name": "entropy",
-            "baseName": "entropy",
-            "type": "number",
+            "name": "secretKind",
+            "baseName": "secret_kind",
+            "type": "HardcodedSecretEvidenceSecretKindEnum",
             "format": ""
         },
         {
             "name": "size",
             "baseName": "size",
             "type": "number",
-            "format": ""
+            "format": "int64"
         },
         {
-            "name": "references",
-            "baseName": "references",
-            "type": "Array<number>",
+            "name": "strength",
+            "baseName": "strength",
+            "type": "HardcodedSecretEvidenceStrengthEnum",
             "format": ""
         }    ];
 
@@ -109,6 +137,10 @@ export class HardcodedSecretEvidence {
     }
 }
 
+export enum HardcodedSecretEvidenceEffectEnum {
+    Supports = 'supports',
+    UnknownDefaultOpenApi = '11184809'
+}
 export enum HardcodedSecretEvidenceEvidenceKindEnum {
     HardcodedSecret = 'hardcoded_secret',
     UnknownDefaultOpenApi = '11184809'
@@ -117,8 +149,21 @@ export enum HardcodedSecretEvidenceKindEnum {
     DeterministicDerivation = 'deterministic_derivation',
     UnknownDefaultOpenApi = '11184809'
 }
-export enum HardcodedSecretEvidenceEffectEnum {
-    Supports = 'supports',
+export enum HardcodedSecretEvidenceSecretKindEnum {
+    Credentials = 'credentials',
+    ApiCredentials = 'api-credentials',
+    OauthCredentials = 'oauth-credentials',
+    EncryptionKey = 'encryption-key',
+    JwtToken = 'jwt-token',
+    WebhookUrl = 'webhook-url',
+    PrivateKey = 'private-key',
+    SignedUrl = 'signed-url',
+    Generic = 'generic',
+    UnknownDefaultOpenApi = '11184809'
+}
+export enum HardcodedSecretEvidenceStrengthEnum {
+    Direct = 'direct',
+    Indirect = 'indirect',
     UnknownDefaultOpenApi = '11184809'
 }
 
