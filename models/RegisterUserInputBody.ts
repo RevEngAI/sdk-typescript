@@ -13,6 +13,10 @@ import { HttpFile } from '../http/http';
 
 export class RegisterUserInputBody {
     /**
+    * Google reCAPTCHA token. Required when the deployment has reCAPTCHA enabled; ignored otherwise.
+    */
+    'captchaToken'?: string;
+    /**
     * Email address
     */
     'email': string;
@@ -42,6 +46,12 @@ export class RegisterUserInputBody {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "captchaToken",
+            "baseName": "captcha_token",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "email",
             "baseName": "email",

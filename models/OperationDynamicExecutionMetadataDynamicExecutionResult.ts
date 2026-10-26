@@ -10,6 +10,7 @@
  */
 
 import { DynamicExecutionMetadata } from '../models/DynamicExecutionMetadata';
+import { DynamicExecutionResult } from '../models/DynamicExecutionResult';
 import { Status } from '../models/Status';
 import { HttpFile } from '../http/http';
 
@@ -30,7 +31,10 @@ export class OperationDynamicExecutionMetadataDynamicExecutionResult {
     * API resource name.
     */
     'name': string;
-    'response'?: any;
+    /**
+    * Result, set only when done is true and the operation succeeded.
+    */
+    'response'?: DynamicExecutionResult;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -64,7 +68,7 @@ export class OperationDynamicExecutionMetadataDynamicExecutionResult {
         {
             "name": "response",
             "baseName": "response",
-            "type": "any",
+            "type": "DynamicExecutionResult",
             "format": ""
         }    ];
 

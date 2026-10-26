@@ -9,25 +9,42 @@
  * Do not edit the class manually.
  */
 
-import { DecompilerSummary } from '../models/DecompilerSummary';
-import { EvidenceEffect } from '../models/EvidenceEffect';
+import { ReportCodeSummary } from '../models/ReportCodeSummary';
 import { HttpFile } from '../http/http';
 
-/**
-* Semantic summaries derived from decompiler output.
-*/
 export class DecompilerSummaryEvidence {
-    'evidenceKind'?: DecompilerSummaryEvidenceEvidenceKindEnum;
-    'kind'?: DecompilerSummaryEvidenceKindEnum;
-    'effect': EvidenceEffect;
-    'strength'?: DecompilerSummaryEvidenceStrengthEnum;
-    'summaries': Array<DecompilerSummary>;
+    /**
+    * Whether the evidence supports or refutes the finding.
+    */
+    'effect': DecompilerSummaryEvidenceEffectEnum;
+    /**
+    * Kind of evidence.
+    */
+    'evidenceKind': DecompilerSummaryEvidenceEvidenceKindEnum;
+    /**
+    * How the evidence was derived.
+    */
+    'kind': DecompilerSummaryEvidenceKindEnum;
+    /**
+    * How directly the evidence bears on the finding.
+    */
+    'strength': DecompilerSummaryEvidenceStrengthEnum;
+    /**
+    * Summaries of the decompiled code.
+    */
+    'summaries': Array<ReportCodeSummary>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "effect",
+            "baseName": "effect",
+            "type": "DecompilerSummaryEvidenceEffectEnum",
+            "format": ""
+        },
         {
             "name": "evidenceKind",
             "baseName": "evidence_kind",
@@ -41,12 +58,6 @@ export class DecompilerSummaryEvidence {
             "format": ""
         },
         {
-            "name": "effect",
-            "baseName": "effect",
-            "type": "EvidenceEffect",
-            "format": ""
-        },
-        {
             "name": "strength",
             "baseName": "strength",
             "type": "DecompilerSummaryEvidenceStrengthEnum",
@@ -55,7 +66,7 @@ export class DecompilerSummaryEvidence {
         {
             "name": "summaries",
             "baseName": "summaries",
-            "type": "Array<DecompilerSummary>",
+            "type": "Array<ReportCodeSummary>",
             "format": ""
         }    ];
 
@@ -67,6 +78,11 @@ export class DecompilerSummaryEvidence {
     }
 }
 
+export enum DecompilerSummaryEvidenceEffectEnum {
+    Supports = 'supports',
+    Refutes = 'refutes',
+    UnknownDefaultOpenApi = '11184809'
+}
 export enum DecompilerSummaryEvidenceEvidenceKindEnum {
     DecompilerSummary = 'decompiler_summary',
     UnknownDefaultOpenApi = '11184809'

@@ -9,20 +9,30 @@
  * Do not edit the class manually.
  */
 
-import { EvidenceEffect } from '../models/EvidenceEffect';
-import { EvidenceStrength } from '../models/EvidenceStrength';
-import { ModelInterpretation } from '../models/ModelInterpretation';
+import { ReportModelInterpretation } from '../models/ReportModelInterpretation';
 import { HttpFile } from '../http/http';
 
-/**
-* LLM interpretations of observations.
-*/
 export class ModelInterpretationEvidence {
-    'evidenceKind'?: ModelInterpretationEvidenceEvidenceKindEnum;
-    'kind'?: ModelInterpretationEvidenceKindEnum;
-    'effect': EvidenceEffect;
-    'strength'?: EvidenceStrength;
-    'interpretations': Array<ModelInterpretation>;
+    /**
+    * Whether the evidence supports or refutes the finding.
+    */
+    'effect': ModelInterpretationEvidenceEffectEnum;
+    /**
+    * Kind of evidence.
+    */
+    'evidenceKind': ModelInterpretationEvidenceEvidenceKindEnum;
+    /**
+    * Interpretations of the code by an AI model.
+    */
+    'interpretations': Array<ReportModelInterpretation>;
+    /**
+    * How the evidence was derived.
+    */
+    'kind': ModelInterpretationEvidenceKindEnum;
+    /**
+    * How directly the evidence bears on the finding.
+    */
+    'strength': ModelInterpretationEvidenceStrengthEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -30,9 +40,21 @@ export class ModelInterpretationEvidence {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
+            "name": "effect",
+            "baseName": "effect",
+            "type": "ModelInterpretationEvidenceEffectEnum",
+            "format": ""
+        },
+        {
             "name": "evidenceKind",
             "baseName": "evidence_kind",
             "type": "ModelInterpretationEvidenceEvidenceKindEnum",
+            "format": ""
+        },
+        {
+            "name": "interpretations",
+            "baseName": "interpretations",
+            "type": "Array<ReportModelInterpretation>",
             "format": ""
         },
         {
@@ -42,21 +64,9 @@ export class ModelInterpretationEvidence {
             "format": ""
         },
         {
-            "name": "effect",
-            "baseName": "effect",
-            "type": "EvidenceEffect",
-            "format": ""
-        },
-        {
             "name": "strength",
             "baseName": "strength",
-            "type": "EvidenceStrength",
-            "format": ""
-        },
-        {
-            "name": "interpretations",
-            "baseName": "interpretations",
-            "type": "Array<ModelInterpretation>",
+            "type": "ModelInterpretationEvidenceStrengthEnum",
             "format": ""
         }    ];
 
@@ -68,12 +78,22 @@ export class ModelInterpretationEvidence {
     }
 }
 
+export enum ModelInterpretationEvidenceEffectEnum {
+    Supports = 'supports',
+    Refutes = 'refutes',
+    UnknownDefaultOpenApi = '11184809'
+}
 export enum ModelInterpretationEvidenceEvidenceKindEnum {
     ModelInterpretation = 'model_interpretation',
     UnknownDefaultOpenApi = '11184809'
 }
 export enum ModelInterpretationEvidenceKindEnum {
     ModelInterpretation = 'model_interpretation',
+    UnknownDefaultOpenApi = '11184809'
+}
+export enum ModelInterpretationEvidenceStrengthEnum {
+    Direct = 'direct',
+    Indirect = 'indirect',
     UnknownDefaultOpenApi = '11184809'
 }
 

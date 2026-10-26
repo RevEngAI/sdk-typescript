@@ -9,24 +9,47 @@
  * Do not edit the class manually.
  */
 
-import { EvidenceEffect } from '../models/EvidenceEffect';
 import { HttpFile } from '../http/http';
 
-/**
-* A concrete sequence of calls connecting program locations.
-*/
 export class CallChainEvidence {
-    'evidenceKind'?: CallChainEvidenceEvidenceKindEnum;
-    'kind'?: CallChainEvidenceKindEnum;
-    'effect': EvidenceEffect;
-    'strength'?: CallChainEvidenceStrengthEnum;
+    /**
+    * Addresses along the call chain.
+    */
     'callChain': Array<number>;
+    /**
+    * Whether the evidence supports or refutes the finding.
+    */
+    'effect': CallChainEvidenceEffectEnum;
+    /**
+    * Kind of evidence.
+    */
+    'evidenceKind': CallChainEvidenceEvidenceKindEnum;
+    /**
+    * How the evidence was derived.
+    */
+    'kind': CallChainEvidenceKindEnum;
+    /**
+    * How directly the evidence bears on the finding.
+    */
+    'strength': CallChainEvidenceStrengthEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "callChain",
+            "baseName": "call_chain",
+            "type": "Array<number>",
+            "format": "int64"
+        },
+        {
+            "name": "effect",
+            "baseName": "effect",
+            "type": "CallChainEvidenceEffectEnum",
+            "format": ""
+        },
         {
             "name": "evidenceKind",
             "baseName": "evidence_kind",
@@ -40,21 +63,9 @@ export class CallChainEvidence {
             "format": ""
         },
         {
-            "name": "effect",
-            "baseName": "effect",
-            "type": "EvidenceEffect",
-            "format": ""
-        },
-        {
             "name": "strength",
             "baseName": "strength",
             "type": "CallChainEvidenceStrengthEnum",
-            "format": ""
-        },
-        {
-            "name": "callChain",
-            "baseName": "call_chain",
-            "type": "Array<number>",
             "format": ""
         }    ];
 
@@ -66,6 +77,11 @@ export class CallChainEvidence {
     }
 }
 
+export enum CallChainEvidenceEffectEnum {
+    Supports = 'supports',
+    Refutes = 'refutes',
+    UnknownDefaultOpenApi = '11184809'
+}
 export enum CallChainEvidenceEvidenceKindEnum {
     CallChain = 'call_chain',
     UnknownDefaultOpenApi = '11184809'

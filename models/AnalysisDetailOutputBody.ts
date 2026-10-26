@@ -25,6 +25,10 @@ export class AnalysisDetailOutputBody {
     'binaryName': string;
     'binarySize': number;
     'binaryType': string;
+    /**
+    * Number of capabilities in the latest capabilities agent result. Null when the agent has not produced a result
+    */
+    'capabilityCount': number | null;
     'creation': string;
     /**
     * URL to view this analysis in the dashboard
@@ -36,7 +40,15 @@ export class AnalysisDetailOutputBody {
     * Snapshot of the configuration the analysis was submitted with
     */
     'requestedConfig': RequestedConfigBody;
+    /**
+    * Number of HIGH or CRITICAL findings in the latest security scan. Null when the scan has not produced a result
+    */
+    'securityFindingCount': number | null;
     'sha256Hash': string;
+    /**
+    * Software threat score from the latest triage result, from 0 to 1. Null when triage has not produced a result
+    */
+    'threatScore': number | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -104,6 +116,12 @@ export class AnalysisDetailOutputBody {
             "format": ""
         },
         {
+            "name": "capabilityCount",
+            "baseName": "capability_count",
+            "type": "number",
+            "format": "int64"
+        },
+        {
             "name": "creation",
             "baseName": "creation",
             "type": "string",
@@ -134,10 +152,22 @@ export class AnalysisDetailOutputBody {
             "format": ""
         },
         {
+            "name": "securityFindingCount",
+            "baseName": "security_finding_count",
+            "type": "number",
+            "format": "int64"
+        },
+        {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
             "type": "string",
             "format": ""
+        },
+        {
+            "name": "threatScore",
+            "baseName": "threat_score",
+            "type": "number",
+            "format": "double"
         }    ];
 
     static getAttributeTypeMap() {

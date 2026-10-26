@@ -9,25 +9,42 @@
  * Do not edit the class manually.
  */
 
-import { EvidenceEffect } from '../models/EvidenceEffect';
-import { StringMatch } from '../models/StringMatch';
+import { ReportStringMatch } from '../models/ReportStringMatch';
 import { HttpFile } from '../http/http';
 
-/**
-* String matches without demonstrated semantic use.
-*/
 export class StringMatchEvidence {
-    'evidenceKind'?: StringMatchEvidenceEvidenceKindEnum;
-    'kind'?: StringMatchEvidenceKindEnum;
-    'effect': EvidenceEffect;
-    'strength'?: StringMatchEvidenceStrengthEnum;
-    'strings': Array<StringMatch>;
+    /**
+    * Whether the evidence supports or refutes the finding.
+    */
+    'effect': StringMatchEvidenceEffectEnum;
+    /**
+    * Kind of evidence.
+    */
+    'evidenceKind': StringMatchEvidenceEvidenceKindEnum;
+    /**
+    * How the evidence was derived.
+    */
+    'kind': StringMatchEvidenceKindEnum;
+    /**
+    * How directly the evidence bears on the finding.
+    */
+    'strength': StringMatchEvidenceStrengthEnum;
+    /**
+    * The matched strings.
+    */
+    'strings': Array<ReportStringMatch>;
 
     static readonly discriminator: string | undefined = undefined;
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "effect",
+            "baseName": "effect",
+            "type": "StringMatchEvidenceEffectEnum",
+            "format": ""
+        },
         {
             "name": "evidenceKind",
             "baseName": "evidence_kind",
@@ -41,12 +58,6 @@ export class StringMatchEvidence {
             "format": ""
         },
         {
-            "name": "effect",
-            "baseName": "effect",
-            "type": "EvidenceEffect",
-            "format": ""
-        },
-        {
             "name": "strength",
             "baseName": "strength",
             "type": "StringMatchEvidenceStrengthEnum",
@@ -55,7 +66,7 @@ export class StringMatchEvidence {
         {
             "name": "strings",
             "baseName": "strings",
-            "type": "Array<StringMatch>",
+            "type": "Array<ReportStringMatch>",
             "format": ""
         }    ];
 
@@ -67,6 +78,11 @@ export class StringMatchEvidence {
     }
 }
 
+export enum StringMatchEvidenceEffectEnum {
+    Supports = 'supports',
+    Refutes = 'refutes',
+    UnknownDefaultOpenApi = '11184809'
+}
 export enum StringMatchEvidenceEvidenceKindEnum {
     StringMatch = 'string_match',
     UnknownDefaultOpenApi = '11184809'
