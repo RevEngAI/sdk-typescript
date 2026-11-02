@@ -1,7 +1,9 @@
+export * from '../models/APICombinationEvidence';
 export * from '../models/APIError';
 export * from '../models/AcceptTypeSuggestionsInputBody';
 export * from '../models/AcceptTypeSuggestionsOutputBody';
 export * from '../models/AcceptedType';
+export * from '../models/AccessRuleBody';
 export * from '../models/ActivityBody';
 export * from '../models/AddCalleeInputBody';
 export * from '../models/AddCollectionBinariesInputBody';
@@ -11,9 +13,18 @@ export * from '../models/AddTeamMemberInputBody';
 export * from '../models/AddUserStringInputBody';
 export * from '../models/AddUserStringToFunctionInputBody';
 export * from '../models/AdditionalDetailsStatusResponse';
+export * from '../models/AgentBody';
+export * from '../models/AgentCompletedBody';
+export * from '../models/AgentRunBody';
+export * from '../models/AgentRunCardBody';
+export * from '../models/AgentRunIOCBody';
+export * from '../models/AgentRunUpdateAgent';
+export * from '../models/AgentRunUpdateCard';
+export * from '../models/AgentRunUpdateData';
+export * from '../models/AgentRunUpdateIOC';
+export * from '../models/AgentStatusCountsBody';
 export * from '../models/AgentWorkflowUsageOutputBody';
 export * from '../models/AiDecompilationRating';
-export * from '../models/AnalyseCapabilitiesBody';
 export * from '../models/AnalysisAccessBody';
 export * from '../models/AnalysisAccessInfo';
 export * from '../models/AnalysisBasicInfoOutputBody';
@@ -57,7 +68,6 @@ export * from '../models/AnalysisUpdateTagsRequest';
 export * from '../models/AnalysisUpdateTagsResponse';
 export * from '../models/AnalysisXrefOutputBody';
 export * from '../models/ApiCall';
-export * from '../models/ApiCombinationEvidence';
 export * from '../models/ApiKeyBody';
 export * from '../models/AppApiRestV2AgentSchemaCapability';
 export * from '../models/AppApiRestV2AnalysesEnumsOrderBy';
@@ -106,7 +116,6 @@ export * from '../models/BaseResponseCommentResponse';
 export * from '../models/BaseResponseConfigResponse';
 export * from '../models/BaseResponseCreated';
 export * from '../models/BaseResponseDict';
-export * from '../models/BaseResponseExternalResponse';
 export * from '../models/BaseResponseFunctionBlocksResponse';
 export * from '../models/BaseResponseFunctionCapabilityResponse';
 export * from '../models/BaseResponseFunctionSearchResponse';
@@ -129,9 +138,7 @@ export * from '../models/BaseResponseRemediationAgentResponse';
 export * from '../models/BaseResponseReportAnalysisResponse';
 export * from '../models/BaseResponseSecretsAgentResponse';
 export * from '../models/BaseResponseStatus';
-export * from '../models/BaseResponseStr';
 export * from '../models/BaseResponseTagSearchResponse';
-export * from '../models/BaseResponseTaskResponse';
 export * from '../models/BaseResponseTaskStatusResponse';
 export * from '../models/BaseResponseTriageReportResponse';
 export * from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
@@ -160,6 +167,7 @@ export * from '../models/BinarySearchResult';
 export * from '../models/BinarySearchResultBody';
 export * from '../models/BinaryTaskStatus';
 export * from '../models/BitfieldDataType';
+export * from '../models/BudgetBody';
 export * from '../models/BulkAddTagsInputBody';
 export * from '../models/BulkAddTagsOutputBody';
 export * from '../models/BulkAddTagsResultBody';
@@ -210,7 +218,9 @@ export * from '../models/ConfirmToolInputBody';
 export * from '../models/Connection';
 export * from '../models/ConsoleOutputEntry';
 export * from '../models/Context';
+export * from '../models/ContextCompactedData';
 export * from '../models/Conversation';
+export * from '../models/ConversationBody';
 export * from '../models/ConversationContext';
 export * from '../models/ConversationWithEvents';
 export * from '../models/CopyFunctionSignaturesInputBody';
@@ -224,12 +234,14 @@ export * from '../models/CreateBitfieldDataType';
 export * from '../models/CreateCheckoutSessionInputBody';
 export * from '../models/CreateCollectionInputBody';
 export * from '../models/CreateCollectionOutputBody';
+export * from '../models/CreateConversationInputBody';
 export * from '../models/CreateConversationRequest';
 export * from '../models/CreateDataTypeEntry';
 export * from '../models/CreateEnumDataType';
 export * from '../models/CreateFunctionDataType';
 export * from '../models/CreateGroupInputBody';
 export * from '../models/CreateIdentityInputBody';
+export * from '../models/CreateInvestigationInputBody';
 export * from '../models/CreateIssuerInputBody';
 export * from '../models/CreateMetadata';
 export * from '../models/CreateOrganisationInputBody';
@@ -279,7 +291,6 @@ export * from '../models/DrakvufFileMetadata';
 export * from '../models/DynamicExecutionMetadata';
 export * from '../models/DynamicExecutionResult';
 export * from '../models/DynamicExecutionStatus';
-export * from '../models/DynamicExecutionStatusResponse';
 export * from '../models/DynamicExecutionSummary';
 export * from '../models/DynamicExecutionSummaryMetadata';
 export * from '../models/DynamicExecutionSummaryResult';
@@ -292,15 +303,19 @@ export * from '../models/ELFSegment';
 export * from '../models/ELFSymbol';
 export * from '../models/ElfDynamicEntry';
 export * from '../models/Endianness';
+export * from '../models/EntityRef';
+export * from '../models/EntityUpdate';
 export * from '../models/EntrypointModel';
 export * from '../models/EnumDataType';
 export * from '../models/EnumDefinition';
 export * from '../models/ErrorBody';
 export * from '../models/ErrorModel';
 export * from '../models/Event';
+export * from '../models/EventAGENTRUNUPDATE';
 export * from '../models/EventAttemptFailed';
 export * from '../models/EventAttemptStarted';
 export * from '../models/EventCONTEXTCOMPACTED';
+export * from '../models/EventData';
 export * from '../models/EventDecompFailed';
 export * from '../models/EventDecompFinished';
 export * from '../models/EventNamesFinished';
@@ -340,7 +355,6 @@ export * from '../models/ExecutionScanMetadata';
 export * from '../models/ExecutionScanResult';
 export * from '../models/ExecutionVerification';
 export * from '../models/ExportModel';
-export * from '../models/ExternalResponse';
 export * from '../models/ExtractedBinary';
 export * from '../models/ExtractedURL';
 export * from '../models/ExtractionFailure';
@@ -360,6 +374,8 @@ export * from '../models/FilesystemScanResult';
 export * from '../models/FilesystemVerification';
 export * from '../models/Filters';
 export * from '../models/Finding';
+export * from '../models/FindingBody';
+export * from '../models/FindingCountsBody';
 export * from '../models/FindingEvidenceInner';
 export * from '../models/FormFile';
 export * from '../models/FunctionBlockDestinationResponse';
@@ -408,9 +424,11 @@ export * from '../models/GetCollectionOutputBody';
 export * from '../models/GetConfigOutputBody';
 export * from '../models/GetDataTypeHistoryBody';
 export * from '../models/GetDieInfoOutputBody';
+export * from '../models/GetFindingOutputBody';
 export * from '../models/GetFunctionMapsOutputBody';
 export * from '../models/GetFunctionSignatureHistoryBody';
 export * from '../models/GetGlobalHistoryOutputBody';
+export * from '../models/GetInvestigationOutputBody';
 export * from '../models/GetMatchesOutputBody';
 export * from '../models/GetMatchesStatusOutputBody';
 export * from '../models/GetModelsOutputBody';
@@ -424,6 +442,7 @@ export * from '../models/GetTokensResponse';
 export * from '../models/GetUserActivityOutputBody';
 export * from '../models/GlobalHistoryEntry';
 export * from '../models/GlobalVariable';
+export * from '../models/GrantAccessInputBody';
 export * from '../models/HardcodedSecretEvidence';
 export * from '../models/HistoryActor';
 export * from '../models/HistoryEntry';
@@ -433,9 +452,9 @@ export * from '../models/ISA';
 export * from '../models/IconModel';
 export * from '../models/ImportDynamicExecutionFileOutputBody';
 export * from '../models/ImportModel';
+export * from '../models/ImportedAPICallEvidence';
 export * from '../models/ImportedApi';
 export * from '../models/ImportedApiCall';
-export * from '../models/ImportedApiCallEvidence';
 export * from '../models/ImportedFunctionCallerEntry';
 export * from '../models/ImportedFunctionDetailOutputBody';
 export * from '../models/ImportedFunctionEntry';
@@ -444,10 +463,14 @@ export * from '../models/IndirectCallSitesOutputBody';
 export * from '../models/InlineComment';
 export * from '../models/InputBody';
 export * from '../models/InsertAnalysisLogRequest';
+export * from '../models/InvestigationBody';
+export * from '../models/InvestigationListItemBody';
 export * from '../models/InviteUserInputBody';
 export * from '../models/IssuerAllowedDomain';
 export * from '../models/KnownConstantEvidence';
 export * from '../models/LineAttributionsData';
+export * from '../models/ListAccessRulesOutputBody';
+export * from '../models/ListAgentRunsOutputBody';
 export * from '../models/ListAnalysesOutputBody';
 export * from '../models/ListAnalysisDataTypesOutputBody';
 export * from '../models/ListAnalysisFunctionsOutputBody';
@@ -456,16 +479,21 @@ export * from '../models/ListAnalysisStringsOutputBody';
 export * from '../models/ListArchiveContentsOutputBody';
 export * from '../models/ListCollectionResults';
 export * from '../models/ListCollectionsOutputBody';
+export * from '../models/ListConversationsOutputBody';
 export * from '../models/ListDataTypeFunctionsBody';
 export * from '../models/ListExampleAnalysesOutputBody';
+export * from '../models/ListFindingsOutputBody';
 export * from '../models/ListFunctionGlobalsOutputBody';
 export * from '../models/ListFunctionSignaturesOutputBody';
 export * from '../models/ListFunctionStringsOutputBody';
 export * from '../models/ListGlobalFunctionsOutputBody';
 export * from '../models/ListImportedFunctionsOutputBody';
+export * from '../models/ListInvestigationsOutputBody';
 export * from '../models/ListOperationPrerequisitesOutputBody';
+export * from '../models/ListPrincipalsOutputBody';
 export * from '../models/ListPublicUsersOutputBody';
 export * from '../models/ListSecretStoreOutputBody';
+export * from '../models/ListSpendOutputBody';
 export * from '../models/ListTeamsOutputBody';
 export * from '../models/ListUsersOutputBody';
 export * from '../models/LocationOutputBody';
@@ -539,6 +567,7 @@ export * from '../models/PatchCollectionOutputBody';
 export * from '../models/PatchCollectionTagsInputBody';
 export * from '../models/PatchCollectionTagsOutputBody';
 export * from '../models/PatchCommentBody';
+export * from '../models/PatchInvestigationInputBody';
 export * from '../models/PcapBodyInfo';
 export * from '../models/Permissions';
 export * from '../models/Platform';
@@ -546,6 +575,7 @@ export * from '../models/PointerDataType';
 export * from '../models/PointerDefinition';
 export * from '../models/PriceOutput';
 export * from '../models/PriceSummary';
+export * from '../models/PrincipalBody';
 export * from '../models/ProcessActivityEntry';
 export * from '../models/ProcessMemdumps';
 export * from '../models/ProcessNode';
@@ -555,6 +585,7 @@ export * from '../models/ProductSummary';
 export * from '../models/ProgressMessage';
 export * from '../models/ProseEvent';
 export * from '../models/ProtocolsAgentResponse';
+export * from '../models/PublicTeamBody';
 export * from '../models/PublicUserBody';
 export * from '../models/PutAnalysisStringsRequest';
 export * from '../models/QueuedWorkflowTaskResponse';
@@ -601,13 +632,19 @@ export * from '../models/ReportResult';
 export * from '../models/ReportStringMatch';
 export * from '../models/ReportSubject';
 export * from '../models/RequestedConfigBody';
+export * from '../models/RequestedOperation';
 export * from '../models/RequeueAnalysisRequest';
 export * from '../models/ResendVerificationEmailInputBody';
 export * from '../models/ResolvedEntity';
 export * from '../models/ResultBody';
 export * from '../models/RevokeBody';
+export * from '../models/RollupBody';
 export * from '../models/RuleKind';
+export * from '../models/RunCancelledData';
 export * from '../models/RunDynamicExecutionInputBody';
+export * from '../models/RunErrorData';
+export * from '../models/RunFinishedData';
+export * from '../models/RunStartedData';
 export * from '../models/SSOProvider';
 export * from '../models/SSOProvidersOutputBody';
 export * from '../models/SandboxConfig';
@@ -632,6 +669,7 @@ export * from '../models/SegmentInfo';
 export * from '../models/SendMessageRequest';
 export * from '../models/ServiceEntry';
 export * from '../models/SessionOutputBody';
+export * from '../models/SetBudgetInputBody';
 export * from '../models/SignatureParameterEntry';
 export * from '../models/SignatureParameterInput';
 export * from '../models/SignatureStorageEntry';
@@ -643,6 +681,8 @@ export * from '../models/SingleSectionModel';
 export * from '../models/SoftwareTypeCountsBody';
 export * from '../models/SourceDeltaEvent';
 export * from '../models/SourceResetEvent';
+export * from '../models/SpendBody';
+export * from '../models/SseEventAgentRunUpdateData';
 export * from '../models/SseEventContextCompactedData';
 export * from '../models/SseEventRunCancelledData';
 export * from '../models/SseEventRunErrorData';
@@ -670,6 +710,8 @@ export * from '../models/StatusBody';
 export * from '../models/StatusInput';
 export * from '../models/StatusOutput';
 export * from '../models/StatusResponse';
+export * from '../models/StepFinishedData';
+export * from '../models/StepStartedData';
 export * from '../models/StreamAiDecompilation200ResponseInner';
 export * from '../models/StreamEvents200ResponseInner';
 export * from '../models/StringFunctions';
@@ -698,25 +740,32 @@ export * from '../models/TagResponse';
 export * from '../models/TagSearchResponse';
 export * from '../models/TagSearchResult';
 export * from '../models/TagSearchResultBody';
-export * from '../models/TaskResponse';
-export * from '../models/TaskStatus';
 export * from '../models/TaskStatusResponse';
 export * from '../models/TcpCarvedFile';
 export * from '../models/Team';
 export * from '../models/TeamMember';
 export * from '../models/Technique';
+export * from '../models/TextMessageContentData';
+export * from '../models/TextMessageEndData';
+export * from '../models/TextMessageStartData';
 export * from '../models/ThreatReportResult';
 export * from '../models/TimestampModel';
+export * from '../models/TitleUpdatedData';
 export * from '../models/Token';
 export * from '../models/TokenInputBody';
 export * from '../models/TokenResponse';
 export * from '../models/TokenisedData';
+export * from '../models/ToolCallArgsDeltaData';
+export * from '../models/ToolCallEndData';
+export * from '../models/ToolCallProgressData';
+export * from '../models/ToolCallResultData';
+export * from '../models/ToolCallStartData';
+export * from '../models/ToolConfirmationRequiredData';
 export * from '../models/TriageFunction';
 export * from '../models/TriageFunctionResponse';
 export * from '../models/TriageReportResponse';
 export * from '../models/TriageResult';
 export * from '../models/TriggerCryptoScanInputBody';
-export * from '../models/TriggerDynamicExecutionInputBody';
 export * from '../models/TriggerExecutionExplainInputBody';
 export * from '../models/TriggerExecutionScanInputBody';
 export * from '../models/TriggerFilesystemAnalyseInputBody';
@@ -785,10 +834,12 @@ export * from '../models/XrefResponse';
 export * from '../models/XrefSegmentBody';
 export * from '../models/XrefToResponse';
 
+import { APICombinationEvidence, APICombinationEvidenceEvidenceKindEnum  , APICombinationEvidenceKindEnum   , APICombinationEvidenceStrengthEnum    } from '../models/APICombinationEvidence';
 import { APIError } from '../models/APIError';
 import { AcceptTypeSuggestionsInputBody } from '../models/AcceptTypeSuggestionsInputBody';
 import { AcceptTypeSuggestionsOutputBody } from '../models/AcceptTypeSuggestionsOutputBody';
 import { AcceptedType } from '../models/AcceptedType';
+import { AccessRuleBody, AccessRuleBodyPermissionEnum       } from '../models/AccessRuleBody';
 import { ActivityBody, ActivityBodyActionsEnum  , ActivityBodyActivityScopeEnum    , ActivityBodySourcesEnum    } from '../models/ActivityBody';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddCollectionBinariesInputBody } from '../models/AddCollectionBinariesInputBody';
@@ -798,9 +849,18 @@ import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
+import { AgentBody  , AgentBodyStateEnum   } from '../models/AgentBody';
+import { AgentCompletedBody } from '../models/AgentCompletedBody';
+import { AgentRunBody } from '../models/AgentRunBody';
+import { AgentRunCardBody } from '../models/AgentRunCardBody';
+import { AgentRunIOCBody } from '../models/AgentRunIOCBody';
+import { AgentRunUpdateAgent  , AgentRunUpdateAgentStateEnum   } from '../models/AgentRunUpdateAgent';
+import { AgentRunUpdateCard } from '../models/AgentRunUpdateCard';
+import { AgentRunUpdateData } from '../models/AgentRunUpdateData';
+import { AgentRunUpdateIOC } from '../models/AgentRunUpdateIOC';
+import { AgentStatusCountsBody } from '../models/AgentStatusCountsBody';
 import { AgentWorkflowUsageOutputBody } from '../models/AgentWorkflowUsageOutputBody';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
-import { AnalyseCapabilitiesBody } from '../models/AnalyseCapabilitiesBody';
 import { AnalysisAccessBody } from '../models/AnalysisAccessBody';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody, AnalysisBasicInfoOutputBodyAnalysisScopeEnum                            } from '../models/AnalysisBasicInfoOutputBody';
@@ -844,7 +904,6 @@ import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { AnalysisXrefOutputBody } from '../models/AnalysisXrefOutputBody';
 import { ApiCall } from '../models/ApiCall';
-import { ApiCombinationEvidence, ApiCombinationEvidenceEvidenceKindEnum  , ApiCombinationEvidenceKindEnum   , ApiCombinationEvidenceStrengthEnum    } from '../models/ApiCombinationEvidence';
 import { ApiKeyBody } from '../models/ApiKeyBody';
 import { AppApiRestV2AgentSchemaCapability   , AppApiRestV2AgentSchemaCapabilityTypeEnum     } from '../models/AppApiRestV2AgentSchemaCapability';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
@@ -893,7 +952,6 @@ import { BaseResponseCommentResponse } from '../models/BaseResponseCommentRespon
 import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
-import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
 import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
 import { BaseResponseFunctionSearchResponse } from '../models/BaseResponseFunctionSearchResponse';
@@ -916,9 +974,7 @@ import { BaseResponseRemediationAgentResponse } from '../models/BaseResponseReme
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseSecretsAgentResponse } from '../models/BaseResponseSecretsAgentResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
-import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
-import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatusResponse';
 import { BaseResponseTriageReportResponse } from '../models/BaseResponseTriageReportResponse';
 import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
@@ -947,6 +1003,7 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinarySearchResultBody } from '../models/BinarySearchResultBody';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { BitfieldDataType   , BitfieldDataTypeKindEnum       , BitfieldDataTypeSourceTypeEnum   } from '../models/BitfieldDataType';
+import { BudgetBody } from '../models/BudgetBody';
 import { BulkAddTagsInputBody } from '../models/BulkAddTagsInputBody';
 import { BulkAddTagsOutputBody } from '../models/BulkAddTagsOutputBody';
 import { BulkAddTagsResultBody } from '../models/BulkAddTagsResultBody';
@@ -997,7 +1054,9 @@ import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
 import { ConsoleOutputEntry } from '../models/ConsoleOutputEntry';
 import { Context } from '../models/Context';
+import { ContextCompactedData } from '../models/ContextCompactedData';
 import { Conversation } from '../models/Conversation';
+import { ConversationBody } from '../models/ConversationBody';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CopyFunctionSignaturesInputBody } from '../models/CopyFunctionSignaturesInputBody';
@@ -1011,18 +1070,20 @@ import { CreateBitfieldDataType, CreateBitfieldDataTypeKindEnum      } from '../
 import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
 import { CreateCollectionInputBody  , CreateCollectionInputBodyCollectionScopeEnum     } from '../models/CreateCollectionInputBody';
 import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
+import { CreateConversationInputBody } from '../models/CreateConversationInputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { CreateDataTypeEntryClass } from '../models/CreateDataTypeEntry';
 import { CreateEnumDataType , CreateEnumDataTypeKindEnum      } from '../models/CreateEnumDataType';
 import { CreateFunctionDataType , CreateFunctionDataTypeKindEnum      } from '../models/CreateFunctionDataType';
 import { CreateGroupInputBody } from '../models/CreateGroupInputBody';
 import { CreateIdentityInputBody } from '../models/CreateIdentityInputBody';
+import { CreateInvestigationInputBody, CreateInvestigationInputBodyCaseTypeEnum   , CreateInvestigationInputBodyScopeEnum  , CreateInvestigationInputBodySeverityEnum   } from '../models/CreateInvestigationInputBody';
 import { CreateIssuerInputBody } from '../models/CreateIssuerInputBody';
 import { CreateMetadata  , CreateMetadataStatusEnum   } from '../models/CreateMetadata';
 import { CreateOrganisationInputBody } from '../models/CreateOrganisationInputBody';
 import { CreatePointerDataType , CreatePointerDataTypeKindEnum      } from '../models/CreatePointerDataType';
 import { CreatePortalSessionInputBody } from '../models/CreatePortalSessionInputBody';
-import { CreateRequest , CreateRequestAnalysisScopeEnum          } from '../models/CreateRequest';
+import { CreateRequest , CreateRequestAnalysisScopeEnum           } from '../models/CreateRequest';
 import { CreateResult } from '../models/CreateResult';
 import { CreateSecretStoreInputBody, CreateSecretStoreInputBodyApiProviderEnum     } from '../models/CreateSecretStoreInputBody';
 import { CreateStructDataType , CreateStructDataTypeKindEnum      } from '../models/CreateStructDataType';
@@ -1047,7 +1108,7 @@ import { DailyAnalysesCountOutputBody } from '../models/DailyAnalysesCountOutput
 import { DailyCountBody } from '../models/DailyCountBody';
 import { DataTypeEntryClass } from '../models/DataTypeEntry';
 import { DataTypeEnumValueEntry } from '../models/DataTypeEnumValueEntry';
-import { DataTypeFunctionEntry } from '../models/DataTypeFunctionEntry';
+import { DataTypeFunctionEntry  , DataTypeFunctionEntryUsageKindsEnum   } from '../models/DataTypeFunctionEntry';
 import { DataTypeFunctionParameterEntry } from '../models/DataTypeFunctionParameterEntry';
 import { DataTypeMemberEntry } from '../models/DataTypeMemberEntry';
 import { DataTypeVersion } from '../models/DataTypeVersion';
@@ -1066,7 +1127,6 @@ import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionMetadata , DynamicExecutionMetadataStatusEnum   } from '../models/DynamicExecutionMetadata';
 import { DynamicExecutionResult } from '../models/DynamicExecutionResult';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
-import { DynamicExecutionStatusResponse  , DynamicExecutionStatusResponseStatusEnum   } from '../models/DynamicExecutionStatusResponse';
 import { DynamicExecutionSummary } from '../models/DynamicExecutionSummary';
 import { DynamicExecutionSummaryMetadata, DynamicExecutionSummaryMetadataStatusEnum   } from '../models/DynamicExecutionSummaryMetadata';
 import { DynamicExecutionSummaryResult } from '../models/DynamicExecutionSummaryResult';
@@ -1079,15 +1139,19 @@ import { ELFSegment } from '../models/ELFSegment';
 import { ELFSymbol } from '../models/ELFSymbol';
 import { ElfDynamicEntry } from '../models/ElfDynamicEntry';
 import { Endianness } from '../models/Endianness';
+import { EntityRef } from '../models/EntityRef';
+import { EntityUpdate } from '../models/EntityUpdate';
 import { EntrypointModel } from '../models/EntrypointModel';
 import { EnumDataType    , EnumDataTypeKindEnum       , EnumDataTypeSourceTypeEnum   } from '../models/EnumDataType';
 import { EnumDefinition } from '../models/EnumDefinition';
 import { ErrorBody, ErrorBodyCodeEnum       } from '../models/ErrorBody';
 import { ErrorModel } from '../models/ErrorModel';
-import { Event } from '../models/Event';
+import { Event      , EventTypeEnum   } from '../models/Event';
+import { EventAGENTRUNUPDATE , EventAGENTRUNUPDATEEventEnum     } from '../models/EventAGENTRUNUPDATE';
 import { EventAttemptFailed , EventAttemptFailedEventEnum     } from '../models/EventAttemptFailed';
 import { EventAttemptStarted , EventAttemptStartedEventEnum     } from '../models/EventAttemptStarted';
 import { EventCONTEXTCOMPACTED , EventCONTEXTCOMPACTEDEventEnum     } from '../models/EventCONTEXTCOMPACTED';
+import { EventData } from '../models/EventData';
 import { EventDecompFailed , EventDecompFailedEventEnum     } from '../models/EventDecompFailed';
 import { EventDecompFinished , EventDecompFinishedEventEnum     } from '../models/EventDecompFinished';
 import { EventNamesFinished , EventNamesFinishedEventEnum     } from '../models/EventNamesFinished';
@@ -1127,7 +1191,6 @@ import { ExecutionScanMetadata , ExecutionScanMetadataStatusEnum   } from '../mo
 import { ExecutionScanResult } from '../models/ExecutionScanResult';
 import { ExecutionVerification, ExecutionVerificationConfidenceEnum     } from '../models/ExecutionVerification';
 import { ExportModel } from '../models/ExportModel';
-import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedBinary } from '../models/ExtractedBinary';
 import { ExtractedURL } from '../models/ExtractedURL';
 import { ExtractionFailure } from '../models/ExtractionFailure';
@@ -1147,6 +1210,8 @@ import { FilesystemScanResult } from '../models/FilesystemScanResult';
 import { FilesystemVerification, FilesystemVerificationConfidenceEnum     } from '../models/FilesystemVerification';
 import { Filters } from '../models/Filters';
 import { Finding    } from '../models/Finding';
+import { FindingBody   , FindingBodyFindingTypeEnum   , FindingBodySeverityEnum      } from '../models/FindingBody';
+import { FindingCountsBody } from '../models/FindingCountsBody';
 import { FindingEvidenceInnerClass } from '../models/FindingEvidenceInner';
 import { FormFile } from '../models/FormFile';
 import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
@@ -1195,11 +1260,13 @@ import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetConfigOutputBody } from '../models/GetConfigOutputBody';
 import { GetDataTypeHistoryBody } from '../models/GetDataTypeHistoryBody';
 import { GetDieInfoOutputBody } from '../models/GetDieInfoOutputBody';
+import { GetFindingOutputBody    , GetFindingOutputBodyFindingTypeEnum   , GetFindingOutputBodySeverityEnum      } from '../models/GetFindingOutputBody';
 import { GetFunctionMapsOutputBody } from '../models/GetFunctionMapsOutputBody';
 import { GetFunctionSignatureHistoryBody } from '../models/GetFunctionSignatureHistoryBody';
 import { GetGlobalHistoryOutputBody } from '../models/GetGlobalHistoryOutputBody';
+import { GetInvestigationOutputBody  , GetInvestigationOutputBodyCaseTypeEnum        , GetInvestigationOutputBodyScopeEnum  , GetInvestigationOutputBodySeverityEnum  , GetInvestigationOutputBodyStatusEnum     } from '../models/GetInvestigationOutputBody';
 import { GetMatchesOutputBody , GetMatchesOutputBodyStatusEnum   } from '../models/GetMatchesOutputBody';
-import { GetMatchesStatusOutputBody  , GetMatchesStatusOutputBodyStatusEnum          } from '../models/GetMatchesStatusOutputBody';
+import { GetMatchesStatusOutputBody   , GetMatchesStatusOutputBodyStatusEnum          } from '../models/GetMatchesStatusOutputBody';
 import { GetModelsOutputBody } from '../models/GetModelsOutputBody';
 import { GetProductsOutputBody } from '../models/GetProductsOutputBody';
 import { GetPublicUserOutputBody } from '../models/GetPublicUserOutputBody';
@@ -1211,6 +1278,7 @@ import { GetTokensResponse } from '../models/GetTokensResponse';
 import { GetUserActivityOutputBody } from '../models/GetUserActivityOutputBody';
 import { GlobalHistoryEntry } from '../models/GlobalHistoryEntry';
 import { GlobalVariable      , GlobalVariableNameSourceEnum     , GlobalVariableTypeSourceEnum     , GlobalVariableValueKindEnum  , GlobalVariableValueSourceEnum   } from '../models/GlobalVariable';
+import { GrantAccessInputBody, GrantAccessInputBodyPermissionEnum     } from '../models/GrantAccessInputBody';
 import { HardcodedSecretEvidence , HardcodedSecretEvidenceEffectEnum   , HardcodedSecretEvidenceEvidenceKindEnum  , HardcodedSecretEvidenceKindEnum     , HardcodedSecretEvidenceSecretKindEnum   , HardcodedSecretEvidenceStrengthEnum   } from '../models/HardcodedSecretEvidence';
 import { HistoryActor } from '../models/HistoryActor';
 import { HistoryEntry } from '../models/HistoryEntry';
@@ -1220,9 +1288,9 @@ import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportDynamicExecutionFileOutputBody } from '../models/ImportDynamicExecutionFileOutputBody';
 import { ImportModel } from '../models/ImportModel';
+import { ImportedAPICallEvidence, ImportedAPICallEvidenceEvidenceKindEnum  , ImportedAPICallEvidenceKindEnum   , ImportedAPICallEvidenceStrengthEnum    } from '../models/ImportedAPICallEvidence';
 import { ImportedApi } from '../models/ImportedApi';
 import { ImportedApiCall } from '../models/ImportedApiCall';
-import { ImportedApiCallEvidence, ImportedApiCallEvidenceEvidenceKindEnum  , ImportedApiCallEvidenceKindEnum   , ImportedApiCallEvidenceStrengthEnum    } from '../models/ImportedApiCallEvidence';
 import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
 import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
@@ -1231,10 +1299,14 @@ import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBo
 import { InlineComment } from '../models/InlineComment';
 import { InputBody } from '../models/InputBody';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
+import { InvestigationBody, InvestigationBodyCaseTypeEnum       , InvestigationBodyScopeEnum  , InvestigationBodySeverityEnum  , InvestigationBodyStatusEnum     } from '../models/InvestigationBody';
+import { InvestigationListItemBody , InvestigationListItemBodyCaseTypeEnum        , InvestigationListItemBodyScopeEnum  , InvestigationListItemBodySeverityEnum  , InvestigationListItemBodyStatusEnum     } from '../models/InvestigationListItemBody';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
 import { KnownConstantEvidence, KnownConstantEvidenceEffectEnum  , KnownConstantEvidenceEvidenceKindEnum  , KnownConstantEvidenceKindEnum  , KnownConstantEvidenceStrengthEnum    } from '../models/KnownConstantEvidence';
 import { LineAttributionsData } from '../models/LineAttributionsData';
+import { ListAccessRulesOutputBody } from '../models/ListAccessRulesOutputBody';
+import { ListAgentRunsOutputBody } from '../models/ListAgentRunsOutputBody';
 import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
 import { ListAnalysisDataTypesOutputBody } from '../models/ListAnalysisDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
@@ -1243,16 +1315,21 @@ import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutp
 import { ListArchiveContentsOutputBody } from '../models/ListArchiveContentsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
+import { ListConversationsOutputBody } from '../models/ListConversationsOutputBody';
 import { ListDataTypeFunctionsBody } from '../models/ListDataTypeFunctionsBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
+import { ListFindingsOutputBody } from '../models/ListFindingsOutputBody';
 import { ListFunctionGlobalsOutputBody } from '../models/ListFunctionGlobalsOutputBody';
 import { ListFunctionSignaturesOutputBody } from '../models/ListFunctionSignaturesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListGlobalFunctionsOutputBody } from '../models/ListGlobalFunctionsOutputBody';
 import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
+import { ListInvestigationsOutputBody } from '../models/ListInvestigationsOutputBody';
 import { ListOperationPrerequisitesOutputBody } from '../models/ListOperationPrerequisitesOutputBody';
+import { ListPrincipalsOutputBody } from '../models/ListPrincipalsOutputBody';
 import { ListPublicUsersOutputBody } from '../models/ListPublicUsersOutputBody';
 import { ListSecretStoreOutputBody } from '../models/ListSecretStoreOutputBody';
+import { ListSpendOutputBody } from '../models/ListSpendOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
 import { LocationOutputBody  , LocationOutputBodyCurrencyEnum   } from '../models/LocationOutputBody';
@@ -1326,6 +1403,7 @@ import { PatchCollectionOutputBody } from '../models/PatchCollectionOutputBody';
 import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
 import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
+import { PatchInvestigationInputBody, PatchInvestigationInputBodyCaseTypeEnum   , PatchInvestigationInputBodyScopeEnum  , PatchInvestigationInputBodySeverityEnum  , PatchInvestigationInputBodyStatusEnum   } from '../models/PatchInvestigationInputBody';
 import { PcapBodyInfo } from '../models/PcapBodyInfo';
 import { Permissions } from '../models/Permissions';
 import { Platform } from '../models/Platform';
@@ -1333,6 +1411,7 @@ import { PointerDataType    , PointerDataTypeKindEnum       , PointerDataTypeSou
 import { PointerDefinition } from '../models/PointerDefinition';
 import { PriceOutput  , PriceOutputIntervalEnum    } from '../models/PriceOutput';
 import { PriceSummary , PriceSummaryIntervalEnum    } from '../models/PriceSummary';
+import { PrincipalBody  , PrincipalBodyTypeEnum   } from '../models/PrincipalBody';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
@@ -1342,6 +1421,7 @@ import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage, ProgressMessageLevelEnum      } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
 import { ProtocolsAgentResponse } from '../models/ProtocolsAgentResponse';
+import { PublicTeamBody } from '../models/PublicTeamBody';
 import { PublicUserBody } from '../models/PublicUserBody';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
@@ -1388,13 +1468,19 @@ import { ReportResult } from '../models/ReportResult';
 import { ReportStringMatch } from '../models/ReportStringMatch';
 import { ReportSubject } from '../models/ReportSubject';
 import { RequestedConfigBody } from '../models/RequestedConfigBody';
+import { RequestedOperation, RequestedOperationOperationEnum   } from '../models/RequestedOperation';
 import { RequeueAnalysisRequest } from '../models/RequeueAnalysisRequest';
 import { ResendVerificationEmailInputBody } from '../models/ResendVerificationEmailInputBody';
 import { ResolvedEntity       , ResolvedEntityFieldStatusEnum      , ResolvedEntityNameSourceEnum                 } from '../models/ResolvedEntity';
 import { ResultBody } from '../models/ResultBody';
 import { RevokeBody } from '../models/RevokeBody';
+import { RollupBody , RollupBodyAgentStatusEnum     , RollupBodyFindingsSeverityEnum     } from '../models/RollupBody';
 import { RuleKind } from '../models/RuleKind';
+import { RunCancelledData } from '../models/RunCancelledData';
 import { RunDynamicExecutionInputBody    , RunDynamicExecutionInputBodyStartMethodEnum  , RunDynamicExecutionInputBodyTimeoutEnum   } from '../models/RunDynamicExecutionInputBody';
+import { RunErrorData } from '../models/RunErrorData';
+import { RunFinishedData } from '../models/RunFinishedData';
+import { RunStartedData } from '../models/RunStartedData';
 import { SSOProvider } from '../models/SSOProvider';
 import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
 import { SandboxConfig     , SandboxConfigStartMethodEnum  , SandboxConfigTimeoutEnum   } from '../models/SandboxConfig';
@@ -1419,6 +1505,7 @@ import { SegmentInfo } from '../models/SegmentInfo';
 import { SendMessageRequest } from '../models/SendMessageRequest';
 import { ServiceEntry } from '../models/ServiceEntry';
 import { SessionOutputBody } from '../models/SessionOutputBody';
+import { SetBudgetInputBody } from '../models/SetBudgetInputBody';
 import { SignatureParameterEntry } from '../models/SignatureParameterEntry';
 import { SignatureParameterInput } from '../models/SignatureParameterInput';
 import { SignatureStorageEntry } from '../models/SignatureStorageEntry';
@@ -1430,6 +1517,8 @@ import { SingleSectionModel } from '../models/SingleSectionModel';
 import { SoftwareTypeCountsBody } from '../models/SoftwareTypeCountsBody';
 import { SourceDeltaEvent } from '../models/SourceDeltaEvent';
 import { SourceResetEvent } from '../models/SourceResetEvent';
+import { SpendBody   , SpendBodySourceEnum       } from '../models/SpendBody';
+import { SseEventAgentRunUpdateData } from '../models/SseEventAgentRunUpdateData';
 import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
 import { SseEventRunCancelledData } from '../models/SseEventRunCancelledData';
 import { SseEventRunErrorData } from '../models/SseEventRunErrorData';
@@ -1457,6 +1546,8 @@ import { StatusBody  , StatusBodyStatusEnum   } from '../models/StatusBody';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StatusResponse } from '../models/StatusResponse';
+import { StepFinishedData } from '../models/StepFinishedData';
+import { StepStartedData } from '../models/StepStartedData';
 import { StreamAiDecompilation200ResponseInnerClass } from '../models/StreamAiDecompilation200ResponseInner';
 import { StreamEvents200ResponseInnerClass } from '../models/StreamEvents200ResponseInner';
 import { StringFunctions    } from '../models/StringFunctions';
@@ -1485,25 +1576,32 @@ import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
 import { TagSearchResultBody } from '../models/TagSearchResultBody';
-import { TaskResponse   } from '../models/TaskResponse';
-import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse   } from '../models/TaskStatusResponse';
 import { TcpCarvedFile } from '../models/TcpCarvedFile';
 import { Team , TeamPlanEnum     } from '../models/Team';
 import { TeamMember  , TeamMemberRoleEnum     } from '../models/TeamMember';
 import { Technique } from '../models/Technique';
+import { TextMessageContentData } from '../models/TextMessageContentData';
+import { TextMessageEndData } from '../models/TextMessageEndData';
+import { TextMessageStartData } from '../models/TextMessageStartData';
 import { ThreatReportResult } from '../models/ThreatReportResult';
 import { TimestampModel } from '../models/TimestampModel';
+import { TitleUpdatedData } from '../models/TitleUpdatedData';
 import { Token, TokenSourceEnum    } from '../models/Token';
 import { TokenInputBody } from '../models/TokenInputBody';
 import { TokenResponse } from '../models/TokenResponse';
 import { TokenisedData   , TokenisedDataStatusEnum    } from '../models/TokenisedData';
+import { ToolCallArgsDeltaData } from '../models/ToolCallArgsDeltaData';
+import { ToolCallEndData } from '../models/ToolCallEndData';
+import { ToolCallProgressData } from '../models/ToolCallProgressData';
+import { ToolCallResultData } from '../models/ToolCallResultData';
+import { ToolCallStartData } from '../models/ToolCallStartData';
+import { ToolConfirmationRequiredData } from '../models/ToolConfirmationRequiredData';
 import { TriageFunction } from '../models/TriageFunction';
 import { TriageFunctionResponse    , TriageFunctionResponseCapabilitiesEnum   } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
 import { TriageResult } from '../models/TriageResult';
 import { TriggerCryptoScanInputBody, TriggerCryptoScanInputBodyCategoriesEnum   , TriggerCryptoScanInputBodyLibrariesEnum   } from '../models/TriggerCryptoScanInputBody';
-import { TriggerDynamicExecutionInputBody    , TriggerDynamicExecutionInputBodyStartMethodEnum  , TriggerDynamicExecutionInputBodyTimeoutEnum   } from '../models/TriggerDynamicExecutionInputBody';
 import { TriggerExecutionExplainInputBody, TriggerExecutionExplainInputBodyCategoryEnum   } from '../models/TriggerExecutionExplainInputBody';
 import { TriggerExecutionScanInputBody, TriggerExecutionScanInputBodyCategoriesEnum   , TriggerExecutionScanInputBodySourcesEnum   } from '../models/TriggerExecutionScanInputBody';
 import { TriggerFilesystemAnalyseInputBody, TriggerFilesystemAnalyseInputBodyCategoryEnum   } from '../models/TriggerFilesystemAnalyseInputBody';
@@ -1544,7 +1642,7 @@ import { UpdateTypedefDataType  , UpdateTypedefDataTypeKindEnum      } from '../
 import { UpdateUnionDataType  , UpdateUnionDataTypeKindEnum      } from '../models/UpdateUnionDataType';
 import { UpdateUnknownDataType , UpdateUnknownDataTypeKindEnum      } from '../models/UpdateUnknownDataType';
 import { UpdateUserCreditsInputBody } from '../models/UpdateUserCreditsInputBody';
-import { UpdateUserInputBody   , UpdateUserInputBodyRoleEnum  , UpdateUserInputBodyTierEnum     } from '../models/UpdateUserInputBody';
+import { UpdateUserInputBody    , UpdateUserInputBodyRoleEnum  , UpdateUserInputBodyTierEnum     } from '../models/UpdateUserInputBody';
 import { UpdateUserPasswordInputBody } from '../models/UpdateUserPasswordInputBody';
 import { UpgradeAnalysisModelOutputBody } from '../models/UpgradeAnalysisModelOutputBody';
 import { UploadFileType } from '../models/UploadFileType';
@@ -1554,7 +1652,7 @@ import { UpsertAiDecomplationRatingRequest   } from '../models/UpsertAiDecomplat
 import { UpsertOverridesData } from '../models/UpsertOverridesData';
 import { UpsertOverridesInputBody } from '../models/UpsertOverridesInputBody';
 import { UpsertRatingInputBody, UpsertRatingInputBodyRatingEnum    } from '../models/UpsertRatingInputBody';
-import { User   , UserRoleEnum  , UserTierEnum    } from '../models/User';
+import { User    , UserRoleEnum  , UserTierEnum    } from '../models/User';
 import { UserActivityResponse } from '../models/UserActivityResponse';
 import { UserCredits } from '../models/UserCredits';
 import { UserIdentity } from '../models/UserIdentity';
@@ -1585,9 +1683,15 @@ let primitives = [
                  ];
 
 let enumsMap: Set<string> = new Set<string>([
+    "APICombinationEvidenceEvidenceKindEnum",
+    "APICombinationEvidenceKindEnum",
+    "APICombinationEvidenceStrengthEnum",
+    "AccessRuleBodyPermissionEnum",
     "ActivityBodyActionsEnum",
     "ActivityBodyActivityScopeEnum",
     "ActivityBodySourcesEnum",
+    "AgentBodyStateEnum",
+    "AgentRunUpdateAgentStateEnum",
     "AiDecompilationRating",
     "AnalysisBasicInfoOutputBodyAnalysisScopeEnum",
     "AnalysisDetailOutputBodyAnalysisScopeEnum",
@@ -1595,9 +1699,6 @@ let enumsMap: Set<string> = new Set<string>([
     "AnalysisOperationBodyStatusEnum",
     "AnalysisRecordBodyAnalysisScopeEnum",
     "AnalysisScope",
-    "ApiCombinationEvidenceEvidenceKindEnum",
-    "ApiCombinationEvidenceKindEnum",
-    "ApiCombinationEvidenceStrengthEnum",
     "AppApiRestV2AgentSchemaCapabilityTypeEnum",
     "AppApiRestV2AnalysesEnumsOrderBy",
     "AppApiRestV2CollectionsEnumsOrderBy",
@@ -1631,6 +1732,9 @@ let enumsMap: Set<string> = new Set<string>([
     "CreateDataTypeEntryKindEnum",
     "CreateEnumDataTypeKindEnum",
     "CreateFunctionDataTypeKindEnum",
+    "CreateInvestigationInputBodyCaseTypeEnum",
+    "CreateInvestigationInputBodyScopeEnum",
+    "CreateInvestigationInputBodySeverityEnum",
     "CreateMetadataStatusEnum",
     "CreatePointerDataTypeKindEnum",
     "CreateRequestAnalysisScopeEnum",
@@ -1656,6 +1760,7 @@ let enumsMap: Set<string> = new Set<string>([
     "CryptoVerificationConfidenceEnum",
     "DataTypeEntryKindEnum",
     "DataTypeEntrySourceTypeEnum",
+    "DataTypeFunctionEntryUsageKindsEnum",
     "DecompilationDataStatusEnum",
     "DecompilerSummaryEvidenceEffectEnum",
     "DecompilerSummaryEvidenceEvidenceKindEnum",
@@ -1668,12 +1773,13 @@ let enumsMap: Set<string> = new Set<string>([
     "Display",
     "DynamicExecutionMetadataStatusEnum",
     "DynamicExecutionStatus",
-    "DynamicExecutionStatusResponseStatusEnum",
     "DynamicExecutionSummaryMetadataStatusEnum",
     "Endianness",
     "EnumDataTypeKindEnum",
     "EnumDataTypeSourceTypeEnum",
     "ErrorBodyCodeEnum",
+    "EventTypeEnum",
+    "EventAGENTRUNUPDATEEventEnum",
     "EventAttemptFailedEventEnum",
     "EventAttemptStartedEventEnum",
     "EventCONTEXTCOMPACTEDEventEnum",
@@ -1733,6 +1839,8 @@ let enumsMap: Set<string> = new Set<string>([
     "FilesystemScanMetadataStatusEnum",
     "FilesystemVerificationConfidenceEnum",
     "Filters",
+    "FindingBodyFindingTypeEnum",
+    "FindingBodySeverityEnum",
     "FindingEvidenceInnerEffectEnum",
     "FindingEvidenceInnerEvidenceKindEnum",
     "FindingEvidenceInnerKindEnum",
@@ -1753,6 +1861,12 @@ let enumsMap: Set<string> = new Set<string>([
     "FunctionSimilarityEvidenceStrengthEnum",
     "FunctionSourceType",
     "GetAnalysisStringsStatusOutputBodyStatusEnum",
+    "GetFindingOutputBodyFindingTypeEnum",
+    "GetFindingOutputBodySeverityEnum",
+    "GetInvestigationOutputBodyCaseTypeEnum",
+    "GetInvestigationOutputBodyScopeEnum",
+    "GetInvestigationOutputBodySeverityEnum",
+    "GetInvestigationOutputBodyStatusEnum",
     "GetMatchesOutputBodyStatusEnum",
     "GetMatchesStatusOutputBodyStatusEnum",
     "GetRelatedStatusOutputBodyStatusEnum",
@@ -1762,15 +1876,24 @@ let enumsMap: Set<string> = new Set<string>([
     "GlobalVariableTypeSourceEnum",
     "GlobalVariableValueKindEnum",
     "GlobalVariableValueSourceEnum",
+    "GrantAccessInputBodyPermissionEnum",
     "HardcodedSecretEvidenceEffectEnum",
     "HardcodedSecretEvidenceEvidenceKindEnum",
     "HardcodedSecretEvidenceKindEnum",
     "HardcodedSecretEvidenceSecretKindEnum",
     "HardcodedSecretEvidenceStrengthEnum",
     "ISA",
-    "ImportedApiCallEvidenceEvidenceKindEnum",
-    "ImportedApiCallEvidenceKindEnum",
-    "ImportedApiCallEvidenceStrengthEnum",
+    "ImportedAPICallEvidenceEvidenceKindEnum",
+    "ImportedAPICallEvidenceKindEnum",
+    "ImportedAPICallEvidenceStrengthEnum",
+    "InvestigationBodyCaseTypeEnum",
+    "InvestigationBodyScopeEnum",
+    "InvestigationBodySeverityEnum",
+    "InvestigationBodyStatusEnum",
+    "InvestigationListItemBodyCaseTypeEnum",
+    "InvestigationListItemBodyScopeEnum",
+    "InvestigationListItemBodySeverityEnum",
+    "InvestigationListItemBodyStatusEnum",
     "KnownConstantEvidenceEffectEnum",
     "KnownConstantEvidenceEvidenceKindEnum",
     "KnownConstantEvidenceKindEnum",
@@ -1798,11 +1921,16 @@ let enumsMap: Set<string> = new Set<string>([
     "NetworkingScanMetadataStatusEnum",
     "NetworkingVerificationConfidenceEnum",
     "Order",
+    "PatchInvestigationInputBodyCaseTypeEnum",
+    "PatchInvestigationInputBodyScopeEnum",
+    "PatchInvestigationInputBodySeverityEnum",
+    "PatchInvestigationInputBodyStatusEnum",
     "Platform",
     "PointerDataTypeKindEnum",
     "PointerDataTypeSourceTypeEnum",
     "PriceOutputIntervalEnum",
     "PriceSummaryIntervalEnum",
+    "PrincipalBodyTypeEnum",
     "ProgressMessageLevelEnum",
     "RatingOutputBodyRatingEnum",
     "ReferencedConstantEvidenceEffectEnum",
@@ -1832,8 +1960,11 @@ let enumsMap: Set<string> = new Set<string>([
     "ReportMetaEndiannessEnum",
     "ReportReachabilityStatus",
     "ReportReferencedConstantDisplayEnum",
+    "RequestedOperationOperationEnum",
     "ResolvedEntityFieldStatusEnum",
     "ResolvedEntityNameSourceEnum",
+    "RollupBodyAgentStatusEnum",
+    "RollupBodyFindingsSeverityEnum",
     "RuleKind",
     "RunDynamicExecutionInputBodyStartMethodEnum",
     "RunDynamicExecutionInputBodyTimeoutEnum",
@@ -1846,6 +1977,7 @@ let enumsMap: Set<string> = new Set<string>([
     "SecurityFindingImpactEnum",
     "SecurityFindingSeverityEnum",
     "SecurityScanMetadataStatusEnum",
+    "SpendBodySourceEnum",
     "StartMatchingOutputBodyStatusEnum",
     "StatusCodeEnum",
     "StatusBodyStatusEnum",
@@ -1863,7 +1995,6 @@ let enumsMap: Set<string> = new Set<string>([
     "SuggestedMemberViewConfidenceEnum",
     "SuggestedMemberViewPlacementEnum",
     "SummaryDataTaskStatusEnum",
-    "TaskStatus",
     "TeamPlanEnum",
     "TeamMemberRoleEnum",
     "TokenSourceEnum",
@@ -1871,8 +2002,6 @@ let enumsMap: Set<string> = new Set<string>([
     "TriageFunctionResponseCapabilitiesEnum",
     "TriggerCryptoScanInputBodyCategoriesEnum",
     "TriggerCryptoScanInputBodyLibrariesEnum",
-    "TriggerDynamicExecutionInputBodyStartMethodEnum",
-    "TriggerDynamicExecutionInputBodyTimeoutEnum",
     "TriggerExecutionExplainInputBodyCategoryEnum",
     "TriggerExecutionScanInputBodyCategoriesEnum",
     "TriggerExecutionScanInputBodySourcesEnum",
@@ -1915,10 +2044,12 @@ let enumsMap: Set<string> = new Set<string>([
 ]);
 
 let typeMap: {[index: string]: any} = {
+    "APICombinationEvidence": APICombinationEvidence,
     "APIError": APIError,
     "AcceptTypeSuggestionsInputBody": AcceptTypeSuggestionsInputBody,
     "AcceptTypeSuggestionsOutputBody": AcceptTypeSuggestionsOutputBody,
     "AcceptedType": AcceptedType,
+    "AccessRuleBody": AccessRuleBody,
     "ActivityBody": ActivityBody,
     "AddCalleeInputBody": AddCalleeInputBody,
     "AddCollectionBinariesInputBody": AddCollectionBinariesInputBody,
@@ -1928,8 +2059,17 @@ let typeMap: {[index: string]: any} = {
     "AddUserStringInputBody": AddUserStringInputBody,
     "AddUserStringToFunctionInputBody": AddUserStringToFunctionInputBody,
     "AdditionalDetailsStatusResponse": AdditionalDetailsStatusResponse,
+    "AgentBody": AgentBody,
+    "AgentCompletedBody": AgentCompletedBody,
+    "AgentRunBody": AgentRunBody,
+    "AgentRunCardBody": AgentRunCardBody,
+    "AgentRunIOCBody": AgentRunIOCBody,
+    "AgentRunUpdateAgent": AgentRunUpdateAgent,
+    "AgentRunUpdateCard": AgentRunUpdateCard,
+    "AgentRunUpdateData": AgentRunUpdateData,
+    "AgentRunUpdateIOC": AgentRunUpdateIOC,
+    "AgentStatusCountsBody": AgentStatusCountsBody,
     "AgentWorkflowUsageOutputBody": AgentWorkflowUsageOutputBody,
-    "AnalyseCapabilitiesBody": AnalyseCapabilitiesBody,
     "AnalysisAccessBody": AnalysisAccessBody,
     "AnalysisAccessInfo": AnalysisAccessInfo,
     "AnalysisBasicInfoOutputBody": AnalysisBasicInfoOutputBody,
@@ -1972,7 +2112,6 @@ let typeMap: {[index: string]: any} = {
     "AnalysisUpdateTagsResponse": AnalysisUpdateTagsResponse,
     "AnalysisXrefOutputBody": AnalysisXrefOutputBody,
     "ApiCall": ApiCall,
-    "ApiCombinationEvidence": ApiCombinationEvidence,
     "ApiKeyBody": ApiKeyBody,
     "AppApiRestV2AgentSchemaCapability": AppApiRestV2AgentSchemaCapability,
     "AppApiRestV2FunctionsResponsesFunction": AppApiRestV2FunctionsResponsesFunction,
@@ -2019,7 +2158,6 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseConfigResponse": BaseResponseConfigResponse,
     "BaseResponseCreated": BaseResponseCreated,
     "BaseResponseDict": BaseResponseDict,
-    "BaseResponseExternalResponse": BaseResponseExternalResponse,
     "BaseResponseFunctionBlocksResponse": BaseResponseFunctionBlocksResponse,
     "BaseResponseFunctionCapabilityResponse": BaseResponseFunctionCapabilityResponse,
     "BaseResponseFunctionSearchResponse": BaseResponseFunctionSearchResponse,
@@ -2042,9 +2180,7 @@ let typeMap: {[index: string]: any} = {
     "BaseResponseReportAnalysisResponse": BaseResponseReportAnalysisResponse,
     "BaseResponseSecretsAgentResponse": BaseResponseSecretsAgentResponse,
     "BaseResponseStatus": BaseResponseStatus,
-    "BaseResponseStr": BaseResponseStr,
     "BaseResponseTagSearchResponse": BaseResponseTagSearchResponse,
-    "BaseResponseTaskResponse": BaseResponseTaskResponse,
     "BaseResponseTaskStatusResponse": BaseResponseTaskStatusResponse,
     "BaseResponseTriageReportResponse": BaseResponseTriageReportResponse,
     "BaseResponseUnionGetAiDecompilationRatingResponseNoneType": BaseResponseUnionGetAiDecompilationRatingResponseNoneType,
@@ -2071,6 +2207,7 @@ let typeMap: {[index: string]: any} = {
     "BinarySearchResult": BinarySearchResult,
     "BinarySearchResultBody": BinarySearchResultBody,
     "BitfieldDataType": BitfieldDataType,
+    "BudgetBody": BudgetBody,
     "BulkAddTagsInputBody": BulkAddTagsInputBody,
     "BulkAddTagsOutputBody": BulkAddTagsOutputBody,
     "BulkAddTagsResultBody": BulkAddTagsResultBody,
@@ -2120,7 +2257,9 @@ let typeMap: {[index: string]: any} = {
     "Connection": Connection,
     "ConsoleOutputEntry": ConsoleOutputEntry,
     "Context": Context,
+    "ContextCompactedData": ContextCompactedData,
     "Conversation": Conversation,
+    "ConversationBody": ConversationBody,
     "ConversationContext": ConversationContext,
     "ConversationWithEvents": ConversationWithEvents,
     "CopyFunctionSignaturesInputBody": CopyFunctionSignaturesInputBody,
@@ -2134,12 +2273,14 @@ let typeMap: {[index: string]: any} = {
     "CreateCheckoutSessionInputBody": CreateCheckoutSessionInputBody,
     "CreateCollectionInputBody": CreateCollectionInputBody,
     "CreateCollectionOutputBody": CreateCollectionOutputBody,
+    "CreateConversationInputBody": CreateConversationInputBody,
     "CreateConversationRequest": CreateConversationRequest,
     "CreateDataTypeEntry": CreateDataTypeEntryClass,
     "CreateEnumDataType": CreateEnumDataType,
     "CreateFunctionDataType": CreateFunctionDataType,
     "CreateGroupInputBody": CreateGroupInputBody,
     "CreateIdentityInputBody": CreateIdentityInputBody,
+    "CreateInvestigationInputBody": CreateInvestigationInputBody,
     "CreateIssuerInputBody": CreateIssuerInputBody,
     "CreateMetadata": CreateMetadata,
     "CreateOrganisationInputBody": CreateOrganisationInputBody,
@@ -2187,7 +2328,6 @@ let typeMap: {[index: string]: any} = {
     "DrakvufFileMetadata": DrakvufFileMetadata,
     "DynamicExecutionMetadata": DynamicExecutionMetadata,
     "DynamicExecutionResult": DynamicExecutionResult,
-    "DynamicExecutionStatusResponse": DynamicExecutionStatusResponse,
     "DynamicExecutionSummary": DynamicExecutionSummary,
     "DynamicExecutionSummaryMetadata": DynamicExecutionSummaryMetadata,
     "DynamicExecutionSummaryResult": DynamicExecutionSummaryResult,
@@ -2199,15 +2339,19 @@ let typeMap: {[index: string]: any} = {
     "ELFSegment": ELFSegment,
     "ELFSymbol": ELFSymbol,
     "ElfDynamicEntry": ElfDynamicEntry,
+    "EntityRef": EntityRef,
+    "EntityUpdate": EntityUpdate,
     "EntrypointModel": EntrypointModel,
     "EnumDataType": EnumDataType,
     "EnumDefinition": EnumDefinition,
     "ErrorBody": ErrorBody,
     "ErrorModel": ErrorModel,
     "Event": Event,
+    "EventAGENTRUNUPDATE": EventAGENTRUNUPDATE,
     "EventAttemptFailed": EventAttemptFailed,
     "EventAttemptStarted": EventAttemptStarted,
     "EventCONTEXTCOMPACTED": EventCONTEXTCOMPACTED,
+    "EventData": EventData,
     "EventDecompFailed": EventDecompFailed,
     "EventDecompFinished": EventDecompFinished,
     "EventNamesFinished": EventNamesFinished,
@@ -2245,7 +2389,6 @@ let typeMap: {[index: string]: any} = {
     "ExecutionScanResult": ExecutionScanResult,
     "ExecutionVerification": ExecutionVerification,
     "ExportModel": ExportModel,
-    "ExternalResponse": ExternalResponse,
     "ExtractedBinary": ExtractedBinary,
     "ExtractedURL": ExtractedURL,
     "ExtractionFailure": ExtractionFailure,
@@ -2263,6 +2406,8 @@ let typeMap: {[index: string]: any} = {
     "FilesystemScanResult": FilesystemScanResult,
     "FilesystemVerification": FilesystemVerification,
     "Finding": Finding,
+    "FindingBody": FindingBody,
+    "FindingCountsBody": FindingCountsBody,
     "FindingEvidenceInner": FindingEvidenceInnerClass,
     "FormFile": FormFile,
     "FunctionBlockDestinationResponse": FunctionBlockDestinationResponse,
@@ -2310,9 +2455,11 @@ let typeMap: {[index: string]: any} = {
     "GetConfigOutputBody": GetConfigOutputBody,
     "GetDataTypeHistoryBody": GetDataTypeHistoryBody,
     "GetDieInfoOutputBody": GetDieInfoOutputBody,
+    "GetFindingOutputBody": GetFindingOutputBody,
     "GetFunctionMapsOutputBody": GetFunctionMapsOutputBody,
     "GetFunctionSignatureHistoryBody": GetFunctionSignatureHistoryBody,
     "GetGlobalHistoryOutputBody": GetGlobalHistoryOutputBody,
+    "GetInvestigationOutputBody": GetInvestigationOutputBody,
     "GetMatchesOutputBody": GetMatchesOutputBody,
     "GetMatchesStatusOutputBody": GetMatchesStatusOutputBody,
     "GetModelsOutputBody": GetModelsOutputBody,
@@ -2326,6 +2473,7 @@ let typeMap: {[index: string]: any} = {
     "GetUserActivityOutputBody": GetUserActivityOutputBody,
     "GlobalHistoryEntry": GlobalHistoryEntry,
     "GlobalVariable": GlobalVariable,
+    "GrantAccessInputBody": GrantAccessInputBody,
     "HardcodedSecretEvidence": HardcodedSecretEvidence,
     "HistoryActor": HistoryActor,
     "HistoryEntry": HistoryEntry,
@@ -2334,9 +2482,9 @@ let typeMap: {[index: string]: any} = {
     "IconModel": IconModel,
     "ImportDynamicExecutionFileOutputBody": ImportDynamicExecutionFileOutputBody,
     "ImportModel": ImportModel,
+    "ImportedAPICallEvidence": ImportedAPICallEvidence,
     "ImportedApi": ImportedApi,
     "ImportedApiCall": ImportedApiCall,
-    "ImportedApiCallEvidence": ImportedApiCallEvidence,
     "ImportedFunctionCallerEntry": ImportedFunctionCallerEntry,
     "ImportedFunctionDetailOutputBody": ImportedFunctionDetailOutputBody,
     "ImportedFunctionEntry": ImportedFunctionEntry,
@@ -2345,10 +2493,14 @@ let typeMap: {[index: string]: any} = {
     "InlineComment": InlineComment,
     "InputBody": InputBody,
     "InsertAnalysisLogRequest": InsertAnalysisLogRequest,
+    "InvestigationBody": InvestigationBody,
+    "InvestigationListItemBody": InvestigationListItemBody,
     "InviteUserInputBody": InviteUserInputBody,
     "IssuerAllowedDomain": IssuerAllowedDomain,
     "KnownConstantEvidence": KnownConstantEvidence,
     "LineAttributionsData": LineAttributionsData,
+    "ListAccessRulesOutputBody": ListAccessRulesOutputBody,
+    "ListAgentRunsOutputBody": ListAgentRunsOutputBody,
     "ListAnalysesOutputBody": ListAnalysesOutputBody,
     "ListAnalysisDataTypesOutputBody": ListAnalysisDataTypesOutputBody,
     "ListAnalysisFunctionsOutputBody": ListAnalysisFunctionsOutputBody,
@@ -2357,16 +2509,21 @@ let typeMap: {[index: string]: any} = {
     "ListArchiveContentsOutputBody": ListArchiveContentsOutputBody,
     "ListCollectionResults": ListCollectionResults,
     "ListCollectionsOutputBody": ListCollectionsOutputBody,
+    "ListConversationsOutputBody": ListConversationsOutputBody,
     "ListDataTypeFunctionsBody": ListDataTypeFunctionsBody,
     "ListExampleAnalysesOutputBody": ListExampleAnalysesOutputBody,
+    "ListFindingsOutputBody": ListFindingsOutputBody,
     "ListFunctionGlobalsOutputBody": ListFunctionGlobalsOutputBody,
     "ListFunctionSignaturesOutputBody": ListFunctionSignaturesOutputBody,
     "ListFunctionStringsOutputBody": ListFunctionStringsOutputBody,
     "ListGlobalFunctionsOutputBody": ListGlobalFunctionsOutputBody,
     "ListImportedFunctionsOutputBody": ListImportedFunctionsOutputBody,
+    "ListInvestigationsOutputBody": ListInvestigationsOutputBody,
     "ListOperationPrerequisitesOutputBody": ListOperationPrerequisitesOutputBody,
+    "ListPrincipalsOutputBody": ListPrincipalsOutputBody,
     "ListPublicUsersOutputBody": ListPublicUsersOutputBody,
     "ListSecretStoreOutputBody": ListSecretStoreOutputBody,
+    "ListSpendOutputBody": ListSpendOutputBody,
     "ListTeamsOutputBody": ListTeamsOutputBody,
     "ListUsersOutputBody": ListUsersOutputBody,
     "LocationOutputBody": LocationOutputBody,
@@ -2438,12 +2595,14 @@ let typeMap: {[index: string]: any} = {
     "PatchCollectionTagsInputBody": PatchCollectionTagsInputBody,
     "PatchCollectionTagsOutputBody": PatchCollectionTagsOutputBody,
     "PatchCommentBody": PatchCommentBody,
+    "PatchInvestigationInputBody": PatchInvestigationInputBody,
     "PcapBodyInfo": PcapBodyInfo,
     "Permissions": Permissions,
     "PointerDataType": PointerDataType,
     "PointerDefinition": PointerDefinition,
     "PriceOutput": PriceOutput,
     "PriceSummary": PriceSummary,
+    "PrincipalBody": PrincipalBody,
     "ProcessActivityEntry": ProcessActivityEntry,
     "ProcessMemdumps": ProcessMemdumps,
     "ProcessNode": ProcessNode,
@@ -2453,6 +2612,7 @@ let typeMap: {[index: string]: any} = {
     "ProgressMessage": ProgressMessage,
     "ProseEvent": ProseEvent,
     "ProtocolsAgentResponse": ProtocolsAgentResponse,
+    "PublicTeamBody": PublicTeamBody,
     "PublicUserBody": PublicUserBody,
     "PutAnalysisStringsRequest": PutAnalysisStringsRequest,
     "QueuedWorkflowTaskResponse": QueuedWorkflowTaskResponse,
@@ -2498,12 +2658,18 @@ let typeMap: {[index: string]: any} = {
     "ReportStringMatch": ReportStringMatch,
     "ReportSubject": ReportSubject,
     "RequestedConfigBody": RequestedConfigBody,
+    "RequestedOperation": RequestedOperation,
     "RequeueAnalysisRequest": RequeueAnalysisRequest,
     "ResendVerificationEmailInputBody": ResendVerificationEmailInputBody,
     "ResolvedEntity": ResolvedEntity,
     "ResultBody": ResultBody,
     "RevokeBody": RevokeBody,
+    "RollupBody": RollupBody,
+    "RunCancelledData": RunCancelledData,
     "RunDynamicExecutionInputBody": RunDynamicExecutionInputBody,
+    "RunErrorData": RunErrorData,
+    "RunFinishedData": RunFinishedData,
+    "RunStartedData": RunStartedData,
     "SSOProvider": SSOProvider,
     "SSOProvidersOutputBody": SSOProvidersOutputBody,
     "SandboxConfig": SandboxConfig,
@@ -2526,6 +2692,7 @@ let typeMap: {[index: string]: any} = {
     "SendMessageRequest": SendMessageRequest,
     "ServiceEntry": ServiceEntry,
     "SessionOutputBody": SessionOutputBody,
+    "SetBudgetInputBody": SetBudgetInputBody,
     "SignatureParameterEntry": SignatureParameterEntry,
     "SignatureParameterInput": SignatureParameterInput,
     "SignatureStorageEntry": SignatureStorageEntry,
@@ -2537,6 +2704,8 @@ let typeMap: {[index: string]: any} = {
     "SoftwareTypeCountsBody": SoftwareTypeCountsBody,
     "SourceDeltaEvent": SourceDeltaEvent,
     "SourceResetEvent": SourceResetEvent,
+    "SpendBody": SpendBody,
+    "SseEventAgentRunUpdateData": SseEventAgentRunUpdateData,
     "SseEventContextCompactedData": SseEventContextCompactedData,
     "SseEventRunCancelledData": SseEventRunCancelledData,
     "SseEventRunErrorData": SseEventRunErrorData,
@@ -2563,6 +2732,8 @@ let typeMap: {[index: string]: any} = {
     "StatusBody": StatusBody,
     "StatusOutput": StatusOutput,
     "StatusResponse": StatusResponse,
+    "StepFinishedData": StepFinishedData,
+    "StepStartedData": StepStartedData,
     "StreamAiDecompilation200ResponseInner": StreamAiDecompilation200ResponseInnerClass,
     "StreamEvents200ResponseInner": StreamEvents200ResponseInnerClass,
     "StringFunctions": StringFunctions,
@@ -2590,24 +2761,32 @@ let typeMap: {[index: string]: any} = {
     "TagSearchResponse": TagSearchResponse,
     "TagSearchResult": TagSearchResult,
     "TagSearchResultBody": TagSearchResultBody,
-    "TaskResponse": TaskResponse,
     "TaskStatusResponse": TaskStatusResponse,
     "TcpCarvedFile": TcpCarvedFile,
     "Team": Team,
     "TeamMember": TeamMember,
     "Technique": Technique,
+    "TextMessageContentData": TextMessageContentData,
+    "TextMessageEndData": TextMessageEndData,
+    "TextMessageStartData": TextMessageStartData,
     "ThreatReportResult": ThreatReportResult,
     "TimestampModel": TimestampModel,
+    "TitleUpdatedData": TitleUpdatedData,
     "Token": Token,
     "TokenInputBody": TokenInputBody,
     "TokenResponse": TokenResponse,
     "TokenisedData": TokenisedData,
+    "ToolCallArgsDeltaData": ToolCallArgsDeltaData,
+    "ToolCallEndData": ToolCallEndData,
+    "ToolCallProgressData": ToolCallProgressData,
+    "ToolCallResultData": ToolCallResultData,
+    "ToolCallStartData": ToolCallStartData,
+    "ToolConfirmationRequiredData": ToolConfirmationRequiredData,
     "TriageFunction": TriageFunction,
     "TriageFunctionResponse": TriageFunctionResponse,
     "TriageReportResponse": TriageReportResponse,
     "TriageResult": TriageResult,
     "TriggerCryptoScanInputBody": TriggerCryptoScanInputBody,
-    "TriggerDynamicExecutionInputBody": TriggerDynamicExecutionInputBody,
     "TriggerExecutionExplainInputBody": TriggerExecutionExplainInputBody,
     "TriggerExecutionScanInputBody": TriggerExecutionScanInputBody,
     "TriggerFilesystemAnalyseInputBody": TriggerFilesystemAnalyseInputBody,

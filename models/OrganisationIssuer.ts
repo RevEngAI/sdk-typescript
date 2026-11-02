@@ -22,7 +22,7 @@ export class OrganisationIssuer {
     /**
     * JSON Web Key Set URI discovered from the issuer\'s OIDC configuration. Populated automatically during issuer registration.
     */
-    'jwksUri'?: string;
+    'jwksUri': string;
     'organisationId': number;
     'organisationIssuerId': number;
     'updatedAt': Date;

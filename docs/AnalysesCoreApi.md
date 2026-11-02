@@ -16,8 +16,6 @@ Method | HTTP request | Description
 [**getAnalysisLogs**](AnalysesCoreApi.md#getAnalysisLogs) | **GET** /v2/analyses/{analysis_id}/logs | Gets the logs of an analysis
 [**getAnalysisParams**](AnalysesCoreApi.md#getAnalysisParams) | **GET** /v2/analyses/{analysis_id}/params | Gets analysis param information
 [**getAnalysisStatus**](AnalysesCoreApi.md#getAnalysisStatus) | **GET** /v2/analyses/{analysis_id}/status | Gets the status of an analysis
-[**getDynamicExecutionReport**](AnalysesCoreApi.md#getDynamicExecutionReport) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/report | Get dynamic execution report
-[**getDynamicExecutionStatus**](AnalysesCoreApi.md#getDynamicExecutionStatus) | **GET** /v2/analyses/{analysis_id}/dynamic-execution/status | Get dynamic execution status
 [**insertAnalysisLog**](AnalysesCoreApi.md#insertAnalysisLog) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 [**listAnalyses**](AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 [**lookupBinaryId**](AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
@@ -27,6 +25,7 @@ Method | HTTP request | Description
 [**updateAnalysis**](AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**updateAnalysisTags**](AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**uploadFile**](AnalysesCoreApi.md#uploadFile) | **POST** /v2/upload | Upload File
+[**v3CreateAnalysis**](AnalysesCoreApi.md#v3CreateAnalysis) | **POST** /v3/analyses | Create an analysis
 [**v3DeleteAnalysis**](AnalysesCoreApi.md#v3DeleteAnalysis) | **DELETE** /v3/analyses/{analysis_id} | Delete an analysis.
 [**v3DownloadBinaryExport**](AnalysesCoreApi.md#v3DownloadBinaryExport) | **GET** /v3/analyses/{analysis_id}/binary-export | Download a binary export
 [**v3GetAnalysis**](AnalysesCoreApi.md#v3GetAnalysis) | **GET** /v3/analyses/{analysis_id} | Get an analysis.
@@ -49,7 +48,9 @@ Method | HTTP request | Description
 [**v3GetDynamicExecutionSummary**](AnalysesCoreApi.md#v3GetDynamicExecutionSummary) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/summary | Get the dynamic execution summary.
 [**v3GetDynamicExecutionSummaryOperation**](AnalysesCoreApi.md#v3GetDynamicExecutionSummaryOperation) | **GET** /v3/operations/dynamic-execution-summary/{analysis_id} | Get a dynamic execution summary operation.
 [**v3GetDynamicExecutionWiresharkKeys**](AnalysesCoreApi.md#v3GetDynamicExecutionWiresharkKeys) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/wireshark-keys | Download Wireshark TLS session keys.
+[**v3GrantAnalysisAccess**](AnalysesCoreApi.md#v3GrantAnalysisAccess) | **POST** /v3/analyses/{analysis_id}/access-rules | Share an analysis with a user or team
 [**v3ListAnalyses**](AnalysesCoreApi.md#v3ListAnalyses) | **GET** /v3/analyses | List analyses
+[**v3ListAnalysisAccessRules**](AnalysesCoreApi.md#v3ListAnalysisAccessRules) | **GET** /v3/analyses/{analysis_id}/access-rules | List who an analysis is shared with
 [**v3ListAnalysisGlobals**](AnalysesCoreApi.md#v3ListAnalysisGlobals) | **GET** /v3/analyses/{analysis_id}/globals | List the global variables in an analysis.
 [**v3ListAnalysisOperations**](AnalysesCoreApi.md#v3ListAnalysisOperations) | **GET** /v3/analyses/{analysis_id}/operations | List the operations run on an analysis.
 [**v3ListDynamicExecutionScreenshots**](AnalysesCoreApi.md#v3ListDynamicExecutionScreenshots) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/screenshots | List the screenshots captured during execution.
@@ -58,6 +59,7 @@ Method | HTTP request | Description
 [**v3LookupAnalysisByBinaryId**](AnalysesCoreApi.md#v3LookupAnalysisByBinaryId) | **GET** /v3/analyses/lookup/{binary_id} | Look up the most recent analysis for a binary.
 [**v3QueueBinaryExport**](AnalysesCoreApi.md#v3QueueBinaryExport) | **POST** /v3/analyses/{analysis_id}/binary-export | Queue a binary export
 [**v3RequeueAnalysis**](AnalysesCoreApi.md#v3RequeueAnalysis) | **POST** /v3/analyses/{analysis_id}/requeue | Requeue an analysis
+[**v3RevokeAnalysisAccess**](AnalysesCoreApi.md#v3RevokeAnalysisAccess) | **DELETE** /v3/analyses/{analysis_id}/access-rules | Stop sharing an analysis with a user or team
 [**v3RunDynamicExecution**](AnalysesCoreApi.md#v3RunDynamicExecution) | **POST** /v3/analyses/{analysis_id}/dynamic-execution:run | Trigger a dynamic execution run.
 [**v3RunDynamicExecutionSummary**](AnalysesCoreApi.md#v3RunDynamicExecutionSummary) | **POST** /v3/analyses/{analysis_id}/dynamic-execution/summary:run | Regenerate the dynamic execution summary.
 [**v3SearchTags**](AnalysesCoreApi.md#v3SearchTags) | **GET** /v3/tags | Search tags
@@ -191,7 +193,7 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
       platform: "linux",
     },
     autoRunAgents: {
-      triage: true,
+      triage: false,
     },
   },
   
@@ -798,119 +800,6 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getDynamicExecutionReport**
-> AnalysisReport getDynamicExecutionReport()
-
-Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiGetDynamicExecutionReportRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiGetDynamicExecutionReportRequest = {
-    // Analysis ID
-  analysisId: 1,
-};
-
-const data = await apiInstance.getDynamicExecutionReport(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] | Analysis ID | defaults to undefined
-
-
-### Return type
-
-**AnalysisReport**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**409** | Conflict |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getDynamicExecutionStatus**
-> DynamicExecutionStatusResponse getDynamicExecutionStatus()
-
-Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiGetDynamicExecutionStatusRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiGetDynamicExecutionStatusRequest = {
-    // Analysis ID
-  analysisId: 1,
-};
-
-const data = await apiInstance.getDynamicExecutionStatus(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] | Analysis ID | defaults to undefined
-
-
-### Return type
-
-**DynamicExecutionStatusResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -1521,6 +1410,116 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | Successful Response |  -  |
 **422** | Invalid request parameters |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3CreateAnalysis**
+> OperationCreateMetadataCreateResult v3CreateAnalysis(createRequest)
+
+Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3CreateAnalysisRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3CreateAnalysisRequest = {
+  
+  createRequest: {
+    analysisConfig: {
+      generateCapabilities: true,
+      noCache: true,
+      sandboxConfig: {
+        archiveEntryPath: "archiveEntryPath_example",
+        archivePassword: "archivePassword_example",
+        archiveSha256Hash: "62ECB020842930cc01FFCCfeEe150AC32DcAEc8a83DDD7dBF7567C88195ffcea",
+        commandLineArgs: "commandLineArgs_example",
+        enabled: true,
+        startMethod: "standard_user_process",
+        timeout: 120,
+      },
+      scrapeThirdPartyConfig: {
+        enabled: true,
+      },
+    },
+    analysisScope: "PRIVATE",
+    binaryConfig: {
+      fileFormat: "pe",
+      isa: "x86",
+      platform: "linux",
+    },
+    debugHash: "62ECB020842930cc01FFCCfeEe150AC32DcAEc8a83DDD7dBF7567C88195ffcea",
+    filename: "filename_example",
+    investigationId: 1,
+    operations: [
+      {
+        operation: "triage",
+      },
+    ],
+    sha256Hash: "62ECB020842930cc01FFCCfeEe150AC32DcAEc8a83DDD7dBF7567C88195ffcea",
+    symbols: {
+      baseAddress: 0,
+      functionBoundaries: [
+        {
+          endAddress: 0,
+          includeInAnalysis: true,
+          mangledName: "mangledName_example",
+          startAddress: 0,
+        },
+      ],
+    },
+    tags: [
+      "tags_example",
+    ],
+  },
+    // Identifies the calling RevEng application. Recorded on the Analysis log. (optional)
+  xRevEngApplication: "X-RevEng-Application_example",
+};
+
+const data = await apiInstance.v3CreateAnalysis(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createRequest** | **CreateRequest**|  |
+ **xRevEngApplication** | [**string**] | Identifies the calling RevEng application. Recorded on the Analysis log. | (optional) defaults to undefined
+
+
+### Return type
+
+**OperationCreateMetadataCreateResult**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Created |  -  |
+**400** | Bad Request |  -  |
+**402** | Payment Required |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**413** | Request Entity Too Large |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
@@ -2831,6 +2830,71 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **v3GrantAnalysisAccess**
+> void v3GrantAnalysisAccess(grantAccessInputBody)
+
+Grants a user or a team access to the analysis. Sharing with a principal that already has a rule replaces its permission. The user or team must be one the caller can find through `GET /v3/principals`. The analysis owner cannot be the target of a rule. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GrantAnalysisAccessRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GrantAnalysisAccessRequest = {
+    // Analysis ID
+  analysisId: 1,
+  
+  grantAccessInputBody: {
+    permission: "VIEW",
+    teamId: 1,
+    userId: 1,
+  },
+};
+
+const data = await apiInstance.v3GrantAnalysisAccess(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **grantAccessInputBody** | **GrantAccessInputBody**|  |
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **v3ListAnalyses**
 > ListAnalysesOutputBody v3ListAnalyses()
 
@@ -2849,7 +2913,7 @@ const apiInstance = new AnalysesCoreApi(configuration);
 const request: AnalysesCoreApiV3ListAnalysesRequest = {
   
   searchTerm: "search_term_example",
-    // Leave empty to search your own, your team\'s and all public analyses (optional)
+    // Leave empty to search your own, your team\'s, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to (optional)
   analysisScope: [
     "PRIVATE",
   ],
@@ -2897,7 +2961,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **searchTerm** | [**string**] |  | (optional) defaults to undefined
- **analysisScope** | **Array<&#39;PRIVATE&#39; &#124; &#39;PUBLIC&#39; &#124; &#39;TEAM&#39; &#124; &#39;11184809&#39;>** | Leave empty to search your own, your team\&#39;s and all public analyses | (optional) defaults to undefined
+ **analysisScope** | **Array<&#39;PRIVATE&#39; &#124; &#39;PUBLIC&#39; &#124; &#39;TEAM&#39; &#124; &#39;SHARED_WITH_ME&#39; &#124; &#39;11184809&#39;>** | Leave empty to search your own, your team\&#39;s, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to | (optional) defaults to undefined
  **status** | **Array<&#39;Uploaded&#39; &#124; &#39;Queued&#39; &#124; &#39;Complete&#39; &#124; &#39;Error&#39; &#124; &#39;Processing&#39; &#124; &#39;11184809&#39;>** |  | (optional) defaults to undefined
  **modelName** | **Array&lt;string&gt;** |  | (optional) defaults to undefined
  **usernames** | **Array&lt;string&gt;** |  | (optional) defaults to undefined
@@ -2930,6 +2994,62 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 **200** | OK |  -  |
 **400** | Bad Request |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3ListAnalysisAccessRules**
+> ListAccessRulesOutputBody v3ListAnalysisAccessRules()
+
+Returns the users and teams the analysis has been shared with and the permission each one holds. Requires read access to the analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3ListAnalysisAccessRulesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3ListAnalysisAccessRulesRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3ListAnalysisAccessRules(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**ListAccessRulesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -3425,6 +3545,70 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | Created |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3RevokeAnalysisAccess**
+> void v3RevokeAnalysisAccess()
+
+Removes the access rule of one user or one team, identified by the `user_id` or `team_id` query parameter. Removing a rule that does not exist succeeds. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3RevokeAnalysisAccessRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3RevokeAnalysisAccessRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // The user to stop sharing with. Exactly one of user_id and team_id is required (optional)
+  userId: 1,
+    // The team to stop sharing with. Exactly one of user_id and team_id is required (optional)
+  teamId: 1,
+};
+
+const data = await apiInstance.v3RevokeAnalysisAccess(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **userId** | [**number**] | The user to stop sharing with. Exactly one of user_id and team_id is required | (optional) defaults to undefined
+ **teamId** | [**number**] | The team to stop sharing with. Exactly one of user_id and team_id is required | (optional) defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |

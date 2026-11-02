@@ -9,12 +9,20 @@
  * Do not edit the class manually.
  */
 
+import { ConversationContext } from '../models/ConversationContext';
 import { HttpFile } from '../http/http';
 
 export class Conversation {
-    'context'?: any | null;
+    /**
+    * The analysis, and optionally the function, the conversation is about. Absent when it is about neither.
+    */
+    'context'?: ConversationContext;
     'conversationUuid': string;
     'createdAt': Date;
+    /**
+    * The investigation the conversation belongs to. Absent for a conversation outside any investigation.
+    */
+    'investigationId'?: number;
     'title': string;
     'updatedAt': Date;
     'userId': number;
@@ -27,7 +35,7 @@ export class Conversation {
         {
             "name": "context",
             "baseName": "context",
-            "type": "any",
+            "type": "ConversationContext",
             "format": ""
         },
         {
@@ -41,6 +49,12 @@ export class Conversation {
             "baseName": "created_at",
             "type": "Date",
             "format": "date-time"
+        },
+        {
+            "name": "investigationId",
+            "baseName": "investigation_id",
+            "type": "number",
+            "format": "int64"
         },
         {
             "name": "title",

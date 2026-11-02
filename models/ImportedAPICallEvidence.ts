@@ -10,18 +10,18 @@
  */
 
 import { EvidenceEffect } from '../models/EvidenceEffect';
-import { ImportedApi } from '../models/ImportedApi';
+import { ImportedApiCall } from '../models/ImportedApiCall';
 import { HttpFile } from '../http/http';
 
 /**
-* A known combination of APIs without a demonstrated semantic flow.
+* Imported API calls observed in the program.
 */
-export class ApiCombinationEvidence {
-    'evidenceKind'?: ApiCombinationEvidenceEvidenceKindEnum;
-    'kind'?: ApiCombinationEvidenceKindEnum;
+export class ImportedAPICallEvidence {
+    'evidenceKind'?: ImportedAPICallEvidenceEvidenceKindEnum;
+    'kind'?: ImportedAPICallEvidenceKindEnum;
     'effect': EvidenceEffect;
-    'strength'?: ApiCombinationEvidenceStrengthEnum;
-    'apis': Array<ImportedApi>;
+    'strength'?: ImportedAPICallEvidenceStrengthEnum;
+    'calls': Array<ImportedApiCall>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,13 +31,13 @@ export class ApiCombinationEvidence {
         {
             "name": "evidenceKind",
             "baseName": "evidence_kind",
-            "type": "ApiCombinationEvidenceEvidenceKindEnum",
+            "type": "ImportedAPICallEvidenceEvidenceKindEnum",
             "format": ""
         },
         {
             "name": "kind",
             "baseName": "kind",
-            "type": "ApiCombinationEvidenceKindEnum",
+            "type": "ImportedAPICallEvidenceKindEnum",
             "format": ""
         },
         {
@@ -49,34 +49,34 @@ export class ApiCombinationEvidence {
         {
             "name": "strength",
             "baseName": "strength",
-            "type": "ApiCombinationEvidenceStrengthEnum",
+            "type": "ImportedAPICallEvidenceStrengthEnum",
             "format": ""
         },
         {
-            "name": "apis",
-            "baseName": "apis",
-            "type": "Array<ImportedApi>",
+            "name": "calls",
+            "baseName": "calls",
+            "type": "Array<ImportedApiCall>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return ApiCombinationEvidence.attributeTypeMap;
+        return ImportedAPICallEvidence.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
 
-export enum ApiCombinationEvidenceEvidenceKindEnum {
-    ApiCombination = 'api_combination',
+export enum ImportedAPICallEvidenceEvidenceKindEnum {
+    ImportedApiCall = 'imported_api_call',
     UnknownDefaultOpenApi = '11184809'
 }
-export enum ApiCombinationEvidenceKindEnum {
+export enum ImportedAPICallEvidenceKindEnum {
     DeterministicDerivation = 'deterministic_derivation',
     UnknownDefaultOpenApi = '11184809'
 }
-export enum ApiCombinationEvidenceStrengthEnum {
-    Indirect = 'indirect',
+export enum ImportedAPICallEvidenceStrengthEnum {
+    Direct = 'direct',
     UnknownDefaultOpenApi = '11184809'
 }
 

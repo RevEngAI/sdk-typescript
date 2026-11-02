@@ -15,6 +15,10 @@ import { HttpFile } from '../http/http';
 export class User {
     'createdAt': Date;
     'email': string;
+    /**
+    * Inactive users cannot authenticate
+    */
+    'isActive': boolean;
     'profile': UserProfile;
     'role': UserRoleEnum;
     'tier'?: UserTierEnum;
@@ -35,6 +39,12 @@ export class User {
             "name": "email",
             "baseName": "email",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "isActive",
+            "baseName": "is_active",
+            "type": "boolean",
             "format": ""
         },
         {

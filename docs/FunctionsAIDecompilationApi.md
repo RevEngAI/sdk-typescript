@@ -55,6 +55,10 @@ const request: FunctionsAIDecompilationApiCreateAiDecompilationRequest = {
   naming: true,
     // Store the suggested types as data types of this function\'s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off. (optional)
   applyTypes: true,
+    // Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off. (optional)
+  repair: false,
+    // Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off. (optional)
+  refine: false,
 };
 
 const data = await apiInstance.createAiDecompilation(request);
@@ -71,6 +75,8 @@ Name | Type | Description  | Notes
  **typeSuggestions** | [**boolean**] | Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off. | (optional) defaults to true
  **naming** | [**boolean**] | Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off. | (optional) defaults to true
  **applyTypes** | [**boolean**] | Store the suggested types as data types of this function\&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off. | (optional) defaults to true
+ **repair** | [**boolean**] | Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off. | (optional) defaults to false
+ **refine** | [**boolean**] | Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off. | (optional) defaults to false
 
 
 ### Return type

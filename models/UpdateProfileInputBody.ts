@@ -21,6 +21,10 @@ export class UpdateProfileInputBody {
     */
     'firstName'?: string;
     /**
+    * Hide AI decompilation comments across the platform
+    */
+    'hideAiDecompilationComments'?: boolean;
+    /**
     * Hide the Examples tab in the analyses listing
     */
     'hideExampleBinaries'?: boolean;
@@ -52,6 +56,12 @@ export class UpdateProfileInputBody {
             "name": "firstName",
             "baseName": "first_name",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "hideAiDecompilationComments",
+            "baseName": "hide_ai_decompilation_comments",
+            "type": "boolean",
             "format": ""
         },
         {

@@ -15,7 +15,7 @@ import { HttpFile } from '../http/http';
 
 export class ResultBody {
     /**
-    * Child binaries recovered from the extraction.
+    * Every file recovered from the extraction, binary or not.
     */
     'binaries': Array<ExtractedBinary> | null;
     /**
@@ -27,7 +27,7 @@ export class ResultBody {
     */
     'filenameToFailure': { [key: string]: ExtractionFailure; };
     /**
-    * Files skipped because they were not recognised as binaries.
+    * Deprecated: always 0, every file is returned.
     */
     'skippedFiles': number;
 

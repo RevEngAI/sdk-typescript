@@ -9,22 +9,29 @@
  * Do not edit the class manually.
  */
 
-import { AutoRunAgents } from '../models/AutoRunAgents';
 import { BinaryConfig } from '../models/BinaryConfig';
 import { Config } from '../models/Config';
+import { RequestedOperation } from '../models/RequestedOperation';
 import { Symbols } from '../models/Symbols';
 import { HttpFile } from '../http/http';
 
 export class CreateRequest {
     'analysisConfig'?: Config;
     'analysisScope'?: CreateRequestAnalysisScopeEnum;
-    'autoRunAgents'?: AutoRunAgents;
     'binaryConfig'?: BinaryConfig;
     'debugHash'?: string;
     'filename': string;
+    /**
+    * Adds the new analysis to this investigation, which you must own.
+    */
+    'investigationId'?: number;
+    /**
+    * Operations to run automatically once the analysis completes. Each operation\'s prerequisites must also be requested.
+    */
+    'operations'?: Array<RequestedOperation>;
     'sha256Hash': string;
     'symbols'?: Symbols;
-    'tags'?: Array<string | null> | null;
+    'tags'?: Array<string> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -41,12 +48,6 @@ export class CreateRequest {
             "name": "analysisScope",
             "baseName": "analysis_scope",
             "type": "CreateRequestAnalysisScopeEnum",
-            "format": ""
-        },
-        {
-            "name": "autoRunAgents",
-            "baseName": "auto_run_agents",
-            "type": "AutoRunAgents",
             "format": ""
         },
         {
@@ -68,6 +69,18 @@ export class CreateRequest {
             "format": ""
         },
         {
+            "name": "investigationId",
+            "baseName": "investigation_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "operations",
+            "baseName": "operations",
+            "type": "Array<RequestedOperation>",
+            "format": ""
+        },
+        {
             "name": "sha256Hash",
             "baseName": "sha_256_hash",
             "type": "string",
@@ -82,7 +95,7 @@ export class CreateRequest {
         {
             "name": "tags",
             "baseName": "tags",
-            "type": "Array<string | null>",
+            "type": "Array<string>",
             "format": ""
         }    ];
 

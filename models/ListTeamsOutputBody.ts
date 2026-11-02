@@ -9,12 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { Team } from '../models/Team';
+import { PublicTeamBody } from '../models/PublicTeamBody';
 import { HttpFile } from '../http/http';
 
 export class ListTeamsOutputBody {
-    'teams': Array<Team> | null;
-    'total': number;
+    /**
+    * Up to 5 matching teams, ordered by name
+    */
+    'results': Array<PublicTeamBody> | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,16 +24,10 @@ export class ListTeamsOutputBody {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "teams",
-            "baseName": "teams",
-            "type": "Array<Team>",
+            "name": "results",
+            "baseName": "results",
+            "type": "Array<PublicTeamBody>",
             "format": ""
-        },
-        {
-            "name": "total",
-            "baseName": "total",
-            "type": "number",
-            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {

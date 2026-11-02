@@ -2,10 +2,12 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration, ConfigurationOptions } from '../configuration'
 import type { Middleware } from '../middleware';
 
+import { APICombinationEvidence } from '../models/APICombinationEvidence';
 import { APIError } from '../models/APIError';
 import { AcceptTypeSuggestionsInputBody } from '../models/AcceptTypeSuggestionsInputBody';
 import { AcceptTypeSuggestionsOutputBody } from '../models/AcceptTypeSuggestionsOutputBody';
 import { AcceptedType } from '../models/AcceptedType';
+import { AccessRuleBody } from '../models/AccessRuleBody';
 import { ActivityBody } from '../models/ActivityBody';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddCollectionBinariesInputBody } from '../models/AddCollectionBinariesInputBody';
@@ -15,9 +17,18 @@ import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
+import { AgentBody } from '../models/AgentBody';
+import { AgentCompletedBody } from '../models/AgentCompletedBody';
+import { AgentRunBody } from '../models/AgentRunBody';
+import { AgentRunCardBody } from '../models/AgentRunCardBody';
+import { AgentRunIOCBody } from '../models/AgentRunIOCBody';
+import { AgentRunUpdateAgent } from '../models/AgentRunUpdateAgent';
+import { AgentRunUpdateCard } from '../models/AgentRunUpdateCard';
+import { AgentRunUpdateData } from '../models/AgentRunUpdateData';
+import { AgentRunUpdateIOC } from '../models/AgentRunUpdateIOC';
+import { AgentStatusCountsBody } from '../models/AgentStatusCountsBody';
 import { AgentWorkflowUsageOutputBody } from '../models/AgentWorkflowUsageOutputBody';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
-import { AnalyseCapabilitiesBody } from '../models/AnalyseCapabilitiesBody';
 import { AnalysisAccessBody } from '../models/AnalysisAccessBody';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
@@ -61,7 +72,6 @@ import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { AnalysisXrefOutputBody } from '../models/AnalysisXrefOutputBody';
 import { ApiCall } from '../models/ApiCall';
-import { ApiCombinationEvidence } from '../models/ApiCombinationEvidence';
 import { ApiKeyBody } from '../models/ApiKeyBody';
 import { AppApiRestV2AgentSchemaCapability } from '../models/AppApiRestV2AgentSchemaCapability';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
@@ -110,7 +120,6 @@ import { BaseResponseCommentResponse } from '../models/BaseResponseCommentRespon
 import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
-import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
 import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
 import { BaseResponseFunctionSearchResponse } from '../models/BaseResponseFunctionSearchResponse';
@@ -133,9 +142,7 @@ import { BaseResponseRemediationAgentResponse } from '../models/BaseResponseReme
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseSecretsAgentResponse } from '../models/BaseResponseSecretsAgentResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
-import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
-import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatusResponse';
 import { BaseResponseTriageReportResponse } from '../models/BaseResponseTriageReportResponse';
 import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
@@ -164,6 +171,7 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinarySearchResultBody } from '../models/BinarySearchResultBody';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { BitfieldDataType } from '../models/BitfieldDataType';
+import { BudgetBody } from '../models/BudgetBody';
 import { BulkAddTagsInputBody } from '../models/BulkAddTagsInputBody';
 import { BulkAddTagsOutputBody } from '../models/BulkAddTagsOutputBody';
 import { BulkAddTagsResultBody } from '../models/BulkAddTagsResultBody';
@@ -214,7 +222,9 @@ import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
 import { ConsoleOutputEntry } from '../models/ConsoleOutputEntry';
 import { Context } from '../models/Context';
+import { ContextCompactedData } from '../models/ContextCompactedData';
 import { Conversation } from '../models/Conversation';
+import { ConversationBody } from '../models/ConversationBody';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CopyFunctionSignaturesInputBody } from '../models/CopyFunctionSignaturesInputBody';
@@ -228,12 +238,14 @@ import { CreateBitfieldDataType } from '../models/CreateBitfieldDataType';
 import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
 import { CreateCollectionInputBody } from '../models/CreateCollectionInputBody';
 import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
+import { CreateConversationInputBody } from '../models/CreateConversationInputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { CreateDataTypeEntry } from '../models/CreateDataTypeEntry';
 import { CreateEnumDataType } from '../models/CreateEnumDataType';
 import { CreateFunctionDataType } from '../models/CreateFunctionDataType';
 import { CreateGroupInputBody } from '../models/CreateGroupInputBody';
 import { CreateIdentityInputBody } from '../models/CreateIdentityInputBody';
+import { CreateInvestigationInputBody } from '../models/CreateInvestigationInputBody';
 import { CreateIssuerInputBody } from '../models/CreateIssuerInputBody';
 import { CreateMetadata } from '../models/CreateMetadata';
 import { CreateOrganisationInputBody } from '../models/CreateOrganisationInputBody';
@@ -283,7 +295,6 @@ import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionMetadata } from '../models/DynamicExecutionMetadata';
 import { DynamicExecutionResult } from '../models/DynamicExecutionResult';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
-import { DynamicExecutionStatusResponse } from '../models/DynamicExecutionStatusResponse';
 import { DynamicExecutionSummary } from '../models/DynamicExecutionSummary';
 import { DynamicExecutionSummaryMetadata } from '../models/DynamicExecutionSummaryMetadata';
 import { DynamicExecutionSummaryResult } from '../models/DynamicExecutionSummaryResult';
@@ -296,15 +307,19 @@ import { ELFSegment } from '../models/ELFSegment';
 import { ELFSymbol } from '../models/ELFSymbol';
 import { ElfDynamicEntry } from '../models/ElfDynamicEntry';
 import { Endianness } from '../models/Endianness';
+import { EntityRef } from '../models/EntityRef';
+import { EntityUpdate } from '../models/EntityUpdate';
 import { EntrypointModel } from '../models/EntrypointModel';
 import { EnumDataType } from '../models/EnumDataType';
 import { EnumDefinition } from '../models/EnumDefinition';
 import { ErrorBody } from '../models/ErrorBody';
 import { ErrorModel } from '../models/ErrorModel';
 import { Event } from '../models/Event';
+import { EventAGENTRUNUPDATE } from '../models/EventAGENTRUNUPDATE';
 import { EventAttemptFailed } from '../models/EventAttemptFailed';
 import { EventAttemptStarted } from '../models/EventAttemptStarted';
 import { EventCONTEXTCOMPACTED } from '../models/EventCONTEXTCOMPACTED';
+import { EventData } from '../models/EventData';
 import { EventDecompFailed } from '../models/EventDecompFailed';
 import { EventDecompFinished } from '../models/EventDecompFinished';
 import { EventNamesFinished } from '../models/EventNamesFinished';
@@ -344,7 +359,6 @@ import { ExecutionScanMetadata } from '../models/ExecutionScanMetadata';
 import { ExecutionScanResult } from '../models/ExecutionScanResult';
 import { ExecutionVerification } from '../models/ExecutionVerification';
 import { ExportModel } from '../models/ExportModel';
-import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedBinary } from '../models/ExtractedBinary';
 import { ExtractedURL } from '../models/ExtractedURL';
 import { ExtractionFailure } from '../models/ExtractionFailure';
@@ -364,6 +378,8 @@ import { FilesystemScanResult } from '../models/FilesystemScanResult';
 import { FilesystemVerification } from '../models/FilesystemVerification';
 import { Filters } from '../models/Filters';
 import { Finding } from '../models/Finding';
+import { FindingBody } from '../models/FindingBody';
+import { FindingCountsBody } from '../models/FindingCountsBody';
 import { FindingEvidenceInner } from '../models/FindingEvidenceInner';
 import { FormFile } from '../models/FormFile';
 import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
@@ -412,9 +428,11 @@ import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetConfigOutputBody } from '../models/GetConfigOutputBody';
 import { GetDataTypeHistoryBody } from '../models/GetDataTypeHistoryBody';
 import { GetDieInfoOutputBody } from '../models/GetDieInfoOutputBody';
+import { GetFindingOutputBody } from '../models/GetFindingOutputBody';
 import { GetFunctionMapsOutputBody } from '../models/GetFunctionMapsOutputBody';
 import { GetFunctionSignatureHistoryBody } from '../models/GetFunctionSignatureHistoryBody';
 import { GetGlobalHistoryOutputBody } from '../models/GetGlobalHistoryOutputBody';
+import { GetInvestigationOutputBody } from '../models/GetInvestigationOutputBody';
 import { GetMatchesOutputBody } from '../models/GetMatchesOutputBody';
 import { GetMatchesStatusOutputBody } from '../models/GetMatchesStatusOutputBody';
 import { GetModelsOutputBody } from '../models/GetModelsOutputBody';
@@ -428,6 +446,7 @@ import { GetTokensResponse } from '../models/GetTokensResponse';
 import { GetUserActivityOutputBody } from '../models/GetUserActivityOutputBody';
 import { GlobalHistoryEntry } from '../models/GlobalHistoryEntry';
 import { GlobalVariable } from '../models/GlobalVariable';
+import { GrantAccessInputBody } from '../models/GrantAccessInputBody';
 import { HardcodedSecretEvidence } from '../models/HardcodedSecretEvidence';
 import { HistoryActor } from '../models/HistoryActor';
 import { HistoryEntry } from '../models/HistoryEntry';
@@ -437,9 +456,9 @@ import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportDynamicExecutionFileOutputBody } from '../models/ImportDynamicExecutionFileOutputBody';
 import { ImportModel } from '../models/ImportModel';
+import { ImportedAPICallEvidence } from '../models/ImportedAPICallEvidence';
 import { ImportedApi } from '../models/ImportedApi';
 import { ImportedApiCall } from '../models/ImportedApiCall';
-import { ImportedApiCallEvidence } from '../models/ImportedApiCallEvidence';
 import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
 import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
@@ -448,10 +467,14 @@ import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBo
 import { InlineComment } from '../models/InlineComment';
 import { InputBody } from '../models/InputBody';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
+import { InvestigationBody } from '../models/InvestigationBody';
+import { InvestigationListItemBody } from '../models/InvestigationListItemBody';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
 import { KnownConstantEvidence } from '../models/KnownConstantEvidence';
 import { LineAttributionsData } from '../models/LineAttributionsData';
+import { ListAccessRulesOutputBody } from '../models/ListAccessRulesOutputBody';
+import { ListAgentRunsOutputBody } from '../models/ListAgentRunsOutputBody';
 import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
 import { ListAnalysisDataTypesOutputBody } from '../models/ListAnalysisDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
@@ -460,16 +483,21 @@ import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutp
 import { ListArchiveContentsOutputBody } from '../models/ListArchiveContentsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
+import { ListConversationsOutputBody } from '../models/ListConversationsOutputBody';
 import { ListDataTypeFunctionsBody } from '../models/ListDataTypeFunctionsBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
+import { ListFindingsOutputBody } from '../models/ListFindingsOutputBody';
 import { ListFunctionGlobalsOutputBody } from '../models/ListFunctionGlobalsOutputBody';
 import { ListFunctionSignaturesOutputBody } from '../models/ListFunctionSignaturesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListGlobalFunctionsOutputBody } from '../models/ListGlobalFunctionsOutputBody';
 import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
+import { ListInvestigationsOutputBody } from '../models/ListInvestigationsOutputBody';
 import { ListOperationPrerequisitesOutputBody } from '../models/ListOperationPrerequisitesOutputBody';
+import { ListPrincipalsOutputBody } from '../models/ListPrincipalsOutputBody';
 import { ListPublicUsersOutputBody } from '../models/ListPublicUsersOutputBody';
 import { ListSecretStoreOutputBody } from '../models/ListSecretStoreOutputBody';
+import { ListSpendOutputBody } from '../models/ListSpendOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
 import { LocationOutputBody } from '../models/LocationOutputBody';
@@ -543,6 +571,7 @@ import { PatchCollectionOutputBody } from '../models/PatchCollectionOutputBody';
 import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
 import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
+import { PatchInvestigationInputBody } from '../models/PatchInvestigationInputBody';
 import { PcapBodyInfo } from '../models/PcapBodyInfo';
 import { Permissions } from '../models/Permissions';
 import { Platform } from '../models/Platform';
@@ -550,6 +579,7 @@ import { PointerDataType } from '../models/PointerDataType';
 import { PointerDefinition } from '../models/PointerDefinition';
 import { PriceOutput } from '../models/PriceOutput';
 import { PriceSummary } from '../models/PriceSummary';
+import { PrincipalBody } from '../models/PrincipalBody';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
@@ -559,6 +589,7 @@ import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
 import { ProtocolsAgentResponse } from '../models/ProtocolsAgentResponse';
+import { PublicTeamBody } from '../models/PublicTeamBody';
 import { PublicUserBody } from '../models/PublicUserBody';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
@@ -605,13 +636,19 @@ import { ReportResult } from '../models/ReportResult';
 import { ReportStringMatch } from '../models/ReportStringMatch';
 import { ReportSubject } from '../models/ReportSubject';
 import { RequestedConfigBody } from '../models/RequestedConfigBody';
+import { RequestedOperation } from '../models/RequestedOperation';
 import { RequeueAnalysisRequest } from '../models/RequeueAnalysisRequest';
 import { ResendVerificationEmailInputBody } from '../models/ResendVerificationEmailInputBody';
 import { ResolvedEntity } from '../models/ResolvedEntity';
 import { ResultBody } from '../models/ResultBody';
 import { RevokeBody } from '../models/RevokeBody';
+import { RollupBody } from '../models/RollupBody';
 import { RuleKind } from '../models/RuleKind';
+import { RunCancelledData } from '../models/RunCancelledData';
 import { RunDynamicExecutionInputBody } from '../models/RunDynamicExecutionInputBody';
+import { RunErrorData } from '../models/RunErrorData';
+import { RunFinishedData } from '../models/RunFinishedData';
+import { RunStartedData } from '../models/RunStartedData';
 import { SSOProvider } from '../models/SSOProvider';
 import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
 import { SandboxConfig } from '../models/SandboxConfig';
@@ -636,6 +673,7 @@ import { SegmentInfo } from '../models/SegmentInfo';
 import { SendMessageRequest } from '../models/SendMessageRequest';
 import { ServiceEntry } from '../models/ServiceEntry';
 import { SessionOutputBody } from '../models/SessionOutputBody';
+import { SetBudgetInputBody } from '../models/SetBudgetInputBody';
 import { SignatureParameterEntry } from '../models/SignatureParameterEntry';
 import { SignatureParameterInput } from '../models/SignatureParameterInput';
 import { SignatureStorageEntry } from '../models/SignatureStorageEntry';
@@ -647,6 +685,8 @@ import { SingleSectionModel } from '../models/SingleSectionModel';
 import { SoftwareTypeCountsBody } from '../models/SoftwareTypeCountsBody';
 import { SourceDeltaEvent } from '../models/SourceDeltaEvent';
 import { SourceResetEvent } from '../models/SourceResetEvent';
+import { SpendBody } from '../models/SpendBody';
+import { SseEventAgentRunUpdateData } from '../models/SseEventAgentRunUpdateData';
 import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
 import { SseEventRunCancelledData } from '../models/SseEventRunCancelledData';
 import { SseEventRunErrorData } from '../models/SseEventRunErrorData';
@@ -674,6 +714,8 @@ import { StatusBody } from '../models/StatusBody';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StatusResponse } from '../models/StatusResponse';
+import { StepFinishedData } from '../models/StepFinishedData';
+import { StepStartedData } from '../models/StepStartedData';
 import { StreamAiDecompilation200ResponseInner } from '../models/StreamAiDecompilation200ResponseInner';
 import { StreamEvents200ResponseInner } from '../models/StreamEvents200ResponseInner';
 import { StringFunctions } from '../models/StringFunctions';
@@ -702,25 +744,32 @@ import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
 import { TagSearchResultBody } from '../models/TagSearchResultBody';
-import { TaskResponse } from '../models/TaskResponse';
-import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse } from '../models/TaskStatusResponse';
 import { TcpCarvedFile } from '../models/TcpCarvedFile';
 import { Team } from '../models/Team';
 import { TeamMember } from '../models/TeamMember';
 import { Technique } from '../models/Technique';
+import { TextMessageContentData } from '../models/TextMessageContentData';
+import { TextMessageEndData } from '../models/TextMessageEndData';
+import { TextMessageStartData } from '../models/TextMessageStartData';
 import { ThreatReportResult } from '../models/ThreatReportResult';
 import { TimestampModel } from '../models/TimestampModel';
+import { TitleUpdatedData } from '../models/TitleUpdatedData';
 import { Token } from '../models/Token';
 import { TokenInputBody } from '../models/TokenInputBody';
 import { TokenResponse } from '../models/TokenResponse';
 import { TokenisedData } from '../models/TokenisedData';
+import { ToolCallArgsDeltaData } from '../models/ToolCallArgsDeltaData';
+import { ToolCallEndData } from '../models/ToolCallEndData';
+import { ToolCallProgressData } from '../models/ToolCallProgressData';
+import { ToolCallResultData } from '../models/ToolCallResultData';
+import { ToolCallStartData } from '../models/ToolCallStartData';
+import { ToolConfirmationRequiredData } from '../models/ToolConfirmationRequiredData';
 import { TriageFunction } from '../models/TriageFunction';
 import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
 import { TriageResult } from '../models/TriageResult';
 import { TriggerCryptoScanInputBody } from '../models/TriggerCryptoScanInputBody';
-import { TriggerDynamicExecutionInputBody } from '../models/TriggerDynamicExecutionInputBody';
 import { TriggerExecutionExplainInputBody } from '../models/TriggerExecutionExplainInputBody';
 import { TriggerExecutionScanInputBody } from '../models/TriggerExecutionScanInputBody';
 import { TriggerFilesystemAnalyseInputBody } from '../models/TriggerFilesystemAnalyseInputBody';
@@ -2967,28 +3016,6 @@ export interface AnalysesCoreApiGetAnalysisStatusRequest {
     analysisId: number
 }
 
-export interface AnalysesCoreApiGetDynamicExecutionReportRequest {
-    /**
-     * Analysis ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetDynamicExecutionReport
-     */
-    analysisId: number
-}
-
-export interface AnalysesCoreApiGetDynamicExecutionStatusRequest {
-    /**
-     * Analysis ID
-     * Minimum: 1
-     * Defaults to: undefined
-     * @type number
-     * @memberof AnalysesCoreApigetDynamicExecutionStatus
-     */
-    analysisId: number
-}
-
 export interface AnalysesCoreApiInsertAnalysisLogRequest {
     /**
      * 
@@ -3214,6 +3241,22 @@ export interface AnalysesCoreApiUploadFileRequest {
      * @memberof AnalysesCoreApiuploadFile
      */
     forceOverwrite?: boolean
+}
+
+export interface AnalysesCoreApiV3CreateAnalysisRequest {
+    /**
+     * 
+     * @type CreateRequest
+     * @memberof AnalysesCoreApiv3CreateAnalysis
+     */
+    createRequest: CreateRequest
+    /**
+     * Identifies the calling RevEng application. Recorded on the Analysis log.
+     * Defaults to: undefined
+     * @type string
+     * @memberof AnalysesCoreApiv3CreateAnalysis
+     */
+    xRevEngApplication?: string
 }
 
 export interface AnalysesCoreApiV3DeleteAnalysisRequest {
@@ -3568,6 +3611,23 @@ export interface AnalysesCoreApiV3GetDynamicExecutionWiresharkKeysRequest {
     analysisId: number
 }
 
+export interface AnalysesCoreApiV3GrantAnalysisAccessRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiv3GrantAnalysisAccess
+     */
+    analysisId: number
+    /**
+     * 
+     * @type GrantAccessInputBody
+     * @memberof AnalysesCoreApiv3GrantAnalysisAccess
+     */
+    grantAccessInputBody: GrantAccessInputBody
+}
+
 export interface AnalysesCoreApiV3ListAnalysesRequest {
     /**
      * 
@@ -3577,12 +3637,12 @@ export interface AnalysesCoreApiV3ListAnalysesRequest {
      */
     searchTerm?: string
     /**
-     * Leave empty to search your own, your team\&#39;s and all public analyses
+     * Leave empty to search your own, your team\&#39;s, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to
      * Defaults to: undefined
-     * @type Array&lt;&#39;PRIVATE&#39; | &#39;PUBLIC&#39; | &#39;TEAM&#39;&gt;
+     * @type Array&lt;&#39;PRIVATE&#39; | &#39;PUBLIC&#39; | &#39;TEAM&#39; | &#39;SHARED_WITH_ME&#39;&gt;
      * @memberof AnalysesCoreApiv3ListAnalyses
      */
-    analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>
+    analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM' | 'SHARED_WITH_ME'>
     /**
      * 
      * Defaults to: undefined
@@ -3663,6 +3723,17 @@ export interface AnalysesCoreApiV3ListAnalysesRequest {
      * @memberof AnalysesCoreApiv3ListAnalyses
      */
     order?: 'ASC' | 'DESC'
+}
+
+export interface AnalysesCoreApiV3ListAnalysisAccessRulesRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiv3ListAnalysisAccessRules
+     */
+    analysisId: number
 }
 
 export interface AnalysesCoreApiV3ListAnalysisGlobalsRequest {
@@ -3841,6 +3912,33 @@ export interface AnalysesCoreApiV3RequeueAnalysisRequest {
      * @memberof AnalysesCoreApiv3RequeueAnalysis
      */
     requeueAnalysisRequest: RequeueAnalysisRequest
+}
+
+export interface AnalysesCoreApiV3RevokeAnalysisAccessRequest {
+    /**
+     * Analysis ID
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiv3RevokeAnalysisAccess
+     */
+    analysisId: number
+    /**
+     * The user to stop sharing with. Exactly one of user_id and team_id is required
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiv3RevokeAnalysisAccess
+     */
+    userId?: number
+    /**
+     * The team to stop sharing with. Exactly one of user_id and team_id is required
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof AnalysesCoreApiv3RevokeAnalysisAccess
+     */
+    teamId?: number
 }
 
 export interface AnalysesCoreApiV3RunDynamicExecutionRequest {
@@ -4192,42 +4290,6 @@ export class ObjectAnalysesCoreApi {
     }
 
     /**
-     * Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Get dynamic execution report
-     * @param param the request object
-     */
-    public getDynamicExecutionReportWithHttpInfo(param: AnalysesCoreApiGetDynamicExecutionReportRequest, options?: ConfigurationOptions): Promise<HttpInfo<AnalysisReport>> {
-        return this.api.getDynamicExecutionReportWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Get dynamic execution report
-     * @param param the request object
-     */
-    public getDynamicExecutionReport(param: AnalysesCoreApiGetDynamicExecutionReportRequest, options?: ConfigurationOptions): Promise<AnalysisReport> {
-        return this.api.getDynamicExecutionReport(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get dynamic execution status
-     * @param param the request object
-     */
-    public getDynamicExecutionStatusWithHttpInfo(param: AnalysesCoreApiGetDynamicExecutionStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<DynamicExecutionStatusResponse>> {
-        return this.api.getDynamicExecutionStatusWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get dynamic execution status
-     * @param param the request object
-     */
-    public getDynamicExecutionStatus(param: AnalysesCoreApiGetDynamicExecutionStatusRequest, options?: ConfigurationOptions): Promise<DynamicExecutionStatusResponse> {
-        return this.api.getDynamicExecutionStatus(param.analysisId,  options).toPromise();
-    }
-
-    /**
      * Inserts a log record for an analysis. Only the analysis owner can insert logs.
      * Insert a log entry for an analysis
      * @param param the request object
@@ -4385,6 +4447,24 @@ export class ObjectAnalysesCoreApi {
      */
     public uploadFile(param: AnalysesCoreApiUploadFileRequest, options?: ConfigurationOptions): Promise<BaseResponseUploadResponse> {
         return this.api.uploadFile(param.uploadFileType, param.file, param.packedPassword, param.forceOverwrite,  options).toPromise();
+    }
+
+    /**
+     * Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+     * Create an analysis
+     * @param param the request object
+     */
+    public v3CreateAnalysisWithHttpInfo(param: AnalysesCoreApiV3CreateAnalysisRequest, options?: ConfigurationOptions): Promise<HttpInfo<OperationCreateMetadataCreateResult>> {
+        return this.api.v3CreateAnalysisWithHttpInfo(param.createRequest, param.xRevEngApplication,  options).toPromise();
+    }
+
+    /**
+     * Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+     * Create an analysis
+     * @param param the request object
+     */
+    public v3CreateAnalysis(param: AnalysesCoreApiV3CreateAnalysisRequest, options?: ConfigurationOptions): Promise<OperationCreateMetadataCreateResult> {
+        return this.api.v3CreateAnalysis(param.createRequest, param.xRevEngApplication,  options).toPromise();
     }
 
     /**
@@ -4784,6 +4864,24 @@ export class ObjectAnalysesCoreApi {
     }
 
     /**
+     * Grants a user or a team access to the analysis. Sharing with a principal that already has a rule replaces its permission. The user or team must be one the caller can find through `GET /v3/principals`. The analysis owner cannot be the target of a rule. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Share an analysis with a user or team
+     * @param param the request object
+     */
+    public v3GrantAnalysisAccessWithHttpInfo(param: AnalysesCoreApiV3GrantAnalysisAccessRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.v3GrantAnalysisAccessWithHttpInfo(param.analysisId, param.grantAccessInputBody,  options).toPromise();
+    }
+
+    /**
+     * Grants a user or a team access to the analysis. Sharing with a principal that already has a rule replaces its permission. The user or team must be one the caller can find through `GET /v3/principals`. The analysis owner cannot be the target of a rule. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Share an analysis with a user or team
+     * @param param the request object
+     */
+    public v3GrantAnalysisAccess(param: AnalysesCoreApiV3GrantAnalysisAccessRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.v3GrantAnalysisAccess(param.analysisId, param.grantAccessInputBody,  options).toPromise();
+    }
+
+    /**
      * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * List analyses
      * @param param the request object
@@ -4799,6 +4897,24 @@ export class ObjectAnalysesCoreApi {
      */
     public v3ListAnalyses(param: AnalysesCoreApiV3ListAnalysesRequest = {}, options?: ConfigurationOptions): Promise<ListAnalysesOutputBody> {
         return this.api.v3ListAnalyses(param.searchTerm, param.analysisScope, param.status, param.modelName, param.usernames, param.sha256Hash, param.binaryId, param.platform, param.architecture, param.pageSize, param.nextPageToken, param.orderBy, param.order,  options).toPromise();
+    }
+
+    /**
+     * Returns the users and teams the analysis has been shared with and the permission each one holds. Requires read access to the analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List who an analysis is shared with
+     * @param param the request object
+     */
+    public v3ListAnalysisAccessRulesWithHttpInfo(param: AnalysesCoreApiV3ListAnalysisAccessRulesRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListAccessRulesOutputBody>> {
+        return this.api.v3ListAnalysisAccessRulesWithHttpInfo(param.analysisId,  options).toPromise();
+    }
+
+    /**
+     * Returns the users and teams the analysis has been shared with and the permission each one holds. Requires read access to the analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List who an analysis is shared with
+     * @param param the request object
+     */
+    public v3ListAnalysisAccessRules(param: AnalysesCoreApiV3ListAnalysisAccessRulesRequest, options?: ConfigurationOptions): Promise<ListAccessRulesOutputBody> {
+        return this.api.v3ListAnalysisAccessRules(param.analysisId,  options).toPromise();
     }
 
     /**
@@ -4943,6 +5059,24 @@ export class ObjectAnalysesCoreApi {
      */
     public v3RequeueAnalysis(param: AnalysesCoreApiV3RequeueAnalysisRequest, options?: ConfigurationOptions): Promise<OperationCreateMetadataCreateResult> {
         return this.api.v3RequeueAnalysis(param.analysisId, param.requeueAnalysisRequest,  options).toPromise();
+    }
+
+    /**
+     * Removes the access rule of one user or one team, identified by the `user_id` or `team_id` query parameter. Removing a rule that does not exist succeeds. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Stop sharing an analysis with a user or team
+     * @param param the request object
+     */
+    public v3RevokeAnalysisAccessWithHttpInfo(param: AnalysesCoreApiV3RevokeAnalysisAccessRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.v3RevokeAnalysisAccessWithHttpInfo(param.analysisId, param.userId, param.teamId,  options).toPromise();
+    }
+
+    /**
+     * Removes the access rule of one user or one team, identified by the `user_id` or `team_id` query parameter. Removing a rule that does not exist succeeds. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Stop sharing an analysis with a user or team
+     * @param param the request object
+     */
+    public v3RevokeAnalysisAccess(param: AnalysesCoreApiV3RevokeAnalysisAccessRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.v3RevokeAnalysisAccess(param.analysisId, param.userId, param.teamId,  options).toPromise();
     }
 
     /**
@@ -5437,6 +5571,26 @@ export interface AuthenticationUsersApiV3GetUserRequest {
 export interface AuthenticationUsersApiV3GetUserActivityRequest {
 }
 
+export interface AuthenticationUsersApiV3ListPrincipalsRequest {
+    /**
+     * Text the user\&#39;s username or team\&#39;s name contains (case-insensitive)
+     * Defaults to: undefined
+     * @type string
+     * @memberof AuthenticationUsersApiv3ListPrincipals
+     */
+    searchTerm: string
+}
+
+export interface AuthenticationUsersApiV3ListTeamsRequest {
+    /**
+     * Text the team name contains (case-insensitive)
+     * Defaults to: undefined
+     * @type string
+     * @memberof AuthenticationUsersApiv3ListTeams
+     */
+    searchTerm: string
+}
+
 export interface AuthenticationUsersApiV3ListUsersRequest {
     /**
      * Text the username contains (case-insensitive)
@@ -5550,7 +5704,43 @@ export class ObjectAuthenticationUsersApi {
     }
 
     /**
-     * Returns up to 5 active users whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
+     * Returns up to 5 matching users and up to 5 matching teams whose name contains the search term (case-insensitive), scoped to the caller\'s organisation using the same rules as the individual user and team search endpoints.
+     * Search users and teams
+     * @param param the request object
+     */
+    public v3ListPrincipalsWithHttpInfo(param: AuthenticationUsersApiV3ListPrincipalsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListPrincipalsOutputBody>> {
+        return this.api.v3ListPrincipalsWithHttpInfo(param.searchTerm,  options).toPromise();
+    }
+
+    /**
+     * Returns up to 5 matching users and up to 5 matching teams whose name contains the search term (case-insensitive), scoped to the caller\'s organisation using the same rules as the individual user and team search endpoints.
+     * Search users and teams
+     * @param param the request object
+     */
+    public v3ListPrincipals(param: AuthenticationUsersApiV3ListPrincipalsRequest, options?: ConfigurationOptions): Promise<ListPrincipalsOutputBody> {
+        return this.api.v3ListPrincipals(param.searchTerm,  options).toPromise();
+    }
+
+    /**
+     * Returns up to 5 teams whose name contains the search term (case-insensitive). Returns every team in the caller\'s organisation, or — if the organisation is named \"Internal\" — only the teams the caller belongs to.
+     * Search teams
+     * @param param the request object
+     */
+    public v3ListTeamsWithHttpInfo(param: AuthenticationUsersApiV3ListTeamsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListTeamsOutputBody>> {
+        return this.api.v3ListTeamsWithHttpInfo(param.searchTerm,  options).toPromise();
+    }
+
+    /**
+     * Returns up to 5 teams whose name contains the search term (case-insensitive). Returns every team in the caller\'s organisation, or — if the organisation is named \"Internal\" — only the teams the caller belongs to.
+     * Search teams
+     * @param param the request object
+     */
+    public v3ListTeams(param: AuthenticationUsersApiV3ListTeamsRequest, options?: ConfigurationOptions): Promise<ListTeamsOutputBody> {
+        return this.api.v3ListTeams(param.searchTerm,  options).toPromise();
+    }
+
+    /**
+     * Returns up to 5 active users in the caller\'s organisation whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
      * Search users
      * @param param the request object
      */
@@ -5559,7 +5749,7 @@ export class ObjectAuthenticationUsersApi {
     }
 
     /**
-     * Returns up to 5 active users whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
+     * Returns up to 5 active users in the caller\'s organisation whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
      * Search users
      * @param param the request object
      */
@@ -6998,7 +7188,7 @@ export class ObjectConversationsApi {
     }
 
     /**
-     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
      * Cancel an active run
      * @param param the request object
      */
@@ -7007,7 +7197,7 @@ export class ObjectConversationsApi {
     }
 
     /**
-     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
      * Cancel an active run
      * @param param the request object
      */
@@ -7016,7 +7206,7 @@ export class ObjectConversationsApi {
     }
 
     /**
-     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
+     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
      * Approve or reject a pending tool confirmation
      * @param param the request object
      */
@@ -7025,7 +7215,7 @@ export class ObjectConversationsApi {
     }
 
     /**
-     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
+     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
      * Approve or reject a pending tool confirmation
      * @param param the request object
      */
@@ -7088,7 +7278,7 @@ export class ObjectConversationsApi {
     }
 
     /**
-     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
+     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `402` [`INVESTIGATION_BUDGET_SPENT`](/errors/INVESTIGATION_BUDGET_SPENT) — Investigation Budget Spent - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
      * Send a message and start an agentic run
      * @param param the request object
      */
@@ -7097,7 +7287,7 @@ export class ObjectConversationsApi {
     }
 
     /**
-     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
+     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `402` [`INVESTIGATION_BUDGET_SPENT`](/errors/INVESTIGATION_BUDGET_SPENT) — Investigation Budget Spent - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
      * Send a message and start an agentic run
      * @param param the request object
      */
@@ -7544,7 +7734,7 @@ export class ObjectDataTypesApi {
     }
 
     /**
-     * Functions that use this data type as their return type or as a parameter. Matches the `data_type_id` exactly as it appears in the signature, so a function taking `sockaddr_in *` matches the pointer type rather than `sockaddr_in`. Ordered by function ID. There is no total count; page with `after_function_id`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Functions that use this data type, each listed once with how it uses it in `usage_kinds`: in its signature (return or parameter type), in-line (its AI decompilation names the type in its code), or as a member (its AI decompilation reads a struct or union member of this type, or it references a global variable of this type).  A function using a pointer to, typedef of or array of the type uses the type too, so a function taking `sockaddr_in *` is listed under `sockaddr_in`. The reverse does not hold: a function using `sockaddr_in` is not listed under `sockaddr_in *`.  In-line and member uses come from a function\'s latest AI decompilation, so a function not decompiled since this was introduced shows only its signature and global variable uses. Ordered by function ID. There is no total count; page with `after_function_id`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * List the functions using a data type
      * @param param the request object
      */
@@ -7553,7 +7743,7 @@ export class ObjectDataTypesApi {
     }
 
     /**
-     * Functions that use this data type as their return type or as a parameter. Matches the `data_type_id` exactly as it appears in the signature, so a function taking `sockaddr_in *` matches the pointer type rather than `sockaddr_in`. Ordered by function ID. There is no total count; page with `after_function_id`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Functions that use this data type, each listed once with how it uses it in `usage_kinds`: in its signature (return or parameter type), in-line (its AI decompilation names the type in its code), or as a member (its AI decompilation reads a struct or union member of this type, or it references a global variable of this type).  A function using a pointer to, typedef of or array of the type uses the type too, so a function taking `sockaddr_in *` is listed under `sockaddr_in`. The reverse does not hold: a function using `sockaddr_in` is not listed under `sockaddr_in *`.  In-line and member uses come from a function\'s latest AI decompilation, so a function not decompiled since this was introduced shows only its signature and global variable uses. Ordered by function ID. There is no total count; page with `after_function_id`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * List the functions using a data type
      * @param param the request object
      */
@@ -7620,36 +7810,6 @@ export class ObjectDataTypesApi {
 import { ObservableExternalSourcesApi } from "./ObservableAPI";
 import { ExternalSourcesApiRequestFactory, ExternalSourcesApiResponseProcessor} from "../apis/ExternalSourcesApi";
 
-export interface ExternalSourcesApiCreateExternalTaskVtRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof ExternalSourcesApicreateExternalTaskVt
-     */
-    analysisId: number
-}
-
-export interface ExternalSourcesApiGetVtDataRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof ExternalSourcesApigetVtData
-     */
-    analysisId: number
-}
-
-export interface ExternalSourcesApiGetVtTaskStatusRequest {
-    /**
-     * 
-     * Defaults to: undefined
-     * @type number
-     * @memberof ExternalSourcesApigetVtTaskStatus
-     */
-    analysisId: number
-}
-
 export interface ExternalSourcesApiV3GetVirustotalScanOperationRequest {
     /**
      * Binary ID
@@ -7677,54 +7837,6 @@ export class ObjectExternalSourcesApi {
 
     public constructor(configuration: Configuration, requestFactory?: ExternalSourcesApiRequestFactory, responseProcessor?: ExternalSourcesApiResponseProcessor) {
         this.api = new ObservableExternalSourcesApi(configuration, requestFactory, responseProcessor);
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param param the request object
-     */
-    public createExternalTaskVtWithHttpInfo(param: ExternalSourcesApiCreateExternalTaskVtRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
-        return this.api.createExternalTaskVtWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param param the request object
-     */
-    public createExternalTaskVt(param: ExternalSourcesApiCreateExternalTaskVtRequest, options?: ConfigurationOptions): Promise<BaseResponseStr> {
-        return this.api.createExternalTaskVt(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get VirusTotal data
-     * @param param the request object
-     */
-    public getVtDataWithHttpInfo(param: ExternalSourcesApiGetVtDataRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
-        return this.api.getVtDataWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Get VirusTotal data
-     * @param param the request object
-     */
-    public getVtData(param: ExternalSourcesApiGetVtDataRequest, options?: ConfigurationOptions): Promise<BaseResponseExternalResponse> {
-        return this.api.getVtData(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of VirusTotal data retrieval
-     * @param param the request object
-     */
-    public getVtTaskStatusWithHttpInfo(param: ExternalSourcesApiGetVtTaskStatusRequest, options?: ConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
-        return this.api.getVtTaskStatusWithHttpInfo(param.analysisId,  options).toPromise();
-    }
-
-    /**
-     * Check the status of VirusTotal data retrieval
-     * @param param the request object
-     */
-    public getVtTaskStatus(param: ExternalSourcesApiGetVtTaskStatusRequest, options?: ConfigurationOptions): Promise<BaseResponseTaskResponse> {
-        return this.api.getVtTaskStatus(param.analysisId,  options).toPromise();
     }
 
     /**
@@ -7807,6 +7919,20 @@ export interface FunctionsAIDecompilationApiCreateAiDecompilationRequest {
      * @memberof FunctionsAIDecompilationApicreateAiDecompilation
      */
     applyTypes?: boolean
+    /**
+     * Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+     * Defaults to: false
+     * @type boolean
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilation
+     */
+    repair?: boolean
+    /**
+     * Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+     * Defaults to: false
+     * @type boolean
+     * @memberof FunctionsAIDecompilationApicreateAiDecompilation
+     */
+    refine?: boolean
 }
 
 export interface FunctionsAIDecompilationApiDeleteAiDecompilationInlineCommentRequest {
@@ -8107,7 +8233,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public createAiDecompilationWithHttpInfo(param: FunctionsAIDecompilationApiCreateAiDecompilationRequest, options?: ConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
-        return this.api.createAiDecompilationWithHttpInfo(param.functionId, param.temperature, param.typeSuggestions, param.naming, param.applyTypes,  options).toPromise();
+        return this.api.createAiDecompilationWithHttpInfo(param.functionId, param.temperature, param.typeSuggestions, param.naming, param.applyTypes, param.repair, param.refine,  options).toPromise();
     }
 
     /**
@@ -8116,7 +8242,7 @@ export class ObjectFunctionsAIDecompilationApi {
      * @param param the request object
      */
     public createAiDecompilation(param: FunctionsAIDecompilationApiCreateAiDecompilationRequest, options?: ConfigurationOptions): Promise<CreateAIDecompOutputBody> {
-        return this.api.createAiDecompilation(param.functionId, param.temperature, param.typeSuggestions, param.naming, param.applyTypes,  options).toPromise();
+        return this.api.createAiDecompilation(param.functionId, param.temperature, param.typeSuggestions, param.naming, param.applyTypes, param.repair, param.refine,  options).toPromise();
     }
 
     /**
@@ -9783,6 +9909,558 @@ export class ObjectIAMUsersApi {
      */
     public getMyPermissions(param: IAMUsersApiGetMyPermissionsRequest = {}, options?: ConfigurationOptions): Promise<Permissions> {
         return this.api.getMyPermissions( options).toPromise();
+    }
+
+}
+
+import { ObservableInvestigationsApi } from "./ObservableAPI";
+import { InvestigationsApiRequestFactory, InvestigationsApiResponseProcessor} from "../apis/InvestigationsApi";
+
+export interface InvestigationsApiV3CreateInvestigationRequest {
+    /**
+     * 
+     * @type CreateInvestigationInputBody
+     * @memberof InvestigationsApiv3CreateInvestigation
+     */
+    createInvestigationInputBody: CreateInvestigationInputBody
+}
+
+export interface InvestigationsApiV3CreateInvestigationConversationRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof InvestigationsApiv3CreateInvestigationConversation
+     */
+    investigationId: number
+    /**
+     * 
+     * @type CreateConversationInputBody
+     * @memberof InvestigationsApiv3CreateInvestigationConversation
+     */
+    createConversationInputBody: CreateConversationInputBody
+}
+
+export interface InvestigationsApiV3DeleteInvestigationRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof InvestigationsApiv3DeleteInvestigation
+     */
+    investigationId: number
+}
+
+export interface InvestigationsApiV3GetInvestigationRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof InvestigationsApiv3GetInvestigation
+     */
+    investigationId: number
+}
+
+export interface InvestigationsApiV3GetInvestigationFindingRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof InvestigationsApiv3GetInvestigationFinding
+     */
+    investigationId: number
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof InvestigationsApiv3GetInvestigationFinding
+     */
+    findingId: number
+}
+
+export interface InvestigationsApiV3ListInvestigationAgentRunsRequest {
+    /**
+     * Only return runs on the files of this investigation. 0 returns runs across every investigation you can see.
+     * Minimum: 0
+     * Defaults to: 0
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationAgentRuns
+     */
+    investigationId?: number
+    /**
+     * Only return runs in investigations owned by one of these user IDs.
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof InvestigationsApiv3ListInvestigationAgentRuns
+     */
+    ownerId?: Array<number>
+    /**
+     * Only return runs in investigations in one of these statuses.
+     * Defaults to: undefined
+     * @type Array&lt;&#39;OPEN&#39; | &#39;IN_PROGRESS&#39; | &#39;ON_HOLD&#39; | &#39;CLOSED&#39;&gt;
+     * @memberof InvestigationsApiv3ListInvestigationAgentRuns
+     */
+    status?: Array<'OPEN' | 'IN_PROGRESS' | 'ON_HOLD' | 'CLOSED'>
+    /**
+     * Only return runs in investigations with one of these severities.
+     * Defaults to: undefined
+     * @type Array&lt;&#39;CRITICAL&#39; | &#39;HIGH&#39; | &#39;MEDIUM&#39; | &#39;LOW&#39;&gt;
+     * @memberof InvestigationsApiv3ListInvestigationAgentRuns
+     */
+    severity?: Array<'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW'>
+    /**
+     * Only return runs in investigations whose name contains this text, ignoring case.
+     * Defaults to: undefined
+     * @type string
+     * @memberof InvestigationsApiv3ListInvestigationAgentRuns
+     */
+    search?: string
+    /**
+     * 
+     * Minimum: 1
+     * Maximum: 50
+     * Defaults to: 20
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationAgentRuns
+     */
+    limit?: number
+    /**
+     * 
+     * Minimum: 0
+     * Defaults to: 0
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationAgentRuns
+     */
+    offset?: number
+}
+
+export interface InvestigationsApiV3ListInvestigationConversationsRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationConversations
+     */
+    investigationId: number
+    /**
+     * 
+     * Minimum: 1
+     * Maximum: 50
+     * Defaults to: 20
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationConversations
+     */
+    limit?: number
+    /**
+     * 
+     * Minimum: 0
+     * Defaults to: 0
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationConversations
+     */
+    offset?: number
+}
+
+export interface InvestigationsApiV3ListInvestigationFindingsRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationFindings
+     */
+    investigationId: number
+    /**
+     * Only return findings of one of these types.
+     * Defaults to: undefined
+     * @type Array&lt;&#39;IOC&#39; | &#39;CAPABILITY&#39; | &#39;VULNERABILITY&#39; | &#39;CROSS_FILE_FLOW&#39;&gt;
+     * @memberof InvestigationsApiv3ListInvestigationFindings
+     */
+    findingType?: Array<'IOC' | 'CAPABILITY' | 'VULNERABILITY' | 'CROSS_FILE_FLOW'>
+    /**
+     * Only return findings with one of these severities.
+     * Defaults to: undefined
+     * @type Array&lt;&#39;CRITICAL&#39; | &#39;HIGH&#39; | &#39;MEDIUM&#39; | &#39;LOW&#39;&gt;
+     * @memberof InvestigationsApiv3ListInvestigationFindings
+     */
+    severity?: Array<'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW'>
+    /**
+     * 
+     * Minimum: 1
+     * Maximum: 50
+     * Defaults to: 20
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationFindings
+     */
+    limit?: number
+    /**
+     * 
+     * Minimum: 0
+     * Defaults to: 0
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationFindings
+     */
+    offset?: number
+}
+
+export interface InvestigationsApiV3ListInvestigationSpendRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationSpend
+     */
+    investigationId: number
+    /**
+     * 
+     * Minimum: 1
+     * Maximum: 50
+     * Defaults to: 20
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationSpend
+     */
+    limit?: number
+    /**
+     * 
+     * Minimum: 0
+     * Defaults to: 0
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigationSpend
+     */
+    offset?: number
+}
+
+export interface InvestigationsApiV3ListInvestigationsRequest {
+    /**
+     * Only return investigations in one of these statuses.
+     * Defaults to: undefined
+     * @type Array&lt;&#39;OPEN&#39; | &#39;IN_PROGRESS&#39; | &#39;ON_HOLD&#39; | &#39;CLOSED&#39;&gt;
+     * @memberof InvestigationsApiv3ListInvestigations
+     */
+    status?: Array<'OPEN' | 'IN_PROGRESS' | 'ON_HOLD' | 'CLOSED'>
+    /**
+     * Only return investigations with one of these severities.
+     * Defaults to: undefined
+     * @type Array&lt;&#39;CRITICAL&#39; | &#39;HIGH&#39; | &#39;MEDIUM&#39; | &#39;LOW&#39;&gt;
+     * @memberof InvestigationsApiv3ListInvestigations
+     */
+    severity?: Array<'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW'>
+    /**
+     * Only return investigations of one of these case types.
+     * Defaults to: undefined
+     * @type Array&lt;&#39;REVERSE_ENGINEERING&#39; | &#39;MALWARE_ANALYSIS&#39; | &#39;VULNERABILITY_DISCOVERY&#39;&gt;
+     * @memberof InvestigationsApiv3ListInvestigations
+     */
+    caseType?: Array<'REVERSE_ENGINEERING' | 'MALWARE_ANALYSIS' | 'VULNERABILITY_DISCOVERY'>
+    /**
+     * Only return investigations owned by one of these user IDs.
+     * Defaults to: undefined
+     * @type Array&lt;number&gt;
+     * @memberof InvestigationsApiv3ListInvestigations
+     */
+    ownerId?: Array<number>
+    /**
+     * Only return investigations whose name contains this text, ignoring case.
+     * Defaults to: undefined
+     * @type string
+     * @memberof InvestigationsApiv3ListInvestigations
+     */
+    search?: string
+    /**
+     * 
+     * Defaults to: &#39;updated&#39;
+     * @type &#39;updated&#39; | &#39;created&#39; | &#39;name&#39;
+     * @memberof InvestigationsApiv3ListInvestigations
+     */
+    orderBy?: 'updated' | 'created' | 'name'
+    /**
+     * 
+     * Defaults to: &#39;DESC&#39;
+     * @type &#39;ASC&#39; | &#39;DESC&#39;
+     * @memberof InvestigationsApiv3ListInvestigations
+     */
+    order?: 'ASC' | 'DESC'
+    /**
+     * 
+     * Minimum: 1
+     * Maximum: 50
+     * Defaults to: 20
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigations
+     */
+    limit?: number
+    /**
+     * 
+     * Minimum: 0
+     * Defaults to: 0
+     * @type number
+     * @memberof InvestigationsApiv3ListInvestigations
+     */
+    offset?: number
+}
+
+export interface InvestigationsApiV3PatchInvestigationRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof InvestigationsApiv3PatchInvestigation
+     */
+    investigationId: number
+    /**
+     * 
+     * @type PatchInvestigationInputBody
+     * @memberof InvestigationsApiv3PatchInvestigation
+     */
+    patchInvestigationInputBody: PatchInvestigationInputBody
+}
+
+export interface InvestigationsApiV3SetInvestigationBudgetRequest {
+    /**
+     * 
+     * Minimum: 1
+     * Defaults to: undefined
+     * @type number
+     * @memberof InvestigationsApiv3SetInvestigationBudget
+     */
+    investigationId: number
+    /**
+     * 
+     * @type SetBudgetInputBody
+     * @memberof InvestigationsApiv3SetInvestigationBudget
+     */
+    setBudgetInputBody: SetBudgetInputBody
+}
+
+export class ObjectInvestigationsApi {
+    private api: ObservableInvestigationsApi
+
+    public constructor(configuration: Configuration, requestFactory?: InvestigationsApiRequestFactory, responseProcessor?: InvestigationsApiResponseProcessor) {
+        this.api = new ObservableInvestigationsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates an investigation owned by the caller, initially open and empty.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create an investigation.
+     * @param param the request object
+     */
+    public v3CreateInvestigationWithHttpInfo(param: InvestigationsApiV3CreateInvestigationRequest, options?: ConfigurationOptions): Promise<HttpInfo<InvestigationBody>> {
+        return this.api.v3CreateInvestigationWithHttpInfo(param.createInvestigationInputBody,  options).toPromise();
+    }
+
+    /**
+     * Creates an investigation owned by the caller, initially open and empty.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create an investigation.
+     * @param param the request object
+     */
+    public v3CreateInvestigation(param: InvestigationsApiV3CreateInvestigationRequest, options?: ConfigurationOptions): Promise<InvestigationBody> {
+        return this.api.v3CreateInvestigation(param.createInvestigationInputBody,  options).toPromise();
+    }
+
+    /**
+     * Starts a chat conversation held by the investigation, about the whole investigation or about one of its analyses. Anyone who can see the investigation can start one. Read it, stream it and send messages in it with the /v2/conversations endpoints; only the user who started it can send messages in it. Deleting the investigation deletes its conversations.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Start a conversation in an investigation.
+     * @param param the request object
+     */
+    public v3CreateInvestigationConversationWithHttpInfo(param: InvestigationsApiV3CreateInvestigationConversationRequest, options?: ConfigurationOptions): Promise<HttpInfo<ConversationBody>> {
+        return this.api.v3CreateInvestigationConversationWithHttpInfo(param.investigationId, param.createConversationInputBody,  options).toPromise();
+    }
+
+    /**
+     * Starts a chat conversation held by the investigation, about the whole investigation or about one of its analyses. Anyone who can see the investigation can start one. Read it, stream it and send messages in it with the /v2/conversations endpoints; only the user who started it can send messages in it. Deleting the investigation deletes its conversations.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Start a conversation in an investigation.
+     * @param param the request object
+     */
+    public v3CreateInvestigationConversation(param: InvestigationsApiV3CreateInvestigationConversationRequest, options?: ConfigurationOptions): Promise<ConversationBody> {
+        return this.api.v3CreateInvestigationConversation(param.investigationId, param.createConversationInputBody,  options).toPromise();
+    }
+
+    /**
+     * Deletes an investigation and its links to analyses. The analyses themselves are not deleted. Only the owner can delete an investigation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Delete an investigation.
+     * @param param the request object
+     */
+    public v3DeleteInvestigationWithHttpInfo(param: InvestigationsApiV3DeleteInvestigationRequest, options?: ConfigurationOptions): Promise<HttpInfo<void>> {
+        return this.api.v3DeleteInvestigationWithHttpInfo(param.investigationId,  options).toPromise();
+    }
+
+    /**
+     * Deletes an investigation and its links to analyses. The analyses themselves are not deleted. Only the owner can delete an investigation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Delete an investigation.
+     * @param param the request object
+     */
+    public v3DeleteInvestigation(param: InvestigationsApiV3DeleteInvestigationRequest, options?: ConfigurationOptions): Promise<void> {
+        return this.api.v3DeleteInvestigation(param.investigationId,  options).toPromise();
+    }
+
+    /**
+     * Gets a single investigation, including the IDs of the analyses in it that the caller may see.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get an investigation.
+     * @param param the request object
+     */
+    public v3GetInvestigationWithHttpInfo(param: InvestigationsApiV3GetInvestigationRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetInvestigationOutputBody>> {
+        return this.api.v3GetInvestigationWithHttpInfo(param.investigationId,  options).toPromise();
+    }
+
+    /**
+     * Gets a single investigation, including the IDs of the analyses in it that the caller may see.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get an investigation.
+     * @param param the request object
+     */
+    public v3GetInvestigation(param: InvestigationsApiV3GetInvestigationRequest, options?: ConfigurationOptions): Promise<GetInvestigationOutputBody> {
+        return this.api.v3GetInvestigation(param.investigationId,  options).toPromise();
+    }
+
+    /**
+     * Gets a single finding, including the IDs of the analyses it was derived from that the caller may see.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a finding of an investigation.
+     * @param param the request object
+     */
+    public v3GetInvestigationFindingWithHttpInfo(param: InvestigationsApiV3GetInvestigationFindingRequest, options?: ConfigurationOptions): Promise<HttpInfo<GetFindingOutputBody>> {
+        return this.api.v3GetInvestigationFindingWithHttpInfo(param.investigationId, param.findingId,  options).toPromise();
+    }
+
+    /**
+     * Gets a single finding, including the IDs of the analyses it was derived from that the caller may see.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a finding of an investigation.
+     * @param param the request object
+     */
+    public v3GetInvestigationFinding(param: InvestigationsApiV3GetInvestigationFindingRequest, options?: ConfigurationOptions): Promise<GetFindingOutputBody> {
+        return this.api.v3GetInvestigationFinding(param.investigationId, param.findingId,  options).toPromise();
+    }
+
+    /**
+     * Lists the runs of agents on the files of the investigations you can see, most recently updated first, each with a summary of its result once it is done. A run on a file held by several investigations is listed once for each. Only files you may see are included. Supports narrowing to one investigation, filtering by the investigations\' owner, status, severity and name, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List agent runs on investigations.
+     * @param param the request object
+     */
+    public v3ListInvestigationAgentRunsWithHttpInfo(param: InvestigationsApiV3ListInvestigationAgentRunsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListAgentRunsOutputBody>> {
+        return this.api.v3ListInvestigationAgentRunsWithHttpInfo(param.investigationId, param.ownerId, param.status, param.severity, param.search, param.limit, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Lists the runs of agents on the files of the investigations you can see, most recently updated first, each with a summary of its result once it is done. A run on a file held by several investigations is listed once for each. Only files you may see are included. Supports narrowing to one investigation, filtering by the investigations\' owner, status, severity and name, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List agent runs on investigations.
+     * @param param the request object
+     */
+    public v3ListInvestigationAgentRuns(param: InvestigationsApiV3ListInvestigationAgentRunsRequest = {}, options?: ConfigurationOptions): Promise<ListAgentRunsOutputBody> {
+        return this.api.v3ListInvestigationAgentRuns(param.investigationId, param.ownerId, param.status, param.severity, param.search, param.limit, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Lists the chat conversations held by the investigation, whoever started them, most recently active first. Visible to anyone who can see the investigation. Supports pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List the conversations of an investigation.
+     * @param param the request object
+     */
+    public v3ListInvestigationConversationsWithHttpInfo(param: InvestigationsApiV3ListInvestigationConversationsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListConversationsOutputBody>> {
+        return this.api.v3ListInvestigationConversationsWithHttpInfo(param.investigationId, param.limit, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Lists the chat conversations held by the investigation, whoever started them, most recently active first. Visible to anyone who can see the investigation. Supports pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List the conversations of an investigation.
+     * @param param the request object
+     */
+    public v3ListInvestigationConversations(param: InvestigationsApiV3ListInvestigationConversationsRequest, options?: ConfigurationOptions): Promise<ListConversationsOutputBody> {
+        return this.api.v3ListInvestigationConversations(param.investigationId, param.limit, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Lists what the investigation has found, most severe first and then most recent first. Visible to anyone who can see the investigation. Supports filtering by finding type and severity, and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List the findings of an investigation.
+     * @param param the request object
+     */
+    public v3ListInvestigationFindingsWithHttpInfo(param: InvestigationsApiV3ListInvestigationFindingsRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListFindingsOutputBody>> {
+        return this.api.v3ListInvestigationFindingsWithHttpInfo(param.investigationId, param.findingType, param.severity, param.limit, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Lists what the investigation has found, most severe first and then most recent first. Visible to anyone who can see the investigation. Supports filtering by finding type and severity, and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List the findings of an investigation.
+     * @param param the request object
+     */
+    public v3ListInvestigationFindings(param: InvestigationsApiV3ListInvestigationFindingsRequest, options?: ConfigurationOptions): Promise<ListFindingsOutputBody> {
+        return this.api.v3ListInvestigationFindings(param.investigationId, param.findingType, param.severity, param.limit, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Lists the credits charged for the investigation\'s conversation turns and the agents run from it, newest first. Visible to anyone who can see the investigation. Supports pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List what an investigation spent.
+     * @param param the request object
+     */
+    public v3ListInvestigationSpendWithHttpInfo(param: InvestigationsApiV3ListInvestigationSpendRequest, options?: ConfigurationOptions): Promise<HttpInfo<ListSpendOutputBody>> {
+        return this.api.v3ListInvestigationSpendWithHttpInfo(param.investigationId, param.limit, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Lists the credits charged for the investigation\'s conversation turns and the agents run from it, newest first. Visible to anyone who can see the investigation. Supports pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List what an investigation spent.
+     * @param param the request object
+     */
+    public v3ListInvestigationSpend(param: InvestigationsApiV3ListInvestigationSpendRequest, options?: ConfigurationOptions): Promise<ListSpendOutputBody> {
+        return this.api.v3ListInvestigationSpend(param.investigationId, param.limit, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Lists the investigations the caller owns or that are shared with the caller\'s team, most recently updated first by default. Supports filtering by status, severity, case type and owner, a name search, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List investigations.
+     * @param param the request object
+     */
+    public v3ListInvestigationsWithHttpInfo(param: InvestigationsApiV3ListInvestigationsRequest = {}, options?: ConfigurationOptions): Promise<HttpInfo<ListInvestigationsOutputBody>> {
+        return this.api.v3ListInvestigationsWithHttpInfo(param.status, param.severity, param.caseType, param.ownerId, param.search, param.orderBy, param.order, param.limit, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Lists the investigations the caller owns or that are shared with the caller\'s team, most recently updated first by default. Supports filtering by status, severity, case type and owner, a name search, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List investigations.
+     * @param param the request object
+     */
+    public v3ListInvestigations(param: InvestigationsApiV3ListInvestigationsRequest = {}, options?: ConfigurationOptions): Promise<ListInvestigationsOutputBody> {
+        return this.api.v3ListInvestigations(param.status, param.severity, param.caseType, param.ownerId, param.search, param.orderBy, param.order, param.limit, param.offset,  options).toPromise();
+    }
+
+    /**
+     * Updates an investigation\'s name, case type, severity, status and/or scope. Omitted fields keep their existing values. Only the owner can update an investigation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update an investigation.
+     * @param param the request object
+     */
+    public v3PatchInvestigationWithHttpInfo(param: InvestigationsApiV3PatchInvestigationRequest, options?: ConfigurationOptions): Promise<HttpInfo<InvestigationBody>> {
+        return this.api.v3PatchInvestigationWithHttpInfo(param.investigationId, param.patchInvestigationInputBody,  options).toPromise();
+    }
+
+    /**
+     * Updates an investigation\'s name, case type, severity, status and/or scope. Omitted fields keep their existing values. Only the owner can update an investigation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update an investigation.
+     * @param param the request object
+     */
+    public v3PatchInvestigation(param: InvestigationsApiV3PatchInvestigationRequest, options?: ConfigurationOptions): Promise<InvestigationBody> {
+        return this.api.v3PatchInvestigation(param.investigationId, param.patchInvestigationInputBody,  options).toPromise();
+    }
+
+    /**
+     * Sets the most credits the investigation may spend on its conversations and the agents run from it, or removes the limit with null. Once the budget is spent, no new message or agent run is started from the investigation; work already under way finishes, so spend can go a little past the budget. Only the owner can set the budget.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Set the budget of an investigation.
+     * @param param the request object
+     */
+    public v3SetInvestigationBudgetWithHttpInfo(param: InvestigationsApiV3SetInvestigationBudgetRequest, options?: ConfigurationOptions): Promise<HttpInfo<BudgetBody>> {
+        return this.api.v3SetInvestigationBudgetWithHttpInfo(param.investigationId, param.setBudgetInputBody,  options).toPromise();
+    }
+
+    /**
+     * Sets the most credits the investigation may spend on its conversations and the agents run from it, or removes the limit with null. Once the budget is spent, no new message or agent run is started from the investigation; work already under way finishes, so spend can go a little past the budget. Only the owner can set the budget.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Set the budget of an investigation.
+     * @param param the request object
+     */
+    public v3SetInvestigationBudget(param: InvestigationsApiV3SetInvestigationBudgetRequest, options?: ConfigurationOptions): Promise<BudgetBody> {
+        return this.api.v3SetInvestigationBudget(param.investigationId, param.setBudgetInputBody,  options).toPromise();
     }
 
 }

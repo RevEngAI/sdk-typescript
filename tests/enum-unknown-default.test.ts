@@ -9,7 +9,7 @@ import { AiDecompilationRating } from '../models/AiDecompilationRating';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 import { SandboxTimeout } from '../models/SandboxTimeout';
-import { TaskStatus } from '../models/TaskStatus';
+import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 
 const STRING_SENTINEL = '11184809';
 const NUMERIC_SENTINEL = 11184809;
@@ -28,7 +28,7 @@ console.log('String enums expose UnknownDefaultOpenApi sentinel:');
 check('AiDecompilationRating.UnknownDefaultOpenApi', AiDecompilationRating.UnknownDefaultOpenApi, STRING_SENTINEL);
 check('AnalysisScope.UnknownDefaultOpenApi', AnalysisScope.UnknownDefaultOpenApi, STRING_SENTINEL);
 check('AppApiRestV2AnalysesEnumsOrderBy.UnknownDefaultOpenApi', AppApiRestV2AnalysesEnumsOrderBy.UnknownDefaultOpenApi, STRING_SENTINEL);
-check('TaskStatus.UnknownDefaultOpenApi', TaskStatus.UnknownDefaultOpenApi, STRING_SENTINEL);
+check('BinaryTaskStatus.UnknownDefaultOpenApi', BinaryTaskStatus.UnknownDefaultOpenApi, STRING_SENTINEL);
 
 console.log('Numeric enums expose NUMBER_unknown_default_open_api sentinel:');
 check('SandboxTimeout.NUMBER_unknown_default_open_api', SandboxTimeout.NUMBER_unknown_default_open_api, NUMERIC_SENTINEL);
@@ -36,7 +36,7 @@ check('SandboxTimeout.NUMBER_unknown_default_open_api', SandboxTimeout.NUMBER_un
 console.log('Existing real values are preserved alongside the sentinel:');
 check('AnalysisScope.Private', AnalysisScope.Private, 'PRIVATE');
 check('AnalysisScope.Public', AnalysisScope.Public, 'PUBLIC');
-check('TaskStatus.Completed', TaskStatus.Completed, 'COMPLETED');
+check('BinaryTaskStatus.Completed', BinaryTaskStatus.Completed, 'COMPLETED');
 check('SandboxTimeout.NUMBER_120', SandboxTimeout.NUMBER_120, 120);
 
 // Consumer pattern: normalise a raw server value to the enum, falling back to

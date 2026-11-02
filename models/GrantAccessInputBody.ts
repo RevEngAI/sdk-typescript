@@ -9,22 +9,21 @@
  * Do not edit the class manually.
  */
 
-import { ErrorModel } from '../models/ErrorModel';
-import { MetaModel } from '../models/MetaModel';
 import { HttpFile } from '../http/http';
 
-export class BaseResponseStr {
+export class GrantAccessInputBody {
     /**
-    * Response status on whether the request succeeded
+    * The level of access to grant
     */
-    'status'?: boolean;
-    'data'?: string | null;
-    'message'?: string | null;
-    'errors'?: Array<ErrorModel> | null;
+    'permission': GrantAccessInputBodyPermissionEnum;
     /**
-    * Metadata
+    * The team to share with. Exactly one of user_id and team_id is required
     */
-    'meta'?: MetaModel;
+    'teamId'?: number;
+    /**
+    * The user to share with. Exactly one of user_id and team_id is required
+    */
+    'userId'?: number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -32,40 +31,35 @@ export class BaseResponseStr {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "boolean",
+            "name": "permission",
+            "baseName": "permission",
+            "type": "GrantAccessInputBodyPermissionEnum",
             "format": ""
         },
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "string",
-            "format": ""
+            "name": "teamId",
+            "baseName": "team_id",
+            "type": "number",
+            "format": "int64"
         },
         {
-            "name": "message",
-            "baseName": "message",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "errors",
-            "baseName": "errors",
-            "type": "Array<ErrorModel>",
-            "format": ""
-        },
-        {
-            "name": "meta",
-            "baseName": "meta",
-            "type": "MetaModel",
-            "format": ""
+            "name": "userId",
+            "baseName": "user_id",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return BaseResponseStr.attributeTypeMap;
+        return GrantAccessInputBody.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+export enum GrantAccessInputBodyPermissionEnum {
+    View = 'VIEW',
+    Edit = 'EDIT',
+    UnknownDefaultOpenApi = '11184809'
+}
+

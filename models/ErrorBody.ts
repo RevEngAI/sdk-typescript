@@ -102,6 +102,7 @@ export enum ErrorBodyCodeEnum {
     InvalidCredentials = 'INVALID_CREDENTIALS',
     InvalidInviteCode = 'INVALID_INVITE_CODE',
     InvalidResetCode = 'INVALID_RESET_CODE',
+    InvestigationBudgetSpent = 'INVESTIGATION_BUDGET_SPENT',
     LastOrgOwner = 'LAST_ORG_OWNER',
     LastTeamAdmin = 'LAST_TEAM_ADMIN',
     LastTeamMember = 'LAST_TEAM_MEMBER',

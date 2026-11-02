@@ -17,7 +17,7 @@ export class ExtractedBinary {
     */
     'filename': string;
     /**
-    * Content hash of the recovered binary
+    * Content hash of the recovered file
     */
     'sha256Hash': string;
     /**

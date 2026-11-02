@@ -9,12 +9,12 @@
  * Do not edit the class manually.
  */
 
-import { ApiCombinationEvidence } from '../models/ApiCombinationEvidence';
+import { APICombinationEvidence } from '../models/APICombinationEvidence';
 import { CallChainEvidence } from '../models/CallChainEvidence';
 import { DecompilerSummaryEvidence } from '../models/DecompilerSummaryEvidence';
 import { FunctionSimilarityEvidence } from '../models/FunctionSimilarityEvidence';
 import { HardcodedSecretEvidence } from '../models/HardcodedSecretEvidence';
-import { ImportedApiCallEvidence } from '../models/ImportedApiCallEvidence';
+import { ImportedAPICallEvidence } from '../models/ImportedAPICallEvidence';
 import { KnownConstantEvidence } from '../models/KnownConstantEvidence';
 import { ModelInterpretationEvidence } from '../models/ModelInterpretationEvidence';
 import { ReferencedConstantEvidence } from '../models/ReferencedConstantEvidence';
@@ -26,7 +26,7 @@ import { HttpFile } from '../http/http';
  * Type
  * @export
  */
-export type FindingEvidenceInner = ApiCombinationEvidence | CallChainEvidence | DecompilerSummaryEvidence | FunctionSimilarityEvidence | HardcodedSecretEvidence | ImportedApiCallEvidence | KnownConstantEvidence | ModelInterpretationEvidence | ReferencedConstantEvidence | StringMatchEvidence;
+export type FindingEvidenceInner = APICombinationEvidence | CallChainEvidence | DecompilerSummaryEvidence | FunctionSimilarityEvidence | HardcodedSecretEvidence | ImportedAPICallEvidence | KnownConstantEvidence | ModelInterpretationEvidence | ReferencedConstantEvidence | StringMatchEvidence;
 
 /**
 * @type FindingEvidenceInnerClass
@@ -36,12 +36,12 @@ export class FindingEvidenceInnerClass {
     static readonly discriminator: string | undefined = "evidenceKind";
 
     static readonly mapping: {[index: string]: string} | undefined = {
-        "api_combination": "ApiCombinationEvidence",
+        "api_combination": "APICombinationEvidence",
         "call_chain": "CallChainEvidence",
         "decompiler_summary": "DecompilerSummaryEvidence",
         "function_similarity": "FunctionSimilarityEvidence",
         "hardcoded_secret": "HardcodedSecretEvidence",
-        "imported_api_call": "ImportedApiCallEvidence",
+        "imported_api_call": "ImportedAPICallEvidence",
         "known_constant": "KnownConstantEvidence",
         "model_interpretation": "ModelInterpretationEvidence",
         "referenced_constant": "ReferencedConstantEvidence",

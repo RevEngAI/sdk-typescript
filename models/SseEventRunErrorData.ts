@@ -9,12 +9,25 @@
  * Do not edit the class manually.
  */
 
+import { RunErrorData } from '../models/RunErrorData';
 import { HttpFile } from '../http/http';
 
+/**
+* The event envelope, sent as the JSON of the SSE data line. Its type names the event, and its data is that event\'s payload.
+*/
 export class SseEventRunErrorData {
-    'data': any | null;
+    /**
+    * The payload of the event named in type.
+    */
+    'data': RunErrorData;
+    /**
+    * The stored event\'s ID, the same as the SSE id field. Pass the last one received as last_event_id to resume after a reconnection.
+    */
     'eventId': number;
     'sourceRunId'?: string;
+    /**
+    * The event name, the same as the SSE event field.
+    */
     'type': string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -25,7 +38,7 @@ export class SseEventRunErrorData {
         {
             "name": "data",
             "baseName": "data",
-            "type": "any",
+            "type": "RunErrorData",
             "format": ""
         },
         {

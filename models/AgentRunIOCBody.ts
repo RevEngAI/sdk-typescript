@@ -9,22 +9,16 @@
  * Do not edit the class manually.
  */
 
-import { AnalysisLogs } from '../models/AnalysisLogs';
 import { HttpFile } from '../http/http';
 
-export class DynamicExecutionStatusResponse {
+export class AgentRunIOCBody {
+    'description': string;
     /**
-    * Error detail, set when status is FAILED
+    * Where in the binary the agent found the indicator. Empty when the agent gives no location.
     */
-    'errorMessage'?: string;
-    /**
-    * Sandbox status log messages captured during the run. Empty when none have been captured yet.
-    */
-    'logs': AnalysisLogs;
-    /**
-    * Task status
-    */
-    'status': DynamicExecutionStatusResponseStatusEnum;
+    'source': string;
+    'type': string;
+    'value': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -32,38 +26,34 @@ export class DynamicExecutionStatusResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "errorMessage",
-            "baseName": "error_message",
+            "name": "description",
+            "baseName": "description",
             "type": "string",
             "format": ""
         },
         {
-            "name": "logs",
-            "baseName": "logs",
-            "type": "AnalysisLogs",
+            "name": "source",
+            "baseName": "source",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "DynamicExecutionStatusResponseStatusEnum",
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "value",
+            "baseName": "value",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return DynamicExecutionStatusResponse.attributeTypeMap;
+        return AgentRunIOCBody.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-export enum DynamicExecutionStatusResponseStatusEnum {
-    Uninitialised = 'UNINITIALISED',
-    Pending = 'PENDING',
-    Running = 'RUNNING',
-    Completed = 'COMPLETED',
-    Failed = 'FAILED',
-    UnknownDefaultOpenApi = '11184809'
-}
-

@@ -2,10 +2,12 @@ import { ResponseContext, RequestContext, HttpFile, HttpInfo } from '../http/htt
 import { Configuration, PromiseConfigurationOptions, wrapOptions } from '../configuration'
 import { PromiseMiddleware, Middleware, PromiseMiddlewareWrapper } from '../middleware';
 
+import { APICombinationEvidence } from '../models/APICombinationEvidence';
 import { APIError } from '../models/APIError';
 import { AcceptTypeSuggestionsInputBody } from '../models/AcceptTypeSuggestionsInputBody';
 import { AcceptTypeSuggestionsOutputBody } from '../models/AcceptTypeSuggestionsOutputBody';
 import { AcceptedType } from '../models/AcceptedType';
+import { AccessRuleBody } from '../models/AccessRuleBody';
 import { ActivityBody } from '../models/ActivityBody';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddCollectionBinariesInputBody } from '../models/AddCollectionBinariesInputBody';
@@ -15,9 +17,18 @@ import { AddTeamMemberInputBody } from '../models/AddTeamMemberInputBody';
 import { AddUserStringInputBody } from '../models/AddUserStringInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { AdditionalDetailsStatusResponse } from '../models/AdditionalDetailsStatusResponse';
+import { AgentBody } from '../models/AgentBody';
+import { AgentCompletedBody } from '../models/AgentCompletedBody';
+import { AgentRunBody } from '../models/AgentRunBody';
+import { AgentRunCardBody } from '../models/AgentRunCardBody';
+import { AgentRunIOCBody } from '../models/AgentRunIOCBody';
+import { AgentRunUpdateAgent } from '../models/AgentRunUpdateAgent';
+import { AgentRunUpdateCard } from '../models/AgentRunUpdateCard';
+import { AgentRunUpdateData } from '../models/AgentRunUpdateData';
+import { AgentRunUpdateIOC } from '../models/AgentRunUpdateIOC';
+import { AgentStatusCountsBody } from '../models/AgentStatusCountsBody';
 import { AgentWorkflowUsageOutputBody } from '../models/AgentWorkflowUsageOutputBody';
 import { AiDecompilationRating } from '../models/AiDecompilationRating';
-import { AnalyseCapabilitiesBody } from '../models/AnalyseCapabilitiesBody';
 import { AnalysisAccessBody } from '../models/AnalysisAccessBody';
 import { AnalysisAccessInfo } from '../models/AnalysisAccessInfo';
 import { AnalysisBasicInfoOutputBody } from '../models/AnalysisBasicInfoOutputBody';
@@ -61,7 +72,6 @@ import { AnalysisUpdateTagsRequest } from '../models/AnalysisUpdateTagsRequest';
 import { AnalysisUpdateTagsResponse } from '../models/AnalysisUpdateTagsResponse';
 import { AnalysisXrefOutputBody } from '../models/AnalysisXrefOutputBody';
 import { ApiCall } from '../models/ApiCall';
-import { ApiCombinationEvidence } from '../models/ApiCombinationEvidence';
 import { ApiKeyBody } from '../models/ApiKeyBody';
 import { AppApiRestV2AgentSchemaCapability } from '../models/AppApiRestV2AgentSchemaCapability';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
@@ -110,7 +120,6 @@ import { BaseResponseCommentResponse } from '../models/BaseResponseCommentRespon
 import { BaseResponseConfigResponse } from '../models/BaseResponseConfigResponse';
 import { BaseResponseCreated } from '../models/BaseResponseCreated';
 import { BaseResponseDict } from '../models/BaseResponseDict';
-import { BaseResponseExternalResponse } from '../models/BaseResponseExternalResponse';
 import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
 import { BaseResponseFunctionSearchResponse } from '../models/BaseResponseFunctionSearchResponse';
@@ -133,9 +142,7 @@ import { BaseResponseRemediationAgentResponse } from '../models/BaseResponseReme
 import { BaseResponseReportAnalysisResponse } from '../models/BaseResponseReportAnalysisResponse';
 import { BaseResponseSecretsAgentResponse } from '../models/BaseResponseSecretsAgentResponse';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
-import { BaseResponseStr } from '../models/BaseResponseStr';
 import { BaseResponseTagSearchResponse } from '../models/BaseResponseTagSearchResponse';
-import { BaseResponseTaskResponse } from '../models/BaseResponseTaskResponse';
 import { BaseResponseTaskStatusResponse } from '../models/BaseResponseTaskStatusResponse';
 import { BaseResponseTriageReportResponse } from '../models/BaseResponseTriageReportResponse';
 import { BaseResponseUnionGetAiDecompilationRatingResponseNoneType } from '../models/BaseResponseUnionGetAiDecompilationRatingResponseNoneType';
@@ -164,6 +171,7 @@ import { BinarySearchResult } from '../models/BinarySearchResult';
 import { BinarySearchResultBody } from '../models/BinarySearchResultBody';
 import { BinaryTaskStatus } from '../models/BinaryTaskStatus';
 import { BitfieldDataType } from '../models/BitfieldDataType';
+import { BudgetBody } from '../models/BudgetBody';
 import { BulkAddTagsInputBody } from '../models/BulkAddTagsInputBody';
 import { BulkAddTagsOutputBody } from '../models/BulkAddTagsOutputBody';
 import { BulkAddTagsResultBody } from '../models/BulkAddTagsResultBody';
@@ -214,7 +222,9 @@ import { ConfirmToolInputBody } from '../models/ConfirmToolInputBody';
 import { Connection } from '../models/Connection';
 import { ConsoleOutputEntry } from '../models/ConsoleOutputEntry';
 import { Context } from '../models/Context';
+import { ContextCompactedData } from '../models/ContextCompactedData';
 import { Conversation } from '../models/Conversation';
+import { ConversationBody } from '../models/ConversationBody';
 import { ConversationContext } from '../models/ConversationContext';
 import { ConversationWithEvents } from '../models/ConversationWithEvents';
 import { CopyFunctionSignaturesInputBody } from '../models/CopyFunctionSignaturesInputBody';
@@ -228,12 +238,14 @@ import { CreateBitfieldDataType } from '../models/CreateBitfieldDataType';
 import { CreateCheckoutSessionInputBody } from '../models/CreateCheckoutSessionInputBody';
 import { CreateCollectionInputBody } from '../models/CreateCollectionInputBody';
 import { CreateCollectionOutputBody } from '../models/CreateCollectionOutputBody';
+import { CreateConversationInputBody } from '../models/CreateConversationInputBody';
 import { CreateConversationRequest } from '../models/CreateConversationRequest';
 import { CreateDataTypeEntry } from '../models/CreateDataTypeEntry';
 import { CreateEnumDataType } from '../models/CreateEnumDataType';
 import { CreateFunctionDataType } from '../models/CreateFunctionDataType';
 import { CreateGroupInputBody } from '../models/CreateGroupInputBody';
 import { CreateIdentityInputBody } from '../models/CreateIdentityInputBody';
+import { CreateInvestigationInputBody } from '../models/CreateInvestigationInputBody';
 import { CreateIssuerInputBody } from '../models/CreateIssuerInputBody';
 import { CreateMetadata } from '../models/CreateMetadata';
 import { CreateOrganisationInputBody } from '../models/CreateOrganisationInputBody';
@@ -283,7 +295,6 @@ import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionMetadata } from '../models/DynamicExecutionMetadata';
 import { DynamicExecutionResult } from '../models/DynamicExecutionResult';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
-import { DynamicExecutionStatusResponse } from '../models/DynamicExecutionStatusResponse';
 import { DynamicExecutionSummary } from '../models/DynamicExecutionSummary';
 import { DynamicExecutionSummaryMetadata } from '../models/DynamicExecutionSummaryMetadata';
 import { DynamicExecutionSummaryResult } from '../models/DynamicExecutionSummaryResult';
@@ -296,15 +307,19 @@ import { ELFSegment } from '../models/ELFSegment';
 import { ELFSymbol } from '../models/ELFSymbol';
 import { ElfDynamicEntry } from '../models/ElfDynamicEntry';
 import { Endianness } from '../models/Endianness';
+import { EntityRef } from '../models/EntityRef';
+import { EntityUpdate } from '../models/EntityUpdate';
 import { EntrypointModel } from '../models/EntrypointModel';
 import { EnumDataType } from '../models/EnumDataType';
 import { EnumDefinition } from '../models/EnumDefinition';
 import { ErrorBody } from '../models/ErrorBody';
 import { ErrorModel } from '../models/ErrorModel';
 import { Event } from '../models/Event';
+import { EventAGENTRUNUPDATE } from '../models/EventAGENTRUNUPDATE';
 import { EventAttemptFailed } from '../models/EventAttemptFailed';
 import { EventAttemptStarted } from '../models/EventAttemptStarted';
 import { EventCONTEXTCOMPACTED } from '../models/EventCONTEXTCOMPACTED';
+import { EventData } from '../models/EventData';
 import { EventDecompFailed } from '../models/EventDecompFailed';
 import { EventDecompFinished } from '../models/EventDecompFinished';
 import { EventNamesFinished } from '../models/EventNamesFinished';
@@ -344,7 +359,6 @@ import { ExecutionScanMetadata } from '../models/ExecutionScanMetadata';
 import { ExecutionScanResult } from '../models/ExecutionScanResult';
 import { ExecutionVerification } from '../models/ExecutionVerification';
 import { ExportModel } from '../models/ExportModel';
-import { ExternalResponse } from '../models/ExternalResponse';
 import { ExtractedBinary } from '../models/ExtractedBinary';
 import { ExtractedURL } from '../models/ExtractedURL';
 import { ExtractionFailure } from '../models/ExtractionFailure';
@@ -364,6 +378,8 @@ import { FilesystemScanResult } from '../models/FilesystemScanResult';
 import { FilesystemVerification } from '../models/FilesystemVerification';
 import { Filters } from '../models/Filters';
 import { Finding } from '../models/Finding';
+import { FindingBody } from '../models/FindingBody';
+import { FindingCountsBody } from '../models/FindingCountsBody';
 import { FindingEvidenceInner } from '../models/FindingEvidenceInner';
 import { FormFile } from '../models/FormFile';
 import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
@@ -412,9 +428,11 @@ import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetConfigOutputBody } from '../models/GetConfigOutputBody';
 import { GetDataTypeHistoryBody } from '../models/GetDataTypeHistoryBody';
 import { GetDieInfoOutputBody } from '../models/GetDieInfoOutputBody';
+import { GetFindingOutputBody } from '../models/GetFindingOutputBody';
 import { GetFunctionMapsOutputBody } from '../models/GetFunctionMapsOutputBody';
 import { GetFunctionSignatureHistoryBody } from '../models/GetFunctionSignatureHistoryBody';
 import { GetGlobalHistoryOutputBody } from '../models/GetGlobalHistoryOutputBody';
+import { GetInvestigationOutputBody } from '../models/GetInvestigationOutputBody';
 import { GetMatchesOutputBody } from '../models/GetMatchesOutputBody';
 import { GetMatchesStatusOutputBody } from '../models/GetMatchesStatusOutputBody';
 import { GetModelsOutputBody } from '../models/GetModelsOutputBody';
@@ -428,6 +446,7 @@ import { GetTokensResponse } from '../models/GetTokensResponse';
 import { GetUserActivityOutputBody } from '../models/GetUserActivityOutputBody';
 import { GlobalHistoryEntry } from '../models/GlobalHistoryEntry';
 import { GlobalVariable } from '../models/GlobalVariable';
+import { GrantAccessInputBody } from '../models/GrantAccessInputBody';
 import { HardcodedSecretEvidence } from '../models/HardcodedSecretEvidence';
 import { HistoryActor } from '../models/HistoryActor';
 import { HistoryEntry } from '../models/HistoryEntry';
@@ -437,9 +456,9 @@ import { ISA } from '../models/ISA';
 import { IconModel } from '../models/IconModel';
 import { ImportDynamicExecutionFileOutputBody } from '../models/ImportDynamicExecutionFileOutputBody';
 import { ImportModel } from '../models/ImportModel';
+import { ImportedAPICallEvidence } from '../models/ImportedAPICallEvidence';
 import { ImportedApi } from '../models/ImportedApi';
 import { ImportedApiCall } from '../models/ImportedApiCall';
-import { ImportedApiCallEvidence } from '../models/ImportedApiCallEvidence';
 import { ImportedFunctionCallerEntry } from '../models/ImportedFunctionCallerEntry';
 import { ImportedFunctionDetailOutputBody } from '../models/ImportedFunctionDetailOutputBody';
 import { ImportedFunctionEntry } from '../models/ImportedFunctionEntry';
@@ -448,10 +467,14 @@ import { IndirectCallSitesOutputBody } from '../models/IndirectCallSitesOutputBo
 import { InlineComment } from '../models/InlineComment';
 import { InputBody } from '../models/InputBody';
 import { InsertAnalysisLogRequest } from '../models/InsertAnalysisLogRequest';
+import { InvestigationBody } from '../models/InvestigationBody';
+import { InvestigationListItemBody } from '../models/InvestigationListItemBody';
 import { InviteUserInputBody } from '../models/InviteUserInputBody';
 import { IssuerAllowedDomain } from '../models/IssuerAllowedDomain';
 import { KnownConstantEvidence } from '../models/KnownConstantEvidence';
 import { LineAttributionsData } from '../models/LineAttributionsData';
+import { ListAccessRulesOutputBody } from '../models/ListAccessRulesOutputBody';
+import { ListAgentRunsOutputBody } from '../models/ListAgentRunsOutputBody';
 import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
 import { ListAnalysisDataTypesOutputBody } from '../models/ListAnalysisDataTypesOutputBody';
 import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctionsOutputBody';
@@ -460,16 +483,21 @@ import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutp
 import { ListArchiveContentsOutputBody } from '../models/ListArchiveContentsOutputBody';
 import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
+import { ListConversationsOutputBody } from '../models/ListConversationsOutputBody';
 import { ListDataTypeFunctionsBody } from '../models/ListDataTypeFunctionsBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
+import { ListFindingsOutputBody } from '../models/ListFindingsOutputBody';
 import { ListFunctionGlobalsOutputBody } from '../models/ListFunctionGlobalsOutputBody';
 import { ListFunctionSignaturesOutputBody } from '../models/ListFunctionSignaturesOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListGlobalFunctionsOutputBody } from '../models/ListGlobalFunctionsOutputBody';
 import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
+import { ListInvestigationsOutputBody } from '../models/ListInvestigationsOutputBody';
 import { ListOperationPrerequisitesOutputBody } from '../models/ListOperationPrerequisitesOutputBody';
+import { ListPrincipalsOutputBody } from '../models/ListPrincipalsOutputBody';
 import { ListPublicUsersOutputBody } from '../models/ListPublicUsersOutputBody';
 import { ListSecretStoreOutputBody } from '../models/ListSecretStoreOutputBody';
+import { ListSpendOutputBody } from '../models/ListSpendOutputBody';
 import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { ListUsersOutputBody } from '../models/ListUsersOutputBody';
 import { LocationOutputBody } from '../models/LocationOutputBody';
@@ -543,6 +571,7 @@ import { PatchCollectionOutputBody } from '../models/PatchCollectionOutputBody';
 import { PatchCollectionTagsInputBody } from '../models/PatchCollectionTagsInputBody';
 import { PatchCollectionTagsOutputBody } from '../models/PatchCollectionTagsOutputBody';
 import { PatchCommentBody } from '../models/PatchCommentBody';
+import { PatchInvestigationInputBody } from '../models/PatchInvestigationInputBody';
 import { PcapBodyInfo } from '../models/PcapBodyInfo';
 import { Permissions } from '../models/Permissions';
 import { Platform } from '../models/Platform';
@@ -550,6 +579,7 @@ import { PointerDataType } from '../models/PointerDataType';
 import { PointerDefinition } from '../models/PointerDefinition';
 import { PriceOutput } from '../models/PriceOutput';
 import { PriceSummary } from '../models/PriceSummary';
+import { PrincipalBody } from '../models/PrincipalBody';
 import { ProcessActivityEntry } from '../models/ProcessActivityEntry';
 import { ProcessMemdumps } from '../models/ProcessMemdumps';
 import { ProcessNode } from '../models/ProcessNode';
@@ -559,6 +589,7 @@ import { ProductSummary } from '../models/ProductSummary';
 import { ProgressMessage } from '../models/ProgressMessage';
 import { ProseEvent } from '../models/ProseEvent';
 import { ProtocolsAgentResponse } from '../models/ProtocolsAgentResponse';
+import { PublicTeamBody } from '../models/PublicTeamBody';
 import { PublicUserBody } from '../models/PublicUserBody';
 import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
@@ -605,13 +636,19 @@ import { ReportResult } from '../models/ReportResult';
 import { ReportStringMatch } from '../models/ReportStringMatch';
 import { ReportSubject } from '../models/ReportSubject';
 import { RequestedConfigBody } from '../models/RequestedConfigBody';
+import { RequestedOperation } from '../models/RequestedOperation';
 import { RequeueAnalysisRequest } from '../models/RequeueAnalysisRequest';
 import { ResendVerificationEmailInputBody } from '../models/ResendVerificationEmailInputBody';
 import { ResolvedEntity } from '../models/ResolvedEntity';
 import { ResultBody } from '../models/ResultBody';
 import { RevokeBody } from '../models/RevokeBody';
+import { RollupBody } from '../models/RollupBody';
 import { RuleKind } from '../models/RuleKind';
+import { RunCancelledData } from '../models/RunCancelledData';
 import { RunDynamicExecutionInputBody } from '../models/RunDynamicExecutionInputBody';
+import { RunErrorData } from '../models/RunErrorData';
+import { RunFinishedData } from '../models/RunFinishedData';
+import { RunStartedData } from '../models/RunStartedData';
 import { SSOProvider } from '../models/SSOProvider';
 import { SSOProvidersOutputBody } from '../models/SSOProvidersOutputBody';
 import { SandboxConfig } from '../models/SandboxConfig';
@@ -636,6 +673,7 @@ import { SegmentInfo } from '../models/SegmentInfo';
 import { SendMessageRequest } from '../models/SendMessageRequest';
 import { ServiceEntry } from '../models/ServiceEntry';
 import { SessionOutputBody } from '../models/SessionOutputBody';
+import { SetBudgetInputBody } from '../models/SetBudgetInputBody';
 import { SignatureParameterEntry } from '../models/SignatureParameterEntry';
 import { SignatureParameterInput } from '../models/SignatureParameterInput';
 import { SignatureStorageEntry } from '../models/SignatureStorageEntry';
@@ -647,6 +685,8 @@ import { SingleSectionModel } from '../models/SingleSectionModel';
 import { SoftwareTypeCountsBody } from '../models/SoftwareTypeCountsBody';
 import { SourceDeltaEvent } from '../models/SourceDeltaEvent';
 import { SourceResetEvent } from '../models/SourceResetEvent';
+import { SpendBody } from '../models/SpendBody';
+import { SseEventAgentRunUpdateData } from '../models/SseEventAgentRunUpdateData';
 import { SseEventContextCompactedData } from '../models/SseEventContextCompactedData';
 import { SseEventRunCancelledData } from '../models/SseEventRunCancelledData';
 import { SseEventRunErrorData } from '../models/SseEventRunErrorData';
@@ -674,6 +714,8 @@ import { StatusBody } from '../models/StatusBody';
 import { StatusInput } from '../models/StatusInput';
 import { StatusOutput } from '../models/StatusOutput';
 import { StatusResponse } from '../models/StatusResponse';
+import { StepFinishedData } from '../models/StepFinishedData';
+import { StepStartedData } from '../models/StepStartedData';
 import { StreamAiDecompilation200ResponseInner } from '../models/StreamAiDecompilation200ResponseInner';
 import { StreamEvents200ResponseInner } from '../models/StreamEvents200ResponseInner';
 import { StringFunctions } from '../models/StringFunctions';
@@ -702,25 +744,32 @@ import { TagResponse } from '../models/TagResponse';
 import { TagSearchResponse } from '../models/TagSearchResponse';
 import { TagSearchResult } from '../models/TagSearchResult';
 import { TagSearchResultBody } from '../models/TagSearchResultBody';
-import { TaskResponse } from '../models/TaskResponse';
-import { TaskStatus } from '../models/TaskStatus';
 import { TaskStatusResponse } from '../models/TaskStatusResponse';
 import { TcpCarvedFile } from '../models/TcpCarvedFile';
 import { Team } from '../models/Team';
 import { TeamMember } from '../models/TeamMember';
 import { Technique } from '../models/Technique';
+import { TextMessageContentData } from '../models/TextMessageContentData';
+import { TextMessageEndData } from '../models/TextMessageEndData';
+import { TextMessageStartData } from '../models/TextMessageStartData';
 import { ThreatReportResult } from '../models/ThreatReportResult';
 import { TimestampModel } from '../models/TimestampModel';
+import { TitleUpdatedData } from '../models/TitleUpdatedData';
 import { Token } from '../models/Token';
 import { TokenInputBody } from '../models/TokenInputBody';
 import { TokenResponse } from '../models/TokenResponse';
 import { TokenisedData } from '../models/TokenisedData';
+import { ToolCallArgsDeltaData } from '../models/ToolCallArgsDeltaData';
+import { ToolCallEndData } from '../models/ToolCallEndData';
+import { ToolCallProgressData } from '../models/ToolCallProgressData';
+import { ToolCallResultData } from '../models/ToolCallResultData';
+import { ToolCallStartData } from '../models/ToolCallStartData';
+import { ToolConfirmationRequiredData } from '../models/ToolConfirmationRequiredData';
 import { TriageFunction } from '../models/TriageFunction';
 import { TriageFunctionResponse } from '../models/TriageFunctionResponse';
 import { TriageReportResponse } from '../models/TriageReportResponse';
 import { TriageResult } from '../models/TriageResult';
 import { TriggerCryptoScanInputBody } from '../models/TriggerCryptoScanInputBody';
-import { TriggerDynamicExecutionInputBody } from '../models/TriggerDynamicExecutionInputBody';
 import { TriggerExecutionExplainInputBody } from '../models/TriggerExecutionExplainInputBody';
 import { TriggerExecutionScanInputBody } from '../models/TriggerExecutionScanInputBody';
 import { TriggerFilesystemAnalyseInputBody } from '../models/TriggerFilesystemAnalyseInputBody';
@@ -2610,50 +2659,6 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Get dynamic execution report
-     * @param analysisId Analysis ID
-     */
-    public getDynamicExecutionReportWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisReport>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getDynamicExecutionReportWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the dynamic execution report JSON for the analysis. Requires the task to be in COMPLETED status.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Get dynamic execution report
-     * @param analysisId Analysis ID
-     */
-    public getDynamicExecutionReport(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AnalysisReport> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getDynamicExecutionReport(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get dynamic execution status
-     * @param analysisId Analysis ID
-     */
-    public getDynamicExecutionStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DynamicExecutionStatusResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getDynamicExecutionStatusWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the status of the most recent dynamic execution task for the analysis. Returns UNINITIALISED if no task has been started.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * Get dynamic execution status
-     * @param analysisId Analysis ID
-     */
-    public getDynamicExecutionStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<DynamicExecutionStatusResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getDynamicExecutionStatus(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Inserts a log record for an analysis. Only the analysis owner can insert logs.
      * Insert a log entry for an analysis
      * @param analysisId
@@ -2886,6 +2891,30 @@ export class PromiseAnalysesCoreApi {
     public uploadFile(uploadFileType: UploadFileType, file: HttpFile, packedPassword?: string, forceOverwrite?: boolean, _options?: PromiseConfigurationOptions): Promise<BaseResponseUploadResponse> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.uploadFile(uploadFileType, file, packedPassword, forceOverwrite, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+     * Create an analysis
+     * @param createRequest
+     * @param [xRevEngApplication] Identifies the calling RevEng application. Recorded on the Analysis log.
+     */
+    public v3CreateAnalysisWithHttpInfo(createRequest: CreateRequest, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationCreateMetadataCreateResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CreateAnalysisWithHttpInfo(createRequest, xRevEngApplication, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Queues a new Analysis for an uploaded Binary and returns the created Operation.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `413` [`REQUEST_ENTITY_TOO_LARGE`](/errors/REQUEST_ENTITY_TOO_LARGE) — Request Entity Too Large
+     * Create an analysis
+     * @param createRequest
+     * @param [xRevEngApplication] Identifies the calling RevEng application. Recorded on the Analysis log.
+     */
+    public v3CreateAnalysis(createRequest: CreateRequest, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<OperationCreateMetadataCreateResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CreateAnalysis(createRequest, xRevEngApplication, observableOptions);
         return result.toPromise();
     }
 
@@ -3404,10 +3433,34 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
+     * Grants a user or a team access to the analysis. Sharing with a principal that already has a rule replaces its permission. The user or team must be one the caller can find through `GET /v3/principals`. The analysis owner cannot be the target of a rule. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Share an analysis with a user or team
+     * @param analysisId Analysis ID
+     * @param grantAccessInputBody
+     */
+    public v3GrantAnalysisAccessWithHttpInfo(analysisId: number, grantAccessInputBody: GrantAccessInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GrantAnalysisAccessWithHttpInfo(analysisId, grantAccessInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Grants a user or a team access to the analysis. Sharing with a principal that already has a rule replaces its permission. The user or team must be one the caller can find through `GET /v3/principals`. The analysis owner cannot be the target of a rule. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Share an analysis with a user or team
+     * @param analysisId Analysis ID
+     * @param grantAccessInputBody
+     */
+    public v3GrantAnalysisAccess(analysisId: number, grantAccessInputBody: GrantAccessInputBody, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GrantAnalysisAccess(analysisId, grantAccessInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * List analyses
      * @param [searchTerm]
-     * @param [analysisScope] Leave empty to search your own, your team\&#39;s and all public analyses
+     * @param [analysisScope] Leave empty to search your own, your team\&#39;s, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to
      * @param [status]
      * @param [modelName]
      * @param [usernames]
@@ -3420,7 +3473,7 @@ export class PromiseAnalysesCoreApi {
      * @param [orderBy]
      * @param [order]
      */
-    public v3ListAnalysesWithHttpInfo(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, binaryId?: number, platform?: Array<'windows' | 'linux' | 'android'>, architecture?: Array<'x86_64' | 'x86_32' | 'arm_64'>, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAnalysesOutputBody>> {
+    public v3ListAnalysesWithHttpInfo(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM' | 'SHARED_WITH_ME'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, binaryId?: number, platform?: Array<'windows' | 'linux' | 'android'>, architecture?: Array<'x86_64' | 'x86_32' | 'arm_64'>, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAnalysesOutputBody>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3ListAnalysesWithHttpInfo(searchTerm, analysisScope, status, modelName, usernames, sha256Hash, binaryId, platform, architecture, pageSize, nextPageToken, orderBy, order, observableOptions);
         return result.toPromise();
@@ -3430,7 +3483,7 @@ export class PromiseAnalysesCoreApi {
      * Returns a page of analyses visible to the caller, filtered and ordered by the query parameters.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
      * List analyses
      * @param [searchTerm]
-     * @param [analysisScope] Leave empty to search your own, your team\&#39;s and all public analyses
+     * @param [analysisScope] Leave empty to search your own, your team\&#39;s, all public analyses and those shared with you. SHARED_WITH_ME restricts to analyses another user or team gave you access to
      * @param [status]
      * @param [modelName]
      * @param [usernames]
@@ -3443,9 +3496,31 @@ export class PromiseAnalysesCoreApi {
      * @param [orderBy]
      * @param [order]
      */
-    public v3ListAnalyses(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, binaryId?: number, platform?: Array<'windows' | 'linux' | 'android'>, architecture?: Array<'x86_64' | 'x86_32' | 'arm_64'>, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListAnalysesOutputBody> {
+    public v3ListAnalyses(searchTerm?: string, analysisScope?: Array<'PRIVATE' | 'PUBLIC' | 'TEAM' | 'SHARED_WITH_ME'>, status?: Array<'Uploaded' | 'Queued' | 'Complete' | 'Error' | 'Processing'>, modelName?: Array<string>, usernames?: Array<string>, sha256Hash?: string, binaryId?: number, platform?: Array<'windows' | 'linux' | 'android'>, architecture?: Array<'x86_64' | 'x86_32' | 'arm_64'>, pageSize?: number, nextPageToken?: string, orderBy?: 'created' | 'binary_name' | 'binary_size', order?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<ListAnalysesOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3ListAnalyses(searchTerm, analysisScope, status, modelName, usernames, sha256Hash, binaryId, platform, architecture, pageSize, nextPageToken, orderBy, order, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the users and teams the analysis has been shared with and the permission each one holds. Requires read access to the analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List who an analysis is shared with
+     * @param analysisId Analysis ID
+     */
+    public v3ListAnalysisAccessRulesWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAccessRulesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalysisAccessRulesWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the users and teams the analysis has been shared with and the permission each one holds. Requires read access to the analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * List who an analysis is shared with
+     * @param analysisId Analysis ID
+     */
+    public v3ListAnalysisAccessRules(analysisId: number, _options?: PromiseConfigurationOptions): Promise<ListAccessRulesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListAnalysisAccessRules(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -3646,6 +3721,32 @@ export class PromiseAnalysesCoreApi {
     public v3RequeueAnalysis(analysisId: number, requeueAnalysisRequest: RequeueAnalysisRequest, _options?: PromiseConfigurationOptions): Promise<OperationCreateMetadataCreateResult> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3RequeueAnalysis(analysisId, requeueAnalysisRequest, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Removes the access rule of one user or one team, identified by the `user_id` or `team_id` query parameter. Removing a rule that does not exist succeeds. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Stop sharing an analysis with a user or team
+     * @param analysisId Analysis ID
+     * @param [userId] The user to stop sharing with. Exactly one of user_id and team_id is required
+     * @param [teamId] The team to stop sharing with. Exactly one of user_id and team_id is required
+     */
+    public v3RevokeAnalysisAccessWithHttpInfo(analysisId: number, userId?: number, teamId?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RevokeAnalysisAccessWithHttpInfo(analysisId, userId, teamId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Removes the access rule of one user or one team, identified by the `user_id` or `team_id` query parameter. Removing a rule that does not exist succeeds. Requires edit access to the analysis.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Stop sharing an analysis with a user or team
+     * @param analysisId Analysis ID
+     * @param [userId] The user to stop sharing with. Exactly one of user_id and team_id is required
+     * @param [teamId] The team to stop sharing with. Exactly one of user_id and team_id is required
+     */
+    public v3RevokeAnalysisAccess(analysisId: number, userId?: number, teamId?: number, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3RevokeAnalysisAccess(analysisId, userId, teamId, observableOptions);
         return result.toPromise();
     }
 
@@ -4169,7 +4270,51 @@ export class PromiseAuthenticationUsersApi {
     }
 
     /**
-     * Returns up to 5 active users whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
+     * Returns up to 5 matching users and up to 5 matching teams whose name contains the search term (case-insensitive), scoped to the caller\'s organisation using the same rules as the individual user and team search endpoints.
+     * Search users and teams
+     * @param searchTerm Text the user\&#39;s username or team\&#39;s name contains (case-insensitive)
+     */
+    public v3ListPrincipalsWithHttpInfo(searchTerm: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListPrincipalsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListPrincipalsWithHttpInfo(searchTerm, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns up to 5 matching users and up to 5 matching teams whose name contains the search term (case-insensitive), scoped to the caller\'s organisation using the same rules as the individual user and team search endpoints.
+     * Search users and teams
+     * @param searchTerm Text the user\&#39;s username or team\&#39;s name contains (case-insensitive)
+     */
+    public v3ListPrincipals(searchTerm: string, _options?: PromiseConfigurationOptions): Promise<ListPrincipalsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListPrincipals(searchTerm, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns up to 5 teams whose name contains the search term (case-insensitive). Returns every team in the caller\'s organisation, or — if the organisation is named \"Internal\" — only the teams the caller belongs to.
+     * Search teams
+     * @param searchTerm Text the team name contains (case-insensitive)
+     */
+    public v3ListTeamsWithHttpInfo(searchTerm: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListTeamsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListTeamsWithHttpInfo(searchTerm, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns up to 5 teams whose name contains the search term (case-insensitive). Returns every team in the caller\'s organisation, or — if the organisation is named \"Internal\" — only the teams the caller belongs to.
+     * Search teams
+     * @param searchTerm Text the team name contains (case-insensitive)
+     */
+    public v3ListTeams(searchTerm: string, _options?: PromiseConfigurationOptions): Promise<ListTeamsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListTeams(searchTerm, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns up to 5 active users in the caller\'s organisation whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
      * Search users
      * @param searchTerm Text the username contains (case-insensitive)
      */
@@ -4180,7 +4325,7 @@ export class PromiseAuthenticationUsersApi {
     }
 
     /**
-     * Returns up to 5 active users whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
+     * Returns up to 5 active users in the caller\'s organisation whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
      * Search users
      * @param searchTerm Text the username contains (case-insensitive)
      */
@@ -5143,7 +5288,7 @@ export class PromiseConversationsApi {
     }
 
     /**
-     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
      * Cancel an active run
      * @param id Conversation UUID
      */
@@ -5154,7 +5299,7 @@ export class PromiseConversationsApi {
     }
 
     /**
-     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
+     * Cancels the currently active agentic run for the given conversation. Returns 404 if no run is in progress.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_ACTIVE_RUN`](/errors/NO_ACTIVE_RUN) — No Active Run
      * Cancel an active run
      * @param id Conversation UUID
      */
@@ -5165,7 +5310,7 @@ export class PromiseConversationsApi {
     }
 
     /**
-     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
+     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
      * Approve or reject a pending tool confirmation
      * @param id Conversation UUID
      * @param confirmToolInputBody
@@ -5177,7 +5322,7 @@ export class PromiseConversationsApi {
     }
 
     /**
-     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
+     * Responds to a pending tool confirmation request. The agent pauses before executing certain tools and emits a `TOOL_CONFIRMATION_REQUIRED` event. Use this endpoint to approve or reject the tool call. Returns 404 if no confirmation is pending.  **Error codes:** - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NO_PENDING_CONFIRMATION`](/errors/NO_PENDING_CONFIRMATION) — No Pending Confirmation
      * Approve or reject a pending tool confirmation
      * @param id Conversation UUID
      * @param confirmToolInputBody
@@ -5253,7 +5398,7 @@ export class PromiseConversationsApi {
     }
 
     /**
-     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
+     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `402` [`INVESTIGATION_BUDGET_SPENT`](/errors/INVESTIGATION_BUDGET_SPENT) — Investigation Budget Spent - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
      * Send a message and start an agentic run
      * @param id Conversation UUID
      * @param sendMessageRequest
@@ -5265,7 +5410,7 @@ export class PromiseConversationsApi {
     }
 
     /**
-     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
+     * Sends a user message to the conversation and kicks off an agentic processing loop in the background. Returns immediately with 202 Accepted. Subscribe to `/v2/conversations/{id}/events` via SSE to receive real-time updates including text deltas, tool calls, and run lifecycle events.  **Error codes:** - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `400` [`INVALID_CONVERSATION_ID`](/errors/INVALID_CONVERSATION_ID) — Invalid Conversation ID - `404` [`CONVERSATION_NOT_FOUND`](/errors/CONVERSATION_NOT_FOUND) — Conversation Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `402` [`INVESTIGATION_BUDGET_SPENT`](/errors/INVESTIGATION_BUDGET_SPENT) — Investigation Budget Spent - `409` [`RUN_ALREADY_ACTIVE`](/errors/RUN_ALREADY_ACTIVE) — Run Already Active
      * Send a message and start an agentic run
      * @param id Conversation UUID
      * @param sendMessageRequest
@@ -5504,7 +5649,7 @@ export class PromiseDataTypesApi {
     }
 
     /**
-     * Functions that use this data type as their return type or as a parameter. Matches the `data_type_id` exactly as it appears in the signature, so a function taking `sockaddr_in *` matches the pointer type rather than `sockaddr_in`. Ordered by function ID. There is no total count; page with `after_function_id`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Functions that use this data type, each listed once with how it uses it in `usage_kinds`: in its signature (return or parameter type), in-line (its AI decompilation names the type in its code), or as a member (its AI decompilation reads a struct or union member of this type, or it references a global variable of this type).  A function using a pointer to, typedef of or array of the type uses the type too, so a function taking `sockaddr_in *` is listed under `sockaddr_in`. The reverse does not hold: a function using `sockaddr_in` is not listed under `sockaddr_in *`.  In-line and member uses come from a function\'s latest AI decompilation, so a function not decompiled since this was introduced shows only its signature and global variable uses. Ordered by function ID. There is no total count; page with `after_function_id`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * List the functions using a data type
      * @param analysisId Analysis ID
      * @param dataTypeId Data type ID, as returned by the data types list for this analysis. 0 is a valid id.
@@ -5518,7 +5663,7 @@ export class PromiseDataTypesApi {
     }
 
     /**
-     * Functions that use this data type as their return type or as a parameter. Matches the `data_type_id` exactly as it appears in the signature, so a function taking `sockaddr_in *` matches the pointer type rather than `sockaddr_in`. Ordered by function ID. There is no total count; page with `after_function_id`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Functions that use this data type, each listed once with how it uses it in `usage_kinds`: in its signature (return or parameter type), in-line (its AI decompilation names the type in its code), or as a member (its AI decompilation reads a struct or union member of this type, or it references a global variable of this type).  A function using a pointer to, typedef of or array of the type uses the type too, so a function taking `sockaddr_in *` is listed under `sockaddr_in`. The reverse does not hold: a function using `sockaddr_in` is not listed under `sockaddr_in *`.  In-line and member uses come from a function\'s latest AI decompilation, so a function not decompiled since this was introduced shows only its signature and global variable uses. Ordered by function ID. There is no total count; page with `after_function_id`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
      * List the functions using a data type
      * @param analysisId Analysis ID
      * @param dataTypeId Data type ID, as returned by the data types list for this analysis. 0 is a valid id.
@@ -5625,66 +5770,6 @@ export class PromiseExternalSourcesApi {
     }
 
     /**
-     * Pulls data from VirusTotal
-     * @param analysisId
-     */
-    public createExternalTaskVtWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseStr>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createExternalTaskVtWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Pulls data from VirusTotal
-     * @param analysisId
-     */
-    public createExternalTaskVt(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseStr> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.createExternalTaskVt(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get VirusTotal data
-     * @param analysisId
-     */
-    public getVtDataWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseExternalResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getVtDataWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get VirusTotal data
-     * @param analysisId
-     */
-    public getVtData(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseExternalResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getVtData(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Check the status of VirusTotal data retrieval
-     * @param analysisId
-     */
-    public getVtTaskStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseTaskResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getVtTaskStatusWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Check the status of VirusTotal data retrieval
-     * @param analysisId
-     */
-    public getVtTaskStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseTaskResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getVtTaskStatus(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Returns the current state of the most recently triggered VirusTotal lookup for this binary.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Get a VirusTotal scan operation.
      * @param binaryId Binary ID
@@ -5755,10 +5840,12 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param [typeSuggestions] Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
      * @param [naming] Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.
      * @param [applyTypes] Store the suggested types as data types of this function\&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
+     * @param [repair] Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+     * @param [refine] Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
      */
-    public createAiDecompilationWithHttpInfo(functionId: number, temperature?: number, typeSuggestions?: boolean, naming?: boolean, applyTypes?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
+    public createAiDecompilationWithHttpInfo(functionId: number, temperature?: number, typeSuggestions?: boolean, naming?: boolean, applyTypes?: boolean, repair?: boolean, refine?: boolean, _options?: PromiseConfigurationOptions): Promise<HttpInfo<CreateAIDecompOutputBody>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilationWithHttpInfo(functionId, temperature, typeSuggestions, naming, applyTypes, observableOptions);
+        const result = this.api.createAiDecompilationWithHttpInfo(functionId, temperature, typeSuggestions, naming, applyTypes, repair, refine, observableOptions);
         return result.toPromise();
     }
 
@@ -5770,10 +5857,12 @@ export class PromiseFunctionsAIDecompilationApi {
      * @param [typeSuggestions] Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
      * @param [naming] Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.
      * @param [applyTypes] Store the suggested types as data types of this function\&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
+     * @param [repair] Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+     * @param [refine] Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
      */
-    public createAiDecompilation(functionId: number, temperature?: number, typeSuggestions?: boolean, naming?: boolean, applyTypes?: boolean, _options?: PromiseConfigurationOptions): Promise<CreateAIDecompOutputBody> {
+    public createAiDecompilation(functionId: number, temperature?: number, typeSuggestions?: boolean, naming?: boolean, applyTypes?: boolean, repair?: boolean, refine?: boolean, _options?: PromiseConfigurationOptions): Promise<CreateAIDecompOutputBody> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.createAiDecompilation(functionId, temperature, typeSuggestions, naming, applyTypes, observableOptions);
+        const result = this.api.createAiDecompilation(functionId, temperature, typeSuggestions, naming, applyTypes, repair, refine, observableOptions);
         return result.toPromise();
     }
 
@@ -7183,6 +7272,341 @@ export class PromiseIAMUsersApi {
     public getMyPermissions(_options?: PromiseConfigurationOptions): Promise<Permissions> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getMyPermissions(observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableInvestigationsApi } from './ObservableAPI';
+
+import { InvestigationsApiRequestFactory, InvestigationsApiResponseProcessor} from "../apis/InvestigationsApi";
+export class PromiseInvestigationsApi {
+    private api: ObservableInvestigationsApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: InvestigationsApiRequestFactory,
+        responseProcessor?: InvestigationsApiResponseProcessor
+    ) {
+        this.api = new ObservableInvestigationsApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Creates an investigation owned by the caller, initially open and empty.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create an investigation.
+     * @param createInvestigationInputBody
+     */
+    public v3CreateInvestigationWithHttpInfo(createInvestigationInputBody: CreateInvestigationInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<InvestigationBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CreateInvestigationWithHttpInfo(createInvestigationInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Creates an investigation owned by the caller, initially open and empty.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Create an investigation.
+     * @param createInvestigationInputBody
+     */
+    public v3CreateInvestigation(createInvestigationInputBody: CreateInvestigationInputBody, _options?: PromiseConfigurationOptions): Promise<InvestigationBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CreateInvestigation(createInvestigationInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts a chat conversation held by the investigation, about the whole investigation or about one of its analyses. Anyone who can see the investigation can start one. Read it, stream it and send messages in it with the /v2/conversations endpoints; only the user who started it can send messages in it. Deleting the investigation deletes its conversations.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Start a conversation in an investigation.
+     * @param investigationId
+     * @param createConversationInputBody
+     */
+    public v3CreateInvestigationConversationWithHttpInfo(investigationId: number, createConversationInputBody: CreateConversationInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ConversationBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CreateInvestigationConversationWithHttpInfo(investigationId, createConversationInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts a chat conversation held by the investigation, about the whole investigation or about one of its analyses. Anyone who can see the investigation can start one. Read it, stream it and send messages in it with the /v2/conversations endpoints; only the user who started it can send messages in it. Deleting the investigation deletes its conversations.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Start a conversation in an investigation.
+     * @param investigationId
+     * @param createConversationInputBody
+     */
+    public v3CreateInvestigationConversation(investigationId: number, createConversationInputBody: CreateConversationInputBody, _options?: PromiseConfigurationOptions): Promise<ConversationBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CreateInvestigationConversation(investigationId, createConversationInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an investigation and its links to analyses. The analyses themselves are not deleted. Only the owner can delete an investigation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Delete an investigation.
+     * @param investigationId
+     */
+    public v3DeleteInvestigationWithHttpInfo(investigationId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3DeleteInvestigationWithHttpInfo(investigationId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Deletes an investigation and its links to analyses. The analyses themselves are not deleted. Only the owner can delete an investigation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Delete an investigation.
+     * @param investigationId
+     */
+    public v3DeleteInvestigation(investigationId: number, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3DeleteInvestigation(investigationId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets a single investigation, including the IDs of the analyses in it that the caller may see.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get an investigation.
+     * @param investigationId
+     */
+    public v3GetInvestigationWithHttpInfo(investigationId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetInvestigationOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetInvestigationWithHttpInfo(investigationId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets a single investigation, including the IDs of the analyses in it that the caller may see.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get an investigation.
+     * @param investigationId
+     */
+    public v3GetInvestigation(investigationId: number, _options?: PromiseConfigurationOptions): Promise<GetInvestigationOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetInvestigation(investigationId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets a single finding, including the IDs of the analyses it was derived from that the caller may see.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a finding of an investigation.
+     * @param investigationId
+     * @param findingId
+     */
+    public v3GetInvestigationFindingWithHttpInfo(investigationId: number, findingId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<GetFindingOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetInvestigationFindingWithHttpInfo(investigationId, findingId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Gets a single finding, including the IDs of the analyses it was derived from that the caller may see.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Get a finding of an investigation.
+     * @param investigationId
+     * @param findingId
+     */
+    public v3GetInvestigationFinding(investigationId: number, findingId: number, _options?: PromiseConfigurationOptions): Promise<GetFindingOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetInvestigationFinding(investigationId, findingId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists the runs of agents on the files of the investigations you can see, most recently updated first, each with a summary of its result once it is done. A run on a file held by several investigations is listed once for each. Only files you may see are included. Supports narrowing to one investigation, filtering by the investigations\' owner, status, severity and name, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List agent runs on investigations.
+     * @param [investigationId] Only return runs on the files of this investigation. 0 returns runs across every investigation you can see.
+     * @param [ownerId] Only return runs in investigations owned by one of these user IDs.
+     * @param [status] Only return runs in investigations in one of these statuses.
+     * @param [severity] Only return runs in investigations with one of these severities.
+     * @param [search] Only return runs in investigations whose name contains this text, ignoring case.
+     * @param [limit]
+     * @param [offset]
+     */
+    public v3ListInvestigationAgentRunsWithHttpInfo(investigationId?: number, ownerId?: Array<number>, status?: Array<'OPEN' | 'IN_PROGRESS' | 'ON_HOLD' | 'CLOSED'>, severity?: Array<'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW'>, search?: string, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListAgentRunsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListInvestigationAgentRunsWithHttpInfo(investigationId, ownerId, status, severity, search, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists the runs of agents on the files of the investigations you can see, most recently updated first, each with a summary of its result once it is done. A run on a file held by several investigations is listed once for each. Only files you may see are included. Supports narrowing to one investigation, filtering by the investigations\' owner, status, severity and name, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List agent runs on investigations.
+     * @param [investigationId] Only return runs on the files of this investigation. 0 returns runs across every investigation you can see.
+     * @param [ownerId] Only return runs in investigations owned by one of these user IDs.
+     * @param [status] Only return runs in investigations in one of these statuses.
+     * @param [severity] Only return runs in investigations with one of these severities.
+     * @param [search] Only return runs in investigations whose name contains this text, ignoring case.
+     * @param [limit]
+     * @param [offset]
+     */
+    public v3ListInvestigationAgentRuns(investigationId?: number, ownerId?: Array<number>, status?: Array<'OPEN' | 'IN_PROGRESS' | 'ON_HOLD' | 'CLOSED'>, severity?: Array<'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW'>, search?: string, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<ListAgentRunsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListInvestigationAgentRuns(investigationId, ownerId, status, severity, search, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists the chat conversations held by the investigation, whoever started them, most recently active first. Visible to anyone who can see the investigation. Supports pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List the conversations of an investigation.
+     * @param investigationId
+     * @param [limit]
+     * @param [offset]
+     */
+    public v3ListInvestigationConversationsWithHttpInfo(investigationId: number, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListConversationsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListInvestigationConversationsWithHttpInfo(investigationId, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists the chat conversations held by the investigation, whoever started them, most recently active first. Visible to anyone who can see the investigation. Supports pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List the conversations of an investigation.
+     * @param investigationId
+     * @param [limit]
+     * @param [offset]
+     */
+    public v3ListInvestigationConversations(investigationId: number, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<ListConversationsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListInvestigationConversations(investigationId, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists what the investigation has found, most severe first and then most recent first. Visible to anyone who can see the investigation. Supports filtering by finding type and severity, and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List the findings of an investigation.
+     * @param investigationId
+     * @param [findingType] Only return findings of one of these types.
+     * @param [severity] Only return findings with one of these severities.
+     * @param [limit]
+     * @param [offset]
+     */
+    public v3ListInvestigationFindingsWithHttpInfo(investigationId: number, findingType?: Array<'IOC' | 'CAPABILITY' | 'VULNERABILITY' | 'CROSS_FILE_FLOW'>, severity?: Array<'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW'>, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListFindingsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListInvestigationFindingsWithHttpInfo(investigationId, findingType, severity, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists what the investigation has found, most severe first and then most recent first. Visible to anyone who can see the investigation. Supports filtering by finding type and severity, and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List the findings of an investigation.
+     * @param investigationId
+     * @param [findingType] Only return findings of one of these types.
+     * @param [severity] Only return findings with one of these severities.
+     * @param [limit]
+     * @param [offset]
+     */
+    public v3ListInvestigationFindings(investigationId: number, findingType?: Array<'IOC' | 'CAPABILITY' | 'VULNERABILITY' | 'CROSS_FILE_FLOW'>, severity?: Array<'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW'>, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<ListFindingsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListInvestigationFindings(investigationId, findingType, severity, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists the credits charged for the investigation\'s conversation turns and the agents run from it, newest first. Visible to anyone who can see the investigation. Supports pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List what an investigation spent.
+     * @param investigationId
+     * @param [limit]
+     * @param [offset]
+     */
+    public v3ListInvestigationSpendWithHttpInfo(investigationId: number, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListSpendOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListInvestigationSpendWithHttpInfo(investigationId, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists the credits charged for the investigation\'s conversation turns and the agents run from it, newest first. Visible to anyone who can see the investigation. Supports pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List what an investigation spent.
+     * @param investigationId
+     * @param [limit]
+     * @param [offset]
+     */
+    public v3ListInvestigationSpend(investigationId: number, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<ListSpendOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListInvestigationSpend(investigationId, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists the investigations the caller owns or that are shared with the caller\'s team, most recently updated first by default. Supports filtering by status, severity, case type and owner, a name search, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List investigations.
+     * @param [status] Only return investigations in one of these statuses.
+     * @param [severity] Only return investigations with one of these severities.
+     * @param [caseType] Only return investigations of one of these case types.
+     * @param [ownerId] Only return investigations owned by one of these user IDs.
+     * @param [search] Only return investigations whose name contains this text, ignoring case.
+     * @param [orderBy]
+     * @param [order]
+     * @param [limit]
+     * @param [offset]
+     */
+    public v3ListInvestigationsWithHttpInfo(status?: Array<'OPEN' | 'IN_PROGRESS' | 'ON_HOLD' | 'CLOSED'>, severity?: Array<'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW'>, caseType?: Array<'REVERSE_ENGINEERING' | 'MALWARE_ANALYSIS' | 'VULNERABILITY_DISCOVERY'>, ownerId?: Array<number>, search?: string, orderBy?: 'updated' | 'created' | 'name', order?: 'ASC' | 'DESC', limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListInvestigationsOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListInvestigationsWithHttpInfo(status, severity, caseType, ownerId, search, orderBy, order, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Lists the investigations the caller owns or that are shared with the caller\'s team, most recently updated first by default. Supports filtering by status, severity, case type and owner, a name search, and pagination.  **Error codes:** - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * List investigations.
+     * @param [status] Only return investigations in one of these statuses.
+     * @param [severity] Only return investigations with one of these severities.
+     * @param [caseType] Only return investigations of one of these case types.
+     * @param [ownerId] Only return investigations owned by one of these user IDs.
+     * @param [search] Only return investigations whose name contains this text, ignoring case.
+     * @param [orderBy]
+     * @param [order]
+     * @param [limit]
+     * @param [offset]
+     */
+    public v3ListInvestigations(status?: Array<'OPEN' | 'IN_PROGRESS' | 'ON_HOLD' | 'CLOSED'>, severity?: Array<'CRITICAL' | 'HIGH' | 'MEDIUM' | 'LOW'>, caseType?: Array<'REVERSE_ENGINEERING' | 'MALWARE_ANALYSIS' | 'VULNERABILITY_DISCOVERY'>, ownerId?: Array<number>, search?: string, orderBy?: 'updated' | 'created' | 'name', order?: 'ASC' | 'DESC', limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<ListInvestigationsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListInvestigations(status, severity, caseType, ownerId, search, orderBy, order, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an investigation\'s name, case type, severity, status and/or scope. Omitted fields keep their existing values. Only the owner can update an investigation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update an investigation.
+     * @param investigationId
+     * @param patchInvestigationInputBody
+     */
+    public v3PatchInvestigationWithHttpInfo(investigationId: number, patchInvestigationInputBody: PatchInvestigationInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<InvestigationBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3PatchInvestigationWithHttpInfo(investigationId, patchInvestigationInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Updates an investigation\'s name, case type, severity, status and/or scope. Omitted fields keep their existing values. Only the owner can update an investigation.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Update an investigation.
+     * @param investigationId
+     * @param patchInvestigationInputBody
+     */
+    public v3PatchInvestigation(investigationId: number, patchInvestigationInputBody: PatchInvestigationInputBody, _options?: PromiseConfigurationOptions): Promise<InvestigationBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3PatchInvestigation(investigationId, patchInvestigationInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Sets the most credits the investigation may spend on its conversations and the agents run from it, or removes the limit with null. Once the budget is spent, no new message or agent run is started from the investigation; work already under way finishes, so spend can go a little past the budget. Only the owner can set the budget.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Set the budget of an investigation.
+     * @param investigationId
+     * @param setBudgetInputBody
+     */
+    public v3SetInvestigationBudgetWithHttpInfo(investigationId: number, setBudgetInputBody: SetBudgetInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BudgetBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3SetInvestigationBudgetWithHttpInfo(investigationId, setBudgetInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Sets the most credits the investigation may spend on its conversations and the agents run from it, or removes the limit with null. Once the budget is spent, no new message or agent run is started from the investigation; work already under way finishes, so spend can go a little past the budget. Only the owner can set the budget.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Set the budget of an investigation.
+     * @param investigationId
+     * @param setBudgetInputBody
+     */
+    public v3SetInvestigationBudget(investigationId: number, setBudgetInputBody: SetBudgetInputBody, _options?: PromiseConfigurationOptions): Promise<BudgetBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3SetInvestigationBudget(investigationId, setBudgetInputBody, observableOptions);
         return result.toPromise();
     }
 

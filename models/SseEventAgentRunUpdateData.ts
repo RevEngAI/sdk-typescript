@@ -9,23 +9,26 @@
  * Do not edit the class manually.
  */
 
-import { ErrorModel } from '../models/ErrorModel';
-import { ExternalResponse } from '../models/ExternalResponse';
-import { MetaModel } from '../models/MetaModel';
+import { AgentRunUpdateData } from '../models/AgentRunUpdateData';
 import { HttpFile } from '../http/http';
 
-export class BaseResponseExternalResponse {
+/**
+* The event envelope, sent as the JSON of the SSE data line. Its type names the event, and its data is that event\'s payload.
+*/
+export class SseEventAgentRunUpdateData {
     /**
-    * Response status on whether the request succeeded
+    * The payload of the event named in type.
     */
-    'status'?: boolean;
-    'data'?: ExternalResponse | null;
-    'message'?: string | null;
-    'errors'?: Array<ErrorModel> | null;
+    'data': AgentRunUpdateData;
     /**
-    * Metadata
+    * The stored event\'s ID, the same as the SSE id field. Pass the last one received as last_event_id to resume after a reconnection.
     */
-    'meta'?: MetaModel;
+    'eventId': number;
+    'sourceRunId'?: string;
+    /**
+    * The event name, the same as the SSE event field.
+    */
+    'type': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,38 +36,32 @@ export class BaseResponseExternalResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "boolean",
-            "format": ""
-        },
-        {
             "name": "data",
             "baseName": "data",
-            "type": "ExternalResponse",
+            "type": "AgentRunUpdateData",
             "format": ""
         },
         {
-            "name": "message",
-            "baseName": "message",
+            "name": "eventId",
+            "baseName": "event_id",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "sourceRunId",
+            "baseName": "source_run_id",
             "type": "string",
             "format": ""
         },
         {
-            "name": "errors",
-            "baseName": "errors",
-            "type": "Array<ErrorModel>",
-            "format": ""
-        },
-        {
-            "name": "meta",
-            "baseName": "meta",
-            "type": "MetaModel",
+            "name": "type",
+            "baseName": "type",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return BaseResponseExternalResponse.attributeTypeMap;
+        return SseEventAgentRunUpdateData.attributeTypeMap;
     }
 
     public constructor() {
