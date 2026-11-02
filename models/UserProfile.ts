@@ -14,6 +14,7 @@ import { HttpFile } from '../http/http';
 export class UserProfile {
     'defaultTeamId'?: number;
     'firstName': string;
+    'hideAiDecompilationComments': boolean;
     'hideExampleBinaries': boolean;
     'lastName': string;
     'timeZone': string;
@@ -34,6 +35,12 @@ export class UserProfile {
             "name": "firstName",
             "baseName": "first_name",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "hideAiDecompilationComments",
+            "baseName": "hide_ai_decompilation_comments",
+            "type": "boolean",
             "format": ""
         },
         {

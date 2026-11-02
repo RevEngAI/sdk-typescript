@@ -21,6 +21,10 @@ export class UpdateUserInputBody {
     */
     'firstName'?: string;
     /**
+    * Whether the user can authenticate (SUPERADMIN only)
+    */
+    'isActive'?: boolean;
+    /**
     * Last name
     */
     'lastName'?: string;
@@ -56,6 +60,12 @@ export class UpdateUserInputBody {
             "name": "firstName",
             "baseName": "first_name",
             "type": "string",
+            "format": ""
+        },
+        {
+            "name": "isActive",
+            "baseName": "is_active",
+            "type": "boolean",
             "format": ""
         },
         {

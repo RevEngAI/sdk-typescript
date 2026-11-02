@@ -17,6 +17,10 @@ export class DataTypeFunctionEntry {
     * Current name of the function.
     */
     'functionName': string;
+    /**
+    * How the function uses the type, each listed once, in alphabetical order: signature (its return type or a parameter type), inline (its AI decompilation names the type in its code), member (its AI decompilation reads a struct or union member of this type, or it references a global variable of this type).
+    */
+    'usageKinds': Array<DataTypeFunctionEntryUsageKindsEnum>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -34,6 +38,12 @@ export class DataTypeFunctionEntry {
             "baseName": "function_name",
             "type": "string",
             "format": ""
+        },
+        {
+            "name": "usageKinds",
+            "baseName": "usage_kinds",
+            "type": "Array<DataTypeFunctionEntryUsageKindsEnum>",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
@@ -43,3 +53,11 @@ export class DataTypeFunctionEntry {
     public constructor() {
     }
 }
+
+export enum DataTypeFunctionEntryUsageKindsEnum {
+    Signature = 'signature',
+    Inline = 'inline',
+    Member = 'member',
+    UnknownDefaultOpenApi = '11184809'
+}
+

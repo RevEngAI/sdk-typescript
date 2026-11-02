@@ -9,6 +9,8 @@ Method | HTTP request | Description
 [**submitUserFeedback**](AuthenticationUsersApi.md#submitUserFeedback) | **POST** /v2/users/feedback | Submit feedback about the application
 [**v3GetUser**](AuthenticationUsersApi.md#v3GetUser) | **GET** /v3/users/{user_id} | Get a user\&#39;s public information
 [**v3GetUserActivity**](AuthenticationUsersApi.md#v3GetUserActivity) | **GET** /v3/users/activity | Get the caller\&#39;s activity feed
+[**v3ListPrincipals**](AuthenticationUsersApi.md#v3ListPrincipals) | **GET** /v3/principals | Search users and teams
+[**v3ListTeams**](AuthenticationUsersApi.md#v3ListTeams) | **GET** /v3/teams | Search teams
 [**v3ListUsers**](AuthenticationUsersApi.md#v3ListUsers) | **GET** /v3/users | Search users
 [**v3SubmitUserFeedback**](AuthenticationUsersApi.md#v3SubmitUserFeedback) | **POST** /v3/users/feedback | Submit feedback
 
@@ -273,10 +275,118 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **v3ListPrincipals**
+> ListPrincipalsOutputBody v3ListPrincipals()
+
+Returns up to 5 matching users and up to 5 matching teams whose name contains the search term (case-insensitive), scoped to the caller\'s organisation using the same rules as the individual user and team search endpoints.
+
+### Example
+
+
+```typescript
+import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
+import type { AuthenticationUsersApiV3ListPrincipalsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AuthenticationUsersApi(configuration);
+
+const request: AuthenticationUsersApiV3ListPrincipalsRequest = {
+    // Text the user\'s username or team\'s name contains (case-insensitive)
+  searchTerm: "search_term_example",
+};
+
+const data = await apiInstance.v3ListPrincipals(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchTerm** | [**string**] | Text the user\&#39;s username or team\&#39;s name contains (case-insensitive) | defaults to undefined
+
+
+### Return type
+
+**ListPrincipalsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3ListTeams**
+> ListTeamsOutputBody v3ListTeams()
+
+Returns up to 5 teams whose name contains the search term (case-insensitive). Returns every team in the caller\'s organisation, or — if the organisation is named \"Internal\" — only the teams the caller belongs to.
+
+### Example
+
+
+```typescript
+import { createConfiguration, AuthenticationUsersApi } from '@revengai/sdk';
+import type { AuthenticationUsersApiV3ListTeamsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AuthenticationUsersApi(configuration);
+
+const request: AuthenticationUsersApiV3ListTeamsRequest = {
+    // Text the team name contains (case-insensitive)
+  searchTerm: "search_term_example",
+};
+
+const data = await apiInstance.v3ListTeams(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **searchTerm** | [**string**] | Text the team name contains (case-insensitive) | defaults to undefined
+
+
+### Return type
+
+**ListTeamsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **v3ListUsers**
 > ListPublicUsersOutputBody v3ListUsers()
 
-Returns up to 5 active users whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
+Returns up to 5 active users in the caller\'s organisation whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
 
 ### Example
 

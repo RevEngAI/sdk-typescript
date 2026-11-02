@@ -13,7 +13,7 @@ import { HttpFile } from '../http/http';
 
 export class BulkAddTagsInputBody {
     /**
-    * IDs of the analyses to tag. The caller must own every one, or none are changed
+    * IDs of the analyses to tag. The caller must have write access to every one, or none are changed
     */
     'analysisIds': Array<number> | null;
     /**

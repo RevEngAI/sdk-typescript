@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+import { EventAGENTRUNUPDATE } from '../models/EventAGENTRUNUPDATE';
 import { EventCONTEXTCOMPACTED } from '../models/EventCONTEXTCOMPACTED';
 import { EventRUNCANCELLED } from '../models/EventRUNCANCELLED';
 import { EventRUNERROR } from '../models/EventRUNERROR';
@@ -33,7 +34,7 @@ import { HttpFile } from '../http/http';
  * Type
  * @export
  */
-export type StreamEvents200ResponseInner = EventCONTEXTCOMPACTED | EventRUNCANCELLED | EventRUNERROR | EventRUNFINISHED | EventRUNSTARTED | EventSTEPFINISHED | EventSTEPSTARTED | EventTEXTMESSAGECONTENT | EventTEXTMESSAGEEND | EventTEXTMESSAGESTART | EventTITLEUPDATED | EventTOOLCALLARGSDELTA | EventTOOLCALLEND | EventTOOLCALLPROGRESS | EventTOOLCALLRESULT | EventTOOLCALLSTART | EventTOOLCONFIRMATIONREQUIRED;
+export type StreamEvents200ResponseInner = EventAGENTRUNUPDATE | EventCONTEXTCOMPACTED | EventRUNCANCELLED | EventRUNERROR | EventRUNFINISHED | EventRUNSTARTED | EventSTEPFINISHED | EventSTEPSTARTED | EventTEXTMESSAGECONTENT | EventTEXTMESSAGEEND | EventTEXTMESSAGESTART | EventTITLEUPDATED | EventTOOLCALLARGSDELTA | EventTOOLCALLEND | EventTOOLCALLPROGRESS | EventTOOLCALLRESULT | EventTOOLCALLSTART | EventTOOLCONFIRMATIONREQUIRED;
 
 /**
 * @type StreamEvents200ResponseInnerClass
@@ -44,6 +45,7 @@ export class StreamEvents200ResponseInnerClass {
 
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 }
+
 
 
 

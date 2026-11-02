@@ -9,12 +9,25 @@
  * Do not edit the class manually.
  */
 
+import { ToolCallResultData } from '../models/ToolCallResultData';
 import { HttpFile } from '../http/http';
 
+/**
+* The event envelope, sent as the JSON of the SSE data line. Its type names the event, and its data is that event\'s payload.
+*/
 export class SseEventToolCallResultData {
-    'data': any | null;
+    /**
+    * The payload of the event named in type.
+    */
+    'data': ToolCallResultData;
+    /**
+    * The stored event\'s ID, the same as the SSE id field. Pass the last one received as last_event_id to resume after a reconnection.
+    */
     'eventId': number;
     'sourceRunId'?: string;
+    /**
+    * The event name, the same as the SSE event field.
+    */
     'type': string;
 
     static readonly discriminator: string | undefined = undefined;
@@ -25,7 +38,7 @@ export class SseEventToolCallResultData {
         {
             "name": "data",
             "baseName": "data",
-            "type": "any",
+            "type": "ToolCallResultData",
             "format": ""
         },
         {

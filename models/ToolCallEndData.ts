@@ -11,11 +11,8 @@
 
 import { HttpFile } from '../http/http';
 
-export class AnalyseCapabilitiesBody {
-    /**
-    * ANALYSE_CAPABILITIES agent tasks completed that day
-    */
-    'completed': number;
+export class ToolCallEndData {
+    'toolCallId'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -23,14 +20,14 @@ export class AnalyseCapabilitiesBody {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "completed",
-            "baseName": "completed",
-            "type": "number",
-            "format": "int64"
+            "name": "toolCallId",
+            "baseName": "tool_call_id",
+            "type": "string",
+            "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return AnalyseCapabilitiesBody.attributeTypeMap;
+        return ToolCallEndData.attributeTypeMap;
     }
 
     public constructor() {

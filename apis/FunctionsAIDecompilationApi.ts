@@ -43,14 +43,18 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
      * @param typeSuggestions Ask the language model to name the suggested types and their members. Set to false to skip the model call; the statically derived layouts are still computed and stored. Cannot re-enable the pass when the server has it off.
      * @param naming Ask the language model to name the placeholder variables. Set to false to skip the model call; the generic names are kept. Cannot re-enable the pass when the server has it off.
      * @param applyTypes Store the suggested types as data types of this function\&#39;s analysis, with a source_type of AI_DECOMP. Set to false to leave them as suggestions only. Cannot re-enable the pass when the server has it off.
+     * @param repair Ask a language model to replace any unmatched placeholders left in the decompilation with grounded code. Off unless requested: the pass spends several model calls on top of the decompilation, and declines outright unless it can ground every placeholder. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
+     * @param refine Ask a language model to rebuild output the decompiler returned degenerate, truncated or empty, and output a requested repair pass declined. Off unless requested: the pass is a bounded tool loop that can spend a dozen model calls. Runs after the result is stored, so it amends a decompilation you can already read. Cannot enable the pass when the server has it off.
      */
-    public async createAiDecompilation(functionId: number, temperature?: number, typeSuggestions?: boolean, naming?: boolean, applyTypes?: boolean, _options?: Configuration): Promise<RequestContext> {
+    public async createAiDecompilation(functionId: number, temperature?: number, typeSuggestions?: boolean, naming?: boolean, applyTypes?: boolean, repair?: boolean, refine?: boolean, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
             throw new RequiredError("FunctionsAIDecompilationApi", "createAiDecompilation", "functionId");
         }
+
+
 
 
 
@@ -83,6 +87,16 @@ export class FunctionsAIDecompilationApiRequestFactory extends BaseAPIRequestFac
         // Query Params
         if (applyTypes !== undefined) {
             requestContext.setQueryParam("apply_types", ObjectSerializer.serialize(applyTypes, "boolean", ""));
+        }
+
+        // Query Params
+        if (repair !== undefined) {
+            requestContext.setQueryParam("repair", ObjectSerializer.serialize(repair, "boolean", ""));
+        }
+
+        // Query Params
+        if (refine !== undefined) {
+            requestContext.setQueryParam("refine", ObjectSerializer.serialize(refine, "boolean", ""));
         }
 
 

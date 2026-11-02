@@ -14,6 +14,10 @@ import { HttpFile } from '../http/http';
 
 export class GetMatchesStatusOutputBody {
     /**
+    * When this run last completed. Absent until status=COMPLETED.
+    */
+    'completedAt'?: Date;
+    /**
     * Log messages emitted during execution
     */
     'messages': Array<ProgressMessage> | null;
@@ -59,6 +63,12 @@ export class GetMatchesStatusOutputBody {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "completedAt",
+            "baseName": "completed_at",
+            "type": "Date",
+            "format": "date-time"
+        },
         {
             "name": "messages",
             "baseName": "messages",

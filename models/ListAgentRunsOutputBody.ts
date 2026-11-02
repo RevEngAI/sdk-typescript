@@ -9,23 +9,16 @@
  * Do not edit the class manually.
  */
 
-import { ErrorModel } from '../models/ErrorModel';
-import { MetaModel } from '../models/MetaModel';
-import { TaskResponse } from '../models/TaskResponse';
+import { AgentRunBody } from '../models/AgentRunBody';
 import { HttpFile } from '../http/http';
 
-export class BaseResponseTaskResponse {
+export class ListAgentRunsOutputBody {
+    'hasNextPage': boolean;
+    'results': Array<AgentRunBody>;
     /**
-    * Response status on whether the request succeeded
+    * Runs matching the filters across all pages.
     */
-    'status'?: boolean;
-    'data'?: TaskResponse | null;
-    'message'?: string | null;
-    'errors'?: Array<ErrorModel> | null;
-    /**
-    * Metadata
-    */
-    'meta'?: MetaModel;
+    'totalCount': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,38 +26,26 @@ export class BaseResponseTaskResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
+            "name": "hasNextPage",
+            "baseName": "has_next_page",
             "type": "boolean",
             "format": ""
         },
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "TaskResponse",
+            "name": "results",
+            "baseName": "results",
+            "type": "Array<AgentRunBody>",
             "format": ""
         },
         {
-            "name": "message",
-            "baseName": "message",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "errors",
-            "baseName": "errors",
-            "type": "Array<ErrorModel>",
-            "format": ""
-        },
-        {
-            "name": "meta",
-            "baseName": "meta",
-            "type": "MetaModel",
-            "format": ""
+            "name": "totalCount",
+            "baseName": "total_count",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return BaseResponseTaskResponse.attributeTypeMap;
+        return ListAgentRunsOutputBody.attributeTypeMap;
     }
 
     public constructor() {

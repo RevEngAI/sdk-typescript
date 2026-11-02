@@ -9,17 +9,22 @@
  * Do not edit the class manually.
  */
 
+import { RequestedOperation } from '../models/RequestedOperation';
 import { HttpFile } from '../http/http';
 
 export class RequestedConfigBody {
     /**
-    * Whether the capabilities agent was requested
+    * Whether static capability extraction was requested
     */
     'capabilities': boolean;
     /**
     * Whether the functions pipeline was requested
     */
     'functions': boolean;
+    /**
+    * Operations requested to run automatically once the analysis completes
+    */
+    'operations': Array<RequestedOperation>;
     /**
     * Whether dynamic execution (sandbox) was requested
     */
@@ -30,6 +35,7 @@ export class RequestedConfigBody {
     'scrape': boolean;
     /**
     * Whether the triage agent was requested
+    * @deprecated
     */
     'triage': boolean;
 
@@ -48,6 +54,12 @@ export class RequestedConfigBody {
             "name": "functions",
             "baseName": "functions",
             "type": "boolean",
+            "format": ""
+        },
+        {
+            "name": "operations",
+            "baseName": "operations",
+            "type": "Array<RequestedOperation>",
             "format": ""
         },
         {

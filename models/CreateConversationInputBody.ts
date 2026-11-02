@@ -9,12 +9,17 @@
  * Do not edit the class manually.
  */
 
-import { TaskStatus } from '../models/TaskStatus';
 import { HttpFile } from '../http/http';
 
-export class TaskResponse {
-    'status'?: TaskStatus;
-    'errorMessage'?: string | null;
+export class CreateConversationInputBody {
+    /**
+    * Scopes the conversation to one of the investigation\'s analyses. Omit it to cover the whole investigation.
+    */
+    'analysisId'?: number;
+    /**
+    * A title for the conversation. When empty, one is generated from the first message.
+    */
+    'title'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,24 +27,22 @@ export class TaskResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "TaskStatus",
-            "format": ""
+            "name": "analysisId",
+            "baseName": "analysis_id",
+            "type": "number",
+            "format": "int64"
         },
         {
-            "name": "errorMessage",
-            "baseName": "error_message",
+            "name": "title",
+            "baseName": "title",
             "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return TaskResponse.attributeTypeMap;
+        return CreateConversationInputBody.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-

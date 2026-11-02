@@ -9,7 +9,7 @@
  * Do not edit the class manually.
  */
 
-import { AnalyseCapabilitiesBody } from '../models/AnalyseCapabilitiesBody';
+import { AgentCompletedBody } from '../models/AgentCompletedBody';
 import { ReportAnalysisBody } from '../models/ReportAnalysisBody';
 import { HttpFile } from '../http/http';
 
@@ -17,15 +17,59 @@ export class WorkflowDayBody {
     /**
     * ANALYSE_CAPABILITIES agent-task stats for the day
     */
-    'analyseCapabilities': AnalyseCapabilitiesBody;
+    'analyseCapabilities': AgentCompletedBody;
+    /**
+    * CRYPTOGRAPHY agent-task stats for the day
+    */
+    'cryptoScan': AgentCompletedBody;
+    /**
+    * CRYPTOGRAPHY_BINARY agent-task stats for the day
+    */
+    'cryptographyBinary': AgentCompletedBody;
     /**
     * Day this entry covers
     */
     'date': string;
     /**
+    * EXECUTION agent-task stats for the day
+    */
+    'executionScan': AgentCompletedBody;
+    /**
+    * FILESYSTEM agent-task stats for the day
+    */
+    'filesystemScan': AgentCompletedBody;
+    /**
+    * NETWORKING agent-task stats for the day
+    */
+    'networkingScan': AgentCompletedBody;
+    /**
+    * PROTOCOLS agent-task stats for the day
+    */
+    'protocols': AgentCompletedBody;
+    /**
+    * REMEDIATION agent-task stats for the day
+    */
+    'remediation': AgentCompletedBody;
+    /**
+    * RENAME_UNNAMED_FUNCTIONS agent-task stats for the day
+    */
+    'renameUnnamedFunctions': AgentCompletedBody;
+    /**
     * REPORT_ANALYSIS agent-task stats for the day
     */
     'reportAnalysis': ReportAnalysisBody;
+    /**
+    * SECRETS agent-task stats for the day
+    */
+    'secrets': AgentCompletedBody;
+    /**
+    * SECURITY_SCAN agent-task stats for the day
+    */
+    'securityScan': AgentCompletedBody;
+    /**
+    * TRIAGE agent-task stats for the day
+    */
+    'triage': AgentCompletedBody;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -35,7 +79,19 @@ export class WorkflowDayBody {
         {
             "name": "analyseCapabilities",
             "baseName": "analyse_capabilities",
-            "type": "AnalyseCapabilitiesBody",
+            "type": "AgentCompletedBody",
+            "format": ""
+        },
+        {
+            "name": "cryptoScan",
+            "baseName": "crypto_scan",
+            "type": "AgentCompletedBody",
+            "format": ""
+        },
+        {
+            "name": "cryptographyBinary",
+            "baseName": "cryptography_binary",
+            "type": "AgentCompletedBody",
             "format": ""
         },
         {
@@ -45,9 +101,63 @@ export class WorkflowDayBody {
             "format": ""
         },
         {
+            "name": "executionScan",
+            "baseName": "execution_scan",
+            "type": "AgentCompletedBody",
+            "format": ""
+        },
+        {
+            "name": "filesystemScan",
+            "baseName": "filesystem_scan",
+            "type": "AgentCompletedBody",
+            "format": ""
+        },
+        {
+            "name": "networkingScan",
+            "baseName": "networking_scan",
+            "type": "AgentCompletedBody",
+            "format": ""
+        },
+        {
+            "name": "protocols",
+            "baseName": "protocols",
+            "type": "AgentCompletedBody",
+            "format": ""
+        },
+        {
+            "name": "remediation",
+            "baseName": "remediation",
+            "type": "AgentCompletedBody",
+            "format": ""
+        },
+        {
+            "name": "renameUnnamedFunctions",
+            "baseName": "rename_unnamed_functions",
+            "type": "AgentCompletedBody",
+            "format": ""
+        },
+        {
             "name": "reportAnalysis",
             "baseName": "report_analysis",
             "type": "ReportAnalysisBody",
+            "format": ""
+        },
+        {
+            "name": "secrets",
+            "baseName": "secrets",
+            "type": "AgentCompletedBody",
+            "format": ""
+        },
+        {
+            "name": "securityScan",
+            "baseName": "security_scan",
+            "type": "AgentCompletedBody",
+            "format": ""
+        },
+        {
+            "name": "triage",
+            "baseName": "triage",
+            "type": "AgentCompletedBody",
             "format": ""
         }    ];
 

@@ -14,7 +14,9 @@ import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPubl
 import { BaseResponseListUserActivityResponse } from '../models/BaseResponseListUserActivityResponse';
 import { GetPublicUserOutputBody } from '../models/GetPublicUserOutputBody';
 import { GetUserActivityOutputBody } from '../models/GetUserActivityOutputBody';
+import { ListPrincipalsOutputBody } from '../models/ListPrincipalsOutputBody';
 import { ListPublicUsersOutputBody } from '../models/ListPublicUsersOutputBody';
+import { ListTeamsOutputBody } from '../models/ListTeamsOutputBody';
 import { SubmitFeedbackBody } from '../models/SubmitFeedbackBody';
 import { SubmitFeedbackOutputBody } from '../models/SubmitFeedbackOutputBody';
 import { SubmitUserFeedbackRequest } from '../models/SubmitUserFeedbackRequest';
@@ -238,7 +240,101 @@ export class AuthenticationUsersApiRequestFactory extends BaseAPIRequestFactory 
     }
 
     /**
-     * Returns up to 5 active users whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
+     * Returns up to 5 matching users and up to 5 matching teams whose name contains the search term (case-insensitive), scoped to the caller\'s organisation using the same rules as the individual user and team search endpoints.
+     * Search users and teams
+     * @param searchTerm Text the user\&#39;s username or team\&#39;s name contains (case-insensitive)
+     */
+    public async v3ListPrincipals(searchTerm: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'searchTerm' is not null or undefined
+        if (searchTerm === null || searchTerm === undefined) {
+            throw new RequiredError("AuthenticationUsersApi", "v3ListPrincipals", "searchTerm");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/principals';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (searchTerm !== undefined) {
+            requestContext.setQueryParam("search_term", ObjectSerializer.serialize(searchTerm, "string", ""));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns up to 5 teams whose name contains the search term (case-insensitive). Returns every team in the caller\'s organisation, or — if the organisation is named \"Internal\" — only the teams the caller belongs to.
+     * Search teams
+     * @param searchTerm Text the team name contains (case-insensitive)
+     */
+    public async v3ListTeams(searchTerm: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'searchTerm' is not null or undefined
+        if (searchTerm === null || searchTerm === undefined) {
+            throw new RequiredError("AuthenticationUsersApi", "v3ListTeams", "searchTerm");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/teams';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (searchTerm !== undefined) {
+            requestContext.setQueryParam("search_term", ObjectSerializer.serialize(searchTerm, "string", ""));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns up to 5 active users in the caller\'s organisation whose username contains the search term (case-insensitive), with their ID and username, ordered by username.
      * Search users
      * @param searchTerm Text the username contains (case-insensitive)
      */
@@ -529,6 +625,78 @@ export class AuthenticationUsersApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "GetUserActivityOutputBody", ""
             ) as GetUserActivityOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3ListPrincipals
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3ListPrincipalsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListPrincipalsOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListPrincipalsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListPrincipalsOutputBody", ""
+            ) as ListPrincipalsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListPrincipalsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListPrincipalsOutputBody", ""
+            ) as ListPrincipalsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3ListTeams
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3ListTeamsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListTeamsOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListTeamsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListTeamsOutputBody", ""
+            ) as ListTeamsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListTeamsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListTeamsOutputBody", ""
+            ) as ListTeamsOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

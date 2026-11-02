@@ -11,10 +11,10 @@
 
 import { HttpFile } from '../http/http';
 
-export class ExternalResponse {
-    'sha256Hash': string;
-    'data': any;
-    'lastUpdated': Date;
+export class AgentStatusCountsBody {
+    'agentsRunning': number;
+    'complete': number;
+    'queued': number;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -22,26 +22,26 @@ export class ExternalResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "sha256Hash",
-            "baseName": "sha_256_hash",
-            "type": "string",
-            "format": ""
+            "name": "agentsRunning",
+            "baseName": "agents_running",
+            "type": "number",
+            "format": "int64"
         },
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "any",
-            "format": ""
+            "name": "complete",
+            "baseName": "complete",
+            "type": "number",
+            "format": "int64"
         },
         {
-            "name": "lastUpdated",
-            "baseName": "last_updated",
-            "type": "Date",
-            "format": "date-time"
+            "name": "queued",
+            "baseName": "queued",
+            "type": "number",
+            "format": "int64"
         }    ];
 
     static getAttributeTypeMap() {
-        return ExternalResponse.attributeTypeMap;
+        return AgentStatusCountsBody.attributeTypeMap;
     }
 
     public constructor() {
