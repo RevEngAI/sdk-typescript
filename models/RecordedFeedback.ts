@@ -9,22 +9,17 @@
  * Do not edit the class manually.
  */
 
-import { StringSource } from '../models/StringSource';
 import { HttpFile } from '../http/http';
 
-export class FunctionString {
+export class RecordedFeedback {
     /**
-    * The value of the string literal
+    * The context recorded with the feedback, or null when there is none
     */
-    'value': string;
+    'metadata': any | null;
     /**
-    * The vaddr of the string value
+    * The sentiment the caller recorded, or null when they have not left any
     */
-    'vaddr': number;
-    /**
-    * The source of the string
-    */
-    'source'?: StringSource;
+    'sentiment': RecordedFeedbackSentimentEnum | null;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -32,30 +27,30 @@ export class FunctionString {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "value",
-            "baseName": "value",
-            "type": "string",
+            "name": "metadata",
+            "baseName": "metadata",
+            "type": "any",
             "format": ""
         },
         {
-            "name": "vaddr",
-            "baseName": "vaddr",
-            "type": "number",
-            "format": ""
-        },
-        {
-            "name": "source",
-            "baseName": "source",
-            "type": "StringSource",
+            "name": "sentiment",
+            "baseName": "sentiment",
+            "type": "RecordedFeedbackSentimentEnum",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionString.attributeTypeMap;
+        return RecordedFeedback.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
 
+export enum RecordedFeedbackSentimentEnum {
+    Positive = 'POSITIVE',
+    Neutral = 'NEUTRAL',
+    Negative = 'NEGATIVE',
+    UnknownDefaultOpenApi = '11184809'
+}
 

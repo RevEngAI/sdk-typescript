@@ -27,10 +27,6 @@ export class AnalysisConfig {
     */
     'noCache'?: boolean;
     /**
-    * Enables an advanced security analysis.
-    */
-    'advancedAnalysis'?: boolean;
-    /**
     * Including a sandbox config enables the dynamic execution sandbox
     */
     'sandboxConfig'?: SandboxOptions;
@@ -55,12 +51,6 @@ export class AnalysisConfig {
         {
             "name": "noCache",
             "baseName": "no_cache",
-            "type": "boolean",
-            "format": ""
-        },
-        {
-            "name": "advancedAnalysis",
-            "baseName": "advanced_analysis",
             "type": "boolean",
             "format": ""
         },

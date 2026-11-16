@@ -129,6 +129,7 @@ export enum BatchFunctionSignatureEntrySourceTypeEnum {
     System = 'SYSTEM',
     User = 'USER',
     AutoUnstrip = 'AUTO_UNSTRIP',
+    AiAgent = 'AI_AGENT',
     UnknownDefaultOpenApi = '11184809'
 }
 

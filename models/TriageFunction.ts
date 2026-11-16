@@ -9,6 +9,7 @@
  * Do not edit the class manually.
  */
 
+import { CapabilityImplementation } from '../models/CapabilityImplementation';
 import { HttpFile } from '../http/http';
 
 export class TriageFunction {
@@ -20,6 +21,10 @@ export class TriageFunction {
     * Capability categories the function exhibits
     */
     'capabilities': Array<string> | null;
+    /**
+    * How the function implements each assigned capability. Absent when the run did not record any.
+    */
+    'capabilityImplementations'?: Array<CapabilityImplementation> | null;
     /**
     * ID of the function
     */
@@ -48,6 +53,12 @@ export class TriageFunction {
             "name": "capabilities",
             "baseName": "capabilities",
             "type": "Array<string>",
+            "format": ""
+        },
+        {
+            "name": "capabilityImplementations",
+            "baseName": "capability_implementations",
+            "type": "Array<CapabilityImplementation>",
             "format": ""
         },
         {

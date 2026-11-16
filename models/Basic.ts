@@ -65,9 +65,10 @@ export class Basic {
     */
     'functionCount': number;
     /**
-    * Whether the analysis was advanced
+    * Always false; advanced (DFG) analysis has been removed
+    * @deprecated
     */
-    'isAdvanced': boolean;
+    'isAdvanced'?: boolean;
     'baseAddress': number | null;
     'binaryUuid'?: string | null;
     'sequencerVersion'?: string | null;

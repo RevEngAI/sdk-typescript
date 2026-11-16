@@ -9,14 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
+import { Function } from '../models/Function';
 import { HttpFile } from '../http/http';
 
 export class AnalysisFunctions {
     /**
     * The functions associated with the analysis
     */
-    'functions': Array<AppApiRestV2FunctionsTypesFunction>;
+    'functions': Array<Function>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -26,7 +26,7 @@ export class AnalysisFunctions {
         {
             "name": "functions",
             "baseName": "functions",
-            "type": "Array<AppApiRestV2FunctionsTypesFunction>",
+            "type": "Array<Function>",
             "format": ""
         }    ];
 

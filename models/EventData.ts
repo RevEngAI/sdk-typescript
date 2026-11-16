@@ -52,6 +52,8 @@ export class EventData {
     'toolArgs'?: string;
     'toolCallId'?: string;
     'toolName'?: string;
+    'binaryName': string;
+    'functionName'?: string;
     'isError'?: boolean;
     'result'?: string;
     'updated'?: Array<EntityUpdate>;
@@ -66,7 +68,6 @@ export class EventData {
     * The earliest-added analysis of the file in the investigation that the conversation\'s starter may see.
     */
     'analysisId': number;
-    'binaryName': string;
     /**
     * A summary of the agent\'s result. Absent until the run is done, and when its result cannot be summarised.
     */
@@ -160,6 +161,18 @@ export class EventData {
             "format": ""
         },
         {
+            "name": "binaryName",
+            "baseName": "binary_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "functionName",
+            "baseName": "function_name",
+            "type": "string",
+            "format": ""
+        },
+        {
             "name": "isError",
             "baseName": "is_error",
             "type": "boolean",
@@ -224,12 +237,6 @@ export class EventData {
             "baseName": "analysis_id",
             "type": "number",
             "format": "int64"
-        },
-        {
-            "name": "binaryName",
-            "baseName": "binary_name",
-            "type": "string",
-            "format": ""
         },
         {
             "name": "card",

@@ -9,23 +9,26 @@
  * Do not edit the class manually.
  */
 
-import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
-import { ErrorModel } from '../models/ErrorModel';
-import { MetaModel } from '../models/MetaModel';
+import { DynamicExecutionRunConfig } from '../models/DynamicExecutionRunConfig';
 import { HttpFile } from '../http/http';
 
-export class BaseResponseAnalysisStringsStatusResponse {
+export class DynamicExecutionRun {
     /**
-    * Response status on whether the request succeeded
+    * Parameters the run was started with
     */
-    'status'?: boolean;
-    'data'?: AnalysisStringsStatusResponse | null;
-    'message'?: string | null;
-    'errors'?: Array<ErrorModel> | null;
+    'config': DynamicExecutionRunConfig;
     /**
-    * Metadata
+    * When the run was started
     */
-    'meta'?: MetaModel;
+    'createdAt': Date;
+    /**
+    * Run ID
+    */
+    'id': string;
+    /**
+    * Run status
+    */
+    'status': DynamicExecutionRunStatusEnum;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,40 +36,43 @@ export class BaseResponseAnalysisStringsStatusResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "boolean",
+            "name": "config",
+            "baseName": "config",
+            "type": "DynamicExecutionRunConfig",
             "format": ""
         },
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "AnalysisStringsStatusResponse",
-            "format": ""
+            "name": "createdAt",
+            "baseName": "created_at",
+            "type": "Date",
+            "format": "date-time"
         },
         {
-            "name": "message",
-            "baseName": "message",
+            "name": "id",
+            "baseName": "id",
             "type": "string",
             "format": ""
         },
         {
-            "name": "errors",
-            "baseName": "errors",
-            "type": "Array<ErrorModel>",
-            "format": ""
-        },
-        {
-            "name": "meta",
-            "baseName": "meta",
-            "type": "MetaModel",
+            "name": "status",
+            "baseName": "status",
+            "type": "DynamicExecutionRunStatusEnum",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return BaseResponseAnalysisStringsStatusResponse.attributeTypeMap;
+        return DynamicExecutionRun.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
+
+export enum DynamicExecutionRunStatusEnum {
+    Pending = 'PENDING',
+    Running = 'RUNNING',
+    Completed = 'COMPLETED',
+    Failed = 'FAILED',
+    UnknownDefaultOpenApi = '11184809'
+}
+

@@ -65,7 +65,8 @@ export class AnalysisBasicInfoOutputBody {
     */
     'functionCount': number;
     /**
-    * True when the analysis was run in advanced mode
+    * Always false; advanced (DFG) analysis has been removed
+    * @deprecated
     */
     'isAdvanced': boolean;
     /**

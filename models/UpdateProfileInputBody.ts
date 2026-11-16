@@ -13,6 +13,10 @@ import { HttpFile } from '../http/http';
 
 export class UpdateProfileInputBody {
     /**
+    * Agent chat layout: floating over the page, or fixed below it
+    */
+    'agentChatLayout'?: UpdateProfileInputBodyAgentChatLayoutEnum;
+    /**
     * Default team ID
     */
     'defaultTeamId'?: number;
@@ -46,6 +50,12 @@ export class UpdateProfileInputBody {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "agentChatLayout",
+            "baseName": "agent_chat_layout",
+            "type": "UpdateProfileInputBodyAgentChatLayoutEnum",
+            "format": ""
+        },
         {
             "name": "defaultTeamId",
             "baseName": "default_team_id",
@@ -96,3 +106,10 @@ export class UpdateProfileInputBody {
     public constructor() {
     }
 }
+
+export enum UpdateProfileInputBodyAgentChatLayoutEnum {
+    Floating = 'floating',
+    Fixed = 'fixed',
+    UnknownDefaultOpenApi = '11184809'
+}
+

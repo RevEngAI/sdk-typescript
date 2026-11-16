@@ -6,8 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**addFunctionCallee**](FunctionsCoreApi.md#addFunctionCallee) | **POST** /v3/functions/{function_id}/callees | Add a callee to a function
 [**addUserStringToFunction**](FunctionsCoreApi.md#addUserStringToFunction) | **POST** /v3/functions/{function_id}/user-provided-strings | Add a user-provided string to a function.
-[**getAnalysisStrings**](FunctionsCoreApi.md#getAnalysisStrings) | **GET** /v2/analyses/{analysis_id}/functions/strings | Get string information found in the Analysis
-[**getAnalysisStringsStatus**](FunctionsCoreApi.md#getAnalysisStringsStatus) | **GET** /v2/analyses/{analysis_id}/functions/strings/status | Get string processing state for the Analysis
 [**getFunctionBlocks**](FunctionsCoreApi.md#getFunctionBlocks) | **GET** /v2/functions/{function_id}/blocks | Get disassembly blocks related to the function
 [**getFunctionBlocks_0**](FunctionsCoreApi.md#getFunctionBlocks_0) | **GET** /v3/functions/{function_id}/blocks | Get function disassembly
 [**getFunctionCalleesCallers**](FunctionsCoreApi.md#getFunctionCalleesCallers) | **GET** /v2/functions/{function_id}/callees_callers | Get list of functions that call or are called by the specified function
@@ -18,8 +16,7 @@ Method | HTTP request | Description
 [**getFunctionDetails**](FunctionsCoreApi.md#getFunctionDetails) | **GET** /v2/functions/{function_id} | Get function details
 [**getFunctionDetails_0**](FunctionsCoreApi.md#getFunctionDetails_0) | **GET** /v3/functions/{function_id} | Get function details
 [**getFunctionIndirectCallSites**](FunctionsCoreApi.md#getFunctionIndirectCallSites) | **GET** /v3/functions/{function_id}/indirect-call-sites | Get indirect call sites for a function
-[**getFunctionStrings**](FunctionsCoreApi.md#getFunctionStrings) | **GET** /v2/functions/{function_id}/strings | Get string information found in the function
-[**getFunctionStrings_0**](FunctionsCoreApi.md#getFunctionStrings_0) | **GET** /v3/functions/{function_id}/strings | List strings for a function.
+[**getFunctionStrings**](FunctionsCoreApi.md#getFunctionStrings) | **GET** /v3/functions/{function_id}/strings | List strings for a function.
 [**getFunctionsCalleesCallers**](FunctionsCoreApi.md#getFunctionsCalleesCallers) | **GET** /v3/functions/callees-callers | Get callees and callers for many functions
 [**getFunctionsMatches**](FunctionsCoreApi.md#getFunctionsMatches) | **GET** /v3/functions/matches | Get function-matching results for an explicit set of functions
 [**getFunctionsMatchingStatus**](FunctionsCoreApi.md#getFunctionsMatchingStatus) | **GET** /v3/functions/matches/status | Get function-matching status for an explicit set of functions
@@ -29,8 +26,10 @@ Method | HTTP request | Description
 [**startFunctionsMatching**](FunctionsCoreApi.md#startFunctionsMatching) | **POST** /v3/functions/matches | Start function matching for an explicit set of functions
 [**v3CanonicalizeFunctionNames**](FunctionsCoreApi.md#v3CanonicalizeFunctionNames) | **POST** /v3/functions/canonical-names | Canonicalize a batch of function names
 [**v3GetAnalysisFuncMaps**](FunctionsCoreApi.md#v3GetAnalysisFuncMaps) | **GET** /v3/analyses/{analysis_id}/func-maps | Get function ID/address maps for an analysis
+[**v3GetFunctionFeedback**](FunctionsCoreApi.md#v3GetFunctionFeedback) | **GET** /v3/functions/{function_id}/feedback/{type} | Get the caller\&#39;s feedback on a function.
 [**v3ListFunctionGlobals**](FunctionsCoreApi.md#v3ListFunctionGlobals) | **GET** /v3/functions/{function_id}/globals | List the global variables a function references.
 [**v3SearchFunctions**](FunctionsCoreApi.md#v3SearchFunctions) | **GET** /v3/functions | Search functions
+[**v3UpsertFunctionFeedback**](FunctionsCoreApi.md#v3UpsertFunctionFeedback) | **PUT** /v3/functions/{function_id}/feedback/{type} | Record feedback on a function.
 
 
 # **addFunctionCallee**
@@ -163,132 +162,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **getAnalysisStrings**
-> BaseResponseAnalysisStringsResponse getAnalysisStrings()
-
-Get string information found in the analysis
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
-import type { FunctionsCoreApiGetAnalysisStringsRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsCoreApi(configuration);
-
-const request: FunctionsCoreApiGetAnalysisStringsRequest = {
-  
-  analysisId: 1,
-    // The page number to retrieve. (optional)
-  page: 1,
-    // Number of items per page. (optional)
-  pageSize: 100,
-    // Search is applied to string value (optional)
-  search: "search_example",
-    // Search is applied to function names (optional)
-  functionSearch: "function_search_example",
-    // Order by field (optional)
-  orderBy: "value",
-    // Sort order for the results (optional)
-  sortOrder: "ASC",
-};
-
-const data = await apiInstance.getAnalysisStrings(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
- **page** | [**number**] | The page number to retrieve. | (optional) defaults to 1
- **pageSize** | [**number**] | Number of items per page. | (optional) defaults to 100
- **search** | [**string**] | Search is applied to string value | (optional) defaults to undefined
- **functionSearch** | [**string**] | Search is applied to function names | (optional) defaults to undefined
- **orderBy** | [**&#39;length&#39; | &#39;value&#39;**]**Array<&#39;length&#39; &#124; &#39;value&#39; &#124; &#39;11184809&#39;>** | Order by field | (optional) defaults to 'value'
- **sortOrder** | [**&#39;ASC&#39; | &#39;DESC&#39;**]**Array<&#39;ASC&#39; &#124; &#39;DESC&#39; &#124; &#39;11184809&#39;>** | Sort order for the results | (optional) defaults to 'ASC'
-
-
-### Return type
-
-**BaseResponseAnalysisStringsResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getAnalysisStringsStatus**
-> BaseResponseAnalysisStringsStatusResponse getAnalysisStringsStatus()
-
-Get string processing state for the Analysis
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
-import type { FunctionsCoreApiGetAnalysisStringsStatusRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsCoreApi(configuration);
-
-const request: FunctionsCoreApiGetAnalysisStringsStatusRequest = {
-  
-  analysisId: 1,
-};
-
-const data = await apiInstance.getAnalysisStringsStatus(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponseAnalysisStringsStatusResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **getFunctionBlocks**
 > BaseResponseFunctionBlocksResponse getFunctionBlocks()
 
@@ -347,7 +220,7 @@ Name | Type | Description  | Notes
 # **getFunctionBlocks_0**
 > DisassemblyOutputBody getFunctionBlocks_0()
 
-Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables). Parameters and return type are not part of the disassembly; read them from GET /v3/analyses/{analysis_id}/functions/{function_id}/signature. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
 
 ### Example
 
@@ -846,9 +719,9 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
 # **getFunctionStrings**
-> BaseResponseFunctionStringsResponse getFunctionStrings()
+> ListFunctionStringsOutputBody getFunctionStrings()
 
-Get string information found in the function
+Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
 ### Example
 
@@ -861,69 +734,6 @@ const configuration = createConfiguration();
 const apiInstance = new FunctionsCoreApi(configuration);
 
 const request: FunctionsCoreApiGetFunctionStringsRequest = {
-  
-  functionId: 1,
-    // The page number to retrieve. (optional)
-  page: 1,
-    // Number of items per page. (optional)
-  pageSize: 100,
-    // Search is applied to string value (optional)
-  search: "search_example",
-};
-
-const data = await apiInstance.getFunctionStrings(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **functionId** | [**number**] |  | defaults to undefined
- **page** | [**number**] | The page number to retrieve. | (optional) defaults to 1
- **pageSize** | [**number**] | Number of items per page. | (optional) defaults to 100
- **search** | [**string**] | Search is applied to string value | (optional) defaults to undefined
-
-
-### Return type
-
-**BaseResponseFunctionStringsResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **getFunctionStrings_0**
-> ListFunctionStringsOutputBody getFunctionStrings_0()
-
-Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-
-### Example
-
-
-```typescript
-import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
-import type { FunctionsCoreApiGetFunctionStrings0Request } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new FunctionsCoreApi(configuration);
-
-const request: FunctionsCoreApiGetFunctionStrings0Request = {
     // Function ID
   functionId: 1,
     // Page number (1-indexed). (optional)
@@ -934,7 +744,7 @@ const request: FunctionsCoreApiGetFunctionStrings0Request = {
   search: "search_example",
 };
 
-const data = await apiInstance.getFunctionStrings_0(request);
+const data = await apiInstance.getFunctionStrings(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -1555,6 +1365,66 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **v3GetFunctionFeedback**
+> RecordedFeedback v3GetFunctionFeedback()
+
+Returns the feedback the caller recorded for one kind of result on this function, or null fields when they have not recorded any.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiV3GetFunctionFeedbackRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiV3GetFunctionFeedbackRequest = {
+    // Function ID
+  functionId: 1,
+    // What the feedback is about
+  type: "function-matching",
+};
+
+const data = await apiInstance.v3GetFunctionFeedback(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **functionId** | [**number**] | Function ID | defaults to undefined
+ **type** | [**&#39;function-matching&#39;**]**Array<&#39;function-matching&#39; &#124; &#39;11184809&#39;>** | What the feedback is about | defaults to undefined
+
+
+### Return type
+
+**RecordedFeedback**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **v3ListFunctionGlobals**
 > ListFunctionGlobalsOutputBody v3ListFunctionGlobals()
 
@@ -1671,6 +1541,72 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3UpsertFunctionFeedback**
+> void v3UpsertFunctionFeedback(feedbackSubmission)
+
+Records how useful the caller found one kind of result for this function, with any context the client captured. Replaces any feedback they recorded previously.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, FunctionsCoreApi } from '@revengai/sdk';
+import type { FunctionsCoreApiV3UpsertFunctionFeedbackRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new FunctionsCoreApi(configuration);
+
+const request: FunctionsCoreApiV3UpsertFunctionFeedbackRequest = {
+    // Function ID
+  functionId: 1,
+    // What the feedback is about
+  type: "function-matching",
+  
+  feedbackSubmission: {
+    metadata: {},
+    sentiment: "POSITIVE",
+  },
+};
+
+const data = await apiInstance.v3UpsertFunctionFeedback(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **feedbackSubmission** | **FeedbackSubmission**|  |
+ **functionId** | [**number**] | Function ID | defaults to undefined
+ **type** | [**&#39;function-matching&#39;**]**Array<&#39;function-matching&#39; &#124; &#39;11184809&#39;>** | What the feedback is about | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 

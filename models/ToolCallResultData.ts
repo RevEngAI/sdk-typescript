@@ -13,6 +13,8 @@ import { EntityUpdate } from '../models/EntityUpdate';
 import { HttpFile } from '../http/http';
 
 export class ToolCallResultData {
+    'binaryName'?: string;
+    'functionName'?: string;
     'isError'?: boolean;
     'result'?: string;
     'toolCallId'?: string;
@@ -24,6 +26,18 @@ export class ToolCallResultData {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "binaryName",
+            "baseName": "binary_name",
+            "type": "string",
+            "format": ""
+        },
+        {
+            "name": "functionName",
+            "baseName": "function_name",
+            "type": "string",
+            "format": ""
+        },
         {
             "name": "isError",
             "baseName": "is_error",

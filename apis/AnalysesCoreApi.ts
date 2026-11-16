@@ -34,6 +34,7 @@ import { BaseResponseRecent } from '../models/BaseResponseRecent';
 import { BaseResponseStatus } from '../models/BaseResponseStatus';
 import { BaseResponseUploadResponse } from '../models/BaseResponseUploadResponse';
 import { CreateRequest } from '../models/CreateRequest';
+import { DynamicExecutionRun } from '../models/DynamicExecutionRun';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { DynamicExecutionSummary } from '../models/DynamicExecutionSummary';
 import { FunctionsProgressOutputBody } from '../models/FunctionsProgressOutputBody';
@@ -49,6 +50,7 @@ import { ListAccessRulesOutputBody } from '../models/ListAccessRulesOutputBody';
 import { ListAnalysesOutputBody } from '../models/ListAnalysesOutputBody';
 import { ListAnalysisGlobalsOutputBody } from '../models/ListAnalysisGlobalsOutputBody';
 import { ListAnalysisStringsOutputBody } from '../models/ListAnalysisStringsOutputBody';
+import { ListDynamicExecutionRunsOutputBody } from '../models/ListDynamicExecutionRunsOutputBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListGlobalFunctionsOutputBody } from '../models/ListGlobalFunctionsOutputBody';
 import { LookupAnalysisByBinaryIDOutputBody } from '../models/LookupAnalysisByBinaryIDOutputBody';
@@ -58,7 +60,6 @@ import { OperationCreateMetadataCreateResult } from '../models/OperationCreateMe
 import { OperationDynamicExecutionMetadataDynamicExecutionResult } from '../models/OperationDynamicExecutionMetadataDynamicExecutionResult';
 import { OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult } from '../models/OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult';
 import { Order } from '../models/Order';
-import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { RequeueAnalysisRequest } from '../models/RequeueAnalysisRequest';
 import { RunDynamicExecutionInputBody } from '../models/RunDynamicExecutionInputBody';
@@ -80,7 +81,7 @@ import { Workspace } from '../models/Workspace';
 export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Add a user-provided string to an analysis.
      * @param analysisId Analysis ID
      * @param addUserStringInputBody 
@@ -898,69 +899,6 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * @deprecated
      *
-     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-     * Add strings to the analysis
-     * @param analysisId 
-     * @param putAnalysisStringsRequest 
-     */
-    public async putAnalysisStrings(analysisId: number, putAnalysisStringsRequest: PutAnalysisStringsRequest, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "putAnalysisStrings", "analysisId");
-        }
-
-
-        // verify required parameter 'putAnalysisStringsRequest' is not null or undefined
-        if (putAnalysisStringsRequest === null || putAnalysisStringsRequest === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "putAnalysisStrings", "putAnalysisStringsRequest");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/analyses/{analysis_id}/strings'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PUT);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(putAnalysisStringsRequest, "PutAnalysisStringsRequest", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * @deprecated
-     *
      * Re-queues an already uploaded analysis
      * Requeue Analysis
      * @param analysisId 
@@ -1027,7 +965,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Start function matching for an analysis
      * @param analysisId Analysis ID
      * @param startMatchingForAnalysisInputBody 
@@ -1341,6 +1279,62 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
         requestContext.setHeaderParam("Content-Type", contentType);
         const serializedBody = ObjectSerializer.stringify(
             ObjectSerializer.serialize(createRequest, "CreateRequest", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Starts a new sandbox run of the analysis\'s binary, alongside any runs already in progress, and returns the run\'s operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Start a dynamic execution run.
+     * @param analysisId Analysis ID
+     * @param runDynamicExecutionInputBody 
+     */
+    public async v3CreateDynamicExecutionRun(analysisId: number, runDynamicExecutionInputBody?: RunDynamicExecutionInputBody, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3CreateDynamicExecutionRun", "analysisId");
+        }
+
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(runDynamicExecutionInputBody, "RunDynamicExecutionInputBody", ""),
             contentType
         );
         requestContext.setBody(serializedBody);
@@ -1959,181 +1953,22 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download an artifact.
-     * @param analysisId Analysis ID
-     * @param sha256 SHA-256 hex digest of the artifact
-     * @param filename Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-     */
-    public async v3GetDynamicExecutionArtifact(analysisId: number, sha256: string, filename?: string, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionArtifact", "analysisId");
-        }
-
-
-        // verify required parameter 'sha256' is not null or undefined
-        if (sha256 === null || sha256 === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionArtifact", "sha256");
-        }
-
-
-
-        // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/artifacts/{sha256}'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
-            .replace('{' + 'sha256' + '}', encodeURIComponent(String(sha256)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (filename !== undefined) {
-            requestContext.setQueryParam("filename", ObjectSerializer.serialize(filename, "string", ""));
-        }
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Streams a ZIP archive of the sandbox logs collected during execution. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download the execution logs archive.
-     * @param analysisId Analysis ID
-     */
-    public async v3GetDynamicExecutionLogsDownload(analysisId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionLogsDownload", "analysisId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/logs/download'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download a memory dump.
-     * @param analysisId Analysis ID
-     * @param sha256 SHA-256 hex digest of the artifact
-     * @param filename Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-     */
-    public async v3GetDynamicExecutionMemdump(analysisId: number, sha256: string, filename?: string, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionMemdump", "analysisId");
-        }
-
-
-        // verify required parameter 'sha256' is not null or undefined
-        if (sha256 === null || sha256 === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionMemdump", "sha256");
-        }
-
-
-
-        // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/memdumps/{sha256}'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
-            .replace('{' + 'sha256' + '}', encodeURIComponent(String(sha256)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (filename !== undefined) {
-            requestContext.setQueryParam("filename", ObjectSerializer.serialize(filename, "string", ""));
-        }
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Returns the current state of the most recently triggered dynamic execution run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the current state of a dynamic execution run. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Get a dynamic execution operation.
-     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public async v3GetDynamicExecutionOperation(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async v3GetDynamicExecutionOperation(runId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionOperation", "analysisId");
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionOperation", "runId");
         }
 
 
         // Path Params
-        const localVarPath = '/v3/operations/dynamic-execution/{analysis_id}'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+        const localVarPath = '/v3/operations/dynamic-execution/{run_id}'
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -2161,22 +1996,30 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Streams the pcap of the analysis VM\'s traffic. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download the network capture.
+     * Returns the run\'s status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a dynamic execution run.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public async v3GetDynamicExecutionPcap(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async v3GetDynamicExecutionRun(analysisId: number, runId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionPcap", "analysisId");
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRun", "analysisId");
+        }
+
+
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRun", "runId");
         }
 
 
         // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/pcap'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -2204,22 +2047,96 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the dynamic execution report JSON for the analysis. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Get the dynamic execution report.
+     * Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the run\'s report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s artifact.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     * @param sha256 SHA-256 hex digest of the artifact
+     * @param filename Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
      */
-    public async v3GetDynamicExecutionReport(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async v3GetDynamicExecutionRunArtifact(analysisId: number, runId: string, sha256: string, filename?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionReport", "analysisId");
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunArtifact", "analysisId");
+        }
+
+
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunArtifact", "runId");
+        }
+
+
+        // verify required parameter 'sha256' is not null or undefined
+        if (sha256 === null || sha256 === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunArtifact", "sha256");
+        }
+
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/artifacts/{sha256}'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)))
+            .replace('{' + 'sha256' + '}', encodeURIComponent(String(sha256)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (filename !== undefined) {
+            requestContext.setQueryParam("filename", ObjectSerializer.serialize(filename, "string", ""));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Streams a ZIP archive of the sandbox logs collected during the run. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s execution logs archive.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public async v3GetDynamicExecutionRunLogsDownload(analysisId: number, runId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunLogsDownload", "analysisId");
+        }
+
+
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunLogsDownload", "runId");
         }
 
 
         // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/report'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/logs/download'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -2247,29 +2164,205 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Streams one screenshot, 1-indexed as listed by the screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download a screenshot.
+     * Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the run\'s report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s memory dump.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     * @param sha256 SHA-256 hex digest of the artifact
+     * @param filename Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
+     */
+    public async v3GetDynamicExecutionRunMemdump(analysisId: number, runId: string, sha256: string, filename?: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunMemdump", "analysisId");
+        }
+
+
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunMemdump", "runId");
+        }
+
+
+        // verify required parameter 'sha256' is not null or undefined
+        if (sha256 === null || sha256 === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunMemdump", "sha256");
+        }
+
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/memdumps/{sha256}'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)))
+            .replace('{' + 'sha256' + '}', encodeURIComponent(String(sha256)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (filename !== undefined) {
+            requestContext.setQueryParam("filename", ObjectSerializer.serialize(filename, "string", ""));
+        }
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Streams the pcap of the analysis VM\'s traffic during the run. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s network capture.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public async v3GetDynamicExecutionRunPcap(analysisId: number, runId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunPcap", "analysisId");
+        }
+
+
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunPcap", "runId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/pcap'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns the run\'s dynamic execution report JSON. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Get a run\'s dynamic execution report.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public async v3GetDynamicExecutionRunReport(analysisId: number, runId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunReport", "analysisId");
+        }
+
+
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunReport", "runId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/report'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Streams one screenshot, 1-indexed as listed by the run\'s screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s screenshot.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      * @param index Index of the screenshot, as listed by the screenshots endpoint
      */
-    public async v3GetDynamicExecutionScreenshot(analysisId: number, index: number, _options?: Configuration): Promise<RequestContext> {
+    public async v3GetDynamicExecutionRunScreenshot(analysisId: number, runId: string, index: number, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionScreenshot", "analysisId");
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunScreenshot", "analysisId");
+        }
+
+
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunScreenshot", "runId");
         }
 
 
         // verify required parameter 'index' is not null or undefined
         if (index === null || index === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionScreenshot", "index");
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunScreenshot", "index");
         }
 
 
         // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/screenshots/{index}'
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/screenshots/{index}'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)))
             .replace('{' + 'index' + '}', encodeURIComponent(String(index)));
 
         // Make Request Context
@@ -2299,21 +2392,29 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
      * Returns the LLM-generated Markdown summary of the run. Requires the run to be COMPLETED. Returns 404 if no summary has been generated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Get the dynamic execution summary.
+     * Get a run\'s dynamic execution summary.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public async v3GetDynamicExecutionSummary(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async v3GetDynamicExecutionRunSummary(analysisId: number, runId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionSummary", "analysisId");
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunSummary", "analysisId");
+        }
+
+
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunSummary", "runId");
         }
 
 
         // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/summary'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/summary'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -2341,65 +2442,73 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the state of the most recent summary attempt for this analysis, whether made by its run or by a regenerate.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the run\'s pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s Wireshark TLS session keys.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public async v3GetDynamicExecutionRunWiresharkKeys(analysisId: number, runId: string, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunWiresharkKeys", "analysisId");
+        }
+
+
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionRunWiresharkKeys", "runId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/wireshark-keys'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns the state of a run\'s most recent summary attempt, whether made by the run itself or by a regenerate. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Get a dynamic execution summary operation.
-     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public async v3GetDynamicExecutionSummaryOperation(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async v3GetDynamicExecutionSummaryOperation(runId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionSummaryOperation", "analysisId");
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionSummaryOperation", "runId");
         }
 
 
         // Path Params
-        const localVarPath = '/v3/operations/dynamic-execution-summary/{analysis_id}'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download Wireshark TLS session keys.
-     * @param analysisId Analysis ID
-     */
-    public async v3GetDynamicExecutionWiresharkKeys(analysisId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3GetDynamicExecutionWiresharkKeys", "analysisId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/wireshark-keys'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+        const localVarPath = '/v3/operations/dynamic-execution-summary/{run_id}'
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
@@ -2769,7 +2878,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the analysis\' `static-analysis` operation, followed by the latest run of each other operation started on its binary: the binary agents, the script-agent scans and dynamic execution. The `static-analysis` operation is always included, even when no other operations have run. Each entry\'s `name` is the operation\'s resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the analysis\' `static-analysis` operation, followed by the latest run of each other operation started on its binary (the binary agents and the script-agent scans), then one `dynamic-execution` operation per sandbox run of the analysis, newest first. The `static-analysis` operation is always included, even when no other operations have run. Each entry\'s `name` is the operation\'s resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List the operations run on an analysis.
      * @param analysisId Analysis ID
      */
@@ -2812,21 +2921,72 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the screenshots captured from the analysis VM, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * List the screenshots captured during execution.
+     * Returns the screenshots captured from the analysis VM during the run, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * List a run\'s screenshots.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public async v3ListDynamicExecutionScreenshots(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+    public async v3ListDynamicExecutionRunScreenshots(analysisId: number, runId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3ListDynamicExecutionScreenshots", "analysisId");
+            throw new RequiredError("AnalysesCoreApi", "v3ListDynamicExecutionRunScreenshots", "analysisId");
+        }
+
+
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3ListDynamicExecutionRunScreenshots", "runId");
         }
 
 
         // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/screenshots'
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/screenshots'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns every dynamic execution run of the analysis, newest first, with its status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List the dynamic execution runs.
+     * @param analysisId Analysis ID
+     */
+    public async v3ListDynamicExecutionRuns(analysisId: number, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'analysisId' is not null or undefined
+        if (analysisId === null || analysisId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3ListDynamicExecutionRuns", "analysisId");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs'
             .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
 
         // Make Request Context
@@ -3159,78 +3319,30 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Submits the analysis\'s binary to the sandbox and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-     * Trigger a dynamic execution run.
+     * Starts a new LLM summary of the completed run and returns the run\'s summary operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Regenerate a run\'s dynamic execution summary.
      * @param analysisId Analysis ID
-     * @param runDynamicExecutionInputBody 
+     * @param runId Dynamic execution run ID
      */
-    public async v3RunDynamicExecution(analysisId: number, runDynamicExecutionInputBody?: RunDynamicExecutionInputBody, _options?: Configuration): Promise<RequestContext> {
+    public async v3RunDynamicExecutionRunSummary(analysisId: number, runId: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'analysisId' is not null or undefined
         if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3RunDynamicExecution", "analysisId");
+            throw new RequiredError("AnalysesCoreApi", "v3RunDynamicExecutionRunSummary", "analysisId");
         }
 
 
-
-        // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution:run'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        // Body Params
-        const contentType = ObjectSerializer.getPreferredMediaType([
-            "application/json"
-        ]);
-        requestContext.setHeaderParam("Content-Type", contentType);
-        const serializedBody = ObjectSerializer.stringify(
-            ObjectSerializer.serialize(runDynamicExecutionInputBody, "RunDynamicExecutionInputBody", ""),
-            contentType
-        );
-        requestContext.setBody(serializedBody);
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * Starts a new LLM summary of the analysis\'s completed run and returns the operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Regenerate the dynamic execution summary.
-     * @param analysisId Analysis ID
-     */
-    public async v3RunDynamicExecutionSummary(analysisId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("AnalysesCoreApi", "v3RunDynamicExecutionSummary", "analysisId");
+        // verify required parameter 'runId' is not null or undefined
+        if (runId === null || runId === undefined) {
+            throw new RequiredError("AnalysesCoreApi", "v3RunDynamicExecutionRunSummary", "runId");
         }
 
 
         // Path Params
-        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/summary:run'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
+        const localVarPath = '/v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/summary:run'
+            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)))
+            .replace('{' + 'run_id' + '}', encodeURIComponent(String(runId)));
 
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.POST);
@@ -3375,7 +3487,7 @@ export class AnalysesCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Renames a global, assigns it an analysis data type, or both. Each field the request sets stamps its own provenance `USER`, which a later re-extraction carries forward instead of overwriting. A name another global in the analysis already holds is rejected.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ALREADY_EXISTS`](/errors/ALREADY_EXISTS) — Already Exists
+     * Renames a global, assigns it an analysis data type, or both. Each field the request sets stamps its own provenance `USER`, which a later re-extraction carries forward instead of overwriting. A name another global in the analysis already holds is rejected. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ALREADY_EXISTS`](/errors/ALREADY_EXISTS) — Already Exists - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Edit a global variable.
      * @param analysisId Analysis ID
      * @param vaddr Virtual address of the global variable.
@@ -3580,6 +3692,13 @@ export class AnalysesCoreApiResponseProcessor {
                 "APIError", ""
             ) as APIError;
             throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
             const body: APIError = ObjectSerializer.deserialize(
@@ -4245,42 +4364,6 @@ export class AnalysesCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to putAnalysisStrings
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async putAnalysisStringsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("201", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
      * @params response Response returned by the server for a request to requeueAnalysis
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -4363,6 +4446,13 @@ export class AnalysesCoreApiResponseProcessor {
                 "APIError", ""
             ) as APIError;
             throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
         }
         if (isCodeInRange("422", response.httpStatusCode)) {
             const body: APIError = ObjectSerializer.deserialize(
@@ -4578,6 +4668,70 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "OperationCreateMetadataCreateResult", ""
             ) as OperationCreateMetadataCreateResult;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3CreateDynamicExecutionRun
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3CreateDynamicExecutionRunWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OperationDynamicExecutionMetadataDynamicExecutionResult >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: OperationDynamicExecutionMetadataDynamicExecutionResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "OperationDynamicExecutionMetadataDynamicExecutionResult", ""
+            ) as OperationDynamicExecutionMetadataDynamicExecutionResult;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("400", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Bad Request", body, response.headers);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: OperationDynamicExecutionMetadataDynamicExecutionResult = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "OperationDynamicExecutionMetadataDynamicExecutionResult", ""
+            ) as OperationDynamicExecutionMetadataDynamicExecutionResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -5264,186 +5418,6 @@ export class AnalysesCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to v3GetDynamicExecutionArtifact
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async v3GetDynamicExecutionArtifactWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("409", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to v3GetDynamicExecutionLogsDownload
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async v3GetDynamicExecutionLogsDownloadWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("409", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to v3GetDynamicExecutionMemdump
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async v3GetDynamicExecutionMemdumpWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("409", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
      * @params response Response returned by the server for a request to v3GetDynamicExecutionOperation
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -5501,10 +5475,67 @@ export class AnalysesCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to v3GetDynamicExecutionPcap
+     * @params response Response returned by the server for a request to v3GetDynamicExecutionRun
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async v3GetDynamicExecutionPcapWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async v3GetDynamicExecutionRunWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DynamicExecutionRun >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: DynamicExecutionRun = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DynamicExecutionRun", ""
+            ) as DynamicExecutionRun;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: DynamicExecutionRun = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "DynamicExecutionRun", ""
+            ) as DynamicExecutionRun;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3GetDynamicExecutionRunArtifact
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3GetDynamicExecutionRunArtifactWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -5561,10 +5592,190 @@ export class AnalysesCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to v3GetDynamicExecutionReport
+     * @params response Response returned by the server for a request to v3GetDynamicExecutionRunLogsDownload
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async v3GetDynamicExecutionReportWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AnalysisReport >> {
+     public async v3GetDynamicExecutionRunLogsDownloadWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3GetDynamicExecutionRunMemdump
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3GetDynamicExecutionRunMemdumpWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3GetDynamicExecutionRunPcap
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3GetDynamicExecutionRunPcapWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3GetDynamicExecutionRunReport
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3GetDynamicExecutionRunReportWithHttpInfo(response: ResponseContext): Promise<HttpInfo<AnalysisReport >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: AnalysisReport = ObjectSerializer.deserialize(
@@ -5625,10 +5836,10 @@ export class AnalysesCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to v3GetDynamicExecutionScreenshot
+     * @params response Response returned by the server for a request to v3GetDynamicExecutionRunScreenshot
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async v3GetDynamicExecutionScreenshotWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+     public async v3GetDynamicExecutionRunScreenshotWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
@@ -5685,10 +5896,10 @@ export class AnalysesCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to v3GetDynamicExecutionSummary
+     * @params response Response returned by the server for a request to v3GetDynamicExecutionRunSummary
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async v3GetDynamicExecutionSummaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DynamicExecutionSummary >> {
+     public async v3GetDynamicExecutionRunSummaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<DynamicExecutionSummary >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: DynamicExecutionSummary = ObjectSerializer.deserialize(
@@ -5739,6 +5950,66 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "DynamicExecutionSummary", ""
             ) as DynamicExecutionSummary;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3GetDynamicExecutionRunWiresharkKeys
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3GetDynamicExecutionRunWiresharkKeysWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("409", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -5796,66 +6067,6 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult", ""
             ) as OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to v3GetDynamicExecutionWiresharkKeys
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async v3GetDynamicExecutionWiresharkKeysWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("409", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: void = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "void", ""
-            ) as void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -6147,10 +6358,10 @@ export class AnalysesCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to v3ListDynamicExecutionScreenshots
+     * @params response Response returned by the server for a request to v3ListDynamicExecutionRunScreenshots
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async v3ListDynamicExecutionScreenshotsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ScreenshotsIndex >> {
+     public async v3ListDynamicExecutionRunScreenshotsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ScreenshotsIndex >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ScreenshotsIndex = ObjectSerializer.deserialize(
@@ -6201,6 +6412,63 @@ export class AnalysesCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "ScreenshotsIndex", ""
             ) as ScreenshotsIndex;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3ListDynamicExecutionRuns
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3ListDynamicExecutionRunsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListDynamicExecutionRunsOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListDynamicExecutionRunsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListDynamicExecutionRunsOutputBody", ""
+            ) as ListDynamicExecutionRunsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListDynamicExecutionRunsOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListDynamicExecutionRunsOutputBody", ""
+            ) as ListDynamicExecutionRunsOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -6528,81 +6796,10 @@ export class AnalysesCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
-     * @params response Response returned by the server for a request to v3RunDynamicExecution
+     * @params response Response returned by the server for a request to v3RunDynamicExecutionRunSummary
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async v3RunDynamicExecutionWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OperationDynamicExecutionMetadataDynamicExecutionResult >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: OperationDynamicExecutionMetadataDynamicExecutionResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "OperationDynamicExecutionMetadataDynamicExecutionResult", ""
-            ) as OperationDynamicExecutionMetadataDynamicExecutionResult;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("400", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Bad Request", body, response.headers);
-        }
-        if (isCodeInRange("403", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
-        }
-        if (isCodeInRange("404", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
-        }
-        if (isCodeInRange("409", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Conflict", body, response.headers);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
-        }
-        if (isCodeInRange("500", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: OperationDynamicExecutionMetadataDynamicExecutionResult = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "OperationDynamicExecutionMetadataDynamicExecutionResult", ""
-            ) as OperationDynamicExecutionMetadataDynamicExecutionResult;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to v3RunDynamicExecutionSummary
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async v3RunDynamicExecutionSummaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult >> {
+     public async v3RunDynamicExecutionRunSummaryWithHttpInfo(response: ResponseContext): Promise<HttpInfo<OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult = ObjectSerializer.deserialize(
@@ -6610,13 +6807,6 @@ export class AnalysesCoreApiResponseProcessor {
                 "OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult", ""
             ) as OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("400", response.httpStatusCode)) {
-            const body: APIError = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "APIError", ""
-            ) as APIError;
-            throw new ApiException<APIError>(response.httpStatusCode, "Bad Request", body, response.headers);
         }
         if (isCodeInRange("403", response.httpStatusCode)) {
             const body: APIError = ObjectSerializer.deserialize(

@@ -19,13 +19,13 @@ Method | HTTP request | Description
 [**insertAnalysisLog**](AnalysesCoreApi.md#insertAnalysisLog) | **POST** /v2/analyses/{analysis_id}/logs | Insert a log entry for an analysis
 [**listAnalyses**](AnalysesCoreApi.md#listAnalyses) | **GET** /v2/analyses/list | Gets the most recent analyses
 [**lookupBinaryId**](AnalysesCoreApi.md#lookupBinaryId) | **GET** /v2/analyses/lookup/{binary_id} | Gets the analysis ID from binary ID
-[**putAnalysisStrings**](AnalysesCoreApi.md#putAnalysisStrings) | **PUT** /v2/analyses/{analysis_id}/strings | Add strings to the analysis
 [**requeueAnalysis**](AnalysesCoreApi.md#requeueAnalysis) | **POST** /v2/analyses/{analysis_id}/requeue | Requeue Analysis
 [**startAnalysisFunctionMatching**](AnalysesCoreApi.md#startAnalysisFunctionMatching) | **POST** /v3/analyses/{analysis_id}/functions/matches | Start function matching for an analysis
 [**updateAnalysis**](AnalysesCoreApi.md#updateAnalysis) | **PATCH** /v2/analyses/{analysis_id} | Update Analysis
 [**updateAnalysisTags**](AnalysesCoreApi.md#updateAnalysisTags) | **PATCH** /v2/analyses/{analysis_id}/tags | Update Analysis Tags
 [**uploadFile**](AnalysesCoreApi.md#uploadFile) | **POST** /v2/upload | Upload File
 [**v3CreateAnalysis**](AnalysesCoreApi.md#v3CreateAnalysis) | **POST** /v3/analyses | Create an analysis
+[**v3CreateDynamicExecutionRun**](AnalysesCoreApi.md#v3CreateDynamicExecutionRun) | **POST** /v3/analyses/{analysis_id}/dynamic-execution/runs | Start a dynamic execution run.
 [**v3DeleteAnalysis**](AnalysesCoreApi.md#v3DeleteAnalysis) | **DELETE** /v3/analyses/{analysis_id} | Delete an analysis.
 [**v3DownloadBinaryExport**](AnalysesCoreApi.md#v3DownloadBinaryExport) | **GET** /v3/analyses/{analysis_id}/binary-export | Download a binary export
 [**v3GetAnalysis**](AnalysesCoreApi.md#v3GetAnalysis) | **GET** /v3/analyses/{analysis_id} | Get an analysis.
@@ -38,30 +38,31 @@ Method | HTTP request | Description
 [**v3GetAnalysisStrings**](AnalysesCoreApi.md#v3GetAnalysisStrings) | **GET** /v3/analyses/{analysis_id}/functions/strings | List strings for an analysis.
 [**v3GetAnalysisStringsStatus**](AnalysesCoreApi.md#v3GetAnalysisStringsStatus) | **GET** /v3/analyses/{analysis_id}/functions/strings/status | Get the string-extraction status for an analysis.
 [**v3GetBinaryExportOperation**](AnalysesCoreApi.md#v3GetBinaryExportOperation) | **GET** /v3/operations/binary-export/{task_id} | Get a binary export operation
-[**v3GetDynamicExecutionArtifact**](AnalysesCoreApi.md#v3GetDynamicExecutionArtifact) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/artifacts/{sha256} | Download an artifact.
-[**v3GetDynamicExecutionLogsDownload**](AnalysesCoreApi.md#v3GetDynamicExecutionLogsDownload) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/logs/download | Download the execution logs archive.
-[**v3GetDynamicExecutionMemdump**](AnalysesCoreApi.md#v3GetDynamicExecutionMemdump) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/memdumps/{sha256} | Download a memory dump.
-[**v3GetDynamicExecutionOperation**](AnalysesCoreApi.md#v3GetDynamicExecutionOperation) | **GET** /v3/operations/dynamic-execution/{analysis_id} | Get a dynamic execution operation.
-[**v3GetDynamicExecutionPcap**](AnalysesCoreApi.md#v3GetDynamicExecutionPcap) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/pcap | Download the network capture.
-[**v3GetDynamicExecutionReport**](AnalysesCoreApi.md#v3GetDynamicExecutionReport) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/report | Get the dynamic execution report.
-[**v3GetDynamicExecutionScreenshot**](AnalysesCoreApi.md#v3GetDynamicExecutionScreenshot) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/screenshots/{index} | Download a screenshot.
-[**v3GetDynamicExecutionSummary**](AnalysesCoreApi.md#v3GetDynamicExecutionSummary) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/summary | Get the dynamic execution summary.
-[**v3GetDynamicExecutionSummaryOperation**](AnalysesCoreApi.md#v3GetDynamicExecutionSummaryOperation) | **GET** /v3/operations/dynamic-execution-summary/{analysis_id} | Get a dynamic execution summary operation.
-[**v3GetDynamicExecutionWiresharkKeys**](AnalysesCoreApi.md#v3GetDynamicExecutionWiresharkKeys) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/wireshark-keys | Download Wireshark TLS session keys.
+[**v3GetDynamicExecutionOperation**](AnalysesCoreApi.md#v3GetDynamicExecutionOperation) | **GET** /v3/operations/dynamic-execution/{run_id} | Get a dynamic execution operation.
+[**v3GetDynamicExecutionRun**](AnalysesCoreApi.md#v3GetDynamicExecutionRun) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id} | Get a dynamic execution run.
+[**v3GetDynamicExecutionRunArtifact**](AnalysesCoreApi.md#v3GetDynamicExecutionRunArtifact) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/artifacts/{sha256} | Download a run\&#39;s artifact.
+[**v3GetDynamicExecutionRunLogsDownload**](AnalysesCoreApi.md#v3GetDynamicExecutionRunLogsDownload) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/logs/download | Download a run\&#39;s execution logs archive.
+[**v3GetDynamicExecutionRunMemdump**](AnalysesCoreApi.md#v3GetDynamicExecutionRunMemdump) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/memdumps/{sha256} | Download a run\&#39;s memory dump.
+[**v3GetDynamicExecutionRunPcap**](AnalysesCoreApi.md#v3GetDynamicExecutionRunPcap) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/pcap | Download a run\&#39;s network capture.
+[**v3GetDynamicExecutionRunReport**](AnalysesCoreApi.md#v3GetDynamicExecutionRunReport) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/report | Get a run\&#39;s dynamic execution report.
+[**v3GetDynamicExecutionRunScreenshot**](AnalysesCoreApi.md#v3GetDynamicExecutionRunScreenshot) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/screenshots/{index} | Download a run\&#39;s screenshot.
+[**v3GetDynamicExecutionRunSummary**](AnalysesCoreApi.md#v3GetDynamicExecutionRunSummary) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/summary | Get a run\&#39;s dynamic execution summary.
+[**v3GetDynamicExecutionRunWiresharkKeys**](AnalysesCoreApi.md#v3GetDynamicExecutionRunWiresharkKeys) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/wireshark-keys | Download a run\&#39;s Wireshark TLS session keys.
+[**v3GetDynamicExecutionSummaryOperation**](AnalysesCoreApi.md#v3GetDynamicExecutionSummaryOperation) | **GET** /v3/operations/dynamic-execution-summary/{run_id} | Get a dynamic execution summary operation.
 [**v3GrantAnalysisAccess**](AnalysesCoreApi.md#v3GrantAnalysisAccess) | **POST** /v3/analyses/{analysis_id}/access-rules | Share an analysis with a user or team
 [**v3ListAnalyses**](AnalysesCoreApi.md#v3ListAnalyses) | **GET** /v3/analyses | List analyses
 [**v3ListAnalysisAccessRules**](AnalysesCoreApi.md#v3ListAnalysisAccessRules) | **GET** /v3/analyses/{analysis_id}/access-rules | List who an analysis is shared with
 [**v3ListAnalysisGlobals**](AnalysesCoreApi.md#v3ListAnalysisGlobals) | **GET** /v3/analyses/{analysis_id}/globals | List the global variables in an analysis.
 [**v3ListAnalysisOperations**](AnalysesCoreApi.md#v3ListAnalysisOperations) | **GET** /v3/analyses/{analysis_id}/operations | List the operations run on an analysis.
-[**v3ListDynamicExecutionScreenshots**](AnalysesCoreApi.md#v3ListDynamicExecutionScreenshots) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/screenshots | List the screenshots captured during execution.
+[**v3ListDynamicExecutionRunScreenshots**](AnalysesCoreApi.md#v3ListDynamicExecutionRunScreenshots) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/screenshots | List a run\&#39;s screenshots.
+[**v3ListDynamicExecutionRuns**](AnalysesCoreApi.md#v3ListDynamicExecutionRuns) | **GET** /v3/analyses/{analysis_id}/dynamic-execution/runs | List the dynamic execution runs.
 [**v3ListExampleAnalyses**](AnalysesCoreApi.md#v3ListExampleAnalyses) | **GET** /v3/analyses/examples | List example analyses
 [**v3ListGlobalFunctions**](AnalysesCoreApi.md#v3ListGlobalFunctions) | **GET** /v3/analyses/{analysis_id}/globals/{vaddr}/functions | List the functions referencing a global variable.
 [**v3LookupAnalysisByBinaryId**](AnalysesCoreApi.md#v3LookupAnalysisByBinaryId) | **GET** /v3/analyses/lookup/{binary_id} | Look up the most recent analysis for a binary.
 [**v3QueueBinaryExport**](AnalysesCoreApi.md#v3QueueBinaryExport) | **POST** /v3/analyses/{analysis_id}/binary-export | Queue a binary export
 [**v3RequeueAnalysis**](AnalysesCoreApi.md#v3RequeueAnalysis) | **POST** /v3/analyses/{analysis_id}/requeue | Requeue an analysis
 [**v3RevokeAnalysisAccess**](AnalysesCoreApi.md#v3RevokeAnalysisAccess) | **DELETE** /v3/analyses/{analysis_id}/access-rules | Stop sharing an analysis with a user or team
-[**v3RunDynamicExecution**](AnalysesCoreApi.md#v3RunDynamicExecution) | **POST** /v3/analyses/{analysis_id}/dynamic-execution:run | Trigger a dynamic execution run.
-[**v3RunDynamicExecutionSummary**](AnalysesCoreApi.md#v3RunDynamicExecutionSummary) | **POST** /v3/analyses/{analysis_id}/dynamic-execution/summary:run | Regenerate the dynamic execution summary.
+[**v3RunDynamicExecutionRunSummary**](AnalysesCoreApi.md#v3RunDynamicExecutionRunSummary) | **POST** /v3/analyses/{analysis_id}/dynamic-execution/runs/{run_id}/summary:run | Regenerate a run\&#39;s dynamic execution summary.
 [**v3SearchTags**](AnalysesCoreApi.md#v3SearchTags) | **GET** /v3/tags | Search tags
 [**v3UpdateAnalysis**](AnalysesCoreApi.md#v3UpdateAnalysis) | **PATCH** /v3/analyses/{analysis_id} | Update an analysis.
 [**v3UpdateAnalysisGlobal**](AnalysesCoreApi.md#v3UpdateAnalysisGlobal) | **PATCH** /v3/analyses/{analysis_id}/globals/{vaddr} | Edit a global variable.
@@ -72,7 +73,7 @@ Method | HTTP request | Description
 # **addUserStringToAnalysis**
 > any addUserStringToAnalysis(addUserStringInputBody)
 
-Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
 
 ### Example
 
@@ -127,6 +128,7 @@ Name | Type | Description  | Notes
 **201** | Created |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -176,7 +178,6 @@ const request: AnalysesCoreApiCreateAnalysisRequest = {
       },
       generateCapabilities: false,
       noCache: false,
-      advancedAnalysis: false,
       sandboxConfig: {
         enabled: false,
         commandLineArgs: "",
@@ -1006,71 +1007,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **putAnalysisStrings**
-> BaseResponse putAnalysisStrings(putAnalysisStringsRequest)
-
-Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiPutAnalysisStringsRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiPutAnalysisStringsRequest = {
-  
-  analysisId: 1,
-  
-  putAnalysisStringsRequest: {
-    strings: [
-      {
-        value: "value_example",
-        vaddr: 1,
-        source: "SYSTEM",
-      },
-    ],
-  },
-};
-
-const data = await apiInstance.putAnalysisStrings(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **putAnalysisStringsRequest** | **PutAnalysisStringsRequest**|  |
- **analysisId** | [**number**] |  | defaults to undefined
-
-
-### Return type
-
-**BaseResponse**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**201** | Successful Response |  -  |
-**422** | Invalid request parameters |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **requeueAnalysis**
 > BaseResponseCreated requeueAnalysis(reAnalysisForm)
 
@@ -1143,7 +1079,7 @@ Name | Type | Description  | Notes
 # **startAnalysisFunctionMatching**
 > StartMatchingOutputBody startAnalysisFunctionMatching(startMatchingForAnalysisInputBody)
 
-Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
 
 ### Example
 
@@ -1225,6 +1161,7 @@ Name | Type | Description  | Notes
 **400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
+**409** | Conflict |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -1518,6 +1455,74 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |
 **413** | Request Entity Too Large |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3CreateDynamicExecutionRun**
+> OperationDynamicExecutionMetadataDynamicExecutionResult v3CreateDynamicExecutionRun()
+
+Starts a new sandbox run of the analysis\'s binary, alongside any runs already in progress, and returns the run\'s operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3CreateDynamicExecutionRunRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3CreateDynamicExecutionRunRequest = {
+    // Analysis ID
+  analysisId: 1,
+  
+  runDynamicExecutionInputBody: {
+    archiveEntryPath: "archiveEntryPath_example",
+    archivePassword: "archivePassword_example",
+    archiveSha256Hash: "62ECB020842930cc01FFCCfeEe150AC32DcAEc8a83DDD7dBF7567C88195ffcea",
+    commandLineArgs: "commandLineArgs_example",
+    startMethod: "standard_user_process",
+    timeout: 120,
+  },
+};
+
+const data = await apiInstance.v3CreateDynamicExecutionRun(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **runDynamicExecutionInputBody** | **RunDynamicExecutionInputBody**|  |
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**OperationDynamicExecutionMetadataDynamicExecutionResult**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**400** | Bad Request |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -2237,196 +2242,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **v3GetDynamicExecutionArtifact**
-> void v3GetDynamicExecutionArtifact()
-
-Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3GetDynamicExecutionArtifactRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiV3GetDynamicExecutionArtifactRequest = {
-    // Analysis ID
-  analysisId: 1,
-    // SHA-256 hex digest of the artifact
-  sha256: "62ECB020842930cc01FFCCfeEe150AC32DcAEc8a83DDD7dBF7567C88195ffcea",
-    // Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. (optional)
-  filename: "filename_example",
-};
-
-const data = await apiInstance.v3GetDynamicExecutionArtifact(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] | Analysis ID | defaults to undefined
- **sha256** | [**string**] | SHA-256 hex digest of the artifact | defaults to undefined
- **filename** | [**string**] | Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. | (optional) defaults to undefined
-
-
-### Return type
-
-**void**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **v3GetDynamicExecutionLogsDownload**
-> void v3GetDynamicExecutionLogsDownload()
-
-Streams a ZIP archive of the sandbox logs collected during execution. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3GetDynamicExecutionLogsDownloadRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiV3GetDynamicExecutionLogsDownloadRequest = {
-    // Analysis ID
-  analysisId: 1,
-};
-
-const data = await apiInstance.v3GetDynamicExecutionLogsDownload(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] | Analysis ID | defaults to undefined
-
-
-### Return type
-
-**void**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **v3GetDynamicExecutionMemdump**
-> void v3GetDynamicExecutionMemdump()
-
-Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3GetDynamicExecutionMemdumpRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiV3GetDynamicExecutionMemdumpRequest = {
-    // Analysis ID
-  analysisId: 1,
-    // SHA-256 hex digest of the artifact
-  sha256: "62ECB020842930cc01FFCCfeEe150AC32DcAEc8a83DDD7dBF7567C88195ffcea",
-    // Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. (optional)
-  filename: "filename_example",
-};
-
-const data = await apiInstance.v3GetDynamicExecutionMemdump(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] | Analysis ID | defaults to undefined
- **sha256** | [**string**] | SHA-256 hex digest of the artifact | defaults to undefined
- **filename** | [**string**] | Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. | (optional) defaults to undefined
-
-
-### Return type
-
-**void**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
 # **v3GetDynamicExecutionOperation**
 > OperationDynamicExecutionMetadataDynamicExecutionResult v3GetDynamicExecutionOperation()
 
-Returns the current state of the most recently triggered dynamic execution run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+Returns the current state of a dynamic execution run. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
 ### Example
 
@@ -2439,8 +2258,8 @@ const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
 
 const request: AnalysesCoreApiV3GetDynamicExecutionOperationRequest = {
-    // Analysis ID
-  analysisId: 1,
+    // Dynamic execution run ID
+  runId: "run_id_example",
 };
 
 const data = await apiInstance.v3GetDynamicExecutionOperation(request);
@@ -2452,7 +2271,7 @@ console.log('API called successfully. Returned data:', data);
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
 
 
 ### Return type
@@ -2480,27 +2299,29 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **v3GetDynamicExecutionPcap**
-> void v3GetDynamicExecutionPcap()
+# **v3GetDynamicExecutionRun**
+> DynamicExecutionRun v3GetDynamicExecutionRun()
 
-Streams the pcap of the analysis VM\'s traffic. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+Returns the run\'s status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
 ### Example
 
 
 ```typescript
 import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3GetDynamicExecutionPcapRequest } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetDynamicExecutionRunRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
 
-const request: AnalysesCoreApiV3GetDynamicExecutionPcapRequest = {
+const request: AnalysesCoreApiV3GetDynamicExecutionRunRequest = {
     // Analysis ID
   analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
 };
 
-const data = await apiInstance.v3GetDynamicExecutionPcap(request);
+const data = await apiInstance.v3GetDynamicExecutionRun(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -2510,6 +2331,73 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
+
+
+### Return type
+
+**DynamicExecutionRun**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetDynamicExecutionRunArtifact**
+> void v3GetDynamicExecutionRunArtifact()
+
+Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the run\'s report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetDynamicExecutionRunArtifactRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetDynamicExecutionRunArtifactRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
+    // SHA-256 hex digest of the artifact
+  sha256: "62ECB020842930cc01FFCCfeEe150AC32DcAEc8a83DDD7dBF7567C88195ffcea",
+    // Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. (optional)
+  filename: "filename_example",
+};
+
+const data = await apiInstance.v3GetDynamicExecutionRunArtifact(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
+ **sha256** | [**string**] | SHA-256 hex digest of the artifact | defaults to undefined
+ **filename** | [**string**] | Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. | (optional) defaults to undefined
 
 
 ### Return type
@@ -2538,27 +2426,29 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **v3GetDynamicExecutionReport**
-> AnalysisReport v3GetDynamicExecutionReport()
+# **v3GetDynamicExecutionRunLogsDownload**
+> void v3GetDynamicExecutionRunLogsDownload()
 
-Returns the dynamic execution report JSON for the analysis. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+Streams a ZIP archive of the sandbox logs collected during the run. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
 ### Example
 
 
 ```typescript
 import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3GetDynamicExecutionReportRequest } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetDynamicExecutionRunLogsDownloadRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
 
-const request: AnalysesCoreApiV3GetDynamicExecutionReportRequest = {
+const request: AnalysesCoreApiV3GetDynamicExecutionRunLogsDownloadRequest = {
     // Analysis ID
   analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
 };
 
-const data = await apiInstance.v3GetDynamicExecutionReport(request);
+const data = await apiInstance.v3GetDynamicExecutionRunLogsDownload(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -2568,6 +2458,196 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetDynamicExecutionRunMemdump**
+> void v3GetDynamicExecutionRunMemdump()
+
+Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the run\'s report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetDynamicExecutionRunMemdumpRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetDynamicExecutionRunMemdumpRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
+    // SHA-256 hex digest of the artifact
+  sha256: "62ECB020842930cc01FFCCfeEe150AC32DcAEc8a83DDD7dBF7567C88195ffcea",
+    // Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. (optional)
+  filename: "filename_example",
+};
+
+const data = await apiInstance.v3GetDynamicExecutionRunMemdump(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
+ **sha256** | [**string**] | SHA-256 hex digest of the artifact | defaults to undefined
+ **filename** | [**string**] | Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted. | (optional) defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetDynamicExecutionRunPcap**
+> void v3GetDynamicExecutionRunPcap()
+
+Streams the pcap of the analysis VM\'s traffic during the run. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetDynamicExecutionRunPcapRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetDynamicExecutionRunPcapRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
+};
+
+const data = await apiInstance.v3GetDynamicExecutionRunPcap(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetDynamicExecutionRunReport**
+> AnalysisReport v3GetDynamicExecutionRunReport()
+
+Returns the run\'s dynamic execution report JSON. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetDynamicExecutionRunReportRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetDynamicExecutionRunReportRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
+};
+
+const data = await apiInstance.v3GetDynamicExecutionRunReport(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
 
 
 ### Return type
@@ -2596,29 +2676,31 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **v3GetDynamicExecutionScreenshot**
-> void v3GetDynamicExecutionScreenshot()
+# **v3GetDynamicExecutionRunScreenshot**
+> void v3GetDynamicExecutionRunScreenshot()
 
-Streams one screenshot, 1-indexed as listed by the screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+Streams one screenshot, 1-indexed as listed by the run\'s screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
 ### Example
 
 
 ```typescript
 import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3GetDynamicExecutionScreenshotRequest } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetDynamicExecutionRunScreenshotRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
 
-const request: AnalysesCoreApiV3GetDynamicExecutionScreenshotRequest = {
+const request: AnalysesCoreApiV3GetDynamicExecutionRunScreenshotRequest = {
     // Analysis ID
   analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
     // Index of the screenshot, as listed by the screenshots endpoint
   index: 1,
 };
 
-const data = await apiInstance.v3GetDynamicExecutionScreenshot(request);
+const data = await apiInstance.v3GetDynamicExecutionRunScreenshot(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -2628,6 +2710,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
  **index** | [**number**] | Index of the screenshot, as listed by the screenshots endpoint | defaults to undefined
 
 
@@ -2657,8 +2740,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **v3GetDynamicExecutionSummary**
-> DynamicExecutionSummary v3GetDynamicExecutionSummary()
+# **v3GetDynamicExecutionRunSummary**
+> DynamicExecutionSummary v3GetDynamicExecutionRunSummary()
 
 Returns the LLM-generated Markdown summary of the run. Requires the run to be COMPLETED. Returns 404 if no summary has been generated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
@@ -2667,17 +2750,19 @@ Returns the LLM-generated Markdown summary of the run. Requires the run to be CO
 
 ```typescript
 import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3GetDynamicExecutionSummaryRequest } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetDynamicExecutionRunSummaryRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
 
-const request: AnalysesCoreApiV3GetDynamicExecutionSummaryRequest = {
+const request: AnalysesCoreApiV3GetDynamicExecutionRunSummaryRequest = {
     // Analysis ID
   analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
 };
 
-const data = await apiInstance.v3GetDynamicExecutionSummary(request);
+const data = await apiInstance.v3GetDynamicExecutionRunSummary(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -2687,6 +2772,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
 
 
 ### Return type
@@ -2715,27 +2801,29 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **v3GetDynamicExecutionSummaryOperation**
-> OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult v3GetDynamicExecutionSummaryOperation()
+# **v3GetDynamicExecutionRunWiresharkKeys**
+> void v3GetDynamicExecutionRunWiresharkKeys()
 
-Returns the state of the most recent summary attempt for this analysis, whether made by its run or by a regenerate.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the run\'s pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
 ### Example
 
 
 ```typescript
 import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3GetDynamicExecutionSummaryOperationRequest } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetDynamicExecutionRunWiresharkKeysRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
 
-const request: AnalysesCoreApiV3GetDynamicExecutionSummaryOperationRequest = {
+const request: AnalysesCoreApiV3GetDynamicExecutionRunWiresharkKeysRequest = {
     // Analysis ID
   analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
 };
 
-const data = await apiInstance.v3GetDynamicExecutionSummaryOperation(request);
+const data = await apiInstance.v3GetDynamicExecutionRunWiresharkKeys(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -2745,63 +2833,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
-
-
-### Return type
-
-**OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **v3GetDynamicExecutionWiresharkKeys**
-> void v3GetDynamicExecutionWiresharkKeys()
-
-Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3GetDynamicExecutionWiresharkKeysRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiV3GetDynamicExecutionWiresharkKeysRequest = {
-    // Analysis ID
-  analysisId: 1,
-};
-
-const data = await apiInstance.v3GetDynamicExecutionWiresharkKeys(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
 
 
 ### Return type
@@ -2825,6 +2857,63 @@ Name | Type | Description  | Notes
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3GetDynamicExecutionSummaryOperation**
+> OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult v3GetDynamicExecutionSummaryOperation()
+
+Returns the state of a run\'s most recent summary attempt, whether made by the run itself or by a regenerate. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3GetDynamicExecutionSummaryOperationRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3GetDynamicExecutionSummaryOperationRequest = {
+    // Dynamic execution run ID
+  runId: "run_id_example",
+};
+
+const data = await apiInstance.v3GetDynamicExecutionSummaryOperation(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
+
+
+### Return type
+
+**OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -3145,7 +3234,7 @@ Name | Type | Description  | Notes
 # **v3ListAnalysisOperations**
 > AnalysisOperationsOutputBody v3ListAnalysisOperations()
 
-Returns the analysis\' `static-analysis` operation, followed by the latest run of each other operation started on its binary: the binary agents, the script-agent scans and dynamic execution. The `static-analysis` operation is always included, even when no other operations have run. Each entry\'s `name` is the operation\'s resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+Returns the analysis\' `static-analysis` operation, followed by the latest run of each other operation started on its binary (the binary agents and the script-agent scans), then one `dynamic-execution` operation per sandbox run of the analysis, newest first. The `static-analysis` operation is always included, even when no other operations have run. Each entry\'s `name` is the operation\'s resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
 
 ### Example
 
@@ -3199,27 +3288,29 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **v3ListDynamicExecutionScreenshots**
-> ScreenshotsIndex v3ListDynamicExecutionScreenshots()
+# **v3ListDynamicExecutionRunScreenshots**
+> ScreenshotsIndex v3ListDynamicExecutionRunScreenshots()
 
-Returns the screenshots captured from the analysis VM, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+Returns the screenshots captured from the analysis VM during the run, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
 ### Example
 
 
 ```typescript
 import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3ListDynamicExecutionScreenshotsRequest } from '@revengai/sdk';
+import type { AnalysesCoreApiV3ListDynamicExecutionRunScreenshotsRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
 
-const request: AnalysesCoreApiV3ListDynamicExecutionScreenshotsRequest = {
+const request: AnalysesCoreApiV3ListDynamicExecutionRunScreenshotsRequest = {
     // Analysis ID
   analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
 };
 
-const data = await apiInstance.v3ListDynamicExecutionScreenshots(request);
+const data = await apiInstance.v3ListDynamicExecutionRunScreenshots(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -3229,6 +3320,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
 
 
 ### Return type
@@ -3252,6 +3344,63 @@ Name | Type | Description  | Notes
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3ListDynamicExecutionRuns**
+> ListDynamicExecutionRunsOutputBody v3ListDynamicExecutionRuns()
+
+Returns every dynamic execution run of the analysis, newest first, with its status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
+import type { AnalysesCoreApiV3ListDynamicExecutionRunsRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesCoreApi(configuration);
+
+const request: AnalysesCoreApiV3ListDynamicExecutionRunsRequest = {
+    // Analysis ID
+  analysisId: 1,
+};
+
+const data = await apiInstance.v3ListDynamicExecutionRuns(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+
+
+### Return type
+
+**ListDynamicExecutionRunsOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
 
@@ -3616,96 +3765,29 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
-# **v3RunDynamicExecution**
-> OperationDynamicExecutionMetadataDynamicExecutionResult v3RunDynamicExecution()
+# **v3RunDynamicExecutionRunSummary**
+> OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult v3RunDynamicExecutionRunSummary()
 
-Submits the analysis\'s binary to the sandbox and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-
-### Example
-
-
-```typescript
-import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3RunDynamicExecutionRequest } from '@revengai/sdk';
-
-const configuration = createConfiguration();
-const apiInstance = new AnalysesCoreApi(configuration);
-
-const request: AnalysesCoreApiV3RunDynamicExecutionRequest = {
-    // Analysis ID
-  analysisId: 1,
-  
-  runDynamicExecutionInputBody: {
-    archiveEntryPath: "archiveEntryPath_example",
-    archivePassword: "archivePassword_example",
-    archiveSha256Hash: "62ECB020842930cc01FFCCfeEe150AC32DcAEc8a83DDD7dBF7567C88195ffcea",
-    commandLineArgs: "commandLineArgs_example",
-    startMethod: "standard_user_process",
-    timeout: 120,
-  },
-};
-
-const data = await apiInstance.v3RunDynamicExecution(request);
-console.log('API called successfully. Returned data:', data);
-```
-
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **runDynamicExecutionInputBody** | **RunDynamicExecutionInputBody**|  |
- **analysisId** | [**number**] | Analysis ID | defaults to undefined
-
-
-### Return type
-
-**OperationDynamicExecutionMetadataDynamicExecutionResult**
-
-### Authorization
-
-[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-**400** | Bad Request |  -  |
-**403** | Forbidden |  -  |
-**404** | Not Found |  -  |
-**409** | Conflict |  -  |
-**422** | Unprocessable Entity |  -  |
-**500** | Internal Server Error |  -  |
-
-[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
-
-# **v3RunDynamicExecutionSummary**
-> OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult v3RunDynamicExecutionSummary()
-
-Starts a new LLM summary of the analysis\'s completed run and returns the operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+Starts a new LLM summary of the completed run and returns the run\'s summary operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
 
 ### Example
 
 
 ```typescript
 import { createConfiguration, AnalysesCoreApi } from '@revengai/sdk';
-import type { AnalysesCoreApiV3RunDynamicExecutionSummaryRequest } from '@revengai/sdk';
+import type { AnalysesCoreApiV3RunDynamicExecutionRunSummaryRequest } from '@revengai/sdk';
 
 const configuration = createConfiguration();
 const apiInstance = new AnalysesCoreApi(configuration);
 
-const request: AnalysesCoreApiV3RunDynamicExecutionSummaryRequest = {
+const request: AnalysesCoreApiV3RunDynamicExecutionRunSummaryRequest = {
     // Analysis ID
   analysisId: 1,
+    // Dynamic execution run ID
+  runId: "62ECB020-8429-30cc-01FF-CCfeEe150AC3",
 };
 
-const data = await apiInstance.v3RunDynamicExecutionSummary(request);
+const data = await apiInstance.v3RunDynamicExecutionRunSummary(request);
 console.log('API called successfully. Returned data:', data);
 ```
 
@@ -3715,6 +3797,7 @@ console.log('API called successfully. Returned data:', data);
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **runId** | [**string**] | Dynamic execution run ID | defaults to undefined
 
 
 ### Return type
@@ -3735,7 +3818,6 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
-**400** | Bad Request |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **409** | Conflict |  -  |
@@ -3872,7 +3954,7 @@ Name | Type | Description  | Notes
 # **v3UpdateAnalysisGlobal**
 > GlobalVariable v3UpdateAnalysisGlobal(updateAnalysisGlobalInputBody)
 
-Renames a global, assigns it an analysis data type, or both. Each field the request sets stamps its own provenance `USER`, which a later re-extraction carries forward instead of overwriting. A name another global in the analysis already holds is rejected.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ALREADY_EXISTS`](/errors/ALREADY_EXISTS) — Already Exists
+Renames a global, assigns it an analysis data type, or both. Each field the request sets stamps its own provenance `USER`, which a later re-extraction carries forward instead of overwriting. A name another global in the analysis already holds is rejected. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ALREADY_EXISTS`](/errors/ALREADY_EXISTS) — Already Exists - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
 
 ### Example
 

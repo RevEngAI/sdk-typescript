@@ -9,8 +9,8 @@ import {SecurityAuthentication} from '../auth/auth';
 
 
 import { APIError } from '../models/APIError';
+import { CurrentUser } from '../models/CurrentUser';
 import { Permissions } from '../models/Permissions';
-import { User } from '../models/User';
 
 /**
  * no description
@@ -18,7 +18,7 @@ import { User } from '../models/User';
 export class IAMUsersApiRequestFactory extends BaseAPIRequestFactory {
 
     /**
-     * Returns the authenticated user\'s own information.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns the authenticated user\'s own information, and how they sign in.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get current user
      */
     public async getMe(_options?: Configuration): Promise<RequestContext> {
@@ -98,13 +98,13 @@ export class IAMUsersApiResponseProcessor {
      * @params response Response returned by the server for a request to getMe
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getMeWithHttpInfo(response: ResponseContext): Promise<HttpInfo<User >> {
+     public async getMeWithHttpInfo(response: ResponseContext): Promise<HttpInfo<CurrentUser >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: User = ObjectSerializer.deserialize(
+            const body: CurrentUser = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "User", ""
-            ) as User;
+                "CurrentUser", ""
+            ) as CurrentUser;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
         if (isCodeInRange("404", response.httpStatusCode)) {
@@ -124,10 +124,10 @@ export class IAMUsersApiResponseProcessor {
 
         // Work around for missing responses in specification, e.g. for petstore.yaml
         if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: User = ObjectSerializer.deserialize(
+            const body: CurrentUser = ObjectSerializer.deserialize(
                 ObjectSerializer.parse(await response.body.text(), contentType),
-                "User", ""
-            ) as User;
+                "CurrentUser", ""
+            ) as CurrentUser;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

@@ -23,6 +23,7 @@ import { GetBinaryExternalsOutputBody } from '../models/GetBinaryExternalsOutput
 import { GetDieInfoOutputBody } from '../models/GetDieInfoOutputBody';
 import { GetRelatedBinariesOutputBody } from '../models/GetRelatedBinariesOutputBody';
 import { GetRelatedStatusOutputBody } from '../models/GetRelatedStatusOutputBody';
+import { ListMalwareFamiliesOutputBody } from '../models/ListMalwareFamiliesOutputBody';
 import { SearchBinariesOutputBody } from '../models/SearchBinariesOutputBody';
 import { UploadOutputBody } from '../models/UploadOutputBody';
 
@@ -662,6 +663,53 @@ export class BinariesApiRequestFactory extends BaseAPIRequestFactory {
         // Make Request Context
         const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
         requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Returns the malware family of each given binary that belongs to the RevEng.AI malware corpus, with every corpus binary in that family. Family names are lowercase without punctuation, with known aliases merged. Binaries outside the corpus or without a family are ignored.
+     * Look up the malware families of binaries in the RevEng.AI malware corpus.
+     * @param binaryIds Binaries to look up, typically those a function-matching run found in the malware corpus.
+     */
+    public async v3ListMalwareFamilies(binaryIds: Array<number>, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'binaryIds' is not null or undefined
+        if (binaryIds === null || binaryIds === undefined) {
+            throw new RequiredError("BinariesApi", "v3ListMalwareFamilies", "binaryIds");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/malware-families';
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+        // Query Params
+        if (binaryIds !== undefined) {
+            requestContext.setQueryParam("binary_ids", ObjectSerializer.serialize(binaryIds, "Array<number>", "int64"));
+        }
 
 
         let authMethod: SecurityAuthentication | undefined;
@@ -1553,6 +1601,42 @@ export class BinariesApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "GetRelatedStatusOutputBody", ""
             ) as GetRelatedStatusOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3ListMalwareFamilies
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3ListMalwareFamiliesWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListMalwareFamiliesOutputBody >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: ListMalwareFamiliesOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListMalwareFamiliesOutputBody", ""
+            ) as ListMalwareFamiliesOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("0", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: ListMalwareFamiliesOutputBody = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "ListMalwareFamiliesOutputBody", ""
+            ) as ListMalwareFamiliesOutputBody;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

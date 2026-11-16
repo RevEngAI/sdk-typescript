@@ -60,10 +60,7 @@ import { AnalysisReport } from '../models/AnalysisReport';
 import { AnalysisRequirement } from '../models/AnalysisRequirement';
 import { AnalysisScope } from '../models/AnalysisScope';
 import { AnalysisStringFunction } from '../models/AnalysisStringFunction';
-import { AnalysisStringInput } from '../models/AnalysisStringInput';
 import { AnalysisStringItem } from '../models/AnalysisStringItem';
-import { AnalysisStringsResponse } from '../models/AnalysisStringsResponse';
-import { AnalysisStringsStatusResponse } from '../models/AnalysisStringsStatusResponse';
 import { AnalysisTagBody } from '../models/AnalysisTagBody';
 import { AnalysisTags } from '../models/AnalysisTags';
 import { AnalysisTagsOutputBody } from '../models/AnalysisTagsOutputBody';
@@ -76,8 +73,6 @@ import { ApiKeyBody } from '../models/ApiKeyBody';
 import { AppApiRestV2AgentSchemaCapability } from '../models/AppApiRestV2AgentSchemaCapability';
 import { AppApiRestV2AnalysesEnumsOrderBy } from '../models/AppApiRestV2AnalysesEnumsOrderBy';
 import { AppApiRestV2CollectionsEnumsOrderBy } from '../models/AppApiRestV2CollectionsEnumsOrderBy';
-import { AppApiRestV2FunctionsResponsesFunction } from '../models/AppApiRestV2FunctionsResponsesFunction';
-import { AppApiRestV2FunctionsTypesFunction } from '../models/AppApiRestV2FunctionsTypesFunction';
 import { AppApiRestV2InfoTypesCapability } from '../models/AppApiRestV2InfoTypesCapability';
 import { ArchiveContentEntry } from '../models/ArchiveContentEntry';
 import { ArrayDataType } from '../models/ArrayDataType';
@@ -97,8 +92,6 @@ import { BaseResponseAnalysisDetailResponse } from '../models/BaseResponseAnalys
 import { BaseResponseAnalysisFunctionMapping } from '../models/BaseResponseAnalysisFunctionMapping';
 import { BaseResponseAnalysisFunctions } from '../models/BaseResponseAnalysisFunctions';
 import { BaseResponseAnalysisFunctionsList } from '../models/BaseResponseAnalysisFunctionsList';
-import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
-import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseResponseAnalysisStringsStatusResponse';
 import { BaseResponseAnalysisTags } from '../models/BaseResponseAnalysisTags';
 import { BaseResponseAnalysisUpdateTagsResponse } from '../models/BaseResponseAnalysisUpdateTagsResponse';
 import { BaseResponseBasic } from '../models/BaseResponseBasic';
@@ -123,7 +116,6 @@ import { BaseResponseDict } from '../models/BaseResponseDict';
 import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
 import { BaseResponseFunctionSearchResponse } from '../models/BaseResponseFunctionSearchResponse';
-import { BaseResponseFunctionStringsResponse } from '../models/BaseResponseFunctionStringsResponse';
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
 import { BaseResponseGetPublicUserResponse } from '../models/BaseResponseGetPublicUserResponse';
 import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
@@ -156,7 +148,6 @@ import { BatchRenameInputBody } from '../models/BatchRenameInputBody';
 import { BatchRenameItem } from '../models/BatchRenameItem';
 import { BatchRenameOutputBody } from '../models/BatchRenameOutputBody';
 import { BinariesRelatedStatusResponse } from '../models/BinariesRelatedStatusResponse';
-import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { Binary } from '../models/Binary';
 import { BinaryAdditionalDetailsDataResponse } from '../models/BinaryAdditionalDetailsDataResponse';
 import { BinaryAdditionalResponse } from '../models/BinaryAdditionalResponse';
@@ -196,6 +187,7 @@ import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
 import { CapabilitiesResult } from '../models/CapabilitiesResult';
 import { Capability } from '../models/Capability';
 import { CapabilityEntry } from '../models/CapabilityEntry';
+import { CapabilityImplementation } from '../models/CapabilityImplementation';
 import { ChildBinariesResponse } from '../models/ChildBinariesResponse';
 import { CodeSignatureModel } from '../models/CodeSignatureModel';
 import { CollectionBinariesUpdateRequest } from '../models/CollectionBinariesUpdateRequest';
@@ -272,6 +264,7 @@ import { CryptoFinding } from '../models/CryptoFinding';
 import { CryptoScanMetadata } from '../models/CryptoScanMetadata';
 import { CryptoScanResult } from '../models/CryptoScanResult';
 import { CryptoVerification } from '../models/CryptoVerification';
+import { CurrentUser } from '../models/CurrentUser';
 import { DailyAnalysesCountOutputBody } from '../models/DailyAnalysesCountOutputBody';
 import { DailyCountBody } from '../models/DailyCountBody';
 import { DataTypeEntry } from '../models/DataTypeEntry';
@@ -286,6 +279,7 @@ import { DecompilationCommentContext } from '../models/DecompilationCommentConte
 import { DecompilationData } from '../models/DecompilationData';
 import { DecompilerSummary } from '../models/DecompilerSummary';
 import { DecompilerSummaryEvidence } from '../models/DecompilerSummaryEvidence';
+import { DeleteMeBody } from '../models/DeleteMeBody';
 import { DieMatch } from '../models/DieMatch';
 import { DisassemblyOutputBody } from '../models/DisassemblyOutputBody';
 import { DisassemblySummaryEvidence } from '../models/DisassemblySummaryEvidence';
@@ -294,6 +288,8 @@ import { DnsQuery } from '../models/DnsQuery';
 import { DrakvufFileMetadata } from '../models/DrakvufFileMetadata';
 import { DynamicExecutionMetadata } from '../models/DynamicExecutionMetadata';
 import { DynamicExecutionResult } from '../models/DynamicExecutionResult';
+import { DynamicExecutionRun } from '../models/DynamicExecutionRun';
+import { DynamicExecutionRunConfig } from '../models/DynamicExecutionRunConfig';
 import { DynamicExecutionStatus } from '../models/DynamicExecutionStatus';
 import { DynamicExecutionSummary } from '../models/DynamicExecutionSummary';
 import { DynamicExecutionSummaryMetadata } from '../models/DynamicExecutionSummaryMetadata';
@@ -363,6 +359,7 @@ import { ExtractedBinary } from '../models/ExtractedBinary';
 import { ExtractedURL } from '../models/ExtractedURL';
 import { ExtractionFailure } from '../models/ExtractionFailure';
 import { FeedbackOutputBody } from '../models/FeedbackOutputBody';
+import { FeedbackSubmission } from '../models/FeedbackSubmission';
 import { FileActivityEntry } from '../models/FileActivityEntry';
 import { FileFormat } from '../models/FileFormat';
 import { FileHashes } from '../models/FileHashes';
@@ -382,6 +379,7 @@ import { FindingBody } from '../models/FindingBody';
 import { FindingCountsBody } from '../models/FindingCountsBody';
 import { FindingEvidenceInner } from '../models/FindingEvidenceInner';
 import { FormFile } from '../models/FormFile';
+import { Function } from '../models/Function';
 import { FunctionBlockDestinationResponse } from '../models/FunctionBlockDestinationResponse';
 import { FunctionBlockResponse } from '../models/FunctionBlockResponse';
 import { FunctionBlocksResponse } from '../models/FunctionBlocksResponse';
@@ -408,9 +406,7 @@ import { FunctionSignatureVersion } from '../models/FunctionSignatureVersion';
 import { FunctionSimilarity } from '../models/FunctionSimilarity';
 import { FunctionSimilarityEvidence } from '../models/FunctionSimilarityEvidence';
 import { FunctionSourceType } from '../models/FunctionSourceType';
-import { FunctionString } from '../models/FunctionString';
 import { FunctionStringItem } from '../models/FunctionStringItem';
-import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
 import { FunctionTypeDefinition } from '../models/FunctionTypeDefinition';
 import { FunctionUsage } from '../models/FunctionUsage';
 import { FunctionsDetailResponse } from '../models/FunctionsDetailResponse';
@@ -426,6 +422,7 @@ import { GetAnalysisStringsStatusOutputBody } from '../models/GetAnalysisStrings
 import { GetBinaryExternalsOutputBody } from '../models/GetBinaryExternalsOutputBody';
 import { GetCollectionOutputBody } from '../models/GetCollectionOutputBody';
 import { GetConfigOutputBody } from '../models/GetConfigOutputBody';
+import { GetCreditEstimatesOutputBody } from '../models/GetCreditEstimatesOutputBody';
 import { GetDataTypeHistoryBody } from '../models/GetDataTypeHistoryBody';
 import { GetDieInfoOutputBody } from '../models/GetDieInfoOutputBody';
 import { GetFindingOutputBody } from '../models/GetFindingOutputBody';
@@ -485,6 +482,7 @@ import { ListCollectionResults } from '../models/ListCollectionResults';
 import { ListCollectionsOutputBody } from '../models/ListCollectionsOutputBody';
 import { ListConversationsOutputBody } from '../models/ListConversationsOutputBody';
 import { ListDataTypeFunctionsBody } from '../models/ListDataTypeFunctionsBody';
+import { ListDynamicExecutionRunsOutputBody } from '../models/ListDynamicExecutionRunsOutputBody';
 import { ListExampleAnalysesOutputBody } from '../models/ListExampleAnalysesOutputBody';
 import { ListFindingsOutputBody } from '../models/ListFindingsOutputBody';
 import { ListFunctionGlobalsOutputBody } from '../models/ListFunctionGlobalsOutputBody';
@@ -493,6 +491,7 @@ import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutp
 import { ListGlobalFunctionsOutputBody } from '../models/ListGlobalFunctionsOutputBody';
 import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
 import { ListInvestigationsOutputBody } from '../models/ListInvestigationsOutputBody';
+import { ListMalwareFamiliesOutputBody } from '../models/ListMalwareFamiliesOutputBody';
 import { ListOperationPrerequisitesOutputBody } from '../models/ListOperationPrerequisitesOutputBody';
 import { ListPrincipalsOutputBody } from '../models/ListPrincipalsOutputBody';
 import { ListPublicUsersOutputBody } from '../models/ListPublicUsersOutputBody';
@@ -504,6 +503,7 @@ import { LocationOutputBody } from '../models/LocationOutputBody';
 import { Logs } from '../models/Logs';
 import { LookupAnalysisByBinaryIDOutputBody } from '../models/LookupAnalysisByBinaryIDOutputBody';
 import { MITRETechnique } from '../models/MITRETechnique';
+import { MalwareFamily } from '../models/MalwareFamily';
 import { MatchFilters } from '../models/MatchFilters';
 import { MatchedFunction } from '../models/MatchedFunction';
 import { MemdumpEntry } from '../models/MemdumpEntry';
@@ -533,6 +533,7 @@ import { NetworkingVerification } from '../models/NetworkingVerification';
 import { OIDCCallbackInputBody } from '../models/OIDCCallbackInputBody';
 import { OperandXref } from '../models/OperandXref';
 import { OperationBinaryExportMetadataBinaryExportResult } from '../models/OperationBinaryExportMetadataBinaryExportResult';
+import { OperationCostBody } from '../models/OperationCostBody';
 import { OperationCreateMetadataCreateResult } from '../models/OperationCreateMetadataCreateResult';
 import { OperationCryptoExplainMetadataCryptoExplainResult } from '../models/OperationCryptoExplainMetadataCryptoExplainResult';
 import { OperationCryptoScanMetadataCryptoScanResult } from '../models/OperationCryptoScanMetadataCryptoScanResult';
@@ -591,11 +592,11 @@ import { ProseEvent } from '../models/ProseEvent';
 import { ProtocolsAgentResponse } from '../models/ProtocolsAgentResponse';
 import { PublicTeamBody } from '../models/PublicTeamBody';
 import { PublicUserBody } from '../models/PublicUserBody';
-import { PutAnalysisStringsRequest } from '../models/PutAnalysisStringsRequest';
 import { QueuedWorkflowTaskResponse } from '../models/QueuedWorkflowTaskResponse';
 import { RatingOutputBody } from '../models/RatingOutputBody';
 import { ReAnalysisForm } from '../models/ReAnalysisForm';
 import { Recent } from '../models/Recent';
+import { RecordedFeedback } from '../models/RecordedFeedback';
 import { ReferencedConstant } from '../models/ReferencedConstant';
 import { ReferencedConstantEvidence } from '../models/ReferencedConstantEvidence';
 import { RefreshBody } from '../models/RefreshBody';
@@ -682,6 +683,7 @@ import { SingleCodeCertificateModel } from '../models/SingleCodeCertificateModel
 import { SingleCodeSignatureModel } from '../models/SingleCodeSignatureModel';
 import { SinglePDBEntryModel } from '../models/SinglePDBEntryModel';
 import { SingleSectionModel } from '../models/SingleSectionModel';
+import { SizeBucketBody } from '../models/SizeBucketBody';
 import { SoftwareTypeCountsBody } from '../models/SoftwareTypeCountsBody';
 import { SourceDeltaEvent } from '../models/SourceDeltaEvent';
 import { SourceResetEvent } from '../models/SourceResetEvent';
@@ -718,10 +720,8 @@ import { StepFinishedData } from '../models/StepFinishedData';
 import { StepStartedData } from '../models/StepStartedData';
 import { StreamAiDecompilation200ResponseInner } from '../models/StreamAiDecompilation200ResponseInner';
 import { StreamEvents200ResponseInner } from '../models/StreamEvents200ResponseInner';
-import { StringFunctions } from '../models/StringFunctions';
 import { StringMatch } from '../models/StringMatch';
 import { StringMatchEvidence } from '../models/StringMatchEvidence';
-import { StringSource } from '../models/StringSource';
 import { StructDataType } from '../models/StructDataType';
 import { StructDefinition } from '../models/StructDefinition';
 import { Subject } from '../models/Subject';
@@ -1726,7 +1726,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the capabilities agent, which attributes behavioural capabilities to individual functions, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the capabilities agent, which attributes behavioural capabilities to individual functions, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the capabilities agent.
      * @param analysisId Analysis ID
      */
@@ -1737,7 +1737,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the capabilities agent, which attributes behavioural capabilities to individual functions, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the capabilities agent, which attributes behavioural capabilities to individual functions, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the capabilities agent.
      * @param analysisId Analysis ID
      */
@@ -1770,7 +1770,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that name-matches the analysis\' functions and their callees against known crypto-library APIs, and returns the operation to poll for its outcome. Purely name-based — never triggers AI decompilation, so it costs no credits and runs in seconds. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts an agent that name-matches the analysis\' functions and their callees against known crypto-library APIs, and returns the operation to poll for its outcome. Purely name-based — never triggers AI decompilation, so it costs no credits and runs in seconds. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the crypto-scan agent.
      * @param analysisId Analysis ID
      * @param triggerCryptoScanInputBody
@@ -1782,7 +1782,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that name-matches the analysis\' functions and their callees against known crypto-library APIs, and returns the operation to poll for its outcome. Purely name-based — never triggers AI decompilation, so it costs no credits and runs in seconds. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts an agent that name-matches the analysis\' functions and their callees against known crypto-library APIs, and returns the operation to poll for its outcome. Purely name-based — never triggers AI decompilation, so it costs no credits and runs in seconds. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the crypto-scan agent.
      * @param analysisId Analysis ID
      * @param triggerCryptoScanInputBody
@@ -1794,7 +1794,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the cryptography agent, which identifies cryptographic operations in the binary and reports its findings, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the cryptography agent, which identifies cryptographic operations in the binary and reports its findings, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the cryptography agent.
      * @param analysisId Analysis ID
      */
@@ -1805,7 +1805,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the cryptography agent, which identifies cryptographic operations in the binary and reports its findings, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the cryptography agent, which identifies cryptographic operations in the binary and reports its findings, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the cryptography agent.
      * @param analysisId Analysis ID
      */
@@ -1840,7 +1840,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that name-matches the analysis\' functions and their callees against known code-execution APIs, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts an agent that name-matches the analysis\' functions and their callees against known code-execution APIs, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the execution-scan agent.
      * @param analysisId Analysis ID
      * @param triggerExecutionScanInputBody
@@ -1852,7 +1852,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that name-matches the analysis\' functions and their callees against known code-execution APIs, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts an agent that name-matches the analysis\' functions and their callees against known code-execution APIs, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the execution-scan agent.
      * @param analysisId Analysis ID
      * @param triggerExecutionScanInputBody
@@ -1888,7 +1888,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that name-matches the analysis\' functions and their callees against known filesystem/system APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts an agent that name-matches the analysis\' functions and their callees against known filesystem/system APIs, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the filesystem-scan agent.
      * @param analysisId Analysis ID
      * @param triggerFilesystemScanInputBody
@@ -1900,7 +1900,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that name-matches the analysis\' functions and their callees against known filesystem/system APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts an agent that name-matches the analysis\' functions and their callees against known filesystem/system APIs, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the filesystem-scan agent.
      * @param analysisId Analysis ID
      * @param triggerFilesystemScanInputBody
@@ -1936,7 +1936,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that name-matches the analysis\' functions and their callees against known networking APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts an agent that name-matches the analysis\' functions and their callees against known networking APIs, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the networking-scan agent.
      * @param analysisId Analysis ID
      * @param triggerNetworkingScanInputBody
@@ -1948,7 +1948,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that name-matches the analysis\' functions and their callees against known networking APIs, and returns the operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts an agent that name-matches the analysis\' functions and their callees against known networking APIs, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the networking-scan agent.
      * @param analysisId Analysis ID
      * @param triggerNetworkingScanInputBody
@@ -1960,7 +1960,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the protocols agent, which identifies the network and data protocols the binary implements, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the protocols agent, which identifies the network and data protocols the binary implements, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the protocols agent.
      * @param analysisId Analysis ID
      */
@@ -1971,7 +1971,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the protocols agent, which identifies the network and data protocols the binary implements, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the protocols agent, which identifies the network and data protocols the binary implements, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the protocols agent.
      * @param analysisId Analysis ID
      */
@@ -1982,7 +1982,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the remediation agent, which generates YARA, Snort and STIX detection rules for the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the remediation agent, which generates YARA, Snort and STIX detection rules for the binary, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the remediation agent.
      * @param analysisId Analysis ID
      */
@@ -1993,7 +1993,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the remediation agent, which generates YARA, Snort and STIX detection rules for the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the remediation agent, which generates YARA, Snort and STIX detection rules for the binary, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the remediation agent.
      * @param analysisId Analysis ID
      */
@@ -2004,7 +2004,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the report-analysis agent, which produces a combined threat report — summary, software type, attack flow, indicators of compromise, MITRE ATT&CK techniques and a YARA rule — and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the report-analysis agent, which produces a combined threat report — summary, software type, attack flow, indicators of compromise, MITRE ATT&CK techniques and a YARA rule — and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the report-analysis agent.
      * @param analysisId Analysis ID
      */
@@ -2015,7 +2015,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the report-analysis agent, which produces a combined threat report — summary, software type, attack flow, indicators of compromise, MITRE ATT&CK techniques and a YARA rule — and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the report-analysis agent, which produces a combined threat report — summary, software type, attack flow, indicators of compromise, MITRE ATT&CK techniques and a YARA rule — and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the report-analysis agent.
      * @param analysisId Analysis ID
      */
@@ -2026,7 +2026,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the secrets agent, which finds credentials and other hardcoded secrets in the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the secrets agent, which finds credentials and other hardcoded secrets in the binary, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the secrets agent.
      * @param analysisId Analysis ID
      */
@@ -2037,7 +2037,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the secrets agent, which finds credentials and other hardcoded secrets in the binary, and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the secrets agent, which finds credentials and other hardcoded secrets in the binary, and returns the operation to poll for its outcome. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the secrets agent.
      * @param analysisId Analysis ID
      */
@@ -2048,7 +2048,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that decompiles the analysis\' functions and runs a security scan over the decompiled source, and returns the operation to poll for its outcome. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `max_functions_to_scan` to bound it. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Starts an agent that decompiles the analysis\' functions and runs a security scan over the decompiled source, and returns the operation to poll for its outcome. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `max_functions_to_scan` to bound it. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the security-scan agent.
      * @param analysisId Analysis ID
      * @param triggerSecurityScanInputBody
@@ -2060,7 +2060,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that decompiles the analysis\' functions and runs a security scan over the decompiled source, and returns the operation to poll for its outcome. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `max_functions_to_scan` to bound it. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Starts an agent that decompiles the analysis\' functions and runs a security scan over the decompiled source, and returns the operation to poll for its outcome. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `max_functions_to_scan` to bound it. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the security-scan agent.
      * @param analysisId Analysis ID
      * @param triggerSecurityScanInputBody
@@ -2072,7 +2072,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the triage agent, which scores the binary and each of its functions for maliciousness, and returns the operation to poll for its outcome. Unlike the other binary agents this one is not gated on subscription tier. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the triage agent, which scores the binary and each of its functions for maliciousness, and returns the operation to poll for its outcome. Unlike the other binary agents this one is not gated on subscription tier. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the triage agent.
      * @param analysisId Analysis ID
      */
@@ -2083,7 +2083,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts the triage agent, which scores the binary and each of its functions for maliciousness, and returns the operation to poll for its outcome. Unlike the other binary agents this one is not gated on subscription tier. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met
+     * Starts the triage agent, which scores the binary and each of its functions for maliciousness, and returns the operation to poll for its outcome. Unlike the other binary agents this one is not gated on subscription tier. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`OPERATION_PREREQUISITE_NOT_MET`](/errors/OPERATION_PREREQUISITE_NOT_MET) — Operation Prerequisite Not Met - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the triage agent.
      * @param analysisId Analysis ID
      */
@@ -2094,7 +2094,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that renames the analysis\' unnamed functions from their AI decompilations. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `limit` to bound it. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Starts an agent that renames the analysis\' unnamed functions from their AI decompilations. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `limit` to bound it. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the rename-unnamed-functions agent.
      * @param analysisId Analysis ID
      * @param triggerRenameUnnamedFunctionsInputBody
@@ -2106,7 +2106,7 @@ export class PromiseAgentApi {
     }
 
     /**
-     * Starts an agent that renames the analysis\' unnamed functions from their AI decompilations. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `limit` to bound it. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits
+     * Starts an agent that renames the analysis\' unnamed functions from their AI decompilations. Each function costs an AI decompilation, so a whole-analysis run can be expensive — use `limit` to bound it. Returns 409 until the analysis is Complete, or while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `402` [`INSUFFICIENT_CREDITS`](/errors/INSUFFICIENT_CREDITS) — Insufficient Credits - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Run the rename-unnamed-functions agent.
      * @param analysisId Analysis ID
      * @param triggerRenameUnnamedFunctionsInputBody
@@ -2385,7 +2385,7 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Add a user-provided string to an analysis.
      * @param analysisId Analysis ID
      * @param addUserStringInputBody
@@ -2397,7 +2397,7 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Attaches a user-provided string to an analysis at the given virtual address. The string is stored with source `USER` and complements strings discovered automatically during analysis. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Add a user-provided string to an analysis.
      * @param analysisId Analysis ID
      * @param addUserStringInputBody
@@ -2747,30 +2747,6 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-     * Add strings to the analysis
-     * @param analysisId
-     * @param putAnalysisStringsRequest
-     */
-    public putAnalysisStringsWithHttpInfo(analysisId: number, putAnalysisStringsRequest: PutAnalysisStringsRequest, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.putAnalysisStringsWithHttpInfo(analysisId, putAnalysisStringsRequest, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Add strings to the analysis. Rejects if any string already exists at the given vaddr.
-     * Add strings to the analysis
-     * @param analysisId
-     * @param putAnalysisStringsRequest
-     */
-    public putAnalysisStrings(analysisId: number, putAnalysisStringsRequest: PutAnalysisStringsRequest, _options?: PromiseConfigurationOptions): Promise<BaseResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.putAnalysisStrings(analysisId, putAnalysisStringsRequest, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Re-queues an already uploaded analysis
      * Requeue Analysis
      * @param analysisId
@@ -2797,7 +2773,7 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Start function matching for an analysis
      * @param analysisId Analysis ID
      * @param startMatchingForAnalysisInputBody
@@ -2809,7 +2785,7 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Dispatches the function-matching workflow against every function in the analysis. Returns immediately. Poll the status endpoint for progress; fetch results from the matches endpoint when status=COMPLETED. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Start function matching for an analysis
      * @param analysisId Analysis ID
      * @param startMatchingForAnalysisInputBody
@@ -2915,6 +2891,30 @@ export class PromiseAnalysesCoreApi {
     public v3CreateAnalysis(createRequest: CreateRequest, xRevEngApplication?: string, _options?: PromiseConfigurationOptions): Promise<OperationCreateMetadataCreateResult> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3CreateAnalysis(createRequest, xRevEngApplication, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts a new sandbox run of the analysis\'s binary, alongside any runs already in progress, and returns the run\'s operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Start a dynamic execution run.
+     * @param analysisId Analysis ID
+     * @param [runDynamicExecutionInputBody]
+     */
+    public v3CreateDynamicExecutionRunWithHttpInfo(analysisId: number, runDynamicExecutionInputBody?: RunDynamicExecutionInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationDynamicExecutionMetadataDynamicExecutionResult>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CreateDynamicExecutionRunWithHttpInfo(analysisId, runDynamicExecutionInputBody, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Starts a new sandbox run of the analysis\'s binary, alongside any runs already in progress, and returns the run\'s operation to poll for its outcome.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request
+     * Start a dynamic execution run.
+     * @param analysisId Analysis ID
+     * @param [runDynamicExecutionInputBody]
+     */
+    public v3CreateDynamicExecutionRun(analysisId: number, runDynamicExecutionInputBody?: RunDynamicExecutionInputBody, _options?: PromiseConfigurationOptions): Promise<OperationDynamicExecutionMetadataDynamicExecutionResult> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3CreateDynamicExecutionRun(analysisId, runDynamicExecutionInputBody, observableOptions);
         return result.toPromise();
     }
 
@@ -3203,232 +3203,272 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download an artifact.
-     * @param analysisId Analysis ID
-     * @param sha256 SHA-256 hex digest of the artifact
-     * @param [filename] Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-     */
-    public v3GetDynamicExecutionArtifactWithHttpInfo(analysisId: number, sha256: string, filename?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionArtifactWithHttpInfo(analysisId, sha256, filename, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download an artifact.
-     * @param analysisId Analysis ID
-     * @param sha256 SHA-256 hex digest of the artifact
-     * @param [filename] Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-     */
-    public v3GetDynamicExecutionArtifact(analysisId: number, sha256: string, filename?: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionArtifact(analysisId, sha256, filename, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Streams a ZIP archive of the sandbox logs collected during execution. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download the execution logs archive.
-     * @param analysisId Analysis ID
-     */
-    public v3GetDynamicExecutionLogsDownloadWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionLogsDownloadWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Streams a ZIP archive of the sandbox logs collected during execution. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download the execution logs archive.
-     * @param analysisId Analysis ID
-     */
-    public v3GetDynamicExecutionLogsDownload(analysisId: number, _options?: PromiseConfigurationOptions): Promise<void> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionLogsDownload(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download a memory dump.
-     * @param analysisId Analysis ID
-     * @param sha256 SHA-256 hex digest of the artifact
-     * @param [filename] Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-     */
-    public v3GetDynamicExecutionMemdumpWithHttpInfo(analysisId: number, sha256: string, filename?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionMemdumpWithHttpInfo(analysisId, sha256, filename, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the dynamic execution report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download a memory dump.
-     * @param analysisId Analysis ID
-     * @param sha256 SHA-256 hex digest of the artifact
-     * @param [filename] Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
-     */
-    public v3GetDynamicExecutionMemdump(analysisId: number, sha256: string, filename?: string, _options?: PromiseConfigurationOptions): Promise<void> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionMemdump(analysisId, sha256, filename, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the current state of the most recently triggered dynamic execution run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the current state of a dynamic execution run. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Get a dynamic execution operation.
-     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public v3GetDynamicExecutionOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationDynamicExecutionMetadataDynamicExecutionResult>> {
+    public v3GetDynamicExecutionOperationWithHttpInfo(runId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationDynamicExecutionMetadataDynamicExecutionResult>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionOperationWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.v3GetDynamicExecutionOperationWithHttpInfo(runId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Returns the current state of the most recently triggered dynamic execution run for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the current state of a dynamic execution run. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Get a dynamic execution operation.
-     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public v3GetDynamicExecutionOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationDynamicExecutionMetadataDynamicExecutionResult> {
+    public v3GetDynamicExecutionOperation(runId: string, _options?: PromiseConfigurationOptions): Promise<OperationDynamicExecutionMetadataDynamicExecutionResult> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionOperation(analysisId, observableOptions);
+        const result = this.api.v3GetDynamicExecutionOperation(runId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Streams the pcap of the analysis VM\'s traffic. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download the network capture.
+     * Returns the run\'s status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a dynamic execution run.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public v3GetDynamicExecutionPcapWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public v3GetDynamicExecutionRunWithHttpInfo(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DynamicExecutionRun>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionPcapWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.v3GetDynamicExecutionRunWithHttpInfo(analysisId, runId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Streams the pcap of the analysis VM\'s traffic. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download the network capture.
+     * Returns the run\'s status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get a dynamic execution run.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public v3GetDynamicExecutionPcap(analysisId: number, _options?: PromiseConfigurationOptions): Promise<void> {
+    public v3GetDynamicExecutionRun(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<DynamicExecutionRun> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionPcap(analysisId, observableOptions);
+        const result = this.api.v3GetDynamicExecutionRun(analysisId, runId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Returns the dynamic execution report JSON for the analysis. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Get the dynamic execution report.
+     * Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the run\'s report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s artifact.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     * @param sha256 SHA-256 hex digest of the artifact
+     * @param [filename] Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
      */
-    public v3GetDynamicExecutionReportWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisReport>> {
+    public v3GetDynamicExecutionRunArtifactWithHttpInfo(analysisId: number, runId: string, sha256: string, filename?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionReportWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.v3GetDynamicExecutionRunArtifactWithHttpInfo(analysisId, runId, sha256, filename, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Returns the dynamic execution report JSON for the analysis. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Get the dynamic execution report.
+     * Streams a file extracted during execution (filesystem, memory, or network), addressed by the SHA-256 referenced by `artifacts[].sha256` in the run\'s report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s artifact.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     * @param sha256 SHA-256 hex digest of the artifact
+     * @param [filename] Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
      */
-    public v3GetDynamicExecutionReport(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AnalysisReport> {
+    public v3GetDynamicExecutionRunArtifact(analysisId: number, runId: string, sha256: string, filename?: string, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionReport(analysisId, observableOptions);
+        const result = this.api.v3GetDynamicExecutionRunArtifact(analysisId, runId, sha256, filename, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Streams one screenshot, 1-indexed as listed by the screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download a screenshot.
+     * Streams a ZIP archive of the sandbox logs collected during the run. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s execution logs archive.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public v3GetDynamicExecutionRunLogsDownloadWithHttpInfo(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetDynamicExecutionRunLogsDownloadWithHttpInfo(analysisId, runId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams a ZIP archive of the sandbox logs collected during the run. Requires the run to be COMPLETED. Returns 404 if no logs were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s execution logs archive.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public v3GetDynamicExecutionRunLogsDownload(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetDynamicExecutionRunLogsDownload(analysisId, runId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the run\'s report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s memory dump.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     * @param sha256 SHA-256 hex digest of the artifact
+     * @param [filename] Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
+     */
+    public v3GetDynamicExecutionRunMemdumpWithHttpInfo(analysisId: number, runId: string, sha256: string, filename?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetDynamicExecutionRunMemdumpWithHttpInfo(analysisId, runId, sha256, filename, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams the memory dump for a SHA-256 referenced by `memdumps[].dumps[].sha256` in the run\'s report. The response is a password-protected zip (password: `infected`).  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s memory dump.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     * @param sha256 SHA-256 hex digest of the artifact
+     * @param [filename] Optional name for the downloaded file (inside the zip and as the download filename). Defaults to the SHA-256 when omitted.
+     */
+    public v3GetDynamicExecutionRunMemdump(analysisId: number, runId: string, sha256: string, filename?: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetDynamicExecutionRunMemdump(analysisId, runId, sha256, filename, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams the pcap of the analysis VM\'s traffic during the run. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s network capture.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public v3GetDynamicExecutionRunPcapWithHttpInfo(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetDynamicExecutionRunPcapWithHttpInfo(analysisId, runId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams the pcap of the analysis VM\'s traffic during the run. Returns 404 if no pcap was captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s network capture.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public v3GetDynamicExecutionRunPcap(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetDynamicExecutionRunPcap(analysisId, runId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the run\'s dynamic execution report JSON. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Get a run\'s dynamic execution report.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public v3GetDynamicExecutionRunReportWithHttpInfo(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<AnalysisReport>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetDynamicExecutionRunReportWithHttpInfo(analysisId, runId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the run\'s dynamic execution report JSON. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Get a run\'s dynamic execution report.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public v3GetDynamicExecutionRunReport(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<AnalysisReport> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetDynamicExecutionRunReport(analysisId, runId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Streams one screenshot, 1-indexed as listed by the run\'s screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s screenshot.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      * @param index Index of the screenshot, as listed by the screenshots endpoint
      */
-    public v3GetDynamicExecutionScreenshotWithHttpInfo(analysisId: number, index: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+    public v3GetDynamicExecutionRunScreenshotWithHttpInfo(analysisId: number, runId: string, index: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionScreenshotWithHttpInfo(analysisId, index, observableOptions);
+        const result = this.api.v3GetDynamicExecutionRunScreenshotWithHttpInfo(analysisId, runId, index, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Streams one screenshot, 1-indexed as listed by the screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download a screenshot.
+     * Streams one screenshot, 1-indexed as listed by the run\'s screenshots endpoint. Requires the run to be COMPLETED.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s screenshot.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      * @param index Index of the screenshot, as listed by the screenshots endpoint
      */
-    public v3GetDynamicExecutionScreenshot(analysisId: number, index: number, _options?: PromiseConfigurationOptions): Promise<void> {
+    public v3GetDynamicExecutionRunScreenshot(analysisId: number, runId: string, index: number, _options?: PromiseConfigurationOptions): Promise<void> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionScreenshot(analysisId, index, observableOptions);
+        const result = this.api.v3GetDynamicExecutionRunScreenshot(analysisId, runId, index, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Returns the LLM-generated Markdown summary of the run. Requires the run to be COMPLETED. Returns 404 if no summary has been generated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Get the dynamic execution summary.
+     * Get a run\'s dynamic execution summary.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public v3GetDynamicExecutionSummaryWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DynamicExecutionSummary>> {
+    public v3GetDynamicExecutionRunSummaryWithHttpInfo(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<DynamicExecutionSummary>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionSummaryWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.v3GetDynamicExecutionRunSummaryWithHttpInfo(analysisId, runId, observableOptions);
         return result.toPromise();
     }
 
     /**
      * Returns the LLM-generated Markdown summary of the run. Requires the run to be COMPLETED. Returns 404 if no summary has been generated.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Get the dynamic execution summary.
+     * Get a run\'s dynamic execution summary.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public v3GetDynamicExecutionSummary(analysisId: number, _options?: PromiseConfigurationOptions): Promise<DynamicExecutionSummary> {
+    public v3GetDynamicExecutionRunSummary(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<DynamicExecutionSummary> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionSummary(analysisId, observableOptions);
+        const result = this.api.v3GetDynamicExecutionRunSummary(analysisId, runId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Returns the state of the most recent summary attempt for this analysis, whether made by its run or by a regenerate.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the run\'s pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s Wireshark TLS session keys.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public v3GetDynamicExecutionRunWiresharkKeysWithHttpInfo(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetDynamicExecutionRunWiresharkKeysWithHttpInfo(analysisId, runId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the run\'s pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Download a run\'s Wireshark TLS session keys.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public v3GetDynamicExecutionRunWiresharkKeys(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetDynamicExecutionRunWiresharkKeys(analysisId, runId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the state of a run\'s most recent summary attempt, whether made by the run itself or by a regenerate. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Get a dynamic execution summary operation.
-     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public v3GetDynamicExecutionSummaryOperationWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult>> {
+    public v3GetDynamicExecutionSummaryOperationWithHttpInfo(runId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionSummaryOperationWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.v3GetDynamicExecutionSummaryOperationWithHttpInfo(runId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Returns the state of the most recent summary attempt for this analysis, whether made by its run or by a regenerate.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the state of a run\'s most recent summary attempt, whether made by the run itself or by a regenerate. Returns 404 for an unknown run.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Get a dynamic execution summary operation.
-     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public v3GetDynamicExecutionSummaryOperation(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult> {
+    public v3GetDynamicExecutionSummaryOperation(runId: string, _options?: PromiseConfigurationOptions): Promise<OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionSummaryOperation(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download Wireshark TLS session keys.
-     * @param analysisId Analysis ID
-     */
-    public v3GetDynamicExecutionWiresharkKeysWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionWiresharkKeysWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the Wireshark-format TLS session key log for decrypting HTTPS traffic in the pcap. Returns 404 if no keys were captured.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Download Wireshark TLS session keys.
-     * @param analysisId Analysis ID
-     */
-    public v3GetDynamicExecutionWiresharkKeys(analysisId: number, _options?: PromiseConfigurationOptions): Promise<void> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.v3GetDynamicExecutionWiresharkKeys(analysisId, observableOptions);
+        const result = this.api.v3GetDynamicExecutionSummaryOperation(runId, observableOptions);
         return result.toPromise();
     }
 
@@ -3565,7 +3605,7 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Returns the analysis\' `static-analysis` operation, followed by the latest run of each other operation started on its binary: the binary agents, the script-agent scans and dynamic execution. The `static-analysis` operation is always included, even when no other operations have run. Each entry\'s `name` is the operation\'s resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the analysis\' `static-analysis` operation, followed by the latest run of each other operation started on its binary (the binary agents and the script-agent scans), then one `dynamic-execution` operation per sandbox run of the analysis, newest first. The `static-analysis` operation is always included, even when no other operations have run. Each entry\'s `name` is the operation\'s resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List the operations run on an analysis.
      * @param analysisId Analysis ID
      */
@@ -3576,7 +3616,7 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Returns the analysis\' `static-analysis` operation, followed by the latest run of each other operation started on its binary: the binary agents, the script-agent scans and dynamic execution. The `static-analysis` operation is always included, even when no other operations have run. Each entry\'s `name` is the operation\'s resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Returns the analysis\' `static-analysis` operation, followed by the latest run of each other operation started on its binary (the binary agents and the script-agent scans), then one `dynamic-execution` operation per sandbox run of the analysis, newest first. The `static-analysis` operation is always included, even when no other operations have run. Each entry\'s `name` is the operation\'s resource name, polled at `/v3/{name}`. Other operations that have never run are omitted.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List the operations run on an analysis.
      * @param analysisId Analysis ID
      */
@@ -3587,24 +3627,48 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Returns the screenshots captured from the analysis VM, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * List the screenshots captured during execution.
+     * Returns the screenshots captured from the analysis VM during the run, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * List a run\'s screenshots.
      * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
      */
-    public v3ListDynamicExecutionScreenshotsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ScreenshotsIndex>> {
+    public v3ListDynamicExecutionRunScreenshotsWithHttpInfo(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ScreenshotsIndex>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3ListDynamicExecutionScreenshotsWithHttpInfo(analysisId, observableOptions);
+        const result = this.api.v3ListDynamicExecutionRunScreenshotsWithHttpInfo(analysisId, runId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Returns the screenshots captured from the analysis VM, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * List the screenshots captured during execution.
+     * Returns the screenshots captured from the analysis VM during the run, in capture order. Requires the run to be COMPLETED. Returns an empty list when the run captured none.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * List a run\'s screenshots.
+     * @param analysisId Analysis ID
+     * @param runId Dynamic execution run ID
+     */
+    public v3ListDynamicExecutionRunScreenshots(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<ScreenshotsIndex> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListDynamicExecutionRunScreenshots(analysisId, runId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns every dynamic execution run of the analysis, newest first, with its status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List the dynamic execution runs.
      * @param analysisId Analysis ID
      */
-    public v3ListDynamicExecutionScreenshots(analysisId: number, _options?: PromiseConfigurationOptions): Promise<ScreenshotsIndex> {
+    public v3ListDynamicExecutionRunsWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListDynamicExecutionRunsOutputBody>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3ListDynamicExecutionScreenshots(analysisId, observableOptions);
+        const result = this.api.v3ListDynamicExecutionRunsWithHttpInfo(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns every dynamic execution run of the analysis, newest first, with its status and the parameters it was started with. An archive password is never returned, only whether one was given.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List the dynamic execution runs.
+     * @param analysisId Analysis ID
+     */
+    public v3ListDynamicExecutionRuns(analysisId: number, _options?: PromiseConfigurationOptions): Promise<ListDynamicExecutionRunsOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListDynamicExecutionRuns(analysisId, observableOptions);
         return result.toPromise();
     }
 
@@ -3751,48 +3815,26 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Submits the analysis\'s binary to the sandbox and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-     * Trigger a dynamic execution run.
+     * Starts a new LLM summary of the completed run and returns the run\'s summary operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Regenerate a run\'s dynamic execution summary.
      * @param analysisId Analysis ID
-     * @param [runDynamicExecutionInputBody]
+     * @param runId Dynamic execution run ID
      */
-    public v3RunDynamicExecutionWithHttpInfo(analysisId: number, runDynamicExecutionInputBody?: RunDynamicExecutionInputBody, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationDynamicExecutionMetadataDynamicExecutionResult>> {
+    public v3RunDynamicExecutionRunSummaryWithHttpInfo(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult>> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3RunDynamicExecutionWithHttpInfo(analysisId, runDynamicExecutionInputBody, observableOptions);
+        const result = this.api.v3RunDynamicExecutionRunSummaryWithHttpInfo(analysisId, runId, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Submits the analysis\'s binary to the sandbox and returns the operation to poll for its outcome. Returns 409 while a run is already in progress for this analysis.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict
-     * Trigger a dynamic execution run.
+     * Starts a new LLM summary of the completed run and returns the run\'s summary operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
+     * Regenerate a run\'s dynamic execution summary.
      * @param analysisId Analysis ID
-     * @param [runDynamicExecutionInputBody]
+     * @param runId Dynamic execution run ID
      */
-    public v3RunDynamicExecution(analysisId: number, runDynamicExecutionInputBody?: RunDynamicExecutionInputBody, _options?: PromiseConfigurationOptions): Promise<OperationDynamicExecutionMetadataDynamicExecutionResult> {
+    public v3RunDynamicExecutionRunSummary(analysisId: number, runId: string, _options?: PromiseConfigurationOptions): Promise<OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult> {
         const observableOptions = wrapOptions(_options);
-        const result = this.api.v3RunDynamicExecution(analysisId, runDynamicExecutionInputBody, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Starts a new LLM summary of the analysis\'s completed run and returns the operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Regenerate the dynamic execution summary.
-     * @param analysisId Analysis ID
-     */
-    public v3RunDynamicExecutionSummaryWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.v3RunDynamicExecutionSummaryWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Starts a new LLM summary of the analysis\'s completed run and returns the operation to poll. The new summary replaces the stored one once it succeeds. Only the analysis owner may regenerate. Returns 409 while the run is incomplete or a summary is already in progress.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `409` [`DYNAMIC_EXECUTION_INCOMPLETE`](/errors/DYNAMIC_EXECUTION_INCOMPLETE) — Dynamic Execution Incomplete
-     * Regenerate the dynamic execution summary.
-     * @param analysisId Analysis ID
-     */
-    public v3RunDynamicExecutionSummary(analysisId: number, _options?: PromiseConfigurationOptions): Promise<OperationDynamicExecutionSummaryMetadataDynamicExecutionSummaryResult> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.v3RunDynamicExecutionSummary(analysisId, observableOptions);
+        const result = this.api.v3RunDynamicExecutionRunSummary(analysisId, runId, observableOptions);
         return result.toPromise();
     }
 
@@ -3847,7 +3889,7 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Renames a global, assigns it an analysis data type, or both. Each field the request sets stamps its own provenance `USER`, which a later re-extraction carries forward instead of overwriting. A name another global in the analysis already holds is rejected.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ALREADY_EXISTS`](/errors/ALREADY_EXISTS) — Already Exists
+     * Renames a global, assigns it an analysis data type, or both. Each field the request sets stamps its own provenance `USER`, which a later re-extraction carries forward instead of overwriting. A name another global in the analysis already holds is rejected. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ALREADY_EXISTS`](/errors/ALREADY_EXISTS) — Already Exists - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Edit a global variable.
      * @param analysisId Analysis ID
      * @param vaddr Virtual address of the global variable.
@@ -3860,7 +3902,7 @@ export class PromiseAnalysesCoreApi {
     }
 
     /**
-     * Renames a global, assigns it an analysis data type, or both. Each field the request sets stamps its own provenance `USER`, which a later re-extraction carries forward instead of overwriting. A name another global in the analysis already holds is rejected.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ALREADY_EXISTS`](/errors/ALREADY_EXISTS) — Already Exists
+     * Renames a global, assigns it an analysis data type, or both. Each field the request sets stamps its own provenance `USER`, which a later re-extraction carries forward instead of overwriting. A name another global in the analysis already holds is rejected. Returns 409 until the analysis is Complete.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`ALREADY_EXISTS`](/errors/ALREADY_EXISTS) — Already Exists - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Edit a global variable.
      * @param analysisId Analysis ID
      * @param vaddr Virtual address of the global variable.
@@ -4038,6 +4080,30 @@ export class PromiseAnalysesResultsMetadataApi {
     }
 
     /**
+     * Returns the feedback the caller recorded for one kind of result on this analysis, or null fields when they have not recorded any.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the caller\'s feedback on an analysis.
+     * @param analysisId Analysis ID
+     * @param type What the feedback is about
+     */
+    public v3GetAnalysisFeedbackWithHttpInfo(analysisId: number, type: 'function-matching', _options?: PromiseConfigurationOptions): Promise<HttpInfo<RecordedFeedback>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisFeedbackWithHttpInfo(analysisId, type, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the feedback the caller recorded for one kind of result on this analysis, or null fields when they have not recorded any.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the caller\'s feedback on an analysis.
+     * @param analysisId Analysis ID
+     * @param type What the feedback is about
+     */
+    public v3GetAnalysisFeedback(analysisId: number, type: 'function-matching', _options?: PromiseConfigurationOptions): Promise<RecordedFeedback> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetAnalysisFeedback(analysisId, type, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Returns every cross-reference into and out of a virtual address, read from the analysis\' cache.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * Look up xrefs by virtual address.
      * @param analysisId Analysis ID
@@ -4102,6 +4168,32 @@ export class PromiseAnalysesResultsMetadataApi {
     public v3ListAnalysisTags(analysisId: number, _options?: PromiseConfigurationOptions): Promise<AnalysisTagsOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3ListAnalysisTags(analysisId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Records how useful the caller found one kind of result for this analysis, with any context the client captured. Replaces any feedback they recorded previously.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Record feedback on an analysis.
+     * @param analysisId Analysis ID
+     * @param type What the feedback is about
+     * @param feedbackSubmission
+     */
+    public v3UpsertAnalysisFeedbackWithHttpInfo(analysisId: number, type: 'function-matching', feedbackSubmission: FeedbackSubmission, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpsertAnalysisFeedbackWithHttpInfo(analysisId, type, feedbackSubmission, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Records how useful the caller found one kind of result for this analysis, with any context the client captured. Replaces any feedback they recorded previously.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Record feedback on an analysis.
+     * @param analysisId Analysis ID
+     * @param type What the feedback is about
+     * @param feedbackSubmission
+     */
+    public v3UpsertAnalysisFeedback(analysisId: number, type: 'function-matching', feedbackSubmission: FeedbackSubmission, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpsertAnalysisFeedback(analysisId, type, feedbackSubmission, observableOptions);
         return result.toPromise();
     }
 
@@ -4354,6 +4446,45 @@ export class PromiseAuthenticationUsersApi {
     public v3SubmitUserFeedback(submitFeedbackBody: SubmitFeedbackBody, _options?: PromiseConfigurationOptions): Promise<SubmitFeedbackOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3SubmitUserFeedback(submitFeedbackBody, observableOptions);
+        return result.toPromise();
+    }
+
+
+}
+
+
+
+import { ObservableBillingApi } from './ObservableAPI';
+
+import { BillingApiRequestFactory, BillingApiResponseProcessor} from "../apis/BillingApi";
+export class PromiseBillingApi {
+    private api: ObservableBillingApi
+
+    public constructor(
+        configuration: Configuration,
+        requestFactory?: BillingApiRequestFactory,
+        responseProcessor?: BillingApiResponseProcessor
+    ) {
+        this.api = new ObservableBillingApi(configuration, requestFactory, responseProcessor);
+    }
+
+    /**
+     * Returns the table for estimating, before a binary is analysed, the credits creating an analysis of it will use. Find the size bucket the binary\'s size in bytes falls in; each requested operation, plus `binary-analysis`, is estimated to cost `base_credits + credits_per_function × functions`. The estimate is calibrated to come in at or above most real runs, but it is not a quote: what is charged depends on the binary.
+     * Get credit estimates.
+     */
+    public v3GetCreditEstimatesWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<GetCreditEstimatesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetCreditEstimatesWithHttpInfo(observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the table for estimating, before a binary is analysed, the credits creating an analysis of it will use. Find the size bucket the binary\'s size in bytes falls in; each requested operation, plus `binary-analysis`, is estimated to cost `base_credits + credits_per_function × functions`. The estimate is calibrated to come in at or above most real runs, but it is not a quote: what is charged depends on the binary.
+     * Get credit estimates.
+     */
+    public v3GetCreditEstimates(_options?: PromiseConfigurationOptions): Promise<GetCreditEstimatesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetCreditEstimates(observableOptions);
         return result.toPromise();
     }
 
@@ -4687,6 +4818,28 @@ export class PromiseBinariesApi {
     public v3GetBinaryRelatedStatus(binaryId: number, _options?: PromiseConfigurationOptions): Promise<GetRelatedStatusOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3GetBinaryRelatedStatus(binaryId, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the malware family of each given binary that belongs to the RevEng.AI malware corpus, with every corpus binary in that family. Family names are lowercase without punctuation, with known aliases merged. Binaries outside the corpus or without a family are ignored.
+     * Look up the malware families of binaries in the RevEng.AI malware corpus.
+     * @param binaryIds Binaries to look up, typically those a function-matching run found in the malware corpus.
+     */
+    public v3ListMalwareFamiliesWithHttpInfo(binaryIds: Array<number>, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListMalwareFamiliesOutputBody>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListMalwareFamiliesWithHttpInfo(binaryIds, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the malware family of each given binary that belongs to the RevEng.AI malware corpus, with every corpus binary in that family. Family names are lowercase without punctuation, with known aliases merged. Binaries outside the corpus or without a family are ignored.
+     * Look up the malware families of binaries in the RevEng.AI malware corpus.
+     * @param binaryIds Binaries to look up, typically those a function-matching run found in the malware corpus.
+     */
+    public v3ListMalwareFamilies(binaryIds: Array<number>, _options?: PromiseConfigurationOptions): Promise<ListMalwareFamiliesOutputBody> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3ListMalwareFamilies(binaryIds, observableOptions);
         return result.toPromise();
     }
 
@@ -5465,7 +5618,7 @@ export class PromiseDataTypesApi {
     }
 
     /**
-     * Replaces each target function\'s signature with a copy of its source\'s parameters, return type and calling convention. Every target must belong to this analysis; a source may belong to any analysis the caller can read. The whole request is rejected if any pair is invalid.  A `data_type_id` means nothing outside the analysis that issued it, so the types a copied signature needs are resolved against this analysis by namespace, name and kind. A type this analysis already has under that key has its definition replaced by the source\'s; a type it lacks is created. Copied signatures get a `source_type` of `USER` and a `source_function_id`, and their previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replaces each target function\'s signature with a copy of its source\'s parameters, return type and calling convention. Every target must belong to this analysis; a source may belong to any analysis the caller can read. The whole request is rejected if any pair is invalid.  A `data_type_id` means nothing outside the analysis that issued it, so the types a copied signature needs are resolved against this analysis by namespace, name and kind. A type this analysis already has under that key has its definition replaced by the source\'s; a type it lacks is created. Copied signatures get a `source_type` of `USER` and a `source_function_id`, and their previous value is retained. Returns 409 until the analysis is Complete.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Copy function signatures
      * @param analysisId Analysis ID
      * @param copyFunctionSignaturesInputBody
@@ -5477,7 +5630,7 @@ export class PromiseDataTypesApi {
     }
 
     /**
-     * Replaces each target function\'s signature with a copy of its source\'s parameters, return type and calling convention. Every target must belong to this analysis; a source may belong to any analysis the caller can read. The whole request is rejected if any pair is invalid.  A `data_type_id` means nothing outside the analysis that issued it, so the types a copied signature needs are resolved against this analysis by namespace, name and kind. A type this analysis already has under that key has its definition replaced by the source\'s; a type it lacks is created. Copied signatures get a `source_type` of `USER` and a `source_function_id`, and their previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replaces each target function\'s signature with a copy of its source\'s parameters, return type and calling convention. Every target must belong to this analysis; a source may belong to any analysis the caller can read. The whole request is rejected if any pair is invalid.  A `data_type_id` means nothing outside the analysis that issued it, so the types a copied signature needs are resolved against this analysis by namespace, name and kind. A type this analysis already has under that key has its definition replaced by the source\'s; a type it lacks is created. Copied signatures get a `source_type` of `USER` and a `source_function_id`, and their previous value is retained. Returns 409 until the analysis is Complete.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Copy function signatures
      * @param analysisId Analysis ID
      * @param copyFunctionSignaturesInputBody
@@ -5489,7 +5642,7 @@ export class PromiseDataTypesApi {
     }
 
     /**
-     * Adds user-authored types to an analysis. Many types can be created in one request; the whole request is rejected if any of them is invalid. Ids are assigned by the server and returned here. Stored types get a `source_type` of `USER`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Adds user-authored types to an analysis. Many types can be created in one request; the whole request is rejected if any of them is invalid. Ids are assigned by the server and returned here. Stored types get a `source_type` of `USER`. Returns 409 until the analysis is Complete.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Create an analysis\'s data types
      * @param analysisId Analysis ID
      * @param createAnalysisDataTypesInputBody
@@ -5501,7 +5654,7 @@ export class PromiseDataTypesApi {
     }
 
     /**
-     * Adds user-authored types to an analysis. Many types can be created in one request; the whole request is rejected if any of them is invalid. Ids are assigned by the server and returned here. Stored types get a `source_type` of `USER`.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Adds user-authored types to an analysis. Many types can be created in one request; the whole request is rejected if any of them is invalid. Ids are assigned by the server and returned here. Stored types get a `source_type` of `USER`. Returns 409 until the analysis is Complete.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Create an analysis\'s data types
      * @param analysisId Analysis ID
      * @param createAnalysisDataTypesInputBody
@@ -5701,7 +5854,7 @@ export class PromiseDataTypesApi {
     }
 
     /**
-     * Replaces stored types in full: a field left out of the request is cleared. Many types can be updated in one request; the whole request is rejected if any of them is invalid. `kind` may be changed, and the definition must then match the new kind. Updated types get a `source_type` of `USER`, and their previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replaces stored types in full: a field left out of the request is cleared. Many types can be updated in one request; the whole request is rejected if any of them is invalid. `kind` may be changed, and the definition must then match the new kind. Updated types get a `source_type` of `USER`, and their previous value is retained. Returns 409 until the analysis is Complete.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Update an analysis\'s data types
      * @param analysisId Analysis ID
      * @param updateAnalysisDataTypesInputBody
@@ -5713,7 +5866,7 @@ export class PromiseDataTypesApi {
     }
 
     /**
-     * Replaces stored types in full: a field left out of the request is cleared. Many types can be updated in one request; the whole request is rejected if any of them is invalid. `kind` may be changed, and the definition must then match the new kind. Updated types get a `source_type` of `USER`, and their previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replaces stored types in full: a field left out of the request is cleared. Many types can be updated in one request; the whole request is rejected if any of them is invalid. `kind` may be changed, and the definition must then match the new kind. Updated types get a `source_type` of `USER`, and their previous value is retained. Returns 409 until the analysis is Complete.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `409` [`CONFLICT`](/errors/CONFLICT) — Conflict - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Update an analysis\'s data types
      * @param analysisId Analysis ID
      * @param updateAnalysisDataTypesInputBody
@@ -5725,7 +5878,7 @@ export class PromiseDataTypesApi {
     }
 
     /**
-     * Replaces a function\'s parameters, return type and calling convention in full — anything left out of the request is cleared. Parameter and return types are `data_type_id`s belonging to this analysis. Edits an extracted signature only: a function with `has_signature` false is rejected with 404. The stored signature gets a `source_type` of `USER`, and its previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replaces a function\'s parameters, return type and calling convention in full — anything left out of the request is cleared. Parameter and return types are `data_type_id`s belonging to this analysis. Edits an extracted signature only: a function with `has_signature` false is rejected with 404. The stored signature gets a `source_type` of `USER`, and its previous value is retained. Returns 409 until the analysis is Complete.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Update a function\'s signature
      * @param analysisId Analysis ID
      * @param functionId Function ID
@@ -5738,7 +5891,7 @@ export class PromiseDataTypesApi {
     }
 
     /**
-     * Replaces a function\'s parameters, return type and calling convention in full — anything left out of the request is cleared. Parameter and return types are `data_type_id`s belonging to this analysis. Edits an extracted signature only: a function with `has_signature` false is rejected with 404. The stored signature gets a `source_type` of `USER`, and its previous value is retained.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed
+     * Replaces a function\'s parameters, return type and calling convention in full — anything left out of the request is cleared. Parameter and return types are `data_type_id`s belonging to this analysis. Edits an extracted signature only: a function with `has_signature` false is rejected with 404. The stored signature gets a `source_type` of `USER`, and its previous value is retained. Returns 409 until the analysis is Complete.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `400` [`BAD_REQUEST`](/errors/BAD_REQUEST) — Bad Request - `422` [`VALIDATION_FAILED`](/errors/VALIDATION_FAILED) — Validation Failed - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Update a function\'s signature
      * @param analysisId Analysis ID
      * @param functionId Function ID
@@ -6428,62 +6581,6 @@ export class PromiseFunctionsCoreApi {
     }
 
     /**
-     * Get string information found in the analysis
-     * Get string information found in the Analysis
-     * @param analysisId
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [search] Search is applied to string value
-     * @param [functionSearch] Search is applied to function names
-     * @param [orderBy] Order by field
-     * @param [sortOrder] Sort order for the results
-     */
-    public getAnalysisStringsWithHttpInfo(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'length' | 'value', sortOrder?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStringsWithHttpInfo(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get string information found in the analysis
-     * Get string information found in the Analysis
-     * @param analysisId
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [search] Search is applied to string value
-     * @param [functionSearch] Search is applied to function names
-     * @param [orderBy] Order by field
-     * @param [sortOrder] Sort order for the results
-     */
-    public getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'length' | 'value', sortOrder?: 'ASC' | 'DESC', _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisStringsResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStrings(analysisId, page, pageSize, search, functionSearch, orderBy, sortOrder, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get string processing state for the Analysis
-     * Get string processing state for the Analysis
-     * @param analysisId
-     */
-    public getAnalysisStringsStatusWithHttpInfo(analysisId: number, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseAnalysisStringsStatusResponse>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStringsStatusWithHttpInfo(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Get string processing state for the Analysis
-     * Get string processing state for the Analysis
-     * @param analysisId
-     */
-    public getAnalysisStringsStatus(analysisId: number, _options?: PromiseConfigurationOptions): Promise<BaseResponseAnalysisStringsStatusResponse> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getAnalysisStringsStatus(analysisId, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
      * Get disassembly blocks related to the function
      * Get disassembly blocks related to the function
      * @param functionId
@@ -6506,7 +6603,7 @@ export class PromiseFunctionsCoreApi {
     }
 
     /**
-     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables). Parameters and return type are not part of the disassembly; read them from GET /v3/analyses/{analysis_id}/functions/{function_id}/signature. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Get function disassembly
      * @param functionId Function ID
      */
@@ -6517,7 +6614,7 @@ export class PromiseFunctionsCoreApi {
     }
 
     /**
-     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables). Parameters and return type are not part of the disassembly; read them from GET /v3/analyses/{analysis_id}/functions/{function_id}/signature. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Get function disassembly
      * @param functionId Function ID
      */
@@ -6696,58 +6793,30 @@ export class PromiseFunctionsCoreApi {
     }
 
     /**
-     * Get string information found in the function
-     * Get string information found in the function
-     * @param functionId
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [search] Search is applied to string value
+     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for a function.
+     * @param functionId Function ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
      */
-    public getFunctionStringsWithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<BaseResponseFunctionStringsResponse>> {
+    public getFunctionStringsWithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListFunctionStringsOutputBody>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getFunctionStringsWithHttpInfo(functionId, page, pageSize, search, observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Get string information found in the function
-     * Get string information found in the function
-     * @param functionId
-     * @param [page] The page number to retrieve.
-     * @param [pageSize] Number of items per page.
-     * @param [search] Search is applied to string value
+     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * List strings for a function.
+     * @param functionId Function ID
+     * @param [page] Page number (1-indexed).
+     * @param [pageSize] Number of results per page.
+     * @param [search] Filter by string value (case-insensitive substring match).
      */
-    public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: PromiseConfigurationOptions): Promise<BaseResponseFunctionStringsResponse> {
+    public getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: PromiseConfigurationOptions): Promise<ListFunctionStringsOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getFunctionStrings(functionId, page, pageSize, search, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for a function.
-     * @param functionId Function ID
-     * @param [page] Page number (1-indexed).
-     * @param [pageSize] Number of results per page.
-     * @param [search] Filter by string value (case-insensitive substring match).
-     */
-    public getFunctionStrings_5WithHttpInfo(functionId: number, page?: number, pageSize?: number, search?: string, _options?: PromiseConfigurationOptions): Promise<HttpInfo<ListFunctionStringsOutputBody>> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionStrings_5WithHttpInfo(functionId, page, pageSize, search, observableOptions);
-        return result.toPromise();
-    }
-
-    /**
-     * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
-     * List strings for a function.
-     * @param functionId Function ID
-     * @param [page] Page number (1-indexed).
-     * @param [pageSize] Number of results per page.
-     * @param [search] Filter by string value (case-insensitive substring match).
-     */
-    public getFunctionStrings_5(functionId: number, page?: number, pageSize?: number, search?: string, _options?: PromiseConfigurationOptions): Promise<ListFunctionStringsOutputBody> {
-        const observableOptions = wrapOptions(_options);
-        const result = this.api.getFunctionStrings_5(functionId, page, pageSize, search, observableOptions);
         return result.toPromise();
     }
 
@@ -6964,6 +7033,30 @@ export class PromiseFunctionsCoreApi {
     }
 
     /**
+     * Returns the feedback the caller recorded for one kind of result on this function, or null fields when they have not recorded any.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the caller\'s feedback on a function.
+     * @param functionId Function ID
+     * @param type What the feedback is about
+     */
+    public v3GetFunctionFeedbackWithHttpInfo(functionId: number, type: 'function-matching', _options?: PromiseConfigurationOptions): Promise<HttpInfo<RecordedFeedback>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetFunctionFeedbackWithHttpInfo(functionId, type, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Returns the feedback the caller recorded for one kind of result on this function, or null fields when they have not recorded any.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the caller\'s feedback on a function.
+     * @param functionId Function ID
+     * @param type What the feedback is about
+     */
+    public v3GetFunctionFeedback(functionId: number, type: 'function-matching', _options?: PromiseConfigurationOptions): Promise<RecordedFeedback> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3GetFunctionFeedback(functionId, type, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
      * Returns the global variables referenced by the function, ordered by address.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List the global variables a function references.
      * @param functionId Function ID
@@ -7010,6 +7103,32 @@ export class PromiseFunctionsCoreApi {
     public v3SearchFunctions(partialName?: string, modelName?: string, limit?: number, offset?: number, _options?: PromiseConfigurationOptions): Promise<SearchFunctionsOutputBody> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.v3SearchFunctions(partialName, modelName, limit, offset, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Records how useful the caller found one kind of result for this function, with any context the client captured. Replaces any feedback they recorded previously.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Record feedback on a function.
+     * @param functionId Function ID
+     * @param type What the feedback is about
+     * @param feedbackSubmission
+     */
+    public v3UpsertFunctionFeedbackWithHttpInfo(functionId: number, type: 'function-matching', feedbackSubmission: FeedbackSubmission, _options?: PromiseConfigurationOptions): Promise<HttpInfo<void>> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpsertFunctionFeedbackWithHttpInfo(functionId, type, feedbackSubmission, observableOptions);
+        return result.toPromise();
+    }
+
+    /**
+     * Records how useful the caller found one kind of result for this function, with any context the client captured. Replaces any feedback they recorded previously.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Record feedback on a function.
+     * @param functionId Function ID
+     * @param type What the feedback is about
+     * @param feedbackSubmission
+     */
+    public v3UpsertFunctionFeedback(functionId: number, type: 'function-matching', feedbackSubmission: FeedbackSubmission, _options?: PromiseConfigurationOptions): Promise<void> {
+        const observableOptions = wrapOptions(_options);
+        const result = this.api.v3UpsertFunctionFeedback(functionId, type, feedbackSubmission, observableOptions);
         return result.toPromise();
     }
 
@@ -7236,20 +7355,20 @@ export class PromiseIAMUsersApi {
     }
 
     /**
-     * Returns the authenticated user\'s own information.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns the authenticated user\'s own information, and how they sign in.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get current user
      */
-    public getMeWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<User>> {
+    public getMeWithHttpInfo(_options?: PromiseConfigurationOptions): Promise<HttpInfo<CurrentUser>> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getMeWithHttpInfo(observableOptions);
         return result.toPromise();
     }
 
     /**
-     * Returns the authenticated user\'s own information.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+     * Returns the authenticated user\'s own information, and how they sign in.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
      * Get current user
      */
-    public getMe(_options?: PromiseConfigurationOptions): Promise<User> {
+    public getMe(_options?: PromiseConfigurationOptions): Promise<CurrentUser> {
         const observableOptions = wrapOptions(_options);
         const result = this.api.getMe(observableOptions);
         return result.toPromise();

@@ -9,18 +9,14 @@
  * Do not edit the class manually.
  */
 
-import { StringFunctions } from '../models/StringFunctions';
+import { DynamicExecutionRun } from '../models/DynamicExecutionRun';
 import { HttpFile } from '../http/http';
 
-export class AnalysisStringsResponse {
+export class ListDynamicExecutionRunsOutputBody {
     /**
-    * The strings associated with the analysis
+    * The analysis\'s runs, newest first
     */
-    'strings': Array<StringFunctions>;
-    /**
-    * The total number of strings associated with this analysis
-    */
-    'totalStrings': number;
+    'runs': Array<DynamicExecutionRun>;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -28,20 +24,14 @@ export class AnalysisStringsResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "strings",
-            "baseName": "strings",
-            "type": "Array<StringFunctions>",
-            "format": ""
-        },
-        {
-            "name": "totalStrings",
-            "baseName": "total_strings",
-            "type": "number",
+            "name": "runs",
+            "baseName": "runs",
+            "type": "Array<DynamicExecutionRun>",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return AnalysisStringsResponse.attributeTypeMap;
+        return ListDynamicExecutionRunsOutputBody.attributeTypeMap;
     }
 
     public constructor() {

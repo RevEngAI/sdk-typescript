@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**v3GetBinaryExternals**](BinariesApi.md#v3GetBinaryExternals) | **GET** /v3/binaries/{binary_id}/externals | Get third-party threat-intel lookups for a binary.
 [**v3GetBinaryRelated**](BinariesApi.md#v3GetBinaryRelated) | **GET** /v3/binaries/{binary_id}/related | Get the binaries related to this one by unpacking.
 [**v3GetBinaryRelatedStatus**](BinariesApi.md#v3GetBinaryRelatedStatus) | **GET** /v3/binaries/{binary_id}/related/status | Get the archive-unpacking status for a binary.
+[**v3ListMalwareFamilies**](BinariesApi.md#v3ListMalwareFamilies) | **GET** /v3/malware-families | Look up the malware families of binaries in the RevEng.AI malware corpus.
 [**v3SearchBinaries**](BinariesApi.md#v3SearchBinaries) | **GET** /v3/binaries | Search binaries
 [**v3UploadFile**](BinariesApi.md#v3UploadFile) | **POST** /v3/upload | Upload a file.
 
@@ -844,6 +845,62 @@ Name | Type | Description  | Notes
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
 **500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3ListMalwareFamilies**
+> ListMalwareFamiliesOutputBody v3ListMalwareFamilies()
+
+Returns the malware family of each given binary that belongs to the RevEng.AI malware corpus, with every corpus binary in that family. Family names are lowercase without punctuation, with known aliases merged. Binaries outside the corpus or without a family are ignored.
+
+### Example
+
+
+```typescript
+import { createConfiguration, BinariesApi } from '@revengai/sdk';
+import type { BinariesApiV3ListMalwareFamiliesRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new BinariesApi(configuration);
+
+const request: BinariesApiV3ListMalwareFamiliesRequest = {
+    // Binaries to look up, typically those a function-matching run found in the malware corpus.
+  binaryIds: [
+    1,
+  ],
+};
+
+const data = await apiInstance.v3ListMalwareFamilies(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **binaryIds** | **Array&lt;number&gt;** | Binaries to look up, typically those a function-matching run found in the malware corpus. | defaults to undefined
+
+
+### Return type
+
+**ListMalwareFamiliesOutputBody**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**0** | Error |  -  |
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 

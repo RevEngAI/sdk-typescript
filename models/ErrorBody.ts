@@ -119,6 +119,7 @@ export enum ErrorBodyCodeEnum {
     PasswordResetRequired = 'PASSWORD_RESET_REQUIRED',
     PaymentRequired = 'PAYMENT_REQUIRED',
     PreconditionFailed = 'PRECONDITION_FAILED',
+    ReauthRequired = 'REAUTH_REQUIRED',
     ReportRenderFailed = 'REPORT_RENDER_FAILED',
     RequestEntityTooLarge = 'REQUEST_ENTITY_TOO_LARGE',
     RunAlreadyActive = 'RUN_ALREADY_ACTIVE',

@@ -8,9 +8,11 @@ Method | HTTP request | Description
 [**getCapabilities**](AnalysesResultsMetadataApi.md#getCapabilities) | **GET** /v2/analyses/{analysis_id}/capabilities | Gets the capabilities from the analysis
 [**getFunctionsList**](AnalysesResultsMetadataApi.md#getFunctionsList) | **GET** /v2/analyses/{analysis_id}/functions/list | Gets functions from analysis
 [**getTags**](AnalysesResultsMetadataApi.md#getTags) | **GET** /v2/analyses/{analysis_id}/tags | Get function tags with maliciousness score
+[**v3GetAnalysisFeedback**](AnalysesResultsMetadataApi.md#v3GetAnalysisFeedback) | **GET** /v3/analyses/{analysis_id}/feedback/{type} | Get the caller\&#39;s feedback on an analysis.
 [**v3GetAnalysisXref**](AnalysesResultsMetadataApi.md#v3GetAnalysisXref) | **GET** /v3/analyses/{analysis_id}/xrefs/{vaddr} | Look up xrefs by virtual address.
 [**v3ListAnalysisCapabilities**](AnalysesResultsMetadataApi.md#v3ListAnalysisCapabilities) | **GET** /v3/analyses/{analysis_id}/capabilities | List the capabilities found in an analysis.
 [**v3ListAnalysisTags**](AnalysesResultsMetadataApi.md#v3ListAnalysisTags) | **GET** /v3/analyses/{analysis_id}/tags | List the tags on an analysis.
+[**v3UpsertAnalysisFeedback**](AnalysesResultsMetadataApi.md#v3UpsertAnalysisFeedback) | **PUT** /v3/analyses/{analysis_id}/feedback/{type} | Record feedback on an analysis.
 
 
 # **getAnalysisFunctionsPaginated**
@@ -251,6 +253,66 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
 
+# **v3GetAnalysisFeedback**
+> RecordedFeedback v3GetAnalysisFeedback()
+
+Returns the feedback the caller recorded for one kind of result on this analysis, or null fields when they have not recorded any.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
+import type { AnalysesResultsMetadataApiV3GetAnalysisFeedbackRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesResultsMetadataApi(configuration);
+
+const request: AnalysesResultsMetadataApiV3GetAnalysisFeedbackRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // What the feedback is about
+  type: "function-matching",
+};
+
+const data = await apiInstance.v3GetAnalysisFeedback(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **type** | [**&#39;function-matching&#39;**]**Array<&#39;function-matching&#39; &#124; &#39;11184809&#39;>** | What the feedback is about | defaults to undefined
+
+
+### Return type
+
+**RecordedFeedback**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
 # **v3GetAnalysisXref**
 > AnalysisXrefOutputBody v3GetAnalysisXref()
 
@@ -418,6 +480,72 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+**403** | Forbidden |  -  |
+**404** | Not Found |  -  |
+**422** | Unprocessable Entity |  -  |
+**500** | Internal Server Error |  -  |
+
+[[Back to top]](#) [[Back to API list]](README.md#documentation-for-api-endpoints) [[Back to Model list]](README.md#documentation-for-models) [[Back to README]](README.md)
+
+# **v3UpsertAnalysisFeedback**
+> void v3UpsertAnalysisFeedback(feedbackSubmission)
+
+Records how useful the caller found one kind of result for this analysis, with any context the client captured. Replaces any feedback they recorded previously.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+
+### Example
+
+
+```typescript
+import { createConfiguration, AnalysesResultsMetadataApi } from '@revengai/sdk';
+import type { AnalysesResultsMetadataApiV3UpsertAnalysisFeedbackRequest } from '@revengai/sdk';
+
+const configuration = createConfiguration();
+const apiInstance = new AnalysesResultsMetadataApi(configuration);
+
+const request: AnalysesResultsMetadataApiV3UpsertAnalysisFeedbackRequest = {
+    // Analysis ID
+  analysisId: 1,
+    // What the feedback is about
+  type: "function-matching",
+  
+  feedbackSubmission: {
+    metadata: {},
+    sentiment: "POSITIVE",
+  },
+};
+
+const data = await apiInstance.v3UpsertAnalysisFeedback(request);
+console.log('API called successfully. Returned data:', data);
+```
+
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **feedbackSubmission** | **FeedbackSubmission**|  |
+ **analysisId** | [**number**] | Analysis ID | defaults to undefined
+ **type** | [**&#39;function-matching&#39;**]**Array<&#39;function-matching&#39; &#124; &#39;11184809&#39;>** | What the feedback is about | defaults to undefined
+
+
+### Return type
+
+**void**
+
+### Authorization
+
+[APIKey](README.md#APIKey), [bearerAuth](README.md#bearerAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**204** | No Content |  -  |
 **403** | Forbidden |  -  |
 **404** | Not Found |  -  |
 **422** | Unprocessable Entity |  -  |
