@@ -12,12 +12,9 @@ import { APIError } from '../models/APIError';
 import { AddCalleeInputBody } from '../models/AddCalleeInputBody';
 import { AddUserStringToFunctionInputBody } from '../models/AddUserStringToFunctionInputBody';
 import { BaseResponse } from '../models/BaseResponse';
-import { BaseResponseAnalysisStringsResponse } from '../models/BaseResponseAnalysisStringsResponse';
-import { BaseResponseAnalysisStringsStatusResponse } from '../models/BaseResponseAnalysisStringsStatusResponse';
 import { BaseResponseCalleesCallerFunctionsResponse } from '../models/BaseResponseCalleesCallerFunctionsResponse';
 import { BaseResponseFunctionBlocksResponse } from '../models/BaseResponseFunctionBlocksResponse';
 import { BaseResponseFunctionCapabilityResponse } from '../models/BaseResponseFunctionCapabilityResponse';
-import { BaseResponseFunctionStringsResponse } from '../models/BaseResponseFunctionStringsResponse';
 import { BaseResponseFunctionsDetailResponse } from '../models/BaseResponseFunctionsDetailResponse';
 import { BaseResponseListCalleesCallerFunctionsResponse } from '../models/BaseResponseListCalleesCallerFunctionsResponse';
 import { CallEdgesOutputBody } from '../models/CallEdgesOutputBody';
@@ -25,6 +22,7 @@ import { CanonicalizeNamesInputBody } from '../models/CanonicalizeNamesInputBody
 import { CanonicalizeNamesOutputBody } from '../models/CanonicalizeNamesOutputBody';
 import { CapabilitiesOutputBody } from '../models/CapabilitiesOutputBody';
 import { DisassemblyOutputBody } from '../models/DisassemblyOutputBody';
+import { FeedbackSubmission } from '../models/FeedbackSubmission';
 import { FunctionDetailsOutputBody } from '../models/FunctionDetailsOutputBody';
 import { GetFunctionMapsOutputBody } from '../models/GetFunctionMapsOutputBody';
 import { GetMatchesOutputBody } from '../models/GetMatchesOutputBody';
@@ -35,6 +33,7 @@ import { ListAnalysisFunctionsOutputBody } from '../models/ListAnalysisFunctions
 import { ListFunctionGlobalsOutputBody } from '../models/ListFunctionGlobalsOutputBody';
 import { ListFunctionStringsOutputBody } from '../models/ListFunctionStringsOutputBody';
 import { ListImportedFunctionsOutputBody } from '../models/ListImportedFunctionsOutputBody';
+import { RecordedFeedback } from '../models/RecordedFeedback';
 import { SearchFunctionsOutputBody } from '../models/SearchFunctionsOutputBody';
 import { StartMatchingForFunctionsInputBody } from '../models/StartMatchingForFunctionsInputBody';
 import { StartMatchingOutputBody } from '../models/StartMatchingOutputBody';
@@ -169,138 +168,6 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     /**
      * @deprecated
      *
-     * Get string information found in the analysis
-     * Get string information found in the Analysis
-     * @param analysisId 
-     * @param page The page number to retrieve.
-     * @param pageSize Number of items per page.
-     * @param search Search is applied to string value
-     * @param functionSearch Search is applied to function names
-     * @param orderBy Order by field
-     * @param sortOrder Sort order for the results
-     */
-    public async getAnalysisStrings(analysisId: number, page?: number, pageSize?: number, search?: string, functionSearch?: string, orderBy?: 'length' | 'value', sortOrder?: 'ASC' | 'DESC', _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("FunctionsCoreApi", "getAnalysisStrings", "analysisId");
-        }
-
-
-
-
-
-
-
-
-        // Path Params
-        const localVarPath = '/v2/analyses/{analysis_id}/functions/strings'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (page !== undefined) {
-            requestContext.setQueryParam("page", ObjectSerializer.serialize(page, "number", ""));
-        }
-
-        // Query Params
-        if (pageSize !== undefined) {
-            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", ""));
-        }
-
-        // Query Params
-        if (search !== undefined) {
-            requestContext.setQueryParam("search", ObjectSerializer.serialize(search, "string", ""));
-        }
-
-        // Query Params
-        if (functionSearch !== undefined) {
-            requestContext.setQueryParam("function_search", ObjectSerializer.serialize(functionSearch, "string", ""));
-        }
-
-        // Query Params
-        if (orderBy !== undefined) {
-            requestContext.setQueryParam("order_by", ObjectSerializer.serialize(orderBy, "'length' | 'value'", ""));
-        }
-
-        // Query Params
-        if (sortOrder !== undefined) {
-            requestContext.setQueryParam("sort_order", ObjectSerializer.serialize(sortOrder, "'ASC' | 'DESC'", ""));
-        }
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * @deprecated
-     *
-     * Get string processing state for the Analysis
-     * Get string processing state for the Analysis
-     * @param analysisId 
-     */
-    public async getAnalysisStringsStatus(analysisId: number, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'analysisId' is not null or undefined
-        if (analysisId === null || analysisId === undefined) {
-            throw new RequiredError("FunctionsCoreApi", "getAnalysisStringsStatus", "analysisId");
-        }
-
-
-        // Path Params
-        const localVarPath = '/v2/analyses/{analysis_id}/functions/strings/status'
-            .replace('{' + 'analysis_id' + '}', encodeURIComponent(String(analysisId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
-     * @deprecated
-     *
      * Get disassembly blocks related to the function
      * Get disassembly blocks related to the function
      * @param functionId 
@@ -344,7 +211,7 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables) along with parameter and return-type info. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
+     * Returns the function\'s disassembly metadata (JSON blob containing basic blocks + local variables). Parameters and return type are not part of the disassembly; read them from GET /v3/analyses/{analysis_id}/functions/{function_id}/signature. A function that carries no disassembly (externals, thunks) returns 200 with the block fields omitted; disassembly that exists but cannot be read yet returns 409 ANALYSIS_NOT_READY.  **Error codes:** - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `409` [`ANALYSIS_NOT_READY`](/errors/ANALYSIS_NOT_READY) — Analysis Not Ready
      * Get function disassembly
      * @param functionId Function ID
      */
@@ -742,72 +609,6 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
-     * @deprecated
-     *
-     * Get string information found in the function
-     * Get string information found in the function
-     * @param functionId 
-     * @param page The page number to retrieve.
-     * @param pageSize Number of items per page.
-     * @param search Search is applied to string value
-     */
-    public async getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: Configuration): Promise<RequestContext> {
-        let _config = _options || this.configuration;
-
-        // verify required parameter 'functionId' is not null or undefined
-        if (functionId === null || functionId === undefined) {
-            throw new RequiredError("FunctionsCoreApi", "getFunctionStrings", "functionId");
-        }
-
-
-
-
-
-        // Path Params
-        const localVarPath = '/v2/functions/{function_id}/strings'
-            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)));
-
-        // Make Request Context
-        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
-        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
-
-        // Query Params
-        if (page !== undefined) {
-            requestContext.setQueryParam("page", ObjectSerializer.serialize(page, "number", ""));
-        }
-
-        // Query Params
-        if (pageSize !== undefined) {
-            requestContext.setQueryParam("page_size", ObjectSerializer.serialize(pageSize, "number", ""));
-        }
-
-        // Query Params
-        if (search !== undefined) {
-            requestContext.setQueryParam("search", ObjectSerializer.serialize(search, "string", ""));
-        }
-
-
-        let authMethod: SecurityAuthentication | undefined;
-        // Apply auth methods
-        authMethod = _config.authMethods["APIKey"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        // Apply auth methods
-        authMethod = _config.authMethods["bearerAuth"]
-        if (authMethod?.applySecurityAuthentication) {
-            await authMethod?.applySecurityAuthentication(requestContext);
-        }
-        
-        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
-        if (defaultAuth?.applySecurityAuthentication) {
-            await defaultAuth?.applySecurityAuthentication(requestContext);
-        }
-
-        return requestContext;
-    }
-
-    /**
      * Returns the strings discovered in a function. Supports value search and pagination.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List strings for a function.
      * @param functionId Function ID
@@ -815,12 +616,12 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
      * @param pageSize Number of results per page.
      * @param search Filter by string value (case-insensitive substring match).
      */
-    public async getFunctionStrings_5(functionId: number, page?: number, pageSize?: number, search?: string, _options?: Configuration): Promise<RequestContext> {
+    public async getFunctionStrings(functionId: number, page?: number, pageSize?: number, search?: string, _options?: Configuration): Promise<RequestContext> {
         let _config = _options || this.configuration;
 
         // verify required parameter 'functionId' is not null or undefined
         if (functionId === null || functionId === undefined) {
-            throw new RequiredError("FunctionsCoreApi", "getFunctionStrings_5", "functionId");
+            throw new RequiredError("FunctionsCoreApi", "getFunctionStrings", "functionId");
         }
 
 
@@ -1331,6 +1132,57 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
     }
 
     /**
+     * Returns the feedback the caller recorded for one kind of result on this function, or null fields when they have not recorded any.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Get the caller\'s feedback on a function.
+     * @param functionId Function ID
+     * @param type What the feedback is about
+     */
+    public async v3GetFunctionFeedback(functionId: number, type: 'function-matching', _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsCoreApi", "v3GetFunctionFeedback", "functionId");
+        }
+
+
+        // verify required parameter 'type' is not null or undefined
+        if (type === null || type === undefined) {
+            throw new RequiredError("FunctionsCoreApi", "v3GetFunctionFeedback", "type");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/feedback/{type}'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)))
+            .replace('{' + 'type' + '}', encodeURIComponent(String(type)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.GET);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
      * Returns the global variables referenced by the function, ordered by address.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
      * List the global variables a function references.
      * @param functionId Function ID
@@ -1415,6 +1267,75 @@ export class FunctionsCoreApiRequestFactory extends BaseAPIRequestFactory {
             requestContext.setQueryParam("offset", ObjectSerializer.serialize(offset, "number", "int64"));
         }
 
+
+        let authMethod: SecurityAuthentication | undefined;
+        // Apply auth methods
+        authMethod = _config.authMethods["APIKey"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        // Apply auth methods
+        authMethod = _config.authMethods["bearerAuth"]
+        if (authMethod?.applySecurityAuthentication) {
+            await authMethod?.applySecurityAuthentication(requestContext);
+        }
+        
+        const defaultAuth: SecurityAuthentication | undefined = _config?.authMethods?.default
+        if (defaultAuth?.applySecurityAuthentication) {
+            await defaultAuth?.applySecurityAuthentication(requestContext);
+        }
+
+        return requestContext;
+    }
+
+    /**
+     * Records how useful the caller found one kind of result for this function, with any context the client captured. Replaces any feedback they recorded previously.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found - `403` [`ACCESS_DENIED`](/errors/ACCESS_DENIED) — Access Denied
+     * Record feedback on a function.
+     * @param functionId Function ID
+     * @param type What the feedback is about
+     * @param feedbackSubmission 
+     */
+    public async v3UpsertFunctionFeedback(functionId: number, type: 'function-matching', feedbackSubmission: FeedbackSubmission, _options?: Configuration): Promise<RequestContext> {
+        let _config = _options || this.configuration;
+
+        // verify required parameter 'functionId' is not null or undefined
+        if (functionId === null || functionId === undefined) {
+            throw new RequiredError("FunctionsCoreApi", "v3UpsertFunctionFeedback", "functionId");
+        }
+
+
+        // verify required parameter 'type' is not null or undefined
+        if (type === null || type === undefined) {
+            throw new RequiredError("FunctionsCoreApi", "v3UpsertFunctionFeedback", "type");
+        }
+
+
+        // verify required parameter 'feedbackSubmission' is not null or undefined
+        if (feedbackSubmission === null || feedbackSubmission === undefined) {
+            throw new RequiredError("FunctionsCoreApi", "v3UpsertFunctionFeedback", "feedbackSubmission");
+        }
+
+
+        // Path Params
+        const localVarPath = '/v3/functions/{function_id}/feedback/{type}'
+            .replace('{' + 'function_id' + '}', encodeURIComponent(String(functionId)))
+            .replace('{' + 'type' + '}', encodeURIComponent(String(type)));
+
+        // Make Request Context
+        const requestContext = _config.baseServer.makeRequestContext(localVarPath, HttpMethod.PUT);
+        requestContext.setHeaderParam("Accept", "application/json, */*;q=0.8")
+
+
+        // Body Params
+        const contentType = ObjectSerializer.getPreferredMediaType([
+            "application/json"
+        ]);
+        requestContext.setHeaderParam("Content-Type", contentType);
+        const serializedBody = ObjectSerializer.stringify(
+            ObjectSerializer.serialize(feedbackSubmission, "FeedbackSubmission", ""),
+            contentType
+        );
+        requestContext.setBody(serializedBody);
 
         let authMethod: SecurityAuthentication | undefined;
         // Apply auth methods
@@ -1555,78 +1476,6 @@ export class FunctionsCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "any", ""
             ) as any;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getAnalysisStrings
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getAnalysisStringsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseAnalysisStringsResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseAnalysisStringsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseAnalysisStringsResponse", ""
-            ) as BaseResponseAnalysisStringsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseAnalysisStringsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseAnalysisStringsResponse", ""
-            ) as BaseResponseAnalysisStringsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getAnalysisStringsStatus
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getAnalysisStringsStatusWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseAnalysisStringsStatusResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseAnalysisStringsStatusResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseAnalysisStringsStatusResponse", ""
-            ) as BaseResponseAnalysisStringsStatusResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseAnalysisStringsStatusResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseAnalysisStringsStatusResponse", ""
-            ) as BaseResponseAnalysisStringsStatusResponse;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 
@@ -2126,43 +1975,7 @@ export class FunctionsCoreApiResponseProcessor {
      * @params response Response returned by the server for a request to getFunctionStrings
      * @throws ApiException if the response code was not in [200, 299]
      */
-     public async getFunctionStringsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<BaseResponseFunctionStringsResponse >> {
-        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
-        if (isCodeInRange("200", response.httpStatusCode)) {
-            const body: BaseResponseFunctionStringsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseFunctionStringsResponse", ""
-            ) as BaseResponseFunctionStringsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-        if (isCodeInRange("422", response.httpStatusCode)) {
-            const body: BaseResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponse", ""
-            ) as BaseResponse;
-            throw new ApiException<BaseResponse>(response.httpStatusCode, "Invalid request parameters", body, response.headers);
-        }
-
-        // Work around for missing responses in specification, e.g. for petstore.yaml
-        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
-            const body: BaseResponseFunctionStringsResponse = ObjectSerializer.deserialize(
-                ObjectSerializer.parse(await response.body.text(), contentType),
-                "BaseResponseFunctionStringsResponse", ""
-            ) as BaseResponseFunctionStringsResponse;
-            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
-        }
-
-        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
-    }
-
-    /**
-     * Unwraps the actual response sent by the server from the response context and deserializes the response content
-     * to the expected objects
-     *
-     * @params response Response returned by the server for a request to getFunctionStrings_5
-     * @throws ApiException if the response code was not in [200, 299]
-     */
-     public async getFunctionStrings_5WithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListFunctionStringsOutputBody >> {
+     public async getFunctionStringsWithHttpInfo(response: ResponseContext): Promise<HttpInfo<ListFunctionStringsOutputBody >> {
         const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
         if (isCodeInRange("200", response.httpStatusCode)) {
             const body: ListFunctionStringsOutputBody = ObjectSerializer.deserialize(
@@ -2757,6 +2570,63 @@ export class FunctionsCoreApiResponseProcessor {
      * Unwraps the actual response sent by the server from the response context and deserializes the response content
      * to the expected objects
      *
+     * @params response Response returned by the server for a request to v3GetFunctionFeedback
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3GetFunctionFeedbackWithHttpInfo(response: ResponseContext): Promise<HttpInfo<RecordedFeedback >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("200", response.httpStatusCode)) {
+            const body: RecordedFeedback = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RecordedFeedback", ""
+            ) as RecordedFeedback;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: RecordedFeedback = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "RecordedFeedback", ""
+            ) as RecordedFeedback;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
      * @params response Response returned by the server for a request to v3ListFunctionGlobals
      * @throws ApiException if the response code was not in [200, 299]
      */
@@ -2847,6 +2717,59 @@ export class FunctionsCoreApiResponseProcessor {
                 ObjectSerializer.parse(await response.body.text(), contentType),
                 "SearchFunctionsOutputBody", ""
             ) as SearchFunctionsOutputBody;
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
+        }
+
+        throw new ApiException<string | Blob | undefined>(response.httpStatusCode, "Unknown API Status Code!", await response.getBodyAsAny(), response.headers);
+    }
+
+    /**
+     * Unwraps the actual response sent by the server from the response context and deserializes the response content
+     * to the expected objects
+     *
+     * @params response Response returned by the server for a request to v3UpsertFunctionFeedback
+     * @throws ApiException if the response code was not in [200, 299]
+     */
+     public async v3UpsertFunctionFeedbackWithHttpInfo(response: ResponseContext): Promise<HttpInfo<void >> {
+        const contentType = ObjectSerializer.normalizeMediaType(response.headers["content-type"]);
+        if (isCodeInRange("204", response.httpStatusCode)) {
+            return new HttpInfo(response.httpStatusCode, response.headers, response.body, undefined);
+        }
+        if (isCodeInRange("403", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Forbidden", body, response.headers);
+        }
+        if (isCodeInRange("404", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Not Found", body, response.headers);
+        }
+        if (isCodeInRange("422", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Unprocessable Entity", body, response.headers);
+        }
+        if (isCodeInRange("500", response.httpStatusCode)) {
+            const body: APIError = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "APIError", ""
+            ) as APIError;
+            throw new ApiException<APIError>(response.httpStatusCode, "Internal Server Error", body, response.headers);
+        }
+
+        // Work around for missing responses in specification, e.g. for petstore.yaml
+        if (response.httpStatusCode >= 200 && response.httpStatusCode <= 299) {
+            const body: void = ObjectSerializer.deserialize(
+                ObjectSerializer.parse(await response.body.text(), contentType),
+                "void", ""
+            ) as void;
             return new HttpInfo(response.httpStatusCode, response.headers, response.body, body);
         }
 

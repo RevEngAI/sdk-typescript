@@ -13,7 +13,7 @@ import { HttpFile } from '../http/http';
 
 export class DynamicExecutionSummaryMetadata {
     /**
-    * Status of the most recent summary attempt. UNINITIALISED means no summary has been attempted for this analysis.
+    * Status of the run\'s most recent summary attempt. UNINITIALISED means no summary has been attempted for the run.
     */
     'status': DynamicExecutionSummaryMetadataStatusEnum;
 

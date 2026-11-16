@@ -26,6 +26,10 @@ export class CallEdge {
     */
     'importedFunctionId'?: number;
     'isExternal': boolean;
+    /**
+    * Who found the edge: SYSTEM for the analysis, AI_AGENT for a call AI decompilation recovered that the analysis missed.
+    */
+    'source': CallEdgeSourceEnum;
     'thunkedVaddr'?: number;
 
     static readonly discriminator: string | undefined = undefined;
@@ -82,6 +86,12 @@ export class CallEdge {
             "format": ""
         },
         {
+            "name": "source",
+            "baseName": "source",
+            "type": "CallEdgeSourceEnum",
+            "format": ""
+        },
+        {
             "name": "thunkedVaddr",
             "baseName": "thunked_vaddr",
             "type": "number",
@@ -95,3 +105,10 @@ export class CallEdge {
     public constructor() {
     }
 }
+
+export enum CallEdgeSourceEnum {
+    System = 'SYSTEM',
+    AiAgent = 'AI_AGENT',
+    UnknownDefaultOpenApi = '11184809'
+}
+

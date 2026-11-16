@@ -9,14 +9,21 @@
  * Do not edit the class manually.
  */
 
-import { BinariesTaskStatus } from '../models/BinariesTaskStatus';
 import { HttpFile } from '../http/http';
 
-export class AnalysisStringsStatusResponse {
+export class SizeBucketBody {
     /**
-    * The current status of the strings extraction task
+    * Exclusive upper bound of the bucket, in bytes. Null for the last bucket, which has no upper bound.
     */
-    'status': BinariesTaskStatus;
+    'belowBytes': number | null;
+    /**
+    * Functions a binary this size is estimated to have
+    */
+    'functions': number;
+    /**
+    * True where too few operations have run on binaries this size for the estimate to be reliable
+    */
+    'uncertain': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -24,18 +31,28 @@ export class AnalysisStringsStatusResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "BinariesTaskStatus",
+            "name": "belowBytes",
+            "baseName": "below_bytes",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "functions",
+            "baseName": "functions",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "uncertain",
+            "baseName": "uncertain",
+            "type": "boolean",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return AnalysisStringsStatusResponse.attributeTypeMap;
+        return SizeBucketBody.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-

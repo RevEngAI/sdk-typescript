@@ -9,25 +9,21 @@
  * Do not edit the class manually.
  */
 
-import { StringSource } from '../models/StringSource';
 import { HttpFile } from '../http/http';
 
-/**
-* Input model for inserting a string into an analysis.
-*/
-export class AnalysisStringInput {
+export class OperationCostBody {
     /**
-    * The string literal value
+    * Credits the operation is estimated to use regardless of the binary\'s size
     */
-    'value': string;
+    'baseCredits': number;
     /**
-    * The virtual address of the string
+    * Credits the operation is estimated to use per function in the binary
     */
-    'vaddr': number;
+    'creditsPerFunction': number;
     /**
-    * The source of the string
+    * The operation, as requested when creating an analysis, or binary-analysis for the analysis itself
     */
-    'source': StringSource;
+    'operation': string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -35,30 +31,28 @@ export class AnalysisStringInput {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "value",
-            "baseName": "value",
-            "type": "string",
-            "format": ""
-        },
-        {
-            "name": "vaddr",
-            "baseName": "vaddr",
+            "name": "baseCredits",
+            "baseName": "base_credits",
             "type": "number",
-            "format": ""
+            "format": "double"
         },
         {
-            "name": "source",
-            "baseName": "source",
-            "type": "StringSource",
+            "name": "creditsPerFunction",
+            "baseName": "credits_per_function",
+            "type": "number",
+            "format": "double"
+        },
+        {
+            "name": "operation",
+            "baseName": "operation",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return AnalysisStringInput.attributeTypeMap;
+        return OperationCostBody.attributeTypeMap;
     }
 
     public constructor() {
     }
 }
-
-

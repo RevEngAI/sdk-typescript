@@ -9,23 +9,33 @@
  * Do not edit the class manually.
  */
 
-import { ErrorModel } from '../models/ErrorModel';
-import { FunctionStringsResponse } from '../models/FunctionStringsResponse';
-import { MetaModel } from '../models/MetaModel';
 import { HttpFile } from '../http/http';
 
-export class BaseResponseFunctionStringsResponse {
+export class Function {
     /**
-    * Response status on whether the request succeeded
+    * Function id
     */
-    'status'?: boolean;
-    'data'?: FunctionStringsResponse | null;
-    'message'?: string | null;
-    'errors'?: Array<ErrorModel> | null;
+    'functionId': number;
     /**
-    * Metadata
+    * Demangled name of the function
     */
-    'meta'?: MetaModel;
+    'functionName': string;
+    /**
+    * Mangled name of the function
+    */
+    'functionMangledName': string;
+    /**
+    * Function virtual address
+    */
+    'functionVaddr': number;
+    /**
+    * Function size
+    */
+    'functionSize': number;
+    /**
+    * Whether the function is debug
+    */
+    'debug': boolean;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -33,38 +43,44 @@ export class BaseResponseFunctionStringsResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "status",
-            "baseName": "status",
-            "type": "boolean",
-            "format": ""
+            "name": "functionId",
+            "baseName": "function_id",
+            "type": "number",
+            "format": "int64"
         },
         {
-            "name": "data",
-            "baseName": "data",
-            "type": "FunctionStringsResponse",
-            "format": ""
-        },
-        {
-            "name": "message",
-            "baseName": "message",
+            "name": "functionName",
+            "baseName": "function_name",
             "type": "string",
             "format": ""
         },
         {
-            "name": "errors",
-            "baseName": "errors",
-            "type": "Array<ErrorModel>",
+            "name": "functionMangledName",
+            "baseName": "function_mangled_name",
+            "type": "string",
             "format": ""
         },
         {
-            "name": "meta",
-            "baseName": "meta",
-            "type": "MetaModel",
+            "name": "functionVaddr",
+            "baseName": "function_vaddr",
+            "type": "number",
+            "format": "int64"
+        },
+        {
+            "name": "functionSize",
+            "baseName": "function_size",
+            "type": "number",
+            "format": ""
+        },
+        {
+            "name": "debug",
+            "baseName": "debug",
+            "type": "boolean",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return BaseResponseFunctionStringsResponse.attributeTypeMap;
+        return Function.attributeTypeMap;
     }
 
     public constructor() {

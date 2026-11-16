@@ -21,8 +21,6 @@ export class DisassemblyOutputBody {
     * Instruction operands that reference a pointer slot, sorted by instruction_vaddr, target_vaddr, pointed_vaddr.
     */
     'operandXrefs'?: Array<OperandXref> | null;
-    'params'?: any | null;
-    'returnType'?: string;
     'returns': boolean;
 
     static readonly discriminator: string | undefined = undefined;
@@ -58,18 +56,6 @@ export class DisassemblyOutputBody {
             "name": "operandXrefs",
             "baseName": "operand_xrefs",
             "type": "Array<OperandXref>",
-            "format": ""
-        },
-        {
-            "name": "params",
-            "baseName": "params",
-            "type": "any",
-            "format": ""
-        },
-        {
-            "name": "returnType",
-            "baseName": "return_type",
-            "type": "string",
             "format": ""
         },
         {

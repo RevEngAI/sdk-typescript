@@ -18,7 +18,7 @@ export class DynamicExecutionMetadata {
     */
     'logs': AnalysisLogs;
     /**
-    * Run status. UNINITIALISED means this analysis has never had a run triggered.
+    * Run status
     */
     'status': DynamicExecutionMetadataStatusEnum;
 
@@ -49,7 +49,6 @@ export class DynamicExecutionMetadata {
 }
 
 export enum DynamicExecutionMetadataStatusEnum {
-    Uninitialised = 'UNINITIALISED',
     Pending = 'PENDING',
     Running = 'RUNNING',
     Completed = 'COMPLETED',

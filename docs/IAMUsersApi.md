@@ -9,9 +9,9 @@ Method | HTTP request | Description
 
 
 # **getMe**
-> User getMe()
+> CurrentUser getMe()
 
-Returns the authenticated user\'s own information.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
+Returns the authenticated user\'s own information, and how they sign in.  **Error codes:** - `404` [`NOT_FOUND`](/errors/NOT_FOUND) — Not Found
 
 ### Example
 
@@ -35,7 +35,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-**User**
+**CurrentUser**
 
 ### Authorization
 

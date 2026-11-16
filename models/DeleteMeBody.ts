@@ -9,21 +9,13 @@
  * Do not edit the class manually.
  */
 
-import { FunctionString } from '../models/FunctionString';
 import { HttpFile } from '../http/http';
 
-/**
-* Response for listing all the strings of a function.
-*/
-export class FunctionStringsResponse {
+export class DeleteMeBody {
     /**
-    * The strings associated with this function
+    * Current password. Required for users who sign in with a password; ignored for users from an external identity provider.
     */
-    'strings': Array<FunctionString>;
-    /**
-    * The total number of strings associated with this function
-    */
-    'totalStrings': number;
+    'password'?: string;
 
     static readonly discriminator: string | undefined = undefined;
 
@@ -31,20 +23,14 @@ export class FunctionStringsResponse {
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
         {
-            "name": "strings",
-            "baseName": "strings",
-            "type": "Array<FunctionString>",
-            "format": ""
-        },
-        {
-            "name": "totalStrings",
-            "baseName": "total_strings",
-            "type": "number",
+            "name": "password",
+            "baseName": "password",
+            "type": "string",
             "format": ""
         }    ];
 
     static getAttributeTypeMap() {
-        return FunctionStringsResponse.attributeTypeMap;
+        return DeleteMeBody.attributeTypeMap;
     }
 
     public constructor() {

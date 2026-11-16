@@ -12,6 +12,7 @@
 import { HttpFile } from '../http/http';
 
 export class UserProfile {
+    'agentChatLayout': UserProfileAgentChatLayoutEnum;
     'defaultTeamId'?: number;
     'firstName': string;
     'hideAiDecompilationComments': boolean;
@@ -25,6 +26,12 @@ export class UserProfile {
     static readonly mapping: {[index: string]: string} | undefined = undefined;
 
     static readonly attributeTypeMap: Array<{name: string, baseName: string, type: string, format: string}> = [
+        {
+            "name": "agentChatLayout",
+            "baseName": "agent_chat_layout",
+            "type": "UserProfileAgentChatLayoutEnum",
+            "format": ""
+        },
         {
             "name": "defaultTeamId",
             "baseName": "default_team_id",
@@ -75,3 +82,10 @@ export class UserProfile {
     public constructor() {
     }
 }
+
+export enum UserProfileAgentChatLayoutEnum {
+    Floating = 'floating',
+    Fixed = 'fixed',
+    UnknownDefaultOpenApi = '11184809'
+}
+

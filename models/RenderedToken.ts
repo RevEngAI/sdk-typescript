@@ -17,6 +17,10 @@ export class RenderedToken {
     */
     'dataTypeId'?: number;
     /**
+    * Integer value of an enum the decompiler recovered a name for. Absent for an unnamed enum, which already renders as its value.
+    */
+    'enumValue'?: string;
+    /**
     * Function this token calls or names. Absent when the address reaches no function of this binary.
     */
     'functionId'?: number;
@@ -47,6 +51,12 @@ export class RenderedToken {
             "baseName": "data_type_id",
             "type": "number",
             "format": "int64"
+        },
+        {
+            "name": "enumValue",
+            "baseName": "enum_value",
+            "type": "string",
+            "format": ""
         },
         {
             "name": "functionId",
